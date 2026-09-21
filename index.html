@@ -105,14 +105,6 @@ img{
   margin-bottom:18px
 }
 
-.tagline{
-  color:#5f5b55;
-  font-size:15px;
-  line-height:2;
-  white-space:pre-line;
-  margin-bottom:28px
-}
-
 .rule{
   border-top:1px dashed #302e2a;
   margin:24px 0
@@ -423,10 +415,6 @@ footer{
       <div class="brand">
         QUỐC MẠNH
       </div>
-
-      <div class="tagline">notes from
-somewhere
-in Hanoi.</div>
 
       <div class="rule"></div>
 
@@ -814,11 +802,6 @@ in Hanoi.</div>
     let image =
       String(item.image || "");
 
-    /*
-      Current sample image lives in the root.
-      Future images can live inside photographs/
-      or photographs/images/.
-    */
 
     if(
       image &&
@@ -901,15 +884,6 @@ in Hanoi.</div>
   async function loadContent(){
 
     try{
-
-      /*
-        IMPORTANT:
-
-        Home no longer reads root content.json.
-
-        Each section is now controlled
-        by its own content.json.
-      */
 
       const [
         writingsData,
