@@ -1,62 +1,1933 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Photographs — QM Archive</title>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Photographs — QUỐC MẠNH</title>
+
+
 <style>
-:root{--bg:#090909;--fg:#d8d8d8;--muted:#777;--line:#292929}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
-body{font-family:"Courier New",Courier,monospace;font-size:14px;line-height:1.6}
-a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:1050px;margin:0 auto;padding:28px 24px 70px}
-.chrome{border:1px solid #303030;margin-bottom:28px;background:#0c0c0c}
-.chrome-top{height:25px;display:flex;align-items:center;gap:6px;padding:0 9px;border-bottom:1px solid #252525;color:#777;font-size:11px}
-.dot{width:7px;height:7px;border:1px solid #555;border-radius:50%}
-.address{margin:7px 9px;padding:4px 7px;border:1px solid #252525;color:#777;font-size:11px}
-.header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:4px 0 22px;border-bottom:1px solid var(--line)}
-.kicker{color:#666;font-size:11px;letter-spacing:.08em}
-h1{margin:4px 0 0;font-size:24px;font-weight:400;letter-spacing:-.04em}
-.back{color:#888;font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-top:28px}
-.card{border-bottom:1px solid var(--line);padding-bottom:22px}
-.card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(12%);border:1px solid #222}
-.meta{padding-top:11px;color:#666;font-size:11px}
-.title{margin-top:4px;font-size:15px;color:#c9c9c9}
-.footer{margin-top:45px;padding-top:14px;border-top:1px solid var(--line);color:#555;font-size:11px}
-@media(max-width:650px){.wrap{padding:18px 16px 55px}.header{align-items:flex-start;flex-direction:column;gap:8px}h1{font-size:21px}.grid{grid-template-columns:1fr;gap:28px}}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+
+html,
+body{
+  margin:0;
+  padding:0;
+
+  background:#080808;
+  color:#aaa;
+
+  font-family:"Courier New", Courier, monospace;
+}
+
+
+body{
+  min-height:100vh;
+}
+
+
+/* =========================================================
+   SCANLINES
+========================================================= */
+
+body::before{
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:9999;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.025) 0px,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+  width:100%;
+  min-height:100vh;
+
+  padding:30px;
+}
+
+
+/* =========================================================
+   BROWSER BAR
+========================================================= */
+
+.browser{
+  width:100%;
+  height:54px;
+
+  border:1px solid #252525;
+
+  padding:10px 18px;
+
+  margin-bottom:70px;
+
+  color:#666;
+
+  font-size:13px;
+
+  box-shadow:
+    inset 0 0 0 1px #111;
+}
+
+
+.browser::before{
+  content:"";
+
+  display:inline-block;
+
+  width:12px;
+  height:12px;
+
+  margin-right:12px;
+
+  border:1px solid #555;
+
+  box-shadow:
+    18px 0 0 -1px #080808,
+    18px 0 0 0 #555,
+    36px 0 0 -1px #080808,
+    36px 0 0 0 #555;
+
+  vertical-align:-1px;
+}
+
+
+.browser span{
+  color:#666;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.layout{
+  display:grid;
+
+  grid-template-columns:
+    260px
+    minmax(0,1fr)
+    290px;
+
+  gap:55px;
+
+  max-width:1450px;
+
+  margin:0 auto;
+}
+
+
+/* =========================================================
+   LEFT
+========================================================= */
+
+.left{
+  min-width:0;
+}
+
+
+.brand{
+  color:#aaa;
+
+  font-size:21px;
+
+  letter-spacing:4px;
+
+  margin-bottom:35px;
+}
+
+
+.rule{
+  width:100%;
+
+  border-top:1px dashed #292929;
+
+  margin:0 0 32px 0;
+}
+
+
+.nav{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:24px;
+}
+
+
+.nav a{
+  color:#777;
+
+  text-decoration:none;
+
+  font-size:16px;
+}
+
+
+.nav a:hover{
+  color:#ddd;
+}
+
+
+.nav a.active{
+  color:#c0ad67;
+}
+
+
+.left-info{
+  margin-top:60px;
+
+  padding-top:30px;
+
+  border-top:1px dashed #292929;
+
+  color:#555;
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+
+.left-info .label{
+  color:#444;
+}
+
+
+.left-info .year{
+  color:#777;
+
+  font-size:20px;
+
+  margin-top:4px;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main{
+  min-width:0;
+}
+
+
+.photographs{
+  border:1px solid #343434;
+
+  min-height:245px;
+}
+
+
+.section-header{
+  padding:30px 28px 25px;
+
+  border-bottom:1px solid #2b2b2b;
+}
+
+
+.section-title{
+  color:#777;
+
+  font-size:14px;
+
+  letter-spacing:2px;
+}
+
+
+.section-path{
+  margin-top:12px;
+
+  color:#3f3f3f;
+
+  font-size:12px;
+}
+
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
+
+.archive{
+  width:100%;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:0;
+}
+
+
+/* =========================================================
+   PHOTO CARD
+========================================================= */
+
+.photo-entry{
+  min-width:0;
+
+  display:block;
+
+  padding:22px 18px 28px;
+
+  border-right:1px solid #2c2c2c;
+
+  border-bottom:1px solid #2c2c2c;
+
+  text-decoration:none;
+}
+
+
+.photo-entry:nth-child(4n){
+  border-right:0;
+}
+
+
+.photo-entry:hover{
+  background:#0b0b0b;
+}
+
+
+/* =========================================================
+   PHOTO IMAGE
+========================================================= */
+
+.photo-frame{
+  width:100%;
+
+  aspect-ratio:4 / 3;
+
+  overflow:hidden;
+
+  background:#0b0b0b;
+
+  border:1px solid #282828;
+
+  margin-bottom:15px;
+}
+
+
+.photo-frame img{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  filter:
+    grayscale(.15)
+    brightness(.72)
+    saturate(.72);
+
+  transition:
+    filter .25s ease,
+    transform .25s ease;
+}
+
+
+.photo-entry:hover .photo-frame img{
+  filter:
+    grayscale(0)
+    brightness(.85)
+    saturate(.85);
+
+  transform:scale(1.015);
+}
+
+
+/* =========================================================
+   PHOTO META
+========================================================= */
+
+.photo-date{
+  color:#555;
+
+  font-size:12px;
+
+  margin-bottom:7px;
+}
+
+
+.photo-title{
+  color:#999;
+
+  font-size:15px;
+
+  line-height:1.5;
+}
+
+
+.photo-entry:hover .photo-title{
+  color:#d0d0d0;
+}
+
+
+/* =========================================================
+   ARTICLE / DETAIL
+========================================================= */
+
+.article{
+  padding:42px 28px 55px;
+}
+
+
+.article-year{
+  color:#555;
+
+  font-size:13px;
+
+  margin-bottom:25px;
+}
+
+
+.article-title{
+  color:#bbb;
+
+  font-size:34px;
+
+  font-weight:normal;
+
+  line-height:1.3;
+
+  margin:0 0 45px;
+}
+
+
+/* =========================================================
+   ARTICLE BODY
+========================================================= */
+
+.article-body{
+  max-width:1000px;
+
+  color:#999;
+
+  font-size:15px;
+
+  line-height:2;
+
+  letter-spacing:.15px;
+}
+
+
+.article-body p{
+  margin:0 0 30px;
+}
+
+
+.article-body h1,
+.article-body h2,
+.article-body h3{
+  color:#bbb;
+
+  font-weight:normal;
+}
+
+
+.article-body h1{
+  font-size:27px;
+
+  margin:35px 0 25px;
+}
+
+
+.article-body h2{
+  font-size:22px;
+
+  margin:35px 0 20px;
+}
+
+
+.article-body h3{
+  font-size:18px;
+
+  margin:30px 0 15px;
+}
+
+
+.article-body em{
+  color:#aaa;
+}
+
+
+.article-body strong{
+  color:#bbb;
+}
+
+
+.article-body blockquote{
+  margin:30px 0;
+
+  padding-left:20px;
+
+  border-left:1px solid #444;
+
+  color:#777;
+}
+
+
+.article-body ul,
+.article-body ol{
+  margin:0 0 30px;
+
+  padding-left:25px;
+}
+
+
+.article-body li{
+  margin-bottom:8px;
+}
+
+
+.article-body a{
+  color:#aaa;
+}
+
+
+.article-body img{
+  display:block;
+
+  width:auto;
+  max-width:100%;
+  height:auto;
+
+  margin:35px 0;
+}
+
+
+/* =========================================================
+   DETAIL PHOTO
+========================================================= */
+
+.article-body .photo-detail{
+  width:100%;
+
+  max-width:1000px;
+
+  margin:0 0 40px;
+
+  border:1px solid #292929;
+
+  background:#0b0b0b;
+
+  padding:10px;
+}
+
+
+.article-body .photo-detail img{
+  width:100%;
+  max-width:none;
+
+  margin:0;
+
+  filter:
+    grayscale(.05)
+    brightness(.82)
+    saturate(.82);
+}
+
+
+.article-caption{
+  color:#555;
+
+  font-size:12px;
+
+  line-height:1.8;
+
+  margin-top:12px;
+}
+
+
+/* =========================================================
+   ARTICLE BACK
+========================================================= */
+
+.article-back{
+  display:inline-block;
+
+  margin-top:30px;
+
+  color:#555;
+
+  text-decoration:none;
+
+  font-size:13px;
+}
+
+
+.article-back:hover{
+  color:#aaa;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error{
+  padding:70px 28px;
+
+  color:#555;
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+
+.error strong{
+  color:#777;
+
+  font-weight:normal;
+}
+
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.right{
+  min-width:0;
+}
+
+
+.side-copy{
+  color:#555;
+
+  font-size:14px;
+}
+
+
+.right-note{
+  color:#666;
+
+  font-size:14px;
+
+  line-height:2;
+
+  margin-bottom:40px;
+}
+
+
+/* =========================================================
+   POLAROID
+========================================================= */
+
+.polaroid{
+  width:175px;
+
+  margin:20px auto 70px;
+
+  padding:9px 9px 18px;
+
+  background:#ddd;
+
+  transform:rotate(-2deg);
+}
+
+
+.polaroid img{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  filter:grayscale(100%);
+}
+
+
+.polaroid figcaption{
+  color:#777;
+
+  text-align:center;
+
+  font-size:12px;
+
+  margin-top:12px;
+}
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+.clock{
+  color:#555;
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  text-align:left;
+}
+
+
+.clock #time{
+  color:#777;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  max-width:1450px;
+
+  margin:80px auto 0;
+
+  padding-top:20px;
+
+  border-top:1px solid #222;
+
+  color:#444;
+
+  font-size:12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1200px){
+
+  .layout{
+    grid-template-columns:
+      210px
+      minmax(0,1fr)
+      230px;
+
+    gap:30px;
+  }
+
+
+  .archive{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+
+  .photo-entry:nth-child(4n){
+    border-right:1px solid #2c2c2c;
+  }
+
+
+  .photo-entry:nth-child(3n){
+    border-right:0;
+  }
+
+}
+
+
+@media(max-width:1050px){
+
+  .layout{
+    grid-template-columns:
+      210px
+      minmax(0,1fr);
+
+    gap:35px;
+  }
+
+
+  .right{
+    display:none;
+  }
+
+
+  .archive{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+
+  .photo-entry:nth-child(3n){
+    border-right:0;
+  }
+
+}
+
+
+@media(max-width:800px){
+
+  .archive{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+
+  .photo-entry:nth-child(3n){
+    border-right:1px solid #2c2c2c;
+  }
+
+
+  .photo-entry:nth-child(2n){
+    border-right:0;
+  }
+
+}
+
+
+@media(max-width:700px){
+
+  .page{
+    padding:18px;
+  }
+
+
+  .browser{
+    margin-bottom:50px;
+  }
+
+
+  .layout{
+    display:block;
+  }
+
+
+  .left{
+    margin-bottom:45px;
+  }
+
+
+  .nav{
+    flex-direction:row;
+
+    flex-wrap:wrap;
+
+    gap:15px 25px;
+  }
+
+
+  .left-info{
+    display:none;
+  }
+
+
+  .photographs{
+    min-height:200px;
+  }
+
+
+  .archive{
+    grid-template-columns:1fr;
+  }
+
+
+  .photo-entry,
+  .photo-entry:nth-child(2n),
+  .photo-entry:nth-child(3n),
+  .photo-entry:nth-child(4n){
+    border-right:0;
+
+    padding:20px;
+  }
+
+
+  .photo-frame{
+    aspect-ratio:4 / 3;
+  }
+
+
+  .article{
+    padding:35px 20px 45px;
+  }
+
+
+  .article-title{
+    font-size:28px;
+  }
+
+
+  .article-body{
+    font-size:15px;
+
+    line-height:1.9;
+  }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
-<div class="wrap">
-<div class="chrome">
-<div class="chrome-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>QM ARCHIVE / PHOTOGRAPHS</span></div>
-<div class="address">http://qmarchive.github.io/photographs/</div>
+
+
+<div class="page">
+
+
+  <!-- =====================================================
+       BROWSER
+  ====================================================== -->
+
+  <div class="browser">
+
+    <span id="browserAddress">
+      https://qmarchive.github.io/photographs/
+    </span>
+
+  </div>
+
+
+  <!-- =====================================================
+       LAYOUT
+  ====================================================== -->
+
+  <div class="layout">
+
+
+    <!-- ===================================================
+         LEFT
+    ==================================================== -->
+
+    <aside class="left">
+
+      <div class="brand">
+        QUỐC MẠNH
+      </div>
+
+
+      <div class="rule"></div>
+
+
+      <nav class="nav">
+
+        <a href="/">
+          home
+        </a>
+
+        <a href="/writings/">
+          writings
+        </a>
+
+        <a href="/photographs/" class="active">
+          photographs
+        </a>
+
+        <a href="/notes/">
+          notes
+        </a>
+
+        <a href="/#about">
+          about
+        </a>
+
+      </nav>
+
+
+      <div class="left-info">
+
+        <div>
+          photographs
+        </div>
+
+        <div>
+          archive
+        </div>
+
+        <br>
+
+        <div class="label">
+          since
+        </div>
+
+        <div class="year">
+          2020
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ===================================================
+         MAIN
+    ==================================================== -->
+
+    <main class="main">
+
+      <section class="photographs">
+
+
+        <header class="section-header">
+
+          <div class="section-title">
+            PHOTOGRAPHS
+          </div>
+
+
+          <div
+            class="section-path"
+            id="sectionPath"
+          >
+            / photographs /
+          </div>
+
+        </header>
+
+
+        <div id="main"></div>
+
+
+      </section>
+
+    </main>
+
+
+    <!-- ===================================================
+         RIGHT
+    ==================================================== -->
+
+    <aside class="right">
+
+
+      <div class="side-copy">
+        Hanoi, Vietnam
+      </div>
+
+
+      <div class="rule"></div>
+
+
+      <div class="right-note">
+
+        Nhật ký của một người bình thường.<br>
+
+        Viết lại những câu chuyện đáng lý<br>
+
+        chỉ cần bỏ qua.<br>
+
+        Chào Mạnh, chúng ta lại gặp nhau rồi.
+
+      </div>
+
+
+      <figure class="polaroid">
+
+        <img
+          src="/hanoi-sample.jpg"
+          alt="Hanoi, always"
+        >
+
+        <figcaption>
+          Hanoi, always.
+        </figcaption>
+
+      </figure>
+
+
+      <div class="clock">
+
+        <span id="date">
+          21.09.2026
+        </span>
+
+        <br>
+
+        <span id="time">
+          00:00:00
+        </span>
+
+        <br><br>
+
+        1998 — 2026
+
+        <br>
+
+        and beyond.
+
+      </div>
+
+
+    </aside>
+
+
+  </div>
+
+
+  <footer>
+    best viewed at night.
+  </footer>
+
+
 </div>
-<header class="header">
-<div><div class="kicker">QM ARCHIVE / PHOTOGRAPHS</div><h1>Photographs</h1></div>
-<a class="back" href="../">← back to archive</a>
-</header>
-<main id="photos" class="grid"></main>
-<div class="footer">images, places, fragments.</div>
-</div>
+
+
 <script>
-const photosEl = document.getElementById("photos");
-fetch("./content.json?v=1")
-.then(r => r.json())
-.then(data => {
-  photosEl.innerHTML = data.photos.map(photo => `
-    <article class="card">
-      <a href="./photo-${photo.slug}.html">
-        <img src="${photo.image}" alt="${photo.title}" loading="lazy">
-      </a>
-      <div class="meta">${photo.date}</div>
-      <div class="title"><a href="./photo-${photo.slug}.html">${photo.title}</a></div>
-    </article>
-  `).join("");
-})
-.catch(() => photosEl.innerHTML = '<p style="color:#777">Unable to load photographs.</p>');
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const CONTENT_URL =
+  "/photographs/content.json?v=" +
+  Date.now();
+
+
+const POSTS_BASE =
+  "/photographs/posts/";
+
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+
+}
+
+
+
+/* =========================================================
+   MARKDOWN → HTML
+========================================================= */
+
+function markdownToHTML(markdown){
+
+  let text =
+    escapeHTML(markdown);
+
+
+  /* =======================================================
+     IMAGES
+  ====================================================== */
+
+  text =
+    text.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+
+      function(match, alt, src){
+
+        return `
+
+          <figure class="photo-detail">
+
+            <img
+              src="${src}"
+              alt="${alt}"
+            >
+
+          </figure>
+
+        `;
+
+      }
+    );
+
+
+  /* =======================================================
+     LINKS
+  ====================================================== */
+
+  text =
+    text.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+
+      '<a href="$2">$1</a>'
+    );
+
+
+  /* =======================================================
+     HEADINGS
+  ====================================================== */
+
+  text =
+    text.replace(
+      /^### (.+)$/gm,
+
+      "<h3>$1</h3>"
+    );
+
+
+  text =
+    text.replace(
+      /^## (.+)$/gm,
+
+      "<h2>$1</h2>"
+    );
+
+
+  text =
+    text.replace(
+      /^# (.+)$/gm,
+
+      "<h1>$1</h1>"
+    );
+
+
+  /* =======================================================
+     BOLD
+  ====================================================== */
+
+  text =
+    text.replace(
+      /\*\*(.+?)\*\*/g,
+
+      "<strong>$1</strong>"
+    );
+
+
+  /* =======================================================
+     ITALIC
+  ====================================================== */
+
+  text =
+    text.replace(
+      /\*(.+?)\*/g,
+
+      "<em>$1</em>"
+    );
+
+
+  /* =======================================================
+     BLOCKQUOTE
+  ====================================================== */
+
+  text =
+    text.replace(
+      /^&gt; (.+)$/gm,
+
+      "<blockquote>$1</blockquote>"
+    );
+
+
+  /* =======================================================
+     UNORDERED LIST
+  ====================================================== */
+
+  text =
+    text.replace(
+      /^[-*] (.+)$/gm,
+
+      "<li>$1</li>"
+    );
+
+
+  text =
+    text.replace(
+      /(<li>.*<\/li>)/gs,
+
+      "<ul>$1</ul>"
+    );
+
+
+  /* =======================================================
+     BLOCKS
+  ====================================================== */
+
+  const blocks =
+    text
+
+      .split(/\n\s*\n/)
+
+      .map(
+        block =>
+          block.trim()
+      )
+
+      .filter(Boolean);
+
+
+  return blocks
+
+    .map(
+      block => {
+
+        if(
+
+          block.startsWith("<h1>") ||
+
+          block.startsWith("<h2>") ||
+
+          block.startsWith("<h3>") ||
+
+          block.startsWith("<blockquote>") ||
+
+          block.startsWith("<ul>") ||
+
+          block.startsWith("<figure")
+
+        ){
+
+          return block;
+
+        }
+
+
+        return (
+
+          "<p>" +
+
+          block.replace(
+            /\n/g,
+            "<br>"
+          ) +
+
+          "</p>"
+
+        );
+
+      }
+    )
+
+    .join("\n");
+
+}
+
+
+
+/* =========================================================
+   LOAD JSON
+========================================================= */
+
+async function loadJSON(){
+
+  const response =
+    await fetch(
+      CONTENT_URL,
+      {
+        cache:"no-store"
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+
+      "Could not load " +
+
+      "photographs/content.json (" +
+
+      response.status +
+
+      ")"
+
+    );
+
+  }
+
+
+  return await response.json();
+
+}
+
+
+
+/* =========================================================
+   LOAD MARKDOWN
+========================================================= */
+
+async function loadMarkdown(slug){
+
+  const safeSlug =
+    decodeURIComponent(
+      String(slug || "")
+    ).trim();
+
+
+  const url =
+    POSTS_BASE +
+
+    encodeURIComponent(
+      safeSlug
+    ) +
+
+    ".md?v=" +
+
+    Date.now();
+
+
+  const response =
+    await fetch(
+      url,
+      {
+        cache:"no-store"
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+
+      "Could not load Markdown file (" +
+
+      response.status +
+
+      "): " +
+
+      url
+
+    );
+
+  }
+
+
+  const text =
+    await response.text();
+
+
+  if(!text.trim()){
+
+    throw new Error(
+
+      "Markdown file is empty: " +
+
+      url
+
+    );
+
+  }
+
+
+  return text;
+
+}
+
+
+
+/* =========================================================
+   RENDER ARCHIVE
+========================================================= */
+
+function renderArchive(items){
+
+  const main =
+    document.getElementById(
+      "main"
+    );
+
+
+  document.getElementById(
+    "sectionPath"
+  ).textContent =
+    "/ photographs /";
+
+
+  document.getElementById(
+    "browserAddress"
+  ).textContent =
+    "https://qmarchive.github.io/photographs/";
+
+
+  if(!items.length){
+
+    main.innerHTML = `
+
+      <div class="error">
+
+        No photographs yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  main.innerHTML = `
+
+    <div class="archive">
+
+      ${items.map(
+        item => {
+
+          const slug =
+            String(
+              item.slug || ""
+            );
+
+
+          return `
+
+            <a
+
+              class="photo-entry"
+
+              href="/photographs/?slug=${encodeURIComponent(
+                slug
+              )}"
+
+            >
+
+              <div class="photo-frame">
+
+                <img
+
+                  src="${escapeHTML(
+                    item.image || ""
+                  )}"
+
+                  alt="${escapeHTML(
+                    item.title || ""
+                  )}"
+
+                  loading="lazy"
+
+                >
+
+              </div>
+
+
+              <div class="photo-date">
+
+                ${escapeHTML(
+                  item.date || ""
+                )}
+
+              </div>
+
+
+              <div class="photo-title">
+
+                ${escapeHTML(
+                  item.title || ""
+                )}
+
+              </div>
+
+            </a>
+
+          `;
+
+        }
+      ).join("")}
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =========================================================
+   RENDER ARTICLE
+========================================================= */
+
+async function renderArticle(
+  items,
+  slug
+){
+
+  const main =
+    document.getElementById(
+      "main"
+    );
+
+
+  const decodedSlug =
+    decodeURIComponent(
+      String(slug || "")
+    ).trim();
+
+
+  const item =
+    items.find(
+      entry =>
+        String(
+          entry.slug || ""
+        ).trim() ===
+        decodedSlug
+    );
+
+
+  document.getElementById(
+    "sectionPath"
+  ).textContent =
+    "/ photographs / " +
+    decodedSlug;
+
+
+  document.getElementById(
+    "browserAddress"
+  ).textContent =
+    "https://qmarchive.github.io/photographs/?slug=" +
+    decodedSlug;
+
+
+  /* =======================================================
+     METADATA NOT FOUND
+  ====================================================== */
+
+  if(!item){
+
+    main.innerHTML = `
+
+      <div class="error">
+
+        <strong>
+          This photograph could not be found.
+        </strong>
+
+        <br><br>
+
+        slug:
+        ${escapeHTML(
+          decodedSlug
+        )}
+
+        <br><br>
+
+        <a
+          class="article-back"
+          href="/photographs/"
+        >
+          ← back to photographs
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* =======================================================
+     LOADING
+  ====================================================== */
+
+  main.innerHTML = `
+
+    <div class="error">
+
+      Loading photograph...
+
+    </div>
+
+  `;
+
+
+  try{
+
+    const markdown =
+      await loadMarkdown(
+        decodedSlug
+      );
+
+
+    const html =
+      markdownToHTML(
+        markdown
+      );
+
+
+    main.innerHTML = `
+
+      <article class="article">
+
+
+        <div class="article-year">
+
+          ${escapeHTML(
+            item.date || ""
+          )}
+
+        </div>
+
+
+        <h1 class="article-title">
+
+          ${escapeHTML(
+            item.title || ""
+          )}
+
+        </h1>
+
+
+        <div class="article-body">
+
+          ${html}
+
+        </div>
+
+
+        <a
+          class="article-back"
+          href="/photographs/"
+        >
+
+          ← back to photographs
+
+        </a>
+
+
+      </article>
+
+    `;
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    main.innerHTML = `
+
+      <div class="error">
+
+        <strong>
+          The photograph exists, but its content could not be loaded.
+        </strong>
+
+        <br><br>
+
+        File expected:
+
+        <br>
+
+        /photographs/posts/
+        ${escapeHTML(decodedSlug)}
+        .md
+
+        <br><br>
+
+        ${escapeHTML(
+          error.message
+        )}
+
+        <br><br>
+
+        <a
+          class="article-back"
+          href="/photographs/"
+        >
+
+          ← back to photographs
+
+        </a>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+
+  const date =
+    String(
+      now.getDate()
+    ).padStart(2,"0") +
+
+    "." +
+
+    String(
+      now.getMonth()+1
+    ).padStart(2,"0") +
+
+    "." +
+
+    now.getFullYear();
+
+
+  const time =
+    String(
+      now.getHours()
+    ).padStart(2,"0") +
+
+    ":" +
+
+    String(
+      now.getMinutes()
+    ).padStart(2,"0") +
+
+    ":" +
+
+    String(
+      now.getSeconds()
+    ).padStart(2,"0");
+
+
+  const dateElement =
+    document.getElementById(
+      "date"
+    );
+
+
+  const timeElement =
+    document.getElementById(
+      "time"
+    );
+
+
+  if(dateElement){
+
+    dateElement.textContent =
+      date;
+
+  }
+
+
+  if(timeElement){
+
+    timeElement.textContent =
+      time;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+async function init(){
+
+  try{
+
+    const data =
+      await loadJSON();
+
+
+    const items =
+      Array.isArray(
+        data.photographs
+      )
+        ? data.photographs
+        : [];
+
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const slug =
+      params.get("slug");
+
+
+    if(slug){
+
+      await renderArticle(
+        items,
+        slug
+      );
+
+    }else{
+
+      renderArchive(
+        items
+      );
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    document.getElementById(
+      "main"
+    ).innerHTML = `
+
+      <div class="error">
+
+        <strong>
+          Photographs could not be loaded.
+        </strong>
+
+        <br><br>
+
+        ${escapeHTML(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+updateClock();
+
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+init();
+
 </script>
+
 </body>
 </html>
