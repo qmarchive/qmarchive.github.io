@@ -1,603 +1,494 @@
 <!DOCTYPE html>
-<html lang="vi">
-
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>QUỐC MẠNH — personal archive</title>
+<title>QUỐC MẠNH — Archive</title>
 
 <style>
-
-*{
-  box-sizing:border-box
+* {
+  box-sizing: border-box;
 }
 
-html,body{
-  margin:0;
-  padding:0
+body {
+  margin: 0;
+  background: #e9e8e3;
+  color: #171717;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-body{
-  background:#080808;
-  color:#b9b2a7;
-  font-family:"Courier New",Courier,monospace;
-  font-size:14px;
-  line-height:1.6;
+a {
+  color: inherit;
 }
 
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:20;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.025) 0px,
-    rgba(255,255,255,.025) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  opacity:.45;
+/* =========================
+   LAYOUT
+========================= */
+
+.page {
+  width: min(1180px, calc(100% - 30px));
+  margin: 20px auto 50px;
 }
 
-a{
-  color:inherit;
-  text-decoration:none
+/* =========================
+   BROWSER
+========================= */
+
+.browser {
+  height: 27px;
+  border: 1px solid #999;
+  background: #d7d6d2;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 7px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
 }
 
-a:hover{
-  color:#b9a36a
+.browser-buttons {
+  display: flex;
+  gap: 4px;
+  margin-right: 8px;
 }
 
-img{
-  max-width:100%;
-  display:block
+.browser-buttons span {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #777;
+  background: #eee;
 }
 
-.page{
-  max-width:1440px;
-  margin:0 auto;
-  padding:16px 24px 70px
+.browser-address {
+  flex: 1;
+  height: 17px;
+
+  border: 1px solid #aaa;
+  background: #f4f4f4;
+
+  padding: 0 6px;
+
+  line-height: 15px;
+
+  overflow: hidden;
+  white-space: nowrap;
 }
 
+/* =========================
+   HEADER
+========================= */
 
-/* BROWSER */
-
-.browser{
-  border:1px solid #333;
-  height:42px;
-  padding:9px 14px;
-  color:#5d5a55;
-  font-size:12px;
-  margin-bottom:70px;
+.header {
+  padding: 35px 0 17px;
+  border-bottom: 1px solid #777;
 }
 
-.browser span{
-  display:block;
-  border:1px solid #292929;
-  padding:2px 8px;
-  height:22px
+.brand {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: .08em;
 }
 
+.nav {
+  margin-top: 13px;
 
-/* LAYOUT */
+  display: flex;
+  gap: 20px;
 
-.layout{
-  display:grid;
-  grid-template-columns:230px minmax(0,1fr) 230px;
-  gap:30px
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
 }
 
-.left,
-.right{
-  padding-top:4px
+.nav a {
+  text-decoration: none;
 }
 
-
-/* LEFT */
-
-.brand{
-  font-size:21px;
-  letter-spacing:3px;
-  color:#d0c8bb;
-  margin-bottom:18px
+.nav a:hover {
+  text-decoration: underline;
 }
 
-.rule{
-  border-top:1px dashed #302e2a;
-  margin:24px 0
+/* =========================
+   GRID
+========================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) 190px;
+  gap: 35px;
+
+  padding-top: 35px;
 }
 
-.nav a{
-  display:block;
-  font-size:16px;
-  margin:13px 0;
-  color:#918b82
+/* =========================
+   SIDEBARS
+========================= */
+
+.side-title {
+  margin-bottom: 12px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
-.nav a:first-child{
-  color:#b5a66b
+.side-text {
+  font-size: 12px;
+  color: #555;
 }
 
-.side-copy{
-  color:#625e58;
-  line-height:2
+.side-block {
+  margin-bottom: 35px;
 }
 
+/* =========================
+   HERO
+========================= */
 
-/* HERO */
+.hero-image {
+  width: 100%;
+  display: block;
 
-.hero{
-  border:1px solid #3a3834;
-  min-height:610px;
-  position:relative;
-  background:#0b0b0b;
-  overflow:hidden
+  filter: grayscale(100%);
 }
 
-.hero-image{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  filter:brightness(.55) saturate(.65) contrast(1.05)
+.hero-caption {
+  margin-top: 8px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  color: #777;
 }
 
-.hero-caption{
-  padding:24px 28px 22px;
-  border-top:1px solid #34312d;
-  text-align:center
+/* =========================
+   QUOTE
+========================= */
+
+.quote {
+  margin: 32px 0 45px;
+
+  font-size: 22px;
+  line-height: 1.35;
 }
 
-.hero-caption .quote{
-  font-size:22px;
-  color:#aaa39a;
-  line-height:1.5
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  margin-bottom: 45px;
 }
 
-.hero-caption .small{
-  margin-top:7px;
-  color:#625e58;
-  font-size:10px
+.section-title {
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid #999;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
+.entry {
+  display: grid;
+  grid-template-columns: 60px 1fr;
 
-/* PANELS */
+  gap: 15px;
 
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr;
-  border-top:1px solid #302e2b
+  padding: 12px 0;
+
+  border-bottom: 1px solid #ccc;
 }
 
-.panel{
-  padding:14px 18px;
-  min-height:150px
+.entry-date {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  color: #777;
 }
 
-.panel+.panel{
-  border-left:1px solid #302e2b
+.entry a {
+  text-decoration: none;
 }
 
-.panel-title{
-  color:#aaa39a;
-  font-size:12px;
-  letter-spacing:.5px;
-  margin-bottom:10px
+.entry a:hover {
+  text-decoration: underline;
 }
 
-.more{
-  float:right;
-  color:#514d47;
-  font-size:10px
+/* =========================
+   PHOTO
+========================= */
+
+.photo-preview {
+  width: 100%;
+  margin-top: 15px;
+
+  filter: grayscale(100%);
 }
 
+/* =========================
+   POLAROID
+========================= */
 
-/* ENTRIES */
+.polaroid {
+  background: #f5f4ef;
 
-.entry{
-  display:flex;
-  gap:13px;
-  padding:4px 0;
-  border-bottom:1px dotted #211f1d;
-  font-size:11px
+  padding: 8px 8px 28px;
+
+  box-shadow: 0 2px 7px rgba(0,0,0,.15);
+
+  transform: rotate(-2deg);
 }
 
-.entry:last-child{
-  border-bottom:0
+.polaroid img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%);
 }
 
-.date{
-  color:#5d5953;
-  min-width:72px
+/* =========================
+   CLOCK
+========================= */
+
+.clock {
+  margin-top: 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 
-.entry a{
-  color:#858078
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  margin-top: 50px;
+
+  padding-top: 12px;
+
+  border-top: 1px solid #999;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+  color: #777;
 }
 
-.entry a:hover{
-  color:#b9a36a
-}
+/* =========================
+   MOBILE
+========================= */
 
+@media (max-width: 800px) {
 
-/* PHOTOS */
-
-.photo-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:8px
-}
-
-.photo{
-  margin:0;
-  border:1px solid #302e2b;
-  background:#0c0c0c
-}
-
-.photo img{
-  width:100%;
-  height:110px;
-  object-fit:cover;
-  filter:brightness(.6) saturate(.6)
-}
-
-.photo figcaption{
-  padding:5px 7px;
-  color:#625e58;
-  font-size:10px
-}
-
-
-/* ABOUT */
-
-.content-section{
-  margin-top:24px;
-  border-top:1px solid #36332f;
-  padding-top:16px
-}
-
-.content-section h2{
-  font-size:13px;
-  font-weight:normal;
-  letter-spacing:1px;
-  color:#88827a;
-  margin:0 0 12px
-}
-
-.about{
-  color:#625e58;
-  max-width:700px;
-  line-height:2
-}
-
-
-/* RIGHT */
-
-.right-note{
-  color:#6b665e;
-  margin-top:45px;
-  line-height:2
-}
-
-.clock{
-  color:#55514b;
-  font-size:11px;
-  margin-top:70px
-}
-
-.polaroid{
-  margin-top:26px;
-  border:5px solid #c7c0b2;
-  background:#c7c0b2;
-  transform:rotate(-2deg);
-  width:140px
-}
-
-.polaroid img{
-  filter:sepia(.2) saturate(.65);
-  width:100%
-}
-
-.polaroid figcaption{
-  background:#c7c0b2;
-  color:#4d4841;
-  padding:7px 4px 5px;
-  font-family:"Courier New",monospace;
-  font-size:10px;
-  text-align:center
-}
-
-
-/* FOOTER */
-
-footer{
-  text-align:center;
-  color:#403d38;
-  margin-top:65px;
-  font-size:11px
-}
-
-
-/* TABLET */
-
-@media(max-width:1000px){
-
-  .layout{
-    grid-template-columns:180px minmax(0,1fr)
+  .grid {
+    grid-template-columns: 1fr;
   }
 
-  .right{
-    display:none
+  .left,
+  .right {
+    display: none;
   }
 
+  .page {
+    width: calc(100% - 22px);
+  }
+
+  .brand {
+    font-size: 22px;
+  }
+
+  .quote {
+    font-size: 20px;
+  }
 }
-
-
-/* MOBILE */
-
-@media(max-width:720px){
-
-  .page{
-    padding:10px 14px 50px
-  }
-
-  .browser{
-    margin-bottom:35px
-  }
-
-  .layout{
-    display:block
-  }
-
-  .left{
-    margin-bottom:30px
-  }
-
-  .nav{
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap
-  }
-
-  .nav a{
-    margin:4px 0
-  }
-
-  .hero{
-    min-height:0
-  }
-
-  .hero-image{
-    height:220px
-  }
-
-  .hero-grid{
-    display:block
-  }
-
-  .panel+.panel{
-    border-left:0;
-    border-top:1px solid #302e2b
-  }
-
-  .photo-grid{
-    grid-template-columns:repeat(2,1fr)
-  }
-
-}
-
 </style>
 </head>
-
 
 <body>
 
 <div class="page">
 
-
   <!-- BROWSER -->
 
   <div class="browser">
-    <span>https://qmarchive.github.io/</span>
+
+    <div class="browser-buttons">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="browser-address">
+      https://qmarchive.github.io/
+    </div>
+
   </div>
 
 
-  <div class="layout">
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="brand">
+      QUỐC MẠNH
+    </div>
+
+    <nav class="nav">
+
+      <a href="/">
+        home
+      </a>
+
+      <a href="/writings/">
+        writings
+      </a>
+
+      <a href="/photographs/">
+        photographs
+      </a>
+
+      <a href="/notes/">
+        notes
+      </a>
+
+      <a href="#about">
+        about
+      </a>
+
+    </nav>
+
+  </header>
 
 
-    <!-- LEFT SIDEBAR -->
+  <!-- MAIN -->
+
+  <main class="grid">
+
+
+    <!-- LEFT -->
 
     <aside class="left">
 
-      <div class="brand">
-        QUỐC MẠNH
+      <div class="side-block">
+
+        <div class="side-title">
+          Archive
+        </div>
+
+        <div class="side-text">
+          Writings,<br>
+          photographs<br>
+          and notes.
+        </div>
+
       </div>
 
-      <div class="rule"></div>
+
+      <div class="side-block">
+
+        <div class="side-title">
+          Location
+        </div>
+
+        <div class="side-text">
+          Hanoi,<br>
+          Vietnam.
+        </div>
+
+      </div>
 
 
-      <nav class="nav">
+      <div class="side-block">
 
-        <a href="#home">
-          home
-        </a>
+        <div class="side-title">
+          Status
+        </div>
 
-        <a href="/writings/">
-          writings
-        </a>
-
-        <a href="/photographs/">
-          photographs
-        </a>
-
-        <a href="/notes/">
-          notes
-        </a>
-
-        <a href="#about">
-          about
-        </a>
-
-      </nav>
-
-
-      <div class="rule"></div>
-
-
-      <div class="side-copy">
-
-        visitors<br>
-
-        <span style="font-size:20px;color:#777168">
-          001284
-        </span>
-
-        <br>
-
-        <span style="color:#46423d">
-          ● ONLINE
-        </span>
-
-        <br><br>
-
-        since <span>1999</span>
+        <div class="side-text">
+          Slowly<br>
+          collecting.
+        </div>
 
       </div>
 
     </aside>
 
 
-    <!-- MAIN -->
+    <!-- CENTER -->
 
-    <main class="main" id="home">
+    <section>
+
+      <img
+        class="hero-image"
+        src="hanoi-sample.jpg"
+        alt="Hanoi"
+      >
+
+      <div class="hero-caption">
+        Hanoi / Vietnam
+      </div>
 
 
-      <section class="hero">
+      <div class="quote">
+
+        “Có những ngày chẳng có gì đặc biệt,<br>
+        nhưng tôi vẫn muốn nhớ về nó.”
+
+      </div>
 
 
-        <img
-          class="hero-image"
-          src="hanoi-sample.jpg"
-          alt="Hanoi"
-        >
+      <!-- WRITINGS -->
 
+      <section class="section">
 
-        <div class="hero-caption">
-
-          <div class="quote">
-            “Có những ngày chẳng có gì đặc biệt,<br>
-            nhưng tôi vẫn muốn nhớ về nó.”
-          </div>
-
-          <div class="small" id="hero-date">
-            21.09.2026
-          </div>
-
+        <div class="section-title">
+          Recently Written
         </div>
 
-
-        <!-- WRITINGS + NOTES -->
-
-        <div class="hero-grid">
-
-
-          <section class="panel">
-
-            <div class="panel-title">
-
-              RECENTLY WRITTEN
-
-              <a
-                class="more"
-                href="/writings/"
-              >
-                → more writings
-              </a>
-
-            </div>
-
-
-            <div id="writing-list">
-
-              <div class="entry">
-                <span class="date">...</span>
-                <span>loading...</span>
-              </div>
-
-            </div>
-
-          </section>
-
-
-
-          <section class="panel">
-
-            <div class="panel-title">
-
-              NOTES
-
-              <a
-                class="more"
-                href="/notes/"
-              >
-                → more
-              </a>
-
-            </div>
-
-
-            <div id="note-list">
-
-              <div class="entry">
-                <span class="date">...</span>
-                <span>loading...</span>
-              </div>
-
-            </div>
-
-          </section>
-
-
+        <div id="writingsList">
+          Loading...
         </div>
 
-
-        <!-- PHOTOGRAPHS -->
-
-        <section
-          class="panel"
-          style="border-top:1px solid #302e2b"
-        >
-
-          <div class="panel-title">
-
-            PHOTOGRAPHS
-
-            <a
-              class="more"
-              href="/photographs/"
-            >
-              → more photographs
-            </a>
-
-          </div>
+      </section>
 
 
-          <div
-            class="photo-grid"
-            id="photo-list"
-          >
+      <!-- NOTES -->
 
-            <div class="entry">
-              <span>loading...</span>
-            </div>
+      <section class="section">
 
-          </div>
+        <div class="section-title">
+          Notes
+        </div>
 
-        </section>
+        <div id="notesList">
+          Loading...
+        </div>
 
+      </section>
+
+
+      <!-- PHOTOGRAPHS -->
+
+      <section class="section">
+
+        <div class="section-title">
+          Photographs
+        </div>
+
+        <div id="photosList">
+          Loading...
+        </div>
 
       </section>
 
@@ -605,442 +496,330 @@ footer{
       <!-- ABOUT -->
 
       <section
-        class="content-section"
+        class="section"
         id="about"
       >
 
-        <h2>
-          ABOUT
-        </h2>
-
-        <div class="about">
-
-          A small personal archive of writings, photographs and notes.<br>
-
-          Based in Hanoi. Built slowly, kept for a long time.
-
+        <div class="section-title">
+          About
         </div>
+
+        <p>
+          A small personal archive of writings,
+          photographs and notes.
+          <br>
+          Based in Hanoi.
+          Built slowly, kept for a long time.
+        </p>
 
       </section>
 
+    </section>
 
-    </main>
 
-
-    <!-- RIGHT SIDEBAR -->
+    <!-- RIGHT -->
 
     <aside class="right">
 
-      <div class="side-copy">
-        Hanoi, Vietnam
-      </div>
+      <div class="side-block">
 
+        <div class="side-title">
+          Hanoi
+        </div>
 
-      <div class="rule"></div>
-
-
-      <div class="right-note">
-
-        Có những đêm ta chỉ muốn<br>
-        ngồi yên và để thời gian<br>
-        trôi.
+        <div class="side-text">
+          Somewhere between<br>
+          noise and silence.
+        </div>
 
       </div>
 
 
-      <figure class="polaroid">
+      <div class="polaroid">
 
         <img
           src="hanoi-sample.jpg"
-          alt="Hanoi, always"
+          alt="Hanoi"
         >
 
-        <figcaption>
-          Hanoi, always.
-        </figcaption>
-
-      </figure>
+      </div>
 
 
-      <div class="clock">
+      <div class="side-block">
 
-        <span id="date">
-          21.09.2026
-        </span>
+        <div class="side-title">
+          Time
+        </div>
 
-        <br>
-
-        <span id="time">
-          00:00:00
-        </span>
-
-        <br><br>
-
-        1999 — 2026<br>
-
-        and beyond.
+        <div
+          class="clock"
+          id="clock"
+        >
+          --
+        </div>
 
       </div>
 
     </aside>
 
+  </main>
 
-  </div>
 
-
-  <footer>
-    best viewed at night.
+  <footer class="footer">
+    © QUỐC MẠNH
   </footer>
-
 
 </div>
 
 
 <script>
 
-(function(){
+/* =========================================================
+   HELPERS
+========================================================= */
 
-  "use strict";
+function escapeHTML(value) {
 
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
-  const writingListEl =
-    document.getElementById("writing-list");
-
-  const noteListEl =
-    document.getElementById("note-list");
-
-  const photoListEl =
-    document.getElementById("photo-list");
-
-  const dateEl =
-    document.getElementById("date");
-
-  const timeEl =
-    document.getElementById("time");
-
-  const heroDateEl =
-    document.getElementById("hero-date");
+}
 
 
-  /* =========================
-     HTML ESCAPE
-  ========================= */
+async function loadJSON(path) {
 
-  function escapeHTML(value){
+  const response = await fetch(path);
 
-    return String(value ?? "")
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
-
+  if (!response.ok) {
+    throw new Error("Cannot load " + path);
   }
 
+  return await response.json();
 
-  /* =========================
-     WRITINGS
-  ========================= */
+}
 
-  function renderWriting(item){
 
-    const slug =
-      String(item.slug || "");
+/* =========================================================
+   WRITINGS
+========================================================= */
 
-    return `
-      <div class="entry">
+function renderWriting(item) {
 
-        <span class="date">
-          ${escapeHTML(item.date)}
-        </span>
+  const slug = String(item.slug || "");
 
-        <a href="/writings/writing-${escapeHTML(slug)}.html">
+  return `
+
+    <div class="entry">
+
+      <div class="entry-date">
+        ${escapeHTML(item.date)}
+      </div>
+
+      <div>
+
+        <a href="/writings/?slug=${encodeURIComponent(slug)}">
+
           ${escapeHTML(item.title)}
+
         </a>
 
       </div>
-    `;
+
+    </div>
+
+  `;
+}
+
+
+async function loadWritings() {
+
+  try {
+
+    const data =
+      await loadJSON("/writings/content.json");
+
+    const writings =
+      Array.isArray(data.writings)
+        ? data.writings
+        : [];
+
+    document.getElementById("writingsList").innerHTML =
+      writings
+        .slice(0, 5)
+        .map(renderWriting)
+        .join("");
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById("writingsList").innerHTML =
+      "Unable to load writings.";
 
   }
 
-
-  /* =========================
-     NOTES
-  ========================= */
-
-  function renderNote(item){
-
-    const slug =
-      String(item.slug || "");
-
-    return `
-      <div class="entry">
-
-        <span class="date">
-          ${escapeHTML(item.date)}
-        </span>
-
-        <a href="/notes/note-${escapeHTML(slug)}.html">
-          ${escapeHTML(item.title || item.text)}
-        </a>
-
-      </div>
-    `;
-
-  }
+}
 
 
-  /* =========================
-     PHOTOGRAPHS
-  ========================= */
+/* =========================================================
+   NOTES
+========================================================= */
 
-  function renderPhoto(item){
+async function loadNotes() {
 
-    const slug =
-      String(item.slug || "");
+  try {
 
-    let image =
-      String(item.image || "");
+    const data =
+      await loadJSON("/notes/content.json");
 
+    const notes =
+      Array.isArray(data.notes)
+        ? data.notes
+        : [];
 
-    if(
-      image &&
-      !image.startsWith("/") &&
-      !image.startsWith("http://") &&
-      !image.startsWith("https://")
-    ){
+    document.getElementById("notesList").innerHTML =
 
-      if(image === "hanoi-sample.jpg"){
+      notes.slice(0, 5).map(item => {
 
-        image = "/hanoi-sample.jpg";
+        const slug =
+          String(item.slug || "");
 
-      }else{
+        return `
 
-        image = "/photographs/" + image;
+          <div class="entry">
 
-      }
+            <div class="entry-date">
+              ${escapeHTML(item.date)}
+            </div>
 
-    }
+            <div>
 
+              <a href="/notes/?slug=${encodeURIComponent(slug)}">
 
-    return `
-      <figure class="photo">
+                ${escapeHTML(item.title)}
 
-        <a href="/photographs/photo-${escapeHTML(slug)}.html">
+              </a>
 
-          <img
-            src="${escapeHTML(image)}"
-            alt="${escapeHTML(item.title)}"
-            loading="lazy"
-          >
+            </div>
 
-        </a>
+          </div>
 
-        <figcaption>
+        `;
 
-          <a href="/photographs/photo-${escapeHTML(slug)}.html">
-            ${escapeHTML(item.title)}
-          </a>
+      }).join("");
 
-        </figcaption>
+  } catch (error) {
 
-      </figure>
-    `;
+    console.error(error);
+
+    document.getElementById("notesList").innerHTML =
+      "Unable to load notes.";
 
   }
 
-
-  /* =========================
-     LOAD JSON
-  ========================= */
-
-  async function loadJSON(path){
-
-    const response =
-      await fetch(
-        path + "?v=" + Date.now(),
-        {
-          cache:"no-store"
-        }
-      );
-
-    if(!response.ok){
-
-      throw new Error(
-        path + " HTTP " + response.status
-      );
-
-    }
-
-    return await response.json();
-
-  }
+}
 
 
-  /* =========================
-     LOAD ALL CONTENT
-  ========================= */
+/* =========================================================
+   PHOTOGRAPHS
+========================================================= */
 
-  async function loadContent(){
+async function loadPhotographs() {
 
-    try{
+  try {
 
-      const [
-        writingsData,
-        notesData,
-        photographsData
-      ] = await Promise.all([
+    const data =
+      await loadJSON("/photographs/content.json");
 
-        loadJSON("/writings/content.json"),
+    const photos =
+      Array.isArray(data.photographs)
+        ? data.photographs
+        : [];
 
-        loadJSON("/notes/content.json"),
+    document.getElementById("photosList").innerHTML =
 
-        loadJSON("/photographs/content.json")
+      photos.slice(0, 5).map(item => {
 
-      ]);
+        const slug =
+          String(item.slug || "");
 
+        return `
 
-      /* WRITINGS */
+          <div class="entry">
 
-      const writings =
-        Array.isArray(writingsData.writings)
-          ? writingsData.writings
-          : [];
+            <div class="entry-date">
+              ${escapeHTML(item.date)}
+            </div>
 
+            <div>
 
-      writingListEl.innerHTML =
-        writings
-          .slice(0,6)
-          .map(renderWriting)
-          .join("");
+              <a href="/photographs/?slug=${encodeURIComponent(slug)}">
 
+                ${escapeHTML(item.title)}
 
-      /* NOTES */
+              </a>
 
-      const notes =
-        Array.isArray(notesData.notes)
-          ? notesData.notes
-          : [];
+            </div>
 
+          </div>
 
-      noteListEl.innerHTML =
-        notes
-          .slice(0,4)
-          .map(renderNote)
-          .join("");
+        `;
 
+      }).join("");
 
-      /* PHOTOGRAPHS */
+  } catch (error) {
 
-      const photographs =
-        Array.isArray(photographsData.photos)
-          ? photographsData.photos
-          : [];
+    console.error(error);
 
-
-      photoListEl.innerHTML =
-        photographs
-          .slice(0,3)
-          .map(renderPhoto)
-          .join("");
-
-
-    }catch(error){
-
-      console.error(
-        "QM Archive:",
-        error
-      );
-
-
-      writingListEl.innerHTML = `
-        <div class="entry">
-          <span class="date">ERROR</span>
-          <span>Could not load writings.</span>
-        </div>
-      `;
-
-
-      noteListEl.innerHTML = `
-        <div class="entry">
-          <span class="date">ERROR</span>
-          <span>Could not load notes.</span>
-        </div>
-      `;
-
-
-      photoListEl.innerHTML = `
-        <div class="entry">
-          <span class="date">ERROR</span>
-          <span>Could not load photographs.</span>
-        </div>
-      `;
-
-    }
+    document.getElementById("photosList").innerHTML =
+      "Unable to load photographs.";
 
   }
 
-
-  /* =========================
-     CLOCK
-  ========================= */
-
-  function updateClock(){
-
-    const now =
-      new Date();
+}
 
 
-    const date =
-      now.toLocaleDateString(
-        "vi-VN",
-        {
-          day:"2-digit",
-          month:"2-digit",
-          year:"numeric"
-        }
-      );
+/* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock() {
+
+  const now = new Date();
+
+  const hours =
+    String(now.getHours()).padStart(2, "0");
+
+  const minutes =
+    String(now.getMinutes()).padStart(2, "0");
+
+  const seconds =
+    String(now.getSeconds()).padStart(2, "0");
+
+  document.getElementById("clock").textContent =
+    `${hours}:${minutes}:${seconds}`;
+
+}
 
 
-    const time =
-      now.toLocaleTimeString(
-        "vi-VN",
-        {
-          hour:"2-digit",
-          minute:"2-digit",
-          second:"2-digit",
-          hour12:false
-        }
-      );
+setInterval(updateClock, 1000);
+
+updateClock();
 
 
-    dateEl.textContent =
-      date;
+/* =========================================================
+   INIT
+========================================================= */
 
-    timeEl.textContent =
-      time;
-
-    heroDateEl.textContent =
-      date;
-
-  }
-
-
-  updateClock();
-
-  setInterval(
-    updateClock,
-    1000
-  );
-
-
-  loadContent();
-
-
-})();
+loadWritings();
+loadNotes();
+loadPhotographs();
 
 </script>
-
 
 </body>
 </html>
