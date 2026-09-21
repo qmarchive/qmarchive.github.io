@@ -278,21 +278,6 @@ in Hanoi.</div>
         </section>
       </section>
 
-      <section class="content-section" id="writings">
-        <h2>RECENTLY WRITTEN</h2>
-        <div id="writing-list-full"></div>
-      </section>
-
-      <section class="content-section" id="notes">
-        <h2>NOTES</h2>
-        <div id="note-list-full"></div>
-      </section>
-
-      <section class="content-section" id="photographs">
-        <h2>PHOTOGRAPHS</h2>
-        <div class="photo-grid" id="photo-list-full"></div>
-      </section>
-
       <section class="content-section" id="about">
         <h2>ABOUT</h2>
         <div class="about">
@@ -342,11 +327,8 @@ in Hanoi.</div>
   const brandEl = document.getElementById("brand");
   const taglineEl = document.getElementById("tagline");
   const writingListEl = document.getElementById("writing-list");
-  const writingListFullEl = document.getElementById("writing-list-full");
   const noteListEl = document.getElementById("note-list");
-  const noteListFullEl = document.getElementById("note-list-full");
   const photoListEl = document.getElementById("photo-list");
-  const photoListFullEl = document.getElementById("photo-list-full");
   const sinceShortEl = document.getElementById("since-short");
   const dateEl = document.getElementById("date");
   const timeEl = document.getElementById("time");
@@ -432,13 +414,10 @@ in Hanoi.</div>
       const photos = Array.isArray(data.photos) ? data.photos : [];
 
       writingListEl.innerHTML = writings.slice(0, 6).map(renderWriting).join("");
-      writingListFullEl.innerHTML = writings.map(renderWriting).join("");
 
       noteListEl.innerHTML = notes.slice(0, 4).map(renderNote).join("");
-      noteListFullEl.innerHTML = notes.map(renderNote).join("");
 
       photoListEl.innerHTML = photos.slice(0, 3).map(renderPhoto).join("");
-      photoListFullEl.innerHTML = photos.map(renderPhoto).join("");
 
     } catch (error) {
       console.error("QM Archive:", error);
