@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>QUỐC MẠNH — personal archive</title>
+
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+
+*{
+  box-sizing:border-box
+}
+
+html,body{
+  margin:0;
+  padding:0
+}
+
 body{
   background:#080808;
   color:#b9b2a7;
@@ -14,8 +25,13 @@ body{
   font-size:14px;
   line-height:1.6;
 }
+
 body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:20;
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:20;
   background:repeating-linear-gradient(
     to bottom,
     rgba(255,255,255,.025) 0px,
@@ -25,330 +41,1032 @@ body:before{
   );
   opacity:.45;
 }
-a{color:inherit;text-decoration:none}
-a:hover{color:#b9a36a}
-img{max-width:100%;display:block}
-.page{max-width:1440px;margin:0 auto;padding:16px 24px 70px}
+
+a{
+  color:inherit;
+  text-decoration:none
+}
+
+a:hover{
+  color:#b9a36a
+}
+
+img{
+  max-width:100%;
+  display:block
+}
+
+.page{
+  max-width:1440px;
+  margin:0 auto;
+  padding:16px 24px 70px
+}
+
+
+/* BROWSER */
+
 .browser{
-  border:1px solid #333;height:42px;padding:9px 14px;color:#5d5a55;
-  font-size:12px;margin-bottom:70px;
+  border:1px solid #333;
+  height:42px;
+  padding:9px 14px;
+  color:#5d5a55;
+  font-size:12px;
+  margin-bottom:70px;
 }
-.browser span{display:block;border:1px solid #292929;padding:2px 8px;height:22px}
-.layout{display:grid;grid-template-columns:230px minmax(0,1fr) 230px;gap:30px}
-.left,.right{padding-top:4px}
-.brand{font-size:21px;letter-spacing:3px;color:#d0c8bb;margin-bottom:18px}
-.tagline{color:#5f5b55;font-size:15px;line-height:2;white-space:pre-line;margin-bottom:28px}
-.rule{border-top:1px dashed #302e2a;margin:24px 0}
-.nav a{display:block;font-size:16px;margin:13px 0;color:#918b82}
-.nav a:first-child{color:#b5a66b}
-.side-copy{color:#625e58;line-height:2}
-.hero{border:1px solid #3a3834;min-height:610px;position:relative;background:#0b0b0b;overflow:hidden}
-.hero-image{width:100%;height:300px;object-fit:cover;filter:brightness(.55) saturate(.65) contrast(1.05)}
-.hero-caption{padding:24px 28px 22px;border-top:1px solid #34312d;text-align:center}
-.hero-caption .quote{font-size:22px;color:#aaa39a;line-height:1.5}
-.hero-caption .small{margin-top:7px;color:#625e58;font-size:10px}
-.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;border-top:1px solid #302e2b}
-.panel{padding:14px 18px;min-height:150px}
-.panel+.panel{border-left:1px solid #302e2b}
-.panel-title{color:#aaa39a;font-size:12px;letter-spacing:.5px;margin-bottom:10px}
-.more{float:right;color:#514d47;font-size:10px}
-.entry{display:flex;gap:13px;padding:4px 0;border-bottom:1px dotted #211f1d;font-size:11px}
-.entry:last-child{border-bottom:0}
-.date{color:#5d5953;min-width:72px}
-.entry a{color:#858078}
-.entry a:hover{color:#b9a36a}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
-.photo{margin:0;border:1px solid #302e2b;background:#0c0c0c}
-.photo img{width:100%;height:110px;object-fit:cover;filter:brightness(.6) saturate(.6)}
-.photo figcaption{padding:5px 7px;color:#625e58;font-size:10px}
-.content-section{margin-top:24px;border-top:1px solid #36332f;padding-top:16px}
-.content-section h2{font-size:13px;font-weight:normal;letter-spacing:1px;color:#88827a;margin:0 0 12px}
-.content-section .entry{font-size:13px;padding:7px 0}
-.about{color:#625e58;max-width:700px;line-height:2}
-.right-note{color:#6b665e;margin-top:45px;line-height:2}
-.clock{color:#55514b;font-size:11px;margin-top:70px}
-.polaroid{margin-top:26px;border:5px solid #c7c0b2;background:#c7c0b2;transform:rotate(-2deg);width:140px}
-.polaroid img{filter:sepia(.2) saturate(.65);width:100%}
-.polaroid figcaption{background:#c7c0b2;color:#4d4841;padding:7px 4px 5px;font-family:"Courier New",monospace;font-size:10px;text-align:center}
-footer{text-align:center;color:#403d38;margin-top:65px;font-size:11px}
+
+.browser span{
+  display:block;
+  border:1px solid #292929;
+  padding:2px 8px;
+  height:22px
+}
+
+
+/* LAYOUT */
+
+.layout{
+  display:grid;
+  grid-template-columns:230px minmax(0,1fr) 230px;
+  gap:30px
+}
+
+.left,
+.right{
+  padding-top:4px
+}
+
+
+/* LEFT */
+
+.brand{
+  font-size:21px;
+  letter-spacing:3px;
+  color:#d0c8bb;
+  margin-bottom:18px
+}
+
+.tagline{
+  color:#5f5b55;
+  font-size:15px;
+  line-height:2;
+  white-space:pre-line;
+  margin-bottom:28px
+}
+
+.rule{
+  border-top:1px dashed #302e2a;
+  margin:24px 0
+}
+
+.nav a{
+  display:block;
+  font-size:16px;
+  margin:13px 0;
+  color:#918b82
+}
+
+.nav a:first-child{
+  color:#b5a66b
+}
+
+.side-copy{
+  color:#625e58;
+  line-height:2
+}
+
+
+/* HERO */
+
+.hero{
+  border:1px solid #3a3834;
+  min-height:610px;
+  position:relative;
+  background:#0b0b0b;
+  overflow:hidden
+}
+
+.hero-image{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  filter:brightness(.55) saturate(.65) contrast(1.05)
+}
+
+.hero-caption{
+  padding:24px 28px 22px;
+  border-top:1px solid #34312d;
+  text-align:center
+}
+
+.hero-caption .quote{
+  font-size:22px;
+  color:#aaa39a;
+  line-height:1.5
+}
+
+.hero-caption .small{
+  margin-top:7px;
+  color:#625e58;
+  font-size:10px
+}
+
+
+/* PANELS */
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  border-top:1px solid #302e2b
+}
+
+.panel{
+  padding:14px 18px;
+  min-height:150px
+}
+
+.panel+.panel{
+  border-left:1px solid #302e2b
+}
+
+.panel-title{
+  color:#aaa39a;
+  font-size:12px;
+  letter-spacing:.5px;
+  margin-bottom:10px
+}
+
+.more{
+  float:right;
+  color:#514d47;
+  font-size:10px
+}
+
+
+/* ENTRIES */
+
+.entry{
+  display:flex;
+  gap:13px;
+  padding:4px 0;
+  border-bottom:1px dotted #211f1d;
+  font-size:11px
+}
+
+.entry:last-child{
+  border-bottom:0
+}
+
+.date{
+  color:#5d5953;
+  min-width:72px
+}
+
+.entry a{
+  color:#858078
+}
+
+.entry a:hover{
+  color:#b9a36a
+}
+
+
+/* PHOTOS */
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:8px
+}
+
+.photo{
+  margin:0;
+  border:1px solid #302e2b;
+  background:#0c0c0c
+}
+
+.photo img{
+  width:100%;
+  height:110px;
+  object-fit:cover;
+  filter:brightness(.6) saturate(.6)
+}
+
+.photo figcaption{
+  padding:5px 7px;
+  color:#625e58;
+  font-size:10px
+}
+
+
+/* ABOUT */
+
+.content-section{
+  margin-top:24px;
+  border-top:1px solid #36332f;
+  padding-top:16px
+}
+
+.content-section h2{
+  font-size:13px;
+  font-weight:normal;
+  letter-spacing:1px;
+  color:#88827a;
+  margin:0 0 12px
+}
+
+.about{
+  color:#625e58;
+  max-width:700px;
+  line-height:2
+}
+
+
+/* RIGHT */
+
+.right-note{
+  color:#6b665e;
+  margin-top:45px;
+  line-height:2
+}
+
+.clock{
+  color:#55514b;
+  font-size:11px;
+  margin-top:70px
+}
+
+.polaroid{
+  margin-top:26px;
+  border:5px solid #c7c0b2;
+  background:#c7c0b2;
+  transform:rotate(-2deg);
+  width:140px
+}
+
+.polaroid img{
+  filter:sepia(.2) saturate(.65);
+  width:100%
+}
+
+.polaroid figcaption{
+  background:#c7c0b2;
+  color:#4d4841;
+  padding:7px 4px 5px;
+  font-family:"Courier New",monospace;
+  font-size:10px;
+  text-align:center
+}
+
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  color:#403d38;
+  margin-top:65px;
+  font-size:11px
+}
+
+
+/* TABLET */
+
 @media(max-width:1000px){
-  .layout{grid-template-columns:180px minmax(0,1fr)}
-  .right{display:none}
+
+  .layout{
+    grid-template-columns:180px minmax(0,1fr)
+  }
+
+  .right{
+    display:none
+  }
+
 }
+
+
+/* MOBILE */
+
 @media(max-width:720px){
-  .page{padding:10px 14px 50px}
-  .browser{margin-bottom:35px}
-  .layout{display:block}
-  .left{margin-bottom:30px}
-  .nav{display:flex;gap:18px;flex-wrap:wrap}
-  .nav a{margin:4px 0}
-  .hero{min-height:0}
-  .hero-image{height:220px}
-  .hero-grid{display:block}
-  .panel+.panel{border-left:0;border-top:1px solid #302e2b}
-  .photo-grid{grid-template-columns:repeat(2,1fr)}
+
+  .page{
+    padding:10px 14px 50px
+  }
+
+  .browser{
+    margin-bottom:35px
+  }
+
+  .layout{
+    display:block
+  }
+
+  .left{
+    margin-bottom:30px
+  }
+
+  .nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap
+  }
+
+  .nav a{
+    margin:4px 0
+  }
+
+  .hero{
+    min-height:0
+  }
+
+  .hero-image{
+    height:220px
+  }
+
+  .hero-grid{
+    display:block
+  }
+
+  .panel+.panel{
+    border-left:0;
+    border-top:1px solid #302e2b
+  }
+
+  .photo-grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
 }
+
 </style>
 </head>
+
+
 <body>
+
 <div class="page">
+
+
+  <!-- BROWSER -->
+
   <div class="browser">
     <span>https://qmarchive.github.io/</span>
   </div>
 
+
   <div class="layout">
 
+
+    <!-- LEFT SIDEBAR -->
+
     <aside class="left">
-      <div class="brand" id="brand">QUỐC MẠNH</div>
-      <div class="tagline" id="tagline">notes from
+
+      <div class="brand">
+        QUỐC MẠNH
+      </div>
+
+      <div class="tagline">notes from
 somewhere
 in Hanoi.</div>
+
       <div class="rule"></div>
+
+
       <nav class="nav">
-        <a href="#home">home</a>
-        <a href="writings/">writings</a>
-        <a href="photographs/">photographs</a>
-        <a href="notes/">notes</a>
-        <a href="#about">about</a>
+
+        <a href="#home">
+          home
+        </a>
+
+        <a href="/writings/">
+          writings
+        </a>
+
+        <a href="/photographs/">
+          photographs
+        </a>
+
+        <a href="/notes/">
+          notes
+        </a>
+
+        <a href="#about">
+          about
+        </a>
+
       </nav>
+
+
       <div class="rule"></div>
+
+
       <div class="side-copy">
+
         visitors<br>
-        <span style="font-size:20px;color:#777168">001284</span><br>
-        <span style="color:#46423d">● ONLINE</span>
+
+        <span style="font-size:20px;color:#777168">
+          001284
+        </span>
+
+        <br>
+
+        <span style="color:#46423d">
+          ● ONLINE
+        </span>
+
         <br><br>
-        since <span id="since-short">21.09.2026</span>
+
+        since <span>1999</span>
+
       </div>
+
     </aside>
 
+
+    <!-- MAIN -->
+
     <main class="main" id="home">
+
+
       <section class="hero">
-        <img class="hero-image" src="hanoi-sample.jpg" alt="Hanoi">
+
+
+        <img
+          class="hero-image"
+          src="hanoi-sample.jpg"
+          alt="Hanoi"
+        >
+
+
         <div class="hero-caption">
-          <div class="quote">“Có những ngày chẳng có gì đặc biệt,<br>nhưng tôi vẫn muốn nhớ về nó.”</div>
-          <div class="small" id="hero-date">21.09.2026</div>
+
+          <div class="quote">
+            “Có những ngày chẳng có gì đặc biệt,<br>
+            nhưng tôi vẫn muốn nhớ về nó.”
+          </div>
+
+          <div class="small" id="hero-date">
+            21.09.2026
+          </div>
+
         </div>
+
+
+        <!-- WRITINGS + NOTES -->
+
         <div class="hero-grid">
-          <section class="panel">
-            <div class="panel-title">
-              RECENTLY WRITTEN
-              <a class="more" href="writings/">→ more writings</a>
-            </div>
-            <div id="writing-list"></div>
-          </section>
+
 
           <section class="panel">
+
             <div class="panel-title">
-              NOTES
-              <a class="more" href="notes/">→ more</a>
+
+              RECENTLY WRITTEN
+
+              <a
+                class="more"
+                href="/writings/"
+              >
+                → more writings
+              </a>
+
             </div>
-            <div id="note-list"></div>
+
+
+            <div id="writing-list">
+
+              <div class="entry">
+                <span class="date">...</span>
+                <span>loading...</span>
+              </div>
+
+            </div>
+
           </section>
+
+
+
+          <section class="panel">
+
+            <div class="panel-title">
+
+              NOTES
+
+              <a
+                class="more"
+                href="/notes/"
+              >
+                → more
+              </a>
+
+            </div>
+
+
+            <div id="note-list">
+
+              <div class="entry">
+                <span class="date">...</span>
+                <span>loading...</span>
+              </div>
+
+            </div>
+
+          </section>
+
+
         </div>
-        <section class="panel" style="border-top:1px solid #302e2b">
+
+
+        <!-- PHOTOGRAPHS -->
+
+        <section
+          class="panel"
+          style="border-top:1px solid #302e2b"
+        >
+
           <div class="panel-title">
+
             PHOTOGRAPHS
-            <a class="more" href="photographs/">→ more photographs</a>
+
+            <a
+              class="more"
+              href="/photographs/"
+            >
+              → more photographs
+            </a>
+
           </div>
-          <div class="photo-grid" id="photo-list"></div>
+
+
+          <div
+            class="photo-grid"
+            id="photo-list"
+          >
+
+            <div class="entry">
+              <span>loading...</span>
+            </div>
+
+          </div>
+
         </section>
+
+
       </section>
-      <section class="content-section" id="about">
-        <h2>ABOUT</h2>
+
+
+      <!-- ABOUT -->
+
+      <section
+        class="content-section"
+        id="about"
+      >
+
+        <h2>
+          ABOUT
+        </h2>
+
         <div class="about">
+
           A small personal archive of writings, photographs and notes.<br>
+
           Based in Hanoi. Built slowly, kept for a long time.
+
         </div>
+
       </section>
+
 
     </main>
 
+
+    <!-- RIGHT SIDEBAR -->
+
     <aside class="right">
-      <div class="side-copy">Hanoi, Vietnam</div>
+
+      <div class="side-copy">
+        Hanoi, Vietnam
+      </div>
+
+
       <div class="rule"></div>
+
+
       <div class="right-note">
+
         Có những đêm ta chỉ muốn<br>
         ngồi yên và để thời gian<br>
         trôi.
+
       </div>
+
 
       <figure class="polaroid">
-        <img src="hanoi-sample.jpg" alt="Hanoi, always">
-        <figcaption>Hanoi, always.</figcaption>
+
+        <img
+          src="hanoi-sample.jpg"
+          alt="Hanoi, always"
+        >
+
+        <figcaption>
+          Hanoi, always.
+        </figcaption>
+
       </figure>
 
+
       <div class="clock">
-        <span id="date">21.09.2026</span><br>
-        <span id="time">00:00:00</span><br><br>
+
+        <span id="date">
+          21.09.2026
+        </span>
+
+        <br>
+
+        <span id="time">
+          00:00:00
+        </span>
+
+        <br><br>
+
         1999 — 2026<br>
+
         and beyond.
+
       </div>
+
     </aside>
+
+
   </div>
+
+
   <footer>
     best viewed at night.
   </footer>
 
+
 </div>
 
+
 <script>
-(function () {
+
+(function(){
+
   "use strict";
 
-  const brandEl = document.getElementById("brand");
-  const taglineEl = document.getElementById("tagline");
-  const writingListEl = document.getElementById("writing-list");
-  const noteListEl = document.getElementById("note-list");
-  const photoListEl = document.getElementById("photo-list");
-  const sinceShortEl = document.getElementById("since-short");
-  const dateEl = document.getElementById("date");
-  const timeEl = document.getElementById("time");
-  const heroDateEl = document.getElementById("hero-date");
 
-  function escapeHTML(value) {
+  const writingListEl =
+    document.getElementById("writing-list");
+
+  const noteListEl =
+    document.getElementById("note-list");
+
+  const photoListEl =
+    document.getElementById("photo-list");
+
+  const dateEl =
+    document.getElementById("date");
+
+  const timeEl =
+    document.getElementById("time");
+
+  const heroDateEl =
+    document.getElementById("hero-date");
+
+
+  /* =========================
+     HTML ESCAPE
+  ========================= */
+
+  function escapeHTML(value){
+
     return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
   }
 
-  function renderWriting(item) {
-    return `
-      <div class="entry">
-        <span class="date">${escapeHTML(item.date)}</span>
-        <a href="writings/writing-${escapeHTML(item.slug)}.html">${escapeHTML(item.title)}</a>
-      </div>
-    `;
-  }
 
-  function noteSlug(text) {
-    return String(text ?? "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  }
+  /* =========================
+     WRITINGS
+  ========================= */
 
-  /*
-    Fixed filenames for Notes on the Home page.
-    This prevents Vietnamese text changes from breaking the links.
-    If a future content.json item contains its own "slug", that slug
-    will be used first.
-  */
-  const noteFileMap = {
-    "Hôm nay trời Hà Nội đẹp một cách đáng ngờ.": "ha-noi-dep-mot-cach-dang-ngo",
-    "Có những bản nhạc chỉ nên nghe một mình.": "nhung-ban-nhac-chi-nen-nghe-mot-minh",
-    "Đôi khi, chỉ cần một cốc cà phê là đủ.": "mot-coc-ca-phe-la-du"
-  };
+  function renderWriting(item){
 
-  function renderNote(item) {
-    const slug = item.slug || noteFileMap[item.text] || noteSlug(item.text);
+    const slug =
+      String(item.slug || "");
 
     return `
       <div class="entry">
-        <span class="date">${escapeHTML(item.date)}</span>
-        <a href="notes/note-${escapeHTML(slug)}.html">${escapeHTML(item.text)}</a>
+
+        <span class="date">
+          ${escapeHTML(item.date)}
+        </span>
+
+        <a href="/writings/writing-${escapeHTML(slug)}.html">
+          ${escapeHTML(item.title)}
+        </a>
+
       </div>
     `;
+
   }
 
-  function photoSlug(title) {
-    return String(title ?? "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+
+  /* =========================
+     NOTES
+  ========================= */
+
+  function renderNote(item){
+
+    const slug =
+      String(item.slug || "");
+
+    return `
+      <div class="entry">
+
+        <span class="date">
+          ${escapeHTML(item.date)}
+        </span>
+
+        <a href="/notes/note-${escapeHTML(slug)}.html">
+          ${escapeHTML(item.title || item.text)}
+        </a>
+
+      </div>
+    `;
+
   }
 
-  function renderPhoto(item) {
-    const slug = photoSlug(item.title);
+
+  /* =========================
+     PHOTOGRAPHS
+  ========================= */
+
+  function renderPhoto(item){
+
+    const slug =
+      String(item.slug || "");
+
+    let image =
+      String(item.image || "");
+
+    /*
+      Current sample image lives in the root.
+      Future images can live inside photographs/
+      or photographs/images/.
+    */
+
+    if(
+      image &&
+      !image.startsWith("/") &&
+      !image.startsWith("http://") &&
+      !image.startsWith("https://")
+    ){
+
+      if(image === "hanoi-sample.jpg"){
+
+        image = "/hanoi-sample.jpg";
+
+      }else{
+
+        image = "/photographs/" + image;
+
+      }
+
+    }
+
 
     return `
       <figure class="photo">
-        <a href="photographs/photo-${escapeHTML(slug)}.html">
-          <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" loading="lazy">
+
+        <a href="/photographs/photo-${escapeHTML(slug)}.html">
+
+          <img
+            src="${escapeHTML(image)}"
+            alt="${escapeHTML(item.title)}"
+            loading="lazy"
+          >
+
         </a>
+
         <figcaption>
-          <a href="photographs/photo-${escapeHTML(slug)}.html">${escapeHTML(item.title)}</a>
+
+          <a href="/photographs/photo-${escapeHTML(slug)}.html">
+            ${escapeHTML(item.title)}
+          </a>
+
         </figcaption>
+
       </figure>
     `;
+
   }
 
-  function updateClock() {
-    const now = new Date();
 
-    const date = now.toLocaleDateString("vi-VN", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric"
-    });
+  /* =========================
+     LOAD JSON
+  ========================= */
 
-    const time = now.toLocaleTimeString("vi-VN", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false
-    });
+  async function loadJSON(path){
 
-    dateEl.textContent = date;
-    timeEl.textContent = time;
-    heroDateEl.textContent = date;
+    const response =
+      await fetch(
+        path + "?v=" + Date.now(),
+        {
+          cache:"no-store"
+        }
+      );
+
+    if(!response.ok){
+
+      throw new Error(
+        path + " HTTP " + response.status
+      );
+
+    }
+
+    return await response.json();
+
   }
 
-  async function loadContent() {
-    try {
-      const response = await fetch("./content.json?v=" + Date.now(), {
-        cache: "no-store"
-      });
 
-      if (!response.ok) {
-        throw new Error("content.json HTTP " + response.status);
-      }
+  /* =========================
+     LOAD ALL CONTENT
+  ========================= */
 
-      const data = await response.json();
+  async function loadContent(){
 
-      if (data.site) {
-        if (data.site.name) brandEl.textContent = data.site.name;
-        if (data.site.tagline) taglineEl.textContent = data.site.tagline;
-        if (data.site.since) sinceShortEl.textContent = data.site.since;
-      }
+    try{
 
-      const writings = Array.isArray(data.writings) ? data.writings : [];
-      const notes = Array.isArray(data.notes) ? data.notes : [];
-      const photos = Array.isArray(data.photos) ? data.photos : [];
+      /*
+        IMPORTANT:
 
-      writingListEl.innerHTML = writings.slice(0, 6).map(renderWriting).join("");
-      noteListEl.innerHTML = notes.slice(0, 4).map(renderNote).join("");
-      photoListEl.innerHTML = photos.slice(0, 3).map(renderPhoto).join("");
+        Home no longer reads root content.json.
 
-    } catch (error) {
-      console.error("QM Archive:", error);
+        Each section is now controlled
+        by its own content.json.
+      */
 
-      const message = `
+      const [
+        writingsData,
+        notesData,
+        photographsData
+      ] = await Promise.all([
+
+        loadJSON("/writings/content.json"),
+
+        loadJSON("/notes/content.json"),
+
+        loadJSON("/photographs/content.json")
+
+      ]);
+
+
+      /* WRITINGS */
+
+      const writings =
+        Array.isArray(writingsData.writings)
+          ? writingsData.writings
+          : [];
+
+
+      writingListEl.innerHTML =
+        writings
+          .slice(0,6)
+          .map(renderWriting)
+          .join("");
+
+
+      /* NOTES */
+
+      const notes =
+        Array.isArray(notesData.notes)
+          ? notesData.notes
+          : [];
+
+
+      noteListEl.innerHTML =
+        notes
+          .slice(0,4)
+          .map(renderNote)
+          .join("");
+
+
+      /* PHOTOGRAPHS */
+
+      const photographs =
+        Array.isArray(photographsData.photos)
+          ? photographsData.photos
+          : [];
+
+
+      photoListEl.innerHTML =
+        photographs
+          .slice(0,3)
+          .map(renderPhoto)
+          .join("");
+
+
+    }catch(error){
+
+      console.error(
+        "QM Archive:",
+        error
+      );
+
+
+      writingListEl.innerHTML = `
         <div class="entry">
           <span class="date">ERROR</span>
-          <span>content.json could not be loaded.</span>
+          <span>Could not load writings.</span>
         </div>
       `;
 
-      writingListEl.innerHTML = message;
-      noteListEl.innerHTML = message;
+
+      noteListEl.innerHTML = `
+        <div class="entry">
+          <span class="date">ERROR</span>
+          <span>Could not load notes.</span>
+        </div>
+      `;
+
+
+      photoListEl.innerHTML = `
+        <div class="entry">
+          <span class="date">ERROR</span>
+          <span>Could not load photographs.</span>
+        </div>
+      `;
+
     }
+
   }
 
+
+  /* =========================
+     CLOCK
+  ========================= */
+
+  function updateClock(){
+
+    const now =
+      new Date();
+
+
+    const date =
+      now.toLocaleDateString(
+        "vi-VN",
+        {
+          day:"2-digit",
+          month:"2-digit",
+          year:"numeric"
+        }
+      );
+
+
+    const time =
+      now.toLocaleTimeString(
+        "vi-VN",
+        {
+          hour:"2-digit",
+          minute:"2-digit",
+          second:"2-digit",
+          hour12:false
+        }
+      );
+
+
+    dateEl.textContent =
+      date;
+
+    timeEl.textContent =
+      time;
+
+    heroDateEl.textContent =
+      date;
+
+  }
+
+
   updateClock();
-  setInterval(updateClock, 1000);
+
+  setInterval(
+    updateClock,
+    1000
+  );
+
+
   loadContent();
 
+
 })();
+
 </script>
+
 
 </body>
 </html>
