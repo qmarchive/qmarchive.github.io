@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -7,11 +8,14 @@
 <title>Writings — QUỐC MẠNH</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box
+}
 
 html,body{
   margin:0;
-  padding:0;
+  padding:0
 }
 
 body{
@@ -19,7 +23,7 @@ body{
   color:#b9b2a7;
   font-family:"Courier New",Courier,monospace;
   font-size:14px;
-  line-height:1.7;
+  line-height:1.7
 }
 
 body:before{
@@ -35,25 +39,23 @@ body:before{
     transparent 1px,
     transparent 4px
   );
-  opacity:.45;
+  opacity:.45
 }
 
 a{
   color:inherit;
-  text-decoration:none;
+  text-decoration:none
 }
 
 a:hover{
-  color:#b9a36a;
+  color:#b9a36a
 }
 
 .page{
   max-width:1050px;
   margin:auto;
-  padding:16px 24px 80px;
+  padding:16px 24px 80px
 }
-
-/* BROWSER BAR */
 
 .browser{
   border:1px solid #333;
@@ -61,105 +63,99 @@ a:hover{
   padding:9px 14px;
   color:#5d5a55;
   font-size:12px;
-  margin-bottom:55px;
+  margin-bottom:55px
 }
 
 .browser span{
   display:block;
   border:1px solid #292929;
   padding:2px 8px;
-  height:22px;
+  height:22px
 }
-
-/* HEADER */
 
 .header{
   display:flex;
   justify-content:space-between;
   gap:30px;
   align-items:flex-start;
-  margin-bottom:55px;
+  margin-bottom:55px
 }
 
 .brand{
   font-size:21px;
   letter-spacing:3px;
-  color:#d0c8bb;
-}
-
-.sub{
-  color:#5f5b55;
-  line-height:1.8;
-  white-space:pre-line;
+  color:#d0c8bb
 }
 
 .nav{
   font-size:12px;
-  color:#68635c;
+  color:#68635c
 }
 
 .nav a{
-  margin-left:16px;
+  margin-left:16px
 }
 
 .nav a:first-child{
-  margin-left:0;
+  margin-left:0
 }
 
-/* CONTENT */
 
-.rule{
-  border-top:1px dashed #302e2a;
-  margin:22px 0;
-}
+/* ARCHIVE */
 
 .title{
   font-size:16px;
   letter-spacing:1px;
   color:#aaa39a;
-  margin-bottom:18px;
+  margin-bottom:18px
+}
+
+.rule{
+  border-top:1px dashed #302e2a;
+  margin:22px 0
 }
 
 .entry{
   padding:16px 0;
-  border-bottom:1px dotted #292724;
+  border-bottom:1px dotted #292724
 }
 
 .entry:last-child{
-  border-bottom:0;
+  border-bottom:0
 }
 
 .date{
   color:#5d5953;
-  font-size:11px;
+  font-size:11px
 }
 
 .entry h2{
   font-size:18px;
   font-weight:normal;
   color:#aaa39a;
-  margin:3px 0 5px;
+  margin:3px 0 5px
 }
 
 .entry h2 a:hover{
-  color:#b9a36a;
+  color:#b9a36a
 }
 
 .excerpt{
   color:#666159;
   font-size:12px;
-  max-width:700px;
+  max-width:700px
 }
+
 
 /* ARTICLE */
 
 .article{
-  max-width:720px;
+  max-width:720px
 }
 
 .article .date{
   display:block;
-  margin-bottom:8px;
+  margin-bottom:8px
 }
 
 .article h1{
@@ -167,62 +163,68 @@ a:hover{
   font-weight:normal;
   line-height:1.4;
   color:#c0b8ad;
-  margin:0 0 28px;
+  margin:0 0 28px
 }
 
 .article-body{
   white-space:pre-line;
   color:#8b857c;
   font-size:15px;
-  line-height:2.05;
+  line-height:2.05
 }
 
 .back{
   display:inline-block;
   color:#5e5952;
   font-size:12px;
-  margin-bottom:35px;
+  margin-bottom:35px
 }
 
-/* FOOTER */
+.error{
+  color:#765f58;
+  font-size:12px;
+  padding:20px 0
+}
 
 footer{
   text-align:center;
   color:#403d38;
   margin-top:65px;
-  font-size:11px;
+  font-size:11px
 }
+
 
 /* MOBILE */
 
 @media(max-width:700px){
 
   .page{
-    padding:10px 14px 55px;
+    padding:10px 14px 55px
   }
 
   .header{
     display:block;
-    margin-bottom:38px;
+    margin-bottom:38px
   }
 
   .nav{
-    margin-top:20px;
+    margin-top:20px
   }
 
   .nav a{
-    margin:0 14px 0 0;
+    margin:0 14px 0 0
   }
 
   .browser{
-    margin-bottom:35px;
+    margin-bottom:35px
   }
 
   .article h1{
-    font-size:22px;
+    font-size:22px
   }
 
 }
+
 </style>
 </head>
 
@@ -231,142 +233,362 @@ footer{
 
 <div class="page">
 
-  <!-- FAKE BROWSER BAR -->
+
+  <!-- BROWSER -->
+
   <div class="browser">
-    <span>https://qmarchive.github.io/writings/</span>
+    <span id="browser-url">
+      https://qmarchive.github.io/writings/
+    </span>
   </div>
 
 
   <!-- HEADER -->
+
   <header class="header">
 
-    <div>
-      <div class="brand">QUỐC MẠNH</div>
-
-      <div class="sub">notes from
-somewhere
-in Hanoi.</div>
+    <div class="brand">
+      QUỐC MẠNH
     </div>
 
 
-    <!-- NAVIGATION -->
     <nav class="nav">
 
-      <a href="/">home</a>
+      <a href="/">
+        home
+      </a>
 
-      <a href="/writings/">writings</a>
+      <a href="/writings/">
+        writings
+      </a>
 
-      <a href="/notes/">notes</a>
+      <a href="/notes/">
+        notes
+      </a>
 
-      <a href="/photographs/">photographs</a>
+      <a href="/photographs/">
+        photographs
+      </a>
 
     </nav>
 
   </header>
 
 
-  <!-- MAIN -->
-  <main>
+  <!-- CONTENT -->
 
-    <div class="title">WRITINGS</div>
-
-    <div class="rule"></div>
-
-    <div id="writing-list"></div>
-
-  </main>
-
-
-  <!-- LOAD CONTENT -->
-  <script>
-
-  (async function(){
-
-    const el = document.getElementById("writing-list");
-
-    try{
-
-      const response = await fetch(
-        "./content.json?v=" + Date.now(),
-        {
-          cache:"no-store"
-        }
-      );
-
-      if(!response.ok){
-        throw new Error("HTTP " + response.status);
-      }
-
-      const data = await response.json();
-
-      const writings = data.writings || [];
-
-      if(!writings.length){
-
-        el.innerHTML =
-          '<div class="entry">No writings yet.</div>';
-
-        return;
-      }
-
-
-      el.innerHTML = writings.map(function(item){
-
-        const title =
-          String(item.title || "");
-
-        const date =
-          String(item.date || "");
-
-        const excerpt =
-          String(item.excerpt || "");
-
-        const slug =
-          String(item.slug || "");
-
-
-        return `
-          <article class="entry">
-
-            <div class="date">
-              ${date}
-            </div>
-
-            <h2>
-              <a href="/writings/writing-${slug}.html">
-                ${title}
-              </a>
-            </h2>
-
-            <div class="excerpt">
-              ${excerpt}
-            </div>
-
-          </article>
-        `;
-
-      }).join("");
-
-
-    }catch(error){
-
-      el.innerHTML =
-        '<div class="entry">Could not load writings.</div>';
-
-      console.error(error);
-
-    }
-
-  })();
-
-  </script>
+  <main id="content"></main>
 
 
   <footer>
     best viewed at night.
   </footer>
 
+
 </div>
+
+
+<script>
+
+(function(){
+
+  "use strict";
+
+
+  const content =
+    document.getElementById("content");
+
+  const browserURL =
+    document.getElementById("browser-url");
+
+
+  /* =========================
+     ESCAPE HTML
+  ========================= */
+
+  function escapeHTML(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  /* =========================
+     LOAD CONTENT
+  ========================= */
+
+  async function loadContent(){
+
+    try{
+
+      const response =
+        await fetch(
+          "./content.json?v=" + Date.now(),
+          {
+            cache:"no-store"
+          }
+        );
+
+
+      if(!response.ok){
+
+        throw new Error(
+          "content.json HTTP " +
+          response.status
+        );
+
+      }
+
+
+      const data =
+        await response.json();
+
+
+      const writings =
+        Array.isArray(data.writings)
+          ? data.writings
+          : [];
+
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+
+      const slug =
+        params.get("slug");
+
+
+      /*
+        NO SLUG
+        → ARCHIVE
+      */
+
+      if(!slug){
+
+        renderArchive(writings);
+
+        return;
+
+      }
+
+
+      /*
+        SLUG
+        → ARTICLE
+      */
+
+      const article =
+        writings.find(
+          item =>
+            String(item.slug) === String(slug)
+        );
+
+
+      if(!article){
+
+        renderNotFound();
+
+        return;
+
+      }
+
+
+      renderArticle(article);
+
+
+    }catch(error){
+
+      console.error(
+        "QM Archive:",
+        error
+      );
+
+
+      content.innerHTML = `
+        <div class="error">
+          Could not load writings.
+        </div>
+      `;
+
+    }
+
+  }
+
+
+  /* =========================
+     ARCHIVE
+  ========================= */
+
+  function renderArchive(writings){
+
+    document.title =
+      "Writings — QUỐC MẠNH";
+
+
+    browserURL.textContent =
+      "https://qmarchive.github.io/writings/";
+
+
+    content.innerHTML = `
+
+      <div class="title">
+        WRITINGS
+      </div>
+
+      <div class="rule"></div>
+
+      <div id="writing-list"></div>
+
+    `;
+
+
+    const list =
+      document.getElementById(
+        "writing-list"
+      );
+
+
+    if(!writings.length){
+
+      list.innerHTML = `
+        <div class="entry">
+          No writings yet.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+      writings.map(function(item){
+
+        const slug =
+          escapeHTML(item.slug);
+
+
+        return `
+
+          <article class="entry">
+
+            <div class="date">
+              ${escapeHTML(item.date)}
+            </div>
+
+            <h2>
+
+              <a href="/writings/?slug=${slug}">
+                ${escapeHTML(item.title)}
+              </a>
+
+            </h2>
+
+            <div class="excerpt">
+              ${escapeHTML(item.excerpt || "")}
+            </div>
+
+          </article>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* =========================
+     ARTICLE
+  ========================= */
+
+  function renderArticle(article){
+
+    document.title =
+      escapeHTML(article.title) +
+      " — QUỐC MẠNH";
+
+
+    browserURL.textContent =
+      "https://qmarchive.github.io/writings/?slug=" +
+      article.slug;
+
+
+    content.innerHTML = `
+
+      <main class="article">
+
+        <a
+          class="back"
+          href="/writings/"
+        >
+          ← all writings
+        </a>
+
+
+        <div class="date">
+          ${escapeHTML(article.date)}
+        </div>
+
+
+        <h1>
+          ${escapeHTML(article.title)}
+        </h1>
+
+
+        <div class="article-body">
+${escapeHTML(article.body || "")}
+        </div>
+
+      </main>
+
+    `;
+
+  }
+
+
+  /* =========================
+     NOT FOUND
+  ========================= */
+
+  function renderNotFound(){
+
+    document.title =
+      "Writing not found — QUỐC MẠNH";
+
+
+    content.innerHTML = `
+
+      <div class="error">
+
+        Writing not found.
+
+        <br><br>
+
+        <a href="/writings/">
+          ← back to writings
+        </a>
+
+      </div>
+
+    `;
+
+  }
+
+
+  loadContent();
+
+
+})();
+
+</script>
+
 
 </body>
 </html>
