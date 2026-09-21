@@ -7,7 +7,11 @@
 
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
+
+html,body{
+  margin:0;
+  padding:0;
+}
 
 body{
   background:#080808;
@@ -35,22 +39,22 @@ body:before{
 
 a{
   color:inherit;
-  text-decoration:none
+  text-decoration:none;
 }
 
 a:hover{
-  color:#b9a36a
+  color:#b9a36a;
 }
 
 img{
   max-width:100%;
-  display:block
+  display:block;
 }
 
 .page{
   max-width:1440px;
   margin:0 auto;
-  padding:16px 24px 70px
+  padding:16px 24px 70px;
 }
 
 .browser{
@@ -66,45 +70,46 @@ img{
   display:block;
   border:1px solid #292929;
   padding:2px 8px;
-  height:22px
+  height:22px;
 }
 
 .layout{
   display:grid;
   grid-template-columns:230px minmax(0,1fr) 230px;
-  gap:30px
+  gap:30px;
 }
 
-.left,.right{
-  padding-top:4px
+.left,
+.right{
+  padding-top:4px;
 }
 
 .brand{
   font-size:21px;
   letter-spacing:3px;
   color:#d0c8bb;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .rule{
   border-top:1px dashed #302e2a;
-  margin:24px 0
+  margin:24px 0;
 }
 
 .nav a{
   display:block;
   font-size:16px;
   margin:13px 0;
-  color:#918b82
+  color:#918b82;
 }
 
 .nav a:first-child{
-  color:#b5a66b
+  color:#b5a66b;
 }
 
 .side-copy{
   color:#625e58;
-  line-height:2
+  line-height:2;
 }
 
 .hero{
@@ -112,60 +117,60 @@ img{
   min-height:610px;
   position:relative;
   background:#0b0b0b;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .hero-image{
   width:100%;
   height:300px;
   object-fit:cover;
-  filter:brightness(.55) saturate(.65) contrast(1.05)
+  filter:brightness(.55) saturate(.65) contrast(1.05);
 }
 
 .hero-caption{
   padding:24px 28px 22px;
   border-top:1px solid #34312d;
-  text-align:center
+  text-align:center;
 }
 
 .hero-caption .quote{
   font-size:22px;
   color:#aaa39a;
-  line-height:1.5
+  line-height:1.5;
 }
 
 .hero-caption .small{
   margin-top:7px;
   color:#625e58;
-  font-size:10px
+  font-size:10px;
 }
 
 .hero-grid{
   display:grid;
   grid-template-columns:1.5fr 1fr;
-  border-top:1px solid #302e2b
+  border-top:1px solid #302e2b;
 }
 
 .panel{
   padding:14px 18px;
-  min-height:150px
+  min-height:150px;
 }
 
 .panel+.panel{
-  border-left:1px solid #302e2b
+  border-left:1px solid #302e2b;
 }
 
 .panel-title{
   color:#aaa39a;
   font-size:12px;
   letter-spacing:.5px;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
 .more{
   float:right;
   color:#514d47;
-  font-size:10px
+  font-size:10px;
 }
 
 .entry{
@@ -173,56 +178,56 @@ img{
   gap:13px;
   padding:4px 0;
   border-bottom:1px dotted #211f1d;
-  font-size:11px
+  font-size:11px;
 }
 
 .entry:last-child{
-  border-bottom:0
+  border-bottom:0;
 }
 
 .date{
   color:#5d5953;
-  min-width:72px
+  min-width:72px;
 }
 
 .entry a{
-  color:#858078
+  color:#858078;
 }
 
 .entry a:hover{
-  color:#b9a36a
+  color:#b9a36a;
 }
 
 .photo-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
-  margin-top:8px
+  margin-top:8px;
 }
 
 .photo{
   margin:0;
   border:1px solid #302e2b;
-  background:#0c0c0c
+  background:#0c0c0c;
 }
 
 .photo img{
   width:100%;
   height:110px;
   object-fit:cover;
-  filter:brightness(.6) saturate(.6)
+  filter:brightness(.6) saturate(.6);
 }
 
 .photo figcaption{
   padding:5px 7px;
   color:#625e58;
-  font-size:10px
+  font-size:10px;
 }
 
 .content-section{
   margin-top:24px;
   border-top:1px solid #36332f;
-  padding-top:16px
+  padding-top:16px;
 }
 
 .content-section h2{
@@ -230,30 +235,30 @@ img{
   font-weight:normal;
   letter-spacing:1px;
   color:#88827a;
-  margin:0 0 12px
+  margin:0 0 12px;
 }
 
 .content-section .entry{
   font-size:13px;
-  padding:7px 0
+  padding:7px 0;
 }
 
 .about{
   color:#625e58;
   max-width:700px;
-  line-height:2
+  line-height:2;
 }
 
 .right-note{
   color:#6b665e;
   margin-top:45px;
-  line-height:2
+  line-height:2;
 }
 
 .clock{
   color:#55514b;
   font-size:11px;
-  margin-top:70px
+  margin-top:70px;
 }
 
 .polaroid{
@@ -261,12 +266,12 @@ img{
   border:5px solid #c7c0b2;
   background:#c7c0b2;
   transform:rotate(-2deg);
-  width:140px
+  width:140px;
 }
 
 .polaroid img{
   filter:sepia(.2) saturate(.65);
-  width:100%
+  width:100%;
 }
 
 .polaroid figcaption{
@@ -275,24 +280,24 @@ img{
   padding:7px 4px 5px;
   font-family:"Courier New",monospace;
   font-size:10px;
-  text-align:center
+  text-align:center;
 }
 
 footer{
   text-align:center;
   color:#403d38;
   margin-top:65px;
-  font-size:11px
+  font-size:11px;
 }
 
 @media(max-width:1000px){
 
   .layout{
-    grid-template-columns:180px minmax(0,1fr)
+    grid-template-columns:180px minmax(0,1fr);
   }
 
   .right{
-    display:none
+    display:none;
   }
 
 }
@@ -300,50 +305,50 @@ footer{
 @media(max-width:720px){
 
   .page{
-    padding:10px 14px 50px
+    padding:10px 14px 50px;
   }
 
   .browser{
-    margin-bottom:35px
+    margin-bottom:35px;
   }
 
   .layout{
-    display:block
+    display:block;
   }
 
   .left{
-    margin-bottom:30px
+    margin-bottom:30px;
   }
 
   .nav{
     display:flex;
     gap:18px;
-    flex-wrap:wrap
+    flex-wrap:wrap;
   }
 
   .nav a{
-    margin:4px 0
+    margin:4px 0;
   }
 
   .hero{
-    min-height:0
+    min-height:0;
   }
 
   .hero-image{
-    height:220px
+    height:220px;
   }
 
   .hero-grid{
-    display:block
+    display:block;
   }
 
   .panel+.panel{
     border-left:0;
-    border-top:1px solid #302e2b
+    border-top:1px solid #302e2b;
   }
 
   .photo-grid{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:repeat(2,1fr);
   }
 
 }
@@ -410,7 +415,8 @@ footer{
 
         <br><br>
 
-        since <span id="since-short">
+        since
+        <span id="since-short">
           21.09.2026
         </span>
 
@@ -447,7 +453,6 @@ footer{
 
 
         <div class="hero-grid">
-
 
           <!-- WRITINGS -->
 
@@ -492,7 +497,6 @@ footer{
 
           </section>
 
-
         </div>
 
 
@@ -523,7 +527,6 @@ footer{
 
         </section>
 
-
       </section>
 
 
@@ -542,6 +545,7 @@ footer{
 
           A small personal archive of writings,
           photographs and notes.
+
           <br>
 
           Based in Hanoi.
@@ -550,7 +554,6 @@ footer{
         </div>
 
       </section>
-
 
     </main>
 
@@ -568,8 +571,11 @@ footer{
       <div class="right-note">
 
         Nhật ký của một người bình thường.<br>
+
         Viết lại những câu chuyện đáng lý<br>
+
         chỉ cần bỏ qua.<br>
+
         Chào Mạnh, chúng ta lại gặp nhau rồi.
 
       </div>
@@ -694,7 +700,7 @@ footer{
         </span>
 
         <a
-          href="writings/?slug=${encodeURIComponent(slug)}"
+          href="/writings/?slug=${encodeURIComponent(slug)}"
         >
           ${escapeHTML(item.title)}
         </a>
@@ -718,7 +724,7 @@ footer{
 
       .normalize("NFD")
 
-      .replace(/[̀-ͯ]/g, "")
+      .replace(/[\u0300-\u036f]/g, "")
 
       .replace(/đ/g, "d")
 
@@ -736,7 +742,6 @@ footer{
   function renderNote(item) {
 
     /*
-     * IMPORTANT:
      * Prefer the real slug from
      * notes/content.json.
      *
@@ -746,13 +751,19 @@ footer{
     const slug =
       String(
         item.slug ||
-        slugify(item.title || item.text || "")
+        slugify(
+          item.title ||
+          item.text ||
+          ""
+        )
       );
+
 
     const label =
       item.title ||
       item.text ||
       "";
+
 
     return `
 
@@ -763,7 +774,7 @@ footer{
         </span>
 
         <a
-          href="notes/note-${encodeURIComponent(slug)}.html"
+          href="/notes/?slug=${encodeURIComponent(slug)}"
         >
           ${escapeHTML(label)}
         </a>
@@ -787,6 +798,7 @@ footer{
         slugify(item.title || "")
       );
 
+
     return `
 
       <figure class="photo">
@@ -803,12 +815,15 @@ footer{
 
         </a>
 
+
         <figcaption>
 
           <a
             href="photographs/photo-${encodeURIComponent(slug)}.html"
           >
+
             ${escapeHTML(item.title)}
+
           </a>
 
         </figcaption>
@@ -834,9 +849,9 @@ footer{
       now.toLocaleDateString(
         "vi-VN",
         {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric"
+          day:"2-digit",
+          month:"2-digit",
+          year:"numeric"
         }
       );
 
@@ -845,10 +860,10 @@ footer{
       now.toLocaleTimeString(
         "vi-VN",
         {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false
+          hour:"2-digit",
+          minute:"2-digit",
+          second:"2-digit",
+          hour12:false
         }
       );
 
@@ -873,18 +888,21 @@ footer{
 
     try {
 
-
       const [
+
         writingsResponse,
+
         notesResponse,
+
         photosResponse
+
       ] = await Promise.all([
 
         fetch(
           "/writings/content.json?v=" +
           Date.now(),
           {
-            cache: "no-store"
+            cache:"no-store"
           }
         ),
 
@@ -892,7 +910,7 @@ footer{
           "/notes/content.json?v=" +
           Date.now(),
           {
-            cache: "no-store"
+            cache:"no-store"
           }
         ),
 
@@ -900,7 +918,7 @@ footer{
           "/photographs/content.json?v=" +
           Date.now(),
           {
-            cache: "no-store"
+            cache:"no-store"
           }
         )
 
@@ -953,30 +971,30 @@ footer{
         Array.isArray(
           writingsData.writings
         )
-        ? writingsData.writings
-        : [];
+          ? writingsData.writings
+          : [];
 
 
       const notes =
         Array.isArray(
           notesData.notes
         )
-        ? notesData.notes
-        : [];
+          ? notesData.notes
+          : [];
 
 
       const photos =
         Array.isArray(
           photosData.photographs
         )
-        ? photosData.photographs
-        : (
-            Array.isArray(
-              photosData.photos
-            )
-            ? photosData.photos
-            : []
-          );
+          ? photosData.photographs
+          : (
+              Array.isArray(
+                photosData.photos
+              )
+                ? photosData.photos
+                : []
+            );
 
 
       /*
@@ -985,27 +1003,26 @@ footer{
 
       writingListEl.innerHTML =
         writings
-          .slice(0, 6)
+          .slice(0,6)
           .map(renderWriting)
           .join("");
 
 
       noteListEl.innerHTML =
         notes
-          .slice(0, 4)
+          .slice(0,4)
           .map(renderNote)
           .join("");
 
 
       photoListEl.innerHTML =
         photos
-          .slice(0, 3)
+          .slice(0,3)
           .map(renderPhoto)
           .join("");
 
 
     } catch (error) {
-
 
       console.error(
         "QM Archive:",
@@ -1033,7 +1050,6 @@ footer{
       writingListEl.innerHTML =
         message;
 
-
       noteListEl.innerHTML =
         message;
 
@@ -1054,7 +1070,6 @@ footer{
   );
 
   loadContent();
-
 
 })();
 
