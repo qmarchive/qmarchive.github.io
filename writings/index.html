@@ -7,517 +7,535 @@
 <title>Writings — QUỐC MẠNH</title>
 
 <style>
-
-/* =========================================================
-   BASE
-========================================================= */
-
 *{
-  box-sizing:border-box
+  box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
   margin:0;
-  padding:0
-}
-
-html{
-  scroll-behavior:smooth
+  padding:0;
+  background:#080808;
+  color:#aaa;
+  font-family:"Courier New", Courier, monospace;
 }
 
 body{
-  background:#080808;
-  color:#b9b2a7;
-  font-family:"Courier New",Courier,monospace;
-  font-size:14px;
-  line-height:1.6;
+  min-height:100vh;
 }
 
+/* SCANLINES */
 
-/* =========================================================
-   SCANLINE
-========================================================= */
-
-body:before{
+body::before{
   content:"";
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:20;
+  z-index:9999;
 
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.025) 0px,
-    rgba(255,255,255,.025) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-
-  opacity:.45;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.025) 0px,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px,
+      transparent 4px
+    );
 }
 
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-a{
-  color:inherit;
-  text-decoration:none
-}
-
-a:hover{
-  color:#b9a36a
-}
-
-img{
-  max-width:100%;
-  display:block
-}
-
-
-/* =========================================================
-   PAGE
-========================================================= */
+/* PAGE */
 
 .page{
-  max-width:1440px;
-  margin:0 auto;
-  padding:16px 24px 70px
+  width:100%;
+  min-height:100vh;
+  padding:30px;
 }
 
-
-/* =========================================================
-   BROWSER BAR
-========================================================= */
+/* BROWSER BAR */
 
 .browser{
-  border:1px solid #333;
-  height:42px;
-  padding:9px 14px;
-  color:#5d5a55;
-  font-size:12px;
-  margin-bottom:70px
+  width:100%;
+  height:54px;
+
+  border:1px solid #252525;
+
+  padding:10px 18px;
+
+  margin-bottom:85px;
+
+  color:#666;
+  font-size:13px;
+
+  box-shadow:
+    inset 0 0 0 1px #111;
+}
+
+.browser::before{
+  content:"";
+  display:inline-block;
+
+  width:12px;
+  height:12px;
+
+  margin-right:12px;
+
+  border:1px solid #555;
+
+  box-shadow:
+    18px 0 0 -1px #080808,
+    18px 0 0 0 #555,
+    36px 0 0 -1px #080808,
+    36px 0 0 0 #555;
+
+  vertical-align:-1px;
 }
 
 .browser span{
-  display:block;
-  border:1px solid #292929;
-  padding:2px 8px;
-  height:22px
+  color:#666;
 }
 
-
-/* =========================================================
-   MAIN LAYOUT
-========================================================= */
+/* LAYOUT */
 
 .layout{
   display:grid;
-  grid-template-columns:230px minmax(0,1fr) 230px;
-  gap:30px
+  grid-template-columns:260px minmax(0,1fr) 290px;
+  gap:55px;
+
+  max-width:1450px;
+  margin:0 auto;
 }
 
-.left,
-.right{
-  padding-top:4px
+/* LEFT */
+
+.left{
+  min-width:0;
 }
-
-
-/* =========================================================
-   LEFT
-========================================================= */
 
 .brand{
+  color:#aaa;
   font-size:21px;
-  letter-spacing:3px;
-  color:#d0c8bb;
-  margin-bottom:18px
+  letter-spacing:4px;
+
+  margin-bottom:35px;
 }
 
 .rule{
-  border-top:1px dashed #302e2a;
-  margin:24px 0
+  width:100%;
+  border-top:1px dashed #292929;
+  margin:0 0 32px 0;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 }
 
 .nav a{
-  display:block;
+  color:#777;
+  text-decoration:none;
   font-size:16px;
-  margin:13px 0;
-  color:#918b82
 }
 
-.nav a:nth-child(2){
-  color:#b5a66b
+.nav a:hover{
+  color:#ddd;
 }
 
-.side-copy{
-  color:#625e58;
-  line-height:2
+.nav a.active{
+  color:#c0ad67;
 }
 
+.left-info{
+  margin-top:60px;
+  padding-top:30px;
 
-/* =========================================================
-   RIGHT
-========================================================= */
+  border-top:1px dashed #292929;
 
-.right-note{
-  color:#6b665e;
-  margin-top:45px;
-  line-height:2
+  color:#555;
+  font-size:14px;
+  line-height:1.8;
 }
 
-.clock{
-  color:#55514b;
-  font-size:11px;
-  margin-top:70px
+.left-info .label{
+  color:#444;
 }
 
-.polaroid{
-  margin-top:26px;
-  border:5px solid #c7c0b2;
-  background:#c7c0b2;
-  transform:rotate(-2deg);
-  width:140px
+.left-info .year{
+  color:#777;
+  font-size:20px;
+  margin-top:4px;
 }
 
-.polaroid img{
-  filter:sepia(.2) saturate(.65);
-  width:100%
+/* MAIN */
+
+.main{
+  min-width:0;
 }
-
-.polaroid figcaption{
-  background:#c7c0b2;
-  color:#4d4841;
-  padding:7px 4px 5px;
-  font-family:"Courier New",monospace;
-  font-size:10px;
-  text-align:center
-}
-
-
-/* =========================================================
-   WRITINGS CONTAINER
-========================================================= */
 
 .writings{
-  border:1px solid #3a3834;
-  background:#0b0b0b;
+  border:1px solid #343434;
+  min-height:245px;
 }
 
-
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
 .section-header{
-  padding:20px 22px 18px;
-  border-bottom:1px solid #302e2b
+  padding:30px 28px 25px;
+
+  border-bottom:1px solid #2b2b2b;
 }
 
 .section-title{
-  color:#aaa39a;
-  font-size:12px;
-  letter-spacing:1px
+  color:#777;
+  font-size:14px;
+  letter-spacing:2px;
 }
 
 .section-path{
-  margin-top:5px;
-  color:#514d47;
-  font-size:10px
+  margin-top:12px;
+  color:#3f3f3f;
+  font-size:12px;
 }
 
-
-/* =========================================================
-   ARCHIVE
-========================================================= */
+/* ARCHIVE */
 
 .archive{
-  padding:0 22px
+  width:100%;
 }
 
 .archive-entry{
   display:grid;
-  grid-template-columns:90px minmax(0,1fr);
+  grid-template-columns:110px minmax(0,1fr);
 
-  gap:18px;
+  gap:25px;
 
-  padding:22px 0;
+  padding:30px 28px;
 
-  border-bottom:1px dotted #211f1d
+  border-bottom:1px solid #2c2c2c;
+
+  text-decoration:none;
 }
 
 .archive-entry:last-child{
-  border-bottom:0
+  border-bottom:0;
 }
 
-.archive-date{
-  color:#5d5953;
-  font-size:11px;
-  padding-top:4px
+.archive-entry:hover{
+  background:#0b0b0b;
 }
 
-.archive-main{
-  min-width:0
+.archive-year{
+  color:#555;
+  font-size:13px;
+}
+
+.archive-content{
+  min-width:0;
 }
 
 .archive-title{
-  font-size:18px;
-  line-height:1.5;
-  color:#aaa39a
+  color:#999;
+  font-size:20px;
+  line-height:1.4;
+
+  margin-bottom:12px;
 }
 
-.archive-title:hover{
-  color:#b9a36a
+.archive-entry:hover .archive-title{
+  color:#d0d0d0;
 }
 
 .archive-excerpt{
-  margin-top:7px;
-  color:#625e58;
-  font-size:11px;
-  line-height:1.8;
-  max-width:720px
+  color:#555;
+  font-size:13px;
+  line-height:1.7;
 }
 
-
-/* =========================================================
-   ARTICLE
-========================================================= */
+/* ARTICLE */
 
 .article{
-  padding:34px 34px 42px
+  padding:42px 28px 55px;
 }
 
-.article-date{
-  color:#5d5953;
-  font-size:11px;
-  margin-bottom:16px
+.article-year{
+  color:#555;
+  font-size:13px;
+  margin-bottom:25px;
 }
 
 .article-title{
-  margin:0 0 35px;
-
-  color:#c0b9ae;
-
-  font-size:28px;
+  color:#bbb;
+  font-size:34px;
   font-weight:normal;
+  line-height:1.3;
 
-  line-height:1.4
+  margin:0 0 45px;
 }
 
 .article-body{
-  max-width:760px;
+  max-width:850px;
 
-  color:#aaa39a;
+  color:#999;
 
   font-size:15px;
-  line-height:2
+  line-height:2;
+
+  letter-spacing:.15px;
 }
 
 .article-body p{
-  margin:0 0 28px
+  margin:0 0 30px;
+}
+
+.article-body h1,
+.article-body h2,
+.article-body h3{
+  color:#bbb;
+  font-weight:normal;
+}
+
+.article-body h1{
+  font-size:27px;
+  margin:35px 0 25px;
 }
 
 .article-body h2{
-  color:#aaa39a;
-  font-size:17px;
-  font-weight:normal;
-  margin:42px 0 16px
+  font-size:22px;
+  margin:35px 0 20px;
 }
 
 .article-body h3{
-  color:#aaa39a;
-  font-size:15px;
-  font-weight:normal;
-  margin:35px 0 13px
-}
-
-.article-body strong{
-  color:#c0b9ae
+  font-size:18px;
+  margin:30px 0 15px;
 }
 
 .article-body em{
-  color:#aaa39a
+  color:#aaa;
+}
+
+.article-body strong{
+  color:#bbb;
 }
 
 .article-body blockquote{
   margin:30px 0;
   padding-left:20px;
 
-  border-left:1px solid #514d47;
+  border-left:1px solid #444;
 
-  color:#777168
+  color:#777;
 }
 
-.article-body img{
-  max-width:100%;
-  height:auto;
-  border:1px solid #302e2b
+.article-body ul,
+.article-body ol{
+  margin:0 0 30px;
+  padding-left:25px;
+}
+
+.article-body li{
+  margin-bottom:8px;
 }
 
 .article-body a{
-  color:#aaa39a;
-  text-decoration:underline;
-  text-decoration-color:#403c37
+  color:#aaa;
 }
 
+.article-back{
+  display:inline-block;
 
-/* =========================================================
-   ARTICLE FOOTER
-========================================================= */
+  margin-top:30px;
 
-.article-footer{
-  margin-top:45px;
-  padding-top:16px;
+  color:#555;
+  text-decoration:none;
 
-  border-top:1px dashed #302e2a;
-
-  font-size:10px;
-  color:#514d47
+  font-size:13px;
 }
 
-.article-footer a:hover{
-  color:#b9a36a
+.article-back:hover{
+  color:#aaa;
 }
 
-
-/* =========================================================
-   ERROR
-========================================================= */
+/* ERROR */
 
 .error{
-  padding:60px 22px;
+  padding:70px 28px;
 
-  color:#625e58;
-  font-size:12px
+  color:#555;
+  font-size:14px;
+  line-height:1.8;
 }
 
-.error a{
-  color:#918b82
+.error strong{
+  color:#777;
+  font-weight:normal;
 }
 
+/* RIGHT */
 
-/* =========================================================
-   FOOTER
-========================================================= */
+.right{
+  min-width:0;
+}
+
+.side-copy{
+  color:#555;
+  font-size:14px;
+}
+
+.right-note{
+  color:#666;
+
+  font-size:14px;
+  line-height:2;
+
+  margin-bottom:40px;
+}
+
+/* POLAROID */
+
+.polaroid{
+  width:175px;
+
+  margin:20px auto 70px;
+
+  padding:9px 9px 18px;
+
+  background:#ddd;
+
+  transform:rotate(-2deg);
+}
+
+.polaroid img{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  filter:grayscale(100%);
+}
+
+.polaroid figcaption{
+  color:#777;
+
+  text-align:center;
+
+  font-size:12px;
+
+  margin-top:12px;
+}
+
+/* CLOCK */
+
+.clock{
+  color:#555;
+
+  font-size:13px;
+  line-height:1.7;
+
+  text-align:left;
+}
+
+.clock #time{
+  color:#777;
+}
+
+/* FOOTER */
 
 footer{
-  text-align:center;
-  color:#403d38;
-  margin-top:65px;
-  font-size:11px
+  max-width:1450px;
+
+  margin:80px auto 0;
+
+  padding-top:20px;
+
+  border-top:1px solid #222;
+
+  color:#444;
+
+  font-size:12px;
 }
 
+/* RESPONSIVE */
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:1000px){
+@media(max-width:1050px){
 
   .layout{
-    grid-template-columns:180px minmax(0,1fr)
+    grid-template-columns:210px minmax(0,1fr);
+    gap:35px;
   }
 
   .right{
-    display:none
+    display:none;
   }
-
 }
 
-@media(max-width:720px){
+@media(max-width:700px){
 
   .page{
-    padding:10px 14px 50px
+    padding:18px;
   }
 
   .browser{
-    margin-bottom:35px
+    margin-bottom:50px;
   }
 
   .layout{
-    display:block
+    display:block;
   }
 
   .left{
-    margin-bottom:30px
+    margin-bottom:45px;
   }
 
   .nav{
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:15px 25px;
   }
 
-  .nav a{
-    margin:4px 0
+  .left-info{
+    display:none;
   }
 
   .writings{
-    border-left:1px solid #3a3834;
-    border-right:1px solid #3a3834
-  }
-
-  .archive{
-    padding:0 15px
+    min-height:200px;
   }
 
   .archive-entry{
     grid-template-columns:1fr;
-    gap:5px
-  }
-
-  .archive-date{
-    padding-top:0
+    gap:12px;
   }
 
   .article{
-    padding:28px 18px 35px
+    padding:35px 20px 45px;
   }
 
   .article-title{
-    font-size:23px
+    font-size:28px;
   }
 
   .article-body{
-    font-size:14px;
-    line-height:1.9
+    font-size:15px;
+    line-height:1.9;
   }
-
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div class="page">
 
-
-  <!-- =====================================================
-       BROWSER
-  ====================================================== -->
+  <!-- BROWSER -->
 
   <div class="browser">
-
-    <span>
+    <span id="browserAddress">
       https://qmarchive.github.io/writings/
     </span>
-
   </div>
 
-
-  <!-- =====================================================
-       LAYOUT
-  ====================================================== -->
+  <!-- LAYOUT -->
 
   <div class="layout">
 
-
-    <!-- ===================================================
-         LEFT
-    ==================================================== -->
+    <!-- LEFT -->
 
     <aside class="left">
 
@@ -525,9 +543,7 @@ footer{
         QUỐC MẠNH
       </div>
 
-
       <div class="rule"></div>
-
 
       <nav class="nav">
 
@@ -535,7 +551,7 @@ footer{
           home
         </a>
 
-        <a href="/writings/">
+        <a href="/writings/" class="active">
           writings
         </a>
 
@@ -553,42 +569,31 @@ footer{
 
       </nav>
 
+      <div class="left-info">
 
-      <div class="rule"></div>
+        <div>writings</div>
+        <div>archive</div>
 
+        <br>
 
-      <div class="side-copy">
+        <div class="label">
+          since
+        </div>
 
-        writings<br>
-
-        <span style="color:#46423d">
-          archive
-        </span>
-
-        <br><br>
-
-        since<br>
-
-        <span style="font-size:20px;color:#777168">
+        <div class="year">
           2020
-        </span>
+        </div>
 
       </div>
 
     </aside>
 
 
-    <!-- ===================================================
-         MAIN
-    ==================================================== -->
+    <!-- MAIN -->
 
     <main class="main">
 
-
       <section class="writings">
-
-
-        <!-- SECTION HEADER -->
 
         <header class="section-header">
 
@@ -598,29 +603,20 @@ footer{
 
           <div
             class="section-path"
-            id="sectionPath"
-          >
+            id="sectionPath">
             / writings /
           </div>
 
         </header>
 
-
-        <!-- CONTENT -->
-
-        <div id="main">
-        </div>
-
+        <div id="main"></div>
 
       </section>
-
 
     </main>
 
 
-    <!-- ===================================================
-         RIGHT
-    ==================================================== -->
+    <!-- RIGHT -->
 
     <aside class="right">
 
@@ -628,15 +624,16 @@ footer{
         Hanoi, Vietnam
       </div>
 
-
       <div class="rule"></div>
-
 
       <div class="right-note">
 
         Nhật ký của một người bình thường.<br>
+
         Viết lại những câu chuyện đáng lý<br>
+
         chỉ cần bỏ qua.<br>
+
         Chào Mạnh, chúng ta lại gặp nhau rồi.
 
       </div>
@@ -646,8 +643,7 @@ footer{
 
         <img
           src="/hanoi-sample.jpg"
-          alt="Hanoi, always"
-        >
+          alt="Hanoi, always">
 
         <figcaption>
           Hanoi, always.
@@ -680,7 +676,6 @@ footer{
 
     </aside>
 
-
   </div>
 
 
@@ -688,11 +683,21 @@ footer{
     best viewed at night.
   </footer>
 
-
 </div>
 
 
 <script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const CONTENT_URL =
+  "/writings/content.json?v=" + Date.now();
+
+const POSTS_BASE =
+  "/writings/posts/";
+
 
 /* =========================================================
    HELPERS
@@ -701,7 +706,6 @@ footer{
 function escapeHTML(value){
 
   return String(value ?? "")
-
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -717,124 +721,98 @@ function escapeHTML(value){
 
 function markdownToHTML(markdown){
 
-  let text =
-    String(markdown || "")
-      .replace(/\r\n/g,"\n")
-      .replace(/\r/g,"\n");
+  let text = escapeHTML(markdown);
 
+  /* images */
 
-  /*
-   * Escape HTML
-   */
+  text = text.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    '<img src="$2" alt="$1">'
+  );
 
-  text =
-    escapeHTML(text);
+  /* links */
 
+  text = text.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    '<a href="$2">$1</a>'
+  );
 
-  /*
-   * Images
-   */
+  /* headings */
 
-  text =
-    text.replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
-      '<img src="$2" alt="$1">'
-    );
+  text = text.replace(
+    /^### (.+)$/gm,
+    "<h3>$1</h3>"
+  );
 
+  text = text.replace(
+    /^## (.+)$/gm,
+    "<h2>$1</h2>"
+  );
 
-  /*
-   * Links
-   */
+  text = text.replace(
+    /^# (.+)$/gm,
+    "<h1>$1</h1>"
+  );
 
-  text =
-    text.replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$2">$1</a>'
-    );
+  /* bold */
 
+  text = text.replace(
+    /\*\*(.+?)\*\*/g,
+    "<strong>$1</strong>"
+  );
 
-  /*
-   * Headings
-   */
+  /* italic */
 
-  text =
-    text.replace(
-      /^### (.+)$/gm,
-      "<h3>$1</h3>"
-    );
+  text = text.replace(
+    /\*(.+?)\*/g,
+    "<em>$1</em>"
+  );
 
-  text =
-    text.replace(
-      /^## (.+)$/gm,
-      "<h2>$1</h2>"
-    );
+  /* blockquote */
 
+  text = text.replace(
+    /^&gt; (.+)$/gm,
+    "<blockquote>$1</blockquote>"
+  );
 
-  /*
-   * Bold
-   */
+  /* unordered list */
 
-  text =
-    text.replace(
-      /\*\*(.+?)\*\*/g,
-      "<strong>$1</strong>"
-    );
+  text = text.replace(
+    /^[-*] (.+)$/gm,
+    "<li>$1</li>"
+  );
 
-
-  /*
-   * Italic
-   */
-
-  text =
-    text.replace(
-      /(?<!\*)\*([^*\n]+)\*(?!\*)/g,
-      "<em>$1</em>"
-    );
-
+  text = text.replace(
+    /(<li>.*<\/li>)/gs,
+    "<ul>$1</ul>"
+  );
 
   /*
-   * Blockquote
-   */
+    Paragraph handling.
+    Keep HTML blocks intact.
+  */
 
-  text =
-    text.replace(
-      /^&gt; (.+)$/gm,
-      "<blockquote>$1</blockquote>"
-    );
-
-
-  /*
-   * Paragraphs
-   */
-
-  const blocks =
-    text
-      .split(/\n{2,}/)
-      .map(
-        block => block.trim()
-      )
-      .filter(Boolean);
-
+  const blocks = text
+    .split(/\n\s*\n/)
+    .map(block => block.trim())
+    .filter(Boolean);
 
   return blocks.map(block => {
 
     if(
+      block.startsWith("<h1>") ||
       block.startsWith("<h2>") ||
       block.startsWith("<h3>") ||
       block.startsWith("<blockquote>") ||
+      block.startsWith("<ul>") ||
       block.startsWith("<img")
     ){
-
       return block;
-
     }
 
-
-    return `
-      <p>
-        ${block.replace(/\n/g,"<br>")}
-      </p>
-    `;
+    return "<p>" +
+      block.replace(/\n/g,"<br>") +
+      "</p>";
 
   }).join("\n");
 
@@ -842,28 +820,27 @@ function markdownToHTML(markdown){
 
 
 /* =========================================================
-   JSON
+   LOAD JSON
 ========================================================= */
 
-async function loadJSON(path){
+async function loadJSON(){
 
-  const response =
-    await fetch(
-      path + "?v=" + Date.now(),
-      {
-        cache:"no-store"
-      }
-    );
-
+  const response = await fetch(
+    CONTENT_URL,
+    {
+      cache:"no-store"
+    }
+  );
 
   if(!response.ok){
 
     throw new Error(
-      "Cannot load " + path
+      "Could not load writings/content.json (" +
+      response.status +
+      ")"
     );
 
   }
-
 
   return await response.json();
 
@@ -871,25 +848,52 @@ async function loadJSON(path){
 
 
 /* =========================================================
-   MARKDOWN FILE
+   LOAD MARKDOWN
 ========================================================= */
 
-async function loadMarkdown(path){
+async function loadMarkdown(slug){
 
-  const response =
-    await fetch(path);
+  const safeSlug =
+    decodeURIComponent(String(slug || ""))
+      .trim();
 
+  const url =
+    POSTS_BASE +
+    encodeURIComponent(safeSlug) +
+    ".md?v=" +
+    Date.now();
+
+  const response = await fetch(
+    url,
+    {
+      cache:"no-store"
+    }
+  );
 
   if(!response.ok){
 
     throw new Error(
-      "Cannot load " + path
+      "Could not load Markdown file (" +
+      response.status +
+      "): " +
+      url
     );
 
   }
 
+  const text =
+    await response.text();
 
-  return await response.text();
+  if(!text.trim()){
+
+    throw new Error(
+      "Markdown file is empty: " +
+      url
+    );
+
+  }
+
+  return text;
 
 }
 
@@ -898,20 +902,132 @@ async function loadMarkdown(path){
    ARCHIVE
 ========================================================= */
 
-function renderArchive(data){
+function renderArchive(items){
 
-  const writings =
-    Array.isArray(data.writings)
-      ? data.writings
-      : [];
+  const main =
+    document.getElementById("main");
 
+  document.getElementById("sectionPath")
+    .textContent =
+    "/ writings /";
 
-  if(!writings.length){
+  document.getElementById("browserAddress")
+    .textContent =
+    "https://qmarchive.github.io/writings/";
 
-    document.getElementById("main").innerHTML = `
+  if(!items.length){
 
+    main.innerHTML = `
       <div class="error">
         No writings yet.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  main.innerHTML = `
+
+    <div class="archive">
+
+      ${items.map(item => `
+
+        <a
+          class="archive-entry"
+          href="/writings/?slug=${encodeURIComponent(item.slug)}"
+        >
+
+          <div class="archive-year">
+            ${escapeHTML(item.date || "")}
+          </div>
+
+          <div class="archive-content">
+
+            <div class="archive-title">
+              ${escapeHTML(item.title || "")}
+            </div>
+
+            <div class="archive-excerpt">
+              ${escapeHTML(item.excerpt || "")}
+            </div>
+
+          </div>
+
+        </a>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   ARTICLE
+========================================================= */
+
+async function renderArticle(items, slug){
+
+  const main =
+    document.getElementById("main");
+
+  const decodedSlug =
+    decodeURIComponent(
+      String(slug || "")
+    ).trim();
+
+
+  const item =
+    items.find(
+      entry =>
+        String(entry.slug || "").trim() === decodedSlug
+    );
+
+
+  document.getElementById("sectionPath")
+    .textContent =
+    "/ writings / " +
+    decodedSlug;
+
+
+  document.getElementById("browserAddress")
+    .textContent =
+    "https://qmarchive.github.io/writings/?slug=" +
+    decodedSlug;
+
+
+  /*
+    Metadata not found
+  */
+
+  if(!item){
+
+    main.innerHTML = `
+
+      <div class="error">
+
+        <strong>
+          This writing could not be found.
+        </strong>
+
+        <br><br>
+
+        slug:
+        ${escapeHTML(decodedSlug)}
+
+        <br><br>
+
+        <a
+          class="article-back"
+          href="/writings/"
+        >
+          ← back to writings
+        </a>
+
       </div>
 
     `;
@@ -921,174 +1037,61 @@ function renderArchive(data){
   }
 
 
-  const entries =
-    writings.map(item => {
+  /*
+    Loading state
+  */
 
-      const slug =
-        String(item.slug || "");
+  main.innerHTML = `
 
-
-      return `
-
-        <article class="archive-entry">
-
-
-          <div class="archive-date">
-
-            ${escapeHTML(item.date)}
-
-          </div>
-
-
-          <div class="archive-main">
-
-            <a
-              class="archive-title"
-              href="/writings/?slug=${encodeURIComponent(slug)}"
-            >
-
-              ${escapeHTML(item.title)}
-
-            </a>
-
-
-            ${
-              item.excerpt
-
-              ? `
-
-                <div class="archive-excerpt">
-
-                  ${escapeHTML(item.excerpt)}
-
-                </div>
-
-              `
-
-              : ""
-
-            }
-
-
-          </div>
-
-
-        </article>
-
-      `;
-
-    }).join("");
-
-
-  document.getElementById("main").innerHTML = `
-
-    <section class="archive">
-
-      ${entries}
-
-    </section>
+    <div class="error">
+      Loading writing...
+    </div>
 
   `;
 
 
-  document.title =
-    "Writings — QUỐC MẠNH";
-
-
-  document.getElementById(
-    "sectionPath"
-  ).textContent =
-    "/ writings /";
-
-}
-
-
-/* =========================================================
-   ARTICLE
-========================================================= */
-
-async function renderArticle(article){
-
-  const slug =
-    String(article.slug || "");
-
-
-  const markdownPath =
-    "./posts/" +
-    encodeURIComponent(slug) +
-    ".md";
-
-
   try{
 
+    /*
+      IMPORTANT:
+      The Markdown is loaded from the absolute
+      GitHub Pages path.
+    */
+
     const markdown =
-      await loadMarkdown(
-        markdownPath
-      );
+      await loadMarkdown(decodedSlug);
 
 
-    const articleHTML =
-      markdownToHTML(
-        markdown
-      );
+    const html =
+      markdownToHTML(markdown);
 
 
-    document.getElementById("main").innerHTML = `
+    main.innerHTML = `
 
       <article class="article">
 
-
-        <div class="article-date">
-
-          ${escapeHTML(article.date)}
-
+        <div class="article-year">
+          ${escapeHTML(item.date || "")}
         </div>
-
 
         <h1 class="article-title">
-
-          ${escapeHTML(article.title)}
-
+          ${escapeHTML(item.title || "")}
         </h1>
 
-
         <div class="article-body">
-
-          ${articleHTML}
-
+          ${html}
         </div>
 
-
-        <div class="article-footer">
-
-          <a href="/writings/">
-
-            ← all writings
-
-          </a>
-
-        </div>
-
+        <a
+          class="article-back"
+          href="/writings/"
+        >
+          ← back to writings
+        </a>
 
       </article>
 
     `;
-
-
-    document.title =
-      `${article.title} — QUỐC MẠNH`;
-
-
-    document.getElementById(
-      "browserAddress"
-    ).textContent =
-      `https://qmarchive.github.io/writings/?slug=${slug}`;
-
-
-    document.getElementById(
-      "sectionPath"
-    ).textContent =
-      `/ writings / ${slug} /`;
 
 
   }catch(error){
@@ -1096,23 +1099,36 @@ async function renderArticle(article){
     console.error(error);
 
 
-    document.getElementById("main").innerHTML = `
+    main.innerHTML = `
 
       <div class="error">
 
-        <p>
-          This writing could not be found.
-        </p>
+        <strong>
+          The writing exists, but its content could not be loaded.
+        </strong>
 
-        <p>
+        <br><br>
 
-          <a href="/writings/">
+        File expected:
 
-            ← back to writings
+        <br>
 
-          </a>
+        /writings/posts/
+        ${escapeHTML(decodedSlug)}
+        .md
 
-        </p>
+        <br><br>
+
+        ${escapeHTML(error.message)}
+
+        <br><br>
+
+        <a
+          class="article-back"
+          href="/writings/"
+        >
+          ← back to writings
+        </a>
 
       </div>
 
@@ -1132,40 +1148,35 @@ function updateClock(){
   const now =
     new Date();
 
-
   const date =
-    now.toLocaleDateString(
-      "vi-VN",
-      {
-        day:"2-digit",
-        month:"2-digit",
-        year:"numeric"
-      }
-    );
-
+    String(now.getDate()).padStart(2,"0") +
+    "." +
+    String(now.getMonth()+1).padStart(2,"0") +
+    "." +
+    now.getFullYear();
 
   const time =
-    now.toLocaleTimeString(
-      "vi-VN",
-      {
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit",
-        hour12:false
-      }
-    );
+    String(now.getHours()).padStart(2,"0") +
+    ":" +
+    String(now.getMinutes()).padStart(2,"0") +
+    ":" +
+    String(now.getSeconds()).padStart(2,"0");
 
 
-  document.getElementById(
-    "date"
-  ).textContent =
-    date;
+  const dateElement =
+    document.getElementById("date");
+
+  const timeElement =
+    document.getElementById("time");
 
 
-  document.getElementById(
-    "time"
-  ).textContent =
-    time;
+  if(dateElement){
+    dateElement.textContent = date;
+  }
+
+  if(timeElement){
+    timeElement.textContent = time;
+  }
 
 }
 
@@ -1176,16 +1187,15 @@ function updateClock(){
 
 async function init(){
 
-  const main =
-    document.getElementById("main");
-
-
   try{
 
     const data =
-      await loadJSON(
-        "./content.json"
-      );
+      await loadJSON();
+
+    const items =
+      Array.isArray(data.writings)
+        ? data.writings
+        : [];
 
 
     const params =
@@ -1193,96 +1203,53 @@ async function init(){
         window.location.search
       );
 
-
     const slug =
       params.get("slug");
 
 
-    /*
-     * ARCHIVE
-     */
+    if(slug){
 
-    if(!slug){
-
-      renderArchive(data);
-
-      return;
-
-    }
-
-
-    /*
-     * ARTICLE
-     */
-
-    const writings =
-      Array.isArray(data.writings)
-        ? data.writings
-        : [];
-
-
-    const article =
-      writings.find(
-        item =>
-          String(item.slug) === slug
+      await renderArticle(
+        items,
+        slug
       );
 
+    }else{
 
-    if(!article){
-
-      main.innerHTML = `
-
-        <div class="error">
-
-          <p>
-            This writing could not be found.
-          </p>
-
-          <p>
-
-            <a href="/writings/">
-
-              ← back to writings
-
-            </a>
-
-          </p>
-
-        </div>
-
-      `;
-
-      return;
+      renderArchive(items);
 
     }
-
-
-    await renderArticle(
-      article
-    );
 
 
   }catch(error){
 
     console.error(error);
 
+    document.getElementById("main")
+      .innerHTML = `
 
-    main.innerHTML = `
+        <div class="error">
 
-      <div class="error">
+          <strong>
+            Writings could not be loaded.
+          </strong>
 
-        <p>
-          Unable to load the writings archive.
-        </p>
+          <br><br>
 
-      </div>
+          ${escapeHTML(error.message)}
 
-    `;
+        </div>
+
+      `;
 
   }
 
 }
 
+
+/* =========================================================
+   START
+========================================================= */
 
 updateClock();
 
