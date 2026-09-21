@@ -1,0 +1,30 @@
+title: "QUỐC MẠNH — personal archive"
+description: "A personal archive of writings, photographs and notes."
+url: "https://qmarchive.github.io"
+baseurl: ""
+lang: "vi"
+markdown: kramdown
+permalink: /writings/:title/
+collections:
+  notes:
+    output: true
+    permalink: /notes/:title/
+  photos:
+    output: true
+    permalink: /photographs/:title/
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "note"
+  - scope:
+      path: ""
+      type: "photos"
+    values:
+      layout: "photo"
