@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,412 +7,687 @@
 <title>Writings — QUỐC MẠNH</title>
 
 <style>
-* {
-  box-sizing: border-box;
+
+/* =========================================================
+   BASE
+========================================================= */
+
+*{
+  box-sizing:border-box
 }
 
-html {
-  scroll-behavior: smooth;
+html,body{
+  margin:0;
+  padding:0
 }
 
-body {
-  margin: 0;
-  background: #f1f0ec;
-  color: #171717;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 15px;
-  line-height: 1.7;
+html{
+  scroll-behavior:smooth
 }
 
-/* =========================
+body{
+  background:#080808;
+  color:#b9b2a7;
+  font-family:"Courier New",Courier,monospace;
+  font-size:14px;
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   SCANLINE
+========================================================= */
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:20;
+
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.025) 0px,
+    rgba(255,255,255,.025) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+
+  opacity:.45;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+a{
+  color:inherit;
+  text-decoration:none
+}
+
+a:hover{
+  color:#b9a36a
+}
+
+img{
+  max-width:100%;
+  display:block
+}
+
+
+/* =========================================================
    PAGE
-========================= */
+========================================================= */
 
-.page {
-  width: min(1100px, calc(100% - 32px));
-  margin: 24px auto 60px;
+.page{
+  max-width:1440px;
+  margin:0 auto;
+  padding:16px 24px 70px
 }
 
-/* =========================
-   FAKE BROWSER BAR
-========================= */
 
-.browser {
-  border: 1px solid #999;
-  background: #ddd;
-  height: 27px;
+/* =========================================================
+   BROWSER BAR
+========================================================= */
 
-  display: flex;
-  align-items: center;
-
-  padding: 0 7px;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
-
-  color: #333;
+.browser{
+  border:1px solid #333;
+  height:42px;
+  padding:9px 14px;
+  color:#5d5a55;
+  font-size:12px;
+  margin-bottom:70px
 }
 
-.browser-buttons {
-  display: flex;
-  gap: 4px;
-  margin-right: 8px;
+.browser span{
+  display:block;
+  border:1px solid #292929;
+  padding:2px 8px;
+  height:22px
 }
 
-.browser-buttons span {
-  width: 9px;
-  height: 9px;
-  border: 1px solid #777;
-  background: #eee;
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.layout{
+  display:grid;
+  grid-template-columns:230px minmax(0,1fr) 230px;
+  gap:30px
 }
 
-.browser-address {
-  flex: 1;
-  border: 1px solid #aaa;
-  background: #f5f5f5;
-  height: 17px;
-  line-height: 15px;
-  padding: 0 6px;
-  overflow: hidden;
-  white-space: nowrap;
+.left,
+.right{
+  padding-top:4px
 }
 
-/* =========================
-   HEADER
-========================= */
 
-.header {
-  padding: 38px 0 18px;
-  border-bottom: 1px solid #777;
+/* =========================================================
+   LEFT
+========================================================= */
+
+.brand{
+  font-size:21px;
+  letter-spacing:3px;
+  color:#d0c8bb;
+  margin-bottom:18px
 }
 
-.brand {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  font-weight: bold;
-  letter-spacing: 0.08em;
+.rule{
+  border-top:1px dashed #302e2a;
+  margin:24px 0
 }
 
-.nav {
-  margin-top: 14px;
-
-  display: flex;
-  gap: 20px;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+.nav a{
+  display:block;
+  font-size:16px;
+  margin:13px 0;
+  color:#918b82
 }
 
-.nav a {
-  color: #222;
-  text-decoration: none;
+.nav a:nth-child(2){
+  color:#b5a66b
 }
 
-.nav a:hover {
-  text-decoration: underline;
+.side-copy{
+  color:#625e58;
+  line-height:2
 }
 
-/* =========================
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.right-note{
+  color:#6b665e;
+  margin-top:45px;
+  line-height:2
+}
+
+.clock{
+  color:#55514b;
+  font-size:11px;
+  margin-top:70px
+}
+
+.polaroid{
+  margin-top:26px;
+  border:5px solid #c7c0b2;
+  background:#c7c0b2;
+  transform:rotate(-2deg);
+  width:140px
+}
+
+.polaroid img{
+  filter:sepia(.2) saturate(.65);
+  width:100%
+}
+
+.polaroid figcaption{
+  background:#c7c0b2;
+  color:#4d4841;
+  padding:7px 4px 5px;
+  font-family:"Courier New",monospace;
+  font-size:10px;
+  text-align:center
+}
+
+
+/* =========================================================
+   WRITINGS CONTAINER
+========================================================= */
+
+.writings{
+  border:1px solid #3a3834;
+  background:#0b0b0b;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header{
+  padding:20px 22px 18px;
+  border-bottom:1px solid #302e2b
+}
+
+.section-title{
+  color:#aaa39a;
+  font-size:12px;
+  letter-spacing:1px
+}
+
+.section-path{
+  margin-top:5px;
+  color:#514d47;
+  font-size:10px
+}
+
+
+/* =========================================================
    ARCHIVE
-========================= */
+========================================================= */
 
-.archive {
-  padding-top: 42px;
+.archive{
+  padding:0 22px
 }
 
-.archive-title {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.archive-entry{
+  display:grid;
+  grid-template-columns:90px minmax(0,1fr);
 
-  margin-bottom: 25px;
+  gap:18px;
+
+  padding:22px 0;
+
+  border-bottom:1px dotted #211f1d
 }
 
-.entry {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-
-  gap: 18px;
-
-  padding: 15px 0;
-
-  border-top: 1px solid #c7c6c1;
+.archive-entry:last-child{
+  border-bottom:0
 }
 
-.entry:last-child {
-  border-bottom: 1px solid #c7c6c1;
+.archive-date{
+  color:#5d5953;
+  font-size:11px;
+  padding-top:4px
 }
 
-.date {
-  color: #777;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
-
-  padding-top: 4px;
+.archive-main{
+  min-width:0
 }
 
-.entry-content a {
-  color: #171717;
-  text-decoration: none;
+.archive-title{
+  font-size:18px;
+  line-height:1.5;
+  color:#aaa39a
 }
 
-.entry-content a:hover {
-  text-decoration: underline;
+.archive-title:hover{
+  color:#b9a36a
 }
 
-.entry-title {
-  font-size: 20px;
-  line-height: 1.3;
+.archive-excerpt{
+  margin-top:7px;
+  color:#625e58;
+  font-size:11px;
+  line-height:1.8;
+  max-width:720px
 }
 
-.entry-excerpt {
-  margin-top: 7px;
 
-  color: #777;
-
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-/* =========================
+/* =========================================================
    ARTICLE
-========================= */
+========================================================= */
 
-.article {
-  max-width: 760px;
-
-  padding-top: 55px;
+.article{
+  padding:34px 34px 42px
 }
 
-.article-meta {
-  color: #777;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
-
-  margin-bottom: 13px;
+.article-date{
+  color:#5d5953;
+  font-size:11px;
+  margin-bottom:16px
 }
 
-.article-title {
-  margin: 0 0 34px;
+.article-title{
+  margin:0 0 35px;
 
-  font-size: 37px;
-  font-weight: normal;
-  line-height: 1.2;
+  color:#c0b9ae;
+
+  font-size:28px;
+  font-weight:normal;
+
+  line-height:1.4
 }
 
-.article-body {
-  font-size: 17px;
-  line-height: 1.9;
+.article-body{
+  max-width:760px;
+
+  color:#aaa39a;
+
+  font-size:15px;
+  line-height:2
 }
 
-.article-body p {
-  margin: 0 0 28px;
+.article-body p{
+  margin:0 0 28px
 }
 
-.article-body h2 {
-  font-size: 24px;
-  font-weight: normal;
-  margin: 42px 0 15px;
+.article-body h2{
+  color:#aaa39a;
+  font-size:17px;
+  font-weight:normal;
+  margin:42px 0 16px
 }
 
-.article-body h3 {
-  font-size: 19px;
-  font-weight: normal;
-  margin: 34px 0 12px;
+.article-body h3{
+  color:#aaa39a;
+  font-size:15px;
+  font-weight:normal;
+  margin:35px 0 13px
 }
 
-.article-body blockquote {
-  margin: 30px 0;
-  padding-left: 22px;
-  border-left: 2px solid #999;
-  color: #555;
+.article-body strong{
+  color:#c0b9ae
 }
 
-.article-body img {
-  max-width: 100%;
-  height: auto;
+.article-body em{
+  color:#aaa39a
 }
 
-.article-body a {
-  color: #222;
+.article-body blockquote{
+  margin:30px 0;
+  padding-left:20px;
+
+  border-left:1px solid #514d47;
+
+  color:#777168
 }
 
-/* =========================
-   BACK
-========================= */
-
-.back {
-  margin-top: 55px;
-  padding-top: 15px;
-
-  border-top: 1px solid #aaa;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
+.article-body img{
+  max-width:100%;
+  height:auto;
+  border:1px solid #302e2b
 }
 
-.back a {
-  color: #333;
-  text-decoration: none;
+.article-body a{
+  color:#aaa39a;
+  text-decoration:underline;
+  text-decoration-color:#403c37
 }
 
-.back a:hover {
-  text-decoration: underline;
+
+/* =========================================================
+   ARTICLE FOOTER
+========================================================= */
+
+.article-footer{
+  margin-top:45px;
+  padding-top:16px;
+
+  border-top:1px dashed #302e2a;
+
+  font-size:10px;
+  color:#514d47
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-  margin-top: 70px;
-
-  padding-top: 15px;
-
-  border-top: 1px solid #999;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
-
-  color: #777;
+.article-footer a:hover{
+  color:#b9a36a
 }
 
-/* =========================
+
+/* =========================================================
    ERROR
-========================= */
+========================================================= */
 
-.error {
-  padding: 60px 0;
+.error{
+  padding:60px 22px;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-
-  color: #555;
+  color:#625e58;
+  font-size:12px
 }
 
-/* =========================
+.error a{
+  color:#918b82
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  text-align:center;
+  color:#403d38;
+  margin-top:65px;
+  font-size:11px
+}
+
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 650px) {
+@media(max-width:1000px){
 
-  .page {
-    width: calc(100% - 22px);
-    margin-top: 12px;
+  .layout{
+    grid-template-columns:180px minmax(0,1fr)
   }
 
-  .header {
-    padding-top: 28px;
+  .right{
+    display:none
   }
 
-  .brand {
-    font-size: 22px;
-  }
-
-  .nav {
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .entry {
-    grid-template-columns: 1fr;
-    gap: 3px;
-  }
-
-  .entry-title {
-    font-size: 18px;
-  }
-
-  .article {
-    padding-top: 38px;
-  }
-
-  .article-title {
-    font-size: 30px;
-  }
-
-  .article-body {
-    font-size: 16px;
-    line-height: 1.8;
-  }
 }
+
+@media(max-width:720px){
+
+  .page{
+    padding:10px 14px 50px
+  }
+
+  .browser{
+    margin-bottom:35px
+  }
+
+  .layout{
+    display:block
+  }
+
+  .left{
+    margin-bottom:30px
+  }
+
+  .nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap
+  }
+
+  .nav a{
+    margin:4px 0
+  }
+
+  .writings{
+    border-left:1px solid #3a3834;
+    border-right:1px solid #3a3834
+  }
+
+  .archive{
+    padding:0 15px
+  }
+
+  .archive-entry{
+    grid-template-columns:1fr;
+    gap:5px
+  }
+
+  .archive-date{
+    padding-top:0
+  }
+
+  .article{
+    padding:28px 18px 35px
+  }
+
+  .article-title{
+    font-size:23px
+  }
+
+  .article-body{
+    font-size:14px;
+    line-height:1.9
+  }
+
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="page">
 
-  <!-- =========================
+
+  <!-- =====================================================
        BROWSER
-  ========================== -->
+  ====================================================== -->
 
   <div class="browser">
 
-    <div class="browser-buttons">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <div class="browser-address" id="browserAddress">
+    <span>
       https://qmarchive.github.io/writings/
-    </div>
+    </span>
 
   </div>
 
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- =====================================================
+       LAYOUT
+  ====================================================== -->
 
-  <header class="header">
-
-    <div class="brand">
-      QUỐC MẠNH
-    </div>
-
-    <nav class="nav">
-
-      <a href="/">
-        home
-      </a>
-
-      <a href="/writings/">
-        writings
-      </a>
-
-      <a href="/notes/">
-        notes
-      </a>
-
-      <a href="/photographs/">
-        photographs
-      </a>
-
-    </nav>
-
-  </header>
+  <div class="layout">
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
+    <!-- ===================================================
+         LEFT
+    ==================================================== -->
 
-  <main id="main">
-  </main>
+    <aside class="left">
+
+      <div class="brand">
+        QUỐC MẠNH
+      </div>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+      <div class="rule"></div>
 
-  <footer class="footer">
-    © QUỐC MẠNH
+
+      <nav class="nav">
+
+        <a href="/">
+          home
+        </a>
+
+        <a href="/writings/">
+          writings
+        </a>
+
+        <a href="/photographs/">
+          photographs
+        </a>
+
+        <a href="/notes/">
+          notes
+        </a>
+
+        <a href="/#about">
+          about
+        </a>
+
+      </nav>
+
+
+      <div class="rule"></div>
+
+
+      <div class="side-copy">
+
+        writings<br>
+
+        <span style="color:#46423d">
+          archive
+        </span>
+
+        <br><br>
+
+        since<br>
+
+        <span style="font-size:20px;color:#777168">
+          2020
+        </span>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ===================================================
+         MAIN
+    ==================================================== -->
+
+    <main class="main">
+
+
+      <section class="writings">
+
+
+        <!-- SECTION HEADER -->
+
+        <header class="section-header">
+
+          <div class="section-title">
+            WRITINGS
+          </div>
+
+          <div
+            class="section-path"
+            id="sectionPath"
+          >
+            / writings /
+          </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div id="main">
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+    <!-- ===================================================
+         RIGHT
+    ==================================================== -->
+
+    <aside class="right">
+
+      <div class="side-copy">
+        Hanoi, Vietnam
+      </div>
+
+
+      <div class="rule"></div>
+
+
+      <div class="right-note">
+
+        Nhật ký của một người bình thường.<br>
+        Viết lại những câu chuyện đáng lý<br>
+        chỉ cần bỏ qua.<br>
+        Chào Mạnh, chúng ta lại gặp nhau rồi.
+
+      </div>
+
+
+      <figure class="polaroid">
+
+        <img
+          src="/hanoi-sample.jpg"
+          alt="Hanoi, always"
+        >
+
+        <figcaption>
+          Hanoi, always.
+        </figcaption>
+
+      </figure>
+
+
+      <div class="clock">
+
+        <span id="date">
+          21.09.2026
+        </span>
+
+        <br>
+
+        <span id="time">
+          00:00:00
+        </span>
+
+        <br><br>
+
+        1998 — 2026
+
+        <br>
+
+        and beyond.
+
+      </div>
+
+    </aside>
+
+
+  </div>
+
+
+  <footer>
+    best viewed at night.
   </footer>
+
 
 </div>
 
@@ -420,127 +695,146 @@ body {
 <script>
 
 /* =========================================================
-   BASIC HELPERS
+   HELPERS
 ========================================================= */
 
-function escapeHTML(value) {
+function escapeHTML(value){
 
   return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================================================
-   SIMPLE MARKDOWN PARSER
+   MARKDOWN
 ========================================================= */
 
-function markdownToHTML(markdown) {
+function markdownToHTML(markdown){
 
-  let text = String(markdown || "")
-    .replace(/\r\n/g, "\n")
-    .replace(/\r/g, "\n");
+  let text =
+    String(markdown || "")
+      .replace(/\r\n/g,"\n")
+      .replace(/\r/g,"\n");
+
 
   /*
-   * Escape HTML first.
-   * This keeps the Markdown files safe and predictable.
+   * Escape HTML
    */
 
-  text = escapeHTML(text);
+  text =
+    escapeHTML(text);
 
 
   /*
    * Images
    */
 
-  text = text.replace(
-    /!\[([^\]]*)\]\(([^)]+)\)/g,
-    '<img src="$2" alt="$1">'
-  );
+  text =
+    text.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      '<img src="$2" alt="$1">'
+    );
 
 
   /*
    * Links
    */
 
-  text = text.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2">$1</a>'
-  );
+  text =
+    text.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      '<a href="$2">$1</a>'
+    );
 
 
   /*
    * Headings
    */
 
-  text = text.replace(
-    /^### (.+)$/gm,
-    "<h3>$1</h3>"
-  );
+  text =
+    text.replace(
+      /^### (.+)$/gm,
+      "<h3>$1</h3>"
+    );
 
-  text = text.replace(
-    /^## (.+)$/gm,
-    "<h2>$1</h2>"
-  );
+  text =
+    text.replace(
+      /^## (.+)$/gm,
+      "<h2>$1</h2>"
+    );
 
 
   /*
    * Bold
    */
 
-  text = text.replace(
-    /\*\*(.+?)\*\*/g,
-    "<strong>$1</strong>"
-  );
+  text =
+    text.replace(
+      /\*\*(.+?)\*\*/g,
+      "<strong>$1</strong>"
+    );
 
 
   /*
    * Italic
    */
 
-  text = text.replace(
-    /(?<!\*)\*([^*\n]+)\*(?!\*)/g,
-    "<em>$1</em>"
-  );
+  text =
+    text.replace(
+      /(?<!\*)\*([^*\n]+)\*(?!\*)/g,
+      "<em>$1</em>"
+    );
 
 
   /*
    * Blockquote
    */
 
-  text = text.replace(
-    /^&gt; (.+)$/gm,
-    "<blockquote>$1</blockquote>"
-  );
+  text =
+    text.replace(
+      /^&gt; (.+)$/gm,
+      "<blockquote>$1</blockquote>"
+    );
 
 
   /*
    * Paragraphs
-   *
-   * Empty lines separate paragraphs.
    */
 
-  const blocks = text
-    .split(/\n{2,}/)
-    .map(block => block.trim())
-    .filter(Boolean);
+  const blocks =
+    text
+      .split(/\n{2,}/)
+      .map(
+        block => block.trim()
+      )
+      .filter(Boolean);
+
 
   return blocks.map(block => {
 
-    if (
+    if(
       block.startsWith("<h2>") ||
       block.startsWith("<h3>") ||
       block.startsWith("<blockquote>") ||
       block.startsWith("<img")
-    ) {
+    ){
+
       return block;
+
     }
 
-    return `<p>${block.replace(/\n/g, "<br>")}</p>`;
+
+    return `
+      <p>
+        ${block.replace(/\n/g,"<br>")}
+      </p>
+    `;
 
   }).join("\n");
 
@@ -548,16 +842,28 @@ function markdownToHTML(markdown) {
 
 
 /* =========================================================
-   LOAD JSON
+   JSON
 ========================================================= */
 
-async function loadJSON(path) {
+async function loadJSON(path){
 
-  const response = await fetch(path);
+  const response =
+    await fetch(
+      path + "?v=" + Date.now(),
+      {
+        cache:"no-store"
+      }
+    );
 
-  if (!response.ok) {
-    throw new Error("Cannot load " + path);
+
+  if(!response.ok){
+
+    throw new Error(
+      "Cannot load " + path
+    );
+
   }
+
 
   return await response.json();
 
@@ -565,16 +871,23 @@ async function loadJSON(path) {
 
 
 /* =========================================================
-   LOAD MARKDOWN
+   MARKDOWN FILE
 ========================================================= */
 
-async function loadMarkdown(path) {
+async function loadMarkdown(path){
 
-  const response = await fetch(path);
+  const response =
+    await fetch(path);
 
-  if (!response.ok) {
-    throw new Error("Cannot load " + path);
+
+  if(!response.ok){
+
+    throw new Error(
+      "Cannot load " + path
+    );
+
   }
+
 
   return await response.text();
 
@@ -585,70 +898,91 @@ async function loadMarkdown(path) {
    ARCHIVE
 ========================================================= */
 
-function renderArchive(data) {
+function renderArchive(data){
 
-  const writings = Array.isArray(data.writings)
-    ? data.writings
-    : [];
+  const writings =
+    Array.isArray(data.writings)
+      ? data.writings
+      : [];
 
-  if (!writings.length) {
+
+  if(!writings.length){
 
     document.getElementById("main").innerHTML = `
+
       <div class="error">
         No writings yet.
       </div>
+
     `;
 
     return;
+
   }
 
 
-  const entries = writings.map(item => {
+  const entries =
+    writings.map(item => {
 
-    const slug = String(item.slug || "");
+      const slug =
+        String(item.slug || "");
 
-    return `
-      <article class="entry">
 
-        <div class="date">
-          ${escapeHTML(item.date)}
-        </div>
+      return `
 
-        <div class="entry-content">
+        <article class="archive-entry">
 
-          <a href="/writings/?slug=${encodeURIComponent(slug)}">
 
-            <div class="entry-title">
+          <div class="archive-date">
+
+            ${escapeHTML(item.date)}
+
+          </div>
+
+
+          <div class="archive-main">
+
+            <a
+              class="archive-title"
+              href="/writings/?slug=${encodeURIComponent(slug)}"
+            >
+
               ${escapeHTML(item.title)}
-            </div>
+
+            </a>
+
 
             ${
               item.excerpt
+
               ? `
-                <div class="entry-excerpt">
+
+                <div class="archive-excerpt">
+
                   ${escapeHTML(item.excerpt)}
+
                 </div>
+
               `
+
               : ""
+
             }
 
-          </a>
 
-        </div>
+          </div>
 
-      </article>
-    `;
 
-  }).join("");
+        </article>
+
+      `;
+
+    }).join("");
 
 
   document.getElementById("main").innerHTML = `
 
     <section class="archive">
-
-      <div class="archive-title">
-        Writings
-      </div>
 
       ${entries}
 
@@ -657,10 +991,14 @@ function renderArchive(data) {
   `;
 
 
-  document.title = "Writings — QUỐC MẠNH";
+  document.title =
+    "Writings — QUỐC MẠNH";
 
-  document.getElementById("browserAddress").textContent =
-    "https://qmarchive.github.io/writings/";
+
+  document.getElementById(
+    "sectionPath"
+  ).textContent =
+    "/ writings /";
 
 }
 
@@ -669,42 +1007,68 @@ function renderArchive(data) {
    ARTICLE
 ========================================================= */
 
-async function renderArticle(article) {
+async function renderArticle(article){
 
-  const slug = String(article.slug || "");
+  const slug =
+    String(article.slug || "");
+
 
   const markdownPath =
-    "./posts/" + encodeURIComponent(slug) + ".md";
+    "./posts/" +
+    encodeURIComponent(slug) +
+    ".md";
 
 
-  try {
+  try{
 
-    const markdown = await loadMarkdown(markdownPath);
+    const markdown =
+      await loadMarkdown(
+        markdownPath
+      );
 
-    const articleHTML = markdownToHTML(markdown);
+
+    const articleHTML =
+      markdownToHTML(
+        markdown
+      );
 
 
     document.getElementById("main").innerHTML = `
 
       <article class="article">
 
-        <div class="article-meta">
+
+        <div class="article-date">
+
           ${escapeHTML(article.date)}
+
         </div>
+
 
         <h1 class="article-title">
+
           ${escapeHTML(article.title)}
+
         </h1>
 
+
         <div class="article-body">
+
           ${articleHTML}
+
         </div>
 
-        <div class="back">
+
+        <div class="article-footer">
+
           <a href="/writings/">
+
             ← all writings
+
           </a>
+
         </div>
+
 
       </article>
 
@@ -715,13 +1079,22 @@ async function renderArticle(article) {
       `${article.title} — QUỐC MẠNH`;
 
 
-    document.getElementById("browserAddress").textContent =
+    document.getElementById(
+      "browserAddress"
+    ).textContent =
       `https://qmarchive.github.io/writings/?slug=${slug}`;
 
 
-  } catch (error) {
+    document.getElementById(
+      "sectionPath"
+    ).textContent =
+      `/ writings / ${slug} /`;
+
+
+  }catch(error){
 
     console.error(error);
+
 
     document.getElementById("main").innerHTML = `
 
@@ -732,9 +1105,13 @@ async function renderArticle(article) {
         </p>
 
         <p>
+
           <a href="/writings/">
+
             ← back to writings
+
           </a>
+
         </p>
 
       </div>
@@ -747,54 +1124,111 @@ async function renderArticle(article) {
 
 
 /* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+
+  const date =
+    now.toLocaleDateString(
+      "vi-VN",
+      {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }
+    );
+
+
+  const time =
+    now.toLocaleTimeString(
+      "vi-VN",
+      {
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit",
+        hour12:false
+      }
+    );
+
+
+  document.getElementById(
+    "date"
+  ).textContent =
+    date;
+
+
+  document.getElementById(
+    "time"
+  ).textContent =
+    time;
+
+}
+
+
+/* =========================================================
    INIT
 ========================================================= */
 
-async function init() {
+async function init(){
 
-  const main = document.getElementById("main");
+  const main =
+    document.getElementById("main");
 
-  try {
 
-    const data = await loadJSON("./content.json");
+  try{
+
+    const data =
+      await loadJSON(
+        "./content.json"
+      );
+
 
     const params =
-      new URLSearchParams(window.location.search);
+      new URLSearchParams(
+        window.location.search
+      );
+
 
     const slug =
       params.get("slug");
 
 
     /*
-     * No slug
-     * → archive
+     * ARCHIVE
      */
 
-    if (!slug) {
+    if(!slug){
 
       renderArchive(data);
 
       return;
+
     }
 
 
     /*
-     * Has slug
-     * → article
+     * ARTICLE
      */
 
-    const writings = Array.isArray(data.writings)
-      ? data.writings
-      : [];
+    const writings =
+      Array.isArray(data.writings)
+        ? data.writings
+        : [];
 
 
     const article =
       writings.find(
-        item => String(item.slug) === slug
+        item =>
+          String(item.slug) === slug
       );
 
 
-    if (!article) {
+    if(!article){
 
       main.innerHTML = `
 
@@ -805,9 +1239,13 @@ async function init() {
           </p>
 
           <p>
+
             <a href="/writings/">
+
               ← back to writings
+
             </a>
+
           </p>
 
         </div>
@@ -815,14 +1253,19 @@ async function init() {
       `;
 
       return;
+
     }
 
 
-    await renderArticle(article);
+    await renderArticle(
+      article
+    );
 
-  } catch (error) {
+
+  }catch(error){
 
     console.error(error);
+
 
     main.innerHTML = `
 
@@ -840,6 +1283,13 @@ async function init() {
 
 }
 
+
+updateClock();
+
+setInterval(
+  updateClock,
+  1000
+);
 
 init();
 
