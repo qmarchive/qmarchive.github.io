@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Ế<!DOCTYPE html>
 <html lang="vi">
 <head>
 
@@ -3355,6 +3355,53 @@ async function init(){
   loadTrack(
     0,
     false
+  );
+
+
+  /* =====================================================
+     AUTOPLAY AFTER FIRST USER INTERACTION
+  ===================================================== */
+
+  let musicStarted = false;
+
+
+  function startMusic(){
+
+    if(musicStarted)
+      return;
+
+
+    musicStarted = true;
+
+
+    audio.play()
+      .then(() => {
+
+        playButton.textContent =
+          "❚❚";
+
+      })
+      .catch(() => {
+
+        musicStarted = false;
+
+      });
+
+
+    document.removeEventListener(
+      "pointerdown",
+      startMusic
+    );
+
+  }
+
+
+  document.addEventListener(
+    "pointerdown",
+    startMusic,
+    {
+      once:false
+    }
   );
 
 
