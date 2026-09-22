@@ -15,6 +15,7 @@ Mẹ có nhiều kỷ niệm. Tôi cũng thế. Ngày nào FB hay Insta cũng đ
 Nhiều lúc tôi thấy bản thân với Chandler khá giống nhau.
 
 Sáng nay tôi bận hơn mọi khi. Hằng nhắn tôi uống Highlands hay Koi và nằng nặc bắt tôi phải chọn. Dù tôi cũng chẳng hứng thú với 2 thức uống đấy lắm. Một tình bạn xuyên biên giới nhân ngày HN mưa tầm tã.
+
 Trong chồng ảnh cũ của mẹ có ảnh tôi và nó. Mẹ bảo Hằng ngày bé cứ lăng xăng, nói chung là nghịch.
 
 Thế nên tôi với nó mới chơi với nhau đến tận bây giờ.
