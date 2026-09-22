@@ -2,7 +2,7 @@
   "writings": [
     {
       "date": "2020",
-      "title": "Nỗi ám ảnh thân mến.",
+      "title": "Nỗi ám ảnh thân mến",
       "slug": "noi-am-anh-than-men",
       "excerpt": "Đến cuối cùng, tôi mới nhận ra điều lấy đi bản thể của mình không phải là bóng lưng một người khuất xa."
     },
@@ -11,6 +11,12 @@
       "title": "Ngày này năm xưa",
       "slug": "ngay-nay-nam-xua",
       "excerpt": "Mẹ kể chuyện về bà, về ba, về ngày tôi còn bé. Vẫn là những câu chuyện được mắc lại trong ký ức."
+    },
+    {
+      "date": "29/08/2026",
+      "title": "Tự do tài chính",
+      "slug": "tu-do-tai-chinh",
+      "excerpt": "Tự do tài chính còn xa nhưng hàng xôi thì ở ngay đầu đường."
     }
   ]
 }
