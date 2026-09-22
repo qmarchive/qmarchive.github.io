@@ -1,4 +1,4 @@
-Ế<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
 
@@ -1338,6 +1338,27 @@ a[href]:hover{
 }
 
 
+/* NEW: ARTIST */
+
+.music-artist{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  margin-top:1px;
+
+  color:var(--teal-dark);
+
+  font-size:9px;
+
+  font-weight:bold;
+
+}
+
+
 .music-controls{
 
   display:flex;
@@ -2478,7 +2499,17 @@ a[href]:hover{
       id="musicTitle"
     >
 
-      Where the Cat Goes at Night
+      Between the Takes
+
+    </div>
+
+
+    <div
+      class="music-artist"
+      id="musicArtist"
+    >
+
+      Orient.bakureever
 
     </div>
 
@@ -2586,7 +2617,20 @@ a[href]:hover{
 const MUSIC_TRACKS = [
 
   {
+    title:"Between the Takes",
+    artist:"Orient.bakureever",
+    src:"/music/between-the-takes.mp3"
+  },
+
+  {
+    title:"Wednesday's Origami",
+    artist:"Orient.bakureever",
+    src:"/music/wednesday's-origami.mp3"
+  },
+
+  {
     title:"Where the Cat Goes at Night",
+    artist:"Orient.bakureever",
     src:"/music/where-the-cat-goes-at-night.mp3"
   }
 
@@ -3071,6 +3115,12 @@ const musicTitle =
   );
 
 
+const musicArtist =
+  document.getElementById(
+    "musicArtist"
+  );
+
+
 const musicTime =
   document.getElementById(
     "musicTime"
@@ -3131,6 +3181,10 @@ function loadTrack(
 
   musicTitle.textContent =
     track.title;
+
+
+  musicArtist.textContent =
+    track.artist;
 
 
   progress.value = 0;
