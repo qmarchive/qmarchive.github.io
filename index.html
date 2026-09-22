@@ -3,297 +3,606 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QUỐC MẠNH — personal archive</title>
+
+<title>QUỐC MẠNH — QM Archive</title>
 
 <style>
-*{box-sizing:border-box}
 
-html,body{
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
   margin:0;
   padding:0;
+
+  background:#080808;
+  color:#888;
+
+  font-family:"Courier New", Courier, monospace;
 }
 
 body{
-  background:#080808;
-  color:#b9b2a7;
-  font-family:"Courier New",Courier,monospace;
-  font-size:14px;
-  line-height:1.6;
+  min-height:100vh;
 }
 
-body:before{
+
+/* =========================================================
+   SCANLINES
+========================================================= */
+
+body::before{
   content:"";
+
   position:fixed;
   inset:0;
+
   pointer-events:none;
-  z-index:20;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.025) 0px,
-    rgba(255,255,255,.025) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  opacity:.45;
+
+  z-index:9999;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.025) 0px,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px,
+      transparent 4px
+    );
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
 
-a:hover{
-  color:#b9a36a;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
+/* =========================================================
+   PAGE
+========================================================= */
 
 .page{
-  max-width:1440px;
-  margin:0 auto;
-  padding:16px 24px 70px;
+  width:100%;
+  min-height:100vh;
+
+  padding:30px;
 }
 
+
+/* =========================================================
+   BROWSER BAR
+========================================================= */
+
 .browser{
-  border:1px solid #333;
-  height:42px;
-  padding:9px 14px;
-  color:#5d5a55;
-  font-size:12px;
-  margin-bottom:70px;
+  width:100%;
+  height:54px;
+
+  border:1px solid #252525;
+
+  padding:10px 18px;
+
+  margin-bottom:85px;
+
+  color:#666;
+
+  font-size:13px;
+
+  box-shadow:
+    inset 0 0 0 1px #111;
+}
+
+.browser::before{
+  content:"";
+
+  display:inline-block;
+
+  width:12px;
+  height:12px;
+
+  margin-right:12px;
+
+  border:1px solid #555;
+
+  box-shadow:
+    18px 0 0 -1px #080808,
+    18px 0 0 0 #555,
+    36px 0 0 -1px #080808,
+    36px 0 0 0 #555;
+
+  vertical-align:-1px;
 }
 
 .browser span{
-  display:block;
-  border:1px solid #292929;
-  padding:2px 8px;
-  height:22px;
+  color:#666;
 }
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
 
 .layout{
   display:grid;
-  grid-template-columns:230px minmax(0,1fr) 230px;
-  gap:30px;
+
+  grid-template-columns:
+    260px
+    minmax(0,1fr)
+    290px;
+
+  gap:55px;
+
+  max-width:1450px;
+
+  margin:0 auto;
 }
 
-.left,
-.right{
-  padding-top:4px;
+
+/* =========================================================
+   LEFT
+========================================================= */
+
+.left{
+  min-width:0;
 }
 
 .brand{
+  color:#aaa;
+
   font-size:21px;
-  letter-spacing:3px;
-  color:#d0c8bb;
-  margin-bottom:18px;
+
+  letter-spacing:4px;
+
+  margin-bottom:35px;
 }
 
 .rule{
-  border-top:1px dashed #302e2a;
-  margin:24px 0;
+  width:100%;
+
+  border-top:1px dashed #292929;
+
+  margin:0 0 32px 0;
+}
+
+.nav{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:24px;
 }
 
 .nav a{
-  display:block;
+  color:#777;
+
+  text-decoration:none;
+
   font-size:16px;
-  margin:13px 0;
-  color:#918b82;
 }
 
-.nav a:first-child{
-  color:#b5a66b;
+.nav a:hover{
+  color:#ddd;
 }
 
-.side-copy{
-  color:#625e58;
-  line-height:2;
+.nav a.active{
+  color:#c0ad67;
 }
+
+.left-info{
+  margin-top:60px;
+
+  padding-top:30px;
+
+  border-top:1px dashed #292929;
+
+  color:#555;
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+.left-info .label{
+  color:#444;
+}
+
+.left-info .year{
+  color:#777;
+
+  font-size:20px;
+
+  margin-top:4px;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main{
+  min-width:0;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-  border:1px solid #3a3834;
-  min-height:610px;
-  position:relative;
-  background:#0b0b0b;
-  overflow:hidden;
+  border:1px solid #343434;
+
+  margin-bottom:0;
 }
 
 .hero-image{
+  display:block;
+
   width:100%;
-  height:300px;
+
+  height:390px;
+
   object-fit:cover;
-  filter:brightness(.55) saturate(.65) contrast(1.05);
+
+  filter:
+    grayscale(18%)
+    brightness(.72)
+    contrast(1.05);
 }
 
 .hero-caption{
-  padding:24px 28px 22px;
-  border-top:1px solid #34312d;
+  padding:25px 28px 24px;
+
+  border-top:1px solid #2b2b2b;
+
   text-align:center;
 }
 
-.hero-caption .quote{
-  font-size:22px;
-  color:#aaa39a;
+.hero-quote{
+  color:#999;
+
+  font-size:20px;
+
   line-height:1.5;
 }
 
-.hero-caption .small{
-  margin-top:7px;
-  color:#625e58;
-  font-size:10px;
-}
+.hero-date{
+  margin-top:10px;
 
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr;
-  border-top:1px solid #302e2b;
-}
+  color:#555;
 
-.panel{
-  padding:14px 18px;
-  min-height:150px;
-}
-
-.panel+.panel{
-  border-left:1px solid #302e2b;
-}
-
-.panel-title{
-  color:#aaa39a;
-  font-size:12px;
-  letter-spacing:.5px;
-  margin-bottom:10px;
-}
-
-.more{
-  float:right;
-  color:#514d47;
-  font-size:10px;
-}
-
-.entry{
-  display:flex;
-  gap:13px;
-  padding:4px 0;
-  border-bottom:1px dotted #211f1d;
   font-size:11px;
 }
 
-.entry:last-child{
+
+/* =========================================================
+   HOME GRID
+========================================================= */
+
+.home-grid{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    minmax(0,1fr);
+
+  border-left:1px solid #343434;
+
+  border-right:1px solid #343434;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+  min-width:0;
+
+  border-bottom:1px solid #343434;
+}
+
+.panel:nth-child(odd){
+  border-right:1px solid #343434;
+}
+
+.panel-header{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:22px 22px 16px;
+}
+
+.panel-title{
+  color:#777;
+
+  font-size:13px;
+
+  letter-spacing:1px;
+}
+
+.panel-more{
+  color:#444;
+
+  text-decoration:none;
+
+  font-size:11px;
+}
+
+.panel-more:hover{
+  color:#aaa;
+}
+
+
+/* =========================================================
+   WRITING LIST
+========================================================= */
+
+.list{
+  padding:0 22px 25px;
+}
+
+.list-entry{
+  display:grid;
+
+  grid-template-columns:
+    90px
+    minmax(0,1fr);
+
+  gap:15px;
+
+  padding:9px 0;
+
+  border-bottom:1px dashed #202020;
+
+  text-decoration:none;
+}
+
+.list-entry:last-child{
   border-bottom:0;
 }
 
-.date{
-  color:#5d5953;
-  min-width:72px;
+.list-entry:hover .list-title{
+  color:#ccc;
 }
 
-.entry a{
-  color:#858078;
+.list-date{
+  color:#555;
+
+  font-size:11px;
 }
 
-.entry a:hover{
-  color:#b9a36a;
+.list-title{
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+.note-entry{
+  display:grid;
+
+  grid-template-columns:
+    90px
+    minmax(0,1fr);
+
+  gap:15px;
+
+  padding:9px 0;
+
+  border-bottom:1px dashed #202020;
+
+  text-decoration:none;
+}
+
+.note-entry:last-child{
+  border-bottom:0;
+}
+
+.note-entry:hover .note-title{
+  color:#ccc;
+}
+
+.note-date{
+  color:#555;
+
+  font-size:11px;
+}
+
+.note-title{
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   PHOTOGRAPHS
+========================================================= */
+
+.photographs-panel{
+  grid-column:1 / -1;
+
+  border-bottom:0 !important;
+
+  border-right:0 !important;
 }
 
 .photo-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:8px;
+
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:10px;
+
+  padding:0 22px 25px;
 }
 
-.photo{
-  margin:0;
-  border:1px solid #302e2b;
-  background:#0c0c0c;
+.photo-card{
+  min-width:0;
+
+  text-decoration:none;
 }
 
-.photo img{
+.photo-image{
+  display:block;
+
   width:100%;
-  height:110px;
+
+  aspect-ratio:1 / .72;
+
   object-fit:cover;
-  filter:brightness(.6) saturate(.6);
+
+  border:1px solid #282828;
+
+  filter:
+    grayscale(20%)
+    brightness(.72);
 }
 
-.photo figcaption{
-  padding:5px 7px;
-  color:#625e58;
+.photo-card:hover .photo-image{
+  filter:
+    grayscale(0%)
+    brightness(.9);
+}
+
+.photo-title{
+  margin-top:9px;
+
+  color:#777;
+
+  font-size:11px;
+
+  line-height:1.4;
+}
+
+.photo-date{
+  margin-top:4px;
+
+  color:#444;
+
   font-size:10px;
 }
 
-.content-section{
-  margin-top:24px;
-  border-top:1px solid #36332f;
-  padding-top:16px;
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.right{
+  min-width:0;
 }
 
-.content-section h2{
-  font-size:13px;
-  font-weight:normal;
-  letter-spacing:1px;
-  color:#88827a;
-  margin:0 0 12px;
-}
+.side-copy{
+  color:#555;
 
-.content-section .entry{
-  font-size:13px;
-  padding:7px 0;
-}
-
-.about{
-  color:#625e58;
-  max-width:700px;
-  line-height:2;
+  font-size:14px;
 }
 
 .right-note{
-  color:#6b665e;
-  margin-top:45px;
+  color:#666;
+
+  font-size:14px;
+
   line-height:2;
+
+  margin-bottom:40px;
 }
 
-.clock{
-  color:#55514b;
-  font-size:11px;
-  margin-top:70px;
-}
+
+/* =========================================================
+   POLAROID
+========================================================= */
 
 .polaroid{
-  margin-top:26px;
-  border:5px solid #c7c0b2;
-  background:#c7c0b2;
+  width:175px;
+
+  margin:20px auto 70px;
+
+  padding:9px 9px 18px;
+
+  background:#ddd;
+
   transform:rotate(-2deg);
-  width:140px;
 }
 
 .polaroid img{
-  filter:sepia(.2) saturate(.65);
+  display:block;
+
   width:100%;
+
+  height:auto;
+
+  filter:grayscale(100%);
 }
 
 .polaroid figcaption{
-  background:#c7c0b2;
-  color:#4d4841;
-  padding:7px 4px 5px;
-  font-family:"Courier New",monospace;
-  font-size:10px;
+  color:#777;
+
   text-align:center;
+
+  font-size:12px;
+
+  margin-top:12px;
 }
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+.clock{
+  color:#555;
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  text-align:left;
+}
+
+.clock #time{
+  color:#777;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-  text-align:center;
-  color:#403d38;
-  margin-top:65px;
-  font-size:11px;
+  max-width:1450px;
+
+  margin:80px auto 0;
+
+  padding-top:20px;
+
+  border-top:1px solid #222;
+
+  color:#444;
+
+  font-size:12px;
 }
 
-@media(max-width:1000px){
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
 
   .layout{
-    grid-template-columns:180px minmax(0,1fr);
+    grid-template-columns:
+      210px
+      minmax(0,1fr);
+
+    gap:35px;
   }
 
   .right{
@@ -302,14 +611,25 @@ footer{
 
 }
 
-@media(max-width:720px){
+
+@media(max-width:800px){
+
+  .photo-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+}
+
+
+@media(max-width:700px){
 
   .page{
-    padding:10px 14px 50px;
+    padding:18px;
   }
 
   .browser{
-    margin-bottom:35px;
+    margin-bottom:50px;
   }
 
   .layout{
@@ -317,256 +637,330 @@ footer{
   }
 
   .left{
-    margin-bottom:30px;
+    margin-bottom:45px;
   }
 
   .nav{
-    display:flex;
-    gap:18px;
+    flex-direction:row;
+
     flex-wrap:wrap;
+
+    gap:15px 25px;
   }
 
-  .nav a{
-    margin:4px 0;
+  .left-info{
+    display:none;
   }
 
-  .hero{
-    min-height:0;
+  .hero-image{
+    height:260px;
+  }
+
+  .hero-quote{
+    font-size:17px;
+  }
+
+  .home-grid{
+    display:block;
+
+    border-left:1px solid #343434;
+
+    border-right:1px solid #343434;
+  }
+
+  .panel{
+    border-right:0 !important;
+  }
+
+  .photo-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
+
+@media(max-width:430px){
+
+  .photo-grid{
+    grid-template-columns:1fr;
   }
 
   .hero-image{
     height:220px;
   }
 
-  .hero-grid{
-    display:block;
-  }
-
-  .panel+.panel{
-    border-left:0;
-    border-top:1px solid #302e2b;
-  }
-
-  .photo-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="page">
 
+
+  <!-- =====================================================
+       BROWSER
+  ====================================================== -->
+
   <div class="browser">
-    <span>https://qmarchive.github.io/</span>
+
+    <span id="browserAddress">
+      https://qmarchive.github.io/
+    </span>
+
   </div>
+
+
+  <!-- =====================================================
+       LAYOUT
+  ====================================================== -->
 
   <div class="layout">
 
+
+    <!-- ===================================================
+         LEFT
+    ==================================================== -->
+
     <aside class="left">
 
-      <div class="brand" id="brand">
+      <div class="brand">
         QUỐC MẠNH
       </div>
 
+
       <div class="rule"></div>
+
 
       <nav class="nav">
 
-        <a href="#home">
+        <a href="/" class="active">
           home
         </a>
 
-        <a href="writings/">
+        <a href="/writings/">
           writings
         </a>
 
-        <a href="photographs/">
+        <a href="/photographs/">
           photographs
         </a>
 
-        <a href="notes/">
+        <a href="/notes/">
           notes
         </a>
 
-        <a href="#about">
+        <a href="/#about">
           about
         </a>
 
       </nav>
 
-      <div class="rule"></div>
 
-      <div class="side-copy">
+      <div class="left-info">
 
-        visitors<br>
+        <div>
+          visitors
+        </div>
 
-        <span style="font-size:20px;color:#777168">
+        <div class="year">
           001284
-        </span>
+        </div>
+
+        <div>
+          ● ONLINE
+        </div>
 
         <br>
 
-        <span style="color:#46423d">
-          ● ONLINE
-        </span>
+        <div class="label">
+          since
+        </div>
 
-        <br><br>
-
-        since
-        <span id="since-short">
+        <div>
           21.09.2026
-        </span>
+        </div>
 
       </div>
 
     </aside>
 
 
-    <main class="main" id="home">
+    <!-- ===================================================
+         MAIN
+    ==================================================== -->
+
+    <main class="main">
+
+
+      <!-- =================================================
+           HERO
+      ================================================== -->
 
       <section class="hero">
 
         <img
           class="hero-image"
-          src="hanoi-sample.jpg"
-          alt="Hanoi"
+          src="/home/home-hero.png"
+          alt="Home"
         >
+
 
         <div class="hero-caption">
 
-          <div class="quote">
+          <div class="hero-quote">
+
             “Có những ngày chẳng có gì đặc biệt,<br>
             nhưng tôi vẫn muốn nhớ về nó.”
+
           </div>
 
-          <div
-            class="small"
-            id="hero-date"
-          >
-            21.09.2026
+
+          <div class="hero-date">
+            22.09.2026
           </div>
 
         </div>
 
+      </section>
 
-        <div class="hero-grid">
 
-          <!-- WRITINGS -->
+      <!-- =================================================
+           HOME CONTENT
+      ================================================== -->
 
-          <section class="panel">
+      <div class="home-grid">
+
+
+        <!-- ===============================================
+             WRITINGS
+        ================================================ -->
+
+        <section class="panel">
+
+          <div class="panel-header">
 
             <div class="panel-title">
-
               RECENTLY WRITTEN
-
-              <a
-                class="more"
-                href="writings/"
-              >
-                → more writings
-              </a>
-
             </div>
-
-            <div id="writing-list"></div>
-
-          </section>
-
-
-          <!-- NOTES -->
-
-          <section class="panel">
-
-            <div class="panel-title">
-
-              NOTES
-
-              <a
-                class="more"
-                href="notes/"
-              >
-                → more
-              </a>
-
-            </div>
-
-            <div id="note-list"></div>
-
-          </section>
-
-        </div>
-
-
-        <!-- PHOTOGRAPHS -->
-
-        <section
-          class="panel"
-          style="border-top:1px solid #302e2b"
-        >
-
-          <div class="panel-title">
-
-            PHOTOGRAPHS
 
             <a
-              class="more"
-              href="photographs/"
+              class="panel-more"
+              href="/writings/"
+            >
+              → more writings
+            </a>
+
+          </div>
+
+
+          <div
+            class="list"
+            id="writingsList"
+          >
+
+            Loading...
+
+          </div>
+
+        </section>
+
+
+        <!-- ===============================================
+             NOTES
+        ================================================ -->
+
+        <section class="panel">
+
+          <div class="panel-header">
+
+            <div class="panel-title">
+              NOTES
+            </div>
+
+            <a
+              class="panel-more"
+              href="/notes/"
+            >
+              → more
+            </a>
+
+          </div>
+
+
+          <div
+            class="list"
+            id="notesList"
+          >
+
+            Loading...
+
+          </div>
+
+        </section>
+
+
+        <!-- ===============================================
+             PHOTOGRAPHS
+        ================================================ -->
+
+        <section class="panel photographs-panel">
+
+          <div class="panel-header">
+
+            <div class="panel-title">
+              PHOTOGRAPHS
+            </div>
+
+            <a
+              class="panel-more"
+              href="/photographs/"
             >
               → more photographs
             </a>
 
           </div>
 
+
           <div
             class="photo-grid"
-            id="photo-list"
-          ></div>
+            id="photographsList"
+          >
+
+            Loading...
+
+          </div>
 
         </section>
 
-      </section>
 
+      </div>
 
-      <!-- ABOUT -->
-
-      <section
-        class="content-section"
-        id="about"
-      >
-
-        <h2>
-          ABOUT
-        </h2>
-
-        <div class="about">
-
-          A small personal archive of writings,
-          photographs and notes.
-
-          <br>
-
-          Based in Hanoi.
-          Built slowly, kept for a long time.
-
-        </div>
-
-      </section>
 
     </main>
 
 
-    <!-- RIGHT -->
+    <!-- ===================================================
+         RIGHT
+    ==================================================== -->
 
     <aside class="right">
+
 
       <div class="side-copy">
         Hanoi, Vietnam
       </div>
 
+
       <div class="rule"></div>
+
 
       <div class="right-note">
 
@@ -581,11 +975,15 @@ footer{
       </div>
 
 
+      <!-- ===============================================
+           HOME POLAROID
+      ================================================ -->
+
       <figure class="polaroid">
 
         <img
-          src="hanoi-sample.jpg"
-          alt="Hanoi, always"
+          src="/home/home-polaroid.png"
+          alt="Home Polaroid"
         >
 
         <figcaption>
@@ -595,10 +993,14 @@ footer{
       </figure>
 
 
+      <!-- ===============================================
+           CLOCK
+      ================================================ -->
+
       <div class="clock">
 
         <span id="date">
-          21.09.2026
+          22.09.2026
         </span>
 
         <br>
@@ -617,461 +1019,505 @@ footer{
 
       </div>
 
+
     </aside>
+
 
   </div>
 
 
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
   <footer>
     best viewed at night.
   </footer>
+
 
 </div>
 
 
 <script>
 
-(function () {
+/* =========================================================
+   CONTENT SOURCES
+========================================================= */
 
-  "use strict";
+const WRITINGS_URL =
+  "/writings/content.json?v=" + Date.now();
 
+const NOTES_URL =
+  "/notes/content.json?v=" + Date.now();
 
-  const brandEl =
-    document.getElementById("brand");
-
-  const writingListEl =
-    document.getElementById("writing-list");
-
-  const noteListEl =
-    document.getElementById("note-list");
-
-  const photoListEl =
-    document.getElementById("photo-list");
-
-  const sinceShortEl =
-    document.getElementById("since-short");
-
-  const dateEl =
-    document.getElementById("date");
-
-  const timeEl =
-    document.getElementById("time");
-
-  const heroDateEl =
-    document.getElementById("hero-date");
+const PHOTOGRAPHS_URL =
+  "/photographs/content.json?v=" + Date.now();
 
 
-  /* =========================
-     SECURITY
-  ========================= */
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
-  function escapeHTML(value) {
+function escapeHTML(value){
 
-    return String(value ?? "")
+  return String(value ?? "")
 
-      .replace(/&/g, "&amp;")
+    .replace(/&/g,"&amp;")
 
-      .replace(/</g, "&lt;")
+    .replace(/</g,"&lt;")
 
-      .replace(/>/g, "&gt;")
+    .replace(/>/g,"&gt;")
 
-      .replace(/"/g, "&quot;")
+    .replace(/"/g,"&quot;")
 
-      .replace(/'/g, "&#039;");
+    .replace(/'/g,"&#039;");
 
-  }
-
-
-  /* =========================
-     WRITINGS
-  ========================= */
-
-  function renderWriting(item) {
-
-    const slug =
-      String(item.slug || "");
-
-    return `
-
-      <div class="entry">
-
-        <span class="date">
-          ${escapeHTML(item.date)}
-        </span>
-
-        <a
-          href="/writings/?slug=${encodeURIComponent(slug)}"
-        >
-          ${escapeHTML(item.title)}
-        </a>
-
-      </div>
-
-    `;
-
-  }
+}
 
 
-  /* =========================
-     SLUG HELPER
-  ========================= */
+/* =========================================================
+   SLUG FALLBACK
+========================================================= */
 
-  function slugify(text) {
+function slugify(value){
 
-    return String(text ?? "")
+  return String(value || "")
 
-      .toLowerCase()
+    .toLowerCase()
 
-      .normalize("NFD")
+    .normalize("NFD")
 
-      .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[\u0300-\u036f]/g,"")
 
-      .replace(/đ/g, "d")
+    .replace(/đ/g,"d")
 
-      .replace(/[^a-z0-9]+/g, "-")
+    .replace(/[^a-z0-9]+/g,"-")
 
-      .replace(/^-+|-+$/g, "");
+    .replace(/^-+|-+$/g,"");
+
+}
+
+
+/* =========================================================
+   LOAD JSON
+========================================================= */
+
+async function loadJSON(url){
+
+  const response =
+    await fetch(
+      url,
+      {
+        cache:"no-store"
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+      "Could not load " +
+      url +
+      " (" +
+      response.status +
+      ")"
+    );
 
   }
 
 
-  /* =========================
-     NOTES
-  ========================= */
+  return await response.json();
 
-  function renderNote(item) {
-
-    /*
-     * Prefer the real slug from
-     * notes/content.json.
-     *
-     * Only use slugify as a fallback.
-     */
-
-    const slug =
-      String(
-        item.slug ||
-        slugify(
-          item.title ||
-          item.text ||
-          ""
-        )
-      );
+}
 
 
-    const label =
-      item.title ||
-      item.text ||
-      "";
+/* =========================================================
+   RENDER WRITINGS
+========================================================= */
+
+function renderWritings(items){
+
+  const container =
+    document.getElementById(
+      "writingsList"
+    );
 
 
-    return `
+  if(!Array.isArray(items) || !items.length){
 
-      <div class="entry">
+    container.innerHTML =
+      "No writings yet.";
 
-        <span class="date">
-          ${escapeHTML(item.date)}
-        </span>
-
-        <a
-          href="/notes/?slug=${encodeURIComponent(slug)}"
-        >
-          ${escapeHTML(label)}
-        </a>
-
-      </div>
-
-    `;
+    return;
 
   }
 
 
-  /* =========================
-     PHOTOGRAPHS
-  ========================= */
+  container.innerHTML =
+    items
+      .slice(0,6)
+      .map(item => {
 
-  function renderPhoto(item) {
-
-    const slug =
-      String(
-        item.slug ||
-        slugify(item.title || "")
-      );
-
-
-    return `
-
-      <figure class="photo">
-
-        <a
-          href="photographs/photo-${encodeURIComponent(slug)}.html"
-        >
-
-          <img
-            src="${escapeHTML(item.image)}"
-            alt="${escapeHTML(item.title)}"
-            loading="lazy"
-          >
-
-        </a>
+        const slug =
+          String(
+            item.slug ||
+            slugify(item.title)
+          );
 
 
-        <figcaption>
+        return `
 
           <a
-            href="photographs/photo-${encodeURIComponent(slug)}.html"
+            class="list-entry"
+            href="/writings/?slug=${encodeURIComponent(slug)}"
           >
 
-            ${escapeHTML(item.title)}
+            <div class="list-date">
+
+              ${escapeHTML(
+                item.date || ""
+              )}
+
+            </div>
+
+
+            <div class="list-title">
+
+              ${escapeHTML(
+                item.title || ""
+              )}
+
+            </div>
 
           </a>
 
-        </figcaption>
+        `;
 
-      </figure>
+      })
+      .join("");
 
-    `;
+}
+
+
+/* =========================================================
+   RENDER NOTES
+========================================================= */
+
+function renderNotes(items){
+
+  const container =
+    document.getElementById(
+      "notesList"
+    );
+
+
+  if(!Array.isArray(items) || !items.length){
+
+    container.innerHTML =
+      "No notes yet.";
+
+    return;
 
   }
 
 
-  /* =========================
-     CLOCK
-  ========================= */
+  container.innerHTML =
+    items
+      .slice(0,6)
+      .map(item => {
 
-  function updateClock() {
-
-    const now =
-      new Date();
-
-
-    const date =
-      now.toLocaleDateString(
-        "vi-VN",
-        {
-          day:"2-digit",
-          month:"2-digit",
-          year:"numeric"
-        }
-      );
+        const slug =
+          String(
+            item.slug ||
+            slugify(item.title)
+          );
 
 
-    const time =
-      now.toLocaleTimeString(
-        "vi-VN",
-        {
-          hour:"2-digit",
-          minute:"2-digit",
-          second:"2-digit",
-          hour12:false
-        }
-      );
+        return `
+
+          <a
+            class="note-entry"
+            href="/notes/?slug=${encodeURIComponent(slug)}"
+          >
+
+            <div class="note-date">
+
+              ${escapeHTML(
+                item.date || ""
+              )}
+
+            </div>
 
 
-    dateEl.textContent =
+            <div class="note-title">
+
+              ${escapeHTML(
+                item.title || ""
+              )}
+
+            </div>
+
+          </a>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+/* =========================================================
+   RENDER PHOTOGRAPHS
+========================================================= */
+
+function renderPhotographs(items){
+
+  const container =
+    document.getElementById(
+      "photographsList"
+    );
+
+
+  if(!Array.isArray(items) || !items.length){
+
+    container.innerHTML =
+      "No photographs yet.";
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    items
+      .slice(0,4)
+      .map(item => {
+
+        const slug =
+          String(
+            item.slug ||
+            slugify(item.title)
+          );
+
+
+        const image =
+          String(
+            item.image || ""
+          );
+
+
+        return `
+
+          <a
+            class="photo-card"
+            href="/photographs/?slug=${encodeURIComponent(slug)}"
+          >
+
+            <img
+              class="photo-image"
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(item.title || "")}"
+              loading="lazy"
+            >
+
+
+            <div class="photo-title">
+
+              ${escapeHTML(
+                item.title || ""
+              )}
+
+            </div>
+
+
+            <div class="photo-date">
+
+              ${escapeHTML(
+                item.date || ""
+              )}
+
+            </div>
+
+          </a>
+
+        `;
+
+      })
+      .join("");
+
+}
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+
+  const date =
+    String(
+      now.getDate()
+    ).padStart(2,"0") +
+
+    "." +
+
+    String(
+      now.getMonth()+1
+    ).padStart(2,"0") +
+
+    "." +
+
+    now.getFullYear();
+
+
+  const time =
+    String(
+      now.getHours()
+    ).padStart(2,"0") +
+
+    ":" +
+
+    String(
+      now.getMinutes()
+    ).padStart(2,"0") +
+
+    ":" +
+
+    String(
+      now.getSeconds()
+    ).padStart(2,"0");
+
+
+  const dateElement =
+    document.getElementById(
+      "date"
+    );
+
+
+  const timeElement =
+    document.getElementById(
+      "time"
+    );
+
+
+  if(dateElement){
+
+    dateElement.textContent =
       date;
 
-    timeEl.textContent =
+  }
+
+
+  if(timeElement){
+
+    timeElement.textContent =
       time;
 
-    heroDateEl.textContent =
-      date;
+  }
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+async function init(){
+
+  try{
+
+    const [
+      writingsData,
+      notesData,
+      photographsData
+    ] = await Promise.all([
+
+      loadJSON(
+        WRITINGS_URL
+      ),
+
+      loadJSON(
+        NOTES_URL
+      ),
+
+      loadJSON(
+        PHOTOGRAPHS_URL
+      )
+
+    ]);
+
+
+    renderWritings(
+      Array.isArray(
+        writingsData.writings
+      )
+        ? writingsData.writings
+        : []
+    );
+
+
+    renderNotes(
+      Array.isArray(
+        notesData.notes
+      )
+        ? notesData.notes
+        : []
+    );
+
+
+    renderPhotographs(
+      Array.isArray(
+        photographsData.photographs
+      )
+        ? photographsData.photographs
+        : []
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    document.getElementById(
+      "writingsList"
+    ).innerHTML =
+      "Could not load writings.";
+
+
+    document.getElementById(
+      "notesList"
+    ).innerHTML =
+      "Could not load notes.";
+
+
+    document.getElementById(
+      "photographsList"
+    ).innerHTML =
+      "Could not load photographs.";
 
   }
 
+}
 
-  /* =========================
-     LOAD CONTENT
-  ========================= */
 
-  async function loadContent() {
+/* =========================================================
+   START
+========================================================= */
 
-    try {
+updateClock();
 
-      const [
+setInterval(
+  updateClock,
+  1000
+);
 
-        writingsResponse,
-
-        notesResponse,
-
-        photosResponse
-
-      ] = await Promise.all([
-
-        fetch(
-          "/writings/content.json?v=" +
-          Date.now(),
-          {
-            cache:"no-store"
-          }
-        ),
-
-        fetch(
-          "/notes/content.json?v=" +
-          Date.now(),
-          {
-            cache:"no-store"
-          }
-        ),
-
-        fetch(
-          "/photographs/content.json?v=" +
-          Date.now(),
-          {
-            cache:"no-store"
-          }
-        )
-
-      ]);
-
-
-      if (!writingsResponse.ok) {
-
-        throw new Error(
-          "writings/content.json HTTP " +
-          writingsResponse.status
-        );
-
-      }
-
-
-      if (!notesResponse.ok) {
-
-        throw new Error(
-          "notes/content.json HTTP " +
-          notesResponse.status
-        );
-
-      }
-
-
-      if (!photosResponse.ok) {
-
-        throw new Error(
-          "photographs/content.json HTTP " +
-          photosResponse.status
-        );
-
-      }
-
-
-      const writingsData =
-        await writingsResponse.json();
-
-
-      const notesData =
-        await notesResponse.json();
-
-
-      const photosData =
-        await photosResponse.json();
-
-
-      const writings =
-        Array.isArray(
-          writingsData.writings
-        )
-          ? writingsData.writings
-          : [];
-
-
-      const notes =
-        Array.isArray(
-          notesData.notes
-        )
-          ? notesData.notes
-          : [];
-
-
-      const photos =
-        Array.isArray(
-          photosData.photographs
-        )
-          ? photosData.photographs
-          : (
-              Array.isArray(
-                photosData.photos
-              )
-                ? photosData.photos
-                : []
-            );
-
-
-      /*
-       * HOME DATA
-       */
-
-      writingListEl.innerHTML =
-        writings
-          .slice(0,6)
-          .map(renderWriting)
-          .join("");
-
-
-      noteListEl.innerHTML =
-        notes
-          .slice(0,4)
-          .map(renderNote)
-          .join("");
-
-
-      photoListEl.innerHTML =
-        photos
-          .slice(0,3)
-          .map(renderPhoto)
-          .join("");
-
-
-    } catch (error) {
-
-      console.error(
-        "QM Archive:",
-        error
-      );
-
-
-      const message = `
-
-        <div class="entry">
-
-          <span class="date">
-            ERROR
-          </span>
-
-          <span>
-            content.json could not be loaded.
-          </span>
-
-        </div>
-
-      `;
-
-
-      writingListEl.innerHTML =
-        message;
-
-      noteListEl.innerHTML =
-        message;
-
-    }
-
-  }
-
-
-  /* =========================
-     INIT
-  ========================= */
-
-  updateClock();
-
-  setInterval(
-    updateClock,
-    1000
-  );
-
-  loadContent();
-
-})();
+init();
 
 </script>
 
