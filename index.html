@@ -2955,9 +2955,67 @@ function renderNotes(items){
   }
 
 
-  container.innerHTML =
+  /*
+     Sort by newest date first,
+     then take only the 6 newest notes.
+  */
+
+  const latestItems =
     items
+      .map(
+        (item,index) => ({
+
+          item,
+
+          index,
+
+          date:
+            String(
+              item.date || ""
+            )
+              .split(".")
+              .reverse()
+              .join("")
+
+        })
+      )
+      .sort(
+        (a,b) => {
+
+          if(
+            b.date !==
+            a.date
+          ){
+
+            return b.date.localeCompare(
+              a.date
+            );
+
+          }
+
+
+          /*
+             If two notes have
+             the same date, preserve
+             their original JSON order.
+          */
+
+          return (
+            a.index -
+            b.index
+          );
+
+        }
+      )
       .slice(0,6)
+      .map(
+        entry =>
+          entry.item
+      );
+
+
+  container.innerHTML =
+    latestItems
       .map(item => {
 
         const slug =
@@ -3026,9 +3084,67 @@ function renderPhotographs(items){
   }
 
 
-  container.innerHTML =
+  /*
+     Sort by newest date first,
+     then take only the 4 newest photographs.
+  */
+
+  const latestItems =
     items
+      .map(
+        (item,index) => ({
+
+          item,
+
+          index,
+
+          date:
+            String(
+              item.date || ""
+            )
+              .split(".")
+              .reverse()
+              .join("")
+
+        })
+      )
+      .sort(
+        (a,b) => {
+
+          if(
+            b.date !==
+            a.date
+          ){
+
+            return b.date.localeCompare(
+              a.date
+            );
+
+          }
+
+
+          /*
+             If two photographs have
+             the same date, preserve
+             their original JSON order.
+          */
+
+          return (
+            a.index -
+            b.index
+          );
+
+        }
+      )
       .slice(0,4)
+      .map(
+        entry =>
+          entry.item
+      );
+
+
+  container.innerHTML =
+    latestItems
       .map(item => {
 
         const slug =
@@ -3903,143 +4019,4 @@ async function init(){
     */
 
     if(
-      event.target.closest(
-        ".music-player"
-      )
-    ){
-
-      return;
-
-    }
-
-
-    const savedState =
-      getMusicState();
-
-
-    /*
-       If there is a saved state and it was
-       previously playing, resume it.
-
-       Otherwise preserve the original
-       behaviour: first interaction starts
-       the first/default track.
-    */
-
-    musicStarted = true;
-
-
-    audio.play()
-      .then(() => {
-
-        playButton.textContent =
-          "❚❚";
-
-        saveMusicState();
-
-      })
-      .catch(() => {
-
-        musicStarted = false;
-
-      });
-
-
-    document.removeEventListener(
-      "pointerdown",
-      startMusic
-    );
-
-  }
-
-
-  document.addEventListener(
-    "pointerdown",
-    startMusic
-  );
-
-
-  try{
-
-    const [
-      writingsData,
-      notesData,
-      photographsData
-    ] = await Promise.all([
-
-      loadJSON(
-        WRITINGS_URL
-      ),
-
-      loadJSON(
-        NOTES_URL
-      ),
-
-      loadJSON(
-        PHOTOGRAPHS_URL
-      )
-
-    ]);
-
-
-    renderWritings(
-      Array.isArray(
-        writingsData.writings
-      )
-        ? writingsData.writings
-        : []
-    );
-
-
-    renderNotes(
-      Array.isArray(
-        notesData.notes
-      )
-        ? notesData.notes
-        : []
-    );
-
-
-    renderPhotographs(
-      Array.isArray(
-        photographsData.photographs
-      )
-        ? photographsData.photographs
-        : []
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    document.getElementById(
-      "writingList"
-    ).innerHTML =
-      "<div class='error'>Writings could not be loaded.</div>";
-
-
-    document.getElementById(
-      "noteList"
-    ).innerHTML =
-      "<div class='error'>Notes could not be loaded.</div>";
-
-
-    document.getElementById(
-      "photoGrid"
-    ).innerHTML =
-      "<div class='error'>Photographs could not be loaded.</div>";
-
-  }
-
-}
-
-
-init();
-
-</script>
-
-
-</body>
-</html>
+     
