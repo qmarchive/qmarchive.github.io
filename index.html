@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>QM Archive — QUỐC MẠNH</title>
+<title>QUỐC MẠNH — QM ARCHIVE</title>
 
 <style>
 
 /* =========================================================
-   WINDOWS 98 — BASE
+   RESET
 ========================================================= */
 
 *{
@@ -20,187 +21,124 @@ html,
 body{
   margin:0;
   padding:0;
+}
 
-  min-height:100%;
-
-  font-family:
-    "MS Sans Serif",
-    Tahoma,
-    Arial,
-    sans-serif;
-
-  background:#008080;
-
-  color:#000;
+html{
+  background:#d8cfb5;
 }
 
 body{
   min-height:100vh;
 
-  overflow-x:hidden;
+  background:
+    linear-gradient(
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.08)
+    ),
+    #d8cfb5;
+
+  color:#17182f;
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  image-rendering:auto;
 }
 
 
 /* =========================================================
-   DESKTOP
+   PIXEL TEXTURE
 ========================================================= */
 
-.desktop{
-  min-height:100vh;
+body::before{
+  content:"";
 
-  padding:18px;
-
-  position:relative;
-
-  background:#008080;
-}
-
-
-/* =========================================================
-   DESKTOP ICONS
-========================================================= */
-
-.desktop-icons{
   position:fixed;
+  inset:0;
 
-  top:18px;
-  left:18px;
+  pointer-events:none;
 
-  width:90px;
+  z-index:9999;
 
-  display:flex;
-
-  flex-direction:column;
-
-  gap:22px;
-
-  z-index:2;
-}
-
-.desktop-icon{
-  width:82px;
-
-  text-align:center;
-
-  color:#fff;
-
-  font-size:12px;
-
-  line-height:1.25;
-
-  text-shadow:
-    1px 1px #000;
-
-  cursor:default;
-}
-
-.desktop-icon-symbol{
-  width:38px;
-  height:38px;
-
-  margin:0 auto 5px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-size:25px;
-
-  text-shadow:none;
-}
-
-
-/* =========================================================
-   ICON SYMBOLS
-========================================================= */
-
-.icon-computer{
-  color:#111;
-
-  background:#c0c0c0;
-
-  border:2px outset #fff;
-
-  box-shadow:
-    inset 0 0 0 2px #808080;
-
-  font-size:20px;
-}
-
-.icon-folder{
-  color:#000;
-
-  background:#ffff80;
-
-  border:1px solid #806000;
-
-  box-shadow:
-    3px 3px 0 #004040;
-
-  font-size:22px;
-}
-
-.icon-ie{
-  color:#000;
-
-  background:#c0c0c0;
-
-  border:2px outset #fff;
-
-  font-size:22px;
-}
-
-.icon-bin{
-  color:#000;
-
-  background:#c0c0c0;
-
-  border:2px outset #fff;
-
-  font-size:21px;
-}
-
-
-/* =========================================================
-   MAIN IE WINDOW
-========================================================= */
-
-.ie-window{
-
-  width:
-    min(
-      calc(100vw - 210px),
-      1280px
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(23,24,47,.035) 0px,
+      rgba(23,24,47,.035) 1px,
+      transparent 1px,
+      transparent 4px
     );
 
-  min-height:
-    calc(100vh - 80px);
-
-  margin-left:115px;
-
-  margin-right:10px;
-
-  background:#c0c0c0;
-
-  border:2px outset #ffffff;
-
-  box-shadow:
-    2px 2px 0 #000;
-
-  position:relative;
+  opacity:.45;
 }
 
 
 /* =========================================================
-   WINDOW TITLE BAR
+   VARIABLES
 ========================================================= */
 
-.title-bar{
+:root{
 
-  height:30px;
+  --cream:#d8cfb5;
+  --paper:#e5dcc2;
 
-  padding:3px 4px;
+  --orange:#f05a32;
+  --orange-dark:#c94325;
+
+  --blue:#15172f;
+  --blue-soft:#243b73;
+
+  --teal:#146f78;
+  --teal-dark:#0e5058;
+
+  --black:#111222;
+
+  --white:#f3ead5;
+
+  --border:3px solid var(--blue);
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+
+  width:100%;
+
+  min-height:100vh;
+
+  padding:
+    18px
+    18px
+    82px;
+
+}
+
+
+/* =========================================================
+   WINDOWS / PIXEL PANEL
+========================================================= */
+
+.window{
+
+  background:var(--paper);
+
+  border:var(--border);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+}
+
+
+.window-titlebar{
+
+  min-height:38px;
 
   display:flex;
 
@@ -208,32 +146,41 @@ body{
 
   justify-content:space-between;
 
-  color:#fff;
+  gap:15px;
 
-  background:
-    linear-gradient(
-      to right,
-      #000080 0%,
-      #1084d0 100%
-    );
+  padding:
+    5px
+    8px;
 
-  font-size:13px;
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
+  color:var(--blue);
 
   font-weight:bold;
+
+  letter-spacing:1px;
+
+  font-size:14px;
+
 }
 
-.title-left{
+
+.window-title{
 
   display:flex;
 
   align-items:center;
 
-  gap:7px;
+  gap:8px;
 
   min-width:0;
+
 }
 
-.title-icon{
+
+.window-title-icon{
 
   width:20px;
   height:20px;
@@ -243,303 +190,72 @@ body{
   align-items:center;
   justify-content:center;
 
-  background:#c0c0c0;
+  background:var(--paper);
 
-  color:#000;
+  border:2px solid var(--blue);
 
-  border:1px solid #fff;
-
-  font-size:13px;
+  font-size:11px;
 
   flex-shrink:0;
+
 }
 
-.title-text{
-
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-}
 
 .window-buttons{
 
   display:flex;
 
-  gap:3px;
+  gap:4px;
+
+  flex-shrink:0;
+
 }
+
 
 .window-button{
 
-  width:22px;
+  width:20px;
   height:20px;
 
-  padding:0;
-
-  background:#c0c0c0;
-
-  color:#000;
-
-  border:2px outset #fff;
-
-  font-family:Arial,sans-serif;
-
-  font-size:12px;
-
-  font-weight:bold;
-
-  line-height:15px;
-}
-
-.window-button:active{
-
-  border-style:inset;
-
-}
-
-
-/* =========================================================
-   IE MENU BAR
-========================================================= */
-
-.ie-menu{
-
-  height:28px;
-
   display:flex;
 
   align-items:center;
-
-  gap:24px;
-
-  padding:0 10px;
-
-  background:#c0c0c0;
-
-  border-bottom:1px solid #808080;
-
-  font-size:13px;
-}
-
-.ie-menu span{
-
-  cursor:default;
-}
-
-.ie-menu span::first-letter{
-
-  text-decoration:underline;
-}
-
-
-/* =========================================================
-   IE TOOLBAR
-========================================================= */
-
-.ie-toolbar{
-
-  min-height:57px;
-
-  padding:5px 8px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:7px;
-
-  background:#c0c0c0;
-
-  border-top:1px solid #fff;
-
-  border-bottom:1px solid #808080;
-}
-
-.tool-button{
-
-  min-width:54px;
-
-  height:42px;
-
-  padding:2px 5px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
   justify-content:center;
 
-  gap:2px;
+  border:2px solid var(--blue);
 
-  background:#c0c0c0;
+  background:var(--paper);
 
-  border:2px outset #fff;
-
-  font-size:10px;
-
-  color:#000;
-}
-
-.tool-button:active{
-
-  border-style:inset;
-}
-
-.tool-icon{
-
-  font-size:19px;
-
-  line-height:18px;
-}
-
-.toolbar-separator{
-
-  width:2px;
-
-  height:42px;
-
-  border-left:1px solid #808080;
-
-  border-right:1px solid #fff;
-
-  margin:0 3px;
-}
-
-
-/* =========================================================
-   ADDRESS BAR
-========================================================= */
-
-.address-row{
-
-  min-height:31px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:5px;
-
-  padding:4px 7px;
-
-  background:#c0c0c0;
-
-  border-bottom:1px solid #808080;
-
-  font-size:12px;
-}
-
-.address-label{
-
-  font-weight:bold;
-
-  padding-left:2px;
-}
-
-.address-input{
-
-  flex:1;
-
-  min-width:0;
-
-  height:22px;
-
-  padding:2px 6px;
-
-  background:#fff;
-
-  color:#000;
-
-  border:2px inset #fff;
-
-  font-family:"Courier New",monospace;
-
-  font-size:12px;
-}
-
-.go-button{
-
-  width:38px;
-
-  height:22px;
-
-  background:#c0c0c0;
-
-  border:2px outset #fff;
+  color:var(--blue);
 
   font-size:11px;
 
-  font-weight:bold;
-}
+  line-height:1;
 
-.go-button:active{
-
-  border-style:inset;
 }
 
 
 /* =========================================================
-   IE CONTENT AREA
+   BROWSER
 ========================================================= */
 
-.ie-content{
+.browser{
 
-  margin:8px;
+  border:var(--border);
 
-  background:#c0c0c0;
-
-  border:2px inset #fff;
-
-  min-height:
-    calc(100vh - 255px);
-
-  padding:8px;
-}
-
-
-/* =========================================================
-   ARCHIVE WORKSPACE
-========================================================= */
-
-.archive-workspace{
-
-  display:grid;
-
-  grid-template-columns:
-    205px
-    minmax(0,1fr)
-    235px;
-
-  gap:8px;
-
-  align-items:start;
-}
-
-
-/* =========================================================
-   CLASSIC WINDOW
-========================================================= */
-
-.win-window{
-
-  background:#c0c0c0;
-
-  border:2px outset #fff;
+  background:var(--paper);
 
   box-shadow:
-    1px 1px 0 #000;
+    5px 5px 0 var(--blue);
 
-  min-width:0;
+  margin-bottom:18px;
+
 }
 
-.win-title{
 
-  height:25px;
+.browser-top{
 
-  padding:3px 5px;
+  min-height:40px;
 
   display:flex;
 
@@ -547,152 +263,357 @@ body{
 
   justify-content:space-between;
 
-  background:#000080;
+  padding:
+    6px
+    10px;
 
-  color:#fff;
+  background:var(--orange);
 
-  font-size:12px;
+  border-bottom:var(--border);
 
-  font-weight:bold;
 }
 
-.win-title-text{
 
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-}
-
-.win-title-controls{
+.browser-brand{
 
   display:flex;
 
-  gap:2px;
+  align-items:center;
+
+  gap:10px;
+
+  color:var(--blue);
+
+  font-weight:bold;
+
+  font-size:18px;
+
+  letter-spacing:1px;
+
 }
 
-.mini-button{
 
-  width:17px;
-  height:16px;
+.browser-brand-icon{
 
-  padding:0;
+  width:25px;
+  height:25px;
 
-  background:#c0c0c0;
+  display:flex;
 
-  color:#000;
+  align-items:center;
+  justify-content:center;
 
-  border:1px outset #fff;
+  border:2px solid var(--blue);
 
-  font-size:10px;
+  background:var(--teal);
 
-  line-height:12px;
+  color:var(--white);
+
 }
 
-.win-body{
+
+.browser-window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.browser-window-buttons span{
+
+  width:24px;
+  height:24px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  font-size:12px;
+
+}
+
+
+.browser-menu{
+
+  display:flex;
+
+  gap:22px;
+
+  padding:
+    7px 12px;
+
+  border-bottom:2px solid var(--blue);
+
+  color:var(--blue);
+
+  font-size:13px;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+}
+
+
+.browser-address-row{
+
+  display:grid;
+
+  grid-template-columns:
+    auto
+    auto
+    auto
+    minmax(0,1fr)
+    auto;
+
+  gap:7px;
+
+  align-items:center;
 
   padding:8px;
 
-  background:#c0c0c0;
+}
 
-  color:#000;
+
+.browser-control{
+
+  width:31px;
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  font-weight:bold;
+
+}
+
+
+.browser-address{
+
+  min-width:0;
+
+  height:29px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:
+    0 10px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:#34354b;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:12px;
+
+}
+
+
+.browser-date{
+
+  min-width:180px;
+
+  text-align:center;
+
+  color:var(--blue);
+
+  font-size:12px;
+
+  line-height:1.5;
+
 }
 
 
 /* =========================================================
-   LEFT NAVIGATION
+   MAIN GRID
 ========================================================= */
 
-.nav-window{
+.layout{
 
-  min-height:640px;
+  display:grid;
+
+  grid-template-columns:
+    285px
+    minmax(0,1fr)
+    315px;
+
+  gap:18px;
+
+  max-width:1600px;
+
+  margin:0 auto;
+
+  align-items:start;
+
 }
 
-.nav-header{
 
-  margin-bottom:10px;
+/* =========================================================
+   LEFT COLUMN
+========================================================= */
 
-  font-family:"Times New Roman",serif;
-
-  font-size:21px;
-
-  font-weight:bold;
-}
-
-.nav-subtitle{
-
-  font-family:"Courier New",monospace;
-
-  font-size:11px;
-
-  margin-bottom:12px;
-}
-
-.nav-separator{
-
-  height:2px;
-
-  border-top:1px solid #808080;
-
-  border-bottom:1px solid #fff;
-
-  margin:8px 0 12px;
-}
-
-.nav-list{
+.left{
 
   display:flex;
 
   flex-direction:column;
 
-  gap:3px;
+  gap:18px;
+
 }
 
-.nav-link{
+
+.profile-window{
+
+  overflow:hidden;
+
+}
+
+
+.profile-image{
+
+  padding:12px;
+
+  border-bottom:var(--border);
+
+}
+
+
+.profile-image img{
 
   display:block;
 
-  padding:5px 7px;
+  width:100%;
 
-  color:#000;
+  aspect-ratio:1/1;
+
+  object-fit:cover;
+
+  border:3px solid var(--blue);
+
+}
+
+
+.profile-caption{
+
+  padding:
+    10px 12px;
+
+  text-align:center;
+
+  font-size:12px;
+
+  color:var(--blue);
+
+  letter-spacing:1px;
+
+}
+
+
+.nav-list{
+
+  padding:10px;
+
+}
+
+
+.nav-list a{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-height:36px;
+
+  padding:
+    6px 9px;
+
+  color:var(--blue);
 
   text-decoration:none;
 
-  font-size:13px;
+  font-weight:bold;
+
+  font-size:14px;
+
 }
 
-.nav-link:hover{
 
-  background:#000080;
+.nav-list a:hover{
 
-  color:#fff;
+  background:var(--orange);
+
 }
 
-.nav-link.active{
 
-  background:#000080;
+.nav-list a.active{
 
-  color:#fff;
+  background:var(--orange);
+
 }
 
-.nav-link::before{
 
-  content:"";
+.folder-icon{
+
+  width:21px;
+  height:16px;
 
   display:inline-block;
 
-  width:13px;
+  background:#e6b82f;
 
-  height:11px;
+  border:2px solid var(--blue);
 
-  margin-right:7px;
+  position:relative;
 
-  vertical-align:-1px;
+  flex-shrink:0;
 
-  background:#ffff80;
+}
 
-  border:1px solid #806000;
+
+.folder-icon::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:1px;
+  top:-6px;
+
+  width:9px;
+  height:6px;
+
+  background:#e6b82f;
+
+  border:
+    2px solid var(--blue);
+
+  border-bottom:0;
+
 }
 
 
@@ -700,605 +621,72 @@ body{
    SYSTEM INFO
 ========================================================= */
 
-.system-info{
+.system-window{
 
-  margin-top:25px;
+  overflow:hidden;
 
-  padding:8px;
-
-  background:#fff;
-
-  border:2px inset #fff;
-
-  font-family:"Courier New",monospace;
-
-  font-size:11px;
-
-  line-height:1.7;
 }
 
-.system-title{
 
-  margin-bottom:5px;
+.system-content{
+
+  padding:14px;
+
+}
+
+
+.system-label{
+
+  margin-bottom:10px;
 
   font-weight:bold;
+
+  font-size:15px;
+
 }
+
+
+.system-line{
+
+  margin:
+    8px 0;
+
+  font-size:13px;
+
+}
+
 
 .online{
 
-  color:#008000;
+  color:#138b3b;
 
   font-weight:bold;
+
 }
 
 
 /* =========================================================
-   SMALL HOME IMAGE
+   CASSETTE
 ========================================================= */
 
-.home-mini-image{
+.cassette{
 
-  margin-top:18px;
-
-  padding:5px;
-
-  background:#c0c0c0;
-
-  border:2px inset #fff;
-}
-
-.home-mini-image img{
-
-  display:block;
-
-  width:100%;
-
-  height:auto;
-
-  filter:none;
-}
-
-.home-mini-caption{
-
-  padding-top:6px;
-
-  text-align:center;
-
-  font-family:"Courier New",monospace;
-
-  font-size:10px;
-}
-
-
-/* =========================================================
-   CENTRAL AREA
-========================================================= */
-
-.center-column{
-
-  min-width:0;
-}
-
-
-/* =========================================================
-   HERO WINDOW
-========================================================= */
-
-.hero-window{
-
-  margin-bottom:8px;
-}
-
-.hero-body{
-
-  padding:7px;
-
-  background:#c0c0c0;
-}
-
-.hero-image-frame{
-
-  background:#000;
-
-  border:2px inset #fff;
-}
-
-.hero-image{
-
-  display:block;
-
-  width:100%;
-
-  height:auto;
-
-  max-height:470px;
-
-  object-fit:cover;
-
-  filter:none;
-}
-
-.hero-caption{
-
-  padding:9px 10px 10px;
-
-  margin-top:7px;
-
-  background:#fff;
-
-  border:2px inset #fff;
-
-  font-family:"Courier New",monospace;
-
-  font-size:13px;
-
-  line-height:1.5;
-}
-
-.hero-date{
-
-  margin-top:5px;
-
-  text-align:right;
-
-  color:#555;
-
-  font-size:10px;
-}
-
-
-/* =========================================================
-   HOME LIST WINDOWS
-========================================================= */
-
-.content-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    minmax(0,1fr)
-    minmax(0,1fr);
-
-  gap:8px;
-
-  margin-bottom:8px;
-}
-
-.content-window{
-
-  min-width:0;
-}
-
-.content-body{
-
-  padding:0;
-
-  background:#fff;
-
-  border:0;
-
-  min-height:220px;
-}
-
-
-/* =========================================================
-   LIST
-========================================================= */
-
-.home-list{
-
-  width:100%;
-}
-
-.home-entry{
-
-  display:grid;
-
-  grid-template-columns:
-    82px
-    minmax(0,1fr);
-
-  gap:8px;
-
-  padding:7px 8px;
-
-  border-bottom:1px solid #d0d0d0;
-
-  text-decoration:none;
-
-  color:#000;
-
-  font-size:11px;
-}
-
-.home-entry:hover{
-
-  background:#000080;
-
-  color:#fff;
-}
-
-.home-entry-date{
-
-  color:#555;
-
-  font-family:"Courier New",monospace;
-
-  font-size:10px;
-}
-
-.home-entry:hover .home-entry-date{
-
-  color:#fff;
-}
-
-.home-entry-title{
-
-  min-width:0;
-
-  line-height:1.35;
-}
-
-
-/* =========================================================
-   PHOTOGRAPHS WINDOW
-========================================================= */
-
-.photographs-window{
-
-  margin-bottom:0;
-}
-
-.photo-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-
-  gap:5px;
-
-  padding:6px;
-
-  background:#fff;
-}
-
-.photo-card{
-
-  min-width:0;
-
-  text-decoration:none;
-
-  color:#000;
-}
-
-.photo-image{
-
-  display:block;
-
-  width:100%;
-
-  aspect-ratio:1 / .72;
-
-  object-fit:cover;
-
-  border:2px inset #fff;
-
-  filter:none;
-}
-
-.photo-card:hover .photo-image{
-
-  outline:2px solid #000080;
-
-  outline-offset:-2px;
-}
-
-.photo-title{
-
-  margin-top:4px;
-
-  font-size:9px;
-
-  line-height:1.3;
-
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-}
-
-
-/* =========================================================
-   RIGHT COLUMN
-========================================================= */
-
-.right-column{
-
-  min-width:0;
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:8px;
-}
-
-
-/* =========================================================
-   NOTEPAD
-========================================================= */
-
-.notepad-body{
-
-  min-height:260px;
+  margin-top:15px;
 
   padding:10px;
 
-  background:#fff;
+  border:3px solid var(--blue);
 
-  border:2px inset #fff;
+  background:#b6ac94;
 
-  font-family:"Courier New",monospace;
-
-  font-size:12px;
-
-  line-height:1.8;
-
-  white-space:normal;
-}
-
-.notepad-menu{
-
-  padding:4px 7px;
-
-  background:#c0c0c0;
-
-  border-bottom:1px solid #808080;
-
-  font-size:10px;
 }
 
 
-/* =========================================================
-   PORTRAIT WINDOW
-========================================================= */
+.cassette-body{
 
-.portrait-body{
+  height:105px;
 
-  padding:7px;
-
-  background:#c0c0c0;
-}
-
-.portrait-image{
-
-  display:block;
-
-  width:100%;
-
-  height:auto;
-
-  border:2px inset #fff;
-
-  filter:none;
-}
-
-.portrait-caption{
-
-  margin-top:6px;
-
-  font-family:"Courier New",monospace;
-
-  font-size:10px;
-
-  text-align:center;
-}
-
-
-/* =========================================================
-   CLOCK WINDOW
-========================================================= */
-
-.clock-window{
-
-  margin-top:auto;
-}
-
-.clock-body{
-
-  padding:15px 8px;
-
-  background:#fff;
-
-  border:2px inset #fff;
-
-  text-align:center;
-
-  font-family:"Courier New",monospace;
-}
-
-.clock-time{
-
-  font-size:23px;
-
-  font-weight:bold;
-
-  letter-spacing:1px;
-}
-
-.clock-date{
-
-  margin-top:5px;
-
-  font-size:11px;
-}
-
-
-/* =========================================================
-   IE STATUS BAR
-========================================================= */
-
-.status-bar{
-
-  height:23px;
-
-  margin-top:7px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:2px 6px;
-
-  background:#c0c0c0;
-
-  border-top:2px inset #fff;
-
-  font-family:"Courier New",monospace;
-
-  font-size:10px;
-}
-
-.status-left{
-
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-}
-
-.status-right{
-
-  width:120px;
-
-  height:15px;
-
-  border:2px inset #fff;
-
-  background:#c0c0c0;
-}
-
-
-/* =========================================================
-   WINDOWS TASKBAR
-========================================================= */
-
-.taskbar{
-
-  position:fixed;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:36px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:5px;
-
-  padding:3px;
-
-  background:#c0c0c0;
-
-  border-top:2px solid #fff;
-
-  box-shadow:
-    0 -1px 0 #808080;
-
-  z-index:10000;
-}
-
-.start-button{
-
-  height:30px;
-
-  min-width:80px;
-
-  padding:2px 8px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:6px;
-
-  background:#c0c0c0;
-
-  border:2px outset #fff;
-
-  color:#000;
-
-  font-weight:bold;
-
-  font-size:13px;
-}
-
-.start-button:active{
-
-  border-style:inset;
-}
-
-.start-logo{
-
-  width:18px;
-  height:18px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #008000 0 45%,
-      transparent 45% 55%,
-      #ff0000 55% 100%
-    );
-
-  border:1px solid #000;
-}
-
-.task-button{
-
-  height:30px;
-
-  min-width:180px;
-
-  max-width:300px;
-
-  padding:3px 9px;
-
-  background:#c0c0c0;
-
-  border:2px inset #fff;
-
-  text-align:left;
-
-  font-size:11px;
-
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-}
-
-.taskbar-spacer{
-
-  flex:1;
-}
-
-.system-tray{
-
-  height:30px;
-
-  min-width:100px;
-
-  padding:5px 9px;
+  position:relative;
 
   display:flex;
 
@@ -1306,106 +694,887 @@ body{
 
   justify-content:center;
 
-  background:#c0c0c0;
+  background:#252634;
 
-  border:2px inset #fff;
+  border:3px solid var(--blue);
 
-  font-family:"Courier New",monospace;
+}
+
+
+.cassette-label{
+
+  width:70%;
+
+  height:42px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:var(--paper);
+
+  border:2px solid var(--blue);
+
+  color:var(--blue);
+
+  font-weight:bold;
+
+  font-size:12px;
+
+}
+
+
+.cassette-hole{
+
+  position:absolute;
+
+  bottom:14px;
+
+  width:18px;
+  height:18px;
+
+  border-radius:50%;
+
+  background:#111;
+
+  border:3px solid #777;
+
+}
+
+
+.cassette-hole.left{
+  left:22%;
+}
+
+.cassette-hole.right{
+  right:22%;
+}
+
+
+.cassette-caption{
+
+  margin-top:9px;
+
+  text-align:center;
 
   font-size:11px;
+
+  line-height:1.5;
+
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   CENTER
 ========================================================= */
 
-@media(max-width:1150px){
+.center{
 
-  .desktop-icons{
-    display:none;
-  }
+  min-width:0;
 
-  .ie-window{
+  display:flex;
 
-    width:
-      calc(100vw - 24px);
+  flex-direction:column;
 
-    margin-left:12px;
+  gap:18px;
 
-    margin-right:12px;
-  }
+}
 
-  .archive-workspace{
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-window{
+
+  overflow:hidden;
+
+}
+
+
+.hero-image{
+
+  position:relative;
+
+  padding:10px;
+
+}
+
+
+.hero-image img{
+
+  display:block;
+
+  width:100%;
+
+  height:auto;
+
+  max-height:560px;
+
+  object-fit:cover;
+
+  border:3px solid var(--blue);
+
+}
+
+
+.hero-caption{
+
+  position:absolute;
+
+  left:28px;
+
+  right:28px;
+
+  bottom:24px;
+
+  max-width:75%;
+
+  padding:
+    10px 14px;
+
+  background:#eee5ce;
+
+  border:3px solid var(--blue);
+
+  box-shadow:
+    4px 4px 0 var(--blue);
+
+  color:var(--blue);
+
+  font-size:16px;
+
+  line-height:1.45;
+
+}
+
+
+.hero-date{
+
+  display:block;
+
+  margin-top:6px;
+
+  text-align:right;
+
+  font-size:10px;
+
+  color:#55566a;
+
+}
+
+
+/* =========================================================
+   TWO ARCHIVE PANELS
+========================================================= */
+
+.archive-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:18px;
+
+}
+
+
+.archive-window{
+
+  min-width:0;
+
+  overflow:hidden;
+
+}
+
+
+.archive-list{
+
+  padding:8px 12px;
+
+}
+
+
+.archive-entry{
+
+  display:grid;
+
+  grid-template-columns:
+    95px
+    minmax(0,1fr);
+
+  gap:10px;
+
+  padding:
+    8px 4px;
+
+  border-bottom:
+    1px dotted #57586a;
+
+  text-decoration:none;
+
+  color:var(--blue);
+
+}
+
+
+.archive-entry:last-child{
+
+  border-bottom:0;
+
+}
+
+
+.archive-entry:hover{
+
+  background:#f0e6ca;
+
+}
+
+
+.archive-date{
+
+  font-size:11px;
+
+  color:#4e5064;
+
+}
+
+
+.archive-title{
+
+  font-size:12px;
+
+  line-height:1.4;
+
+}
+
+
+.archive-arrow{
+
+  float:right;
+
+  color:#5a5b70;
+
+}
+
+
+/* =========================================================
+   PHOTOGRAPHS
+========================================================= */
+
+.photos-window{
+
+  overflow:hidden;
+
+}
+
+
+.photos-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:10px;
+
+  padding:10px;
+
+}
+
+
+.photo-card{
+
+  min-width:0;
+
+  text-decoration:none;
+
+  color:var(--blue);
+
+}
+
+
+.photo-image{
+
+  aspect-ratio:4/3;
+
+  overflow:hidden;
+
+  border:3px solid var(--blue);
+
+  background:#999;
+
+}
+
+
+.photo-image img{
+
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  transition:
+    transform .15s ease;
+
+}
+
+
+.photo-card:hover .photo-image img{
+
+  transform:scale(1.04);
+
+}
+
+
+.photo-meta{
+
+  padding:
+    7px 2px 4px;
+
+}
+
+
+.photo-date{
+
+  font-size:10px;
+
+  color:#5b5c70;
+
+  margin-bottom:4px;
+
+}
+
+
+.photo-title{
+
+  font-size:11px;
+
+  line-height:1.35;
+
+}
+
+
+/* =========================================================
+   RIGHT COLUMN
+========================================================= */
+
+.right{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:18px;
+
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-window{
+
+  overflow:hidden;
+
+}
+
+
+.location-content{
+
+  padding:10px;
+
+}
+
+
+.location-title{
+
+  padding:
+    5px 4px 10px;
+
+  font-weight:bold;
+
+  font-size:13px;
+
+}
+
+
+.location-note{
+
+  min-height:165px;
+
+  padding:14px;
+
+  border:3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-size:13px;
+
+  line-height:1.8;
+
+}
+
+
+/* =========================================================
+   PORTRAIT
+========================================================= */
+
+.portrait-window{
+
+  overflow:hidden;
+
+}
+
+
+.portrait-content{
+
+  padding:10px;
+
+}
+
+
+.portrait-image{
+
+  width:100%;
+
+  border:3px solid var(--blue);
+
+}
+
+
+.portrait-image img{
+
+  display:block;
+
+  width:100%;
+
+  height:auto;
+
+}
+
+
+.portrait-caption{
+
+  padding:
+    9px 4px 3px;
+
+  text-align:center;
+
+  font-size:12px;
+
+}
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+.clock-window{
+
+  overflow:hidden;
+
+}
+
+
+.clock-content{
+
+  padding:15px;
+
+  text-align:center;
+
+}
+
+
+.clock-time{
+
+  font-size:26px;
+
+  font-weight:bold;
+
+  letter-spacing:2px;
+
+}
+
+
+.clock-date{
+
+  margin-top:6px;
+
+  font-size:12px;
+
+}
+
+
+/* =========================================================
+   SMALL SIDE QUOTE
+========================================================= */
+
+.side-quote{
+
+  padding:18px;
+
+  border:3px solid var(--blue);
+
+  background:#e7ddc0;
+
+  font-size:11px;
+
+  line-height:1.7;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+.music-player{
+
+  position:fixed;
+
+  left:12px;
+  right:12px;
+  bottom:12px;
+
+  z-index:10000;
+
+  display:grid;
+
+  grid-template-columns:
+    auto
+    minmax(160px,1fr)
+    auto
+    minmax(180px,1.5fr)
+    auto
+    auto;
+
+  gap:10px;
+
+  align-items:center;
+
+  padding:7px 9px;
+
+  background:var(--paper);
+
+  border:3px solid var(--blue);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+}
+
+
+.music-icon{
+
+  width:36px;
+  height:36px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:var(--orange);
+
+  border:3px solid var(--blue);
+
+  font-size:18px;
+
+}
+
+
+.music-info{
+
+  min-width:0;
+
+}
+
+
+.music-label{
+
+  color:#4d4e61;
+
+  font-size:9px;
+
+  text-transform:uppercase;
+
+  margin-bottom:2px;
+
+}
+
+
+.music-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-weight:bold;
+
+  font-size:12px;
+
+}
+
+
+.music-controls{
+
+  display:flex;
+
+  gap:5px;
+
+}
+
+
+.music-button{
+
+  width:34px;
+  height:30px;
+
+  border:3px solid var(--blue);
+
+  background:#e9dfc4;
+
+  color:var(--blue);
+
+  font-family:inherit;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+
+.music-button:hover{
+
+  background:var(--orange);
+
+}
+
+
+.music-progress{
+
+  min-width:0;
+
+}
+
+
+.music-progress input{
+
+  width:100%;
+
+  accent-color:var(--orange);
+
+  cursor:pointer;
+
+}
+
+
+.music-time{
+
+  min-width:76px;
+
+  text-align:center;
+
+  font-size:10px;
+
+}
+
+
+.music-volume{
+
+  width:110px;
+
+}
+
+
+.music-volume input{
+
+  width:100%;
+
+  accent-color:var(--teal);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+
+  max-width:1600px;
+
+  margin:18px auto 0;
+
+  padding:
+    12px;
+
+  border:3px solid var(--blue);
+
+  background:var(--paper);
+
+  text-align:center;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error{
+
+  padding:20px;
+
+  border:3px solid var(--orange);
+
+  background:#eee5ce;
+
+  color:#8b2c1e;
+
+  font-size:12px;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1200px){
+
+  .layout{
 
     grid-template-columns:
-      180px
+      220px
       minmax(0,1fr)
-      210px;
+      250px;
+
+    gap:14px;
+
   }
 
-}
+  .archive-entry{
 
+    grid-template-columns:1fr;
 
-@media(max-width:900px){
+    gap:4px;
 
-  .archive-workspace{
+  }
+
+  .music-player{
 
     grid-template-columns:
-      175px
-      minmax(0,1fr);
+      auto
+      minmax(130px,1fr)
+      auto
+      minmax(120px,1fr)
+      auto;
+
   }
 
-  .right-column{
+  .music-volume{
 
     display:none;
+
   }
 
 }
 
 
-@media(max-width:700px){
+/* =========================================================
+   MOBILE
+========================================================= */
 
-  body{
+@media(max-width:850px){
 
-    background:#c0c0c0;
+  .page{
+
+    padding:
+      10px
+      10px
+      80px;
+
   }
 
-  .desktop{
+  .browser-menu{
 
-    padding:0;
+    display:none;
 
-    padding-bottom:38px;
   }
 
-  .ie-window{
+  .browser-address-row{
+
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
+
+  }
+
+  .browser-address-row
+  .browser-control:nth-child(2){
+
+    display:none;
+
+  }
+
+  .browser-date{
+
+    display:none;
+
+  }
+
+  .layout{
+
+    display:block;
+
+  }
+
+  .left,
+  .center,
+  .right{
 
     width:100%;
 
-    min-height:100vh;
-
-    margin:0;
-
-    border:0;
-
-    box-shadow:none;
   }
 
-  .ie-toolbar{
+  .left{
 
-    overflow-x:auto;
+    margin-bottom:18px;
+
   }
 
-  .archive-workspace{
+  .profile-image{
 
-    display:block;
+    display:none;
+
   }
 
-  .nav-window{
+  .profile-caption{
 
-    min-height:auto;
+    display:none;
 
-    margin-bottom:8px;
   }
 
   .nav-list{
@@ -1414,155 +1583,147 @@ body{
 
     grid-template-columns:
       repeat(2,1fr);
+
   }
 
-  .system-info,
-  .home-mini-image{
-
-    display:none;
-  }
-
-  .content-grid{
+  .archive-grid{
 
     grid-template-columns:1fr;
+
   }
 
-  .photo-grid{
+  .photos-grid{
 
     grid-template-columns:
       repeat(2,minmax(0,1fr));
+
   }
 
-  .hero-image{
+  .right{
 
-    max-height:none;
+    margin-top:18px;
+
   }
 
-  .task-button{
+  .music-player{
 
-    min-width:150px;
+    left:6px;
+    right:6px;
+    bottom:6px;
+
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
+
+    gap:6px;
+
+  }
+
+  .music-controls{
+
+    grid-column:3;
+
+  }
+
+  .music-progress,
+  .music-time{
+
+    display:none;
+
   }
 
 }
 
 
-@media(max-width:450px){
+/* =========================================================
+   SMALL PHONE
+========================================================= */
 
-  .ie-menu{
+@media(max-width:480px){
 
-    gap:14px;
+  .browser-brand{
 
-    font-size:11px;
+    font-size:14px;
+
   }
 
-  .address-label{
+  .photos-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+  .hero-caption{
+
+    position:static;
+
+    max-width:none;
+
+    margin:
+      10px;
+
+  }
+
+  .music-label{
 
     display:none;
+
   }
 
-  .photo-grid{
+  .music-title{
 
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-  }
+    font-size:10px;
 
-  .task-button{
-
-    min-width:120px;
-  }
-
-  .system-tray{
-
-    min-width:75px;
   }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
+<div class="page">
+
+
 <!-- =======================================================
-     DESKTOP
-======================================================== -->
+     BROWSER
+======================================================= -->
 
-<div class="desktop">
-
-
-  <!-- =====================================================
-       DESKTOP ICONS
-  ====================================================== -->
-
-  <div class="desktop-icons">
+<header class="browser">
 
 
-    <div class="desktop-icon">
-
-      <div class="desktop-icon-symbol icon-computer">
-        ▣
-      </div>
-
-      My Computer
-
-    </div>
+  <div class="browser-top">
 
 
-    <div class="desktop-icon">
+    <div class="browser-brand">
 
-      <div class="desktop-icon-symbol icon-folder">
-        ▰
-      </div>
+      <span class="browser-brand-icon">
+        ✦
+      </span>
 
-      My Documents
+      QM ARCHIVE
+
+      <span>
+        //
+      </span>
+
+      <small>
+        A SMALL SPACE FOR ORDINARY DAYS.
+      </small>
 
     </div>
 
 
-    <div class="desktop-icon">
+    <div class="browser-window-buttons">
 
-      <div class="desktop-icon-symbol icon-ie">
-        e
-      </div>
-
-      Internet<br>
-      Explorer
-
-    </div>
-
-
-    <div class="desktop-icon">
-
-      <div class="desktop-icon-symbol icon-computer">
-        ▣
-      </div>
-
-      Network<br>
-      Neighborhood
-
-    </div>
-
-
-    <div class="desktop-icon">
-
-      <div class="desktop-icon-symbol icon-bin">
-        ▥
-      </div>
-
-      Recycle Bin
-
-    </div>
-
-
-    <div class="desktop-icon">
-
-      <div class="desktop-icon-symbol icon-folder">
-        ▰
-      </div>
-
-      QM Archive
+      <span>—</span>
+      <span>□</span>
+      <span>×</span>
 
     </div>
 
@@ -1570,743 +1731,735 @@ body{
   </div>
 
 
-  <!-- =====================================================
-       MAIN INTERNET EXPLORER WINDOW
-  ====================================================== -->
+  <div class="browser-menu">
 
-  <div class="ie-window">
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Favorites</span>
+    <span>Tools</span>
+    <span>Help</span>
+
+  </div>
 
 
-    <!-- ===================================================
-         TITLE BAR
-    ==================================================== -->
+  <div class="browser-address-row">
 
-    <div class="title-bar">
 
-      <div class="title-left">
+    <div class="browser-control">
+      ←
+    </div>
 
-        <div class="title-icon">
-          e
-        </div>
 
-        <div class="title-text">
-          QM Archive - Microsoft Internet Explorer
-        </div>
+    <div class="browser-control">
+      →
+    </div>
+
+
+    <div class="browser-control">
+      ⌂
+    </div>
+
+
+    <div class="browser-address">
+
+      https://qmarchive.github.io/
+
+    </div>
+
+
+    <div class="browser-date">
+
+      <span id="browserDate">
+        MON, 22 SEP 2026
+      </span>
+
+      <br>
+
+      <span id="browserTime">
+        13:31
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+</header>
+
+
+
+<!-- =======================================================
+     MAIN LAYOUT
+======================================================= -->
+
+<div class="layout">
+
+
+<!-- =====================================================
+     LEFT
+====================================================== -->
+
+<aside class="left">
+
+
+  <!-- PROFILE -->
+
+  <section class="window profile-window">
+
+
+    <div class="window-titlebar">
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          ☺
+        </span>
+
+        QUỐC MẠNH
 
       </div>
 
 
       <div class="window-buttons">
 
-        <button class="window-button">
-          _
-        </button>
-
-        <button class="window-button">
-          □
-        </button>
-
-        <button class="window-button">
-          ×
-        </button>
+        <span class="window-button">—</span>
+        <span class="window-button">□</span>
+        <span class="window-button">×</span>
 
       </div>
 
     </div>
 
 
-    <!-- ===================================================
-         MENU
-    ==================================================== -->
+    <div class="profile-image">
 
-    <div class="ie-menu">
-
-      <span>
-        File
-      </span>
-
-      <span>
-        Edit
-      </span>
-
-      <span>
-        View
-      </span>
-
-      <span>
-        Go
-      </span>
-
-      <span>
-        Favorites
-      </span>
-
-      <span>
-        Help
-      </span>
+      <img
+        src="/home/home-polaroid.png"
+        alt="QUỐC MẠNH"
+      >
 
     </div>
 
 
-    <!-- ===================================================
-         TOOLBAR
-    ==================================================== -->
+    <div class="profile-caption">
 
-    <div class="ie-toolbar">
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          ←
-        </div>
-
-        Back
-
-      </button>
-
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          →
-        </div>
-
-        Forward
-
-      </button>
-
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          ⌂
-        </div>
-
-        Home
-
-      </button>
-
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          🔍
-        </div>
-
-        Search
-
-      </button>
-
-
-      <div class="toolbar-separator"></div>
-
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          ★
-        </div>
-
-        Favorites
-
-      </button>
-
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          ↻
-        </div>
-
-        History
-
-      </button>
-
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          ✉
-        </div>
-
-        Mail
-
-      </button>
-
-
-      <button class="tool-button">
-
-        <div class="tool-icon">
-          ▤
-        </div>
-
-        Print
-
-      </button>
+      A PERSONAL ARCHIVE
 
     </div>
 
 
-    <!-- ===================================================
-         ADDRESS BAR
-    ==================================================== -->
+    <nav class="nav-list">
 
-    <div class="address-row">
 
-      <div class="address-label">
-        Address
+      <a
+        href="/"
+        class="active"
+      >
+
+        <span class="folder-icon"></span>
+
+        home
+
+      </a>
+
+
+      <a href="/writings/">
+
+        <span class="folder-icon"></span>
+
+        writings
+
+      </a>
+
+
+      <a href="/photographs/">
+
+        <span class="folder-icon"></span>
+
+        photographs
+
+      </a>
+
+
+      <a href="/notes/">
+
+        <span class="folder-icon"></span>
+
+        notes
+
+      </a>
+
+
+      <a href="/#about">
+
+        <span class="folder-icon"></span>
+
+        about
+
+      </a>
+
+
+    </nav>
+
+
+  </section>
+
+
+
+  <!-- SYSTEM -->
+
+  <section class="window system-window">
+
+
+    <div class="window-titlebar">
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          ⚙
+        </span>
+
+        SYSTEM INFO
+
       </div>
 
 
-      <input
-        class="address-input"
-        id="browserAddress"
-        value="https://qmarchive.github.io/"
-        readonly
+      <div class="window-buttons">
+
+        <span class="window-button">×</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="system-content">
+
+
+      <div class="system-line">
+
+        Visitors:
+        <strong>001284</strong>
+
+      </div>
+
+
+      <div class="system-line online">
+
+        ● Online
+
+      </div>
+
+
+      <div class="system-line">
+
+        Since:
+        21.09.2026
+
+      </div>
+
+
+      <div class="cassette">
+
+
+        <div class="cassette-body">
+
+
+          <div class="cassette-label">
+
+            LIFE GOES ON
+
+          </div>
+
+
+          <div class="cassette-hole left"></div>
+
+          <div class="cassette-hole right"></div>
+
+
+        </div>
+
+
+        <div class="cassette-caption">
+
+          SAME PEOPLE<br>
+          DIFFERENT DAYS<br>
+          // 1998 — 2026<br>
+          AND BEYOND.
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     CENTER
+====================================================== -->
+
+<main class="center">
+
+
+  <!-- HERO -->
+
+  <section class="window hero-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          ◉
+        </span>
+
+        WELCOME.EXE
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">—</span>
+        <span class="window-button">□</span>
+        <span class="window-button">×</span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="hero-image">
+
+
+      <img
+        src="/home/home-hero.png"
+        alt="QM Archive hero"
       >
 
 
-      <button class="go-button">
-        Go
-      </button>
+      <div class="hero-caption">
+
+        “Có những ngày chẳng có gì đặc biệt,
+        nhưng tôi vẫn muốn nhớ về nó.”
+
+        <span class="hero-date">
+          22.09.2026
+        </span>
+
+      </div>
+
 
     </div>
 
 
-    <!-- ===================================================
-         CONTENT
-    ==================================================== -->
+  </section>
 
-    <div class="ie-content">
 
 
-      <div class="archive-workspace">
+  <!-- WRITINGS + NOTES -->
 
+  <section class="archive-grid">
 
-        <!-- ===============================================
-             LEFT NAV WINDOW
-        ================================================ -->
 
-        <aside class="win-window nav-window">
+    <!-- WRITINGS -->
 
+    <div class="window archive-window">
 
-          <div class="win-title">
 
-            <div class="win-title-text">
-              QM Archive
-            </div>
+      <div class="window-titlebar">
 
-            <div class="win-title-controls">
 
-              <button class="mini-button">
-                _
-              </button>
+        <div class="window-title">
 
-              <button class="mini-button">
-                ×
-              </button>
+          <span class="window-title-icon">
+            ▣
+          </span>
 
-            </div>
+          RECENTLY WRITTEN
 
-          </div>
-
-
-          <div class="win-body">
-
-
-            <div class="nav-header">
-              QUỐC MẠNH
-            </div>
-
-
-            <div class="nav-subtitle">
-              A PERSONAL ARCHIVE
-            </div>
-
-
-            <div class="nav-separator"></div>
-
-
-            <nav class="nav-list">
-
-
-              <a
-                href="/"
-                class="nav-link active"
-              >
-                home
-              </a>
-
-
-              <a
-                href="/writings/"
-                class="nav-link"
-              >
-                writings
-              </a>
-
-
-              <a
-                href="/photographs/"
-                class="nav-link"
-              >
-                photographs
-              </a>
-
-
-              <a
-                href="/notes/"
-                class="nav-link"
-              >
-                notes
-              </a>
-
-
-              <a
-                href="/#about"
-                class="nav-link"
-              >
-                about
-              </a>
-
-
-            </nav>
-
-
-            <div class="nav-separator"></div>
-
-
-            <div class="system-info">
-
-              <div class="system-title">
-                SYSTEM INFO
-              </div>
-
-              <div>
-                Visitors: 001284
-              </div>
-
-              <div class="online">
-                ● Online
-              </div>
-
-              <div>
-                Since: 21.09.2026
-              </div>
-
-            </div>
-
-
-            <div class="home-mini-image">
-
-              <img
-                src="/home/home-polaroid.png"
-                alt="QM Archive">
-
-              <div class="home-mini-caption">
-                "A SMALL SPACE<br>
-                FOR ORDINARY DAYS."
-              </div>
-
-            </div>
-
-
-          </div>
-
-        </aside>
-
-
-        <!-- ===============================================
-             CENTER
-        ================================================ -->
-
-        <main class="center-column">
-
-
-          <!-- =============================================
-               HERO WINDOW
-          ============================================== -->
-
-          <section class="win-window hero-window">
-
-
-            <div class="win-title">
-
-              <div class="win-title-text">
-                Welcome
-              </div>
-
-              <div class="win-title-controls">
-
-                <button class="mini-button">
-                  _
-                </button>
-
-                <button class="mini-button">
-                  ×
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="hero-body">
-
-
-              <div class="hero-image-frame">
-
-                <img
-                  class="hero-image"
-                  src="/home/home-hero.png"
-                  alt="QM Archive Home"
-                >
-
-              </div>
-
-
-              <div class="hero-caption">
-
-                “Có những ngày chẳng có gì đặc biệt,<br>
-                nhưng tôi vẫn muốn nhớ về nó.”
-
-
-                <div class="hero-date">
-                  22.09.2026
-                </div>
-
-              </div>
-
-
-            </div>
-
-
-          </section>
-
-
-          <!-- =============================================
-               WRITINGS + NOTES
-          ============================================== -->
-
-          <div class="content-grid">
-
-
-            <!-- ===========================================
-                 WRITINGS
-            ============================================ -->
-
-            <section class="win-window content-window">
-
-
-              <div class="win-title">
-
-                <div class="win-title-text">
-                  Recently Written
-                </div>
-
-                <div class="win-title-controls">
-
-                  <button class="mini-button">
-                    _
-                  </button>
-
-                  <button class="mini-button">
-                    ×
-                  </button>
-
-                </div>
-
-              </div>
-
-
-              <div
-                class="content-body"
-                id="writingsList"
-              >
-
-                Loading...
-
-              </div>
-
-
-            </section>
-
-
-            <!-- ===========================================
-                 NOTES
-            ============================================ -->
-
-            <section class="win-window content-window">
-
-
-              <div class="win-title">
-
-                <div class="win-title-text">
-                  Notes
-                </div>
-
-                <div class="win-title-controls">
-
-                  <button class="mini-button">
-                    _
-                  </button>
-
-                  <button class="mini-button">
-                    ×
-                  </button>
-
-                </div>
-
-              </div>
-
-
-              <div
-                class="content-body"
-                id="notesList"
-              >
-
-                Loading...
-
-              </div>
-
-
-            </section>
-
-
-          </div>
-
-
-          <!-- =============================================
-               PHOTOGRAPHS
-          ============================================== -->
-
-          <section class="win-window photographs-window">
-
-
-            <div class="win-title">
-
-              <div class="win-title-text">
-                Photographs
-              </div>
-
-              <div class="win-title-controls">
-
-                <button class="mini-button">
-                  _
-                </button>
-
-                <button class="mini-button">
-                  ×
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div
-              class="photo-grid"
-              id="photographsList"
-            >
-
-              Loading...
-
-            </div>
-
-
-          </section>
-
-
-        </main>
-
-
-        <!-- ===============================================
-             RIGHT COLUMN
-        ================================================ -->
-
-        <aside class="right-column">
-
-
-          <!-- =============================================
-               PORTRAIT
-          ============================================== -->
-
-          <section class="win-window">
-
-
-            <div class="win-title">
-
-              <div class="win-title-text">
-                Portrait
-              </div>
-
-              <div class="win-title-controls">
-
-                <button class="mini-button">
-                  _
-                </button>
-
-                <button class="mini-button">
-                  ×
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="portrait-body">
-
-              <img
-                class="portrait-image"
-                src="/home/home-polaroid.png"
-                alt="Portrait"
-              >
-
-              <div class="portrait-caption">
-                Hanoi, always.
-              </div>
-
-            </div>
-
-
-          </section>
-
-
-          <!-- =============================================
-               NOTEPAD
-          ============================================== -->
-
-          <section class="win-window">
-
-
-            <div class="win-title">
-
-              <div class="win-title-text">
-                Notepad
-              </div>
-
-              <div class="win-title-controls">
-
-                <button class="mini-button">
-                  _
-                </button>
-
-                <button class="mini-button">
-                  ×
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="notepad-menu">
-
-              File &nbsp;&nbsp;
-              Edit &nbsp;&nbsp;
-              Format &nbsp;&nbsp;
-              Help
-
-            </div>
-
-
-            <div class="notepad-body">
-
-              Hanoi, Vietnam
-              <br><br>
-
-              Nhật ký của một người
-              bình thường.
-              <br><br>
-
-              Viết lại những câu chuyện
-              đáng lý chỉ cần bỏ qua.
-              <br><br>
-
-              Chào Mạnh, chúng ta lại
-              gặp nhau rồi.
-
-            </div>
-
-
-          </section>
-
-
-          <!-- =============================================
-               CLOCK
-          ============================================== -->
-
-          <section class="win-window clock-window">
-
-
-            <div class="win-title">
-
-              <div class="win-title-text">
-                Clock
-              </div>
-
-              <div class="win-title-controls">
-
-                <button class="mini-button">
-                  _
-                </button>
-
-                <button class="mini-button">
-                  ×
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="clock-body">
-
-              <div
-                class="clock-time"
-                id="time"
-              >
-                00:00:00
-              </div>
-
-
-              <div
-                class="clock-date"
-                id="date"
-              >
-                22.09.2026
-              </div>
-
-            </div>
-
-
-          </section>
-
-
-        </aside>
-
-
-      </div>
-
-
-      <!-- =================================================
-           STATUS BAR
-      ================================================== -->
-
-      <div class="status-bar">
-
-        <div
-          class="status-left"
-          id="statusText"
-        >
-          Done
         </div>
 
-        <div class="status-right"></div>
+
+        <span>
+          → more
+        </span>
+
 
       </div>
 
+
+      <div
+        class="archive-list"
+        id="writingList"
+      >
+
+        Loading...
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- NOTES -->
+
+    <div class="window archive-window">
+
+
+      <div class="window-titlebar">
+
+
+        <div class="window-title">
+
+          <span class="window-title-icon">
+            ▤
+          </span>
+
+          NOTES.TXT
+
+        </div>
+
+
+        <span>
+          → more
+        </span>
+
+
+      </div>
+
+
+      <div
+        class="archive-list"
+        id="noteList"
+      >
+
+        Loading...
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- PHOTOGRAPHS -->
+
+  <section class="window photos-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          ▣
+        </span>
+
+        PHOTOGRAPHS
+
+      </div>
+
+
+      <a
+        href="/photographs/"
+        style="
+          color:inherit;
+          text-decoration:none;
+        "
+      >
+
+        → more
+
+      </a>
+
+
+    </div>
+
+
+    <div
+      class="photos-grid"
+      id="photoGrid"
+    >
+
+      Loading...
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     RIGHT
+====================================================== -->
+
+<aside class="right">
+
+
+  <!-- LOCATION -->
+
+  <section class="window location-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          ⌖
+        </span>
+
+        LOCATION
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">—</span>
+        <span class="window-button">□</span>
+        <span class="window-button">×</span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="location-content">
+
+
+      <div class="location-title">
+
+        📍 Hanoi, Vietnam
+
+      </div>
+
+
+      <div class="location-note">
+
+        Nhật ký của một người bình thường.<br><br>
+
+        Viết lại những câu chuyện đáng lý
+        chỉ cần bỏ qua.<br><br>
+
+        Chào Mạnh, chúng ta lại gặp nhau rồi.
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- PORTRAIT -->
+
+  <section class="window portrait-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          ◉
+        </span>
+
+        PORTRAIT.JPG
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">—</span>
+        <span class="window-button">□</span>
+        <span class="window-button">×</span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="portrait-content">
+
+
+      <div class="portrait-image">
+
+        <img
+          src="/home/home-polaroid.png"
+          alt="Hanoi, always"
+        >
+
+      </div>
+
+
+      <div class="portrait-caption">
+
+        Hanoi, always.
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- CLOCK -->
+
+  <section class="window clock-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          ◷
+        </span>
+
+        CLOCK
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">—</span>
+        <span class="window-button">×</span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="clock-content">
+
+
+      <div
+        class="clock-time"
+        id="clockTime"
+      >
+
+        00:00:00
+
+      </div>
+
+
+      <div
+        class="clock-date"
+        id="clockDate"
+      >
+
+        22.09.2026
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- QUOTE -->
+
+  <div class="side-quote">
+
+    SOMEWHERE BETWEEN<br>
+    A DREAM AND A DEADLINE.
+
+  </div>
+
+
+</aside>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+  best viewed at night. //
+  qm archive //
+
+  1998 — 2026
+
+</footer>
+
+
+
+</div>
+
+
+
+<!-- =======================================================
+     GLOBAL MUSIC PLAYER
+======================================================= -->
+
+<div class="music-player">
+
+
+  <div class="music-icon">
+    ♪
+  </div>
+
+
+  <div class="music-info">
+
+
+    <div class="music-label">
+      NOW PLAYING
+    </div>
+
+
+    <div
+      class="music-title"
+      id="musicTitle"
+    >
+
+      QM Archive — Theme
 
     </div>
 
@@ -2314,39 +2467,85 @@ body{
   </div>
 
 
-  <!-- =====================================================
-       TASKBAR
-  ====================================================== -->
-
-  <div class="taskbar">
+  <div class="music-controls">
 
 
-    <button class="start-button">
+    <button
+      class="music-button"
+      id="prevButton"
+      type="button"
+      aria-label="Previous"
+    >
 
-      <span class="start-logo"></span>
-
-      Start
+      |◀
 
     </button>
 
 
-    <div class="task-button">
+    <button
+      class="music-button"
+      id="playButton"
+      type="button"
+      aria-label="Play"
+    >
 
-      🌐 QM Archive - Home
+      ▶
 
-    </div>
-
-
-    <div class="taskbar-spacer"></div>
+    </button>
 
 
-    <div class="system-tray">
+    <button
+      class="music-button"
+      id="nextButton"
+      type="button"
+      aria-label="Next"
+    >
 
-      <span id="taskbarTime">
-        00:00
-      </span>
+      ▶|
 
-    </div>
+    </button>
+
+
+  </div>
+
+
+  <div class="music-progress">
+
+
+    <input
+      id="progress"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      step="0.1"
+    >
+
+
+  </div>
+
+
+  <div
+    class="music-time"
+    id="musicTime"
+  >
+
+    00:00 / 00:00
+
+  </div>
+
+
+  <div class="music-volume">
+
+
+    <input
+      id="volume"
+      type="range"
+      min="0"
+      max="1"
+      value=".7"
+      step=".01"
+    >
 
 
   </div>
@@ -2355,21 +2554,59 @@ body{
 </div>
 
 
+
+<!-- =======================================================
+     AUDIO
+======================================================= -->
+
+<audio
+  id="audio"
+  preload="metadata"
+></audio>
+
+
+
 <script>
 
 /* =========================================================
-   CONTENT SOURCES
-   ARCHITECTURE PRESERVED
+   CONFIG
 ========================================================= */
+
+
+/*
+  UPLOAD YOUR MUSIC FILE HERE:
+
+  /music/qm-archive.mp3
+
+  If your file has another name,
+  change ONLY this line.
+*/
+
+const MUSIC_TRACKS = [
+
+  {
+    title:"QM Archive — Theme",
+    src:"/music/qm-archive.mp3"
+  }
+
+];
+
+
+/*
+  Existing content architecture.
+*/
 
 const WRITINGS_URL =
   "/writings/content.json?v=" + Date.now();
 
+
 const NOTES_URL =
   "/notes/content.json?v=" + Date.now();
 
+
 const PHOTOGRAPHS_URL =
   "/photographs/content.json?v=" + Date.now();
+
 
 
 /* =========================================================
@@ -2381,30 +2618,26 @@ function escapeHTML(value){
   return String(value ?? "")
 
     .replace(/&/g,"&amp;")
-
     .replace(/</g,"&lt;")
-
     .replace(/>/g,"&gt;")
-
     .replace(/"/g,"&quot;")
-
     .replace(/'/g,"&#039;");
 
 }
 
 
+
 /* =========================================================
-   SLUGIFY
+   SLUG
 ========================================================= */
 
-function slugify(value){
+function slugify(text){
 
-  return String(value || "")
+  return String(text || "")
 
     .toLowerCase()
 
     .normalize("NFD")
-
     .replace(/[\u0300-\u036f]/g,"")
 
     .replace(/đ/g,"d")
@@ -2414,6 +2647,7 @@ function slugify(value){
     .replace(/^-+|-+$/g,"");
 
 }
+
 
 
 /* =========================================================
@@ -2449,35 +2683,23 @@ async function loadJSON(url){
 }
 
 
+
 /* =========================================================
-   RENDER WRITINGS
+   WRITINGS
 ========================================================= */
 
 function renderWritings(items){
 
   const container =
     document.getElementById(
-      "writingsList"
+      "writingList"
     );
 
 
-  if(
-    !Array.isArray(items) ||
-    !items.length
-  ){
+  if(!items.length){
 
-    container.innerHTML = `
-
-      <div
-        style="
-          padding:12px;
-          font-size:11px;
-        "
-      >
-        No writings yet.
-      </div>
-
-    `;
+    container.innerHTML =
+      "<div class='error'>No writings yet.</div>";
 
     return;
 
@@ -2489,21 +2711,20 @@ function renderWritings(items){
       .slice(0,6)
       .map(item => {
 
+
         const slug =
-          String(
-            item.slug ||
-            slugify(item.title)
-          );
+          item.slug ||
+          slugify(item.title);
 
 
         return `
 
           <a
-            class="home-entry"
+            class="archive-entry"
             href="/writings/?slug=${encodeURIComponent(slug)}"
           >
 
-            <div class="home-entry-date">
+            <div class="archive-date">
 
               ${escapeHTML(
                 item.date || ""
@@ -2512,7 +2733,11 @@ function renderWritings(items){
             </div>
 
 
-            <div class="home-entry-title">
+            <div class="archive-title">
+
+              <span class="archive-arrow">
+                →
+              </span>
 
               ${escapeHTML(
                 item.title || ""
@@ -2530,35 +2755,23 @@ function renderWritings(items){
 }
 
 
+
 /* =========================================================
-   RENDER NOTES
+   NOTES
 ========================================================= */
 
 function renderNotes(items){
 
   const container =
     document.getElementById(
-      "notesList"
+      "noteList"
     );
 
 
-  if(
-    !Array.isArray(items) ||
-    !items.length
-  ){
+  if(!items.length){
 
-    container.innerHTML = `
-
-      <div
-        style="
-          padding:12px;
-          font-size:11px;
-        "
-      >
-        No notes yet.
-      </div>
-
-    `;
+    container.innerHTML =
+      "<div class='error'>No notes yet.</div>";
 
     return;
 
@@ -2570,21 +2783,20 @@ function renderNotes(items){
       .slice(0,6)
       .map(item => {
 
+
         const slug =
-          String(
-            item.slug ||
-            slugify(item.title)
-          );
+          item.slug ||
+          slugify(item.title);
 
 
         return `
 
           <a
-            class="home-entry"
+            class="archive-entry"
             href="/notes/?slug=${encodeURIComponent(slug)}"
           >
 
-            <div class="home-entry-date">
+            <div class="archive-date">
 
               ${escapeHTML(
                 item.date || ""
@@ -2593,7 +2805,11 @@ function renderNotes(items){
             </div>
 
 
-            <div class="home-entry-title">
+            <div class="archive-title">
+
+              <span class="archive-arrow">
+                →
+              </span>
 
               ${escapeHTML(
                 item.title || ""
@@ -2611,36 +2827,23 @@ function renderNotes(items){
 }
 
 
+
 /* =========================================================
-   RENDER PHOTOGRAPHS
-   IMAGE ARCHITECTURE PRESERVED
+   PHOTOGRAPHS
 ========================================================= */
 
 function renderPhotographs(items){
 
   const container =
     document.getElementById(
-      "photographsList"
+      "photoGrid"
     );
 
 
-  if(
-    !Array.isArray(items) ||
-    !items.length
-  ){
+  if(!items.length){
 
-    container.innerHTML = `
-
-      <div
-        style="
-          padding:12px;
-          font-size:11px;
-        "
-      >
-        No photographs yet.
-      </div>
-
-    `;
+    container.innerHTML =
+      "<div class='error'>No photographs yet.</div>";
 
     return;
 
@@ -2652,17 +2855,17 @@ function renderPhotographs(items){
       .slice(0,4)
       .map(item => {
 
+
         const slug =
-          String(
-            item.slug ||
-            slugify(item.title)
-          );
+          item.slug ||
+          slugify(item.title);
 
 
         const image =
-          String(
-            item.image || ""
-          );
+          item.image ||
+          item.src ||
+          item.thumbnail ||
+          "";
 
 
         return `
@@ -2672,19 +2875,37 @@ function renderPhotographs(items){
             href="/photographs/?slug=${encodeURIComponent(slug)}"
           >
 
-            <img
-              class="photo-image"
-              src="${escapeHTML(image)}"
-              alt="${escapeHTML(item.title || "")}"
-              loading="lazy"
-            >
+            <div class="photo-image">
+
+              <img
+                src="${escapeHTML(image)}"
+                alt="${escapeHTML(item.title || "")}"
+                loading="lazy"
+              >
+
+            </div>
 
 
-            <div class="photo-title">
+            <div class="photo-meta">
 
-              ${escapeHTML(
-                item.title || ""
-              )}
+
+              <div class="photo-date">
+
+                ${escapeHTML(
+                  item.date || ""
+                )}
+
+              </div>
+
+
+              <div class="photo-title">
+
+                ${escapeHTML(
+                  item.title || ""
+                )}
+
+              </div>
+
 
             </div>
 
@@ -2698,6 +2919,7 @@ function renderPhotographs(items){
 }
 
 
+
 /* =========================================================
    CLOCK
 ========================================================= */
@@ -2706,22 +2928,6 @@ function updateClock(){
 
   const now =
     new Date();
-
-
-  const date =
-    String(
-      now.getDate()
-    ).padStart(2,"0") +
-
-    "." +
-
-    String(
-      now.getMonth()+1
-    ).padStart(2,"0") +
-
-    "." +
-
-    now.getFullYear();
 
 
   const time =
@@ -2742,48 +2948,425 @@ function updateClock(){
     ).padStart(2,"0");
 
 
-  const dateElement =
+  const date =
+    String(
+      now.getDate()
+    ).padStart(2,"0") +
+
+    "." +
+
+    String(
+      now.getMonth()+1
+    ).padStart(2,"0") +
+
+    "." +
+
+    now.getFullYear();
+
+
+  const browserDate =
+    String(
+      now.getDate()
+    ).padStart(2,"0") +
+
+    " " +
+
+    now.toLocaleString(
+      "en-US",
+      {
+        month:"short"
+      }
+    ).toUpperCase() +
+
+    " " +
+
+    now.getFullYear();
+
+
+  const clockTime =
     document.getElementById(
-      "date"
+      "clockTime"
     );
 
 
-  const timeElement =
+  const clockDate =
     document.getElementById(
-      "time"
+      "clockDate"
     );
 
 
-  const taskbarTime =
+  const browserTime =
     document.getElementById(
-      "taskbarTime"
+      "browserTime"
     );
 
 
-  if(dateElement){
-
-    dateElement.textContent =
-      date;
-
-  }
+  const browserDateElement =
+    document.getElementById(
+      "browserDate"
+    );
 
 
-  if(timeElement){
+  if(clockTime){
 
-    timeElement.textContent =
+    clockTime.textContent =
       time;
 
   }
 
 
-  if(taskbarTime){
+  if(clockDate){
 
-    taskbarTime.textContent =
+    clockDate.textContent =
+      date;
+
+  }
+
+
+  if(browserTime){
+
+    browserTime.textContent =
       time.slice(0,5);
 
   }
 
+
+  if(browserDateElement){
+
+    browserDateElement.textContent =
+      browserDate;
+
+  }
+
 }
+
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const audio =
+  document.getElementById(
+    "audio"
+  );
+
+
+const playButton =
+  document.getElementById(
+    "playButton"
+  );
+
+
+const prevButton =
+  document.getElementById(
+    "prevButton"
+  );
+
+
+const nextButton =
+  document.getElementById(
+    "nextButton"
+  );
+
+
+const progress =
+  document.getElementById(
+    "progress"
+  );
+
+
+const volume =
+  document.getElementById(
+    "volume"
+  );
+
+
+const musicTitle =
+  document.getElementById(
+    "musicTitle"
+  );
+
+
+const musicTime =
+  document.getElementById(
+    "musicTime"
+  );
+
+
+let currentTrack = 0;
+
+
+
+function formatTime(seconds){
+
+  if(!Number.isFinite(seconds)){
+
+    return "00:00";
+
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  return (
+    String(minutes).padStart(2,"0") +
+    ":" +
+    String(secs).padStart(2,"0")
+  );
+
+}
+
+
+
+function loadTrack(
+  index,
+  autoplay = false
+){
+
+  if(!MUSIC_TRACKS.length){
+
+    return;
+
+  }
+
+
+  currentTrack =
+    (index + MUSIC_TRACKS.length) %
+    MUSIC_TRACKS.length;
+
+
+  const track =
+    MUSIC_TRACKS[
+      currentTrack
+    ];
+
+
+  audio.src =
+    track.src;
+
+
+  musicTitle.textContent =
+    track.title;
+
+
+  progress.value = 0;
+
+
+  if(autoplay){
+
+    audio.play()
+      .then(() => {
+
+        playButton.textContent =
+          "❚❚";
+
+      })
+      .catch(() => {
+
+        playButton.textContent =
+          "▶";
+
+      });
+
+  }else{
+
+    playButton.textContent =
+      "▶";
+
+  }
+
+}
+
+
+
+playButton.addEventListener(
+  "click",
+  () => {
+
+
+    if(audio.paused){
+
+      audio.play()
+        .then(() => {
+
+          playButton.textContent =
+            "❚❚";
+
+        })
+        .catch(() => {
+
+          playButton.textContent =
+            "▶";
+
+        });
+
+    }else{
+
+      audio.pause();
+
+      playButton.textContent =
+        "▶";
+
+    }
+
+  }
+);
+
+
+
+prevButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack - 1,
+      true
+    );
+
+  }
+);
+
+
+
+nextButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
+
+    musicTime.textContent =
+      "00:00 / " +
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    if(audio.duration){
+
+      progress.value =
+        (
+          audio.currentTime /
+          audio.duration
+        ) * 100;
+
+    }
+
+
+    musicTime.textContent =
+      formatTime(
+        audio.currentTime
+      ) +
+      " / " +
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+    if(audio.duration){
+
+      audio.currentTime =
+        (
+          Number(progress.value) /
+          100
+        ) *
+        audio.duration;
+
+    }
+
+  }
+);
+
+
+
+volume.addEventListener(
+  "input",
+  () => {
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "ended",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "play",
+  () => {
+
+    playButton.textContent =
+      "❚❚";
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "pause",
+  () => {
+
+    playButton.textContent =
+      "▶";
+
+  }
+);
+
 
 
 /* =========================================================
@@ -2792,16 +3375,32 @@ function updateClock(){
 
 async function init(){
 
+  updateClock();
+
+  setInterval(
+    updateClock,
+    1000
+  );
+
+
+  audio.volume =
+    Number(
+      volume.value
+    );
+
+
+  loadTrack(
+    0,
+    false
+  );
+
+
   try{
 
     const [
-
       writingsData,
-
       notesData,
-
       photographsData
-
     ] = await Promise.all([
 
       loadJSON(
@@ -2819,51 +3418,43 @@ async function init(){
     ]);
 
 
-    renderWritings(
-
+    const writings =
       Array.isArray(
         writingsData.writings
       )
         ? writingsData.writings
-        : []
-
-    );
+        : [];
 
 
-    renderNotes(
-
+    const notes =
       Array.isArray(
         notesData.notes
       )
         ? notesData.notes
-        : []
-
-    );
+        : [];
 
 
-    renderPhotographs(
-
+    const photographs =
       Array.isArray(
         photographsData.photographs
       )
         ? photographsData.photographs
-        : []
+        : [];
 
+
+    renderWritings(
+      writings
     );
 
 
-    const status =
-      document.getElementById(
-        "statusText"
-      );
+    renderNotes(
+      notes
+    );
 
 
-    if(status){
-
-      status.textContent =
-        "Done";
-
-    }
+    renderPhotographs(
+      photographs
+    );
 
 
   }catch(error){
@@ -2872,88 +3463,52 @@ async function init(){
 
 
     document.getElementById(
-      "writingsList"
+      "writingList"
     ).innerHTML = `
 
-      <div
-        style="
-          padding:12px;
-          color:#800000;
-          font-size:11px;
-        "
-      >
-        Could not load writings.
+      <div class="error">
+
+        Writings could not be loaded.
+
       </div>
 
     `;
 
 
     document.getElementById(
-      "notesList"
+      "noteList"
     ).innerHTML = `
 
-      <div
-        style="
-          padding:12px;
-          color:#800000;
-          font-size:11px;
-        "
-      >
-        Could not load notes.
+      <div class="error">
+
+        Notes could not be loaded.
+
       </div>
 
     `;
 
 
     document.getElementById(
-      "photographsList"
+      "photoGrid"
     ).innerHTML = `
 
-      <div
-        style="
-          padding:12px;
-          color:#800000;
-          font-size:11px;
-        "
-      >
-        Could not load photographs.
+      <div class="error">
+
+        Photographs could not be loaded.
+
       </div>
 
     `;
-
-
-    const status =
-      document.getElementById(
-        "statusText"
-      );
-
-
-    if(status){
-
-      status.textContent =
-        "Error loading archive";
-
-    }
 
   }
 
 }
 
 
-/* =========================================================
-   START
-========================================================= */
-
-updateClock();
-
-setInterval(
-  updateClock,
-  1000
-);
-
 init();
 
 </script>
+
 
 </body>
 </html>
