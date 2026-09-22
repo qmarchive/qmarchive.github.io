@@ -262,10 +262,33 @@ body::before{
 
 /* =========================================================
    LINK HOVER
-   Tất cả link khi rê chuột sẽ in đậm
+   Các link vẫn in đậm khi hover.
+   Riêng MORE sẽ chuyển sang màu trắng.
 ========================================================= */
 
 a[href]:hover{
+
+  font-weight:bold;
+
+}
+
+
+/* MORE LINK */
+
+.more-link{
+
+  color:inherit;
+
+  text-decoration:none;
+
+  white-space:nowrap;
+
+}
+
+
+.more-link:hover{
+
+  color:#ffffff !important;
 
   font-weight:bold;
 
@@ -571,20 +594,6 @@ a[href]:hover{
 }
 
 
-/*
-   CHỦ THỂ
-
-   Bỏ hoàn toàn vòng tròn phía sau.
-
-   Bản trước:
-   scale(.88)
-
-   Bản mới:
-   scale(.968)
-
-   = tăng kích thước khoảng 10%.
-*/
-
 .profile-image img{
 
   position:relative;
@@ -776,6 +785,15 @@ a[href]:hover{
   height:auto;
 
   border:3px solid var(--blue);
+
+}
+
+
+/* GIF hoạt động bình thường như ảnh PNG */
+
+.cassette img[src$=".gif"]{
+
+  image-rendering:auto;
 
 }
 
@@ -1046,15 +1064,6 @@ a[href]:hover{
 
   padding:
     6px 2px;
-
-}
-
-
-.photo-date{
-
-  font-size:9px;
-
-  margin-bottom:3px;
 
 }
 
@@ -1489,10 +1498,7 @@ a[href]:hover{
   }
 
 
-  /* PROFILE TABLET
-     No background circle.
-     Subject remains 10% larger.
-  */
+  /* PROFILE TABLET */
 
   .profile-image{
 
@@ -1943,8 +1949,7 @@ a[href]:hover{
 
       <div class="system-line">
 
-        Visitors:
-        <strong>001284</strong>
+        Edgerunner.2046
 
       </div>
 
@@ -1967,17 +1972,16 @@ a[href]:hover{
 
 
         <img
-          src="/home/home-cassette.png"
+          src="/home/home-cassette.gif"
           alt="Life Goes On cassette"
         >
 
 
         <div class="cassette-caption">
 
-          SAME PEOPLE<br>
-          DIFFERENT DAYS<br>
-          // 1998 — 2026<br>
-          AND BEYOND.
+          Không sao đâu, không sao đâu mà<br>
+          // 1998 -
+          <span id="cassetteYear">2026</span>
 
         </div>
 
@@ -2088,12 +2092,8 @@ a[href]:hover{
 
 
         <a
+          class="more-link"
           href="/writings/"
-          style="
-            color:inherit;
-            text-decoration:none;
-            white-space:nowrap;
-          "
         >
 
           → more
@@ -2138,12 +2138,8 @@ a[href]:hover{
 
 
         <a
+          class="more-link"
           href="/notes/"
-          style="
-            color:inherit;
-            text-decoration:none;
-            white-space:nowrap;
-          "
         >
 
           → more
@@ -2191,11 +2187,8 @@ a[href]:hover{
 
 
       <a
+        class="more-link"
         href="/photographs/"
-        style="
-          color:inherit;
-          text-decoration:none;
-        "
       >
 
         → more
@@ -2266,17 +2259,21 @@ a[href]:hover{
 
       <div class="location-title">
 
-        [ PIN ] Hanoi, Vietnam
+        Hanoi, Vietnam
 
       </div>
 
 
       <div class="location-note">
 
-        Nhật ký của một người bình thường.<br><br>
+        Một người bình thường, cố không làm đổ cà phê lên laptop lúc 2h sáng.
 
-        Viết lại những câu chuyện đáng lý
-        chỉ cần bỏ qua.<br><br>
+        <br><br>
+
+        Viết về những chuyện đáng lý chỉ cần bỏ qua
+        nhưng do mất ngủ và không làm chủ được cái đầu.
+
+        <br><br>
 
         Chào Mạnh, chúng ta lại gặp nhau rồi.
 
@@ -2410,8 +2407,8 @@ a[href]:hover{
 
   <div class="side-quote">
 
-    SOMEWHERE BETWEEN<br>
-    A DREAM AND A DEADLINE.
+    Một nơi nào đó nằm giữa những ước mơ
+    và đống deadline lộn xộn
 
   </div>
 
@@ -2433,7 +2430,8 @@ a[href]:hover{
   //
   QM ARCHIVE
   //
-  1998 — 2026
+  1998 —
+  <span id="footerYear">2026</span>
 
 </footer>
 
@@ -2868,15 +2866,6 @@ function renderPhotographs(items){
 
             <div class="photo-meta">
 
-              <div class="photo-date">
-
-                ${escapeHTML(
-                  item.date || ""
-                )}
-
-              </div>
-
-
               <div class="photo-title">
 
                 ${escapeHTML(
@@ -2942,6 +2931,10 @@ function updateClock(){
     now.getFullYear();
 
 
+  const currentYear =
+    now.getFullYear();
+
+
   const clockTime =
     document.getElementById(
       "clockTime"
@@ -2966,12 +2959,26 @@ function updateClock(){
     );
 
 
+  const cassetteYear =
+    document.getElementById(
+      "cassetteYear"
+    );
+
+
+  const footerYear =
+    document.getElementById(
+      "footerYear"
+    );
+
+
   if(clockTime)
-    clockTime.textContent = time;
+    clockTime.textContent =
+      time;
 
 
   if(clockDate)
-    clockDate.textContent = date;
+    clockDate.textContent =
+      date;
 
 
   if(browserTime)
@@ -2991,6 +2998,16 @@ function updateClock(){
           }
         )
         .toUpperCase();
+
+
+  if(cassetteYear)
+    cassetteYear.textContent =
+      currentYear;
+
+
+  if(footerYear)
+    footerYear.textContent =
+      currentYear;
 
 }
 
