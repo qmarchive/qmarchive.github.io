@@ -1348,6 +1348,7 @@ body::before{
     minmax(150px,1fr)
     auto
     minmax(150px,1.5fr)
+    auto
     auto;
 
   gap:9px;
@@ -1421,6 +1422,25 @@ body::before{
 }
 
 
+.music-artist{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  margin-top:1px;
+
+  color:var(--teal-dark);
+
+  font-size:9px;
+
+  font-weight:bold;
+
+}
+
+
 .music-controls{
 
   display:flex;
@@ -1486,6 +1506,22 @@ body::before{
 }
 
 
+.music-volume{
+
+  width:100px;
+
+}
+
+
+.music-volume input{
+
+  width:100%;
+
+  accent-color:var(--teal);
+
+}
+
+
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -1511,6 +1547,28 @@ body::before{
   .search{
 
     width:100%;
+
+  }
+
+}
+
+
+@media(max-width:1200px){
+
+  .music-player{
+
+    grid-template-columns:
+      auto
+      minmax(120px,1fr)
+      auto
+      minmax(120px,1fr)
+      auto;
+
+  }
+
+  .music-volume{
+
+    display:none;
 
   }
 
@@ -1660,7 +1718,8 @@ body::before{
 
 
   .music-progress,
-  .music-time{
+  .music-time,
+  .music-volume{
 
     display:none;
 
@@ -1880,8 +1939,6 @@ body::before{
       </div>
 
 
-      <!-- NAV -->
-
       <nav class="nav-list">
 
 
@@ -1926,8 +1983,6 @@ body::before{
 
       </nav>
 
-
-      <!-- CASSETTE -->
 
       <div class="cassette">
 
@@ -1975,8 +2030,6 @@ body::before{
   <section class="notes-window">
 
 
-    <!-- TITLE BAR -->
-
     <header class="notes-titlebar">
 
 
@@ -2011,8 +2064,6 @@ body::before{
     </header>
 
 
-    <!-- INTRO + SEARCH -->
-
     <div class="notes-tools">
 
 
@@ -2045,15 +2096,11 @@ body::before{
     </div>
 
 
-    <!-- ARCHIVE -->
-
     <div
       id="archive"
       class="archive"
     ></div>
 
-
-    <!-- ARTICLE -->
 
     <article
       id="article"
@@ -2148,7 +2195,17 @@ body::before{
       id="musicTitle"
     >
 
-      QM Archive — Theme
+      Between the Takes
+
+    </div>
+
+
+    <div
+      class="music-artist"
+      id="musicArtist"
+    >
+
+      Orient.bakureever
 
     </div>
 
@@ -2161,11 +2218,33 @@ body::before{
 
     <button
       class="music-button"
+      id="prevButton"
+      type="button"
+    >
+
+      |◀
+
+    </button>
+
+
+    <button
+      class="music-button"
       id="playButton"
       type="button"
     >
 
       ▶
+
+    </button>
+
+
+    <button
+      class="music-button"
+      id="nextButton"
+      type="button"
+    >
+
+      ▶|
 
     </button>
 
@@ -2193,6 +2272,20 @@ body::before{
   >
 
     00:00 / 00:00
+
+  </div>
+
+
+  <div class="music-volume">
+
+    <input
+      id="volume"
+      type="range"
+      min="0"
+      max="1"
+      value=".7"
+      step=".01"
+    >
 
   </div>
 
@@ -2693,6 +2786,12 @@ function renderArchive(items){
     "none";
 
 
+  document.querySelector(
+    ".notes-tools"
+  ).style.display =
+    "grid";
+
+
   if(!items.length){
 
     archive.innerHTML = `
@@ -2932,22 +3031,6 @@ function updateClock(){
     new Date();
 
 
-  const date =
-    String(
-      now.getDate()
-    ).padStart(2,"0") +
-
-    "." +
-
-    String(
-      now.getMonth()+1
-    ).padStart(2,"0") +
-
-    "." +
-
-    now.getFullYear();
-
-
   const time =
     String(
       now.getHours()
@@ -3036,7 +3119,35 @@ function updateClock(){
 
 /* =========================================================
    MUSIC
+   Shared with Home + Writings
 ========================================================= */
+
+const MUSIC_TRACKS = [
+
+  {
+    title:"Between the Takes",
+    artist:"Orient.bakureever",
+    src:"/music/between-the-takes.mp3"
+  },
+
+  {
+    title:"Wednesday's Origami",
+    artist:"Orient.bakureever",
+    src:"/music/wednesdays-origami.mp3"
+  },
+
+  {
+    title:"Where the Cat Goes at Night",
+    artist:"Orient.bakureever",
+    src:"/music/where-the-cat-goes-at-night.mp3"
+  }
+
+];
+
+
+const MUSIC_STORAGE_KEY =
+  "qmArchiveMusic";
+
 
 const audio =
   document.getElementById(
@@ -3050,9 +3161,39 @@ const playButton =
   );
 
 
+const prevButton =
+  document.getElementById(
+    "prevButton"
+  );
+
+
+const nextButton =
+  document.getElementById(
+    "nextButton"
+  );
+
+
 const progress =
   document.getElementById(
     "progress"
+  );
+
+
+const volume =
+  document.getElementById(
+    "volume"
+  );
+
+
+const musicTitle =
+  document.getElementById(
+    "musicTitle"
+  );
+
+
+const musicArtist =
+  document.getElementById(
+    "musicArtist"
   );
 
 
@@ -3062,17 +3203,125 @@ const musicTime =
   );
 
 
-audio.src =
-  "/music/qm-archive.mp3";
+let currentTrack = 0;
 
 
-audio.volume =
-  0.7;
 
+/* =========================================================
+   GET SAVED STATE
+========================================================= */
+
+function getMusicState(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        MUSIC_STORAGE_KEY
+      );
+
+
+    if(!saved){
+
+      return null;
+
+    }
+
+
+    const state =
+      JSON.parse(
+        saved
+      );
+
+
+    if(
+      !state ||
+      typeof state !== "object"
+    ){
+
+      return null;
+
+    }
+
+
+    return state;
+
+  }catch(error){
+
+    console.warn(
+      "Could not read music state.",
+      error
+    );
+
+
+    return null;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   SAVE STATE
+========================================================= */
+
+function saveMusicState(){
+
+  try{
+
+    localStorage.setItem(
+
+      MUSIC_STORAGE_KEY,
+
+      JSON.stringify({
+
+        track:
+          currentTrack,
+
+        currentTime:
+          Number.isFinite(
+            audio.currentTime
+          )
+            ? audio.currentTime
+            : 0,
+
+        volume:
+          Number(
+            audio.volume
+          ),
+
+        isPlaying:
+          !audio.paused
+
+      })
+
+    );
+
+  }catch(error){
+
+    console.warn(
+      "Could not save music state.",
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =========================================================
+   FORMAT TIME
+========================================================= */
 
 function formatTime(seconds){
 
-  if(!Number.isFinite(seconds)){
+  if(
+    !Number.isFinite(
+      seconds
+    )
+  ){
 
     return "00:00";
 
@@ -3093,40 +3342,305 @@ function formatTime(seconds){
 
   return (
 
-    String(minutes)
-      .padStart(2,"0")
+    String(
+      minutes
+    ).padStart(2,"0")
 
     +
 
     ":" +
 
-    String(secs)
-      .padStart(2,"0")
+    String(
+      secs
+    ).padStart(2,"0")
 
   );
 
 }
 
 
-playButton.addEventListener(
-  "click",
-  () => {
 
-    if(audio.paused){
+/* =========================================================
+   LOAD TRACK
+========================================================= */
 
-      audio.play()
-        .then(() => {
+function loadTrack(
+  index,
+  autoplay=false
+){
+
+  if(
+    !MUSIC_TRACKS.length
+  ){
+
+    return;
+
+  }
+
+
+  currentTrack =
+
+    (
+      index +
+      MUSIC_TRACKS.length
+    )
+
+    %
+
+    MUSIC_TRACKS.length;
+
+
+  const track =
+    MUSIC_TRACKS[
+      currentTrack
+    ];
+
+
+  audio.src =
+    track.src;
+
+
+  musicTitle.textContent =
+    track.title;
+
+
+  musicArtist.textContent =
+    track.artist;
+
+
+  progress.value =
+    0;
+
+
+  musicTime.textContent =
+    "00:00 / 00:00";
+
+
+  if(autoplay){
+
+    audio.play()
+
+      .then(
+        () => {
 
           playButton.textContent =
             "❚❚";
 
-        })
-        .catch(() => {
+          saveMusicState();
+
+        }
+      )
+
+      .catch(
+        () => {
 
           playButton.textContent =
             "▶";
 
-        });
+        }
+      );
+
+  }else{
+
+    playButton.textContent =
+      "▶";
+
+  }
+
+}
+
+
+
+/* =========================================================
+   RESTORE SAVED STATE
+========================================================= */
+
+function restoreMusicState(){
+
+  const state =
+    getMusicState();
+
+
+  if(!state){
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+
+    loadTrack(
+      0,
+      false
+    );
+
+
+    return;
+
+  }
+
+
+  let savedTrack =
+    Number(
+      state.track
+    );
+
+
+  if(
+    !Number.isInteger(
+      savedTrack
+    )
+  ){
+
+    savedTrack = 0;
+
+  }
+
+
+  if(
+    savedTrack < 0 ||
+    savedTrack >=
+      MUSIC_TRACKS.length
+  ){
+
+    savedTrack = 0;
+
+  }
+
+
+  currentTrack =
+    savedTrack;
+
+
+  const savedVolume =
+    Number(
+      state.volume
+    );
+
+
+  if(
+
+    Number.isFinite(
+      savedVolume
+    )
+
+    &&
+
+    savedVolume >= 0
+
+    &&
+
+    savedVolume <= 1
+
+  ){
+
+    audio.volume =
+      savedVolume;
+
+
+    volume.value =
+      savedVolume;
+
+  }else{
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+  }
+
+
+  loadTrack(
+    currentTrack,
+    false
+  );
+
+
+  const savedTime =
+    Number(
+      state.currentTime
+    );
+
+
+  if(
+
+    Number.isFinite(
+      savedTime
+    )
+
+    &&
+
+    savedTime > 0
+
+  ){
+
+    const restoreTime =
+      () => {
+
+        if(
+          savedTime <
+          audio.duration
+        ){
+
+          audio.currentTime =
+            savedTime;
+
+        }
+
+
+        audio.removeEventListener(
+          "loadedmetadata",
+          restoreTime
+        );
+
+      };
+
+
+    audio.addEventListener(
+      "loadedmetadata",
+      restoreTime
+    );
+
+  }
+
+}
+
+
+
+/* =========================================================
+   PLAY / PAUSE
+========================================================= */
+
+playButton.addEventListener(
+  "click",
+  () => {
+
+    if(
+      audio.paused
+    ){
+
+      audio.play()
+
+        .then(
+          () => {
+
+            playButton.textContent =
+              "❚❚";
+
+            saveMusicState();
+
+          }
+        )
+
+        .catch(
+          () => {
+
+            playButton.textContent =
+              "▶";
+
+          }
+        );
 
     }else{
 
@@ -3135,11 +3649,206 @@ playButton.addEventListener(
       playButton.textContent =
         "▶";
 
+      saveMusicState();
+
     }
 
   }
 );
 
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+prevButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack - 1,
+      true
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+nextButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   METADATA
+========================================================= */
+
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
+
+    musicTime.textContent =
+
+      "00:00 / " +
+
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+
+/* =========================================================
+   TIME UPDATE
+========================================================= */
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    if(
+      audio.duration
+    ){
+
+      progress.value =
+
+        (
+          audio.currentTime /
+          audio.duration
+        )
+
+        * 100;
+
+    }
+
+
+    musicTime.textContent =
+
+      formatTime(
+        audio.currentTime
+      )
+
+      +
+
+      " / "
+
+      +
+
+      formatTime(
+        audio.duration
+      );
+
+
+    if(
+
+      Math.floor(
+        audio.currentTime
+      ) % 5 === 0
+
+    ){
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+progress.addEventListener(
+  "input",
+  () => {
+
+    if(
+      audio.duration
+    ){
+
+      audio.currentTime =
+
+        (
+          Number(
+            progress.value
+          ) / 100
+        )
+
+        *
+
+        audio.duration;
+
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   VOLUME
+========================================================= */
+
+volume.addEventListener(
+  "input",
+  () => {
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+
+    saveMusicState();
+
+  }
+);
+
+
+
+/* =========================================================
+   TRACK ENDED
+========================================================= */
+
+audio.addEventListener(
+  "ended",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   PLAY / PAUSE STATE
+========================================================= */
 
 audio.addEventListener(
   "play",
@@ -3147,6 +3856,9 @@ audio.addEventListener(
 
     playButton.textContent =
       "❚❚";
+
+
+    saveMusicState();
 
   }
 );
@@ -3159,73 +3871,94 @@ audio.addEventListener(
     playButton.textContent =
       "▶";
 
-  }
-);
 
-
-audio.addEventListener(
-  "loadedmetadata",
-  () => {
-
-    musicTime.textContent =
-      "00:00 / " +
-      formatTime(
-        audio.duration
-      );
+    saveMusicState();
 
   }
 );
 
 
-audio.addEventListener(
-  "timeupdate",
+
+/* =========================================================
+   BEFORE LEAVE
+========================================================= */
+
+window.addEventListener(
+  "beforeunload",
   () => {
 
-    if(audio.duration){
-
-      progress.value =
-        (
-          audio.currentTime /
-          audio.duration
-        ) *
-        100;
-
-    }
-
-
-    musicTime.textContent =
-      formatTime(
-        audio.currentTime
-      ) +
-
-      " / " +
-
-      formatTime(
-        audio.duration
-      );
+    saveMusicState();
 
   }
 );
 
 
-progress.addEventListener(
-  "input",
-  () => {
 
-    if(audio.duration){
+/* =========================================================
+   FIRST USER INTERACTION
+========================================================= */
 
-      audio.currentTime =
-        (
-          Number(
-            progress.value
-          ) /
-          100
-        ) *
-        audio.duration;
+let musicStarted = false;
 
-    }
+
+function startMusic(event){
+
+  if(
+    musicStarted
+  ){
+
+    return;
 
   }
+
+
+  if(
+    event.target.closest(
+      ".music-player"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  musicStarted = true;
+
+
+  audio.play()
+
+    .then(
+      () => {
+
+        playButton.textContent =
+          "❚❚";
+
+        saveMusicState();
+
+      }
+    )
+
+    .catch(
+      () => {
+
+        musicStarted = false;
+
+      }
+    );
+
+
+  document.removeEventListener(
+    "pointerdown",
+    startMusic
+  );
+
+}
+
+
+document.addEventListener(
+  "pointerdown",
+  startMusic
 );
 
 
@@ -3243,6 +3976,14 @@ async function init(){
     updateClock,
     1000
   );
+
+
+  /*
+     Restore the same music state
+     used by Home and Writings.
+  */
+
+  restoreMusicState();
 
 
   try{
@@ -3268,7 +4009,9 @@ async function init(){
 
 
     const slug =
-      params.get("slug");
+      params.get(
+        "slug"
+      );
 
 
     if(slug){
@@ -3284,6 +4027,7 @@ async function init(){
         items
       );
 
+
       setupSearch(
         items
       );
@@ -3293,7 +4037,9 @@ async function init(){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
 
     document.getElementById(
