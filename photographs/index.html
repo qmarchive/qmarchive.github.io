@@ -771,6 +771,12 @@ a[href]:hover{
 }
 
 
+/* =========================================================
+   PHOTO FILTERS
+   Chỉ hiển thị ở ARCHIVE.
+   Trang DETAIL sẽ có class .detail-mode.
+========================================================= */
+
 .photo-filters{
 
   display:flex;
@@ -845,6 +851,19 @@ a[href]:hover{
   color:var(--white);
 
   background:var(--teal);
+
+}
+
+
+/* =========================================================
+   DETAIL MODE
+   ẨN FILTER KHI ĐANG XEM MỘT PHOTOGRAPH
+========================================================= */
+
+.photos-window.detail-mode
+.photo-filters{
+
+  display:none;
 
 }
 
@@ -1349,7 +1368,6 @@ a[href]:hover{
 
 /* =========================================================
    MUSIC PLAYER
-   Đồng bộ với Home
 ========================================================= */
 
 .music-player{
@@ -2039,7 +2057,10 @@ a[href]:hover{
 <main class="center">
 
 
-  <section class="window photos-window">
+  <section
+    class="window photos-window"
+    id="photosWindow"
+  >
 
 
     <!-- TITLE BAR -->
@@ -2957,7 +2978,7 @@ async function renderArticle(
 
   /* =======================================================
      IMAGE
-  ======================================================= */
+  ====================================================== */
 
   const image =
     item.image ||
@@ -2968,7 +2989,7 @@ async function renderArticle(
 
   /* =======================================================
      LOADING
-  ======================================================= */
+  ====================================================== */
 
   main.innerHTML = `
 
@@ -3593,6 +3614,26 @@ async function init(){
     ===================================================== */
 
     if(slug){
+
+      /*
+        DETAIL MODE:
+        Hide archive filters.
+      */
+
+      const photosWindow =
+        document.getElementById(
+          "photosWindow"
+        );
+
+
+      if(photosWindow){
+
+        photosWindow.classList.add(
+          "detail-mode"
+        );
+
+      }
+
 
       await renderArticle(
         items,
