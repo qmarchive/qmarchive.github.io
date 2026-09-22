@@ -4019,4 +4019,143 @@ async function init(){
     */
 
     if(
-     
+      event.target.closest(
+        ".music-player"
+      )
+    ){
+
+      return;
+
+    }
+
+
+    const savedState =
+      getMusicState();
+
+
+    /*
+       If there is a saved state and it was
+       previously playing, resume it.
+
+       Otherwise preserve the original
+       behaviour: first interaction starts
+       the first/default track.
+    */
+
+    musicStarted = true;
+
+
+    audio.play()
+      .then(() => {
+
+        playButton.textContent =
+          "❚❚";
+
+        saveMusicState();
+
+      })
+      .catch(() => {
+
+        musicStarted = false;
+
+      });
+
+
+    document.removeEventListener(
+      "pointerdown",
+      startMusic
+    );
+
+  }
+
+
+  document.addEventListener(
+    "pointerdown",
+    startMusic
+  );
+
+
+  try{
+
+    const [
+      writingsData,
+      notesData,
+      photographsData
+    ] = await Promise.all([
+
+      loadJSON(
+        WRITINGS_URL
+      ),
+
+      loadJSON(
+        NOTES_URL
+      ),
+
+      loadJSON(
+        PHOTOGRAPHS_URL
+      )
+
+    ]);
+
+
+    renderWritings(
+      Array.isArray(
+        writingsData.writings
+      )
+        ? writingsData.writings
+        : []
+    );
+
+
+    renderNotes(
+      Array.isArray(
+        notesData.notes
+      )
+        ? notesData.notes
+        : []
+    );
+
+
+    renderPhotographs(
+      Array.isArray(
+        photographsData.photographs
+      )
+        ? photographsData.photographs
+        : []
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    document.getElementById(
+      "writingList"
+    ).innerHTML =
+      "<div class='error'>Writings could not be loaded.</div>";
+
+
+    document.getElementById(
+      "noteList"
+    ).innerHTML =
+      "<div class='error'>Notes could not be loaded.</div>";
+
+
+    document.getElementById(
+      "photoGrid"
+    ).innerHTML =
+      "<div class='error'>Photographs could not be loaded.</div>";
+
+  }
+
+}
+
+
+init();
+
+</script>
+
+
+</body>
+</html>
