@@ -1470,6 +1470,113 @@ async function loadMarkdown(slug){
 
 
 /* =========================================================
+   DATE PARSER
+========================================================= */
+
+function parseArchiveDate(value){
+
+  const text =
+    String(value || "")
+      .trim();
+
+
+  /*
+     DD.MM.YYYY
+  */
+
+  let match =
+    text.match(
+      /^(\d{1,2})[.](\d{1,2})[.](\d{4})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[3]),
+      Number(match[2]) - 1,
+      Number(match[1])
+    ).getTime();
+
+  }
+
+
+  /*
+     DD/MM/YYYY
+  */
+
+  match =
+    text.match(
+      /^(\d{1,2})[/](\d{1,2})[/](\d{4})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[3]),
+      Number(match[2]) - 1,
+      Number(match[1])
+    ).getTime();
+
+  }
+
+
+  /*
+     YYYY-MM-DD
+  */
+
+  match =
+    text.match(
+      /^(\d{4})-(\d{1,2})-(\d{1,2})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[1]),
+      Number(match[2]) - 1,
+      Number(match[3])
+    ).getTime();
+
+  }
+
+
+  /*
+     Chỉ có năm
+     Ví dụ: 2020
+  */
+
+  match =
+    text.match(
+      /^(\d{4})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[1]),
+      0,
+      1
+    ).getTime();
+
+  }
+
+
+  /*
+     Không đọc được ngày
+     → đưa xuống cuối
+  */
+
+  return 0;
+
+}
+
+
+
+/* =========================================================
    ARCHIVE
 ========================================================= */
 
@@ -1494,7 +1601,73 @@ function renderArchive(items){
   }
 
 
-  items.forEach(
+  /*
+     Luôn sắp xếp:
+     MỚI NHẤT → CŨ NHẤT
+
+     Không phụ thuộc vào thứ tự
+     trong content.json.
+  */
+
+  const sortedItems =
+
+    items
+      .map(
+        (item,index) => ({
+
+          item,
+
+          index,
+
+          timestamp:
+            parseArchiveDate(
+              item.date
+            )
+
+        })
+      )
+
+      .sort(
+        (a,b) => {
+
+          /*
+             Ngày mới hơn đứng trước.
+          */
+
+          if(
+            b.timestamp !==
+            a.timestamp
+          ){
+
+            return (
+              b.timestamp -
+              a.timestamp
+            );
+
+          }
+
+
+          /*
+             Nếu hai bài có cùng ngày,
+             giữ nguyên thứ tự ban đầu
+             trong content.json.
+          */
+
+          return (
+            a.index -
+            b.index
+          );
+
+        }
+      )
+
+      .map(
+        entry =>
+          entry.item
+      );
+
+
+  sortedItems.forEach(
     item => {
 
       const entry =
