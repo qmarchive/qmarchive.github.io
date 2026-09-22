@@ -262,8 +262,6 @@ body::before{
 
 /* =========================================================
    LINK HOVER
-   Các link vẫn in đậm khi hover.
-   Riêng MORE sẽ chuyển sang màu trắng.
 ========================================================= */
 
 a[href]:hover{
@@ -1337,8 +1335,6 @@ a[href]:hover{
 
 }
 
-
-/* NEW: ARTIST */
 
 .music-artist{
 
@@ -2637,6 +2633,12 @@ const MUSIC_TRACKS = [
 ];
 
 
+/* LOCAL STORAGE */
+
+const MUSIC_STORAGE_KEY =
+  "qmArchiveMusic";
+
+
 /* CONTENT */
 
 const WRITINGS_URL =
@@ -3130,6 +3132,243 @@ const musicTime =
 let currentTrack = 0;
 
 
+/* =========================================================
+   LOCAL STORAGE — LOAD
+========================================================= */
+
+function getMusicState(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        MUSIC_STORAGE_KEY
+      );
+
+
+    if(!saved)
+      return null;
+
+
+    const state =
+      JSON.parse(saved);
+
+
+    if(!state ||
+       typeof state !== "object"){
+
+      return null;
+
+    }
+
+
+    return state;
+
+  }catch(error){
+
+    console.warn(
+      "Could not read music state.",
+      error
+    );
+
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
+   LOCAL STORAGE — SAVE
+========================================================= */
+
+function saveMusicState(){
+
+  try{
+
+    localStorage.setItem(
+      MUSIC_STORAGE_KEY,
+      JSON.stringify({
+
+        track:
+          currentTrack,
+
+        currentTime:
+          Number.isFinite(
+            audio.currentTime
+          )
+            ? audio.currentTime
+            : 0,
+
+        volume:
+          Number(
+            audio.volume
+          ),
+
+        isPlaying:
+          !audio.paused
+
+      })
+    );
+
+  }catch(error){
+
+    console.warn(
+      "Could not save music state.",
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   LOCAL STORAGE — RESTORE
+========================================================= */
+
+function restoreMusicState(){
+
+  const state =
+    getMusicState();
+
+
+  if(!state){
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+    loadTrack(
+      0,
+      false
+    );
+
+    return;
+
+  }
+
+
+  let savedTrack =
+    Number(
+      state.track
+    );
+
+
+  if(!Number.isInteger(savedTrack))
+    savedTrack = 0;
+
+
+  if(
+    savedTrack < 0 ||
+    savedTrack >= MUSIC_TRACKS.length
+  ){
+
+    savedTrack = 0;
+
+  }
+
+
+  currentTrack =
+    savedTrack;
+
+
+  const savedVolume =
+    Number(
+      state.volume
+    );
+
+
+  if(
+    Number.isFinite(savedVolume) &&
+    savedVolume >= 0 &&
+    savedVolume <= 1
+  ){
+
+    audio.volume =
+      savedVolume;
+
+    volume.value =
+      savedVolume;
+
+  }else{
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+  }
+
+
+  loadTrack(
+    currentTrack,
+    false
+  );
+
+
+  const savedTime =
+    Number(
+      state.currentTime
+    );
+
+
+  if(
+    Number.isFinite(savedTime) &&
+    savedTime > 0
+  ){
+
+    const restoreTime = () => {
+
+      if(
+        savedTime <
+        audio.duration
+      ){
+
+        audio.currentTime =
+          savedTime;
+
+      }
+
+      audio.removeEventListener(
+        "loadedmetadata",
+        restoreTime
+      );
+
+    };
+
+
+    audio.addEventListener(
+      "loadedmetadata",
+      restoreTime
+    );
+
+  }
+
+
+  /*
+     We intentionally do NOT autoplay
+     immediately when restoring.
+
+     Browser/iOS autoplay policy can block
+     playback when a page opens without
+     a user gesture.
+
+     If the previous state was playing,
+     the first user interaction will
+     resume the track.
+  */
+
+}
+
+
+
+/* =========================================================
+   MUSIC HELPERS
+========================================================= */
+
 function formatTime(seconds){
 
   if(!Number.isFinite(seconds))
@@ -3198,11 +3437,15 @@ function loadTrack(
         playButton.textContent =
           "❚❚";
 
+        saveMusicState();
+
       })
       .catch(() => {
 
         playButton.textContent =
           "▶";
+
+        saveMusicState();
 
       });
 
@@ -3216,6 +3459,11 @@ function loadTrack(
 }
 
 
+
+/* =========================================================
+   PLAY / PAUSE
+========================================================= */
+
 playButton.addEventListener(
   "click",
   () => {
@@ -3227,6 +3475,8 @@ playButton.addEventListener(
 
           playButton.textContent =
             "❚❚";
+
+          saveMusicState();
 
         })
         .catch(() => {
@@ -3243,11 +3493,18 @@ playButton.addEventListener(
       playButton.textContent =
         "▶";
 
+      saveMusicState();
+
     }
 
   }
 );
 
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
 
 prevButton.addEventListener(
   "click",
@@ -3262,6 +3519,11 @@ prevButton.addEventListener(
 );
 
 
+
+/* =========================================================
+   NEXT
+========================================================= */
+
 nextButton.addEventListener(
   "click",
   () => {
@@ -3274,6 +3536,11 @@ nextButton.addEventListener(
   }
 );
 
+
+
+/* =========================================================
+   AUDIO METADATA
+========================================================= */
 
 audio.addEventListener(
   "loadedmetadata",
@@ -3288,6 +3555,11 @@ audio.addEventListener(
   }
 );
 
+
+
+/* =========================================================
+   AUDIO TIME
+========================================================= */
 
 audio.addEventListener(
   "timeupdate",
@@ -3313,9 +3585,32 @@ audio.addEventListener(
         audio.duration
       );
 
+
+    /*
+       Save periodically while playing.
+       This means reopening the site later
+       should return close to where playback
+       stopped.
+    */
+
+    if(
+      Math.floor(
+        audio.currentTime
+      ) % 5 === 0
+    ){
+
+      saveMusicState();
+
+    }
+
   }
 );
 
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
 
 progress.addEventListener(
   "input",
@@ -3330,11 +3625,19 @@ progress.addEventListener(
         ) *
         audio.duration;
 
+
+      saveMusicState();
+
     }
 
   }
 );
 
+
+
+/* =========================================================
+   VOLUME
+========================================================= */
 
 volume.addEventListener(
   "input",
@@ -3345,9 +3648,17 @@ volume.addEventListener(
         volume.value
       );
 
+
+    saveMusicState();
+
   }
 );
 
+
+
+/* =========================================================
+   TRACK ENDED
+========================================================= */
 
 audio.addEventListener(
   "ended",
@@ -3362,12 +3673,20 @@ audio.addEventListener(
 );
 
 
+
+/* =========================================================
+   PLAY STATE
+========================================================= */
+
 audio.addEventListener(
   "play",
   () => {
 
     playButton.textContent =
       "❚❚";
+
+
+    saveMusicState();
 
   }
 );
@@ -3379,6 +3698,24 @@ audio.addEventListener(
 
     playButton.textContent =
       "▶";
+
+
+    saveMusicState();
+
+  }
+);
+
+
+
+/* =========================================================
+   BEFORE LEAVING PAGE
+========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    saveMusicState();
 
   }
 );
@@ -3400,30 +3737,55 @@ async function init(){
   );
 
 
-  audio.volume =
-    Number(
-      volume.value
-    );
+  /*
+     Restore the previous music state
+     before anything else.
+  */
 
-
-  loadTrack(
-    0,
-    false
-  );
+  restoreMusicState();
 
 
   /* =====================================================
-     AUTOPLAY AFTER FIRST USER INTERACTION
+     AUTOPLAY / RESUME AFTER FIRST USER INTERACTION
   ===================================================== */
 
   let musicStarted = false;
 
 
-  function startMusic(){
+  function startMusic(event){
 
     if(musicStarted)
       return;
 
+
+    /*
+       Do not let the global interaction
+       interfere with the music buttons.
+    */
+
+    if(
+      event.target.closest(
+        ".music-player"
+      )
+    ){
+
+      return;
+
+    }
+
+
+    const savedState =
+      getMusicState();
+
+
+    /*
+       If there is a saved state and it was
+       previously playing, resume it.
+
+       Otherwise preserve the original
+       behaviour: first interaction starts
+       the first/default track.
+    */
 
     musicStarted = true;
 
@@ -3433,6 +3795,8 @@ async function init(){
 
         playButton.textContent =
           "❚❚";
+
+        saveMusicState();
 
       })
       .catch(() => {
@@ -3452,10 +3816,7 @@ async function init(){
 
   document.addEventListener(
     "pointerdown",
-    startMusic,
-    {
-      once:false
-    }
+    startMusic
   );
 
 
