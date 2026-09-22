@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>Writings — QUỐC MẠNH</title>
 
+
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
   box-sizing:border-box;
 }
@@ -15,1124 +27,1537 @@ html,
 body{
   margin:0;
   padding:0;
-  background:#080808;
-  color:#aaa;
-  font-family:"Courier New", Courier, monospace;
+}
+
+html{
+  background:#d8cfb5;
 }
 
 body{
   min-height:100vh;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.08)
+    ),
+    #d8cfb5;
+
+  color:#15172f;
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
 }
 
-/* SCANLINES */
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+  --cream:#d8cfb5;
+  --paper:#e7ddc0;
+
+  --orange:#f05a32;
+  --orange-dark:#c84327;
+
+  --teal:#176f78;
+  --teal-dark:#0d5059;
+
+  --blue:#15172f;
+  --blue-soft:#243b73;
+
+  --green:#1d8a4a;
+
+  --white:#f5ecd7;
+
+  --border:3px solid var(--blue);
+
+}
+
+
+/* =========================================================
+   SCANLINES
+========================================================= */
 
 body::before{
+
   content:"";
+
   position:fixed;
+
   inset:0;
+
   pointer-events:none;
-  z-index:9999;
+
+  z-index:99999;
 
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(255,255,255,.025) 0px,
-      rgba(255,255,255,.025) 1px,
+      rgba(21,23,47,.035) 0px,
+      rgba(21,23,47,.035) 1px,
       transparent 1px,
       transparent 4px
     );
+
+  opacity:.45;
+
 }
 
-/* PAGE */
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 .page{
+
   width:100%;
+
   min-height:100vh;
-  padding:30px;
+
+  padding:
+    10px
+    14px
+    150px;
+
 }
 
-/* BROWSER BAR */
+
+/* =========================================================
+   GENERIC WINDOW
+========================================================= */
+
+.window{
+
+  background:var(--paper);
+
+  border:var(--border);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+  overflow:hidden;
+
+}
+
+
+.window-titlebar{
+
+  min-height:38px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:
+    5px 7px;
+
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
+  color:var(--blue);
+
+  font-weight:bold;
+
+  letter-spacing:.8px;
+
+  font-size:14px;
+
+}
+
+
+.window--teal .window-titlebar{
+
+  background:var(--teal);
+
+  color:var(--white);
+
+}
+
+
+.window-title{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  min-width:0;
+
+}
+
+
+.window-title-icon{
+
+  width:21px;
+
+  height:21px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-shrink:0;
+
+  border:2px solid currentColor;
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+.window--teal
+.window-title-icon{
+
+  color:var(--blue);
+
+}
+
+
+.window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+  flex-shrink:0;
+
+}
+
+
+.window-button{
+
+  width:20px;
+
+  height:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:11px;
+
+  line-height:1;
+
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a[href]:hover{
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   BROWSER
+========================================================= */
 
 .browser{
-  width:100%;
-  height:54px;
 
-  border:1px solid #252525;
+  border:var(--border);
 
-  padding:10px 18px;
-
-  margin-bottom:85px;
-
-  color:#666;
-  font-size:13px;
+  background:var(--paper);
 
   box-shadow:
-    inset 0 0 0 1px #111;
+    5px 5px 0 var(--blue);
+
+  margin-bottom:14px;
+
 }
 
-.browser::before{
-  content:"";
-  display:inline-block;
 
-  width:12px;
-  height:12px;
+.browser-top{
 
-  margin-right:12px;
+  min-height:39px;
 
-  border:1px solid #555;
+  display:flex;
 
-  box-shadow:
-    18px 0 0 -1px #080808,
-    18px 0 0 0 #555,
-    36px 0 0 -1px #080808,
-    36px 0 0 0 #555;
+  align-items:center;
 
-  vertical-align:-1px;
+  justify-content:space-between;
+
+  padding:
+    5px 8px;
+
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
 }
 
-.browser span{
-  color:#666;
+
+.browser-brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  color:var(--blue);
+
+  font-weight:bold;
+
+  font-size:17px;
+
+  letter-spacing:1px;
+
 }
 
-/* LAYOUT */
+
+.browser-brand-icon{
+
+  width:24px;
+
+  height:24px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--teal);
+
+  color:var(--white);
+
+  font-size:12px;
+
+}
+
+
+.browser-subtitle{
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.browser-window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.browser-window-buttons span{
+
+  width:23px;
+
+  height:23px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:11px;
+
+}
+
+
+.browser-menu{
+
+  display:flex;
+
+  gap:20px;
+
+  padding:
+    6px 10px;
+
+  border-bottom:2px solid var(--blue);
+
+  font-size:12px;
+
+  font-weight:bold;
+
+}
+
+
+.browser-address-row{
+
+  display:grid;
+
+  grid-template-columns:
+    31px
+    31px
+    31px
+    minmax(0,1fr)
+    175px;
+
+  gap:6px;
+
+  align-items:center;
+
+  padding:7px;
+
+}
+
+
+.browser-control{
+
+  width:31px;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  font-weight:bold;
+
+}
+
+
+.browser-address{
+
+  min-width:0;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:
+    0 9px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:#303249;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+}
+
+
+.browser-date{
+
+  text-align:center;
+
+  font-size:10px;
+
+  line-height:1.35;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
 
 .layout{
-  display:grid;
-  grid-template-columns:260px minmax(0,1fr) 290px;
-  gap:55px;
 
-  max-width:1450px;
+  display:grid;
+
+  grid-template-columns:
+    285px
+    minmax(0,1fr);
+
+  gap:16px;
+
+  max-width:1600px;
+
   margin:0 auto;
+
+  align-items:start;
+
 }
 
-/* LEFT */
+
+/* =========================================================
+   LEFT / SYSTEM INFO
+========================================================= */
 
 .left{
+
   min-width:0;
+
 }
 
-.brand{
-  color:#aaa;
-  font-size:21px;
-  letter-spacing:4px;
 
-  margin-bottom:35px;
+.system-window{
+
+  overflow:hidden;
+
 }
 
-.rule{
-  width:100%;
-  border-top:1px dashed #292929;
-  margin:0 0 32px 0;
+
+.system-content{
+
+  padding:13px;
+
 }
 
-.nav{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-}
 
-.nav a{
-  color:#777;
-  text-decoration:none;
-  font-size:16px;
-}
+.system-line{
 
-.nav a:hover{
-  color:#ddd;
-}
+  margin:
+    7px 0;
 
-.nav a.active{
-  color:#c0ad67;
-}
-
-.left-info{
-  margin-top:60px;
-  padding-top:30px;
-
-  border-top:1px dashed #292929;
-
-  color:#555;
-  font-size:14px;
-  line-height:1.8;
-}
-
-.left-info .label{
-  color:#444;
-}
-
-.left-info .year{
-  color:#777;
-  font-size:20px;
-  margin-top:4px;
-}
-
-/* MAIN */
-
-.main{
-  min-width:0;
-}
-
-.writings{
-  border:1px solid #343434;
-  min-height:245px;
-}
-
-.section-header{
-  padding:30px 28px 25px;
-
-  border-bottom:1px solid #2b2b2b;
-}
-
-.section-title{
-  color:#777;
-  font-size:14px;
-  letter-spacing:2px;
-}
-
-.section-path{
-  margin-top:12px;
-  color:#3f3f3f;
   font-size:12px;
+
 }
 
-/* ARCHIVE */
+
+.online{
+
+  color:#168a43;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-list{
+
+  margin-top:14px;
+
+  padding-top:10px;
+
+  border-top:
+    2px dashed var(--blue);
+
+}
+
+
+.nav-list a{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-height:36px;
+
+  padding:
+    6px 8px;
+
+  color:var(--blue);
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+}
+
+
+.nav-list a:hover{
+
+  background:var(--orange);
+
+}
+
+
+.nav-list a.active{
+
+  background:var(--orange);
+
+  color:var(--blue);
+
+}
+
+
+/* =========================================================
+   CSS FOLDER ICON
+========================================================= */
+
+.folder-icon{
+
+  width:21px;
+
+  height:15px;
+
+  display:inline-block;
+
+  position:relative;
+
+  flex-shrink:0;
+
+  background:#e8b82e;
+
+  border:2px solid var(--blue);
+
+}
+
+
+.folder-icon::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:1px;
+
+  top:-6px;
+
+  width:9px;
+
+  height:6px;
+
+  background:#e8b82e;
+
+  border:
+    2px solid var(--blue);
+
+  border-bottom:0;
+
+}
+
+
+/* =========================================================
+   CASSETTE
+========================================================= */
+
+.cassette{
+
+  margin-top:14px;
+
+  padding:8px;
+
+}
+
+
+.cassette img{
+
+  display:block;
+
+  width:100%;
+
+  height:auto;
+
+  border:3px solid var(--blue);
+
+}
+
+
+.cassette img[src$=".gif"]{
+
+  image-rendering:auto;
+
+}
+
+
+.cassette-caption{
+
+  margin-top:8px;
+
+  text-align:center;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   CENTER
+========================================================= */
+
+.center{
+
+  min-width:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:16px;
+
+}
+
+
+/* =========================================================
+   WRITINGS WINDOW
+========================================================= */
+
+.writings-window{
+
+  min-width:0;
+
+  overflow:hidden;
+
+}
+
+
+/* =========================================================
+   WRITINGS INTRO
+========================================================= */
+
+.writing-intro{
+
+  padding:
+    12px 16px;
+
+  border-bottom:
+    2px dashed var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-size:12px;
+
+  line-height:1.6;
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.writing-search{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:
+    10px 12px;
+
+  border-bottom:
+    var(--border);
+
+  background:var(--cream);
+
+}
+
+
+.search-icon{
+
+  width:31px;
+
+  height:31px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-shrink:0;
+
+  border:
+    2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:17px;
+
+  line-height:1;
+
+}
+
+
+.search-input{
+
+  min-width:0;
+
+  flex:1;
+
+  height:31px;
+
+  padding:
+    0 9px;
+
+  border:
+    2px solid var(--blue);
+
+  outline:none;
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:inherit;
+
+  font-size:11px;
+
+}
+
+
+.search-input::placeholder{
+
+  color:#656579;
+
+}
+
+
+.search-input:focus{
+
+  background:#f5ecd7;
+
+}
+
+
+.search-clear{
+
+  width:31px;
+
+  height:31px;
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-shrink:0;
+
+  border:
+    2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:inherit;
+
+  font-size:12px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+
+.search-clear:hover{
+
+  color:var(--white);
+
+  background:var(--teal);
+
+}
+
+
+/* =========================================================
+   WRITING ARCHIVE
+========================================================= */
 
 .archive{
+
   width:100%;
+
 }
+
 
 .archive-entry{
+
   display:grid;
-  grid-template-columns:110px minmax(0,1fr);
 
-  gap:25px;
+  grid-template-columns:
+    105px
+    minmax(0,1fr)
+    28px;
 
-  padding:30px 28px;
+  gap:10px;
 
-  border-bottom:1px solid #2c2c2c;
+  align-items:center;
+
+  padding:
+    12px 14px;
+
+  border-bottom:
+    1px solid #777786;
+
+  background:var(--paper);
+
+  color:var(--blue);
 
   text-decoration:none;
+
 }
+
 
 .archive-entry:last-child{
+
   border-bottom:0;
+
 }
+
 
 .archive-entry:hover{
-  background:#0b0b0b;
+
+  background:#f5ecd7;
+
 }
 
-.archive-year{
-  color:#555;
-  font-size:13px;
+
+.archive-date{
+
+  color:var(--teal);
+
+  font-size:10px;
+
+  font-weight:bold;
+
 }
+
 
 .archive-content{
+
   min-width:0;
+
 }
+
 
 .archive-title{
-  color:#999;
-  font-size:20px;
+
+  color:var(--blue);
+
+  font-size:12px;
+
   line-height:1.4;
 
-  margin-bottom:12px;
+  font-weight:bold;
+
 }
 
-.archive-entry:hover .archive-title{
-  color:#d0d0d0;
+
+.archive-entry:hover
+.archive-title{
+
+  color:var(--orange);
+
 }
+
 
 .archive-excerpt{
-  color:#555;
-  font-size:13px;
-  line-height:1.7;
+
+  margin-top:4px;
+
+  color:#5f6070;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
 }
 
-/* ARTICLE */
+
+.archive-arrow{
+
+  text-align:right;
+
+  color:var(--blue);
+
+  font-size:16px;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   SEARCH EMPTY STATE
+========================================================= */
+
+.search-empty{
+
+  padding:
+    35px 20px;
+
+  background:#eee5ce;
+
+  color:#5f6070;
+
+  font-size:11px;
+
+  line-height:1.8;
+
+  text-align:center;
+
+}
+
+
+/* =========================================================
+   ARTICLE / DETAIL
+========================================================= */
 
 .article{
-  padding:42px 28px 55px;
+
+  padding:
+    20px
+    22px
+    30px;
+
 }
+
 
 .article-year{
-  color:#555;
-  font-size:13px;
-  margin-bottom:25px;
+
+  color:var(--teal);
+
+  font-size:11px;
+
+  font-weight:bold;
+
+  margin-bottom:8px;
+
 }
+
 
 .article-title{
-  color:#bbb;
-  font-size:34px;
-  font-weight:normal;
-  line-height:1.3;
 
-  margin:0 0 45px;
+  color:var(--blue);
+
+  font-size:28px;
+
+  font-weight:bold;
+
+  line-height:1.25;
+
+  margin:
+    0 0 28px;
+
 }
+
+
+/* =========================================================
+   ARTICLE BODY
+========================================================= */
 
 .article-body{
-  max-width:850px;
 
-  color:#999;
+  max-width:1000px;
 
-  font-size:15px;
-  line-height:2;
+  color:var(--blue);
 
-  letter-spacing:.15px;
+  font-size:14px;
+
+  line-height:1.9;
+
+  letter-spacing:.05px;
+
 }
+
 
 .article-body p{
-  margin:0 0 30px;
+
+  margin:
+    0 0 24px;
+
 }
+
 
 .article-body h1,
 .article-body h2,
 .article-body h3{
-  color:#bbb;
-  font-weight:normal;
+
+  color:var(--blue);
+
+  font-weight:bold;
+
 }
+
 
 .article-body h1{
-  font-size:27px;
-  margin:35px 0 25px;
+
+  font-size:25px;
+
+  margin:
+    30px 0 20px;
+
 }
+
 
 .article-body h2{
-  font-size:22px;
-  margin:35px 0 20px;
+
+  font-size:20px;
+
+  margin:
+    30px 0 18px;
+
 }
+
 
 .article-body h3{
-  font-size:18px;
-  margin:30px 0 15px;
+
+  font-size:17px;
+
+  margin:
+    25px 0 13px;
+
 }
+
 
 .article-body em{
-  color:#aaa;
+
+  color:var(--teal);
+
 }
+
 
 .article-body strong{
-  color:#bbb;
+
+  color:var(--orange);
+
 }
+
 
 .article-body blockquote{
-  margin:30px 0;
-  padding-left:20px;
 
-  border-left:1px solid #444;
+  margin:
+    25px 0;
 
-  color:#777;
+  padding:
+    12px 15px;
+
+  border-left:
+    5px solid var(--orange);
+
+  background:var(--white);
+
+  color:var(--teal);
+
 }
+
 
 .article-body ul,
 .article-body ol{
-  margin:0 0 30px;
+
+  margin:
+    0 0 24px;
+
   padding-left:25px;
+
 }
+
 
 .article-body li{
-  margin-bottom:8px;
+
+  margin-bottom:7px;
+
 }
+
 
 .article-body a{
-  color:#aaa;
+
+  color:var(--teal);
+
+  font-weight:bold;
+
 }
 
-.article-back{
-  display:inline-block;
 
-  margin-top:30px;
+.article-body img{
 
-  color:#555;
-  text-decoration:none;
-
-  font-size:13px;
-}
-
-.article-back:hover{
-  color:#aaa;
-}
-
-/* ERROR */
-
-.error{
-  padding:70px 28px;
-
-  color:#555;
-  font-size:14px;
-  line-height:1.8;
-}
-
-.error strong{
-  color:#777;
-  font-weight:normal;
-}
-
-/* RIGHT */
-
-.right{
-  min-width:0;
-}
-
-.side-copy{
-  color:#555;
-  font-size:14px;
-}
-
-.right-note{
-  color:#666;
-
-  font-size:14px;
-  line-height:2;
-
-  margin-bottom:40px;
-}
-
-/* POLAROID */
-
-.polaroid{
-  width:175px;
-
-  margin:20px auto 70px;
-
-  padding:9px 9px 18px;
-
-  background:#ddd;
-
-  transform:rotate(-2deg);
-}
-
-.polaroid img{
   display:block;
 
-  width:100%;
+  width:auto;
+
+  max-width:100%;
+
   height:auto;
 
-  filter:grayscale(100%);
+  margin:
+    30px 0;
+
+  border:
+    3px solid var(--blue);
+
 }
 
-.polaroid figcaption{
-  color:#777;
+
+/* =========================================================
+   ARTICLE BACK
+========================================================= */
+
+.article-back{
+
+  display:inline-block;
+
+  margin-top:20px;
+
+  padding:
+    6px 10px;
+
+  border:
+    2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  text-decoration:none;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.article-back:hover{
+
+  color:var(--white);
+
+  background:var(--teal);
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error{
+
+  padding:
+    35px 20px;
+
+  background:#eee5ce;
+
+  color:#8b2c1e;
+
+  font-size:11px;
+
+  line-height:1.8;
+
+}
+
+
+.error strong{
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   FOOTER QUOTE
+========================================================= */
+
+.footer{
+
+  width:
+    min(940px, calc(100% - 28px));
+
+  margin:
+    16px auto 0;
+
+  padding:
+    10px 14px;
+
+  border:
+    3px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--teal);
 
   text-align:center;
 
-  font-size:12px;
+  font-size:10px;
 
-  margin-top:12px;
+  font-weight:bold;
+
 }
 
-/* CLOCK */
 
-.clock{
-  color:#555;
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
 
-  font-size:13px;
-  line-height:1.7;
+.music-player{
 
-  text-align:left;
+  position:fixed;
+
+  width:
+    min(940px, calc(100% - 28px));
+
+  left:50%;
+
+  right:auto;
+
+  bottom:10px;
+
+  transform:translateX(-50%);
+
+  z-index:10000;
+
+  display:grid;
+
+  grid-template-columns:
+    auto
+    minmax(150px,1fr)
+    auto
+    minmax(150px,1.5fr)
+    auto
+    auto;
+
+  gap:9px;
+
+  align-items:center;
+
+  padding:
+    6px 8px;
+
+  background:var(--paper);
+
+  border:
+    3px solid var(--blue);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
 }
 
-.clock #time{
-  color:#777;
+
+.music-icon{
+
+  width:35px;
+
+  height:35px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:var(--orange);
+
+  border:
+    3px solid var(--blue);
+
+  font-weight:bold;
+
 }
 
-/* FOOTER */
 
-footer{
-  max-width:1450px;
+.music-info{
 
-  margin:80px auto 0;
+  min-width:0;
 
-  padding-top:20px;
-
-  border-top:1px solid #222;
-
-  color:#444;
-
-  font-size:12px;
 }
 
-/* RESPONSIVE */
 
-@media(max-width:1050px){
+.music-label{
+
+  font-size:8px;
+
+  margin-bottom:2px;
+
+}
+
+
+.music-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.music-controls{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.music-button{
+
+  width:33px;
+
+  height:29px;
+
+  border:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:inherit;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+
+.music-button:hover{
+
+  background:var(--orange);
+
+}
+
+
+.music-progress{
+
+  min-width:0;
+
+}
+
+
+.music-progress input{
+
+  width:100%;
+
+  accent-color:var(--orange);
+
+}
+
+
+.music-time{
+
+  min-width:72px;
+
+  text-align:center;
+
+  font-size:9px;
+
+}
+
+
+.music-volume{
+
+  width:100px;
+
+}
+
+
+.music-volume input{
+
+  width:100%;
+
+  accent-color:var(--teal);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1200px){
 
   .layout{
-    grid-template-columns:210px minmax(0,1fr);
-    gap:35px;
+
+    grid-template-columns:
+      220px
+      minmax(0,1fr);
+
   }
 
-  .right{
-    display:none;
-  }
-}
-
-@media(max-width:700px){
-
-  .page{
-    padding:18px;
-  }
-
-  .browser{
-    margin-bottom:50px;
-  }
-
-  .layout{
-    display:block;
-  }
-
-  .left{
-    margin-bottom:45px;
-  }
-
-  .nav{
-    flex-direction:row;
-    flex-wrap:wrap;
-    gap:15px 25px;
-  }
-
-  .left-info{
-    display:none;
-  }
-
-  .writings{
-    min-height:200px;
-  }
 
   .archive-entry{
-    grid-template-columns:1fr;
-    gap:12px;
-  }
 
-  .article{
-    padding:35px 20px 45px;
-  }
-
-  .article-title{
-    font-size:28px;
-  }
-
-  .article-body{
-    font-size:15px;
-    line-height:1.9;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="page">
-
-  <!-- BROWSER -->
-
-  <div class="browser">
-    <span id="browserAddress">
-      https://qmarchive.github.io/writings/
-    </span>
-  </div>
-
-  <!-- LAYOUT -->
-
-  <div class="layout">
-
-    <!-- LEFT -->
-
-    <aside class="left">
-
-      <div class="brand">
-        QUỐC MẠNH
-      </div>
-
-      <div class="rule"></div>
-
-      <nav class="nav">
-
-        <a href="/">
-          home
-        </a>
-
-        <a href="/writings/" class="active">
-          writings
-        </a>
-
-        <a href="/photographs/">
-          photographs
-        </a>
-
-        <a href="/notes/">
-          notes
-        </a>
-
-        <a href="/#about">
-          about
-        </a>
-
-      </nav>
-
-      <div class="left-info">
-
-        <div>writings</div>
-        <div>archive</div>
-
-        <br>
-
-        <div class="label">
-          since
-        </div>
-
-        <div class="year">
-          2020
-        </div>
-
-      </div>
-
-    </aside>
-
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-      <section class="writings">
-
-        <header class="section-header">
-
-          <div class="section-title">
-            WRITINGS
-          </div>
-
-          <div
-            class="section-path"
-            id="sectionPath">
-            / writings /
-          </div>
-
-        </header>
-
-        <div id="main"></div>
-
-      </section>
-
-    </main>
-
-
-    <!-- RIGHT -->
-
-    <aside class="right">
-
-      <div class="side-copy">
-        Hanoi, Vietnam
-      </div>
-
-      <div class="rule"></div>
-
-      <div class="right-note">
-
-        Nhật ký của một người bình thường.<br>
-
-        Viết lại những câu chuyện đáng lý<br>
-
-        chỉ cần bỏ qua.<br>
-
-        Chào Mạnh, chúng ta lại gặp nhau rồi.
-
-      </div>
-
-
-      <figure class="polaroid">
-
-        <img
-          src="/hanoi-sample.jpg"
-          alt="Hanoi, always">
-
-        <figcaption>
-          Hanoi, always.
-        </figcaption>
-
-      </figure>
-
-
-      <div class="clock">
-
-        <span id="date">
-          21.09.2026
-        </span>
-
-        <br>
-
-        <span id="time">
-          00:00:00
-        </span>
-
-        <br><br>
-
-        1998 — 2026
-
-        <br>
-
-        and beyond.
-
-      </div>
-
-    </aside>
-
-  </div>
-
-
-  <footer>
-    best viewed at night.
-  </footer>
-
-</div>
-
-
-<script>
-
-/* =========================================================
-   CONFIG
-========================================================= */
-
-const CONTENT_URL =
-  "/writings/content.json?v=" + Date.now();
-
-const POSTS_BASE =
-  "/writings/posts/";
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function escapeHTML(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   MARKDOWN
-========================================================= */
-
-function markdownToHTML(markdown){
-
-  let text = escapeHTML(markdown);
-
-  /* images */
-
-  text = text.replace(
-    /!\[([^\]]*)\]\(([^)]+)\)/g,
-    '<img src="$2" alt="$1">'
-  );
-
-  /* links */
-
-  text = text.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2">$1</a>'
-  );
-
-  /* headings */
-
-  text = text.replace(
-    /^### (.+)$/gm,
-    "<h3>$1</h3>"
-  );
-
-  text = text.replace(
-    /^## (.+)$/gm,
-    "<h2>$1</h2>"
-  );
-
-  text = text.replace(
-    /^# (.+)$/gm,
-    "<h1>$1</h1>"
-  );
-
-  /* bold */
-
-  text = text.replace(
-    /\*\*(.+?)\*\*/g,
-    "<strong>$1</strong>"
-  );
-
-  /* italic */
-
-  text = text.replace(
-    /\*(.+?)\*/g,
-    "<em>$1</em>"
-  );
-
-  /* blockquote */
-
-  text = text.replace(
-    /^&gt; (.+)$/gm,
-    "<blockquote>$1</blockquote>"
-  );
-
-  /* unordered list */
-
-  text = text.replace(
-    /^[-*] (.+)$/gm,
-    "<li>$1</li>"
-  );
-
-  text = text.replace(
-    /(<li>.*<\/li>)/gs,
-    "<ul>$1</ul>"
-  );
-
-  /*
-    Paragraph handling.
-    Keep HTML blocks intact.
-  */
-
-  const blocks = text
-    .split(/\n\s*\n/)
-    .map(block => block.trim())
-    .filter(Boolean);
-
-  return blocks.map(block => {
-
-    if(
-      block.startsWith("<h1>") ||
-      block.startsWith("<h2>") ||
-      block.startsWith("<h3>") ||
-      block.startsWith("<blockquote>") ||
-      block.startsWith("<ul>") ||
-      block.startsWith("<img")
-    ){
-      return block;
-    }
-
-    return "<p>" +
-      block.replace(/\n/g,"<br>") +
-      "</p>";
-
-  }).join("\n");
-
-}
-
-
-/* =========================================================
-   LOAD JSON
-========================================================= */
-
-async function loadJSON(){
-
-  const response = await fetch(
-    CONTENT_URL,
-    {
-      cache:"no-store"
-    }
-  );
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load writings/content.json (" +
-      response.status +
-      ")"
-    );
-
-  }
-
-  return await response.json();
-
-}
-
-
-/* =========================================================
-   LOAD MARKDOWN
-========================================================= */
-
-async function loadMarkdown(slug){
-
-  const safeSlug =
-    decodeURIComponent(String(slug || ""))
-      .trim();
-
-  const url =
-    POSTS_BASE +
-    encodeURIComponent(safeSlug) +
-    ".md?v=" +
-    Date.now();
-
-  const response = await fetch(
-    url,
-    {
-      cache:"no-store"
-    }
-  );
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load Markdown file (" +
-      response.status +
-      "): " +
-      url
-    );
-
-  }
-
-  const text =
-    await response.text();
-
-  if(!text.trim()){
-
-    throw new Error(
-      "Markdown file is empty: " +
-      url
-    );
-
-  }
-
-  return text;
-
-}
-
-
-/* =========================================================
-   ARCHIVE
-========================================================= */
-
-function renderArchive(items){
-
-  const main =
-    document.getElementById("main");
-
-  document.getElementById("sectionPath")
-    .textContent =
-    "/ writings /";
-
-  document.getElementById("browserAddress")
-    .textContent =
-    "https://qmarchive.github.io/writings/";
-
-  if(!items.length){
-
-    main.innerHTML = `
-      <div class="error">
-        No writings yet.
-      </div>
-    `;
-
-    return;
+    grid-template-columns:
+      90px
+      minmax(0,1fr)
+      24px;
 
   }
 
 
-  main.innerHTML = `
+  .music-player{
 
-    <div class="archive">
-
-      ${items.map(item => `
-
-        <a
-          class="archive-entry"
-          href="/writings/?slug=${encodeURIComponent(item.slug)}"
-        >
-
-          <div class="archive-year">
-            ${escapeHTML(item.date || "")}
-          </div>
-
-          <div class="archive-content">
-
-            <div class="archive-title">
-              ${escapeHTML(item.title || "")}
-            </div>
-
-            <div class="archive-excerpt">
-              ${escapeHTML(item.excerpt || "")}
-            </div>
-
-          </div>
-
-        </a>
-
-      `).join("")}
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   ARTICLE
-========================================================= */
-
-async function renderArticle(items, slug){
-
-  const main =
-    document.getElementById("main");
-
-  const decodedSlug =
-    decodeURIComponent(
-      String(slug || "")
-    ).trim();
-
-
-  const item =
-    items.find(
-      entry =>
-        String(entry.slug || "").trim() === decodedSlug
-    );
-
-
-  document.getElementById("sectionPath")
-    .textContent =
-    "/ writings / " +
-    decodedSlug;
-
-
-  document.getElementById("browserAddress")
-    .textContent =
-    "https://qmarchive.github.io/writings/?slug=" +
-    decodedSlug;
-
-
-  /*
-    Metadata not found
-  */
-
-  if(!item){
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          This writing could not be found.
-        </strong>
-
-        <br><br>
-
-        slug:
-        ${escapeHTML(decodedSlug)}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/writings/"
-        >
-          ← back to writings
-        </a>
-
-      </div>
-
-    `;
-
-    return;
+    grid-template-columns:
+      auto
+      minmax(120px,1fr)
+      auto
+      minmax(120px,1fr)
+      auto;
 
   }
 
 
-  /*
-    Loading state
-  */
+  .music-volume{
 
-  main.innerHTML = `
-
-    <div class="error">
-      Loading writing...
-    </div>
-
-  `;
-
-
-  try{
-
-    /*
-      IMPORTANT:
-      The Markdown is loaded from the absolute
-      GitHub Pages path.
-    */
-
-    const markdown =
-      await loadMarkdown(decodedSlug);
-
-
-    const html =
-      markdownToHTML(markdown);
-
-
-    main.innerHTML = `
-
-      <article class="article">
-
-        <div class="article-year">
-          ${escapeHTML(item.date || "")}
-        </div>
-
-        <h1 class="article-title">
-          ${escapeHTML(item.title || "")}
-        </h1>
-
-        <div class="article-body">
-          ${html}
-        </div>
-
-        <a
-          class="article-back"
-          href="/writings/"
-        >
-          ← back to writings
-        </a>
-
-      </article>
-
-    `;
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          The writing exists, but its content could not be loaded.
-        </strong>
-
-        <br><br>
-
-        File expected:
-
-        <br>
-
-        /writings/posts/
-        ${escapeHTML(decodedSlug)}
-        .md
-
-        <br><br>
-
-        ${escapeHTML(error.message)}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/writings/"
-        >
-          ← back to writings
-        </a>
-
-      </div>
-
-    `;
+    display:none;
 
   }
 
@@ -1140,127 +1565,79 @@ async function renderArticle(items, slug){
 
 
 /* =========================================================
-   CLOCK
+   MOBILE / SMALL TABLET
 ========================================================= */
 
-function updateClock(){
+@media(max-width:850px){
 
-  const now =
-    new Date();
+  .page{
 
-  const date =
-    String(now.getDate()).padStart(2,"0") +
-    "." +
-    String(now.getMonth()+1).padStart(2,"0") +
-    "." +
-    now.getFullYear();
-
-  const time =
-    String(now.getHours()).padStart(2,"0") +
-    ":" +
-    String(now.getMinutes()).padStart(2,"0") +
-    ":" +
-    String(now.getSeconds()).padStart(2,"0");
-
-
-  const dateElement =
-    document.getElementById("date");
-
-  const timeElement =
-    document.getElementById("time");
-
-
-  if(dateElement){
-    dateElement.textContent = date;
-  }
-
-  if(timeElement){
-    timeElement.textContent = time;
-  }
-
-}
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
-async function init(){
-
-  try{
-
-    const data =
-      await loadJSON();
-
-    const items =
-      Array.isArray(data.writings)
-        ? data.writings
-        : [];
-
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-    const slug =
-      params.get("slug");
-
-
-    if(slug){
-
-      await renderArticle(
-        items,
-        slug
-      );
-
-    }else{
-
-      renderArchive(items);
-
-    }
-
-
-  }catch(error){
-
-    console.error(error);
-
-    document.getElementById("main")
-      .innerHTML = `
-
-        <div class="error">
-
-          <strong>
-            Writings could not be loaded.
-          </strong>
-
-          <br><br>
-
-          ${escapeHTML(error.message)}
-
-        </div>
-
-      `;
+    padding:
+      7px
+      7px
+      125px;
 
   }
 
-}
+
+  .browser-menu{
+
+    display:none;
+
+  }
 
 
-/* =========================================================
-   START
-========================================================= */
+  .browser-address-row{
 
-updateClock();
+    grid-template-columns:
+      31px
+      minmax(0,1fr)
+      31px;
 
-setInterval(
-  updateClock,
-  1000
-);
+  }
 
-init();
 
-</script>
+  .browser-address-row
+  .browser-control:nth-child(2){
 
-</body>
-</html>
+    display:none;
+
+  }
+
+
+  .browser-date{
+
+    display:none;
+
+  }
+
+
+  .layout{
+
+    display:block;
+
+  }
+
+
+  .left{
+
+    margin-bottom:16px;
+
+  }
+
+
+  .nav-list{
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+
+  .archive-entry{
+
+    grid-template-columns:
+      82px
+      minmax
