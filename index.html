@@ -3,24 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>QUỐC MẠNH — QM ARCHIVE</title>
 
 <style>
+
+/* =========================================================
+   BASE
+========================================================= */
+
 :root{
   --cream:#d8cfb5;
   --paper:#e7ddc0;
+
   --orange:#f05a32;
   --orange-dark:#c84327;
+
   --teal:#176f78;
   --teal-dark:#0d5059;
+
   --blue:#15172f;
   --blue-soft:#243b73;
+
   --green:#1d8a4a;
   --white:#f5ecd7;
-  --yellow:#f2c94c;
 
   --border:3px solid var(--blue);
-  --shadow:6px 6px 0 var(--blue);
 }
 
 *{
@@ -33,6 +41,7 @@ html{
 
 body{
   margin:0;
+
   background:
     repeating-linear-gradient(
       0deg,
@@ -53,14 +62,18 @@ body{
   min-height:100vh;
 }
 
+
 /* =========================================================
-   WINDOW SYSTEM
+   WINDOW
 ========================================================= */
 
 .window{
   background:var(--paper);
+
   border:var(--border);
-  box-shadow:var(--shadow);
+
+  box-shadow:
+    6px 6px 0 var(--blue);
 }
 
 .window-title{
@@ -68,19 +81,25 @@ body{
 
   display:flex;
   align-items:center;
-  gap:10px;
+
+  gap:9px;
 
   padding:7px 9px;
 
-  border-bottom:var(--border);
-
   background:var(--orange);
 
+  color:var(--blue);
+
+  border-bottom:var(--border);
+
   font-weight:900;
+
   letter-spacing:.4px;
 }
 
-.window--teal .window-title{
+/* TEAL TITLE */
+
+.window-title.window--teal{
   background:var(--teal);
   color:var(--white);
 }
@@ -94,26 +113,32 @@ body{
   display:grid;
   place-items:center;
 
-  border:var(--border);
-
   background:var(--paper);
+
+  border:var(--border);
 
   color:var(--blue);
 
-  font-size:13px;
+  font-size:12px;
+
   font-weight:900;
 }
 
 .window-name{
   flex:1;
 
+  min-width:0;
+
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
 .window-buttons{
   display:flex;
+
   gap:5px;
 }
 
@@ -121,30 +146,36 @@ body{
   width:28px;
   height:28px;
 
-  border:var(--border);
+  display:grid;
+  place-items:center;
 
   background:var(--paper);
 
-  display:grid;
-  place-items:center;
+  border:var(--border);
 
   color:var(--blue);
 
   font-family:inherit;
+
   font-weight:900;
 
   line-height:1;
 }
 
+
 /* =========================================================
-   TOP BROWSER
+   BROWSER
 ========================================================= */
 
 .browser{
   margin:14px 18px 16px;
-  border:var(--border);
-  box-shadow:var(--shadow);
+
   background:var(--paper);
+
+  border:var(--border);
+
+  box-shadow:
+    6px 6px 0 var(--blue);
 }
 
 .browser-top{
@@ -166,15 +197,16 @@ body{
   width:30px;
   height:30px;
 
-  margin-right:8px;
-
   display:grid;
   place-items:center;
 
-  border:var(--border);
+  margin-right:8px;
 
   background:var(--teal);
+
   color:var(--white);
+
+  border:var(--border);
 
   font-size:12px;
 }
@@ -192,12 +224,12 @@ body{
   width:28px;
   height:28px;
 
-  border:var(--border);
-
   display:grid;
   place-items:center;
 
   background:var(--paper);
+
+  border:var(--border);
 
   font-weight:900;
 }
@@ -207,6 +239,7 @@ body{
 
   display:flex;
   align-items:center;
+
   gap:28px;
 
   padding:5px 12px;
@@ -218,7 +251,13 @@ body{
 
 .browser-address{
   display:grid;
-  grid-template-columns:36px 36px 36px minmax(0,1fr) 190px;
+
+  grid-template-columns:
+    36px
+    36px
+    36px
+    minmax(0,1fr)
+    190px;
 
   gap:7px;
 
@@ -228,27 +267,33 @@ body{
 .nav-button{
   height:34px;
 
-  border:var(--border);
-
   background:var(--paper);
 
+  border:var(--border);
+
   font-family:inherit;
+
   font-size:18px;
+
   font-weight:900;
 }
 
 .address{
   height:34px;
 
-  border:var(--border);
+  display:flex;
+  align-items:center;
+
+  padding:7px 10px;
 
   background:#efe7cd;
 
-  padding:7px 10px;
+  border:var(--border);
 
   color:#666;
 
   overflow:hidden;
+
   white-space:nowrap;
 }
 
@@ -256,13 +301,16 @@ body{
   text-align:right;
 
   font-size:12px;
+
   line-height:1.25;
 
   font-weight:900;
 }
 
+
 /* =========================================================
-   MAIN LAYOUT
+   MAIN 3-COLUMN LAYOUT
+   DO NOT CHANGE
 ========================================================= */
 
 .layout{
@@ -275,31 +323,40 @@ body{
 
   gap:18px;
 
-  margin:0 18px 100px;
+  margin:
+    0
+    18px
+    100px;
 
   align-items:start;
 }
 
 .column{
   display:flex;
+
   flex-direction:column;
+
   gap:18px;
 
   min-width:0;
 }
 
+
 /* =========================================================
-   PROFILE — UPDATED TO MATCH MOCKUP
+   PROFILE
+   UPDATED ONLY IN THIS SECTION
 ========================================================= */
 
-.profile-window{
-  overflow:hidden;
-}
-
-.profile-stage{
+.profile-image{
   position:relative;
 
-  height:350px;
+  height:330px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:center;
 
   overflow:hidden;
 
@@ -316,7 +373,10 @@ body{
   border-bottom:var(--border);
 }
 
-/* Orange circular graphic */
+
+/* ---------------------------------------------------------
+   ORANGE CIRCLE
+--------------------------------------------------------- */
 
 .profile-circle{
   position:absolute;
@@ -325,7 +385,7 @@ body{
   height:190px;
 
   left:50%;
-  top:125px;
+  top:128px;
 
   transform:translate(-50%,-50%);
 
@@ -333,7 +393,7 @@ body{
 
   background:var(--orange);
 
-  border:5px solid var(--blue);
+  border:4px solid var(--blue);
 
   box-shadow:
     6px 6px 0 var(--blue);
@@ -341,44 +401,120 @@ body{
   z-index:1;
 }
 
-/* Inner print-style circle */
+
+/* inner dashed circle */
 
 .profile-circle::after{
   content:"";
 
   position:absolute;
 
-  inset:12px;
+  inset:13px;
 
   border-radius:50%;
 
-  border:2px dashed rgba(245,236,215,.75);
+  border:2px dashed var(--white);
+
+  opacity:.8;
 }
 
-/* Character */
 
-.profile-character{
+/* ---------------------------------------------------------
+   CHARACTER
+--------------------------------------------------------- */
+
+.profile-image img{
   position:absolute;
 
   z-index:4;
 
   left:50%;
-  bottom:-8px;
 
-  transform:translateX(-50%);
+  bottom:-9px;
 
-  width:108%;
-  height:300px;
+  transform:
+    translateX(-50%)
+    scale(.96);
+
+  transform-origin:center bottom;
+
+  display:block;
+
+  width:112%;
+
+  height:315px;
 
   object-fit:contain;
+
   object-position:center bottom;
+
+  border:0;
+
+  border-radius:0;
 
   background:transparent;
 
   pointer-events:none;
 }
 
-/* Decorative marks */
+
+/* ---------------------------------------------------------
+   DECORATIVE MOTION LINES
+--------------------------------------------------------- */
+
+.profile-lines{
+  position:absolute;
+
+  z-index:5;
+
+  left:32px;
+
+  top:48px;
+
+  width:38px;
+
+  height:60px;
+
+  pointer-events:none;
+}
+
+.profile-lines span{
+  position:absolute;
+
+  display:block;
+
+  width:23px;
+
+  height:5px;
+
+  background:var(--blue);
+}
+
+.profile-lines span:nth-child(1){
+  top:5px;
+  left:7px;
+
+  transform:rotate(-25deg);
+}
+
+.profile-lines span:nth-child(2){
+  top:25px;
+  left:0;
+
+  transform:rotate(0deg);
+}
+
+.profile-lines span:nth-child(3){
+  top:45px;
+  left:8px;
+
+  transform:rotate(25deg);
+}
+
+
+/* ---------------------------------------------------------
+   EXTRA GRAPHIC MARKS
+--------------------------------------------------------- */
 
 .profile-mark{
   position:absolute;
@@ -393,35 +529,38 @@ body{
 }
 
 .profile-mark--left{
-  left:27px;
-  top:72px;
+  left:30px;
+  top:82px;
 
-  font-size:34px;
+  font-size:30px;
 
   transform:rotate(-20deg);
 }
 
 .profile-mark--right{
-  right:24px;
-  top:65px;
+  right:27px;
+  top:78px;
 
-  font-size:25px;
+  font-size:30px;
 
-  transform:rotate(8deg);
+  transform:rotate(18deg);
 }
 
-/* Heart */
+
+/* ---------------------------------------------------------
+   HEART
+--------------------------------------------------------- */
 
 .profile-heart{
   position:absolute;
 
-  z-index:5;
+  z-index:6;
 
   right:18px;
-  top:22px;
+  top:25px;
 
-  width:48px;
-  height:48px;
+  width:49px;
+  height:49px;
 
   display:grid;
   place-items:center;
@@ -430,57 +569,20 @@ body{
 
   border:var(--border);
 
-  box-shadow:4px 4px 0 var(--blue);
+  box-shadow:
+    4px 4px 0 var(--blue);
 
-  font-size:24px;
+  font-size:23px;
 
-  transform:rotate(2deg);
+  transform:rotate(3deg);
+
+  color:var(--orange-dark);
 }
 
-/* Little motion lines */
 
-.profile-lines{
-  position:absolute;
-
-  z-index:5;
-
-  left:35px;
-  top:42px;
-
-  width:40px;
-  height:50px;
-}
-
-.profile-lines span{
-  position:absolute;
-
-  width:22px;
-  height:5px;
-
-  background:var(--blue);
-
-  transform-origin:left center;
-}
-
-.profile-lines span:nth-child(1){
-  top:5px;
-  left:7px;
-  transform:rotate(-25deg);
-}
-
-.profile-lines span:nth-child(2){
-  top:23px;
-  left:0;
-  transform:rotate(0deg);
-}
-
-.profile-lines span:nth-child(3){
-  top:41px;
-  left:8px;
-  transform:rotate(25deg);
-}
-
-/* Label */
+/* ---------------------------------------------------------
+   PERSONAL ARCHIVE LABEL
+--------------------------------------------------------- */
 
 .profile-label{
   position:absolute;
@@ -488,32 +590,29 @@ body{
   z-index:8;
 
   left:50%;
-  bottom:26px;
+
+  bottom:25px;
+
+  width:220px;
+
+  padding:11px 10px;
 
   transform:
     translateX(-50%)
     rotate(-4deg);
 
-  width:205px;
-
-  padding:12px 10px;
-
   background:var(--paper);
 
   border:var(--border);
 
-  box-shadow:5px 5px 0 var(--blue);
+  box-shadow:
+    5px 5px 0 var(--blue);
 
   text-align:center;
 
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  font-size:12px;
 
   font-weight:900;
-
-  font-size:13px;
 
   letter-spacing:.5px;
 }
@@ -530,18 +629,19 @@ body{
   pointer-events:none;
 }
 
+
 /* =========================================================
    PROFILE NAV
 ========================================================= */
 
 .profile-nav{
-  padding:16px 12px 14px;
+  padding:14px 12px;
 }
 
 .profile-caption{
-  text-align:center;
+  margin-bottom:13px;
 
-  margin-bottom:14px;
+  text-align:center;
 
   font-size:12px;
 
@@ -550,7 +650,9 @@ body{
 
 .profile-link{
   display:flex;
+
   align-items:center;
+
   gap:14px;
 
   width:100%;
@@ -574,6 +676,9 @@ body{
   background:var(--orange);
 }
 
+
+/* folder */
+
 .folder{
   position:relative;
 
@@ -582,11 +687,12 @@ body{
 
   flex:0 0 28px;
 
-  background:var(--yellow);
+  background:#f2c94c;
 
   border:3px solid var(--blue);
 
-  box-shadow:2px 2px 0 var(--blue);
+  box-shadow:
+    2px 2px 0 var(--blue);
 }
 
 .folder::before{
@@ -600,12 +706,13 @@ body{
   width:12px;
   height:7px;
 
-  background:var(--yellow);
+  background:#f2c94c;
 
   border:3px solid var(--blue);
 
   border-bottom:0;
 }
+
 
 /* =========================================================
    SYSTEM INFO
@@ -621,12 +728,14 @@ body{
 
 .system-row{
   display:flex;
+
   justify-content:space-between;
 
-  border-bottom:1px dotted var(--blue);
-
   padding:2px 0;
+
+  border-bottom:1px dotted var(--blue);
 }
+
 
 /* =========================================================
    CASSETTE
@@ -648,14 +757,15 @@ body{
 .cassette-caption{
   margin-top:9px;
 
+  text-align:center;
+
   font-size:10px;
 
   line-height:1.5;
 
-  text-align:center;
-
   font-weight:900;
 }
+
 
 /* =========================================================
    HERO
@@ -673,7 +783,6 @@ body{
   display:block;
 
   width:100%;
-
   height:auto;
 
   border:var(--border);
@@ -686,7 +795,6 @@ body{
 
   left:4%;
   right:16%;
-
   bottom:25px;
 
   padding:12px 15px;
@@ -695,7 +803,8 @@ body{
 
   border:var(--border);
 
-  box-shadow:5px 5px 0 var(--blue);
+  box-shadow:
+    5px 5px 0 var(--blue);
 
   font-size:16px;
 
@@ -712,8 +821,9 @@ body{
   font-size:10px;
 }
 
+
 /* =========================================================
-   ARCHIVE BLOCKS
+   ARCHIVE
 ========================================================= */
 
 .archive{
@@ -722,19 +832,20 @@ body{
 
 .archive-heading{
   display:flex;
+
   align-items:center;
 
   margin-bottom:13px;
 
-  border-bottom:var(--border);
-
   padding-bottom:7px;
+
+  border-bottom:var(--border);
 }
 
 .archive-heading h2{
-  margin:0;
-
   flex:1;
+
+  margin:0;
 
   font-size:18px;
 }
@@ -742,11 +853,11 @@ body{
 .more{
   color:var(--blue);
 
-  font-weight:900;
-
   text-decoration:none;
 
   font-size:12px;
+
+  font-weight:900;
 }
 
 .more:hover{
@@ -764,9 +875,9 @@ body{
 }
 
 .archive-date{
-  font-size:10px;
-
   margin-bottom:4px;
+
+  font-size:10px;
 
   opacity:.75;
 }
@@ -799,6 +910,7 @@ body{
   opacity:.8;
 }
 
+
 /* =========================================================
    PHOTOGRAPHS
 ========================================================= */
@@ -823,9 +935,9 @@ body{
 
   overflow:hidden;
 
-  border:var(--border);
-
   background:#222;
+
+  border:var(--border);
 }
 
 .photo-card img{
@@ -836,15 +948,17 @@ body{
 
   object-fit:cover;
 
-  transition:transform .2s ease;
+  transition:
+    transform .2s ease;
 }
 
 .photo-card:hover img{
   transform:scale(1.04);
 }
 
+
 /* =========================================================
-   RIGHT COLUMN
+   LOCATION
 ========================================================= */
 
 .location{
@@ -854,21 +968,21 @@ body{
 .location-pin{
   margin-bottom:12px;
 
-  font-weight:900;
-
   font-size:13px;
+
+  font-weight:900;
 }
 
 .location-note{
   padding:14px;
 
-  border:var(--border);
-
   background:#eee5cc;
 
-  line-height:1.8;
+  border:var(--border);
 
   font-size:12px;
+
+  line-height:1.8;
 }
 
 .location-note p{
@@ -878,6 +992,7 @@ body{
 .location-note p:last-child{
   margin-bottom:0;
 }
+
 
 /* =========================================================
    PORTRAIT
@@ -891,7 +1006,6 @@ body{
   display:block;
 
   width:100%;
-
   height:auto;
 
   border:var(--border);
@@ -907,8 +1021,9 @@ body{
   font-weight:900;
 }
 
+
 /* =========================================================
-   CLOCK / QUOTE
+   CLOCK
 ========================================================= */
 
 .clock-window{
@@ -920,9 +1035,9 @@ body{
 .big-clock{
   font-size:27px;
 
-  font-weight:900;
-
   letter-spacing:2px;
+
+  font-weight:900;
 }
 
 .clock-date{
@@ -930,6 +1045,11 @@ body{
 
   font-size:11px;
 }
+
+
+/* =========================================================
+   SIDE QUOTE
+========================================================= */
 
 .side-quote{
   padding:15px;
@@ -940,6 +1060,7 @@ body{
 
   font-weight:900;
 }
+
 
 /* =========================================================
    MUSIC PLAYER
@@ -974,12 +1095,15 @@ body{
 
   border:var(--border);
 
-  box-shadow:var(--shadow);
+  box-shadow:
+    6px 6px 0 var(--blue);
 }
 
 .music-now{
   display:flex;
+
   align-items:center;
+
   gap:10px;
 
   min-width:0;
@@ -989,10 +1113,10 @@ body{
   width:40px;
   height:40px;
 
+  flex:0 0 40px;
+
   display:grid;
   place-items:center;
-
-  flex:0 0 40px;
 
   background:var(--orange);
 
@@ -1006,11 +1130,11 @@ body{
 }
 
 .music-label{
+  margin-bottom:3px;
+
   font-size:8px;
 
   opacity:.65;
-
-  margin-bottom:3px;
 }
 
 .music-title{
@@ -1019,12 +1143,15 @@ body{
   font-weight:900;
 
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
 .music-controls{
   display:flex;
+
   gap:6px;
 }
 
@@ -1032,9 +1159,9 @@ body{
   width:40px;
   height:36px;
 
-  border:var(--border);
-
   background:var(--paper);
+
+  border:var(--border);
 
   font-family:inherit;
 
@@ -1043,7 +1170,9 @@ body{
 
 .music-progress{
   display:flex;
+
   align-items:center;
+
   gap:8px;
 
   min-width:0;
@@ -1062,6 +1191,7 @@ body{
 .music-volume{
   width:90px;
 }
+
 
 /* =========================================================
    RESPONSIVE
@@ -1087,7 +1217,8 @@ body{
   }
 
   .photo-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
   }
 
   .music-player{
@@ -1101,6 +1232,7 @@ body{
     display:none;
   }
 }
+
 
 @media(max-width:900px){
 
@@ -1122,7 +1254,8 @@ body{
 
   .music-player{
     grid-template-columns:
-      1fr auto;
+      1fr
+      auto;
 
     left:8px;
     right:8px;
@@ -1132,9 +1265,11 @@ body{
 
   .music-progress{
     grid-column:1 / -1;
+
     grid-row:2;
   }
 }
+
 
 @media(max-width:620px){
 
@@ -1152,7 +1287,6 @@ body{
       32px
       32px
       minmax(0,1fr);
-
   }
 
   .browser-clock{
@@ -1169,26 +1303,29 @@ body{
     display:flex;
   }
 
-  .profile-stage{
-    height:330px;
+  /* Profile scales only, layout remains unchanged */
+
+  .profile-image{
+    height:315px;
   }
 
   .profile-circle{
-    width:180px;
-    height:180px;
+    width:175px;
+    height:175px;
 
-    top:115px;
+    top:120px;
   }
 
-  .profile-character{
-    width:110%;
-    height:290px;
+  .profile-image img{
+    height:300px;
+
+    width:112%;
   }
 
   .profile-label{
-    width:190px;
+    width:195px;
 
-    font-size:12px;
+    font-size:11px;
   }
 
   .hero-quote{
@@ -1200,7 +1337,8 @@ body{
   }
 
   .photo-grid{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+      1fr 1fr;
   }
 
   .music-player{
@@ -1216,6 +1354,7 @@ body{
   .music-icon{
     width:34px;
     height:34px;
+
     flex-basis:34px;
   }
 
@@ -1225,10 +1364,11 @@ body{
   }
 }
 
+
 @media(max-width:400px){
 
-  .profile-stage{
-    height:300px;
+  .profile-image{
+    height:295px;
   }
 
   .profile-circle{
@@ -1236,8 +1376,8 @@ body{
     height:155px;
   }
 
-  .profile-character{
-    height:265px;
+  .profile-image img{
+    height:275px;
   }
 
   .profile-label{
@@ -1252,10 +1392,13 @@ body{
     grid-template-columns:1fr;
   }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =======================================================
      BROWSER
@@ -1265,7 +1408,9 @@ body{
 
   <div class="browser-top">
 
-    <div class="browser-logo">QM</div>
+    <div class="browser-logo">
+      QM
+    </div>
 
     <div class="browser-title">
       QM ARCHIVE
@@ -1275,35 +1420,67 @@ body{
     </div>
 
     <div class="browser-controls">
+
       <div class="browser-control">—</div>
       <div class="browser-control">□</div>
       <div class="browser-control">×</div>
+
     </div>
 
   </div>
 
+
   <div class="browser-menu">
+
     <span>File</span>
     <span>Edit</span>
     <span>View</span>
     <span>Favorites</span>
     <span>Tools</span>
     <span>Help</span>
+
   </div>
+
 
   <div class="browser-address">
 
-    <button class="nav-button" onclick="history.back()">‹</button>
-    <button class="nav-button" onclick="history.forward()">›</button>
-    <button class="nav-button" onclick="location.reload()">↟</button>
+    <button
+      class="nav-button"
+      onclick="history.back()"
+    >
+      ‹
+    </button>
+
+    <button
+      class="nav-button"
+      onclick="history.forward()"
+    >
+      ›
+    </button>
+
+    <button
+      class="nav-button"
+      onclick="location.reload()"
+    >
+      ↑
+    </button>
 
     <div class="address">
       https://qmarchive.github.io/
     </div>
 
     <div class="browser-clock">
-      <span id="browserDate">22 SEP 2026</span><br>
-      <span id="browserTime">14:55</span>
+
+      <span id="browserDate">
+        22 SEP 2026
+      </span>
+
+      <br>
+
+      <span id="browserTime">
+        14:55
+      </span>
+
     </div>
 
   </div>
@@ -1319,7 +1496,7 @@ body{
 
 
 <!-- =======================================================
-     LEFT COLUMN
+     LEFT
 ======================================================= -->
 
 <section class="column left-column">
@@ -1327,66 +1504,73 @@ body{
 
   <!-- PROFILE -->
 
-  <div class="window profile-window">
+  <div class="window">
 
     <div class="window-title window--teal">
 
-      <div class="window-icon">P</div>
+      <div class="window-icon">
+        P
+      </div>
 
       <div class="window-name">
         QUỐC MẠNH
       </div>
 
       <div class="window-buttons">
-        <div class="window-button">—</div>
-        <div class="window-button">□</div>
-        <div class="window-button">×</div>
+
+        <div class="window-button">
+          —
+        </div>
+
+        <div class="window-button">
+          □
+        </div>
+
+        <div class="window-button">
+          ×
+        </div>
+
       </div>
 
     </div>
 
 
-    <div class="profile-stage">
+    <!-- PROFILE IMAGE AREA -->
 
-      <!-- orange circle -->
+    <div class="profile-image">
 
       <div class="profile-circle"></div>
 
 
-      <!-- decorative graphic -->
-
       <div class="profile-lines">
+
         <span></span>
         <span></span>
         <span></span>
+
       </div>
+
 
       <div class="profile-mark profile-mark--left">
         ╱
       </div>
+
 
       <div class="profile-mark profile-mark--right">
         ╲
       </div>
 
 
-      <!-- heart -->
-
       <div class="profile-heart">
         ♥
       </div>
 
 
-      <!-- character -->
-
       <img
-        class="profile-character"
         src="/home/home-profile.png"
         alt="Quốc Mạnh"
       >
 
-
-      <!-- label -->
 
       <div class="profile-label">
         A PERSONAL ARCHIVE
@@ -1395,7 +1579,7 @@ body{
     </div>
 
 
-    <!-- navigation -->
+    <!-- NAVIGATION -->
 
     <div class="profile-nav">
 
@@ -1403,27 +1587,47 @@ body{
         A PERSONAL ARCHIVE
       </div>
 
-      <a class="profile-link" href="/">
+
+      <a
+        class="profile-link"
+        href="/"
+      >
         <span class="folder"></span>
         <span>home</span>
       </a>
 
-      <a class="profile-link" href="/writings/">
+
+      <a
+        class="profile-link"
+        href="/writings/"
+      >
         <span class="folder"></span>
         <span>writings</span>
       </a>
 
-      <a class="profile-link" href="/photographs/">
+
+      <a
+        class="profile-link"
+        href="/photographs/"
+      >
         <span class="folder"></span>
         <span>photographs</span>
       </a>
 
-      <a class="profile-link" href="/notes/">
+
+      <a
+        class="profile-link"
+        href="/notes/"
+      >
         <span class="folder"></span>
         <span>notes</span>
       </a>
 
-      <a class="profile-link" href="/#about">
+
+      <a
+        class="profile-link"
+        href="/#about"
+      >
         <span class="folder"></span>
         <span>about</span>
       </a>
@@ -1439,17 +1643,24 @@ body{
 
     <div class="window-title">
 
-      <div class="window-icon">S</div>
+      <div class="window-icon">
+        S
+      </div>
 
       <div class="window-name">
         SYSTEM INFO
       </div>
 
       <div class="window-buttons">
-        <div class="window-button">×</div>
+
+        <div class="window-button">
+          ×
+        </div>
+
       </div>
 
     </div>
+
 
     <div class="system-info">
 
@@ -1484,17 +1695,24 @@ body{
 
     <div class="window-title window--teal">
 
-      <div class="window-icon">♪</div>
+      <div class="window-icon">
+        ♪
+      </div>
 
       <div class="window-name">
         LIFE GOES ON
       </div>
 
       <div class="window-buttons">
-        <div class="window-button">×</div>
+
+        <div class="window-button">
+          ×
+        </div>
+
       </div>
 
     </div>
+
 
     <div class="cassette">
 
@@ -1504,8 +1722,10 @@ body{
       >
 
       <div class="cassette-caption">
+
         SAME PEOPLE / DIFFERENT DAYS<br>
         // 1998 — 2026 / AND BEYOND.
+
       </div>
 
     </div>
@@ -1516,7 +1736,7 @@ body{
 
 
 <!-- =======================================================
-     CENTER COLUMN
+     CENTER
 ======================================================= -->
 
 <section class="column center-column">
@@ -1528,19 +1748,32 @@ body{
 
     <div class="window-title">
 
-      <div class="window-icon">W</div>
+      <div class="window-icon">
+        W
+      </div>
 
       <div class="window-name">
         WELCOME.EXE
       </div>
 
       <div class="window-buttons">
-        <div class="window-button">—</div>
-        <div class="window-button">□</div>
-        <div class="window-button">×</div>
+
+        <div class="window-button">
+          —
+        </div>
+
+        <div class="window-button">
+          □
+        </div>
+
+        <div class="window-button">
+          ×
+        </div>
+
       </div>
 
     </div>
+
 
     <div class="hero-image">
 
@@ -1548,6 +1781,7 @@ body{
         src="/home/home-hero.png"
         alt="QM Archive"
       >
+
 
       <div class="hero-quote">
 
@@ -1571,7 +1805,9 @@ body{
 
     <div class="archive-heading">
 
-      <h2>RECENTLY WRITTEN</h2>
+      <h2>
+        RECENTLY WRITTEN
+      </h2>
 
       <a
         class="more"
@@ -1581,6 +1817,7 @@ body{
       </a>
 
     </div>
+
 
     <div id="writingsList">
       Loading...
@@ -1595,7 +1832,9 @@ body{
 
     <div class="archive-heading">
 
-      <h2>NOTES</h2>
+      <h2>
+        NOTES
+      </h2>
 
       <a
         class="more"
@@ -1605,6 +1844,7 @@ body{
       </a>
 
     </div>
+
 
     <div id="notesList">
       Loading...
@@ -1619,7 +1859,9 @@ body{
 
     <div class="archive-heading">
 
-      <h2>PHOTOGRAPHS</h2>
+      <h2>
+        PHOTOGRAPHS
+      </h2>
 
       <a
         class="more"
@@ -1629,6 +1871,7 @@ body{
       </a>
 
     </div>
+
 
     <div
       class="photo-grid"
@@ -1649,11 +1892,19 @@ body{
 
     <div class="archive-heading">
 
-      <h2>ABOUT</h2>
+      <h2>
+        ABOUT
+      </h2>
 
     </div>
 
-    <div style="font-size:13px;line-height:1.8;">
+
+    <div
+      style="
+        font-size:13px;
+        line-height:1.8;
+      "
+    >
 
       QM Archive is a personal archive
       of writings, photographs, notes
@@ -1667,7 +1918,7 @@ body{
 
 
 <!-- =======================================================
-     RIGHT COLUMN
+     RIGHT
 ======================================================= -->
 
 <section class="column right-column">
@@ -1675,29 +1926,43 @@ body{
 
   <!-- LOCATION -->
 
-  <div class="window window--teal">
+  <div class="window">
 
-    <div class="window-title">
+    <div class="window-title window--teal">
 
-      <div class="window-icon">L</div>
+      <div class="window-icon">
+        L
+      </div>
 
       <div class="window-name">
         LOCATION
       </div>
 
       <div class="window-buttons">
-        <div class="window-button">—</div>
-        <div class="window-button">□</div>
-        <div class="window-button">×</div>
+
+        <div class="window-button">
+          —
+        </div>
+
+        <div class="window-button">
+          □
+        </div>
+
+        <div class="window-button">
+          ×
+        </div>
+
       </div>
 
     </div>
+
 
     <div class="location">
 
       <div class="location-pin">
         [ PIN ] Hanoi, Vietnam
       </div>
+
 
       <div class="location-note">
 
@@ -1724,23 +1989,36 @@ body{
 
   <!-- PORTRAIT -->
 
-  <div class="window window--teal">
+  <div class="window">
 
-    <div class="window-title">
+    <div class="window-title window--teal">
 
-      <div class="window-icon">J</div>
+      <div class="window-icon">
+        J
+      </div>
 
       <div class="window-name">
         PORTRAIT.JPG
       </div>
 
       <div class="window-buttons">
-        <div class="window-button">—</div>
-        <div class="window-button">□</div>
-        <div class="window-button">×</div>
+
+        <div class="window-button">
+          —
+        </div>
+
+        <div class="window-button">
+          □
+        </div>
+
+        <div class="window-button">
+          ×
+        </div>
+
       </div>
 
     </div>
+
 
     <div class="portrait">
 
@@ -1764,13 +2042,16 @@ body{
 
     <div class="window-title">
 
-      <div class="window-icon">T</div>
+      <div class="window-icon">
+        T
+      </div>
 
       <div class="window-name">
         TIME.EXE
       </div>
 
     </div>
+
 
     <div class="clock-window">
 
@@ -1793,19 +2074,22 @@ body{
   </div>
 
 
-  <!-- QUOTE -->
+  <!-- RANDOM -->
 
   <div class="window">
 
     <div class="window-title window--teal">
 
-      <div class="window-icon">Q</div>
+      <div class="window-icon">
+        Q
+      </div>
 
       <div class="window-name">
         RANDOM.TXT
       </div>
 
     </div>
+
 
     <div class="side-quote">
 
@@ -1827,11 +2111,13 @@ body{
 
 <div class="music-player">
 
+
   <div class="music-now">
 
     <div class="music-icon">
       ♪
     </div>
+
 
     <div class="music-meta">
 
@@ -1883,6 +2169,7 @@ body{
       00:00
     </span>
 
+
     <input
       id="progress"
       type="range"
@@ -1890,6 +2177,7 @@ body{
       max="100"
       value="0"
     >
+
 
     <span
       class="music-time"
@@ -1931,47 +2219,70 @@ function updateClock(){
 
   const now = new Date();
 
-  const time = now.toLocaleTimeString(
-    "en-GB",
-    {
-      hour:"2-digit",
-      minute:"2-digit",
-      hour12:false
-    }
-  );
+  const time =
+    now.toLocaleTimeString(
+      "en-GB",
+      {
+        hour:"2-digit",
+        minute:"2-digit",
+        hour12:false
+      }
+    );
 
-  const date = now.toLocaleDateString(
-    "en-GB",
-    {
-      day:"2-digit",
-      month:"short",
-      year:"numeric"
-    }
-  ).toUpperCase();
 
-  const longDate = now.toLocaleDateString(
-    "en-GB",
-    {
-      day:"2-digit",
-      month:"long",
-      year:"numeric"
-    }
-  );
+  const date =
+    now.toLocaleDateString(
+      "en-GB",
+      {
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+      }
+    ).toUpperCase();
 
-  document.getElementById("browserTime").textContent = time;
-  document.getElementById("browserDate").textContent = date;
 
-  document.getElementById("bigClock").textContent = time;
-  document.getElementById("bigDate").textContent = longDate;
+  const longDate =
+    now.toLocaleDateString(
+      "en-GB",
+      {
+        day:"2-digit",
+        month:"long",
+        year:"numeric"
+      }
+    );
+
+
+  document.getElementById(
+    "browserTime"
+  ).textContent = time;
+
+
+  document.getElementById(
+    "browserDate"
+  ).textContent = date;
+
+
+  document.getElementById(
+    "bigClock"
+  ).textContent = time;
+
+
+  document.getElementById(
+    "bigDate"
+  ).textContent = longDate;
 }
+
 
 updateClock();
 
-setInterval(updateClock,1000);
+setInterval(
+  updateClock,
+  1000
+);
 
 
 /* =========================================================
-   JSON
+   DATA
 ========================================================= */
 
 const WRITINGS_URL =
@@ -1985,7 +2296,7 @@ const PHOTOGRAPHS_URL =
 
 
 /* =========================================================
-   HELPERS
+   ESCAPE
 ========================================================= */
 
 function escapeHTML(value){
@@ -1999,45 +2310,70 @@ function escapeHTML(value){
 }
 
 
-function renderArchiveItem(item){
+/* =========================================================
+   ARCHIVE ITEM
+========================================================= */
+
+function renderArchiveItem(
+  item,
+  section
+){
 
   const date =
-    escapeHTML(item.date || "");
+    escapeHTML(
+      item.date || ""
+    );
+
 
   const title =
-    escapeHTML(item.title || "Untitled");
+    escapeHTML(
+      item.title || "Untitled"
+    );
+
 
   const excerpt =
-    escapeHTML(item.excerpt || "");
+    escapeHTML(
+      item.excerpt || ""
+    );
+
 
   const slug =
-    encodeURIComponent(item.slug || "");
+    encodeURIComponent(
+      item.slug || ""
+    );
+
 
   return `
+
     <article class="archive-item">
 
       <div class="archive-date">
         ${date}
       </div>
 
+
       <a
         class="archive-title"
-        href="/${item._section}/?slug=${slug}"
+        href="/${section}/?slug=${slug}"
       >
         ${title}
       </a>
 
+
       ${
         excerpt
         ?
-        `<div class="archive-excerpt">
+        `
+        <div class="archive-excerpt">
           ${excerpt}
-        </div>`
+        </div>
+        `
         :
         ""
       }
 
     </article>
+
   `;
 }
 
@@ -2046,124 +2382,203 @@ function renderArchiveItem(item){
    WRITINGS
 ========================================================= */
 
-fetch(WRITINGS_URL)
+fetch(
+  WRITINGS_URL
+)
 
-  .then(response => {
+.then(response => {
 
-    if(!response.ok){
-      throw new Error("Unable to load writings.");
-    }
+  if(!response.ok){
 
-    return response.json();
+    throw new Error(
+      "Unable to load writings."
+    );
 
-  })
+  }
 
-  .then(data => {
+  return response.json();
 
-    const items =
-      Array.isArray(data.writings)
-      ? data.writings
-      : [];
+})
 
-    const latest =
-      items.slice(0,3)
-        .map(item => ({
-          ...item,
-          _section:"writings"
-        }));
+.then(data => {
 
-    document.getElementById("writingsList").innerHTML =
-      latest.length
-      ? latest.map(renderArchiveItem).join("")
-      : "<div class='archive-excerpt'>No writings yet.</div>";
+  const items =
+    Array.isArray(data.writings)
+    ?
+    data.writings
+    :
+    [];
 
-  })
 
-  .catch(error => {
+  const latest =
+    items.slice(0,3);
 
-    console.error(error);
 
-    document.getElementById("writingsList").innerHTML =
-      "<div class='archive-excerpt'>Unable to load writings.</div>";
+  document.getElementById(
+    "writingsList"
+  ).innerHTML =
 
-  });
+    latest.length
+
+    ?
+
+    latest
+      .map(item =>
+        renderArchiveItem(
+          item,
+          "writings"
+        )
+      )
+      .join("")
+
+    :
+
+    `
+      <div class="archive-excerpt">
+        No writings yet.
+      </div>
+    `;
+
+})
+
+.catch(error => {
+
+  console.error(error);
+
+
+  document.getElementById(
+    "writingsList"
+  ).innerHTML =
+
+    `
+      <div class="archive-excerpt">
+        Unable to load writings.
+      </div>
+    `;
+
+});
 
 
 /* =========================================================
    NOTES
 ========================================================= */
 
-fetch(NOTES_URL)
+fetch(
+  NOTES_URL
+)
 
-  .then(response => {
+.then(response => {
 
-    if(!response.ok){
-      throw new Error("Unable to load notes.");
-    }
+  if(!response.ok){
 
-    return response.json();
+    throw new Error(
+      "Unable to load notes."
+    );
 
-  })
+  }
 
-  .then(data => {
+  return response.json();
 
-    const items =
-      Array.isArray(data.notes)
-      ? data.notes
-      : [];
+})
 
-    const latest =
-      items.slice(0,3)
-        .map(item => ({
-          ...item,
-          _section:"notes"
-        }));
+.then(data => {
 
-    document.getElementById("notesList").innerHTML =
-      latest.length
-      ? latest.map(renderArchiveItem).join("")
-      : "<div class='archive-excerpt'>No notes yet.</div>";
+  const items =
+    Array.isArray(data.notes)
+    ?
+    data.notes
+    :
+    [];
 
-  })
 
-  .catch(error => {
+  const latest =
+    items.slice(0,3);
 
-    console.error(error);
 
-    document.getElementById("notesList").innerHTML =
-      "<div class='archive-excerpt'>Unable to load notes.</div>";
+  document.getElementById(
+    "notesList"
+  ).innerHTML =
 
-  });
+    latest.length
+
+    ?
+
+    latest
+      .map(item =>
+        renderArchiveItem(
+          item,
+          "notes"
+        )
+      )
+      .join("")
+
+    :
+
+    `
+      <div class="archive-excerpt">
+        No notes yet.
+      </div>
+    `;
+
+})
+
+.catch(error => {
+
+  console.error(error);
+
+
+  document.getElementById(
+    "notesList"
+  ).innerHTML =
+
+    `
+      <div class="archive-excerpt">
+        Unable to load notes.
+      </div>
+    `;
+
+});
 
 
 /* =========================================================
    PHOTOGRAPHS
 ========================================================= */
 
-fetch(PHOTOGRAPHS_URL)
+fetch(
+  PHOTOGRAPHS_URL
+)
 
-  .then(response => {
+.then(response => {
 
-    if(!response.ok){
-      throw new Error("Unable to load photographs.");
-    }
+  if(!response.ok){
 
-    return response.json();
+    throw new Error(
+      "Unable to load photographs."
+    );
 
-  })
+  }
 
-  .then(data => {
+  return response.json();
 
-    const items =
-      Array.isArray(data.photographs)
-      ? data.photographs
-      : [];
+})
 
-    const latest =
-      items.slice(0,8);
+.then(data => {
 
-    const html =
-      latest.map(item => {
+  const items =
+    Array.isArray(data.photographs)
+    ?
+    data.photographs
+    :
+    [];
+
+
+  const latest =
+    items.slice(0,8);
+
+
+  const html =
+    latest
+      .map(item => {
 
         const image =
           item.image ||
@@ -2171,137 +2586,223 @@ fetch(PHOTOGRAPHS_URL)
           item.thumbnail ||
           "";
 
+
         const slug =
-          encodeURIComponent(item.slug || "");
+          encodeURIComponent(
+            item.slug || ""
+          );
+
 
         const alt =
           escapeHTML(
-            item.title || "Photograph"
+            item.title ||
+            "Photograph"
           );
 
+
         return `
+
           <a
             class="photo-card"
             href="/photographs/?slug=${slug}"
           >
+
             <img
               src="${image}"
               alt="${alt}"
               loading="lazy"
             >
+
           </a>
+
         `;
 
-      }).join("");
+      })
+      .join("");
 
-    document.getElementById("photosList").innerHTML =
-      html ||
-      "<div class='archive-excerpt'>No photographs yet.</div>";
 
-  })
+  document.getElementById(
+    "photosList"
+  ).innerHTML =
 
-  .catch(error => {
+    html ||
 
-    console.error(error);
+    `
+      <div class="archive-excerpt">
+        No photographs yet.
+      </div>
+    `;
 
-    document.getElementById("photosList").innerHTML =
-      "<div class='archive-excerpt'>Unable to load photographs.</div>";
+})
 
-  });
+.catch(error => {
+
+  console.error(error);
+
+
+  document.getElementById(
+    "photosList"
+  ).innerHTML =
+
+    `
+      <div class="archive-excerpt">
+        Unable to load photographs.
+      </div>
+    `;
+
+});
 
 
 /* =========================================================
-   MUSIC PLAYER
+   MUSIC
 ========================================================= */
 
 const audio =
-  document.getElementById("audio");
+  document.getElementById(
+    "audio"
+  );
+
 
 const playBtn =
-  document.getElementById("playBtn");
+  document.getElementById(
+    "playBtn"
+  );
+
 
 const progress =
-  document.getElementById("progress");
+  document.getElementById(
+    "progress"
+  );
+
 
 const volume =
-  document.getElementById("volume");
+  document.getElementById(
+    "volume"
+  );
+
 
 const currentTime =
-  document.getElementById("currentTime");
+  document.getElementById(
+    "currentTime"
+  );
+
 
 const duration =
-  document.getElementById("duration");
+  document.getElementById(
+    "duration"
+  );
 
 
 function formatTime(seconds){
 
   if(!Number.isFinite(seconds)){
+
     return "00:00";
+
   }
 
+
   const minutes =
-    Math.floor(seconds / 60);
+    Math.floor(
+      seconds / 60
+    );
+
 
   const secs =
-    Math.floor(seconds % 60);
+    Math.floor(
+      seconds % 60
+    );
 
-  return String(minutes).padStart(2,"0")
-    + ":"
-    + String(secs).padStart(2,"0");
+
+  return String(minutes)
+    .padStart(2,"0")
+
+    +
+
+    ":"
+
+    +
+
+    String(secs)
+      .padStart(2,"0");
 }
 
 
-playBtn.addEventListener("click",()=>{
+/* play */
 
-  if(audio.paused){
-
-    audio.play()
-      .then(()=>{
-
-        playBtn.textContent = "❚❚";
-
-      })
-      .catch(()=>{});
-
-  }else{
-
-    audio.pause();
-
-    playBtn.textContent = "▶";
-
-  }
-
-});
-
-
-audio.addEventListener(
-  "loadedmetadata",
+playBtn.addEventListener(
+  "click",
   ()=>{
 
-    duration.textContent =
-      formatTime(audio.duration);
+    if(audio.paused){
 
-  }
-);
+      audio
+        .play()
+        .then(()=>{
 
+          playBtn.textContent =
+            "❚❚";
 
-audio.addEventListener(
-  "timeupdate",
-  ()=>{
+        })
+        .catch(()=>{});
 
-    currentTime.textContent =
-      formatTime(audio.currentTime);
+    }
 
-    if(audio.duration){
+    else{
 
-      progress.value =
-        (audio.currentTime / audio.duration) * 100;
+      audio.pause();
+
+      playBtn.textContent =
+        "▶";
 
     }
 
   }
 );
 
+
+/* metadata */
+
+audio.addEventListener(
+  "loadedmetadata",
+  ()=>{
+
+    duration.textContent =
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+/* progress */
+
+audio.addEventListener(
+  "timeupdate",
+  ()=>{
+
+    currentTime.textContent =
+      formatTime(
+        audio.currentTime
+      );
+
+
+    if(audio.duration){
+
+      progress.value =
+        (
+          audio.currentTime /
+          audio.duration
+        ) * 100;
+
+    }
+
+  }
+);
+
+
+/* seek */
 
 progress.addEventListener(
   "input",
@@ -2310,57 +2811,75 @@ progress.addEventListener(
     if(audio.duration){
 
       audio.currentTime =
-        (progress.value / 100) * audio.duration;
+        (
+          progress.value /
+          100
+        ) *
+        audio.duration;
 
     }
 
   }
 );
 
+
+/* volume */
 
 volume.addEventListener(
   "input",
   ()=>{
 
     audio.volume =
-      Number(volume.value);
+      Number(
+        volume.value
+      );
 
   }
 );
 
 
-document.getElementById("prevBtn")
-  .addEventListener("click",()=>{
+/* previous */
 
-    audio.currentTime = 0;
+document
+  .getElementById("prevBtn")
+  .addEventListener(
+    "click",
+    ()=>{
 
-  });
-
-
-document.getElementById("nextBtn")
-  .addEventListener("click",()=>{
-
-    audio.currentTime = 0;
-
-    if(!audio.paused){
-
-      audio.play()
-        .catch(()=>{});
+      audio.currentTime = 0;
 
     }
+  );
 
-  });
 
+/* next */
+
+document
+  .getElementById("nextBtn")
+  .addEventListener(
+    "click",
+    ()=>{
+
+      audio.currentTime = 0;
+
+    }
+  );
+
+
+/* ended */
 
 audio.addEventListener(
   "ended",
   ()=>{
 
-    playBtn.textContent = "▶";
+    playBtn.textContent =
+      "▶";
 
-    progress.value = 0;
+    progress.value =
+      0;
 
-    currentTime.textContent = "00:00";
+    currentTime.textContent =
+      "00:00";
 
   }
 );
