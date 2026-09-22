@@ -261,6 +261,18 @@ body::before{
 
 
 /* =========================================================
+   LINK HOVER
+   Tất cả link khi rê chuột sẽ in đậm
+========================================================= */
+
+a[href]:hover{
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
    BROWSER
 ========================================================= */
 
@@ -533,16 +545,6 @@ body::before{
 }
 
 
-/*
-   NEW PROFILE STAGE
-
-   Vòng tròn nằm phía sau.
-   Chủ thể nằm phía trước.
-
-   Nếu home-profile.png là PNG transparent,
-   hiệu ứng sẽ giống mockup nhất.
-*/
-
 .profile-image{
 
   position:relative;
@@ -569,82 +571,18 @@ body::before{
 }
 
 
-/* VÒNG TRÒN PHÍA SAU */
-
-.profile-image::before{
-
-  content:"";
-
-  position:absolute;
-
-  width:154px;
-
-  height:154px;
-
-  left:50%;
-
-  top:50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  border-radius:50%;
-
-  background:var(--teal);
-
-  border:4px solid var(--blue);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  z-index:1;
-
-}
-
-
-/* VÒNG TRÒN TRANG TRÍ */
-
-.profile-image::after{
-
-  content:"";
-
-  position:absolute;
-
-  width:132px;
-
-  height:132px;
-
-  left:50%;
-
-  top:50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  border-radius:50%;
-
-  border:2px dashed var(--paper);
-
-  opacity:.8;
-
-  z-index:2;
-
-  pointer-events:none;
-
-}
-
-
 /*
    CHỦ THỂ
 
-   Thu nhỏ khoảng 12%.
-   Đặt lên phía trước vòng tròn.
+   Bỏ hoàn toàn vòng tròn phía sau.
+
+   Bản trước:
+   scale(.88)
+
+   Bản mới:
+   scale(.968)
+
+   = tăng kích thước khoảng 10%.
 */
 
 .profile-image img{
@@ -668,7 +606,7 @@ body::before{
   border-radius:0;
 
   transform:
-    scale(.88);
+    scale(.968);
 
   transform-origin:
     center bottom;
@@ -726,13 +664,6 @@ body::before{
 
 
 .nav-list a:hover{
-
-  background:var(--orange);
-
-}
-
-
-.nav-list a.active{
 
   background:var(--orange);
 
@@ -1558,25 +1489,14 @@ body::before{
   }
 
 
-  /* PROFILE TABLET */
+  /* PROFILE TABLET
+     No background circle.
+     Subject remains 10% larger.
+  */
 
   .profile-image{
 
     height:190px;
-
-  }
-
-  .profile-image::before{
-
-    width:140px;
-    height:140px;
-
-  }
-
-  .profile-image::after{
-
-    width:120px;
-    height:120px;
 
   }
 
@@ -1585,7 +1505,7 @@ body::before{
     height:178px;
 
     transform:
-      scale(.88);
+      scale(.968);
 
   }
 
@@ -1656,20 +1576,6 @@ body::before{
 
   }
 
-  .profile-image::before{
-
-    width:170px;
-    height:170px;
-
-  }
-
-  .profile-image::after{
-
-    width:148px;
-    height:148px;
-
-  }
-
   .profile-image img{
 
     width:82%;
@@ -1677,7 +1583,7 @@ body::before{
     height:220px;
 
     transform:
-      scale(.88);
+      scale(.968);
 
   }
 
@@ -1774,23 +1680,12 @@ body::before{
 
   }
 
-  .profile-image::before{
-
-    width:155px;
-    height:155px;
-
-  }
-
-  .profile-image::after{
-
-    width:135px;
-    height:135px;
-
-  }
-
   .profile-image img{
 
     height:205px;
+
+    transform:
+      scale(.968);
 
   }
 
@@ -2003,15 +1898,6 @@ body::before{
         <span class="folder-icon"></span>
 
         notes
-
-      </a>
-
-
-      <a href="/#about">
-
-        <span class="folder-icon"></span>
-
-        about
 
       </a>
 
