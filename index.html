@@ -517,19 +517,21 @@ body::before{
 
 
 /* =========================================================
-   POLAROID
+   HOME SIDE IMAGE
 ========================================================= */
 
 .polaroid{
-  width:175px;
+  width:100%;
 
-  margin:20px auto 70px;
+  max-width:250px;
 
-  padding:9px 9px 18px;
+  margin:35px auto 70px;
 
-  background:#ddd;
+  padding:0;
 
-  transform:rotate(-2deg);
+  background:transparent;
+
+  transform:none;
 }
 
 .polaroid img{
@@ -539,17 +541,11 @@ body::before{
 
   height:auto;
 
-  filter:grayscale(100%);
+  filter:none;
 }
 
 .polaroid figcaption{
-  color:#777;
-
-  text-align:center;
-
-  font-size:12px;
-
-  margin-top:12px;
+  display:none;
 }
 
 
@@ -675,6 +671,10 @@ footer{
   .photo-grid{
     grid-template-columns:
       repeat(2,minmax(0,1fr));
+  }
+
+  .polaroid{
+    max-width:100%;
   }
 
 }
@@ -976,19 +976,14 @@ footer{
 
 
       <!-- ===============================================
-           HOME POLAROID
+           HOME SIDE IMAGE
       ================================================ -->
 
       <figure class="polaroid">
 
         <img
           src="/home/home-polaroid.png"
-          alt="Home Polaroid"
-        >
-
-        <figcaption>
-          Hanoi, always.
-        </figcaption>
+          alt="Home image">
 
       </figure>
 
