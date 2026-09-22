@@ -2341,22 +2341,16 @@ a[href]:hover{
    CONFIG
 ========================================================= */
 
-
-/* PHOTOGRAPHS */
-
 const CONTENT_URL =
   "/photographs/content.json?v=" +
   Date.now();
-
 
 const POSTS_BASE =
   "/photographs/posts/";
 
 
-
 /* =========================================================
    MUSIC
-   SHARED WITH HOME / WRITINGS / NOTES
 ========================================================= */
 
 const MUSIC_TRACKS = [
@@ -2381,7 +2375,6 @@ const MUSIC_TRACKS = [
 
 ];
 
-
 const MUSIC_STORAGE_KEY =
   "qmArchiveMusic";
 
@@ -2395,17 +2388,12 @@ function escapeHTML(value){
   return String(value ?? "")
 
     .replace(/&/g,"&amp;")
-
     .replace(/</g,"&lt;")
-
     .replace(/>/g,"&gt;")
-
     .replace(/"/g,"&quot;")
-
     .replace(/'/g,"&#039;");
 
 }
-
 
 
 /* =========================================================
@@ -2417,8 +2405,6 @@ function markdownToHTML(markdown){
   let text =
     escapeHTML(markdown);
 
-
-  /* IMAGES INSIDE MARKDOWN */
 
   text =
     text.replace(
@@ -2443,8 +2429,6 @@ function markdownToHTML(markdown){
     );
 
 
-  /* LINKS */
-
   text =
     text.replace(
       /\[([^\]]+)\]\(([^)]+)\)/g,
@@ -2452,8 +2436,6 @@ function markdownToHTML(markdown){
       '<a href="$2">$1</a>'
     );
 
-
-  /* HEADINGS */
 
   text =
     text.replace(
@@ -2479,8 +2461,6 @@ function markdownToHTML(markdown){
     );
 
 
-  /* BOLD */
-
   text =
     text.replace(
       /\*\*(.+?)\*\*/g,
@@ -2488,8 +2468,6 @@ function markdownToHTML(markdown){
       "<strong>$1</strong>"
     );
 
-
-  /* ITALIC */
 
   text =
     text.replace(
@@ -2499,8 +2477,6 @@ function markdownToHTML(markdown){
     );
 
 
-  /* BLOCKQUOTE */
-
   text =
     text.replace(
       /^&gt; (.+)$/gm,
@@ -2508,8 +2484,6 @@ function markdownToHTML(markdown){
       "<blockquote>$1</blockquote>"
     );
 
-
-  /* UNORDERED LIST */
 
   text =
     text.replace(
@@ -2526,8 +2500,6 @@ function markdownToHTML(markdown){
       "<ul>$1</ul>"
     );
 
-
-  /* BLOCKS */
 
   const blocks =
     text
@@ -2589,7 +2561,6 @@ function markdownToHTML(markdown){
 }
 
 
-
 /* =========================================================
    LOAD JSON
 ========================================================= */
@@ -2608,12 +2579,9 @@ async function loadJSON(){
   if(!response.ok){
 
     throw new Error(
-
-      "Could not load " +
-      "photographs/content.json (" +
+      "Could not load photographs/content.json (" +
       response.status +
       ")"
-
     );
 
   }
@@ -2622,7 +2590,6 @@ async function loadJSON(){
   return await response.json();
 
 }
-
 
 
 /* =========================================================
@@ -2639,13 +2606,10 @@ async function loadMarkdown(slug){
 
   const url =
     POSTS_BASE +
-
     encodeURIComponent(
       safeSlug
     ) +
-
     ".md?v=" +
-
     Date.now();
 
 
@@ -2661,12 +2625,10 @@ async function loadMarkdown(slug){
   if(!response.ok){
 
     throw new Error(
-
       "Could not load Markdown file (" +
       response.status +
       "): " +
       url
-
     );
 
   }
@@ -2679,10 +2641,8 @@ async function loadMarkdown(slug){
   if(!text.trim()){
 
     throw new Error(
-
       "Markdown file is empty: " +
       url
-
     );
 
   }
@@ -2691,7 +2651,6 @@ async function loadMarkdown(slug){
   return text;
 
 }
-
 
 
 /* =========================================================
@@ -2733,7 +2692,6 @@ function getCategories(item){
 }
 
 
-
 /* =========================================================
    FILTER PHOTOGRAPHS
 ========================================================= */
@@ -2767,9 +2725,114 @@ function filterPhotographs(
 }
 
 
+/* =========================================================
+   DATE PARSER
+========================================================= */
+
+function parseArchiveDate(value){
+
+  const text =
+    String(value || "")
+      .trim();
+
+
+  /*
+     DD.MM.YYYY
+  */
+
+  let match =
+    text.match(
+      /^(\d{1,2})[.](\d{1,2})[.](\d{4})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[3]),
+      Number(match[2]) - 1,
+      Number(match[1])
+    ).getTime();
+
+  }
+
+
+  /*
+     DD/MM/YYYY
+  */
+
+  match =
+    text.match(
+      /^(\d{1,2})[/](\d{1,2})[/](\d{4})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[3]),
+      Number(match[2]) - 1,
+      Number(match[1])
+    ).getTime();
+
+  }
+
+
+  /*
+     YYYY-MM-DD
+  */
+
+  match =
+    text.match(
+      /^(\d{4})-(\d{1,2})-(\d{1,2})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[1]),
+      Number(match[2]) - 1,
+      Number(match[3])
+    ).getTime();
+
+  }
+
+
+  /*
+     YYYY
+  */
+
+  match =
+    text.match(
+      /^(\d{4})$/
+    );
+
+
+  if(match){
+
+    return new Date(
+      Number(match[1]),
+      0,
+      1
+    ).getTime();
+
+  }
+
+
+  /*
+     Không đọc được ngày:
+     đưa xuống cuối.
+  */
+
+  return 0;
+
+}
+
 
 /* =========================================================
    RENDER ARCHIVE
+   MỚI NHẤT → CŨ NHẤT
 ========================================================= */
 
 function renderArchive(items){
@@ -2803,11 +2866,80 @@ function renderArchive(items){
   }
 
 
+  /*
+     IMPORTANT:
+
+     Luôn sắp xếp ảnh theo ngày
+     từ MỚI NHẤT → CŨ NHẤT.
+
+     Không phụ thuộc vào thứ tự
+     của photographs/content.json.
+  */
+
+  const sortedItems =
+
+    items
+
+      .map(
+        (item,index) => ({
+
+          item,
+
+          index,
+
+          timestamp:
+            parseArchiveDate(
+              item.date
+            )
+
+        })
+      )
+
+      .sort(
+        (a,b) => {
+
+          /*
+             Ngày mới hơn đứng trước.
+          */
+
+          if(
+            b.timestamp !==
+            a.timestamp
+          ){
+
+            return (
+              b.timestamp -
+              a.timestamp
+            );
+
+          }
+
+
+          /*
+             Nếu cùng ngày,
+             giữ nguyên thứ tự
+             trong content.json.
+          */
+
+          return (
+            a.index -
+            b.index
+          );
+
+        }
+      )
+
+      .map(
+        entry =>
+          entry.item
+      );
+
+
   main.innerHTML = `
 
     <div class="archive">
 
-      ${items.map(
+      ${sortedItems.map(
         item => {
 
           const slug =
@@ -2880,7 +3012,6 @@ function renderArchive(items){
 }
 
 
-
 /* =========================================================
    FILTER EVENTS
 ========================================================= */
@@ -2928,6 +3059,12 @@ function setupFilters(items){
             );
 
 
+          /*
+             renderArchive()
+             sẽ tiếp tục tự động
+             sort mới → cũ.
+          */
+
           renderArchive(
             filteredItems
           );
@@ -2939,7 +3076,6 @@ function setupFilters(items){
   );
 
 }
-
 
 
 /* =========================================================
@@ -3173,7 +3309,6 @@ async function renderArticle(
 }
 
 
-
 /* =========================================================
    CLOCK
 ========================================================= */
@@ -3255,10 +3390,8 @@ function updateClock(){
 }
 
 
-
 /* =========================================================
    MUSIC PLAYER
-   SHARED LOCAL STORAGE
 ========================================================= */
 
 const audio =
@@ -3318,9 +3451,9 @@ const musicTime =
 let currentTrack = 0;
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    FORMAT TIME
---------------------------------------------------------- */
+========================================================= */
 
 function formatTime(seconds){
 
@@ -3356,9 +3489,9 @@ function formatTime(seconds){
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    SAVE STATE
---------------------------------------------------------- */
+========================================================= */
 
 function saveMusicState(){
 
@@ -3403,9 +3536,9 @@ function saveMusicState(){
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    GET SAVED STATE
---------------------------------------------------------- */
+========================================================= */
 
 function getSavedMusicState(){
 
@@ -3455,9 +3588,9 @@ function getSavedMusicState(){
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    LOAD TRACK
---------------------------------------------------------- */
+========================================================= */
 
 function loadTrack(
   index,
@@ -3565,9 +3698,9 @@ function loadTrack(
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    RESTORE SAVED MUSIC STATE
---------------------------------------------------------- */
+========================================================= */
 
 function restoreMusicState(){
 
@@ -3641,14 +3774,6 @@ function restoreMusicState(){
   );
 
 
-  /*
-    Do not autoplay automatically.
-    Browser autoplay policies may block it.
-
-    If the previous state was playing,
-    the first user interaction will resume it.
-  */
-
   if(state.isPlaying){
 
     window.__qmMusicShouldResume =
@@ -3659,9 +3784,9 @@ function restoreMusicState(){
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    PLAY / PAUSE
---------------------------------------------------------- */
+========================================================= */
 
 playButton.addEventListener(
   "click",
@@ -3702,9 +3827,9 @@ playButton.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    PREVIOUS
---------------------------------------------------------- */
+========================================================= */
 
 prevButton.addEventListener(
   "click",
@@ -3720,9 +3845,9 @@ prevButton.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    NEXT
---------------------------------------------------------- */
+========================================================= */
 
 nextButton.addEventListener(
   "click",
@@ -3738,9 +3863,9 @@ nextButton.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    METADATA
---------------------------------------------------------- */
+========================================================= */
 
 audio.addEventListener(
   "loadedmetadata",
@@ -3756,9 +3881,9 @@ audio.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    TIME UPDATE
---------------------------------------------------------- */
+========================================================= */
 
 audio.addEventListener(
   "timeupdate",
@@ -3787,11 +3912,6 @@ audio.addEventListener(
       );
 
 
-    /*
-      Save position continuously.
-      Throttle slightly to avoid excessive writes.
-    */
-
     const now =
       Date.now();
 
@@ -3815,9 +3935,9 @@ audio.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    PROGRESS
---------------------------------------------------------- */
+========================================================= */
 
 progress.addEventListener(
   "input",
@@ -3841,9 +3961,9 @@ progress.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    VOLUME
---------------------------------------------------------- */
+========================================================= */
 
 volume.addEventListener(
   "input",
@@ -3861,9 +3981,9 @@ volume.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    ENDED
---------------------------------------------------------- */
+========================================================= */
 
 audio.addEventListener(
   "ended",
@@ -3879,9 +3999,9 @@ audio.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    PLAY EVENT
---------------------------------------------------------- */
+========================================================= */
 
 audio.addEventListener(
   "play",
@@ -3896,9 +4016,9 @@ audio.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    PAUSE EVENT
---------------------------------------------------------- */
+========================================================= */
 
 audio.addEventListener(
   "pause",
@@ -3913,9 +4033,9 @@ audio.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    BEFORE UNLOAD
---------------------------------------------------------- */
+========================================================= */
 
 window.addEventListener(
   "beforeunload",
@@ -3927,9 +4047,9 @@ window.addEventListener(
 );
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    FIRST USER INTERACTION
---------------------------------------------------------- */
+========================================================= */
 
 let musicInteractionHandled =
   false;
@@ -3968,7 +4088,7 @@ function resumeMusicAfterInteraction(){
 
         /*
           Autoplay may still be blocked.
-          User can simply press Play.
+          User can press Play.
         */
 
       });
