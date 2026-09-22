@@ -1,4 +1,5 @@
 Mẹ xem lại chồng ảnh cũ.
+
 Mẹ kể chuyện về bà, về ba, về ngày tôi còn bé. Vẫn là những câu chuyện được mặc định đính kèm với từng bức ảnh.
 Trong lúc đấy tôi cũng đang lướt ngày này năm xưa trên FB. Cũng may mà có FB nhắc nhở.
 
@@ -10,6 +11,7 @@ Tôi thích mình ở mọi phiên bản.
 ‘’Welcome to the real world. It sucks. You’re gonna love it’’
 
 Mẹ có nhiều kỷ niệm. Tôi cũng thế. Ngày nào FB hay Insta cũng đều nhắc.
+
 Nhiều lúc tôi thấy bản thân với Chandler khá giống nhau.
 
 Sáng nay tôi bận hơn mọi khi. Hằng nhắn tôi uống Highlands hay Koi và nằng nặc bắt tôi phải chọn. Dù tôi cũng chẳng hứng thú với 2 thức uống đấy lắm. Một tình bạn xuyên biên giới nhân ngày HN mưa tầm tã.
