@@ -1,1643 +1,1182 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Writings — QUỐC MẠNH</title>
 
-
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
+:root{
+  --cream:#d8cfb5;
+  --paper:#e7ddc0;
+  --orange:#f05a32;
+  --orange-dark:#c84327;
+  --teal:#176f78;
+  --teal-dark:#0d5059;
+  --blue:#15172f;
+  --blue-soft:#243b73;
+  --green:#1d8a4a;
+  --white:#f5ecd7;
+  --border:3px solid var(--blue);
+}
 
 *{
   box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
   margin:0;
   padding:0;
-}
-
-html{
-  background:#d8cfb5;
+  min-height:100%;
 }
 
 body{
-  min-height:100vh;
-
-  background:
-    linear-gradient(
-      rgba(255,255,255,.08),
-      rgba(255,255,255,.08)
-    ),
-    #d8cfb5;
-
-  color:#15172f;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  background:var(--cream);
+  color:var(--blue);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;
+  line-height:1.45;
+  overflow-x:hidden;
 }
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root{
-
-  --cream:#d8cfb5;
-  --paper:#e7ddc0;
-
-  --orange:#f05a32;
-  --orange-dark:#c84327;
-
-  --teal:#176f78;
-  --teal-dark:#0d5059;
-
-  --blue:#15172f;
-  --blue-soft:#243b73;
-
-  --green:#1d8a4a;
-
-  --white:#f5ecd7;
-
-  --border:3px solid var(--blue);
-
-}
-
-
-/* =========================================================
-   SCANLINES
-========================================================= */
 
 body::before{
-
   content:"";
-
   position:fixed;
-
   inset:0;
-
   pointer-events:none;
-
-  z-index:99999;
-
+  z-index:9999;
   background:
     repeating-linear-gradient(
-      to bottom,
-      rgba(21,23,47,.035) 0px,
-      rgba(21,23,47,.035) 1px,
+      0deg,
+      rgba(21,23,47,.045) 0px,
+      rgba(21,23,47,.045) 1px,
       transparent 1px,
       transparent 4px
     );
-
-  opacity:.45;
-
 }
 
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-/* =========================================================
+/* =========================
    PAGE
-========================================================= */
+========================= */
 
 .page{
-
-  width:100%;
-
-  min-height:100vh;
-
-  padding:
-    10px
-    14px
-    150px;
-
+  width:min(1600px, calc(100% - 28px));
+  margin:14px auto 30px;
 }
 
-
-/* =========================================================
-   GENERIC WINDOW
-========================================================= */
-
-.window{
-
-  background:var(--paper);
-
-  border:var(--border);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  overflow:hidden;
-
-}
-
-
-.window-titlebar{
-
-  min-height:38px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 7px;
-
-  background:var(--orange);
-
-  border-bottom:var(--border);
-
-  color:var(--blue);
-
-  font-weight:bold;
-
-  letter-spacing:.8px;
-
-  font-size:14px;
-
-}
-
-
-.window--teal .window-titlebar{
-
-  background:var(--teal);
-
-  color:var(--white);
-
-}
-
-
-.window-title{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  min-width:0;
-
-}
-
-
-.window-title-icon{
-
-  width:21px;
-
-  height:21px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  flex-shrink:0;
-
-  border:2px solid currentColor;
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-size:10px;
-
-  font-weight:bold;
-
-}
-
-
-.window--teal
-.window-title-icon{
-
-  color:var(--blue);
-
-}
-
-
-.window-buttons{
-
-  display:flex;
-
-  gap:4px;
-
-  flex-shrink:0;
-
-}
-
-
-.window-button{
-
-  width:20px;
-
-  height:20px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-size:11px;
-
-  line-height:1;
-
-}
-
-
-/* =========================================================
-   LINKS
-========================================================= */
-
-a[href]:hover{
-
-  font-weight:bold;
-
-}
-
-
-/* =========================================================
-   BROWSER
-========================================================= */
+/* =========================
+   BROWSER BAR
+========================= */
 
 .browser{
-
   border:var(--border);
-
   background:var(--paper);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  margin-bottom:14px;
-
+  box-shadow:6px 6px 0 var(--blue);
+  margin-bottom:18px;
 }
-
 
 .browser-top{
-
-  min-height:39px;
-
+  height:34px;
   display:flex;
-
   align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 8px;
-
-  background:var(--orange);
-
-  border-bottom:var(--border);
-
-}
-
-
-.browser-brand{
-
-  display:flex;
-
-  align-items:center;
-
   gap:8px;
-
-  color:var(--blue);
-
-  font-weight:bold;
-
-  font-size:17px;
-
-  letter-spacing:1px;
-
-}
-
-
-.browser-brand-icon{
-
-  width:24px;
-
-  height:24px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--teal);
-
+  padding:0 10px;
+  background:var(--blue);
   color:var(--white);
-
   font-size:12px;
-
-}
-
-
-.browser-subtitle{
-
-  font-size:11px;
-
   font-weight:bold;
-
 }
 
-
-.browser-window-buttons{
-
+.browser-dots{
   display:flex;
-
-  gap:4px;
-
+  gap:5px;
 }
 
-
-.browser-window-buttons span{
-
-  width:23px;
-
-  height:23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-size:11px;
-
+.browser-dots span{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--white);
+  display:block;
 }
 
-
-.browser-menu{
-
-  display:flex;
-
-  gap:20px;
-
-  padding:
-    6px 10px;
-
-  border-bottom:2px solid var(--blue);
-
-  font-size:12px;
-
-  font-weight:bold;
-
+.browser-title{
+  margin-left:4px;
+  letter-spacing:.04em;
 }
-
-
-.browser-address-row{
-
-  display:grid;
-
-  grid-template-columns:
-    31px
-    31px
-    31px
-    minmax(0,1fr)
-    175px;
-
-  gap:6px;
-
-  align-items:center;
-
-  padding:7px;
-
-}
-
-
-.browser-control{
-
-  width:31px;
-
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  font-weight:bold;
-
-}
-
 
 .browser-address{
-
-  min-width:0;
-
-  height:27px;
-
+  min-height:38px;
   display:flex;
-
   align-items:center;
+  padding:6px 10px;
+  gap:8px;
+  background:var(--paper);
+}
 
-  padding:
-    0 9px;
-
-  border:2px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:#303249;
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
+.address-label{
   font-size:11px;
-
-}
-
-
-.browser-date{
-
-  text-align:center;
-
-  font-size:10px;
-
-  line-height:1.35;
-
   font-weight:bold;
-
+  text-transform:uppercase;
 }
 
+.address{
+  flex:1;
+  min-width:0;
+  border:2px solid var(--blue);
+  background:#f0e8d1;
+  padding:5px 8px;
+  font-family:monospace;
+  font-size:12px;
+  overflow:hidden;
+  white-space:nowrap;
+}
 
-/* =========================================================
-   MAIN LAYOUT
-========================================================= */
+/* =========================
+   LAYOUT
+========================= */
 
 .layout{
-
   display:grid;
-
-  grid-template-columns:
-    285px
-    minmax(0,1fr);
-
-  gap:16px;
-
-  max-width:1600px;
-
-  margin:0 auto;
-
+  grid-template-columns:285px minmax(0,1fr);
+  gap:18px;
   align-items:start;
-
 }
 
+/* =========================
+   PANELS
+========================= */
 
-/* =========================================================
+.panel{
+  border:var(--border);
+  background:var(--paper);
+  box-shadow:6px 6px 0 var(--blue);
+}
+
+.panel-title{
+  background:var(--blue);
+  color:var(--white);
+  padding:8px 10px;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.panel-body{
+  padding:12px;
+}
+
+/* =========================
    LEFT / SYSTEM INFO
-========================================================= */
+========================= */
 
-.left{
-
-  min-width:0;
-
+.system-info{
+  position:sticky;
+  top:14px;
 }
-
-
-.system-window{
-
-  overflow:hidden;
-
-}
-
-
-.system-content{
-
-  padding:13px;
-
-}
-
 
 .system-line{
-
-  margin:
-    7px 0;
-
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:1px dotted var(--blue);
+  padding:5px 0;
+  font-family:monospace;
   font-size:12px;
-
 }
 
+.system-line:last-child{
+  border-bottom:0;
+}
 
 .online{
-
-  color:#168a43;
-
+  color:var(--green);
   font-weight:bold;
-
 }
 
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.nav-list{
-
-  margin-top:14px;
-
-  padding-top:10px;
-
-  border-top:
-    2px dashed var(--blue);
-
+.profile-mini{
+  margin-top:16px;
+  border-top:2px solid var(--blue);
+  padding-top:12px;
 }
 
-
-.nav-list a{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  min-height:36px;
-
-  padding:
-    6px 8px;
-
-  color:var(--blue);
-
-  text-decoration:none;
-
-  font-size:14px;
-
-  font-weight:bold;
-
-}
-
-
-.nav-list a:hover{
-
-  background:var(--orange);
-
-}
-
-
-.nav-list a.active{
-
-  background:var(--orange);
-
-  color:var(--blue);
-
-}
-
-
-/* =========================================================
-   CSS FOLDER ICON
-========================================================= */
-
-.folder-icon{
-
-  width:21px;
-
-  height:15px;
-
-  display:inline-block;
-
-  position:relative;
-
-  flex-shrink:0;
-
-  background:#e8b82e;
-
+.profile-mini img{
+  width:100%;
+  display:block;
   border:2px solid var(--blue);
-
 }
-
-
-.folder-icon::before{
-
-  content:"";
-
-  position:absolute;
-
-  left:1px;
-
-  top:-6px;
-
-  width:9px;
-
-  height:6px;
-
-  background:#e8b82e;
-
-  border:
-    2px solid var(--blue);
-
-  border-bottom:0;
-
-}
-
-
-/* =========================================================
-   CASSETTE
-========================================================= */
 
 .cassette{
-
-  margin-top:14px;
-
-  padding:8px;
-
+  margin-top:16px;
+  text-align:center;
 }
-
 
 .cassette img{
-
-  display:block;
-
   width:100%;
-
-  height:auto;
-
-  border:3px solid var(--blue);
-
+  max-width:210px;
+  display:block;
+  margin:0 auto;
 }
-
-
-.cassette img[src$=".gif"]{
-
-  image-rendering:auto;
-
-}
-
 
 .cassette-caption{
-
-  margin-top:8px;
-
-  text-align:center;
-
+  margin-top:6px;
   font-size:10px;
-
-  line-height:1.5;
-
-  font-weight:bold;
-
+  line-height:1.35;
+  font-family:monospace;
 }
 
-
-/* =========================================================
-   CENTER
-========================================================= */
-
-.center{
-
-  min-width:0;
-
+.nav{
+  margin-top:16px;
   display:flex;
-
   flex-direction:column;
-
-  gap:16px;
-
+  gap:5px;
 }
 
+.nav a{
+  display:block;
+  padding:7px 8px;
+  border:2px solid transparent;
+  font-weight:bold;
+}
 
-/* =========================================================
-   WRITINGS WINDOW
-========================================================= */
+.nav a:hover,
+.nav a.active{
+  background:var(--orange);
+  color:var(--white);
+  border-color:var(--blue);
+}
 
-.writings-window{
+/* =========================
+   WRITINGS
+========================= */
 
+.writings{
   min-width:0;
-
-  overflow:hidden;
-
 }
 
+.section-head{
+  border:var(--border);
+  background:var(--blue);
+  color:var(--white);
+  padding:12px 14px;
+  box-shadow:6px 6px 0 var(--blue);
+}
 
-/* =========================================================
-   WRITINGS INTRO
-========================================================= */
+.section-head h1{
+  margin:0;
+  font-size:25px;
+  letter-spacing:.03em;
+}
 
-.writing-intro{
-
-  padding:
-    12px 16px;
-
-  border-bottom:
-    2px dashed var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
+.section-head p{
+  margin:4px 0 0;
+  color:#ddd6c5;
   font-size:12px;
-
-  line-height:1.6;
-
 }
 
+.content-panel{
+  margin-top:18px;
+  border:var(--border);
+  background:var(--paper);
+  box-shadow:6px 6px 0 var(--blue);
+}
 
-/* =========================================================
+.content-inner{
+  padding:18px;
+}
+
+/* =========================
    SEARCH
-========================================================= */
+========================= */
 
-.writing-search{
-
+.search{
   display:flex;
-
   align-items:center;
-
   gap:8px;
-
-  padding:
-    10px 12px;
-
-  border-bottom:
-    var(--border);
-
-  background:var(--cream);
-
+  border-bottom:2px solid var(--blue);
+  padding-bottom:14px;
+  margin-bottom:18px;
 }
-
 
 .search-icon{
-
-  width:31px;
-
-  height:31px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  flex-shrink:0;
-
-  border:
-    2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-size:17px;
-
+  font-size:22px;
   line-height:1;
-
 }
 
-
-.search-input{
-
-  min-width:0;
-
-  flex:1;
-
-  height:31px;
-
-  padding:
-    0 9px;
-
-  border:
-    2px solid var(--blue);
-
+.search input{
+  width:100%;
+  border:2px solid var(--blue);
+  background:#f0e8d1;
+  color:var(--blue);
+  padding:8px 10px;
+  font-family:monospace;
+  font-size:13px;
   outline:none;
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
-  font-family:inherit;
-
-  font-size:11px;
-
 }
 
-
-.search-input::placeholder{
-
-  color:#656579;
-
+.search input:focus{
+  border-color:var(--orange);
 }
 
-
-.search-input:focus{
-
-  background:#f5ecd7;
-
-}
-
-
-.search-clear{
-
-  width:31px;
-
-  height:31px;
-
-  display:none;
-
-  align-items:center;
-
-  justify-content:center;
-
-  flex-shrink:0;
-
-  border:
-    2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:inherit;
-
-  font-size:12px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-
-.search-clear:hover{
-
-  color:var(--white);
-
-  background:var(--teal);
-
-}
-
-
-/* =========================================================
-   WRITING ARCHIVE
-========================================================= */
+/* =========================
+   ARCHIVE
+========================= */
 
 .archive{
-
-  width:100%;
-
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
 }
-
 
 .archive-entry{
-
-  display:grid;
-
-  grid-template-columns:
-    105px
-    minmax(0,1fr)
-    28px;
-
-  gap:10px;
-
-  align-items:center;
-
-  padding:
-    12px 14px;
-
-  border-bottom:
-    1px solid #777786;
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  text-decoration:none;
-
+  position:relative;
+  border:2px solid var(--blue);
+  background:#eee4c9;
+  padding:13px;
+  transition:.15s ease;
 }
-
-
-.archive-entry:last-child{
-
-  border-bottom:0;
-
-}
-
 
 .archive-entry:hover{
-
-  background:#f5ecd7;
-
+  background:var(--orange);
+  color:var(--white);
+  transform:translate(-2px,-2px);
+  box-shadow:4px 4px 0 var(--blue);
 }
-
 
 .archive-date{
-
-  color:var(--teal);
-
+  font-family:monospace;
   font-size:10px;
-
-  font-weight:bold;
-
+  opacity:.75;
+  margin-bottom:7px;
 }
-
-
-.archive-content{
-
-  min-width:0;
-
-}
-
 
 .archive-title{
-
-  color:var(--blue);
-
-  font-size:12px;
-
-  line-height:1.4;
-
+  font-size:17px;
+  line-height:1.2;
   font-weight:bold;
-
+  margin-bottom:8px;
 }
-
-
-.archive-entry:hover
-.archive-title{
-
-  color:var(--orange);
-
-}
-
 
 .archive-excerpt{
-
-  margin-top:4px;
-
-  color:#5f6070;
-
-  font-size:10px;
-
+  font-size:12px;
   line-height:1.5;
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
+  opacity:.85;
 }
-
 
 .archive-arrow{
-
-  text-align:right;
-
-  color:var(--blue);
-
-  font-size:16px;
-
+  margin-top:10px;
+  font-family:monospace;
+  font-size:12px;
   font-weight:bold;
-
 }
 
+.empty{
+  border:2px dashed var(--blue);
+  padding:18px;
+  font-family:monospace;
+  font-size:12px;
+}
 
-/* =========================================================
-   SEARCH EMPTY STATE
-========================================================= */
+/* =========================
+   ARTICLE
+========================= */
 
-.search-empty{
-
-  padding:
-    35px 20px;
-
-  background:#eee5ce;
-
-  color:#5f6070;
-
+.article-meta{
+  font-family:monospace;
   font-size:11px;
-
-  line-height:1.8;
-
-  text-align:center;
-
-}
-
-
-/* =========================================================
-   ARTICLE / DETAIL
-========================================================= */
-
-.article{
-
-  padding:
-    20px
-    22px
-    30px;
-
-}
-
-
-.article-year{
-
-  color:var(--teal);
-
-  font-size:11px;
-
-  font-weight:bold;
-
   margin-bottom:8px;
-
+  color:var(--orange-dark);
 }
-
 
 .article-title{
-
-  color:var(--blue);
-
-  font-size:28px;
-
-  font-weight:bold;
-
-  line-height:1.25;
-
-  margin:
-    0 0 28px;
-
+  margin:0 0 18px;
+  font-size:30px;
+  line-height:1.12;
 }
-
-
-/* =========================================================
-   ARTICLE BODY
-========================================================= */
 
 .article-body{
-
-  max-width:1000px;
-
-  color:var(--blue);
-
-  font-size:14px;
-
-  line-height:1.9;
-
-  letter-spacing:.05px;
-
+  border-top:2px solid var(--blue);
+  padding-top:18px;
+  max-width:850px;
+  font-size:15px;
+  line-height:1.75;
 }
-
 
 .article-body p{
-
-  margin:
-    0 0 24px;
-
+  margin:0 0 16px;
 }
-
 
 .article-body h1,
 .article-body h2,
 .article-body h3{
-
-  color:var(--blue);
-
-  font-weight:bold;
-
+  line-height:1.2;
+  margin:25px 0 10px;
 }
-
-
-.article-body h1{
-
-  font-size:25px;
-
-  margin:
-    30px 0 20px;
-
-}
-
 
 .article-body h2{
-
-  font-size:20px;
-
-  margin:
-    30px 0 18px;
-
+  font-size:21px;
 }
-
 
 .article-body h3{
-
-  font-size:17px;
-
-  margin:
-    25px 0 13px;
-
+  font-size:18px;
 }
-
-
-.article-body em{
-
-  color:var(--teal);
-
-}
-
-
-.article-body strong{
-
-  color:var(--orange);
-
-}
-
-
-.article-body blockquote{
-
-  margin:
-    25px 0;
-
-  padding:
-    12px 15px;
-
-  border-left:
-    5px solid var(--orange);
-
-  background:var(--white);
-
-  color:var(--teal);
-
-}
-
-
-.article-body ul,
-.article-body ol{
-
-  margin:
-    0 0 24px;
-
-  padding-left:25px;
-
-}
-
-
-.article-body li{
-
-  margin-bottom:7px;
-
-}
-
-
-.article-body a{
-
-  color:var(--teal);
-
-  font-weight:bold;
-
-}
-
 
 .article-body img{
-
-  display:block;
-
-  width:auto;
-
   max-width:100%;
-
   height:auto;
-
-  margin:
-    30px 0;
-
-  border:
-    3px solid var(--blue);
-
+  display:block;
+  margin:18px 0;
+  border:2px solid var(--blue);
 }
 
+.article-body blockquote{
+  margin:18px 0;
+  padding:10px 14px;
+  border-left:5px solid var(--orange);
+  background:#ddd3b8;
+  font-style:italic;
+}
 
-/* =========================================================
-   ARTICLE BACK
-========================================================= */
+.article-body ul{
+  padding-left:22px;
+}
 
-.article-back{
+.article-body a{
+  color:var(--orange-dark);
+  text-decoration:underline;
+}
 
+.back{
   display:inline-block;
-
-  margin-top:20px;
-
-  padding:
-    6px 10px;
-
-  border:
-    2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  text-decoration:none;
-
-  font-size:11px;
-
-  font-weight:bold;
-
-}
-
-
-.article-back:hover{
-
+  margin-top:25px;
+  padding:7px 10px;
+  border:2px solid var(--blue);
+  background:var(--orange);
   color:var(--white);
-
-  background:var(--teal);
-
-}
-
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-.error{
-
-  padding:
-    35px 20px;
-
-  background:#eee5ce;
-
-  color:#8b2c1e;
-
-  font-size:11px;
-
-  line-height:1.8;
-
-}
-
-
-.error strong{
-
   font-weight:bold;
-
 }
 
+.back:hover{
+  background:var(--blue);
+}
 
-/* =========================================================
-   FOOTER QUOTE
-========================================================= */
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
-
-  width:
-    min(940px, calc(100% - 28px));
-
-  margin:
-    16px auto 0;
-
-  padding:
-    10px 14px;
-
-  border:
-    3px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--teal);
-
+  margin-top:22px;
+  border-top:3px solid var(--blue);
+  padding:14px 4px 5px;
   text-align:center;
-
-  font-size:10px;
-
-  font-weight:bold;
-
+  font-family:monospace;
+  font-size:11px;
+  line-height:1.5;
 }
 
+/* =========================
+   MUSIC
+========================= */
 
-/* =========================================================
-   MUSIC PLAYER
-========================================================= */
-
-.music-player{
-
+.music{
   position:fixed;
-
-  width:
-    min(940px, calc(100% - 28px));
-
-  left:50%;
-
-  right:auto;
-
-  bottom:10px;
-
-  transform:translateX(-50%);
-
-  z-index:10000;
-
-  display:grid;
-
-  grid-template-columns:
-    auto
-    minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
-    auto;
-
-  gap:9px;
-
-  align-items:center;
-
-  padding:
-    6px 8px;
-
+  right:14px;
+  bottom:14px;
+  z-index:5000;
+  width:250px;
+  border:3px solid var(--blue);
   background:var(--paper);
-
-  border:
-    3px solid var(--blue);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
+  box-shadow:5px 5px 0 var(--blue);
+  padding:7px;
 }
-
-
-.music-icon{
-
-  width:35px;
-
-  height:35px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:var(--orange);
-
-  border:
-    3px solid var(--blue);
-
-  font-weight:bold;
-
-}
-
-
-.music-info{
-
-  min-width:0;
-
-}
-
 
 .music-label{
-
-  font-size:8px;
-
-  margin-bottom:2px;
-
-}
-
-
-.music-title{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
+  font-family:monospace;
+  font-size:10px;
+  margin-bottom:4px;
   font-weight:bold;
-
 }
 
-
-.music-controls{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.music-button{
-
-  width:33px;
-
-  height:29px;
-
-  border:
-    3px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
-  font-family:inherit;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-
-.music-button:hover{
-
-  background:var(--orange);
-
-}
-
-
-.music-progress{
-
-  min-width:0;
-
-}
-
-
-.music-progress input{
-
+.music audio{
   width:100%;
-
-  accent-color:var(--orange);
-
+  height:30px;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-.music-time{
-
-  min-width:72px;
-
-  text-align:center;
-
-  font-size:9px;
-
-}
-
-
-.music-volume{
-
-  width:100px;
-
-}
-
-
-.music-volume input{
-
-  width:100%;
-
-  accent-color:var(--teal);
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(max-width:1200px){
-
+@media(max-width:900px){
   .layout{
-
-    grid-template-columns:
-      220px
-      minmax(0,1fr);
-
+    grid-template-columns:1fr;
   }
 
-
-  .archive-entry{
-
-    grid-template-columns:
-      90px
-      minmax(0,1fr)
-      24px;
-
+  .system-info{
+    position:static;
   }
 
-
-  .music-player{
-
-    grid-template-columns:
-      auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
+  .archive{
+    grid-template-columns:1fr;
   }
-
-
-  .music-volume{
-
-    display:none;
-
-  }
-
 }
 
-
-/* =========================================================
-   MOBILE / SMALL TABLET
-========================================================= */
-
-@media(max-width:850px){
-
+@media(max-width:600px){
   .page{
-
-    padding:
-      7px
-      7px
-      125px;
-
+    width:calc(100% - 16px);
+    margin:8px auto 90px;
   }
-
-
-  .browser-menu{
-
-    display:none;
-
-  }
-
-
-  .browser-address-row{
-
-    grid-template-columns:
-      31px
-      minmax(0,1fr)
-      31px;
-
-  }
-
-
-  .browser-address-row
-  .browser-control:nth-child(2){
-
-    display:none;
-
-  }
-
-
-  .browser-date{
-
-    display:none;
-
-  }
-
 
   .layout{
-
-    display:block;
-
+    gap:12px;
   }
 
-
-  .left{
-
-    margin-bottom:16px;
-
+  .content-inner{
+    padding:12px;
   }
 
-
-  .nav-list{
-
-    display:grid;
-
-    grid-template-columns:
-      repeat(2,1fr);
-
+  .section-head h1{
+    font-size:21px;
   }
 
+  .article-title{
+    font-size:24px;
+  }
 
-  .archive-entry{
+  .music{
+    left:8px;
+    right:8px;
+    bottom:8px;
+    width:auto;
+  }
+}
+</style>
+</head>
 
-    grid-template-columns:
-      82px
-      minmax
+<body>
+
+<div class="page">
+
+  <!-- BROWSER -->
+  <div class="browser">
+
+    <div class="browser-top">
+      <div class="browser-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="browser-title">
+        QM ARCHIVE / WRITINGS
+      </div>
+    </div>
+
+    <div class="browser-address">
+      <span class="address-label">Address</span>
+      <div class="address">
+        https://qmarchive.github.io/writings/
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- MAIN -->
+  <div class="layout">
+
+    <!-- LEFT -->
+    <aside>
+
+      <div class="panel system-info">
+
+        <div class="panel-title">
+          System Info
+        </div>
+
+        <div class="panel-body">
+
+          <div class="system-line">
+            <span>System</span>
+            <strong>Edgerunner.2046</strong>
+          </div>
+
+          <div class="system-line">
+            <span>Status</span>
+            <strong class="online">+ Online</strong>
+          </div>
+
+          <div class="system-line">
+            <span>Since</span>
+            <strong>21.09.2026</strong>
+          </div>
+
+          <div class="nav">
+            <a href="/">Home</a>
+            <a href="/writings/" class="active">Writings</a>
+            <a href="/photographs/">Photographs</a>
+            <a href="/notes/">Notes</a>
+          </div>
+
+          <div class="cassette">
+            <img
+              src="/home/home-cassette.gif"
+              alt="Cassette"
+            >
+
+            <div class="cassette-caption">
+              Không sao đâu, không sao đâu mà //
+              1998 - <span id="cassetteYear">2026</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- CENTER -->
+    <main class="writings">
+
+      <div class="section-head">
+        <h1>WRITINGS</h1>
+        <p>Hà Nội đầy nắng và gió. Lão Hạc nhớ chó anh thì nhớ em :&gt;</p>
+      </div>
+
+
+      <div class="content-panel">
+
+        <div class="content-inner">
+
+          <!-- SEARCH -->
+          <div class="search">
+            <span class="search-icon">⌕</span>
+
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search by title..."
+              autocomplete="off"
+            >
+          </div>
+
+
+          <!-- ARCHIVE -->
+          <div id="archive" class="archive"></div>
+
+
+          <!-- ARTICLE -->
+          <article id="article" style="display:none;">
+
+            <div id="articleMeta" class="article-meta"></div>
+
+            <h1 id="articleTitle" class="article-title"></h1>
+
+            <div id="articleBody" class="article-body"></div>
+
+            <a href="/writings/" class="back">
+              ← Back to Writings
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+
+      <footer class="footer">
+        <div>
+          I don’t have a favorite place, I have my favorite people.
+        </div>
+        <div>
+          And whenever i’m with my favorite people,
+        </div>
+        <div>
+          it becomes my favorite place.
+        </div>
+
+        <div style="margin-top:8px;">
+          © <span id="year"></span> QUỐC MẠNH
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+</div>
+
+
+<!-- MUSIC -->
+<div class="music">
+
+  <div class="music-label">
+    QM ARCHIVE — MUSIC
+  </div>
+
+  <audio
+    controls
+    preload="none"
+    src="/music/qm-archive.mp3">
+  </audio>
+
+</div>
+
+
+<script>
+const CONTENT_URL =
+  "/writings/content.json?v=" + Date.now();
+
+const POSTS_BASE =
+  "/writings/posts/";
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* =========================
+   MARKDOWN
+========================= */
+
+function markdownToHTML(md){
+
+  let text = md
+    .replace(/\r\n/g,"\n")
+    .replace(/\r/g,"\n")
+    .trim();
+
+  const lines = text.split("\n");
+  const html = [];
+
+  let paragraph = [];
+  let inList = false;
+
+  function flushParagraph(){
+
+    if(!paragraph.length) return;
+
+    const content = paragraph
+      .join(" ")
+      .trim();
+
+    if(content){
+      html.push("<p>" + formatInline(content) + "</p>");
+    }
+
+    paragraph = [];
+  }
+
+  function closeList(){
+
+    if(inList){
+      html.push("</ul>");
+      inList = false;
+    }
+  }
+
+  for(let i=0;i<lines.length;i++){
+
+    const line = lines[i];
+
+    if(!line.trim()){
+      flushParagraph();
+      closeList();
+      continue;
+    }
+
+    if(/^###\s+/.test(line)){
+      flushParagraph();
+      closeList();
+
+      html.push(
+        "<h3>" +
+        formatInline(line.replace(/^###\s+/,"")) +
+        "</h3>"
+      );
+
+      continue;
+    }
+
+    if(/^##\s+/.test(line)){
+      flushParagraph();
+      closeList();
+
+      html.push(
+        "<h2>" +
+        formatInline(line.replace(/^##\s+/,"")) +
+        "</h2>"
+      );
+
+      continue;
+    }
+
+    if(/^#\s+/.test(line)){
+      flushParagraph();
+      closeList();
+
+      html.push(
+        "<h1>" +
+        formatInline(line.replace(/^#\s+/,"")) +
+        "</h1>"
+      );
+
+      continue;
+    }
+
+    if(/^>\s?/.test(line)){
+      flushParagraph();
+      closeList();
+
+      html.push(
+        "<blockquote>" +
+        formatInline(line.replace(/^>\s?/,"")) +
+        "</blockquote>"
+      );
+
+      continue;
+    }
+
+    if(/^\s*[-*]\s+/.test(line)){
+
+      flushParagraph();
+
+      if(!inList){
+        html.push("<ul>");
+        inList = true;
+      }
+
+      html.push(
+        "<li>" +
+        formatInline(
+          line.replace(/^\s*[-*]\s+/,"")
+        ) +
+        "</li>"
+      );
+
+      continue;
+    }
+
+    paragraph.push(line);
+  }
+
+  flushParagraph();
+  closeList();
+
+  return html.join("\n");
+}
+
+
+function formatInline(text){
+
+  let value = escapeHTML(text);
+
+  value = value.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    '<img src="$2" alt="$1">'
+  );
+
+  value = value.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+    '<a href="$2">$1</a>'
+  );
+
+  value = value.replace(
+    /\*\*(.+?)\*\*/g,
+    "<strong>$1</strong>"
+  );
+
+  value = value.replace(
+    /\*(.+?)\*/g,
+    "<em>$1</em>"
+  );
+
+  return value;
+}
+
+
+/* =========================
+   LOAD JSON
+========================= */
+
+async function loadJSON(){
+
+  const response = await fetch(
+    CONTENT_URL,
+    {
+      cache:"no-store"
+    }
+  );
+
+  if(!response.ok){
+    throw new Error(
+      "Cannot load writings/content.json"
+    );
+  }
+
+  return await response.json();
+}
+
+
+/* =========================
+   LOAD MARKDOWN
+========================= */
+
+async function loadMarkdown(slug){
+
+  const url =
+    POSTS_BASE +
+    encodeURIComponent(slug) +
+    ".md?v=" +
+    Date.now();
+
+  const response = await fetch(
+    url,
+    {
+      cache:"no-store"
+    }
+  );
+
+  if(!response.ok){
+    throw new Error(
+      "Cannot load article: " + slug
+    );
+  }
+
+  return await response.text();
+}
+
+
+/* =========================
+   ARCHIVE
+========================= */
+
+function renderArchive(items){
+
+  const archive =
+    document.getElementById("archive");
+
+  archive.innerHTML = "";
+
+  if(!items.length){
+
+    archive.innerHTML =
+      '<div class="empty">No writings found.</div>';
+
+    return;
+  }
+
+  items.forEach(item => {
+
+    const entry =
+      document.createElement("a");
+
+    entry.className = "archive-entry";
+
+    entry.href =
+      "/writings/?slug=" +
+      encodeURIComponent(item.slug);
+
+    entry.innerHTML = `
+
+      <div class="archive-date">
+        ${escapeHTML(item.date || "")}
+      </div>
+
+      <div class="archive-title">
+        ${escapeHTML(item.title || "")}
+      </div>
+
+      <div class="archive-excerpt">
+        ${escapeHTML(item.excerpt || "")}
+      </div>
+
+      <div class="archive-arrow">
+        READ →
+      </div>
+
+    `;
+
+    archive.appendChild(entry);
+
+  });
+}
+
+
+/* =========================
+   ARTICLE
+========================= */
+
+async function renderArticle(items,slug){
+
+  const item =
+    items.find(
+      x => x.slug === slug
+    );
+
+  if(!item){
+    throw new Error(
+      "Writing not found."
+    );
+  }
+
+  const markdown =
+    await loadMarkdown(slug);
+
+  document.getElementById("archive")
+    .style.display = "none";
+
+  document.querySelector(".search")
+    .style.display = "none";
+
+  document.getElementById("article")
+    .style.display = "block";
+
+  document.getElementById("articleMeta")
+    .textContent =
+      item.date || "";
+
+  document.getElementById("articleTitle")
+    .textContent =
+      item.title || "";
+
+  document.getElementById("articleBody")
+    .innerHTML =
+      markdownToHTML(markdown);
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function setupSearch(items){
+
+  const input =
+    document.getElementById("searchInput");
+
+  input.addEventListener(
+    "input",
+    function(){
+
+      const query =
+        this.value
+          .trim()
+          .toLowerCase();
+
+      const filtered =
+        !query
+          ? items
+          : items.filter(item =>
+              String(item.title || "")
+                .toLowerCase()
+                .includes(query)
+            );
+
+      renderArchive(filtered);
+    }
+  );
+}
+
+
+/* =========================
+   CLOCK / YEAR
+========================= */
+
+function updateYear(){
+
+  document.getElementById("year")
+    .textContent =
+      new Date().getFullYear();
+
+  document.getElementById("cassetteYear")
+    .textContent =
+      new Date().getFullYear();
+}
+
+
+/* =========================
+   INIT
+========================= */
+
+async function init(){
+
+  updateYear();
+
+  const archive =
+    document.getElementById("archive");
+
+  try{
+
+    const data =
+      await loadJSON();
+
+    const items =
+      Array.isArray(data)
+        ? data
+        : (
+          Array.isArray(data.writings)
+            ? data.writings
+            : []
+        );
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    const slug =
+      params.get("slug");
+
+    if(slug){
+
+      await renderArticle(
+        items,
+        slug
+      );
+
+    }else{
+
+      renderArchive(items);
+
+      setupSearch(items);
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    archive.innerHTML = `
+      <div class="empty">
+        Unable to load Writings.
+        <br><br>
+        ${escapeHTML(error.message)}
+      </div>
+    `;
+  }
+}
+
+init();
+</script>
+
+</body>
+</html>
