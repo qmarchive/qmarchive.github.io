@@ -2766,6 +2766,7 @@ function formatDate(dateString){
 
 /* =========================================================
    ARCHIVE
+   SHOW 6 NEWEST NOTES
 ========================================================= */
 
 function renderArchive(items){
@@ -2809,89 +2810,138 @@ function renderArchive(items){
   }
 
 
+  /*
+    Sort by date first.
+
+    Expected format:
+    DD.MM.YYYY
+
+    Example:
+    21.09.2026
+    becomes:
+    20260921
+
+    This makes the newest
+    date appear first.
+  */
+
+  const latestItems =
+    [...items]
+      .sort(
+        (a,b) => {
+
+          const dateA =
+            String(
+              a.date || ""
+            )
+            .split(".")
+            .reverse()
+            .join("");
+
+
+          const dateB =
+            String(
+              b.date || ""
+            )
+            .split(".")
+            .reverse()
+            .join("");
+
+
+          return dateB.localeCompare(
+            dateA
+          );
+
+        }
+      )
+      .slice(0,6);
+
+
   archive.innerHTML =
-    items.map(item => {
+    latestItems
+      .map(item => {
 
-      const date =
-        formatDate(
-          item.date
-        );
-
-
-      return `
-
-        <a
-
-          class="archive-entry"
-
-          href="/notes/?slug=${encodeURIComponent(
-            item.slug
-          )}"
-
-        >
+        const date =
+          formatDate(
+            item.date
+          );
 
 
-          <div class="archive-date">
+        return `
 
-            <span class="archive-date-day">
+          <a
 
-              ${date.day}
+            class="archive-entry"
 
-            </span>
+            href="/notes/?slug=${encodeURIComponent(
+              item.slug
+            )}"
 
-
-            <span class="archive-date-month">
-
-              ${date.month}
-
-            </span>
+          >
 
 
-            <span class="archive-date-year">
+            <div class="archive-date">
 
-              ${date.year}
+              <span class="archive-date-day">
 
-            </span>
+                ${date.day}
 
-          </div>
-
-
-          <div class="archive-content">
+              </span>
 
 
-            <div class="archive-title">
+              <span class="archive-date-month">
 
-              ${escapeHTML(
-                item.title || ""
-              )}
+                ${date.month}
+
+              </span>
+
+
+              <span class="archive-date-year">
+
+                ${date.year}
+
+              </span>
 
             </div>
 
 
-            <div class="archive-excerpt">
+            <div class="archive-content">
 
-              ${escapeHTML(
-                item.excerpt || ""
-              )}
+
+              <div class="archive-title">
+
+                ${escapeHTML(
+                  item.title || ""
+                )}
+
+              </div>
+
+
+              <div class="archive-excerpt">
+
+                ${escapeHTML(
+                  item.excerpt || ""
+                )}
+
+              </div>
+
 
             </div>
 
 
-          </div>
+            <div class="archive-arrow">
+
+              →
+
+            </div>
 
 
-          <div class="archive-arrow">
+          </a>
 
-            →
+        `;
 
-          </div>
-
-
-        </a>
-
-      `;
-
-    }).join("");
+      })
+      .join("");
 
 }
 
