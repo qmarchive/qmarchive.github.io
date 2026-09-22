@@ -757,13 +757,10 @@ a{
 
 <body>
 
-
 <div class="page">
 
 
-  <!-- =====================================================
-       BROWSER
-  ====================================================== -->
+  <!-- BROWSER -->
 
   <div class="browser">
 
@@ -798,68 +795,37 @@ a{
 
 
 
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
+  <!-- MAIN -->
 
   <div class="layout">
 
 
-    <!-- ===================================================
-         LEFT
-    ==================================================== -->
+    <!-- LEFT -->
 
     <aside>
 
       <div class="panel system-info">
 
-
         <div class="panel-title">
           System Info
         </div>
 
-
         <div class="panel-body">
 
-
           <div class="system-line">
-
-            <span>
-              System
-            </span>
-
-            <strong>
-              Edgerunner.2046
-            </strong>
-
+            <span>System</span>
+            <strong>Edgerunner.2046</strong>
           </div>
 
-
           <div class="system-line">
-
-            <span>
-              Status
-            </span>
-
-            <strong class="online">
-              + Online
-            </strong>
-
+            <span>Status</span>
+            <strong class="online">+ Online</strong>
           </div>
 
-
           <div class="system-line">
-
-            <span>
-              Since
-            </span>
-
-            <strong>
-              21.09.2026
-            </strong>
-
+            <span>Since</span>
+            <strong>21.09.2026</strong>
           </div>
-
 
           <div class="nav">
 
@@ -884,7 +850,6 @@ a{
 
           </div>
 
-
           <div class="cassette">
 
             <img
@@ -896,14 +861,11 @@ a{
 
               Không sao đâu, không sao đâu mà //
               1998 -
-              <span id="cassetteYear">
-                2026
-              </span>
+              <span id="cassetteYear">2026</span>
 
             </div>
 
           </div>
-
 
         </div>
 
@@ -913,12 +875,9 @@ a{
 
 
 
-    <!-- ===================================================
-         CENTER
-    ==================================================== -->
+    <!-- CENTER -->
 
     <main class="writings">
-
 
       <div class="section-head">
 
@@ -933,12 +892,9 @@ a{
       </div>
 
 
-
       <div class="content-panel">
 
-
         <div class="content-inner">
-
 
           <!-- SEARCH -->
 
@@ -958,14 +914,12 @@ a{
           </div>
 
 
-
           <!-- ARCHIVE -->
 
           <div
             id="archive"
             class="archive"
           ></div>
-
 
 
           <!-- ARTICLE -->
@@ -980,18 +934,15 @@ a{
               class="article-meta"
             ></div>
 
-
             <h1
               id="articleTitle"
               class="article-title"
             ></h1>
 
-
             <div
               id="articleBody"
               class="article-body"
             ></div>
-
 
             <a
               href="/writings/"
@@ -1002,16 +953,10 @@ a{
 
           </article>
 
-
         </div>
 
       </div>
 
-
-
-      <!-- =================================================
-           FOOTER
-      ================================================== -->
 
       <footer class="footer">
 
@@ -1027,17 +972,11 @@ a{
           it becomes my favorite place.
         </div>
 
-
         <div style="margin-top:8px;">
-
-          ©
-          <span id="year"></span>
-          QUỐC MẠNH
-
+          © <span id="year"></span> QUỐC MẠNH
         </div>
 
       </footer>
-
 
     </main>
 
@@ -1053,7 +992,6 @@ a{
 
 <div class="music-player">
 
-
   <div class="music-icon">
     ♪
   </div>
@@ -1065,14 +1003,12 @@ a{
       NOW PLAYING
     </div>
 
-
     <div
       class="music-title"
       id="musicTitle"
     >
       Between the Takes
     </div>
-
 
     <div
       class="music-artist"
@@ -1086,7 +1022,6 @@ a{
 
   <div class="music-controls">
 
-
     <button
       class="music-button"
       id="prevButton"
@@ -1094,7 +1029,6 @@ a{
     >
       |◀
     </button>
-
 
     <button
       class="music-button"
@@ -1104,7 +1038,6 @@ a{
       ▶
     </button>
 
-
     <button
       class="music-button"
       id="nextButton"
@@ -1112,7 +1045,6 @@ a{
     >
       ▶|
     </button>
-
 
   </div>
 
@@ -1152,7 +1084,6 @@ a{
 
   </div>
 
-
 </div>
 
 
@@ -1167,7 +1098,7 @@ a{
 <script>
 
 /* =========================================================
-   CONTENT CONFIG
+   CONTENT
 ========================================================= */
 
 const CONTENT_URL =
@@ -1180,7 +1111,7 @@ const POSTS_BASE =
 
 
 /* =========================================================
-   MUSIC CONFIG
+   MUSIC
 ========================================================= */
 
 const MUSIC_TRACKS = [
@@ -1220,13 +1151,9 @@ function escapeHTML(value){
   return String(value ?? "")
 
     .replace(/&/g,"&amp;")
-
     .replace(/</g,"&lt;")
-
     .replace(/>/g,"&gt;")
-
     .replace(/"/g,"&quot;")
-
     .replace(/'/g,"&#039;");
 
 }
@@ -1249,14 +1176,11 @@ function markdownToHTML(md){
   const lines =
     text.split("\n");
 
-
   const html = [];
-
 
   let paragraph = [];
 
   let inList = false;
-
 
 
   function flushParagraph(){
@@ -1264,12 +1188,10 @@ function markdownToHTML(md){
     if(!paragraph.length)
       return;
 
-
     const content =
       paragraph
         .join(" ")
         .trim();
-
 
     if(content){
 
@@ -1281,11 +1203,9 @@ function markdownToHTML(md){
 
     }
 
-
     paragraph = [];
 
   }
-
 
 
   function closeList(){
@@ -1299,7 +1219,6 @@ function markdownToHTML(md){
     }
 
   }
-
 
 
   for(
@@ -1329,22 +1248,13 @@ function markdownToHTML(md){
 
       closeList();
 
-
       html.push(
-
         "<h3>" +
-
         formatInline(
-          line.replace(
-            /^###\s+/,
-            ""
-          )
+          line.replace(/^###\s+/,"")
         ) +
-
         "</h3>"
-
       );
-
 
       continue;
 
@@ -1357,22 +1267,13 @@ function markdownToHTML(md){
 
       closeList();
 
-
       html.push(
-
         "<h2>" +
-
         formatInline(
-          line.replace(
-            /^##\s+/,
-            ""
-          )
+          line.replace(/^##\s+/,"")
         ) +
-
         "</h2>"
-
       );
-
 
       continue;
 
@@ -1385,22 +1286,13 @@ function markdownToHTML(md){
 
       closeList();
 
-
       html.push(
-
         "<h1>" +
-
         formatInline(
-          line.replace(
-            /^#\s+/,
-            ""
-          )
+          line.replace(/^#\s+/,"")
         ) +
-
         "</h1>"
-
       );
-
 
       continue;
 
@@ -1413,22 +1305,13 @@ function markdownToHTML(md){
 
       closeList();
 
-
       html.push(
-
         "<blockquote>" +
-
         formatInline(
-          line.replace(
-            /^>\s?/,
-            ""
-          )
+          line.replace(/^>\s?/,"")
         ) +
-
         "</blockquote>"
-
       );
-
 
       continue;
 
@@ -1439,7 +1322,6 @@ function markdownToHTML(md){
 
       flushParagraph();
 
-
       if(!inList){
 
         html.push("<ul>");
@@ -1448,24 +1330,16 @@ function markdownToHTML(md){
 
       }
 
-
       html.push(
-
         "<li>" +
-
         formatInline(
-
           line.replace(
             /^\s*[-*]\s+/,
             ""
           )
-
         ) +
-
         "</li>"
-
       );
-
 
       continue;
 
@@ -1481,7 +1355,6 @@ function markdownToHTML(md){
 
   closeList();
 
-
   return html.join("\n");
 
 }
@@ -1496,41 +1369,29 @@ function formatInline(text){
 
   value =
     value.replace(
-
       /!\[([^\]]*)\]\(([^)]+)\)/g,
-
       '<img src="$2" alt="$1">'
-
     );
 
 
   value =
     value.replace(
-
       /\[([^\]]+)\]\(([^)]+)\)/g,
-
       '<a href="$2">$1</a>'
-
     );
 
 
   value =
     value.replace(
-
       /\*\*(.+?)\*\*/g,
-
       "<strong>$1</strong>"
-
     );
 
 
   value =
     value.replace(
-
       /\*(.+?)\*/g,
-
       "<em>$1</em>"
-
     );
 
 
@@ -1548,13 +1409,10 @@ async function loadJSON(){
 
   const response =
     await fetch(
-
       CONTENT_URL,
-
       {
         cache:"no-store"
       }
-
     );
 
 
@@ -1588,13 +1446,10 @@ async function loadMarkdown(slug){
 
   const response =
     await fetch(
-
       url,
-
       {
         cache:"no-store"
       }
-
     );
 
 
@@ -1662,36 +1517,25 @@ function renderArchive(items){
       entry.innerHTML = `
 
         <div class="archive-date">
-
           ${escapeHTML(
             item.date || ""
           )}
-
         </div>
 
-
         <div class="archive-title">
-
           ${escapeHTML(
             item.title || ""
           )}
-
         </div>
 
-
         <div class="archive-excerpt">
-
           ${escapeHTML(
             item.excerpt || ""
           )}
-
         </div>
 
-
         <div class="archive-arrow">
-
           READ →
-
         </div>
 
       `;
@@ -1830,7 +1674,7 @@ function setupSearch(items){
 
 
 /* =========================================================
-   CLOCK / YEAR
+   YEAR
 ========================================================= */
 
 function updateYear(){
@@ -1855,7 +1699,7 @@ function updateYear(){
 
 
 /* =========================================================
-   MUSIC
+   MUSIC ELEMENTS
 ========================================================= */
 
 const audio =
@@ -1915,8 +1759,9 @@ const musicTime =
 let currentTrack = 0;
 
 
+
 /* =========================================================
-   LOCAL STORAGE
+   LOCAL STORAGE — READ
 ========================================================= */
 
 function getMusicState(){
@@ -1958,7 +1803,6 @@ function getMusicState(){
       error
     );
 
-
     return null;
 
   }
@@ -1966,6 +1810,10 @@ function getMusicState(){
 }
 
 
+
+/* =========================================================
+   LOCAL STORAGE — SAVE
+========================================================= */
 
 function saveMusicState(){
 
@@ -2013,7 +1861,7 @@ function saveMusicState(){
 
 
 /* =========================================================
-   FORMAT TIME
+   TIME FORMAT
 ========================================================= */
 
 function formatTime(seconds){
@@ -2066,4 +1914,720 @@ function formatTime(seconds){
 ========================================================= */
 
 function loadTrack(
- 
+  index,
+  autoplay=false
+){
+
+  if(
+    !MUSIC_TRACKS.length
+  ){
+
+    return;
+
+  }
+
+
+  currentTrack =
+
+    (
+      index +
+      MUSIC_TRACKS.length
+    )
+
+    %
+
+    MUSIC_TRACKS.length;
+
+
+  const track =
+    MUSIC_TRACKS[
+      currentTrack
+    ];
+
+
+  audio.src =
+    track.src;
+
+
+  musicTitle.textContent =
+    track.title;
+
+
+  musicArtist.textContent =
+    track.artist;
+
+
+  progress.value =
+    0;
+
+
+  musicTime.textContent =
+    "00:00 / 00:00";
+
+
+  if(autoplay){
+
+    audio.play()
+
+      .then(
+        () => {
+
+          playButton.textContent =
+            "❚❚";
+
+          saveMusicState();
+
+        }
+      )
+
+      .catch(
+        () => {
+
+          playButton.textContent =
+            "▶";
+
+        }
+      );
+
+  }else{
+
+    playButton.textContent =
+      "▶";
+
+  }
+
+}
+
+
+
+/* =========================================================
+   RESTORE MUSIC STATE
+========================================================= */
+
+function restoreMusicState(){
+
+  const state =
+    getMusicState();
+
+
+  if(!state){
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+
+    loadTrack(
+      0,
+      false
+    );
+
+
+    return;
+
+  }
+
+
+  let savedTrack =
+    Number(
+      state.track
+    );
+
+
+  if(
+    !Number.isInteger(
+      savedTrack
+    )
+  ){
+
+    savedTrack = 0;
+
+  }
+
+
+  if(
+    savedTrack < 0 ||
+    savedTrack >=
+      MUSIC_TRACKS.length
+  ){
+
+    savedTrack = 0;
+
+  }
+
+
+  currentTrack =
+    savedTrack;
+
+
+  const savedVolume =
+    Number(
+      state.volume
+    );
+
+
+  if(
+
+    Number.isFinite(
+      savedVolume
+    )
+
+    &&
+
+    savedVolume >= 0
+
+    &&
+
+    savedVolume <= 1
+
+  ){
+
+    audio.volume =
+      savedVolume;
+
+
+    volume.value =
+      savedVolume;
+
+  }else{
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+  }
+
+
+  loadTrack(
+    currentTrack,
+    false
+  );
+
+
+  const savedTime =
+    Number(
+      state.currentTime
+    );
+
+
+  if(
+
+    Number.isFinite(
+      savedTime
+    )
+
+    &&
+
+    savedTime > 0
+
+  ){
+
+    const restoreTime =
+      () => {
+
+        if(
+          savedTime <
+          audio.duration
+        ){
+
+          audio.currentTime =
+            savedTime;
+
+        }
+
+
+        audio.removeEventListener(
+          "loadedmetadata",
+          restoreTime
+        );
+
+      };
+
+
+    audio.addEventListener(
+      "loadedmetadata",
+      restoreTime
+    );
+
+  }
+
+}
+
+
+
+/* =========================================================
+   PLAY / PAUSE
+========================================================= */
+
+playButton.addEventListener(
+  "click",
+  () => {
+
+    if(
+      audio.paused
+    ){
+
+      audio.play()
+
+        .then(
+          () => {
+
+            playButton.textContent =
+              "❚❚";
+
+            saveMusicState();
+
+          }
+        )
+
+        .catch(
+          () => {
+
+            playButton.textContent =
+              "▶";
+
+          }
+        );
+
+    }else{
+
+      audio.pause();
+
+      playButton.textContent =
+        "▶";
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+prevButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack - 1,
+      true
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+nextButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   METADATA
+========================================================= */
+
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
+
+    musicTime.textContent =
+
+      "00:00 / " +
+
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+
+/* =========================================================
+   TIME UPDATE
+========================================================= */
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    if(
+      audio.duration
+    ){
+
+      progress.value =
+
+        (
+          audio.currentTime /
+          audio.duration
+        )
+
+        * 100;
+
+    }
+
+
+    musicTime.textContent =
+
+      formatTime(
+        audio.currentTime
+      )
+
+      +
+
+      " / "
+
+      +
+
+      formatTime(
+        audio.duration
+      );
+
+
+    if(
+
+      Math.floor(
+        audio.currentTime
+      ) % 5 === 0
+
+    ){
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+progress.addEventListener(
+  "input",
+  () => {
+
+    if(
+      audio.duration
+    ){
+
+      audio.currentTime =
+
+        (
+          Number(
+            progress.value
+          ) / 100
+        )
+
+        *
+
+        audio.duration;
+
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   VOLUME
+========================================================= */
+
+volume.addEventListener(
+  "input",
+  () => {
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+
+    saveMusicState();
+
+  }
+);
+
+
+
+/* =========================================================
+   TRACK ENDED
+========================================================= */
+
+audio.addEventListener(
+  "ended",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   PLAY / PAUSE STATE
+========================================================= */
+
+audio.addEventListener(
+  "play",
+  () => {
+
+    playButton.textContent =
+      "❚❚";
+
+
+    saveMusicState();
+
+  }
+);
+
+
+audio.addEventListener(
+  "pause",
+  () => {
+
+    playButton.textContent =
+      "▶";
+
+
+    saveMusicState();
+
+  }
+);
+
+
+
+/* =========================================================
+   BEFORE LEAVING
+========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    saveMusicState();
+
+  }
+);
+
+
+
+/* =========================================================
+   FIRST USER INTERACTION
+========================================================= */
+
+let musicStarted = false;
+
+
+function startMusic(event){
+
+  if(
+    musicStarted
+  ){
+
+    return;
+
+  }
+
+
+  /*
+     Do not interfere when the
+     user touches the player.
+  */
+
+  if(
+    event.target.closest(
+      ".music-player"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  musicStarted = true;
+
+
+  audio.play()
+
+    .then(
+      () => {
+
+        playButton.textContent =
+          "❚❚";
+
+        saveMusicState();
+
+      }
+    )
+
+    .catch(
+      () => {
+
+        musicStarted = false;
+
+      }
+    );
+
+
+  document.removeEventListener(
+    "pointerdown",
+    startMusic
+  );
+
+}
+
+
+document.addEventListener(
+  "pointerdown",
+  startMusic
+);
+
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+async function init(){
+
+  updateYear();
+
+
+  /*
+     Restore shared music state
+     from Home.
+  */
+
+  restoreMusicState();
+
+
+  const archive =
+    document.getElementById(
+      "archive"
+    );
+
+
+  try{
+
+    const data =
+      await loadJSON();
+
+
+    const items =
+
+      Array.isArray(data)
+
+        ? data
+
+        : (
+
+          Array.isArray(
+            data.writings
+          )
+
+            ? data.writings
+
+            : []
+
+        );
+
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const slug =
+      params.get(
+        "slug"
+      );
+
+
+    if(slug){
+
+      await renderArticle(
+        items,
+        slug
+      );
+
+    }else{
+
+      renderArchive(
+        items
+      );
+
+
+      setupSearch(
+        items
+      );
+
+    }
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+
+    archive.innerHTML = `
+
+      <div class="empty">
+
+        Unable to load Writings.
+
+        <br><br>
+
+        ${escapeHTML(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+init();
+
+</script>
+
+</body>
+</html>
