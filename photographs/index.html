@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 
 <meta charset="UTF-8">
@@ -22,13 +23,26 @@
   box-sizing:border-box;
 }
 
-
 html,
 body{
   margin:0;
   padding:0;
+}
 
+html{
   background:#d8cfb5;
+}
+
+body{
+  min-height:100vh;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.08)
+    ),
+    #d8cfb5;
+
   color:#15172f;
 
   font-family:
@@ -38,8 +52,30 @@ body{
 }
 
 
-body{
-  min-height:100vh;
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+  --cream:#d8cfb5;
+  --paper:#e7ddc0;
+
+  --orange:#f05a32;
+  --orange-dark:#c84327;
+
+  --teal:#176f78;
+  --teal-dark:#0d5059;
+
+  --blue:#15172f;
+  --blue-soft:#243b73;
+
+  --green:#1d8a4a;
+
+  --white:#f5ecd7;
+
+  --border:3px solid var(--blue);
+
 }
 
 
@@ -48,14 +84,16 @@ body{
 ========================================================= */
 
 body::before{
+
   content:"";
 
   position:fixed;
+
   inset:0;
 
   pointer-events:none;
 
-  z-index:9999;
+  z-index:99999;
 
   background:
     repeating-linear-gradient(
@@ -65,6 +103,9 @@ body::before{
       transparent 1px,
       transparent 4px
     );
+
+  opacity:.45;
+
 }
 
 
@@ -73,100 +114,40 @@ body::before{
 ========================================================= */
 
 .page{
+
   width:100%;
+
   min-height:100vh;
 
-  padding:22px;
+  padding:
+    10px
+    14px
+    150px;
+
 }
 
 
 /* =========================================================
-   BROWSER BAR
-========================================================= */
-
-.browser{
-  width:100%;
-  height:48px;
-
-  border:
-    3px solid #15172f;
-
-  padding:8px 14px;
-
-  margin-bottom:24px;
-
-  color:#15172f;
-
-  font-size:12px;
-
-  background:#e7ddc0;
-
-  box-shadow:
-    4px 4px 0 #15172f;
-}
-
-
-.browser::before{
-  content:"";
-
-  display:inline-block;
-
-  width:11px;
-  height:11px;
-
-  margin-right:12px;
-
-  border:
-    2px solid #15172f;
-
-  vertical-align:-1px;
-
-  background:#f05a32;
-}
-
-
-.browser span{
-  color:#15172f;
-}
-
-
-/* =========================================================
-   LAYOUT
-========================================================= */
-
-.layout{
-  display:grid;
-
-  grid-template-columns:
-    285px
-    minmax(0,1fr)
-    315px;
-
-  gap:22px;
-
-  max-width:1600px;
-
-  margin:0 auto;
-}
-
-
-/* =========================================================
-   COMMON WINDOW
+   GENERIC WINDOW
 ========================================================= */
 
 .window{
-  border:
-    3px solid #15172f;
 
-  background:#e7ddc0;
+  background:var(--paper);
+
+  border:var(--border);
 
   box-shadow:
-    5px 5px 0 #15172f;
+    5px 5px 0 var(--blue);
+
+  overflow:hidden;
+
 }
 
 
 .window-titlebar{
-  min-height:40px;
+
+  min-height:38px;
 
   display:flex;
 
@@ -174,378 +155,695 @@ body::before{
 
   justify-content:space-between;
 
-  gap:10px;
+  padding:
+    5px 7px;
 
-  padding:6px 10px;
+  background:var(--orange);
 
-  border-bottom:
-    3px solid #15172f;
+  border-bottom:var(--border);
 
-  background:#f05a32;
-
-  color:#15172f;
-
-  font-size:13px;
+  color:var(--blue);
 
   font-weight:bold;
 
-  letter-spacing:.5px;
+  letter-spacing:.8px;
+
+  font-size:14px;
+
 }
 
 
-.window-titlebar .controls{
-  display:flex;
+.window--teal .window-titlebar{
 
-  gap:5px;
+  background:var(--teal);
+
+  color:var(--white);
+
 }
 
 
-.window-titlebar .control{
-  width:18px;
-  height:18px;
+.window-title{
 
   display:flex;
 
   align-items:center;
-  justify-content:center;
 
-  border:
-    2px solid #15172f;
+  gap:8px;
 
-  background:#e7ddc0;
-
-  color:#15172f;
-
-  font-size:10px;
-
-  line-height:1;
-}
-
-
-/* =========================================================
-   LEFT
-========================================================= */
-
-.left{
   min-width:0;
+
 }
 
 
-.profile-window{
-  margin-bottom:22px;
-}
+.window-title-icon{
 
+  width:21px;
 
-.profile-body{
-  padding:18px;
-}
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.profile-image{
-  position:relative;
-
-  height:205px;
+  height:21px;
 
   display:flex;
 
-  align-items:flex-end;
+  align-items:center;
 
   justify-content:center;
 
-  overflow:hidden;
+  flex-shrink:0;
 
-  border-bottom:
-    3px solid #15172f;
+  border:2px solid currentColor;
 
-  background:
-    linear-gradient(
-      rgba(255,255,255,.08),
-      rgba(255,255,255,.08)
-    ),
-    #e7ddc0;
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:10px;
+
+  font-weight:bold;
+
 }
 
 
-.profile-image img{
-  position:relative;
+.window--teal
+.window-title-icon{
 
-  z-index:3;
+  color:var(--blue);
 
-  display:block;
-
-  width:88%;
-
-  height:190px;
-
-  object-fit:contain;
-
-  object-position:center bottom;
-
-  border:0;
-
-  border-radius:0;
-
-  transform:
-    scale(.968);
-
-  transform-origin:
-    center bottom;
-
-  background:transparent;
 }
 
 
-.profile-caption{
-  padding:10px 12px;
+.window-buttons{
 
-  color:#176f78;
+  display:flex;
+
+  gap:4px;
+
+  flex-shrink:0;
+
+}
+
+
+.window-button{
+
+  width:20px;
+
+  height:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:11px;
+
+  line-height:1;
+
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a[href]:hover{
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   BROWSER
+========================================================= */
+
+.browser{
+
+  border:var(--border);
+
+  background:var(--paper);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+  margin-bottom:14px;
+
+}
+
+
+.browser-top{
+
+  min-height:39px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:
+    5px 8px;
+
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
+}
+
+
+.browser-brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  color:var(--blue);
+
+  font-weight:bold;
+
+  font-size:17px;
+
+  letter-spacing:1px;
+
+}
+
+
+.browser-brand-icon{
+
+  width:24px;
+
+  height:24px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--teal);
+
+  color:var(--white);
+
+  font-size:12px;
+
+}
+
+
+.browser-subtitle{
 
   font-size:11px;
 
   font-weight:bold;
 
-  letter-spacing:1px;
+}
+
+
+.browser-window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.browser-window-buttons span{
+
+  width:23px;
+
+  height:23px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:11px;
+
+}
+
+
+.browser-menu{
+
+  display:flex;
+
+  gap:20px;
+
+  padding:
+    6px 10px;
+
+  border-bottom:2px solid var(--blue);
+
+  font-size:12px;
+
+  font-weight:bold;
+
+}
+
+
+.browser-address-row{
+
+  display:grid;
+
+  grid-template-columns:
+    31px
+    31px
+    31px
+    minmax(0,1fr)
+    175px;
+
+  gap:6px;
+
+  align-items:center;
+
+  padding:7px;
+
+}
+
+
+.browser-control{
+
+  width:31px;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  font-weight:bold;
+
+}
+
+
+.browser-address{
+
+  min-width:0;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:
+    0 9px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:#303249;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+}
+
+
+.browser-date{
 
   text-align:center;
+
+  font-size:10px;
+
+  line-height:1.35;
+
+  font-weight:bold;
+
 }
 
 
 /* =========================================================
-   NAV
+   MAIN LAYOUT
 ========================================================= */
 
-.nav{
+.layout{
+
+  display:grid;
+
+  grid-template-columns:
+    285px
+    minmax(0,1fr);
+
+  gap:16px;
+
+  max-width:1600px;
+
+  margin:0 auto;
+
+  align-items:start;
+
+}
+
+
+/* =========================================================
+   LEFT / SYSTEM INFO
+========================================================= */
+
+.left{
+
+  min-width:0;
+
+}
+
+
+.system-window{
+
+  overflow:hidden;
+
+}
+
+
+.system-content{
+
+  padding:13px;
+
+}
+
+
+.system-line{
+
+  margin:
+    7px 0;
+
+  font-size:12px;
+
+}
+
+
+.online{
+
+  color:#168a43;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-list{
+
+  margin-top:14px;
+
+  padding-top:10px;
+
+  border-top:
+    2px dashed var(--blue);
+
+}
+
+
+.nav-list a{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-height:36px;
+
+  padding:
+    6px 8px;
+
+  color:var(--blue);
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+}
+
+
+.nav-list a:hover{
+
+  background:var(--orange);
+
+}
+
+
+.nav-list a.active{
+
+  background:var(--orange);
+
+  color:var(--blue);
+
+}
+
+
+/* =========================================================
+   CSS FOLDER ICON
+========================================================= */
+
+.folder-icon{
+
+  width:21px;
+
+  height:15px;
+
+  display:inline-block;
+
+  position:relative;
+
+  flex-shrink:0;
+
+  background:#e8b82e;
+
+  border:2px solid var(--blue);
+
+}
+
+
+.folder-icon::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:1px;
+
+  top:-6px;
+
+  width:9px;
+
+  height:6px;
+
+  background:#e8b82e;
+
+  border:
+    2px solid var(--blue);
+
+  border-bottom:0;
+
+}
+
+
+/* =========================================================
+   CASSETTE
+========================================================= */
+
+.cassette{
+
+  margin-top:14px;
+
+  padding:8px;
+
+}
+
+
+.cassette img{
+
+  display:block;
+
+  width:100%;
+
+  height:auto;
+
+  border:3px solid var(--blue);
+
+}
+
+
+.cassette img[src$=".gif"]{
+
+  image-rendering:auto;
+
+}
+
+
+.cassette-caption{
+
+  margin-top:8px;
+
+  text-align:center;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   CENTER
+========================================================= */
+
+.center{
+
+  min-width:0;
+
   display:flex;
 
   flex-direction:column;
 
-  gap:8px;
-}
+  gap:16px;
 
-
-.nav a{
-  display:block;
-
-  padding:7px 9px;
-
-  color:#15172f;
-
-  text-decoration:none;
-
-  font-size:13px;
-
-  border:2px solid transparent;
-}
-
-
-.nav a:hover{
-  color:#f5ecd7;
-
-  background:#176f78;
-
-  border-color:#15172f;
-}
-
-
-.nav a.active{
-  color:#f5ecd7;
-
-  background:#f05a32;
-
-  border-color:#15172f;
-
-  font-weight:bold;
 }
 
 
 /* =========================================================
-   SYSTEM INFO
+   PHOTOGRAPHS WINDOW
 ========================================================= */
 
-.left-info{
-  margin-top:18px;
+.photos-window{
 
-  padding-top:16px;
-
-  border-top:
-    2px dashed #15172f;
-
-  color:#15172f;
-
-  font-size:11px;
-
-  line-height:1.8;
-}
-
-
-.left-info .label{
-  color:#176f78;
-
-  font-weight:bold;
-}
-
-
-.left-info .year{
-  color:#15172f;
-
-  font-size:15px;
-
-  margin-top:4px;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.main{
   min-width:0;
-}
 
+  overflow:hidden;
 
-.photographs{
-  border:
-    3px solid #15172f;
-
-  min-height:245px;
-
-  background:#e7ddc0;
-
-  box-shadow:
-    5px 5px 0 #15172f;
 }
 
 
 /* =========================================================
-   SECTION HEADER
-========================================================= */
-
-.section-header{
-  padding:18px 20px 16px;
-
-  border-bottom:
-    3px solid #15172f;
-
-  background:#e7ddc0;
-}
-
-
-.section-title{
-  color:#15172f;
-
-  font-size:22px;
-
-  font-weight:bold;
-
-  letter-spacing:2px;
-}
-
-
-.section-path{
-  margin-top:9px;
-
-  color:#176f78;
-
-  font-size:11px;
-}
-
-
-/* =========================================================
-   PHOTO INTRO
+   PHOTO HEADER
 ========================================================= */
 
 .photo-intro{
-  padding:16px 20px;
+
+  padding:
+    12px 16px;
 
   border-bottom:
-    2px dashed #15172f;
+    2px dashed var(--blue);
 
-  background:#f5ecd7;
+  background:#eee5ce;
 
-  color:#15172f;
+  color:var(--blue);
 
   font-size:12px;
 
   line-height:1.6;
+
 }
 
 
-/* =========================================================
-   FILTER BAR
-========================================================= */
-
 .photo-filters{
+
   display:flex;
 
   flex-wrap:wrap;
 
   gap:7px;
 
-  padding:14px 18px;
+  padding:
+    10px 12px;
 
   border-bottom:
-    3px solid #15172f;
+    var(--border);
 
-  background:#d8cfb5;
+  background:var(--cream);
+
 }
 
 
 .photo-filter{
+
   display:inline-block;
 
-  padding:5px 9px;
+  padding:
+    5px 9px;
 
   border:
-    2px solid #15172f;
+    2px solid var(--blue);
 
-  background:#e7ddc0;
+  background:var(--paper);
 
-  color:#15172f;
+  color:var(--blue);
 
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  font-family:inherit;
 
   font-size:11px;
 
-  text-decoration:none;
-
-  cursor:default;
 }
 
 
 .photo-filter:first-child{
-  background:#f05a32;
+
+  background:var(--orange);
 
   font-weight:bold;
+
 }
 
 
 .photo-filter:hover{
-  color:#f5ecd7;
 
-  background:#176f78;
+  color:var(--white);
+
+  background:var(--teal);
+
 }
 
 
 /* =========================================================
-   ARCHIVE
+   3-COLUMN PHOTO GRID
 ========================================================= */
 
 .archive{
+
   width:100%;
 
   display:grid;
 
   grid-template-columns:
-    repeat(2,minmax(0,1fr));
+    repeat(3,minmax(0,1fr));
 
   gap:0;
+
 }
 
 
@@ -554,58 +852,70 @@ body::before{
 ========================================================= */
 
 .photo-entry{
+
   min-width:0;
 
   display:block;
 
-  padding:16px;
+  padding:12px;
 
   border-right:
-    3px solid #15172f;
+    3px solid var(--blue);
 
   border-bottom:
-    3px solid #15172f;
+    3px solid var(--blue);
 
   text-decoration:none;
 
-  background:#e7ddc0;
+  background:var(--paper);
+
+  color:var(--blue);
+
 }
 
 
-.photo-entry:nth-child(2n){
+.photo-entry:nth-child(3n){
+
   border-right:0;
+
 }
 
 
 .photo-entry:hover{
+
   background:#f5ecd7;
+
 }
 
 
 /* =========================================================
-   PHOTO IMAGE
+   PHOTO FRAME
 ========================================================= */
 
 .photo-frame{
+
   width:100%;
 
   aspect-ratio:4 / 3;
 
   overflow:hidden;
 
-  background:#15172f;
+  background:var(--blue);
 
   border:
-    3px solid #15172f;
+    3px solid var(--blue);
 
-  margin-bottom:12px;
+  margin-bottom:9px;
+
 }
 
 
 .photo-frame img{
+
   display:block;
 
   width:100%;
+
   height:100%;
 
   object-fit:cover;
@@ -618,16 +928,21 @@ body::before{
   transition:
     filter .25s ease,
     transform .25s ease;
+
 }
 
 
-.photo-entry:hover .photo-frame img{
+.photo-entry:hover
+.photo-frame img{
+
   filter:
     grayscale(0)
     brightness(.98)
     saturate(1);
 
-  transform:scale(1.015);
+  transform:
+    scale(1.015);
+
 }
 
 
@@ -636,29 +951,36 @@ body::before{
 ========================================================= */
 
 .photo-date{
-  color:#176f78;
+
+  color:var(--teal);
 
   font-size:10px;
 
   font-weight:bold;
 
   margin-bottom:5px;
+
 }
 
 
 .photo-title{
-  color:#15172f;
 
-  font-size:14px;
+  color:var(--blue);
+
+  font-size:12px;
 
   line-height:1.4;
 
   font-weight:bold;
+
 }
 
 
-.photo-entry:hover .photo-title{
-  color:#f05a32;
+.photo-entry:hover
+.photo-title{
+
+  color:var(--orange);
+
 }
 
 
@@ -667,31 +989,96 @@ body::before{
 ========================================================= */
 
 .article{
-  padding:22px 24px 35px;
+
+  padding:
+    20px
+    22px
+    30px;
+
 }
 
 
 .article-year{
-  color:#176f78;
+
+  color:var(--teal);
 
   font-size:11px;
 
   font-weight:bold;
 
-  margin-bottom:10px;
+  margin-bottom:8px;
+
 }
 
 
 .article-title{
-  color:#15172f;
 
-  font-size:30px;
+  color:var(--blue);
+
+  font-size:28px;
 
   font-weight:bold;
 
   line-height:1.25;
 
-  margin:0 0 25px;
+  margin:
+    0 0 20px;
+
+}
+
+
+/* =========================================================
+   DETAIL IMAGE
+========================================================= */
+
+.detail-photo{
+
+  width:100%;
+
+  max-width:1100px;
+
+  margin:
+    0 0 24px;
+
+  padding:8px;
+
+  border:
+    3px solid var(--blue);
+
+  background:var(--blue);
+
+  box-shadow:
+    4px 4px 0 var(--blue);
+
+}
+
+
+.detail-photo img{
+
+  display:block;
+
+  width:100%;
+
+  height:auto;
+
+  max-height:760px;
+
+  object-fit:contain;
+
+}
+
+
+.detail-photo-caption{
+
+  padding:
+    7px 2px 0;
+
+  color:var(--teal);
+
+  font-size:10px;
+
+  line-height:1.5;
+
 }
 
 
@@ -700,157 +1087,144 @@ body::before{
 ========================================================= */
 
 .article-body{
+
   max-width:1000px;
 
-  color:#15172f;
+  color:var(--blue);
 
   font-size:14px;
 
   line-height:1.9;
 
   letter-spacing:.05px;
+
 }
 
 
 .article-body p{
-  margin:0 0 24px;
+
+  margin:
+    0 0 24px;
+
 }
 
 
 .article-body h1,
 .article-body h2,
 .article-body h3{
-  color:#15172f;
+
+  color:var(--blue);
 
   font-weight:bold;
+
 }
 
 
 .article-body h1{
+
   font-size:25px;
 
-  margin:30px 0 20px;
+  margin:
+    30px 0 20px;
+
 }
 
 
 .article-body h2{
+
   font-size:20px;
 
-  margin:30px 0 18px;
+  margin:
+    30px 0 18px;
+
 }
 
 
 .article-body h3{
+
   font-size:17px;
 
-  margin:25px 0 13px;
+  margin:
+    25px 0 13px;
+
 }
 
 
 .article-body em{
-  color:#176f78;
+
+  color:var(--teal);
+
 }
 
 
 .article-body strong{
-  color:#f05a32;
+
+  color:var(--orange);
+
 }
 
 
 .article-body blockquote{
-  margin:25px 0;
 
-  padding:12px 15px;
+  margin:
+    25px 0;
+
+  padding:
+    12px 15px;
 
   border-left:
-    5px solid #f05a32;
+    5px solid var(--orange);
 
-  background:#f5ecd7;
+  background:var(--white);
 
-  color:#176f78;
+  color:var(--teal);
+
 }
 
 
 .article-body ul,
 .article-body ol{
-  margin:0 0 24px;
+
+  margin:
+    0 0 24px;
 
   padding-left:25px;
+
 }
 
 
 .article-body li{
+
   margin-bottom:7px;
+
 }
 
 
 .article-body a{
-  color:#176f78;
+
+  color:var(--teal);
 
   font-weight:bold;
+
 }
 
 
 .article-body img{
+
   display:block;
 
   width:auto;
+
   max-width:100%;
+
   height:auto;
 
-  margin:30px 0;
+  margin:
+    30px 0;
 
   border:
-    3px solid #15172f;
-}
+    3px solid var(--blue);
 
-
-/* =========================================================
-   DETAIL PHOTO
-========================================================= */
-
-.article-body .photo-detail{
-  width:100%;
-
-  max-width:1000px;
-
-  margin:0 0 30px;
-
-  border:
-    3px solid #15172f;
-
-  background:#15172f;
-
-  padding:8px;
-
-  box-shadow:
-    4px 4px 0 #15172f;
-}
-
-
-.article-body .photo-detail img{
-  width:100%;
-  max-width:none;
-
-  margin:0;
-
-  border:0;
-
-  filter:
-    grayscale(.02)
-    brightness(.95)
-    saturate(.9);
-}
-
-
-.article-caption{
-  color:#176f78;
-
-  font-size:11px;
-
-  line-height:1.7;
-
-  margin-top:10px;
 }
 
 
@@ -859,31 +1233,36 @@ body::before{
 ========================================================= */
 
 .article-back{
+
   display:inline-block;
 
   margin-top:20px;
 
-  padding:6px 10px;
+  padding:
+    6px 10px;
 
   border:
-    2px solid #15172f;
+    2px solid var(--blue);
 
-  background:#e7ddc0;
+  background:var(--paper);
 
-  color:#15172f;
+  color:var(--blue);
 
   text-decoration:none;
 
   font-size:11px;
 
   font-weight:bold;
+
 }
 
 
 .article-back:hover{
-  color:#f5ecd7;
 
-  background:#176f78;
+  color:var(--white);
+
+  background:var(--teal);
+
 }
 
 
@@ -892,375 +1271,481 @@ body::before{
 ========================================================= */
 
 .error{
-  padding:55px 24px;
 
-  color:#176f78;
+  padding:
+    35px 20px;
 
-  font-size:12px;
+  border-top:
+    0;
+
+  background:#eee5ce;
+
+  color:#8b2c1e;
+
+  font-size:11px;
 
   line-height:1.8;
+
 }
 
 
 .error strong{
-  color:#15172f;
 
   font-weight:bold;
+
 }
 
 
 /* =========================================================
-   RIGHT
+   FOOTER QUOTE
 ========================================================= */
 
-.right{
-  min-width:0;
-}
+.footer{
 
+  width:
+    min(940px, calc(100% - 28px));
 
-.side-copy{
-  padding:12px;
-
-  border:
-    3px solid #15172f;
-
-  background:#f05a32;
-
-  color:#15172f;
-
-  font-size:13px;
-
-  font-weight:bold;
-
-  text-align:center;
-
-  box-shadow:
-    4px 4px 0 #15172f;
-}
-
-
-.right > .rule{
   margin:
-    22px 0;
-}
+    16px auto 0;
 
-
-.right-note{
-  padding:15px;
+  padding:
+    10px 14px;
 
   border:
-    3px solid #15172f;
+    3px solid var(--blue);
 
-  background:#e7ddc0;
+  background:var(--paper);
 
-  color:#15172f;
-
-  font-size:12px;
-
-  line-height:1.8;
-
-  margin-bottom:25px;
-
-  box-shadow:
-    4px 4px 0 #15172f;
-}
-
-
-/* =========================================================
-   POLAROID
-========================================================= */
-
-.polaroid{
-  width:175px;
-
-  margin:20px auto 45px;
-
-  padding:9px 9px 18px;
-
-  background:#f5ecd7;
-
-  border:
-    3px solid #15172f;
-
-  transform:rotate(-2deg);
-
-  box-shadow:
-    4px 4px 0 #15172f;
-}
-
-
-.polaroid img{
-  display:block;
-
-  width:100%;
-  height:auto;
-
-  filter:grayscale(100%);
-}
-
-
-.polaroid figcaption{
-  color:#15172f;
+  color:var(--teal);
 
   text-align:center;
-
-  font-size:11px;
-
-  font-weight:bold;
-
-  margin-top:12px;
-}
-
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
-.clock{
-  padding:14px;
-
-  border:
-    3px solid #15172f;
-
-  background:#e7ddc0;
-
-  color:#176f78;
-
-  font-size:11px;
-
-  line-height:1.7;
-
-  text-align:left;
-
-  box-shadow:
-    4px 4px 0 #15172f;
-}
-
-
-.clock #time{
-  color:#15172f;
-
-  font-weight:bold;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-  max-width:1600px;
-
-  margin:45px auto 0;
-
-  padding:10px 14px;
-
-  border:
-    3px solid #15172f;
-
-  background:#e7ddc0;
-
-  color:#176f78;
 
   font-size:10px;
 
   font-weight:bold;
 
-  text-align:center;
-
-  box-shadow:
-    4px 4px 0 #15172f;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   MUSIC PLAYER
+   Đồng bộ với Home
+========================================================= */
+
+.music-player{
+
+  position:fixed;
+
+  width:
+    min(940px, calc(100% - 28px));
+
+  left:50%;
+
+  right:auto;
+
+  bottom:10px;
+
+  transform:translateX(-50%);
+
+  z-index:10000;
+
+  display:grid;
+
+  grid-template-columns:
+    auto
+    minmax(150px,1fr)
+    auto
+    minmax(150px,1.5fr)
+    auto
+    auto;
+
+  gap:9px;
+
+  align-items:center;
+
+  padding:
+    6px 8px;
+
+  background:var(--paper);
+
+  border:
+    3px solid var(--blue);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+}
+
+
+.music-icon{
+
+  width:35px;
+
+  height:35px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:var(--orange);
+
+  border:
+    3px solid var(--blue);
+
+  font-weight:bold;
+
+}
+
+
+.music-info{
+
+  min-width:0;
+
+}
+
+
+.music-label{
+
+  font-size:8px;
+
+  margin-bottom:2px;
+
+}
+
+
+.music-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.music-controls{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.music-button{
+
+  width:33px;
+
+  height:29px;
+
+  border:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:inherit;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+
+.music-button:hover{
+
+  background:var(--orange);
+
+}
+
+
+.music-progress{
+
+  min-width:0;
+
+}
+
+
+.music-progress input{
+
+  width:100%;
+
+  accent-color:var(--orange);
+
+}
+
+
+.music-time{
+
+  min-width:72px;
+
+  text-align:center;
+
+  font-size:9px;
+
+}
+
+
+.music-volume{
+
+  width:100px;
+
+}
+
+
+.music-volume input{
+
+  width:100%;
+
+  accent-color:var(--teal);
+
+}
+
+
+/* =========================================================
+   TABLET
 ========================================================= */
 
 @media(max-width:1200px){
 
   .layout{
-    grid-template-columns:
-      220px
-      minmax(0,1fr)
-      250px;
 
-    gap:18px;
-  }
-
-}
-
-
-@media(max-width:1050px){
-
-  .layout{
     grid-template-columns:
       220px
       minmax(0,1fr);
 
-    gap:20px;
   }
 
-
-  .right{
-    display:none;
-  }
-
-}
-
-
-@media(max-width:800px){
 
   .archive{
+
     grid-template-columns:
-      repeat(2,minmax(0,1fr));
+      repeat(3,minmax(0,1fr));
+
   }
 
 
-  .photo-entry:nth-child(2n){
-    border-right:0;
+  .music-player{
+
+    grid-template-columns:
+      auto
+      minmax(120px,1fr)
+      auto
+      minmax(120px,1fr)
+      auto;
+
+  }
+
+
+  .music-volume{
+
+    display:none;
+
   }
 
 }
 
 
-@media(max-width:700px){
+/* =========================================================
+   MOBILE / SMALL TABLET
+========================================================= */
+
+@media(max-width:850px){
 
   .page{
-    padding:14px;
+
+    padding:
+      7px
+      7px
+      125px;
+
   }
 
 
-  .browser{
-    margin-bottom:20px;
+  .browser-menu{
 
-    height:44px;
+    display:none;
 
-    padding:7px 10px;
+  }
 
-    font-size:10px;
+
+  .browser-address-row{
+
+    grid-template-columns:
+      31px
+      minmax(0,1fr)
+      31px;
+
+  }
+
+
+  .browser-address-row
+  .browser-control:nth-child(2){
+
+    display:none;
+
+  }
+
+
+  .browser-date{
+
+    display:none;
+
   }
 
 
   .layout{
+
     display:block;
+
   }
 
 
   .left{
-    margin-bottom:22px;
+
+    margin-bottom:16px;
+
   }
 
 
-  .profile-window{
-    margin-bottom:18px;
-  }
+  .nav-list{
 
+    display:grid;
 
-  .nav{
-    flex-direction:row;
+    grid-template-columns:
+      repeat(2,1fr);
 
-    flex-wrap:wrap;
-
-    gap:6px;
-  }
-
-
-  .nav a{
-    width:auto;
-
-    padding:6px 8px;
-
-    font-size:11px;
-  }
-
-
-  .left-info{
-    display:none;
-  }
-
-
-  .photographs{
-    min-height:200px;
-
-    box-shadow:
-      4px 4px 0 #15172f;
-  }
-
-
-  .section-header{
-    padding:15px;
-  }
-
-
-  .section-title{
-    font-size:18px;
-  }
-
-
-  .photo-intro{
-    padding:12px 15px;
-
-    font-size:11px;
-  }
-
-
-  .photo-filters{
-    padding:10px;
-
-    gap:5px;
-  }
-
-
-  .photo-filter{
-    padding:5px 7px;
-
-    font-size:10px;
   }
 
 
   .archive{
+
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+  }
+
+
+  .photo-entry:nth-child(3n){
+
+    border-right:
+      3px solid var(--blue);
+
+  }
+
+
+  .photo-entry:nth-child(2n){
+
+    border-right:0;
+
+  }
+
+
+  .music-player{
+
+    width:
+      calc(100% - 10px);
+
+    left:50%;
+
+    right:auto;
+
+    bottom:5px;
+
+    transform:translateX(-50%);
+
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
+
+    gap:5px;
+
+  }
+
+
+  .music-progress,
+  .music-time,
+  .music-volume{
+
+    display:none;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .browser-subtitle{
+
+    display:none;
+
+  }
+
+
+  .archive{
+
     grid-template-columns:1fr;
+
   }
 
 
   .photo-entry,
-  .photo-entry:nth-child(2n){
+  .photo-entry:nth-child(2n),
+  .photo-entry:nth-child(3n){
+
     border-right:0;
 
-    padding:14px;
-  }
-
-
-  .photo-frame{
-    aspect-ratio:4 / 3;
   }
 
 
   .article{
-    padding:25px 15px 35px;
+
+    padding:
+      18px
+      14px
+      28px;
+
   }
 
 
   .article-title{
-    font-size:25px;
+
+    font-size:23px;
+
   }
 
 
   .article-body{
-    font-size:14px;
+
+    font-size:13px;
 
     line-height:1.85;
+
   }
 
 
-  .right{
-    display:none;
-  }
+  .footer{
 
+    width:
+      calc(100% - 14px);
 
-  footer{
-    margin-top:25px;
+    font-size:9px;
+
   }
 
 }
@@ -1276,301 +1761,494 @@ footer{
 <div class="page">
 
 
-  <!-- =====================================================
-       BROWSER
-  ====================================================== -->
+<!-- =======================================================
+     BROWSER
+======================================================= -->
 
-  <div class="browser">
+<header class="browser">
 
-    <span id="browserAddress">
-      https://qmarchive.github.io/photographs/
-    </span>
+
+  <div class="browser-top">
+
+
+    <div class="browser-brand">
+
+      <span class="browser-brand-icon">
+        QM
+      </span>
+
+      QM ARCHIVE
+
+      <span class="browser-subtitle">
+        // A SMALL SPACE FOR ORDINARY DAYS.
+      </span>
+
+    </div>
+
+
+    <div class="browser-window-buttons">
+
+      <span>—</span>
+      <span>□</span>
+      <span>×</span>
+
+    </div>
+
 
   </div>
 
 
-  <!-- =====================================================
-       LAYOUT
-  ====================================================== -->
+  <div class="browser-menu">
 
-  <div class="layout">
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Favorites</span>
+    <span>Tools</span>
+    <span>Help</span>
 
-
-    <!-- ===================================================
-         LEFT
-    ==================================================== -->
-
-    <aside class="left">
+  </div>
 
 
-      <div class="window profile-window">
-
-        <div class="window-titlebar">
-
-          <span>
-            QUỐC MẠNH
-          </span>
-
-          <div class="controls">
-
-            <span class="control">
-              _
-            </span>
-
-            <span class="control">
-              □
-            </span>
-
-            <span class="control">
-              ×
-            </span>
-
-          </div>
-
-        </div>
+  <div class="browser-address-row">
 
 
-        <div class="profile-image">
-
-          <img
-            src="/home/home-profile.png"
-            alt="QUỐC MẠNH"
-          >
-
-        </div>
+    <div class="browser-control">
+      &lt;
+    </div>
 
 
-        <div class="profile-caption">
-          A PERSONAL ARCHIVE
-        </div>
+    <div class="browser-control">
+      &gt;
+    </div>
 
 
-        <div class="profile-body">
-
-          <nav class="nav">
-
-            <a href="/">
-              home
-            </a>
-
-            <a href="/writings/">
-              writings
-            </a>
-
-            <a
-              href="/photographs/"
-              class="active"
-            >
-              photographs
-            </a>
-
-            <a href="/notes/">
-              notes
-            </a>
-
-            <a href="/#about">
-              about
-            </a>
-
-          </nav>
+    <div class="browser-control">
+      ^
+    </div>
 
 
-          <div class="left-info">
+    <div
+      class="browser-address"
+      id="browserAddress"
+    >
 
-            <div class="label">
-              photographs
-            </div>
+      https://qmarchive.github.io/photographs/
 
-            <div>
-              archive
-            </div>
+    </div>
 
-            <br>
 
-            <div class="label">
-              since
-            </div>
+    <div class="browser-date">
 
-            <div class="year">
-              2020
-            </div>
+      <span id="browserDate">
+        22 SEP 2026
+      </span>
 
-          </div>
+      <br>
 
-        </div>
+      <span id="browserTime">
+        00:00
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+</header>
+
+
+
+<!-- =======================================================
+     MAIN LAYOUT
+======================================================= -->
+
+<div class="layout">
+
+
+<!-- =====================================================
+     LEFT — SYSTEM INFO
+====================================================== -->
+
+<aside class="left">
+
+
+  <section class="window system-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          S
+        </span>
+
+        SYSTEM INFO
 
       </div>
 
 
-    </aside>
+      <div class="window-buttons">
 
-
-    <!-- ===================================================
-         MAIN
-    ==================================================== -->
-
-    <main class="main">
-
-
-      <section class="photographs">
-
-
-        <header class="window-titlebar">
-
-          <span>
-            PHOTOGRAPHS
-          </span>
-
-
-          <div class="controls">
-
-            <span class="control">
-              _
-            </span>
-
-            <span class="control">
-              □
-            </span>
-
-            <span class="control">
-              ×
-            </span>
-
-          </div>
-
-        </header>
-
-
-        <div class="section-header">
-
-          <div class="section-title">
-            PHOTOGRAPHS
-          </div>
-
-
-          <div
-            class="section-path"
-            id="sectionPath"
-          >
-            / photographs /
-          </div>
-
-        </div>
-
-
-        <div class="photo-intro">
-
-          Đây không phải triển lãm.
-
-        </div>
-
-
-        <div class="photo-filters">
-
-          <span class="photo-filter">
-            Hanoi
-          </span>
-
-          <span class="photo-filter">
-            Travel
-          </span>
-
-          <span class="photo-filter">
-            Friends
-          </span>
-
-        </div>
-
-
-        <div id="main"></div>
-
-
-      </section>
-
-    </main>
-
-
-    <!-- ===================================================
-         RIGHT
-    ==================================================== -->
-
-    <aside class="right">
-
-
-      <div class="side-copy">
-        Hanoi, Vietnam
-      </div>
-
-
-      <div class="rule"></div>
-
-
-      <div class="right-note">
-
-        Nhật ký của một người bình thường.<br>
-
-        Viết lại những câu chuyện đáng lý<br>
-
-        chỉ cần bỏ qua.<br>
-
-        Chào Mạnh, chúng ta lại gặp nhau rồi.
+        <span class="window-button">
+          ×
+        </span>
 
       </div>
 
 
-      <figure class="polaroid">
+    </div>
 
-        <img
-          src="/home/home-polaroid.png"
-          alt="Hanoi, always"
+
+    <div class="system-content">
+
+
+      <div class="system-line">
+
+        Edgerunner.2046
+
+      </div>
+
+
+      <div class="system-line online">
+
+        + Online
+
+      </div>
+
+
+      <div class="system-line">
+
+        Since: 21.09.2026
+
+      </div>
+
+
+
+      <!-- NAV -->
+
+      <nav class="nav-list">
+
+
+        <a href="/">
+
+          <span class="folder-icon"></span>
+
+          home
+
+        </a>
+
+
+        <a href="/writings/">
+
+          <span class="folder-icon"></span>
+
+          writings
+
+        </a>
+
+
+        <a
+          href="/photographs/"
+          class="active"
         >
 
-        <figcaption>
-          Hanoi, always.
-        </figcaption>
+          <span class="folder-icon"></span>
 
-      </figure>
+          photographs
+
+        </a>
 
 
-      <div class="clock">
+        <a href="/notes/">
 
-        <span id="date">
-          21.09.2026
-        </span>
+          <span class="folder-icon"></span>
 
-        <br>
+          notes
 
-        <span id="time">
-          00:00:00
-        </span>
+        </a>
 
-        <br><br>
 
-        1998 — 2026
+      </nav>
 
-        <br>
 
-        and beyond.
+
+      <!-- CASSETTE -->
+
+      <div class="cassette">
+
+
+        <img
+          src="/home/home-cassette.gif"
+          alt="Life Goes On cassette"
+        >
+
+
+        <div class="cassette-caption">
+
+          Không sao đâu, không sao đâu mà<br>
+
+          // 1998 -
+          <span id="cassetteYear">
+            2026
+          </span>
+
+        </div>
+
 
       </div>
 
 
-    </aside>
+    </div>
 
 
-  </div>
+  </section>
 
 
-  <footer>
+</aside>
 
-    I don’t have a favorite place, I have my favorite people.
-    And whenever i’m with my favorite people,
-    it becomes my favorite place.
 
-  </footer>
+
+<!-- =====================================================
+     CENTER
+====================================================== -->
+
+<main class="center">
+
+
+  <section class="window photos-window">
+
+
+    <!-- TITLE BAR -->
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          P
+        </span>
+
+        PHOTOGRAPHS
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">
+          —
+        </span>
+
+        <span class="window-button">
+          □
+        </span>
+
+        <span class="window-button">
+          ×
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- INTRO -->
+
+    <div class="photo-intro">
+
+      Đây không phải triển lãm.
+
+    </div>
+
+
+
+    <!-- FILTERS -->
+
+    <div class="photo-filters">
+
+
+      <span class="photo-filter">
+        Hanoi
+      </span>
+
+
+      <span class="photo-filter">
+        Travel
+      </span>
+
+
+      <span class="photo-filter">
+        Friends
+      </span>
+
+
+    </div>
+
+
+
+    <!-- DYNAMIC CONTENT -->
+
+    <div id="main"></div>
+
+
+  </section>
+
+
+</main>
 
 
 </div>
+
+
+
+<!-- =======================================================
+     FOOTER QUOTE
+======================================================= -->
+
+<footer class="footer">
+
+  I don’t have a favorite place, I have my favorite people.
+  And whenever i’m with my favorite people,
+  it becomes my favorite place.
+
+</footer>
+
+
+
+<!-- =======================================================
+     MUSIC PLAYER
+======================================================= -->
+
+<div class="music-player">
+
+
+  <div class="music-icon">
+
+    ♪
+
+  </div>
+
+
+  <div class="music-info">
+
+
+    <div class="music-label">
+
+      NOW PLAYING
+
+    </div>
+
+
+    <div
+      class="music-title"
+      id="musicTitle"
+    >
+
+      QM Archive — Theme
+
+    </div>
+
+
+  </div>
+
+
+  <div class="music-controls">
+
+
+    <button
+      class="music-button"
+      id="prevButton"
+      type="button"
+    >
+
+      |◀
+
+    </button>
+
+
+    <button
+      class="music-button"
+      id="playButton"
+      type="button"
+    >
+
+      ▶
+
+    </button>
+
+
+    <button
+      class="music-button"
+      id="nextButton"
+      type="button"
+    >
+
+      ▶|
+
+    </button>
+
+
+  </div>
+
+
+  <div class="music-progress">
+
+
+    <input
+      id="progress"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      step="0.1"
+    >
+
+
+  </div>
+
+
+  <div
+    class="music-time"
+    id="musicTime"
+  >
+
+    00:00 / 00:00
+
+  </div>
+
+
+  <div class="music-volume">
+
+
+    <input
+      id="volume"
+      type="range"
+      min="0"
+      max="1"
+      value=".7"
+      step=".01"
+    >
+
+
+  </div>
+
+
+</div>
+
+
+
+<audio
+  id="audio"
+  preload="metadata"
+></audio>
+
 
 
 <script>
@@ -1578,6 +2256,9 @@ footer{
 /* =========================================================
    CONFIG
 ========================================================= */
+
+
+/* PHOTOGRAPHS */
 
 const CONTENT_URL =
   "/photographs/content.json?v=" +
@@ -1589,8 +2270,21 @@ const POSTS_BASE =
 
 
 
+/* MUSIC */
+
+const MUSIC_TRACKS = [
+
+  {
+    title:"QM Archive — Theme",
+    src:"/music/qm-archive.mp3"
+  }
+
+];
+
+
+
 /* =========================================================
-   ESCAPE HTML
+   HELPERS
 ========================================================= */
 
 function escapeHTML(value){
@@ -1621,9 +2315,7 @@ function markdownToHTML(markdown){
     escapeHTML(markdown);
 
 
-  /* =======================================================
-     IMAGES
-  ====================================================== */
+  /* IMAGES INSIDE MARKDOWN */
 
   text =
     text.replace(
@@ -1648,9 +2340,7 @@ function markdownToHTML(markdown){
     );
 
 
-  /* =======================================================
-     LINKS
-  ====================================================== */
+  /* LINKS */
 
   text =
     text.replace(
@@ -1660,9 +2350,7 @@ function markdownToHTML(markdown){
     );
 
 
-  /* =======================================================
-     HEADINGS
-  ====================================================== */
+  /* HEADINGS */
 
   text =
     text.replace(
@@ -1688,9 +2376,7 @@ function markdownToHTML(markdown){
     );
 
 
-  /* =======================================================
-     BOLD
-  ====================================================== */
+  /* BOLD */
 
   text =
     text.replace(
@@ -1700,9 +2386,7 @@ function markdownToHTML(markdown){
     );
 
 
-  /* =======================================================
-     ITALIC
-  ====================================================== */
+  /* ITALIC */
 
   text =
     text.replace(
@@ -1712,9 +2396,7 @@ function markdownToHTML(markdown){
     );
 
 
-  /* =======================================================
-     BLOCKQUOTE
-  ====================================================== */
+  /* BLOCKQUOTE */
 
   text =
     text.replace(
@@ -1724,9 +2406,7 @@ function markdownToHTML(markdown){
     );
 
 
-  /* =======================================================
-     UNORDERED LIST
-  ====================================================== */
+  /* UNORDERED LIST */
 
   text =
     text.replace(
@@ -1744,9 +2424,7 @@ function markdownToHTML(markdown){
     );
 
 
-  /* =======================================================
-     BLOCKS
-  ====================================================== */
+  /* BLOCKS */
 
   const blocks =
     text
@@ -1829,11 +2507,8 @@ async function loadJSON(){
     throw new Error(
 
       "Could not load " +
-
       "photographs/content.json (" +
-
       response.status +
-
       ")"
 
     );
@@ -1885,11 +2560,8 @@ async function loadMarkdown(slug){
     throw new Error(
 
       "Could not load Markdown file (" +
-
       response.status +
-
       "): " +
-
       url
 
     );
@@ -1906,7 +2578,6 @@ async function loadMarkdown(slug){
     throw new Error(
 
       "Markdown file is empty: " +
-
       url
 
     );
@@ -1930,12 +2601,6 @@ function renderArchive(items){
     document.getElementById(
       "main"
     );
-
-
-  document.getElementById(
-    "sectionPath"
-  ).textContent =
-    "/ photographs /";
 
 
   document.getElementById(
@@ -1974,33 +2639,34 @@ function renderArchive(items){
             );
 
 
+          const image =
+            item.image ||
+            item.src ||
+            item.thumbnail ||
+            "";
+
+
           return `
 
             <a
-
               class="photo-entry"
-
               href="/photographs/?slug=${encodeURIComponent(
                 slug
               )}"
-
             >
+
 
               <div class="photo-frame">
 
+
                 <img
-
-                  src="${escapeHTML(
-                    item.image || ""
-                  )}"
-
+                  src="${escapeHTML(image)}"
                   alt="${escapeHTML(
                     item.title || ""
                   )}"
-
                   loading="lazy"
-
                 >
+
 
               </div>
 
@@ -2021,6 +2687,7 @@ function renderArchive(items){
                 )}
 
               </div>
+
 
             </a>
 
@@ -2069,13 +2736,6 @@ async function renderArticle(
 
 
   document.getElementById(
-    "sectionPath"
-  ).textContent =
-    "/ photographs / " +
-    decodedSlug;
-
-
-  document.getElementById(
     "browserAddress"
   ).textContent =
     "https://qmarchive.github.io/photographs/?slug=" +
@@ -2109,7 +2769,9 @@ async function renderArticle(
           class="article-back"
           href="/photographs/"
         >
+
           ← back to photographs
+
         </a>
 
       </div>
@@ -2119,6 +2781,17 @@ async function renderArticle(
     return;
 
   }
+
+
+  /* =======================================================
+     IMAGE
+  ====================================================== */
+
+  const image =
+    item.image ||
+    item.src ||
+    item.thumbnail ||
+    "";
 
 
   /* =======================================================
@@ -2171,6 +2844,36 @@ async function renderArticle(
           )}
 
         </h1>
+
+
+        ${
+          image
+            ? `
+
+              <figure class="detail-photo">
+
+                <img
+                  src="${escapeHTML(image)}"
+                  alt="${escapeHTML(
+                    item.title || ""
+                  )}"
+                >
+
+                <figcaption
+                  class="detail-photo-caption"
+                >
+
+                  ${escapeHTML(
+                    item.title || ""
+                  )}
+
+                </figcaption>
+
+              </figure>
+
+            `
+            : ""
+        }
 
 
         <div class="article-body">
@@ -2255,22 +2958,6 @@ function updateClock(){
     new Date();
 
 
-  const date =
-    String(
-      now.getDate()
-    ).padStart(2,"0") +
-
-    "." +
-
-    String(
-      now.getMonth()+1
-    ).padStart(2,"0") +
-
-    "." +
-
-    now.getFullYear();
-
-
   const time =
     String(
       now.getHours()
@@ -2289,30 +2976,53 @@ function updateClock(){
     ).padStart(2,"0");
 
 
-  const dateElement =
+  const browserTime =
     document.getElementById(
-      "date"
+      "browserTime"
     );
 
 
-  const timeElement =
+  const browserDate =
     document.getElementById(
-      "time"
+      "browserDate"
     );
 
 
-  if(dateElement){
+  const cassetteYear =
+    document.getElementById(
+      "cassetteYear"
+    );
 
-    dateElement.textContent =
-      date;
+
+  if(browserTime){
+
+    browserTime.textContent =
+      time.slice(0,5);
 
   }
 
 
-  if(timeElement){
+  if(browserDate){
 
-    timeElement.textContent =
-      time;
+    browserDate.textContent =
+      now
+        .toLocaleDateString(
+          "en-GB",
+          {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+          }
+        )
+        .toUpperCase();
+
+  }
+
+
+  if(cassetteYear){
+
+    cassetteYear.textContent =
+      now.getFullYear();
 
   }
 
@@ -2321,10 +3031,366 @@ function updateClock(){
 
 
 /* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+const audio =
+  document.getElementById(
+    "audio"
+  );
+
+
+const playButton =
+  document.getElementById(
+    "playButton"
+  );
+
+
+const prevButton =
+  document.getElementById(
+    "prevButton"
+  );
+
+
+const nextButton =
+  document.getElementById(
+    "nextButton"
+  );
+
+
+const progress =
+  document.getElementById(
+    "progress"
+  );
+
+
+const volume =
+  document.getElementById(
+    "volume"
+  );
+
+
+const musicTitle =
+  document.getElementById(
+    "musicTitle"
+  );
+
+
+const musicTime =
+  document.getElementById(
+    "musicTime"
+  );
+
+
+let currentTrack = 0;
+
+
+
+function formatTime(seconds){
+
+  if(!Number.isFinite(seconds)){
+
+    return "00:00";
+
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  return (
+
+    String(minutes).padStart(2,"0") +
+
+    ":" +
+
+    String(secs).padStart(2,"0")
+
+  );
+
+}
+
+
+
+function loadTrack(
+  index,
+  autoplay=false
+){
+
+  if(!MUSIC_TRACKS.length){
+
+    return;
+
+  }
+
+
+  currentTrack =
+    (index + MUSIC_TRACKS.length) %
+    MUSIC_TRACKS.length;
+
+
+  const track =
+    MUSIC_TRACKS[currentTrack];
+
+
+  audio.src =
+    track.src;
+
+
+  musicTitle.textContent =
+    track.title;
+
+
+  progress.value =
+    0;
+
+
+  if(autoplay){
+
+    audio.play()
+
+      .then(() => {
+
+        playButton.textContent =
+          "❚❚";
+
+      })
+
+      .catch(() => {
+
+        playButton.textContent =
+          "▶";
+
+      });
+
+  }else{
+
+    playButton.textContent =
+      "▶";
+
+  }
+
+}
+
+
+
+playButton.addEventListener(
+  "click",
+  () => {
+
+    if(audio.paused){
+
+      audio.play()
+
+        .then(() => {
+
+          playButton.textContent =
+            "❚❚";
+
+        })
+
+        .catch(() => {
+
+          playButton.textContent =
+            "▶";
+
+        });
+
+    }else{
+
+      audio.pause();
+
+      playButton.textContent =
+        "▶";
+
+    }
+
+  }
+);
+
+
+
+prevButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack - 1,
+      true
+    );
+
+  }
+);
+
+
+
+nextButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
+
+    musicTime.textContent =
+      "00:00 / " +
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    if(audio.duration){
+
+      progress.value =
+        (
+          audio.currentTime /
+          audio.duration
+        ) * 100;
+
+    }
+
+
+    musicTime.textContent =
+      formatTime(
+        audio.currentTime
+      ) +
+
+      " / " +
+
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+    if(audio.duration){
+
+      audio.currentTime =
+        (
+          Number(progress.value) /
+          100
+        ) *
+        audio.duration;
+
+    }
+
+  }
+);
+
+
+
+volume.addEventListener(
+  "input",
+  () => {
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "ended",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true
+    );
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "play",
+  () => {
+
+    playButton.textContent =
+      "❚❚";
+
+  }
+);
+
+
+
+audio.addEventListener(
+  "pause",
+  () => {
+
+    playButton.textContent =
+      "▶";
+
+  }
+);
+
+
+
+/* =========================================================
    INIT
 ========================================================= */
 
 async function init(){
+
+  updateClock();
+
+
+  setInterval(
+    updateClock,
+    1000
+  );
+
+
+  audio.volume =
+    Number(
+      volume.value
+    );
+
+
+  loadTrack(
+    0,
+    false
+  );
+
 
   try{
 
@@ -2396,23 +3462,11 @@ async function init(){
 }
 
 
-
-/* =========================================================
-   START
-========================================================= */
-
-updateClock();
-
-
-setInterval(
-  updateClock,
-  1000
-);
-
-
 init();
 
 </script>
 
+
 </body>
+
 </html>
