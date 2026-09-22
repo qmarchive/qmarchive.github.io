@@ -1,494 +1,271 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>QUỐC MẠNH — QM ARCHIVE</title>
 
 <style>
+:root{
+  --cream:#d8cfb5;
+  --paper:#e7ddc0;
+  --orange:#f05a32;
+  --orange-dark:#c84327;
+  --teal:#176f78;
+  --teal-dark:#0d5059;
+  --blue:#15172f;
+  --blue-soft:#243b73;
+  --green:#1d8a4a;
+  --white:#f5ecd7;
+  --yellow:#f2c94c;
 
-/* =========================================================
-   RESET
-========================================================= */
+  --border:3px solid var(--blue);
+  --shadow:6px 6px 0 var(--blue);
+}
 
 *{
   box-sizing:border-box;
 }
 
-html,
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
-  padding:0;
-}
-
-html{
-  background:#d8cfb5;
-}
-
-body{
-  min-height:100vh;
-
   background:
-    linear-gradient(
-      rgba(255,255,255,.08),
-      rgba(255,255,255,.08)
+    repeating-linear-gradient(
+      0deg,
+      rgba(21,23,47,.035) 0px,
+      rgba(21,23,47,.035) 1px,
+      transparent 1px,
+      transparent 4px
     ),
-    #d8cfb5;
+    var(--cream);
 
-  color:#15172f;
+  color:var(--blue);
 
   font-family:
     "Courier New",
     Courier,
     monospace;
-}
-
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root{
-
-  --cream:#d8cfb5;
-  --paper:#e7ddc0;
-
-  --orange:#f05a32;
-  --orange-dark:#c84327;
-
-  --teal:#176f78;
-  --teal-dark:#0d5059;
-
-  --blue:#15172f;
-  --blue-soft:#243b73;
-
-  --green:#1d8a4a;
-
-  --white:#f5ecd7;
-
-  --border:3px solid var(--blue);
-
-}
-
-
-/* =========================================================
-   SCANLINE
-========================================================= */
-
-body::before{
-
-  content:"";
-
-  position:fixed;
-
-  inset:0;
-
-  pointer-events:none;
-
-  z-index:99999;
-
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(21,23,47,.035) 0px,
-      rgba(21,23,47,.035) 1px,
-      transparent 1px,
-      transparent 4px
-    );
-
-  opacity:.45;
-
-}
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-.page{
-
-  width:100%;
 
   min-height:100vh;
-
-  padding:
-    10px
-    14px
-    82px;
-
 }
 
-
 /* =========================================================
-   GENERIC WINDOW
+   WINDOW SYSTEM
 ========================================================= */
 
 .window{
-
   background:var(--paper);
-
   border:var(--border);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  overflow:hidden;
-
+  box-shadow:var(--shadow);
 }
 
-
-.window-titlebar{
-
-  min-height:38px;
+.window-title{
+  min-height:48px;
 
   display:flex;
-
   align-items:center;
+  gap:10px;
 
-  justify-content:space-between;
-
-  padding:
-    5px 7px;
-
-  background:var(--orange);
+  padding:7px 9px;
 
   border-bottom:var(--border);
 
-  color:var(--blue);
+  background:var(--orange);
 
-  font-weight:bold;
-
-  letter-spacing:.8px;
-
-  font-size:14px;
-
+  font-weight:900;
+  letter-spacing:.4px;
 }
 
-
-.window--teal .window-titlebar{
-
+.window--teal .window-title{
   background:var(--teal);
-
   color:var(--white);
-
 }
 
+.window-icon{
+  width:28px;
+  height:28px;
 
-.window-title{
+  flex:0 0 28px;
 
-  display:flex;
+  display:grid;
+  place-items:center;
 
-  align-items:center;
-
-  gap:8px;
-
-  min-width:0;
-
-}
-
-
-.window-title-icon{
-
-  width:21px;
-
-  height:21px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  flex-shrink:0;
-
-  border:2px solid currentColor;
+  border:var(--border);
 
   background:var(--paper);
 
   color:var(--blue);
 
-  font-size:10px;
-
-  font-weight:bold;
-
+  font-size:13px;
+  font-weight:900;
 }
 
+.window-name{
+  flex:1;
 
-.window--teal
-.window-title-icon{
-
-  color:var(--blue);
-
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-
 
 .window-buttons{
-
   display:flex;
-
-  gap:4px;
-
-  flex-shrink:0;
-
+  gap:5px;
 }
 
-
 .window-button{
+  width:28px;
+  height:28px;
 
-  width:20px;
-
-  height:20px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
+  border:var(--border);
 
   background:var(--paper);
 
+  display:grid;
+  place-items:center;
+
   color:var(--blue);
 
-  font-size:11px;
+  font-family:inherit;
+  font-weight:900;
 
   line-height:1;
-
 }
 
-
 /* =========================================================
-   BROWSER
+   TOP BROWSER
 ========================================================= */
 
 .browser{
-
+  margin:14px 18px 16px;
   border:var(--border);
-
+  box-shadow:var(--shadow);
   background:var(--paper);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  margin-bottom:14px;
-
 }
 
-
 .browser-top{
-
-  min-height:39px;
+  min-height:46px;
 
   display:flex;
-
   align-items:center;
 
-  justify-content:space-between;
-
-  padding:
-    5px 8px;
+  padding:7px 9px;
 
   background:var(--orange);
 
   border-bottom:var(--border);
 
+  font-weight:900;
 }
 
+.browser-logo{
+  width:30px;
+  height:30px;
 
-.browser-brand{
+  margin-right:8px;
 
-  display:flex;
+  display:grid;
+  place-items:center;
 
-  align-items:center;
-
-  gap:8px;
-
-  color:var(--blue);
-
-  font-weight:bold;
-
-  font-size:17px;
-
-  letter-spacing:1px;
-
-}
-
-
-.browser-brand-icon{
-
-  width:24px;
-
-  height:24px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
+  border:var(--border);
 
   background:var(--teal);
-
   color:var(--white);
 
   font-size:12px;
-
 }
 
-
-.browser-subtitle{
-
-  font-size:11px;
-
-  font-weight:bold;
-
+.browser-title{
+  flex:1;
 }
 
-
-.browser-window-buttons{
-
+.browser-controls{
   display:flex;
-
-  gap:4px;
-
+  gap:5px;
 }
-
-
-.browser-window-buttons span{
-
-  width:23px;
-
-  height:23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-size:11px;
-
-}
-
-
-.browser-menu{
-
-  display:flex;
-
-  gap:20px;
-
-  padding:
-    6px 10px;
-
-  border-bottom:2px solid var(--blue);
-
-  font-size:12px;
-
-  font-weight:bold;
-
-}
-
-
-.browser-address-row{
-
-  display:grid;
-
-  grid-template-columns:
-    31px
-    31px
-    31px
-    minmax(0,1fr)
-    175px;
-
-  gap:6px;
-
-  align-items:center;
-
-  padding:7px;
-
-}
-
 
 .browser-control{
+  width:28px;
+  height:28px;
 
-  width:31px;
+  border:var(--border);
 
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
+  display:grid;
+  place-items:center;
 
   background:var(--paper);
 
-  font-weight:bold;
-
+  font-weight:900;
 }
 
-
-.browser-address{
-
-  min-width:0;
-
-  height:27px;
+.browser-menu{
+  min-height:37px;
 
   display:flex;
-
   align-items:center;
+  gap:28px;
 
-  padding:
-    0 9px;
+  padding:5px 12px;
 
-  border:2px solid var(--blue);
+  border-bottom:var(--border);
 
-  background:#eee5ce;
+  font-weight:900;
+}
 
-  color:#303249;
+.browser-address{
+  display:grid;
+  grid-template-columns:36px 36px 36px minmax(0,1fr) 190px;
+
+  gap:7px;
+
+  padding:8px;
+}
+
+.nav-button{
+  height:34px;
+
+  border:var(--border);
+
+  background:var(--paper);
+
+  font-family:inherit;
+  font-size:18px;
+  font-weight:900;
+}
+
+.address{
+  height:34px;
+
+  border:var(--border);
+
+  background:#efe7cd;
+
+  padding:7px 10px;
+
+  color:#666;
 
   overflow:hidden;
-
   white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
 }
 
+.browser-clock{
+  text-align:right;
 
-.browser-date{
+  font-size:12px;
+  line-height:1.25;
 
-  text-align:center;
-
-  font-size:10px;
-
-  line-height:1.35;
-
-  font-weight:bold;
-
+  font-weight:900;
 }
-
 
 /* =========================================================
-   MAIN GRID
+   MAIN LAYOUT
 ========================================================= */
 
 .layout{
-
   display:grid;
 
   grid-template-columns:
@@ -496,223 +273,506 @@ body::before{
     minmax(0,1fr)
     315px;
 
-  gap:16px;
+  gap:18px;
 
-  max-width:1600px;
-
-  margin:0 auto;
+  margin:0 18px 100px;
 
   align-items:start;
-
 }
 
-
-/* =========================================================
-   LEFT
-========================================================= */
-
-.left{
-
+.column{
   display:flex;
-
   flex-direction:column;
+  gap:18px;
 
-  gap:16px;
-
+  min-width:0;
 }
 
-
 /* =========================================================
-   PROFILE
+   PROFILE — UPDATED TO MATCH MOCKUP
 ========================================================= */
 
 .profile-window{
-
   overflow:hidden;
-
 }
 
-
-/*
-   NEW PROFILE STAGE
-
-   Vòng tròn nằm phía sau.
-   Chủ thể nằm phía trước.
-
-   Nếu home-profile.png là PNG transparent,
-   hiệu ứng sẽ giống mockup nhất.
-*/
-
-.profile-image{
-
+.profile-stage{
   position:relative;
 
-  height:205px;
-
-  display:flex;
-
-  align-items:flex-end;
-
-  justify-content:center;
+  height:350px;
 
   overflow:hidden;
 
-  border-bottom:var(--border);
-
   background:
-    linear-gradient(
-      rgba(255,255,255,.05),
-      rgba(255,255,255,.05)
+    repeating-linear-gradient(
+      0deg,
+      rgba(21,23,47,.025) 0px,
+      rgba(21,23,47,.025) 1px,
+      transparent 1px,
+      transparent 4px
     ),
     var(--paper);
 
+  border-bottom:var(--border);
 }
 
+/* Orange circular graphic */
 
-/* VÒNG TRÒN PHÍA SAU */
-
-.profile-image::before{
-
-  content:"";
-
+.profile-circle{
   position:absolute;
 
-  width:154px;
-
-  height:154px;
-
-  left:50%;
-
-  top:50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  border-radius:50%;
-
-  background:var(--teal);
-
-  border:4px solid var(--blue);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  z-index:1;
-
-}
-
-
-/* VÒNG TRÒN TRANG TRÍ */
-
-.profile-image::after{
-
-  content:"";
-
-  position:absolute;
-
-  width:132px;
-
-  height:132px;
-
-  left:50%;
-
-  top:50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  border-radius:50%;
-
-  border:2px dashed var(--paper);
-
-  opacity:.8;
-
-  z-index:2;
-
-  pointer-events:none;
-
-}
-
-
-/*
-   CHỦ THỂ
-
-   Thu nhỏ khoảng 12%.
-   Đặt lên phía trước vòng tròn.
-*/
-
-.profile-image img{
-
-  position:relative;
-
-  z-index:3;
-
-  display:block;
-
-  width:88%;
-
+  width:190px;
   height:190px;
 
+  left:50%;
+  top:125px;
+
+  transform:translate(-50%,-50%);
+
+  border-radius:50%;
+
+  background:var(--orange);
+
+  border:5px solid var(--blue);
+
+  box-shadow:
+    6px 6px 0 var(--blue);
+
+  z-index:1;
+}
+
+/* Inner print-style circle */
+
+.profile-circle::after{
+  content:"";
+
+  position:absolute;
+
+  inset:12px;
+
+  border-radius:50%;
+
+  border:2px dashed rgba(245,236,215,.75);
+}
+
+/* Character */
+
+.profile-character{
+  position:absolute;
+
+  z-index:4;
+
+  left:50%;
+  bottom:-8px;
+
+  transform:translateX(-50%);
+
+  width:108%;
+  height:300px;
+
   object-fit:contain;
-
   object-position:center bottom;
-
-  border:0;
-
-  border-radius:0;
-
-  transform:
-    scale(.88);
-
-  transform-origin:
-    center bottom;
 
   background:transparent;
 
+  pointer-events:none;
 }
 
+/* Decorative marks */
 
-/* caption */
+.profile-mark{
+  position:absolute;
 
-.profile-caption{
+  z-index:5;
 
-  padding:
-    9px 10px;
+  color:var(--blue);
+
+  font-weight:900;
+
+  pointer-events:none;
+}
+
+.profile-mark--left{
+  left:27px;
+  top:72px;
+
+  font-size:34px;
+
+  transform:rotate(-20deg);
+}
+
+.profile-mark--right{
+  right:24px;
+  top:65px;
+
+  font-size:25px;
+
+  transform:rotate(8deg);
+}
+
+/* Heart */
+
+.profile-heart{
+  position:absolute;
+
+  z-index:5;
+
+  right:18px;
+  top:22px;
+
+  width:48px;
+  height:48px;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--paper);
+
+  border:var(--border);
+
+  box-shadow:4px 4px 0 var(--blue);
+
+  font-size:24px;
+
+  transform:rotate(2deg);
+}
+
+/* Little motion lines */
+
+.profile-lines{
+  position:absolute;
+
+  z-index:5;
+
+  left:35px;
+  top:42px;
+
+  width:40px;
+  height:50px;
+}
+
+.profile-lines span{
+  position:absolute;
+
+  width:22px;
+  height:5px;
+
+  background:var(--blue);
+
+  transform-origin:left center;
+}
+
+.profile-lines span:nth-child(1){
+  top:5px;
+  left:7px;
+  transform:rotate(-25deg);
+}
+
+.profile-lines span:nth-child(2){
+  top:23px;
+  left:0;
+  transform:rotate(0deg);
+}
+
+.profile-lines span:nth-child(3){
+  top:41px;
+  left:8px;
+  transform:rotate(25deg);
+}
+
+/* Label */
+
+.profile-label{
+  position:absolute;
+
+  z-index:8;
+
+  left:50%;
+  bottom:26px;
+
+  transform:
+    translateX(-50%)
+    rotate(-4deg);
+
+  width:205px;
+
+  padding:12px 10px;
+
+  background:var(--paper);
+
+  border:var(--border);
+
+  box-shadow:5px 5px 0 var(--blue);
 
   text-align:center;
 
-  font-size:11px;
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
 
-  font-weight:bold;
+  font-weight:900;
 
+  font-size:13px;
+
+  letter-spacing:.5px;
 }
 
+.profile-label::before{
+  content:"";
 
-.nav-list{
+  position:absolute;
 
-  padding:8px;
+  inset:4px;
 
+  border:1px dashed var(--blue);
+
+  pointer-events:none;
 }
 
+/* =========================================================
+   PROFILE NAV
+========================================================= */
 
-.nav-list a{
+.profile-nav{
+  padding:16px 12px 14px;
+}
 
+.profile-caption{
+  text-align:center;
+
+  margin-bottom:14px;
+
+  font-size:12px;
+
+  font-weight:900;
+}
+
+.profile-link{
   display:flex;
+  align-items:center;
+  gap:14px;
 
+  width:100%;
+
+  min-height:43px;
+
+  margin-bottom:6px;
+
+  padding:7px 10px;
+
+  color:var(--blue);
+
+  text-decoration:none;
+
+  font-size:15px;
+
+  font-weight:900;
+}
+
+.profile-link:hover{
+  background:var(--orange);
+}
+
+.folder{
+  position:relative;
+
+  width:28px;
+  height:21px;
+
+  flex:0 0 28px;
+
+  background:var(--yellow);
+
+  border:3px solid var(--blue);
+
+  box-shadow:2px 2px 0 var(--blue);
+}
+
+.folder::before{
+  content:"";
+
+  position:absolute;
+
+  left:2px;
+  top:-7px;
+
+  width:12px;
+  height:7px;
+
+  background:var(--yellow);
+
+  border:3px solid var(--blue);
+
+  border-bottom:0;
+}
+
+/* =========================================================
+   SYSTEM INFO
+========================================================= */
+
+.system-info{
+  padding:13px;
+
+  font-size:12px;
+
+  line-height:1.7;
+}
+
+.system-row{
+  display:flex;
+  justify-content:space-between;
+
+  border-bottom:1px dotted var(--blue);
+
+  padding:2px 0;
+}
+
+/* =========================================================
+   CASSETTE
+========================================================= */
+
+.cassette{
+  padding:14px;
+}
+
+.cassette img{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  border:var(--border);
+}
+
+.cassette-caption{
+  margin-top:9px;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  text-align:center;
+
+  font-weight:900;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-image{
+  position:relative;
+
+  padding:10px;
+
+  border-bottom:var(--border);
+}
+
+.hero-image img{
+  display:block;
+
+  width:100%;
+
+  height:auto;
+
+  border:var(--border);
+
+  background:#222;
+}
+
+.hero-quote{
+  position:absolute;
+
+  left:4%;
+  right:16%;
+
+  bottom:25px;
+
+  padding:12px 15px;
+
+  background:rgba(231,221,192,.95);
+
+  border:var(--border);
+
+  box-shadow:5px 5px 0 var(--blue);
+
+  font-size:16px;
+
+  line-height:1.5;
+}
+
+.hero-date{
+  display:block;
+
+  margin-top:7px;
+
+  text-align:right;
+
+  font-size:10px;
+}
+
+/* =========================================================
+   ARCHIVE BLOCKS
+========================================================= */
+
+.archive{
+  padding:15px;
+}
+
+.archive-heading{
+  display:flex;
   align-items:center;
 
-  gap:10px;
+  margin-bottom:13px;
 
-  min-height:36px;
+  border-bottom:var(--border);
 
-  padding:
-    6px 8px;
+  padding-bottom:7px;
+}
+
+.archive-heading h2{
+  margin:0;
+
+  flex:1;
+
+  font-size:18px;
+}
+
+.more{
+  color:var(--blue);
+
+  font-weight:900;
+
+  text-decoration:none;
+
+  font-size:12px;
+}
+
+.more:hover{
+  color:var(--orange-dark);
+}
+
+.archive-item{
+  padding:10px 0;
+
+  border-bottom:1px dashed var(--blue);
+}
+
+.archive-item:last-child{
+  border-bottom:0;
+}
+
+.archive-date{
+  font-size:10px;
+
+  margin-bottom:4px;
+
+  opacity:.75;
+}
+
+.archive-title{
+  display:block;
 
   color:var(--blue);
 
@@ -720,1092 +780,482 @@ body::before{
 
   font-size:14px;
 
-  font-weight:bold;
-
-}
-
-
-.nav-list a:hover{
-
-  background:var(--orange);
-
-}
-
-
-.nav-list a.active{
-
-  background:var(--orange);
-
-}
-
-
-/* =========================================================
-   CSS FOLDER ICON
-========================================================= */
-
-.folder-icon{
-
-  width:21px;
-
-  height:15px;
-
-  display:inline-block;
-
-  position:relative;
-
-  flex-shrink:0;
-
-  background:#e8b82e;
-
-  border:2px solid var(--blue);
-
-}
-
-
-.folder-icon::before{
-
-  content:"";
-
-  position:absolute;
-
-  left:1px;
-
-  top:-6px;
-
-  width:9px;
-
-  height:6px;
-
-  background:#e8b82e;
-
-  border:
-    2px solid var(--blue);
-
-  border-bottom:0;
-
-}
-
-
-/* =========================================================
-   SYSTEM INFO
-========================================================= */
-
-.system-window{
-
-  overflow:hidden;
-
-}
-
-
-.system-content{
-
-  padding:13px;
-
-}
-
-
-.system-line{
-
-  margin:
-    7px 0;
-
-  font-size:12px;
-
-}
-
-
-.online{
-
-  color:#168a43;
-
-  font-weight:bold;
-
-}
-
-
-/* =========================================================
-   CASSETTE IMAGE
-========================================================= */
-
-.cassette{
-
-  margin-top:12px;
-
-  padding:8px;
-
-}
-
-
-.cassette img{
-
-  display:block;
-
-  width:100%;
-
-  height:auto;
-
-  border:3px solid var(--blue);
-
-}
-
-
-.cassette-caption{
-
-  margin-top:8px;
-
-  text-align:center;
-
-  font-size:10px;
-
-  line-height:1.5;
-
-  font-weight:bold;
-
-}
-
-
-/* =========================================================
-   CENTER
-========================================================= */
-
-.center{
-
-  min-width:0;
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:16px;
-
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero-window{
-
-  overflow:hidden;
-
-}
-
-
-.hero-image{
-
-  position:relative;
-
-  padding:10px;
-
-}
-
-
-.hero-image img{
-
-  display:block;
-
-  width:100%;
-
-  height:auto;
-
-  max-height:570px;
-
-  object-fit:cover;
-
-  border:3px solid var(--blue);
-
-}
-
-
-.hero-caption{
-
-  position:absolute;
-
-  left:30px;
-
-  bottom:24px;
-
-  max-width:72%;
-
-  padding:
-    10px 14px;
-
-  background:#eee5ce;
-
-  border:3px solid var(--blue);
-
-  box-shadow:
-    4px 4px 0 var(--blue);
-
-  color:var(--blue);
-
-  font-size:15px;
+  font-weight:900;
 
   line-height:1.4;
-
 }
 
-
-.hero-date{
-
-  display:block;
-
-  margin-top:6px;
-
-  text-align:right;
-
-  font-size:9px;
-
+.archive-title:hover{
+  color:var(--orange-dark);
 }
 
-
-/* =========================================================
-   ARCHIVES
-========================================================= */
-
-.archive-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  gap:16px;
-
-}
-
-
-.archive-window{
-
-  min-width:0;
-
-}
-
-
-.archive-list{
-
-  padding:7px 11px;
-
-}
-
-
-.archive-entry{
-
-  display:grid;
-
-  grid-template-columns:
-    88px
-    minmax(0,1fr);
-
-  gap:8px;
-
-  padding:
-    7px 3px;
-
-  border-bottom:
-    1px dotted #646477;
-
-  color:var(--blue);
-
-  text-decoration:none;
-
-}
-
-
-.archive-entry:last-child{
-
-  border-bottom:0;
-
-}
-
-
-.archive-entry:hover{
-
-  background:#f1e7ca;
-
-}
-
-
-.archive-date{
-
-  font-size:10px;
-
-}
-
-
-.archive-title{
+.archive-excerpt{
+  margin-top:5px;
 
   font-size:11px;
 
-  line-height:1.4;
+  line-height:1.5;
 
+  opacity:.8;
 }
-
-
-.archive-arrow{
-
-  float:right;
-
-}
-
 
 /* =========================================================
    PHOTOGRAPHS
 ========================================================= */
 
-.photos-window{
-
-  overflow:hidden;
-
+.photos{
+  padding:15px;
 }
 
-
-.photos-grid{
-
+.photo-grid{
   display:grid;
 
   grid-template-columns:
     repeat(4,minmax(0,1fr));
 
-  gap:9px;
-
-  padding:9px;
-
+  gap:8px;
 }
-
 
 .photo-card{
+  display:block;
 
-  min-width:0;
-
-  color:var(--blue);
-
-  text-decoration:none;
-
-}
-
-
-.photo-image{
-
-  aspect-ratio:4 / 3;
+  aspect-ratio:1/1;
 
   overflow:hidden;
 
-  border:3px solid var(--blue);
+  border:var(--border);
 
+  background:#222;
 }
 
-
-.photo-image img{
+.photo-card img{
+  display:block;
 
   width:100%;
-
   height:100%;
-
-  display:block;
 
   object-fit:cover;
 
+  transition:transform .2s ease;
 }
 
-
-.photo-meta{
-
-  padding:
-    6px 2px;
-
+.photo-card:hover img{
+  transform:scale(1.04);
 }
-
-
-.photo-date{
-
-  font-size:9px;
-
-  margin-bottom:3px;
-
-}
-
-
-.photo-title{
-
-  font-size:10px;
-
-  line-height:1.3;
-
-}
-
 
 /* =========================================================
-   RIGHT
+   RIGHT COLUMN
 ========================================================= */
 
-.right{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:16px;
-
+.location{
+  padding:15px;
 }
 
+.location-pin{
+  margin-bottom:12px;
 
-/* =========================================================
-   LOCATION
-========================================================= */
+  font-weight:900;
 
-.location-window{
-
-  overflow:hidden;
-
+  font-size:13px;
 }
-
-
-.location-content{
-
-  padding:9px;
-
-}
-
-
-.location-title{
-
-  padding:
-    5px;
-
-  font-size:12px;
-
-  font-weight:bold;
-
-}
-
 
 .location-note{
+  padding:14px;
 
-  min-height:170px;
+  border:var(--border);
 
-  padding:13px;
-
-  border:3px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
-  font-size:12px;
+  background:#eee5cc;
 
   line-height:1.8;
 
+  font-size:12px;
 }
 
+.location-note p{
+  margin:0 0 16px;
+}
+
+.location-note p:last-child{
+  margin-bottom:0;
+}
 
 /* =========================================================
    PORTRAIT
 ========================================================= */
 
-.portrait-content{
-
-  padding:9px;
-
+.portrait{
+  padding:12px;
 }
 
-
-.portrait-image{
-
-  border:3px solid var(--blue);
-
-}
-
-
-.portrait-image img{
+.portrait img{
+  display:block;
 
   width:100%;
 
-  display:block;
-
   height:auto;
 
+  border:var(--border);
 }
 
-
 .portrait-caption{
-
-  padding:
-    8px 3px 2px;
+  padding-top:9px;
 
   text-align:center;
 
   font-size:11px;
 
-  font-weight:bold;
-
+  font-weight:900;
 }
 
-
 /* =========================================================
-   CLOCK
+   CLOCK / QUOTE
 ========================================================= */
 
-.clock-content{
-
+.clock-window{
   padding:14px;
 
   text-align:center;
-
 }
 
+.big-clock{
+  font-size:27px;
 
-.clock-time{
-
-  font-size:24px;
-
-  font-weight:bold;
+  font-weight:900;
 
   letter-spacing:2px;
-
 }
 
-
 .clock-date{
-
   margin-top:5px;
 
   font-size:11px;
-
 }
-
-
-/* =========================================================
-   SIDE QUOTE
-========================================================= */
 
 .side-quote{
-
   padding:15px;
 
-  border:3px solid var(--blue);
+  font-size:14px;
 
-  background:#e7ddc0;
+  line-height:1.7;
 
-  font-size:10px;
-
-  line-height:1.6;
-
-  font-weight:bold;
-
+  font-weight:900;
 }
-
 
 /* =========================================================
    MUSIC PLAYER
 ========================================================= */
 
 .music-player{
-
   position:fixed;
 
-  left:12px;
+  z-index:100;
 
-  right:12px;
-
+  left:16px;
+  right:16px;
   bottom:10px;
 
-  z-index:10000;
+  min-height:64px;
 
   display:grid;
 
   grid-template-columns:
+    300px
     auto
     minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
     auto;
 
-  gap:9px;
-
   align-items:center;
 
-  padding:
-    6px 8px;
+  gap:14px;
 
-  background:var(--paper);
+  padding:8px 12px;
 
-  border:3px solid var(--blue);
+  background:rgba(231,221,192,.97);
 
-  box-shadow:
-    5px 5px 0 var(--blue);
+  border:var(--border);
 
+  box-shadow:var(--shadow);
 }
 
+.music-now{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  min-width:0;
+}
 
 .music-icon{
+  width:40px;
+  height:40px;
 
-  width:35px;
+  display:grid;
+  place-items:center;
 
-  height:35px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
+  flex:0 0 40px;
 
   background:var(--orange);
 
-  border:3px solid var(--blue);
+  border:var(--border);
 
-  font-weight:bold;
-
+  font-size:16px;
 }
 
-
-.music-info{
-
+.music-meta{
   min-width:0;
-
 }
-
 
 .music-label{
-
   font-size:8px;
 
-  margin-bottom:2px;
+  opacity:.65;
 
+  margin-bottom:3px;
 }
-
 
 .music-title{
+  font-size:12px;
 
-  overflow:hidden;
+  font-weight:900;
 
   white-space:nowrap;
-
+  overflow:hidden;
   text-overflow:ellipsis;
-
-  font-size:11px;
-
-  font-weight:bold;
-
 }
-
 
 .music-controls{
-
   display:flex;
-
-  gap:4px;
-
+  gap:6px;
 }
 
-
 .music-button{
+  width:40px;
+  height:36px;
 
-  width:33px;
+  border:var(--border);
 
-  height:29px;
-
-  border:3px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
+  background:var(--paper);
 
   font-family:inherit;
 
-  font-weight:bold;
-
-  cursor:pointer;
-
+  font-weight:900;
 }
-
-
-.music-button:hover{
-
-  background:var(--orange);
-
-}
-
 
 .music-progress{
+  display:flex;
+  align-items:center;
+  gap:8px;
 
   min-width:0;
-
 }
-
 
 .music-progress input{
-
   width:100%;
-
-  accent-color:var(--orange);
-
 }
-
 
 .music-time{
-
-  min-width:72px;
-
-  text-align:center;
-
   font-size:9px;
 
+  white-space:nowrap;
 }
-
 
 .music-volume{
-
-  width:100px;
-
+  width:90px;
 }
-
-
-.music-volume input{
-
-  width:100%;
-
-  accent-color:var(--teal);
-
-}
-
 
 /* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-
-  max-width:1600px;
-
-  margin:16px auto 0;
-
-  padding:10px;
-
-  border:3px solid var(--blue);
-
-  background:var(--paper);
-
-  text-align:center;
-
-  font-size:10px;
-
-  font-weight:bold;
-
-}
-
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-.error{
-
-  padding:15px;
-
-  border:3px solid var(--orange);
-
-  background:#eee5ce;
-
-  color:#8b2c1e;
-
-  font-size:11px;
-
-}
-
-
-/* =========================================================
-   TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media(max-width:1200px){
 
   .layout{
-
     grid-template-columns:
-      220px
+      250px
       minmax(0,1fr)
-      250px;
+      270px;
 
+    gap:14px;
+
+    margin-left:14px;
+    margin-right:14px;
   }
 
-  .archive-entry{
+  .browser{
+    margin-left:14px;
+    margin-right:14px;
+  }
 
-    grid-template-columns:1fr;
-
-    gap:3px;
-
+  .photo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
   .music-player{
-
     grid-template-columns:
+      250px
       auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
+      minmax(100px,1fr);
   }
 
   .music-volume{
-
     display:none;
-
   }
-
-
-  /* PROFILE TABLET */
-
-  .profile-image{
-
-    height:190px;
-
-  }
-
-  .profile-image::before{
-
-    width:140px;
-    height:140px;
-
-  }
-
-  .profile-image::after{
-
-    width:120px;
-    height:120px;
-
-  }
-
-  .profile-image img{
-
-    height:178px;
-
-    transform:
-      scale(.88);
-
-  }
-
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:850px){
-
-  .page{
-
-    padding:
-      7px
-      7px
-      75px;
-
-  }
-
-  .browser-menu{
-
-    display:none;
-
-  }
-
-  .browser-address-row{
-
-    grid-template-columns:
-      31px
-      minmax(0,1fr)
-      31px;
-
-  }
-
-  .browser-address-row
-  .browser-control:nth-child(2){
-
-    display:none;
-
-  }
-
-  .browser-date{
-
-    display:none;
-
-  }
+@media(max-width:900px){
 
   .layout{
-
-    display:block;
-
+    grid-template-columns:1fr;
   }
 
-  .left{
-
-    margin-bottom:16px;
-
-  }
-
-
-  /* MOBILE PROFILE */
-
-  .profile-image{
-
-    height:230px;
-
-  }
-
-  .profile-image::before{
-
-    width:170px;
-    height:170px;
-
-  }
-
-  .profile-image::after{
-
-    width:148px;
-    height:148px;
-
-  }
-
-  .profile-image img{
-
-    width:82%;
-
-    height:220px;
-
-    transform:
-      scale(.88);
-
-  }
-
-
-  .nav-list{
-
+  .left-column,
+  .right-column{
     display:grid;
 
     grid-template-columns:
-      repeat(2,1fr);
-
-  }
-
-  .archive-grid{
-
-    grid-template-columns:1fr;
-
-  }
-
-  .photos-grid{
-
-    grid-template-columns:
       repeat(2,minmax(0,1fr));
-
   }
 
-  .right{
-
-    margin-top:16px;
-
+  .center-column{
+    order:-1;
   }
 
   .music-player{
-
-    left:5px;
-
-    right:5px;
-
-    bottom:5px;
-
     grid-template-columns:
-      auto
-      minmax(0,1fr)
-      auto;
+      1fr auto;
 
-    gap:5px;
+    left:8px;
+    right:8px;
 
+    bottom:7px;
   }
 
-  .music-progress,
-  .music-time,
-  .music-volume{
-
-    display:none;
-
+  .music-progress{
+    grid-column:1 / -1;
+    grid-row:2;
   }
-
 }
 
+@media(max-width:620px){
 
-/* =========================================================
-   SMALL
-========================================================= */
+  .browser-menu{
+    gap:14px;
 
-@media(max-width:480px){
+    font-size:11px;
 
-  .browser-subtitle{
+    overflow:hidden;
+  }
 
+  .browser-address{
+    grid-template-columns:
+      32px
+      32px
+      32px
+      minmax(0,1fr);
+
+  }
+
+  .browser-clock{
     display:none;
-
   }
 
-  .photos-grid{
-
-    grid-template-columns:1fr;
-
+  .layout{
+    margin-left:8px;
+    margin-right:8px;
   }
 
-  .hero-caption{
-
-    position:static;
-
-    max-width:none;
-
-    margin:
-      8px;
-
+  .left-column,
+  .right-column{
+    display:flex;
   }
 
-
-  .profile-image{
-
-    height:215px;
-
+  .profile-stage{
+    height:330px;
   }
 
-  .profile-image::before{
+  .profile-circle{
+    width:180px;
+    height:180px;
 
+    top:115px;
+  }
+
+  .profile-character{
+    width:110%;
+    height:290px;
+  }
+
+  .profile-label{
+    width:190px;
+
+    font-size:12px;
+  }
+
+  .hero-quote{
+    left:6%;
+    right:6%;
+    bottom:15px;
+
+    font-size:12px;
+  }
+
+  .photo-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .music-player{
+    min-height:58px;
+
+    padding:6px;
+  }
+
+  .music-now{
+    gap:7px;
+  }
+
+  .music-icon{
+    width:34px;
+    height:34px;
+    flex-basis:34px;
+  }
+
+  .music-button{
+    width:34px;
+    height:32px;
+  }
+}
+
+@media(max-width:400px){
+
+  .profile-stage{
+    height:300px;
+  }
+
+  .profile-circle{
     width:155px;
     height:155px;
-
   }
 
-  .profile-image::after{
-
-    width:135px;
-    height:135px;
-
+  .profile-character{
+    height:265px;
   }
 
-  .profile-image img{
+  .profile-label{
+    bottom:18px;
 
-    height:205px;
+    width:175px;
 
+    font-size:10px;
   }
 
+  .photo-grid{
+    grid-template-columns:1fr;
+  }
 }
-
 </style>
-
 </head>
 
-
 <body>
-
-
-<div class="page">
-
 
 <!-- =======================================================
      BROWSER
@@ -1813,744 +1263,562 @@ body::before{
 
 <header class="browser">
 
-
   <div class="browser-top">
 
+    <div class="browser-logo">QM</div>
 
-    <div class="browser-brand">
-
-      <span class="browser-brand-icon">
-        QM
-      </span>
-
+    <div class="browser-title">
       QM ARCHIVE
-
-      <span class="browser-subtitle">
+      <span style="font-size:11px;">
         // A SMALL SPACE FOR ORDINARY DAYS.
       </span>
-
     </div>
 
-
-    <div class="browser-window-buttons">
-
-      <span>—</span>
-      <span>□</span>
-      <span>×</span>
-
+    <div class="browser-controls">
+      <div class="browser-control">—</div>
+      <div class="browser-control">□</div>
+      <div class="browser-control">×</div>
     </div>
-
 
   </div>
 
-
   <div class="browser-menu">
-
     <span>File</span>
     <span>Edit</span>
     <span>View</span>
     <span>Favorites</span>
     <span>Tools</span>
     <span>Help</span>
-
   </div>
 
+  <div class="browser-address">
 
-  <div class="browser-address-row">
+    <button class="nav-button" onclick="history.back()">‹</button>
+    <button class="nav-button" onclick="history.forward()">›</button>
+    <button class="nav-button" onclick="location.reload()">↟</button>
 
-
-    <div class="browser-control">
-      &lt;
-    </div>
-
-
-    <div class="browser-control">
-      &gt;
-    </div>
-
-
-    <div class="browser-control">
-      ^
-    </div>
-
-
-    <div class="browser-address">
-
+    <div class="address">
       https://qmarchive.github.io/
-
     </div>
 
-
-    <div class="browser-date">
-
-      <span id="browserDate">
-        22 SEP 2026
-      </span>
-
-      <br>
-
-      <span id="browserTime">
-        13:31
-      </span>
-
+    <div class="browser-clock">
+      <span id="browserDate">22 SEP 2026</span><br>
+      <span id="browserTime">14:55</span>
     </div>
-
 
   </div>
-
 
 </header>
-
 
 
 <!-- =======================================================
      MAIN
 ======================================================= -->
 
-<div class="layout">
+<main class="layout">
 
 
-<!-- =====================================================
-     LEFT
-====================================================== -->
+<!-- =======================================================
+     LEFT COLUMN
+======================================================= -->
 
-<aside class="left">
+<section class="column left-column">
 
 
   <!-- PROFILE -->
 
-  <section class="window window--teal profile-window">
+  <div class="window profile-window">
 
+    <div class="window-title window--teal">
 
-    <div class="window-titlebar">
+      <div class="window-icon">P</div>
 
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          P
-        </span>
-
+      <div class="window-name">
         QUỐC MẠNH
-
       </div>
-
 
       <div class="window-buttons">
-
-        <span class="window-button">—</span>
-        <span class="window-button">□</span>
-        <span class="window-button">×</span>
-
+        <div class="window-button">—</div>
+        <div class="window-button">□</div>
+        <div class="window-button">×</div>
       </div>
-
 
     </div>
 
 
-    <div class="profile-image">
+    <div class="profile-stage">
+
+      <!-- orange circle -->
+
+      <div class="profile-circle"></div>
+
+
+      <!-- decorative graphic -->
+
+      <div class="profile-lines">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="profile-mark profile-mark--left">
+        ╱
+      </div>
+
+      <div class="profile-mark profile-mark--right">
+        ╲
+      </div>
+
+
+      <!-- heart -->
+
+      <div class="profile-heart">
+        ♥
+      </div>
+
+
+      <!-- character -->
 
       <img
+        class="profile-character"
         src="/home/home-profile.png"
         alt="Quốc Mạnh"
       >
 
-    </div>
 
+      <!-- label -->
 
-    <div class="profile-caption">
-
-      A PERSONAL ARCHIVE
-
-    </div>
-
-
-    <nav class="nav-list">
-
-
-      <a
-        href="/"
-        class="active"
-      >
-
-        <span class="folder-icon"></span>
-
-        home
-
-      </a>
-
-
-      <a href="/writings/">
-
-        <span class="folder-icon"></span>
-
-        writings
-
-      </a>
-
-
-      <a href="/photographs/">
-
-        <span class="folder-icon"></span>
-
-        photographs
-
-      </a>
-
-
-      <a href="/notes/">
-
-        <span class="folder-icon"></span>
-
-        notes
-
-      </a>
-
-
-      <a href="/#about">
-
-        <span class="folder-icon"></span>
-
-        about
-
-      </a>
-
-
-    </nav>
-
-
-  </section>
-
-
-
-  <!-- SYSTEM -->
-
-  <section class="window system-window">
-
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          S
-        </span>
-
-        SYSTEM INFO
-
+      <div class="profile-label">
+        A PERSONAL ARCHIVE
       </div>
 
+    </div>
+
+
+    <!-- navigation -->
+
+    <div class="profile-nav">
+
+      <div class="profile-caption">
+        A PERSONAL ARCHIVE
+      </div>
+
+      <a class="profile-link" href="/">
+        <span class="folder"></span>
+        <span>home</span>
+      </a>
+
+      <a class="profile-link" href="/writings/">
+        <span class="folder"></span>
+        <span>writings</span>
+      </a>
+
+      <a class="profile-link" href="/photographs/">
+        <span class="folder"></span>
+        <span>photographs</span>
+      </a>
+
+      <a class="profile-link" href="/notes/">
+        <span class="folder"></span>
+        <span>notes</span>
+      </a>
+
+      <a class="profile-link" href="/#about">
+        <span class="folder"></span>
+        <span>about</span>
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- SYSTEM INFO -->
+
+  <div class="window">
+
+    <div class="window-title">
+
+      <div class="window-icon">S</div>
+
+      <div class="window-name">
+        SYSTEM INFO
+      </div>
 
       <div class="window-buttons">
-
-        <span class="window-button">×</span>
-
+        <div class="window-button">×</div>
       </div>
-
 
     </div>
 
+    <div class="system-info">
 
-    <div class="system-content">
-
-
-      <div class="system-line">
-
-        Visitors:
-        <strong>001284</strong>
-
+      <div class="system-row">
+        <span>OS</span>
+        <strong>ORDINARY DAYS</strong>
       </div>
 
-
-      <div class="system-line online">
-
-        + Online
-
+      <div class="system-row">
+        <span>USER</span>
+        <strong>QM</strong>
       </div>
 
-
-      <div class="system-line">
-
-        Since: 21.09.2026
-
+      <div class="system-row">
+        <span>LOCATION</span>
+        <strong>HANOI</strong>
       </div>
 
-
-      <div class="cassette">
-
-
-        <img
-          src="/home/home-cassette.png"
-          alt="Life Goes On cassette"
-        >
-
-
-        <div class="cassette-caption">
-
-          SAME PEOPLE<br>
-          DIFFERENT DAYS<br>
-          // 1998 — 2026<br>
-          AND BEYOND.
-
-        </div>
-
-
+      <div class="system-row">
+        <span>STATUS</span>
+        <strong>ONLINE</strong>
       </div>
-
 
     </div>
 
-
-  </section>
-
-
-</aside>
+  </div>
 
 
+  <!-- CASSETTE -->
 
-<!-- =====================================================
-     CENTER
-====================================================== -->
+  <div class="window">
 
-<main class="center">
+    <div class="window-title window--teal">
+
+      <div class="window-icon">♪</div>
+
+      <div class="window-name">
+        LIFE GOES ON
+      </div>
+
+      <div class="window-buttons">
+        <div class="window-button">×</div>
+      </div>
+
+    </div>
+
+    <div class="cassette">
+
+      <img
+        src="/home/home-cassette.png"
+        alt="Cassette"
+      >
+
+      <div class="cassette-caption">
+        SAME PEOPLE / DIFFERENT DAYS<br>
+        // 1998 — 2026 / AND BEYOND.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     CENTER COLUMN
+======================================================= -->
+
+<section class="column center-column">
 
 
   <!-- HERO -->
 
-  <section class="window hero-window">
+  <div class="window">
 
+    <div class="window-title">
 
-    <div class="window-titlebar">
+      <div class="window-icon">W</div>
 
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          W
-        </span>
-
+      <div class="window-name">
         WELCOME.EXE
-
       </div>
-
 
       <div class="window-buttons">
-
-        <span class="window-button">—</span>
-        <span class="window-button">□</span>
-        <span class="window-button">×</span>
-
+        <div class="window-button">—</div>
+        <div class="window-button">□</div>
+        <div class="window-button">×</div>
       </div>
-
 
     </div>
 
-
     <div class="hero-image">
-
 
       <img
         src="/home/home-hero.png"
         alt="QM Archive"
       >
 
-
-      <div class="hero-caption">
+      <div class="hero-quote">
 
         “Có những ngày chẳng có gì đặc biệt,
         nhưng tôi vẫn muốn nhớ về nó.”
 
         <span class="hero-date">
-
           22.09.2026
-
         </span>
 
       </div>
 
-
     </div>
-
-
-  </section>
-
-
-
-  <!-- ARCHIVES -->
-
-  <section class="archive-grid">
-
-
-    <!-- WRITINGS -->
-
-    <div class="window archive-window">
-
-
-      <div class="window-titlebar">
-
-
-        <div class="window-title">
-
-          <span class="window-title-icon">
-            W
-          </span>
-
-          RECENTLY WRITTEN
-
-        </div>
-
-
-        <a
-          href="/writings/"
-          style="
-            color:inherit;
-            text-decoration:none;
-            white-space:nowrap;
-          "
-        >
-
-          → more
-
-        </a>
-
-
-      </div>
-
-
-      <div
-        class="archive-list"
-        id="writingList"
-      >
-
-        Loading...
-
-      </div>
-
-
-    </div>
-
-
-
-    <!-- NOTES -->
-
-    <div class="window archive-window">
-
-
-      <div class="window-titlebar">
-
-
-        <div class="window-title">
-
-          <span class="window-title-icon">
-            N
-          </span>
-
-          NOTES.TXT
-
-        </div>
-
-
-        <a
-          href="/notes/"
-          style="
-            color:inherit;
-            text-decoration:none;
-            white-space:nowrap;
-          "
-        >
-
-          → more
-
-        </a>
-
-
-      </div>
-
-
-      <div
-        class="archive-list"
-        id="noteList"
-      >
-
-        Loading...
-
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- PHOTOGRAPHS -->
-
-  <section class="window photos-window">
-
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          P
-        </span>
-
-        PHOTOGRAPHS
-
-      </div>
-
-
-      <a
-        href="/photographs/"
-        style="
-          color:inherit;
-          text-decoration:none;
-        "
-      >
-
-        → more
-
-      </a>
-
-
-    </div>
-
-
-    <div
-      class="photos-grid"
-      id="photoGrid"
-    >
-
-      Loading...
-
-    </div>
-
-
-  </section>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     RIGHT
-====================================================== -->
-
-<aside class="right">
-
-
-  <!-- LOCATION -->
-
-  <section class="window window--teal location-window">
-
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          L
-        </span>
-
-        LOCATION
-
-      </div>
-
-
-      <div class="window-buttons">
-
-        <span class="window-button">—</span>
-        <span class="window-button">□</span>
-        <span class="window-button">×</span>
-
-      </div>
-
-
-    </div>
-
-
-    <div class="location-content">
-
-
-      <div class="location-title">
-
-        [ PIN ] Hanoi, Vietnam
-
-      </div>
-
-
-      <div class="location-note">
-
-        Nhật ký của một người bình thường.<br><br>
-
-        Viết lại những câu chuyện đáng lý
-        chỉ cần bỏ qua.<br><br>
-
-        Chào Mạnh, chúng ta lại gặp nhau rồi.
-
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- PORTRAIT -->
-
-  <section class="window window--teal portrait-window">
-
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          J
-        </span>
-
-        PORTRAIT.JPG
-
-      </div>
-
-
-      <div class="window-buttons">
-
-        <span class="window-button">—</span>
-        <span class="window-button">□</span>
-        <span class="window-button">×</span>
-
-      </div>
-
-
-    </div>
-
-
-    <div class="portrait-content">
-
-
-      <div class="portrait-image">
-
-        <img
-          src="/home/home-polaroid.png"
-          alt="Hanoi, always"
-        >
-
-      </div>
-
-
-      <div class="portrait-caption">
-
-        Hanoi, always.
-
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- CLOCK -->
-
-  <section class="window window--teal clock-window">
-
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          C
-        </span>
-
-        CLOCK
-
-      </div>
-
-
-      <div class="window-buttons">
-
-        <span class="window-button">—</span>
-        <span class="window-button">×</span>
-
-      </div>
-
-
-    </div>
-
-
-    <div class="clock-content">
-
-
-      <div
-        class="clock-time"
-        id="clockTime"
-      >
-
-        00:00:00
-
-      </div>
-
-
-      <div
-        class="clock-date"
-        id="clockDate"
-      >
-
-        22.09.2026
-
-      </div>
-
-
-    </div>
-
-
-  </section>
-
-
-
-  <div class="side-quote">
-
-    SOMEWHERE BETWEEN<br>
-    A DREAM AND A DEADLINE.
 
   </div>
 
 
-</aside>
+  <!-- WRITINGS -->
+
+  <div class="window archive">
+
+    <div class="archive-heading">
+
+      <h2>RECENTLY WRITTEN</h2>
+
+      <a
+        class="more"
+        href="/writings/"
+      >
+        → more
+      </a>
+
+    </div>
+
+    <div id="writingsList">
+      Loading...
+    </div>
+
+  </div>
 
 
-</div>
+  <!-- NOTES -->
 
+  <div class="window archive">
+
+    <div class="archive-heading">
+
+      <h2>NOTES</h2>
+
+      <a
+        class="more"
+        href="/notes/"
+      >
+        → more
+      </a>
+
+    </div>
+
+    <div id="notesList">
+      Loading...
+    </div>
+
+  </div>
+
+
+  <!-- PHOTOGRAPHS -->
+
+  <div class="window photos">
+
+    <div class="archive-heading">
+
+      <h2>PHOTOGRAPHS</h2>
+
+      <a
+        class="more"
+        href="/photographs/"
+      >
+        → more
+      </a>
+
+    </div>
+
+    <div
+      class="photo-grid"
+      id="photosList"
+    >
+      Loading...
+    </div>
+
+  </div>
+
+
+  <!-- ABOUT -->
+
+  <div
+    class="window archive"
+    id="about"
+  >
+
+    <div class="archive-heading">
+
+      <h2>ABOUT</h2>
+
+    </div>
+
+    <div style="font-size:13px;line-height:1.8;">
+
+      QM Archive is a personal archive
+      of writings, photographs, notes
+      and ordinary days.
+
+    </div>
+
+  </div>
+
+</section>
 
 
 <!-- =======================================================
-     FOOTER
+     RIGHT COLUMN
 ======================================================= -->
 
-<footer class="footer">
+<section class="column right-column">
 
-  BEST VIEWED AT NIGHT.
-  //
-  QM ARCHIVE
-  //
-  1998 — 2026
 
-</footer>
+  <!-- LOCATION -->
 
+  <div class="window window--teal">
+
+    <div class="window-title">
+
+      <div class="window-icon">L</div>
+
+      <div class="window-name">
+        LOCATION
+      </div>
+
+      <div class="window-buttons">
+        <div class="window-button">—</div>
+        <div class="window-button">□</div>
+        <div class="window-button">×</div>
+      </div>
+
+    </div>
+
+    <div class="location">
+
+      <div class="location-pin">
+        [ PIN ] Hanoi, Vietnam
+      </div>
+
+      <div class="location-note">
+
+        <p>
+          Nhật ký của một người bình thường.
+        </p>
+
+        <p>
+          Viết lại những câu chuyện
+          đáng lẽ chỉ cần bỏ qua.
+        </p>
+
+        <p>
+          Chào Mạnh, chúng ta lại
+          gặp nhau rồi.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- PORTRAIT -->
+
+  <div class="window window--teal">
+
+    <div class="window-title">
+
+      <div class="window-icon">J</div>
+
+      <div class="window-name">
+        PORTRAIT.JPG
+      </div>
+
+      <div class="window-buttons">
+        <div class="window-button">—</div>
+        <div class="window-button">□</div>
+        <div class="window-button">×</div>
+      </div>
+
+    </div>
+
+    <div class="portrait">
+
+      <img
+        src="/home/home-polaroid.png"
+        alt="Portrait"
+      >
+
+      <div class="portrait-caption">
+        Hanoi, always.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CLOCK -->
+
+  <div class="window">
+
+    <div class="window-title">
+
+      <div class="window-icon">T</div>
+
+      <div class="window-name">
+        TIME.EXE
+      </div>
+
+    </div>
+
+    <div class="clock-window">
+
+      <div
+        class="big-clock"
+        id="bigClock"
+      >
+        14:55
+      </div>
+
+      <div
+        class="clock-date"
+        id="bigDate"
+      >
+        22 September 2026
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- QUOTE -->
+
+  <div class="window">
+
+    <div class="window-title window--teal">
+
+      <div class="window-icon">Q</div>
+
+      <div class="window-name">
+        RANDOM.TXT
+      </div>
+
+    </div>
+
+    <div class="side-quote">
+
+      “Maybe ordinary days
+      are worth keeping.”
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
 
 
 <!-- =======================================================
@@ -2559,77 +1827,61 @@ body::before{
 
 <div class="music-player">
 
+  <div class="music-now">
 
-  <div class="music-icon">
-
-    ♪
-
-  </div>
-
-
-  <div class="music-info">
-
-
-    <div class="music-label">
-
-      NOW PLAYING
-
+    <div class="music-icon">
+      ♪
     </div>
 
+    <div class="music-meta">
 
-    <div
-      class="music-title"
-      id="musicTitle"
-    >
+      <div class="music-label">
+        NOW PLAYING
+      </div>
 
-      QM Archive — Theme
+      <div class="music-title">
+        QM Archive — Theme
+      </div>
 
     </div>
-
 
   </div>
 
 
   <div class="music-controls">
 
-
     <button
       class="music-button"
-      id="prevButton"
-      type="button"
+      id="prevBtn"
     >
-
       |◀
-
     </button>
-
 
     <button
       class="music-button"
-      id="playButton"
-      type="button"
+      id="playBtn"
     >
-
       ▶
-
     </button>
-
 
     <button
       class="music-button"
-      id="nextButton"
-      type="button"
+      id="nextBtn"
     >
-
       ▶|
-
     </button>
-
 
   </div>
 
 
   <div class="music-progress">
+
+    <span
+      class="music-time"
+      id="currentTime"
+    >
+      00:00
+    </span>
 
     <input
       id="progress"
@@ -2637,82 +1889,99 @@ body::before{
       min="0"
       max="100"
       value="0"
-      step="0.1"
     >
+
+    <span
+      class="music-time"
+      id="duration"
+    >
+      00:00
+    </span>
 
   </div>
 
 
-  <div
-    class="music-time"
-    id="musicTime"
+  <input
+    class="music-volume"
+    id="volume"
+    type="range"
+    min="0"
+    max="1"
+    step="0.01"
+    value="0.7"
   >
-
-    00:00 / 00:00
-
-  </div>
-
-
-  <div class="music-volume">
-
-    <input
-      id="volume"
-      type="range"
-      min="0"
-      max="1"
-      value=".7"
-      step=".01"
-    >
-
-  </div>
-
 
 </div>
 
 
-
 <audio
   id="audio"
+  src="/music/qm-archive.mp3"
   preload="metadata"
 ></audio>
-
 
 
 <script>
 
 /* =========================================================
-   CONFIG
+   CLOCK
 ========================================================= */
 
+function updateClock(){
 
-/* MUSIC */
+  const now = new Date();
 
-const MUSIC_TRACKS = [
+  const time = now.toLocaleTimeString(
+    "en-GB",
+    {
+      hour:"2-digit",
+      minute:"2-digit",
+      hour12:false
+    }
+  );
 
-  {
-    title:"QM Archive — Theme",
-    src:"/music/qm-archive.mp3"
-  }
+  const date = now.toLocaleDateString(
+    "en-GB",
+    {
+      day:"2-digit",
+      month:"short",
+      year:"numeric"
+    }
+  ).toUpperCase();
 
-];
+  const longDate = now.toLocaleDateString(
+    "en-GB",
+    {
+      day:"2-digit",
+      month:"long",
+      year:"numeric"
+    }
+  );
+
+  document.getElementById("browserTime").textContent = time;
+  document.getElementById("browserDate").textContent = date;
+
+  document.getElementById("bigClock").textContent = time;
+  document.getElementById("bigDate").textContent = longDate;
+}
+
+updateClock();
+
+setInterval(updateClock,1000);
 
 
-/* CONTENT */
+/* =========================================================
+   JSON
+========================================================= */
 
 const WRITINGS_URL =
-  "/writings/content.json?v=" +
-  Date.now();
-
+  "/writings/content.json?v=" + Date.now();
 
 const NOTES_URL =
-  "/notes/content.json?v=" +
-  Date.now();
-
+  "/notes/content.json?v=" + Date.now();
 
 const PHOTOGRAPHS_URL =
-  "/photographs/content.json?v=" +
-  Date.now();
-
+  "/photographs/content.json?v=" + Date.now();
 
 
 /* =========================================================
@@ -2722,238 +1991,179 @@ const PHOTOGRAPHS_URL =
 function escapeHTML(value){
 
   return String(value ?? "")
-
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
-
 }
 
 
-function slugify(text){
+function renderArchiveItem(item){
 
-  return String(text || "")
+  const date =
+    escapeHTML(item.date || "");
 
-    .toLowerCase()
+  const title =
+    escapeHTML(item.title || "Untitled");
 
-    .normalize("NFD")
+  const excerpt =
+    escapeHTML(item.excerpt || "");
 
-    .replace(/[\u0300-\u036f]/g,"")
+  const slug =
+    encodeURIComponent(item.slug || "");
 
-    .replace(/đ/g,"d")
+  return `
+    <article class="archive-item">
 
-    .replace(/[^a-z0-9]+/g,"-")
+      <div class="archive-date">
+        ${date}
+      </div>
 
-    .replace(/^-+|-+$/g,"");
+      <a
+        class="archive-title"
+        href="/${item._section}/?slug=${slug}"
+      >
+        ${title}
+      </a>
 
-}
-
-
-async function loadJSON(url){
-
-  const response =
-    await fetch(
-      url,
-      {
-        cache:"no-store"
+      ${
+        excerpt
+        ?
+        `<div class="archive-excerpt">
+          ${excerpt}
+        </div>`
+        :
+        ""
       }
-    );
 
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load " +
-      url +
-      " (" +
-      response.status +
-      ")"
-    );
-
-  }
-
-
-  return await response.json();
-
+    </article>
+  `;
 }
-
 
 
 /* =========================================================
    WRITINGS
 ========================================================= */
 
-function renderWritings(items){
+fetch(WRITINGS_URL)
 
-  const container =
-    document.getElementById(
-      "writingList"
-    );
+  .then(response => {
 
+    if(!response.ok){
+      throw new Error("Unable to load writings.");
+    }
 
-  if(!items.length){
+    return response.json();
 
-    container.innerHTML =
-      "<div class='error'>No writings yet.</div>";
+  })
 
-    return;
+  .then(data => {
 
-  }
+    const items =
+      Array.isArray(data.writings)
+      ? data.writings
+      : [];
 
+    const latest =
+      items.slice(0,3)
+        .map(item => ({
+          ...item,
+          _section:"writings"
+        }));
 
-  container.innerHTML =
-    items
-      .slice(0,6)
-      .map(item => {
+    document.getElementById("writingsList").innerHTML =
+      latest.length
+      ? latest.map(renderArchiveItem).join("")
+      : "<div class='archive-excerpt'>No writings yet.</div>";
 
-        const slug =
-          item.slug ||
-          slugify(item.title);
+  })
 
+  .catch(error => {
 
-        return `
+    console.error(error);
 
-          <a
-            class="archive-entry"
-            href="/writings/?slug=${encodeURIComponent(slug)}"
-          >
+    document.getElementById("writingsList").innerHTML =
+      "<div class='archive-excerpt'>Unable to load writings.</div>";
 
-            <div class="archive-date">
-
-              ${escapeHTML(
-                item.date || ""
-              )}
-
-            </div>
-
-
-            <div class="archive-title">
-
-              <span class="archive-arrow">
-                →
-              </span>
-
-              ${escapeHTML(
-                item.title || ""
-              )}
-
-            </div>
-
-          </a>
-
-        `;
-
-      })
-      .join("");
-
-}
-
+  });
 
 
 /* =========================================================
    NOTES
 ========================================================= */
 
-function renderNotes(items){
+fetch(NOTES_URL)
 
-  const container =
-    document.getElementById(
-      "noteList"
-    );
+  .then(response => {
 
+    if(!response.ok){
+      throw new Error("Unable to load notes.");
+    }
 
-  if(!items.length){
+    return response.json();
 
-    container.innerHTML =
-      "<div class='error'>No notes yet.</div>";
+  })
 
-    return;
+  .then(data => {
 
-  }
+    const items =
+      Array.isArray(data.notes)
+      ? data.notes
+      : [];
 
+    const latest =
+      items.slice(0,3)
+        .map(item => ({
+          ...item,
+          _section:"notes"
+        }));
 
-  container.innerHTML =
-    items
-      .slice(0,6)
-      .map(item => {
+    document.getElementById("notesList").innerHTML =
+      latest.length
+      ? latest.map(renderArchiveItem).join("")
+      : "<div class='archive-excerpt'>No notes yet.</div>";
 
-        const slug =
-          item.slug ||
-          slugify(item.title);
+  })
 
+  .catch(error => {
 
-        return `
+    console.error(error);
 
-          <a
-            class="archive-entry"
-            href="/notes/?slug=${encodeURIComponent(slug)}"
-          >
+    document.getElementById("notesList").innerHTML =
+      "<div class='archive-excerpt'>Unable to load notes.</div>";
 
-            <div class="archive-date">
-
-              ${escapeHTML(
-                item.date || ""
-              )}
-
-            </div>
-
-
-            <div class="archive-title">
-
-              <span class="archive-arrow">
-                →
-              </span>
-
-              ${escapeHTML(
-                item.title || ""
-              )}
-
-            </div>
-
-          </a>
-
-        `;
-
-      })
-      .join("");
-
-}
-
+  });
 
 
 /* =========================================================
    PHOTOGRAPHS
 ========================================================= */
 
-function renderPhotographs(items){
+fetch(PHOTOGRAPHS_URL)
 
-  const container =
-    document.getElementById(
-      "photoGrid"
-    );
+  .then(response => {
 
+    if(!response.ok){
+      throw new Error("Unable to load photographs.");
+    }
 
-  if(!items.length){
+    return response.json();
 
-    container.innerHTML =
-      "<div class='error'>No photographs yet.</div>";
+  })
 
-    return;
+  .then(data => {
 
-  }
+    const items =
+      Array.isArray(data.photographs)
+      ? data.photographs
+      : [];
 
+    const latest =
+      items.slice(0,8);
 
-  container.innerHTML =
-    items
-      .slice(0,4)
-      .map(item => {
-
-        const slug =
-          item.slug ||
-          slugify(item.title);
-
+    const html =
+      latest.map(item => {
 
         const image =
           item.image ||
@@ -2961,360 +2171,115 @@ function renderPhotographs(items){
           item.thumbnail ||
           "";
 
+        const slug =
+          encodeURIComponent(item.slug || "");
+
+        const alt =
+          escapeHTML(
+            item.title || "Photograph"
+          );
 
         return `
-
           <a
             class="photo-card"
-            href="/photographs/?slug=${encodeURIComponent(slug)}"
+            href="/photographs/?slug=${slug}"
           >
-
-            <div class="photo-image">
-
-              <img
-                src="${escapeHTML(image)}"
-                alt="${escapeHTML(item.title || "")}"
-                loading="lazy"
-              >
-
-            </div>
-
-
-            <div class="photo-meta">
-
-              <div class="photo-date">
-
-                ${escapeHTML(
-                  item.date || ""
-                )}
-
-              </div>
-
-
-              <div class="photo-title">
-
-                ${escapeHTML(
-                  item.title || ""
-                )}
-
-              </div>
-
-            </div>
-
+            <img
+              src="${image}"
+              alt="${alt}"
+              loading="lazy"
+            >
           </a>
-
         `;
 
-      })
-      .join("");
+      }).join("");
 
-}
+    document.getElementById("photosList").innerHTML =
+      html ||
+      "<div class='archive-excerpt'>No photographs yet.</div>";
 
+  })
 
+  .catch(error => {
 
-/* =========================================================
-   CLOCK
-========================================================= */
+    console.error(error);
 
-function updateClock(){
+    document.getElementById("photosList").innerHTML =
+      "<div class='archive-excerpt'>Unable to load photographs.</div>";
 
-  const now =
-    new Date();
-
-
-  const time =
-    String(
-      now.getHours()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getMinutes()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getSeconds()
-    ).padStart(2,"0");
-
-
-  const date =
-    String(
-      now.getDate()
-    ).padStart(2,"0") +
-
-    "." +
-
-    String(
-      now.getMonth()+1
-    ).padStart(2,"0") +
-
-    "." +
-
-    now.getFullYear();
-
-
-  const clockTime =
-    document.getElementById(
-      "clockTime"
-    );
-
-
-  const clockDate =
-    document.getElementById(
-      "clockDate"
-    );
-
-
-  const browserTime =
-    document.getElementById(
-      "browserTime"
-    );
-
-
-  const browserDate =
-    document.getElementById(
-      "browserDate"
-    );
-
-
-  if(clockTime)
-    clockTime.textContent = time;
-
-
-  if(clockDate)
-    clockDate.textContent = date;
-
-
-  if(browserTime)
-    browserTime.textContent =
-      time.slice(0,5);
-
-
-  if(browserDate)
-    browserDate.textContent =
-      now
-        .toLocaleDateString(
-          "en-GB",
-          {
-            day:"2-digit",
-            month:"short",
-            year:"numeric"
-          }
-        )
-        .toUpperCase();
-
-}
-
+  });
 
 
 /* =========================================================
-   MUSIC
+   MUSIC PLAYER
 ========================================================= */
 
 const audio =
-  document.getElementById(
-    "audio"
-  );
+  document.getElementById("audio");
 
-
-const playButton =
-  document.getElementById(
-    "playButton"
-  );
-
-
-const prevButton =
-  document.getElementById(
-    "prevButton"
-  );
-
-
-const nextButton =
-  document.getElementById(
-    "nextButton"
-  );
-
+const playBtn =
+  document.getElementById("playBtn");
 
 const progress =
-  document.getElementById(
-    "progress"
-  );
-
+  document.getElementById("progress");
 
 const volume =
-  document.getElementById(
-    "volume"
-  );
+  document.getElementById("volume");
 
+const currentTime =
+  document.getElementById("currentTime");
 
-const musicTitle =
-  document.getElementById(
-    "musicTitle"
-  );
-
-
-const musicTime =
-  document.getElementById(
-    "musicTime"
-  );
-
-
-let currentTrack = 0;
+const duration =
+  document.getElementById("duration");
 
 
 function formatTime(seconds){
 
-  if(!Number.isFinite(seconds))
+  if(!Number.isFinite(seconds)){
     return "00:00";
-
+  }
 
   const minutes =
-    Math.floor(
-      seconds / 60
-    );
-
+    Math.floor(seconds / 60);
 
   const secs =
-    Math.floor(
-      seconds % 60
-    );
+    Math.floor(seconds % 60);
 
-
-  return (
-    String(minutes).padStart(2,"0") +
-    ":" +
-    String(secs).padStart(2,"0")
-  );
-
+  return String(minutes).padStart(2,"0")
+    + ":"
+    + String(secs).padStart(2,"0");
 }
 
 
-function loadTrack(
-  index,
-  autoplay=false
-){
+playBtn.addEventListener("click",()=>{
 
-  if(!MUSIC_TRACKS.length)
-    return;
-
-
-  currentTrack =
-    (index + MUSIC_TRACKS.length) %
-    MUSIC_TRACKS.length;
-
-
-  const track =
-    MUSIC_TRACKS[currentTrack];
-
-
-  audio.src =
-    track.src;
-
-
-  musicTitle.textContent =
-    track.title;
-
-
-  progress.value = 0;
-
-
-  if(autoplay){
+  if(audio.paused){
 
     audio.play()
-      .then(() => {
+      .then(()=>{
 
-        playButton.textContent =
-          "❚❚";
+        playBtn.textContent = "❚❚";
 
       })
-      .catch(() => {
-
-        playButton.textContent =
-          "▶";
-
-      });
+      .catch(()=>{});
 
   }else{
 
-    playButton.textContent =
-      "▶";
+    audio.pause();
+
+    playBtn.textContent = "▶";
 
   }
 
-}
-
-
-playButton.addEventListener(
-  "click",
-  () => {
-
-    if(audio.paused){
-
-      audio.play()
-        .then(() => {
-
-          playButton.textContent =
-            "❚❚";
-
-        })
-        .catch(() => {
-
-          playButton.textContent =
-            "▶";
-
-        });
-
-    }else{
-
-      audio.pause();
-
-      playButton.textContent =
-        "▶";
-
-    }
-
-  }
-);
-
-
-prevButton.addEventListener(
-  "click",
-  () => {
-
-    loadTrack(
-      currentTrack - 1,
-      true
-    );
-
-  }
-);
-
-
-nextButton.addEventListener(
-  "click",
-  () => {
-
-    loadTrack(
-      currentTrack + 1,
-      true
-    );
-
-  }
-);
+});
 
 
 audio.addEventListener(
   "loadedmetadata",
-  () => {
+  ()=>{
 
-    musicTime.textContent =
-      "00:00 / " +
-      formatTime(
-        audio.duration
-      );
+    duration.textContent =
+      formatTime(audio.duration);
 
   }
 );
@@ -3322,27 +2287,17 @@ audio.addEventListener(
 
 audio.addEventListener(
   "timeupdate",
-  () => {
+  ()=>{
+
+    currentTime.textContent =
+      formatTime(audio.currentTime);
 
     if(audio.duration){
 
       progress.value =
-        (
-          audio.currentTime /
-          audio.duration
-        ) * 100;
+        (audio.currentTime / audio.duration) * 100;
 
     }
-
-
-    musicTime.textContent =
-      formatTime(
-        audio.currentTime
-      ) +
-      " / " +
-      formatTime(
-        audio.duration
-      );
 
   }
 );
@@ -3350,16 +2305,12 @@ audio.addEventListener(
 
 progress.addEventListener(
   "input",
-  () => {
+  ()=>{
 
     if(audio.duration){
 
       audio.currentTime =
-        (
-          Number(progress.value) /
-          100
-        ) *
-        audio.duration;
+        (progress.value / 100) * audio.duration;
 
     }
 
@@ -3369,161 +2320,52 @@ progress.addEventListener(
 
 volume.addEventListener(
   "input",
-  () => {
+  ()=>{
 
     audio.volume =
-      Number(
-        volume.value
-      );
+      Number(volume.value);
 
   }
 );
+
+
+document.getElementById("prevBtn")
+  .addEventListener("click",()=>{
+
+    audio.currentTime = 0;
+
+  });
+
+
+document.getElementById("nextBtn")
+  .addEventListener("click",()=>{
+
+    audio.currentTime = 0;
+
+    if(!audio.paused){
+
+      audio.play()
+        .catch(()=>{});
+
+    }
+
+  });
 
 
 audio.addEventListener(
   "ended",
-  () => {
+  ()=>{
 
-    loadTrack(
-      currentTrack + 1,
-      true
-    );
+    playBtn.textContent = "▶";
 
-  }
-);
+    progress.value = 0;
 
-
-audio.addEventListener(
-  "play",
-  () => {
-
-    playButton.textContent =
-      "❚❚";
+    currentTime.textContent = "00:00";
 
   }
 );
-
-
-audio.addEventListener(
-  "pause",
-  () => {
-
-    playButton.textContent =
-      "▶";
-
-  }
-);
-
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
-async function init(){
-
-  updateClock();
-
-
-  setInterval(
-    updateClock,
-    1000
-  );
-
-
-  audio.volume =
-    Number(
-      volume.value
-    );
-
-
-  loadTrack(
-    0,
-    false
-  );
-
-
-  try{
-
-    const [
-      writingsData,
-      notesData,
-      photographsData
-    ] = await Promise.all([
-
-      loadJSON(
-        WRITINGS_URL
-      ),
-
-      loadJSON(
-        NOTES_URL
-      ),
-
-      loadJSON(
-        PHOTOGRAPHS_URL
-      )
-
-    ]);
-
-
-    renderWritings(
-      Array.isArray(
-        writingsData.writings
-      )
-        ? writingsData.writings
-        : []
-    );
-
-
-    renderNotes(
-      Array.isArray(
-        notesData.notes
-      )
-        ? notesData.notes
-        : []
-    );
-
-
-    renderPhotographs(
-      Array.isArray(
-        photographsData.photographs
-      )
-        ? photographsData.photographs
-        : []
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    document.getElementById(
-      "writingList"
-    ).innerHTML =
-      "<div class='error'>Writings could not be loaded.</div>";
-
-
-    document.getElementById(
-      "noteList"
-    ).innerHTML =
-      "<div class='error'>Notes could not be loaded.</div>";
-
-
-    document.getElementById(
-      "photoGrid"
-    ).innerHTML =
-      "<div class='error'>Photographs could not be loaded.</div>";
-
-  }
-
-}
-
-
-init();
 
 </script>
-
 
 </body>
 </html>
