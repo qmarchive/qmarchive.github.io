@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Writings — QUỐC MẠNH</title>
 
 <style>
+
 :root{
   --cream:#d8cfb5;
   --paper:#e7ddc0;
@@ -60,6 +63,7 @@ a{
   text-decoration:none;
 }
 
+
 /* =========================
    PAGE
 ========================= */
@@ -68,6 +72,7 @@ a{
   width:min(1600px, calc(100% - 28px));
   margin:14px auto 30px;
 }
+
 
 /* =========================
    BROWSER BAR
@@ -137,6 +142,7 @@ a{
   white-space:nowrap;
 }
 
+
 /* =========================
    LAYOUT
 ========================= */
@@ -147,6 +153,7 @@ a{
   gap:18px;
   align-items:start;
 }
+
 
 /* =========================
    PANELS
@@ -171,6 +178,7 @@ a{
 .panel-body{
   padding:12px;
 }
+
 
 /* =========================
    LEFT / SYSTEM INFO
@@ -252,6 +260,7 @@ a{
   border-color:var(--blue);
 }
 
+
 /* =========================
    WRITINGS
 ========================= */
@@ -291,6 +300,7 @@ a{
   padding:18px;
 }
 
+
 /* =========================
    SEARCH
 ========================= */
@@ -323,6 +333,7 @@ a{
 .search input:focus{
   border-color:var(--orange);
 }
+
 
 /* =========================
    ARCHIVE
@@ -382,6 +393,7 @@ a{
   font-family:monospace;
   font-size:12px;
 }
+
 
 /* =========================
    ARTICLE
@@ -466,6 +478,7 @@ a{
   background:var(--blue);
 }
 
+
 /* =========================
    FOOTER
 ========================= */
@@ -480,39 +493,196 @@ a{
   line-height:1.5;
 }
 
-/* =========================
-   MUSIC
-========================= */
 
-.music{
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+.music-player{
+
   position:fixed;
-  right:14px;
-  bottom:14px;
-  z-index:5000;
-  width:250px;
-  border:3px solid var(--blue);
+
+  width:min(940px, calc(100% - 28px));
+
+  left:50%;
+
+  bottom:10px;
+
+  transform:translateX(-50%);
+
+  z-index:10000;
+
+  display:grid;
+
+  grid-template-columns:
+    auto
+    minmax(150px,1fr)
+    auto
+    minmax(150px,1.5fr)
+    auto
+    auto;
+
+  gap:9px;
+
+  align-items:center;
+
+  padding:6px 8px;
+
   background:var(--paper);
+
+  border:3px solid var(--blue);
+
   box-shadow:5px 5px 0 var(--blue);
-  padding:7px;
+
+}
+
+.music-icon{
+
+  width:35px;
+  height:35px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--orange);
+
+  border:3px solid var(--blue);
+
+  font-weight:bold;
+
+}
+
+.music-info{
+  min-width:0;
 }
 
 .music-label{
-  font-family:monospace;
-  font-size:10px;
-  margin-bottom:4px;
-  font-weight:bold;
+
+  font-size:8px;
+
+  margin-bottom:2px;
+
 }
 
-.music audio{
-  width:100%;
-  height:30px;
+.music-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+  font-weight:bold;
+
 }
+
+.music-artist{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  margin-top:1px;
+
+  color:var(--teal-dark);
+
+  font-size:9px;
+
+  font-weight:bold;
+
+}
+
+.music-controls{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+.music-button{
+
+  width:33px;
+
+  height:29px;
+
+  border:3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+.music-button:hover{
+  background:var(--orange);
+}
+
+.music-progress{
+  min-width:0;
+}
+
+.music-progress input{
+  width:100%;
+  accent-color:var(--orange);
+}
+
+.music-time{
+
+  min-width:72px;
+
+  text-align:center;
+
+  font-size:9px;
+
+}
+
+.music-volume{
+  width:100px;
+}
+
+.music-volume input{
+  width:100%;
+  accent-color:var(--teal);
+}
+
 
 /* =========================
    RESPONSIVE
 ========================= */
 
+@media(max-width:1200px){
+
+  .music-player{
+
+    grid-template-columns:
+      auto
+      minmax(120px,1fr)
+      auto
+      minmax(120px,1fr)
+      auto;
+
+  }
+
+  .music-volume{
+    display:none;
+  }
+
+}
+
 @media(max-width:900px){
+
   .layout{
     grid-template-columns:1fr;
   }
@@ -524,9 +694,40 @@ a{
   .archive{
     grid-template-columns:1fr;
   }
+
+}
+
+@media(max-width:850px){
+
+  .music-player{
+
+    width:calc(100% - 10px);
+
+    left:50%;
+
+    bottom:5px;
+
+    transform:translateX(-50%);
+
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
+
+    gap:5px;
+
+  }
+
+  .music-progress,
+  .music-time,
+  .music-volume{
+    display:none;
+  }
+
 }
 
 @media(max-width:600px){
+
   .page{
     width:calc(100% - 16px);
     margin:8px auto 90px;
@@ -548,24 +749,26 @@ a{
     font-size:24px;
   }
 
-  .music{
-    left:8px;
-    right:8px;
-    bottom:8px;
-    width:auto;
-  }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <div class="page">
 
-  <!-- BROWSER -->
+
+  <!-- =====================================================
+       BROWSER
+  ====================================================== -->
+
   <div class="browser">
 
     <div class="browser-top">
+
       <div class="browser-dots">
         <span></span>
         <span></span>
@@ -575,65 +778,132 @@ a{
       <div class="browser-title">
         QM ARCHIVE / WRITINGS
       </div>
+
     </div>
 
+
     <div class="browser-address">
-      <span class="address-label">Address</span>
+
+      <span class="address-label">
+        Address
+      </span>
+
       <div class="address">
         https://qmarchive.github.io/writings/
       </div>
+
     </div>
 
   </div>
 
 
-  <!-- MAIN -->
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
   <div class="layout">
 
-    <!-- LEFT -->
+
+    <!-- ===================================================
+         LEFT
+    ==================================================== -->
+
     <aside>
 
       <div class="panel system-info">
+
 
         <div class="panel-title">
           System Info
         </div>
 
+
         <div class="panel-body">
 
-          <div class="system-line">
-            <span>System</span>
-            <strong>Edgerunner.2046</strong>
-          </div>
 
           <div class="system-line">
-            <span>Status</span>
-            <strong class="online">+ Online</strong>
+
+            <span>
+              System
+            </span>
+
+            <strong>
+              Edgerunner.2046
+            </strong>
+
           </div>
 
+
           <div class="system-line">
-            <span>Since</span>
-            <strong>21.09.2026</strong>
+
+            <span>
+              Status
+            </span>
+
+            <strong class="online">
+              + Online
+            </strong>
+
           </div>
+
+
+          <div class="system-line">
+
+            <span>
+              Since
+            </span>
+
+            <strong>
+              21.09.2026
+            </strong>
+
+          </div>
+
 
           <div class="nav">
-            <a href="/">Home</a>
-            <a href="/writings/" class="active">Writings</a>
-            <a href="/photographs/">Photographs</a>
-            <a href="/notes/">Notes</a>
+
+            <a href="/">
+              Home
+            </a>
+
+            <a
+              href="/writings/"
+              class="active"
+            >
+              Writings
+            </a>
+
+            <a href="/photographs/">
+              Photographs
+            </a>
+
+            <a href="/notes/">
+              Notes
+            </a>
+
           </div>
 
+
           <div class="cassette">
+
             <img
               src="/home/home-cassette.gif"
               alt="Cassette"
             >
 
             <div class="cassette-caption">
+
               Không sao đâu, không sao đâu mà //
-              1998 - <span id="cassetteYear">2026</span>
+              1998 -
+              <span id="cassetteYear">
+                2026
+              </span>
+
             </div>
+
           </div>
+
 
         </div>
 
@@ -642,22 +912,41 @@ a{
     </aside>
 
 
-    <!-- CENTER -->
+
+    <!-- ===================================================
+         CENTER
+    ==================================================== -->
+
     <main class="writings">
 
+
       <div class="section-head">
-        <h1>WRITINGS</h1>
-        <p>Hà Nội đầy nắng và gió. Lão Hạc nhớ chó anh thì nhớ em :&gt;</p>
+
+        <h1>
+          WRITINGS
+        </h1>
+
+        <p>
+          Hà Nội đầy nắng và gió. Lão Hạc nhớ chó anh thì nhớ em :&gt;
+        </p>
+
       </div>
+
 
 
       <div class="content-panel">
 
+
         <div class="content-inner">
 
+
           <!-- SEARCH -->
+
           <div class="search">
-            <span class="search-icon">⌕</span>
+
+            <span class="search-icon">
+              ⌕
+            </span>
 
             <input
               id="searchInput"
@@ -665,48 +954,90 @@ a{
               placeholder="Search by title..."
               autocomplete="off"
             >
+
           </div>
 
 
+
           <!-- ARCHIVE -->
-          <div id="archive" class="archive"></div>
+
+          <div
+            id="archive"
+            class="archive"
+          ></div>
+
 
 
           <!-- ARTICLE -->
-          <article id="article" style="display:none;">
 
-            <div id="articleMeta" class="article-meta"></div>
+          <article
+            id="article"
+            style="display:none;"
+          >
 
-            <h1 id="articleTitle" class="article-title"></h1>
+            <div
+              id="articleMeta"
+              class="article-meta"
+            ></div>
 
-            <div id="articleBody" class="article-body"></div>
 
-            <a href="/writings/" class="back">
+            <h1
+              id="articleTitle"
+              class="article-title"
+            ></h1>
+
+
+            <div
+              id="articleBody"
+              class="article-body"
+            ></div>
+
+
+            <a
+              href="/writings/"
+              class="back"
+            >
               ← Back to Writings
             </a>
 
           </article>
+
 
         </div>
 
       </div>
 
 
+
+      <!-- =================================================
+           FOOTER
+      ================================================== -->
+
       <footer class="footer">
+
         <div>
           I don’t have a favorite place, I have my favorite people.
         </div>
+
         <div>
           And whenever i’m with my favorite people,
         </div>
+
         <div>
           it becomes my favorite place.
         </div>
 
+
         <div style="margin-top:8px;">
-          © <span id="year"></span> QUỐC MẠNH
+
+          ©
+          <span id="year"></span>
+          QUỐC MẠNH
+
         </div>
+
       </footer>
+
 
     </main>
 
@@ -715,230 +1046,536 @@ a{
 </div>
 
 
-<!-- MUSIC -->
-<div class="music">
 
-  <div class="music-label">
-    QM ARCHIVE — MUSIC
+<!-- =====================================================
+     MUSIC PLAYER
+====================================================== -->
+
+<div class="music-player">
+
+
+  <div class="music-icon">
+    ♪
   </div>
 
-  <audio
-    controls
-    preload="none"
-    src="/music/qm-archive.mp3">
-  </audio>
+
+  <div class="music-info">
+
+    <div class="music-label">
+      NOW PLAYING
+    </div>
+
+
+    <div
+      class="music-title"
+      id="musicTitle"
+    >
+      Between the Takes
+    </div>
+
+
+    <div
+      class="music-artist"
+      id="musicArtist"
+    >
+      Orient.bakureever
+    </div>
+
+  </div>
+
+
+  <div class="music-controls">
+
+
+    <button
+      class="music-button"
+      id="prevButton"
+      type="button"
+    >
+      |◀
+    </button>
+
+
+    <button
+      class="music-button"
+      id="playButton"
+      type="button"
+    >
+      ▶
+    </button>
+
+
+    <button
+      class="music-button"
+      id="nextButton"
+      type="button"
+    >
+      ▶|
+    </button>
+
+
+  </div>
+
+
+  <div class="music-progress">
+
+    <input
+      id="progress"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      step="0.1"
+    >
+
+  </div>
+
+
+  <div
+    class="music-time"
+    id="musicTime"
+  >
+    00:00 / 00:00
+  </div>
+
+
+  <div class="music-volume">
+
+    <input
+      id="volume"
+      type="range"
+      min="0"
+      max="1"
+      value=".7"
+      step=".01"
+    >
+
+  </div>
+
 
 </div>
 
 
+
+<audio
+  id="audio"
+  preload="metadata"
+></audio>
+
+
+
 <script>
+
+/* =========================================================
+   CONTENT CONFIG
+========================================================= */
+
 const CONTENT_URL =
-  "/writings/content.json?v=" + Date.now();
+  "/writings/content.json?v=" +
+  Date.now();
 
 const POSTS_BASE =
   "/writings/posts/";
 
 
-/* =========================
+
+/* =========================================================
+   MUSIC CONFIG
+========================================================= */
+
+const MUSIC_TRACKS = [
+
+  {
+    title:"Between the Takes",
+    artist:"Orient.bakureever",
+    src:"/music/between-the-takes.mp3"
+  },
+
+  {
+    title:"Wednesday's Origami",
+    artist:"Orient.bakureever",
+    src:"/music/wednesdays-origami.mp3"
+  },
+
+  {
+    title:"Where the Cat Goes at Night",
+    artist:"Orient.bakureever",
+    src:"/music/where-the-cat-goes-at-night.mp3"
+  }
+
+];
+
+
+const MUSIC_STORAGE_KEY =
+  "qmArchiveMusic";
+
+
+
+/* =========================================================
    HELPERS
-========================= */
+========================================================= */
 
 function escapeHTML(value){
+
   return String(value ?? "")
+
     .replace(/&/g,"&amp;")
+
     .replace(/</g,"&lt;")
+
     .replace(/>/g,"&gt;")
+
     .replace(/"/g,"&quot;")
+
     .replace(/'/g,"&#039;");
+
 }
 
 
-/* =========================
+
+/* =========================================================
    MARKDOWN
-========================= */
+========================================================= */
 
 function markdownToHTML(md){
 
-  let text = md
-    .replace(/\r\n/g,"\n")
-    .replace(/\r/g,"\n")
-    .trim();
+  let text =
+    md
+      .replace(/\r\n/g,"\n")
+      .replace(/\r/g,"\n")
+      .trim();
 
-  const lines = text.split("\n");
+
+  const lines =
+    text.split("\n");
+
+
   const html = [];
 
+
   let paragraph = [];
+
   let inList = false;
+
+
 
   function flushParagraph(){
 
-    if(!paragraph.length) return;
+    if(!paragraph.length)
+      return;
 
-    const content = paragraph
-      .join(" ")
-      .trim();
+
+    const content =
+      paragraph
+        .join(" ")
+        .trim();
+
 
     if(content){
-      html.push("<p>" + formatInline(content) + "</p>");
+
+      html.push(
+        "<p>" +
+        formatInline(content) +
+        "</p>"
+      );
+
     }
 
+
     paragraph = [];
+
   }
+
+
 
   function closeList(){
 
     if(inList){
+
       html.push("</ul>");
+
       inList = false;
+
     }
+
   }
 
-  for(let i=0;i<lines.length;i++){
 
-    const line = lines[i];
+
+  for(
+    let i=0;
+    i<lines.length;
+    i++
+  ){
+
+    const line =
+      lines[i];
+
 
     if(!line.trim()){
+
       flushParagraph();
+
       closeList();
+
       continue;
+
     }
+
 
     if(/^###\s+/.test(line)){
+
       flushParagraph();
+
       closeList();
 
+
       html.push(
+
         "<h3>" +
-        formatInline(line.replace(/^###\s+/,"")) +
+
+        formatInline(
+          line.replace(
+            /^###\s+/,
+            ""
+          )
+        ) +
+
         "</h3>"
+
       );
 
+
       continue;
+
     }
+
 
     if(/^##\s+/.test(line)){
+
       flushParagraph();
+
       closeList();
 
+
       html.push(
+
         "<h2>" +
-        formatInline(line.replace(/^##\s+/,"")) +
+
+        formatInline(
+          line.replace(
+            /^##\s+/,
+            ""
+          )
+        ) +
+
         "</h2>"
+
       );
 
+
       continue;
+
     }
+
 
     if(/^#\s+/.test(line)){
+
       flushParagraph();
+
       closeList();
 
+
       html.push(
+
         "<h1>" +
-        formatInline(line.replace(/^#\s+/,"")) +
+
+        formatInline(
+          line.replace(
+            /^#\s+/,
+            ""
+          )
+        ) +
+
         "</h1>"
+
       );
 
+
       continue;
+
     }
+
 
     if(/^>\s?/.test(line)){
+
       flushParagraph();
+
       closeList();
 
+
       html.push(
+
         "<blockquote>" +
-        formatInline(line.replace(/^>\s?/,"")) +
+
+        formatInline(
+          line.replace(
+            /^>\s?/,
+            ""
+          )
+        ) +
+
         "</blockquote>"
+
       );
 
+
       continue;
+
     }
+
 
     if(/^\s*[-*]\s+/.test(line)){
 
       flushParagraph();
 
+
       if(!inList){
+
         html.push("<ul>");
+
         inList = true;
+
       }
 
+
       html.push(
+
         "<li>" +
+
         formatInline(
-          line.replace(/^\s*[-*]\s+/,"")
+
+          line.replace(
+            /^\s*[-*]\s+/,
+            ""
+          )
+
         ) +
+
         "</li>"
+
       );
 
+
       continue;
+
     }
 
+
     paragraph.push(line);
+
   }
 
+
   flushParagraph();
+
   closeList();
 
+
   return html.join("\n");
+
 }
+
 
 
 function formatInline(text){
 
-  let value = escapeHTML(text);
+  let value =
+    escapeHTML(text);
 
-  value = value.replace(
-    /!\[([^\]]*)\]\(([^)]+)\)/g,
-    '<img src="$2" alt="$1">'
-  );
 
-  value = value.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2">$1</a>'
-  );
+  value =
+    value.replace(
 
-  value = value.replace(
-    /\*\*(.+?)\*\*/g,
-    "<strong>$1</strong>"
-  );
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
 
-  value = value.replace(
-    /\*(.+?)\*/g,
-    "<em>$1</em>"
-  );
+      '<img src="$2" alt="$1">'
+
+    );
+
+
+  value =
+    value.replace(
+
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+
+      '<a href="$2">$1</a>'
+
+    );
+
+
+  value =
+    value.replace(
+
+      /\*\*(.+?)\*\*/g,
+
+      "<strong>$1</strong>"
+
+    );
+
+
+  value =
+    value.replace(
+
+      /\*(.+?)\*/g,
+
+      "<em>$1</em>"
+
+    );
+
 
   return value;
+
 }
 
 
-/* =========================
+
+/* =========================================================
    LOAD JSON
-========================= */
+========================================================= */
 
 async function loadJSON(){
 
-  const response = await fetch(
-    CONTENT_URL,
-    {
-      cache:"no-store"
-    }
-  );
+  const response =
+    await fetch(
+
+      CONTENT_URL,
+
+      {
+        cache:"no-store"
+      }
+
+    );
+
 
   if(!response.ok){
+
     throw new Error(
       "Cannot load writings/content.json"
     );
+
   }
 
+
   return await response.json();
+
 }
 
 
-/* =========================
+
+/* =========================================================
    LOAD MARKDOWN
-========================= */
+========================================================= */
 
 async function loadMarkdown(slug){
 
@@ -948,33 +1585,49 @@ async function loadMarkdown(slug){
     ".md?v=" +
     Date.now();
 
-  const response = await fetch(
-    url,
-    {
-      cache:"no-store"
-    }
-  );
+
+  const response =
+    await fetch(
+
+      url,
+
+      {
+        cache:"no-store"
+      }
+
+    );
+
 
   if(!response.ok){
+
     throw new Error(
-      "Cannot load article: " + slug
+      "Cannot load article: " +
+      slug
     );
+
   }
 
+
   return await response.text();
+
 }
 
 
-/* =========================
+
+/* =========================================================
    ARCHIVE
-========================= */
+========================================================= */
 
 function renderArchive(items){
 
   const archive =
-    document.getElementById("archive");
+    document.getElementById(
+      "archive"
+    );
+
 
   archive.innerHTML = "";
+
 
   if(!items.length){
 
@@ -982,96 +1635,161 @@ function renderArchive(items){
       '<div class="empty">No writings found.</div>';
 
     return;
+
   }
 
-  items.forEach(item => {
 
-    const entry =
-      document.createElement("a");
+  items.forEach(
+    item => {
 
-    entry.className = "archive-entry";
+      const entry =
+        document.createElement(
+          "a"
+        );
 
-    entry.href =
-      "/writings/?slug=" +
-      encodeURIComponent(item.slug);
 
-    entry.innerHTML = `
+      entry.className =
+        "archive-entry";
 
-      <div class="archive-date">
-        ${escapeHTML(item.date || "")}
-      </div>
 
-      <div class="archive-title">
-        ${escapeHTML(item.title || "")}
-      </div>
+      entry.href =
+        "/writings/?slug=" +
+        encodeURIComponent(
+          item.slug
+        );
 
-      <div class="archive-excerpt">
-        ${escapeHTML(item.excerpt || "")}
-      </div>
 
-      <div class="archive-arrow">
-        READ →
-      </div>
+      entry.innerHTML = `
 
-    `;
+        <div class="archive-date">
 
-    archive.appendChild(entry);
+          ${escapeHTML(
+            item.date || ""
+          )}
 
-  });
+        </div>
+
+
+        <div class="archive-title">
+
+          ${escapeHTML(
+            item.title || ""
+          )}
+
+        </div>
+
+
+        <div class="archive-excerpt">
+
+          ${escapeHTML(
+            item.excerpt || ""
+          )}
+
+        </div>
+
+
+        <div class="archive-arrow">
+
+          READ →
+
+        </div>
+
+      `;
+
+
+      archive.appendChild(
+        entry
+      );
+
+    }
+  );
+
 }
 
 
-/* =========================
-   ARTICLE
-========================= */
 
-async function renderArticle(items,slug){
+/* =========================================================
+   ARTICLE
+========================================================= */
+
+async function renderArticle(
+  items,
+  slug
+){
 
   const item =
     items.find(
       x => x.slug === slug
     );
 
+
   if(!item){
+
     throw new Error(
       "Writing not found."
     );
+
   }
 
+
   const markdown =
-    await loadMarkdown(slug);
+    await loadMarkdown(
+      slug
+    );
 
-  document.getElementById("archive")
-    .style.display = "none";
 
-  document.querySelector(".search")
-    .style.display = "none";
+  document.getElementById(
+    "archive"
+  ).style.display =
+    "none";
 
-  document.getElementById("article")
-    .style.display = "block";
 
-  document.getElementById("articleMeta")
-    .textContent =
-      item.date || "";
+  document.querySelector(
+    ".search"
+  ).style.display =
+    "none";
 
-  document.getElementById("articleTitle")
-    .textContent =
-      item.title || "";
 
-  document.getElementById("articleBody")
-    .innerHTML =
-      markdownToHTML(markdown);
+  document.getElementById(
+    "article"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "articleMeta"
+  ).textContent =
+    item.date || "";
+
+
+  document.getElementById(
+    "articleTitle"
+  ).textContent =
+    item.title || "";
+
+
+  document.getElementById(
+    "articleBody"
+  ).innerHTML =
+    markdownToHTML(
+      markdown
+    );
+
 }
 
 
-/* =========================
+
+/* =========================================================
    SEARCH
-========================= */
+========================================================= */
 
 function setupSearch(items){
 
   const input =
-    document.getElementById("searchInput");
+    document.getElementById(
+      "searchInput"
+    );
+
 
   input.addEventListener(
     "input",
@@ -1082,101 +1800,270 @@ function setupSearch(items){
           .trim()
           .toLowerCase();
 
+
       const filtered =
         !query
+
           ? items
-          : items.filter(item =>
-              String(item.title || "")
+
+          : items.filter(
+              item =>
+                String(
+                  item.title || ""
+                )
                 .toLowerCase()
-                .includes(query)
+                .includes(
+                  query
+                )
             );
 
-      renderArchive(filtered);
+
+      renderArchive(
+        filtered
+      );
+
     }
   );
+
 }
 
 
-/* =========================
+
+/* =========================================================
    CLOCK / YEAR
-========================= */
+========================================================= */
 
 function updateYear(){
 
-  document.getElementById("year")
-    .textContent =
-      new Date().getFullYear();
+  const year =
+    new Date().getFullYear();
 
-  document.getElementById("cassetteYear")
-    .textContent =
-      new Date().getFullYear();
+
+  document.getElementById(
+    "year"
+  ).textContent =
+    year;
+
+
+  document.getElementById(
+    "cassetteYear"
+  ).textContent =
+    year;
+
 }
 
 
-/* =========================
-   INIT
-========================= */
 
-async function init(){
+/* =========================================================
+   MUSIC
+========================================================= */
 
-  updateYear();
+const audio =
+  document.getElementById(
+    "audio"
+  );
 
-  const archive =
-    document.getElementById("archive");
+
+const playButton =
+  document.getElementById(
+    "playButton"
+  );
+
+
+const prevButton =
+  document.getElementById(
+    "prevButton"
+  );
+
+
+const nextButton =
+  document.getElementById(
+    "nextButton"
+  );
+
+
+const progress =
+  document.getElementById(
+    "progress"
+  );
+
+
+const volume =
+  document.getElementById(
+    "volume"
+  );
+
+
+const musicTitle =
+  document.getElementById(
+    "musicTitle"
+  );
+
+
+const musicArtist =
+  document.getElementById(
+    "musicArtist"
+  );
+
+
+const musicTime =
+  document.getElementById(
+    "musicTime"
+  );
+
+
+let currentTrack = 0;
+
+
+/* =========================================================
+   LOCAL STORAGE
+========================================================= */
+
+function getMusicState(){
 
   try{
 
-    const data =
-      await loadJSON();
-
-    const items =
-      Array.isArray(data)
-        ? data
-        : (
-          Array.isArray(data.writings)
-            ? data.writings
-            : []
-        );
-
-    const params =
-      new URLSearchParams(
-        window.location.search
+    const saved =
+      localStorage.getItem(
+        MUSIC_STORAGE_KEY
       );
 
-    const slug =
-      params.get("slug");
 
-    if(slug){
+    if(!saved)
+      return null;
 
-      await renderArticle(
-        items,
-        slug
+
+    const state =
+      JSON.parse(
+        saved
       );
 
-    }else{
 
-      renderArchive(items);
+    if(
+      !state ||
+      typeof state !== "object"
+    ){
 
-      setupSearch(items);
+      return null;
 
     }
 
+
+    return state;
+
   }catch(error){
 
-    console.error(error);
+    console.warn(
+      "Could not read music state.",
+      error
+    );
 
-    archive.innerHTML = `
-      <div class="empty">
-        Unable to load Writings.
-        <br><br>
-        ${escapeHTML(error.message)}
-      </div>
-    `;
+
+    return null;
+
   }
+
 }
 
-init();
-</script>
 
-</body>
-</html>
+
+function saveMusicState(){
+
+  try{
+
+    localStorage.setItem(
+
+      MUSIC_STORAGE_KEY,
+
+      JSON.stringify({
+
+        track:
+          currentTrack,
+
+        currentTime:
+          Number.isFinite(
+            audio.currentTime
+          )
+            ? audio.currentTime
+            : 0,
+
+        volume:
+          Number(
+            audio.volume
+          ),
+
+        isPlaying:
+          !audio.paused
+
+      })
+
+    );
+
+  }catch(error){
+
+    console.warn(
+      "Could not save music state.",
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =========================================================
+   FORMAT TIME
+========================================================= */
+
+function formatTime(seconds){
+
+  if(
+    !Number.isFinite(
+      seconds
+    )
+  ){
+
+    return "00:00";
+
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  return (
+
+    String(
+      minutes
+    ).padStart(2,"0")
+
+    +
+
+    ":" +
+
+    String(
+      secs
+    ).padStart(2,"0")
+
+  );
+
+}
+
+
+
+/* =========================================================
+   LOAD TRACK
+========================================================= */
+
+function loadTrack(
+ 
