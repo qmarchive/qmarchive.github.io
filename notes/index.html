@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Notes — QUỐC MẠNH</title>
 
 <style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+  --cream:#d8cfb5;
+  --paper:#e7ddc0;
+
+  --orange:#f05a32;
+  --orange-dark:#c84327;
+
+  --teal:#176f78;
+  --teal-dark:#0d5059;
+
+  --blue:#15172f;
+  --blue-soft:#243b73;
+
+  --green:#1d8a4a;
+
+  --white:#f5ecd7;
+
+  --border:3px solid var(--blue);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
   box-sizing:border-box;
 }
@@ -15,34 +49,60 @@ html,
 body{
   margin:0;
   padding:0;
-  background:#080808;
-  color:#aaa;
-  font-family:"Courier New", Courier, monospace;
+}
+
+html{
+  background:var(--cream);
 }
 
 body{
+
   min-height:100vh;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.08)
+    ),
+    var(--cream);
+
+  color:var(--blue);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
 }
+
 
 /* =========================================================
    SCANLINES
 ========================================================= */
 
 body::before{
+
   content:"";
+
   position:fixed;
+
   inset:0;
+
   pointer-events:none;
-  z-index:9999;
+
+  z-index:99999;
 
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(255,255,255,.025) 0px,
-      rgba(255,255,255,.025) 1px,
+      rgba(21,23,47,.035) 0px,
+      rgba(21,23,47,.035) 1px,
       transparent 1px,
       transparent 4px
     );
+
+  opacity:.45;
+
 }
 
 
@@ -51,250 +111,961 @@ body::before{
 ========================================================= */
 
 .page{
+
   width:100%;
+
   min-height:100vh;
-  padding:30px;
+
+  padding:
+    10px
+    14px
+    82px;
+
 }
 
 
 /* =========================================================
-   BROWSER BAR
+   BROWSER
 ========================================================= */
 
 .browser{
-  width:100%;
-  height:54px;
 
-  border:1px solid #252525;
+  border:var(--border);
 
-  padding:10px 18px;
-
-  margin-bottom:85px;
-
-  color:#666;
-  font-size:13px;
+  background:var(--paper);
 
   box-shadow:
-    inset 0 0 0 1px #111;
+    5px 5px 0 var(--blue);
+
+  margin-bottom:14px;
+
 }
 
-.browser::before{
-  content:"";
-  display:inline-block;
 
-  width:12px;
-  height:12px;
+.browser-top{
 
-  margin-right:12px;
+  min-height:39px;
 
-  border:1px solid #555;
+  display:flex;
 
-  box-shadow:
-    18px 0 0 -1px #080808,
-    18px 0 0 0 #555,
-    36px 0 0 -1px #080808,
-    36px 0 0 0 #555;
+  align-items:center;
 
-  vertical-align:-1px;
+  justify-content:space-between;
+
+  padding:
+    5px 8px;
+
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
 }
 
-.browser span{
-  color:#666;
+
+.browser-brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  color:var(--blue);
+
+  font-weight:bold;
+
+  font-size:17px;
+
+  letter-spacing:1px;
+
+}
+
+
+.browser-brand-icon{
+
+  width:24px;
+
+  height:24px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--teal);
+
+  color:var(--white);
+
+  font-size:12px;
+
+}
+
+
+.browser-subtitle{
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.browser-window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.browser-window-buttons span{
+
+  width:23px;
+
+  height:23px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:11px;
+
+}
+
+
+.browser-menu{
+
+  display:flex;
+
+  gap:20px;
+
+  padding:
+    6px 10px;
+
+  border-bottom:2px solid var(--blue);
+
+  font-size:12px;
+
+  font-weight:bold;
+
+}
+
+
+.browser-address-row{
+
+  display:grid;
+
+  grid-template-columns:
+    31px
+    31px
+    31px
+    minmax(0,1fr)
+    175px;
+
+  gap:6px;
+
+  align-items:center;
+
+  padding:7px;
+
+}
+
+
+.browser-control{
+
+  width:31px;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  font-weight:bold;
+
+}
+
+
+.browser-address{
+
+  min-width:0;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:
+    0 9px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:#303249;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+}
+
+
+.browser-date{
+
+  text-align:center;
+
+  font-size:10px;
+
+  line-height:1.35;
+
+  font-weight:bold;
+
 }
 
 
 /* =========================================================
-   LAYOUT
+   MAIN LAYOUT
 ========================================================= */
 
 .layout{
+
   display:grid;
 
   grid-template-columns:
-    260px
-    minmax(0,1fr)
-    290px;
+    285px
+    minmax(0,1fr);
 
-  gap:55px;
+  gap:16px;
 
-  max-width:1450px;
+  max-width:1600px;
+
   margin:0 auto;
+
+  align-items:start;
+
 }
 
 
 /* =========================================================
-   LEFT
+   LEFT / SYSTEM INFO
 ========================================================= */
 
 .left{
+
   min-width:0;
+
 }
 
-.brand{
-  color:#aaa;
 
-  font-size:21px;
-  letter-spacing:4px;
+.system-window{
 
-  margin-bottom:35px;
+  overflow:hidden;
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
 }
 
-.rule{
-  width:100%;
 
-  border-top:1px dashed #292929;
+.window-titlebar{
 
-  margin:0 0 32px 0;
-}
+  min-height:38px;
 
-.nav{
   display:flex;
-  flex-direction:column;
 
-  gap:24px;
-}
+  align-items:center;
 
-.nav a{
-  color:#777;
+  justify-content:space-between;
 
-  text-decoration:none;
+  padding:
+    5px 7px;
 
-  font-size:16px;
-}
+  background:var(--orange);
 
-.nav a:hover{
-  color:#ddd;
-}
+  border-bottom:var(--border);
 
-.nav a.active{
-  color:#c0ad67;
-}
+  color:var(--blue);
 
-.left-info{
-  margin-top:60px;
+  font-weight:bold;
 
-  padding-top:30px;
-
-  border-top:1px dashed #292929;
-
-  color:#555;
+  letter-spacing:.8px;
 
   font-size:14px;
-  line-height:1.8;
+
 }
 
-.left-info .label{
-  color:#444;
+
+.window-title{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
 }
 
-.left-info .year{
-  color:#777;
 
-  font-size:20px;
+.window-title-icon{
 
-  margin-top:4px;
+  width:21px;
+
+  height:21px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-shrink:0;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+.window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.window-button{
+
+  width:20px;
+
+  height:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-size:11px;
+
+  line-height:1;
+
+}
+
+
+.system-content{
+
+  padding:13px;
+
+}
+
+
+.system-line{
+
+  margin:
+    7px 0;
+
+  font-size:12px;
+
+}
+
+
+.online{
+
+  color:var(--green);
+
+  font-weight:bold;
+
 }
 
 
 /* =========================================================
-   MAIN
+   NAVIGATION
+========================================================= */
+
+.nav-list{
+
+  margin-top:17px;
+
+  padding-top:12px;
+
+  border-top:
+    2px dashed var(--blue);
+
+}
+
+
+.nav-list a{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-height:36px;
+
+  padding:
+    6px 8px;
+
+  color:var(--blue);
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+}
+
+
+.nav-list a:hover{
+
+  background:var(--orange);
+
+}
+
+
+.nav-list a.active{
+
+  background:var(--orange);
+
+}
+
+
+/* =========================================================
+   FOLDER ICON
+========================================================= */
+
+.folder-icon{
+
+  width:21px;
+
+  height:15px;
+
+  display:inline-block;
+
+  position:relative;
+
+  flex-shrink:0;
+
+  background:#e8b82e;
+
+  border:2px solid var(--blue);
+
+}
+
+
+.folder-icon::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:1px;
+
+  top:-6px;
+
+  width:9px;
+
+  height:6px;
+
+  background:#e8b82e;
+
+  border:
+    2px solid var(--blue);
+
+  border-bottom:0;
+
+}
+
+
+/* =========================================================
+   CASSETTE
+========================================================= */
+
+.cassette{
+
+  margin-top:15px;
+
+  padding-top:12px;
+
+  border-top:
+    2px dashed var(--blue);
+
+}
+
+
+.cassette img{
+
+  display:block;
+
+  width:100%;
+
+  height:auto;
+
+  border:3px solid var(--blue);
+
+}
+
+
+.cassette-caption{
+
+  margin-top:8px;
+
+  text-align:center;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   MAIN NOTES
 ========================================================= */
 
 .main{
+
   min-width:0;
+
 }
 
-.notes{
-  border:1px solid #343434;
 
-  min-height:245px;
-}
+.notes-window{
 
-.section-header{
-  padding:30px 28px 25px;
+  min-width:0;
 
-  border-bottom:1px solid #2b2b2b;
-}
+  background:var(--paper);
 
-.section-title{
-  color:#777;
+  border:var(--border);
 
-  font-size:14px;
+  box-shadow:
+    5px 5px 0 var(--blue);
 
-  letter-spacing:2px;
-}
+  overflow:hidden;
 
-.section-path{
-  margin-top:12px;
-
-  color:#3f3f3f;
-
-  font-size:12px;
 }
 
 
 /* =========================================================
-   ARCHIVE
+   NOTES TITLE BAR
 ========================================================= */
 
-.archive{
-  width:100%;
+.notes-titlebar{
+
+  min-height:38px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:
+    5px 7px;
+
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
 }
 
-.archive-entry{
+
+.notes-title{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  color:var(--blue);
+
+  font-size:14px;
+
+  font-weight:bold;
+
+  letter-spacing:.8px;
+
+}
+
+
+.notes-title-icon{
+
+  width:21px;
+
+  height:21px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+.notes-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.notes-button{
+
+  width:20px;
+
+  height:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  font-size:11px;
+
+}
+
+
+/* =========================================================
+   INTRO + SEARCH
+========================================================= */
+
+.notes-tools{
+
   display:grid;
 
   grid-template-columns:
-    110px
-    minmax(0,1fr);
+    minmax(0,1fr)
+    320px;
 
-  gap:25px;
+  gap:18px;
 
-  padding:30px 28px;
+  align-items:center;
 
-  border-bottom:1px solid #2c2c2c;
+  padding:
+    13px 15px;
+
+  border-bottom:
+    2px dashed var(--blue);
+
+}
+
+
+.notes-intro{
+
+  font-size:12px;
+
+  line-height:1.5;
+
+}
+
+
+.search{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+}
+
+
+.search-icon{
+
+  font-size:24px;
+
+  line-height:1;
+
+  flex-shrink:0;
+
+}
+
+
+.search input{
+
+  width:100%;
+
+  height:31px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  padding:
+    4px 9px;
+
+  font-family:inherit;
+
+  font-size:11px;
+
+  outline:none;
+
+}
+
+
+.search input:focus{
+
+  border-color:var(--orange);
+
+}
+
+
+.search input::placeholder{
+
+  color:#777;
+
+}
+
+
+/* =========================================================
+   DAILY LOG
+========================================================= */
+
+.archive{
+
+  width:100%;
+
+}
+
+
+.archive-entry{
+
+  display:grid;
+
+  grid-template-columns:
+    105px
+    minmax(0,1fr)
+    35px;
+
+  gap:18px;
+
+  min-height:94px;
+
+  align-items:center;
+
+  padding:
+    13px 16px;
+
+  border-bottom:
+    1px dashed #74746f;
+
+  color:var(--blue);
 
   text-decoration:none;
+
+  transition:
+    background .12s ease;
+
 }
+
 
 .archive-entry:last-child{
+
   border-bottom:0;
+
 }
+
 
 .archive-entry:hover{
-  background:#0b0b0b;
+
+  background:#eee5ce;
+
 }
 
-.archive-year{
-  color:#555;
 
-  font-size:13px;
+.archive-entry:hover .archive-arrow{
+
+  color:var(--orange-dark);
+
+  transform:translateX(3px);
+
 }
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.archive-date{
+
+  padding-right:18px;
+
+  border-right:
+    2px solid var(--blue);
+
+  color:var(--teal);
+
+  font-size:12px;
+
+  font-weight:bold;
+
+  line-height:1.35;
+
+}
+
+
+.archive-date-day{
+
+  display:block;
+
+  font-size:22px;
+
+  line-height:1;
+
+  color:var(--blue);
+
+}
+
+
+.archive-date-month{
+
+  display:block;
+
+  margin-top:3px;
+
+  font-size:9px;
+
+  text-transform:uppercase;
+
+}
+
+
+.archive-date-year{
+
+  display:block;
+
+  font-size:10px;
+
+}
+
+
+/* =========================================================
+   NOTE CONTENT
+========================================================= */
 
 .archive-content{
+
   min-width:0;
+
 }
 
+
 .archive-title{
-  color:#999;
+
+  margin-bottom:6px;
+
+  color:var(--blue);
+
+  font-size:15px;
+
+  font-weight:bold;
+
+  line-height:1.35;
+
+}
+
+
+.archive-excerpt{
+
+  color:#5f5d56;
+
+  font-size:11px;
+
+  line-height:1.55;
+
+}
+
+
+.archive-arrow{
+
+  color:var(--blue);
 
   font-size:20px;
 
-  line-height:1.4;
+  font-weight:bold;
 
-  margin-bottom:12px;
+  text-align:center;
+
+  transition:
+    transform .12s ease;
+
 }
 
-.archive-entry:hover .archive-title{
-  color:#d0d0d0;
-}
 
-.archive-excerpt{
-  color:#555;
+/* =========================================================
+   EMPTY
+========================================================= */
 
-  font-size:13px;
+.empty{
 
-  line-height:1.7;
+  padding:50px 20px;
+
+  color:#666;
+
+  font-size:12px;
+
 }
 
 
@@ -303,127 +1074,205 @@ body::before{
 ========================================================= */
 
 .article{
-  padding:42px 28px 55px;
+
+  padding:
+    24px 22px 40px;
+
 }
 
-.article-year{
-  color:#555;
 
-  font-size:13px;
+.article-meta{
 
-  margin-bottom:25px;
+  color:var(--teal);
+
+  font-size:11px;
+
+  font-weight:bold;
+
+  margin-bottom:12px;
+
 }
+
 
 .article-title{
-  color:#bbb;
 
-  font-size:34px;
+  margin:0 0 25px;
 
-  font-weight:normal;
+  color:var(--blue);
 
-  line-height:1.3;
+  font-size:29px;
 
-  margin:0 0 45px;
+  line-height:1.2;
+
 }
+
 
 .article-body{
+
   max-width:850px;
 
-  color:#999;
+  padding-top:20px;
 
-  font-size:15px;
+  border-top:
+    2px dashed var(--blue);
 
-  line-height:2;
+  color:#33344a;
 
-  letter-spacing:.15px;
+  font-size:14px;
+
+  line-height:1.8;
+
 }
+
 
 .article-body p{
-  margin:0 0 30px;
+
+  margin:
+    0 0 18px;
+
 }
+
 
 .article-body h1,
 .article-body h2,
 .article-body h3{
-  color:#bbb;
 
-  font-weight:normal;
+  color:var(--blue);
+
+  line-height:1.3;
+
 }
+
 
 .article-body h1{
-  font-size:27px;
 
-  margin:35px 0 25px;
+  font-size:25px;
+
+  margin:
+    30px 0 15px;
+
 }
+
 
 .article-body h2{
-  font-size:22px;
 
-  margin:35px 0 20px;
+  font-size:21px;
+
+  margin:
+    28px 0 13px;
+
 }
+
 
 .article-body h3{
-  font-size:18px;
 
-  margin:30px 0 15px;
+  font-size:17px;
+
+  margin:
+    24px 0 10px;
+
 }
 
-.article-body em{
-  color:#aaa;
-}
 
 .article-body strong{
-  color:#bbb;
+
+  font-weight:bold;
+
 }
 
-.article-body blockquote{
-  margin:30px 0;
 
-  padding-left:20px;
-
-  border-left:1px solid #444;
-
-  color:#777;
-}
-
-.article-body ul,
-.article-body ol{
-  margin:0 0 30px;
-
-  padding-left:25px;
-}
-
-.article-body li{
-  margin-bottom:8px;
-}
-
-.article-body a{
-  color:#aaa;
-}
-
-.article-body img{
-  display:block;
-
-  max-width:100%;
-  height:auto;
-
-  margin:30px 0;
-}
-
-.article-back{
-  display:inline-block;
-
-  margin-top:30px;
+.article-body em{
 
   color:#555;
 
-  text-decoration:none;
-
-  font-size:13px;
 }
 
+
+.article-body blockquote{
+
+  margin:
+    22px 0;
+
+  padding:
+    10px 15px;
+
+  border-left:
+    5px solid var(--orange);
+
+  background:#ddd3b8;
+
+}
+
+
+.article-body ul{
+
+  padding-left:24px;
+
+}
+
+
+.article-body li{
+
+  margin-bottom:7px;
+
+}
+
+
+.article-body a{
+
+  color:var(--orange-dark);
+
+  text-decoration:underline;
+
+}
+
+
+.article-body img{
+
+  display:block;
+
+  max-width:100%;
+
+  height:auto;
+
+  margin:
+    22px 0;
+
+  border:
+    3px solid var(--blue);
+
+}
+
+
+.article-back{
+
+  display:inline-block;
+
+  margin-top:25px;
+
+  padding:
+    7px 10px;
+
+  border:
+    2px solid var(--blue);
+
+  background:var(--orange);
+
+  color:var(--white);
+
+  text-decoration:none;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
 .article-back:hover{
-  color:#aaa;
+
+  background:var(--blue);
+
 }
 
 
@@ -432,99 +1281,16 @@ body::before{
 ========================================================= */
 
 .error{
-  padding:70px 28px;
 
-  color:#555;
+  padding:
+    40px 20px;
 
-  font-size:14px;
+  color:#8b2c1e;
+
+  font-size:11px;
 
   line-height:1.8;
-}
 
-.error strong{
-  color:#777;
-
-  font-weight:normal;
-}
-
-
-/* =========================================================
-   RIGHT
-========================================================= */
-
-.right{
-  min-width:0;
-}
-
-.side-copy{
-  color:#555;
-
-  font-size:14px;
-}
-
-.right-note{
-  color:#666;
-
-  font-size:14px;
-
-  line-height:2;
-
-  margin-bottom:40px;
-}
-
-
-/* =========================================================
-   POLAROID
-========================================================= */
-
-.polaroid{
-  width:175px;
-
-  margin:20px auto 70px;
-
-  padding:9px 9px 18px;
-
-  background:#ddd;
-
-  transform:rotate(-2deg);
-}
-
-.polaroid img{
-  display:block;
-
-  width:100%;
-  height:auto;
-
-  filter:grayscale(100%);
-}
-
-.polaroid figcaption{
-  color:#777;
-
-  text-align:center;
-
-  font-size:12px;
-
-  margin-top:12px;
-}
-
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
-.clock{
-  color:#555;
-
-  font-size:13px;
-
-  line-height:1.7;
-
-  text-align:left;
-}
-
-.clock #time{
-  color:#777;
 }
 
 
@@ -532,18 +1298,191 @@ body::before{
    FOOTER
 ========================================================= */
 
-footer{
-  max-width:1450px;
+.footer{
 
-  margin:80px auto 0;
+  max-width:1600px;
 
-  padding-top:20px;
+  margin:
+    16px auto 0;
 
-  border-top:1px solid #222;
+  padding:
+    11px;
 
-  color:#444;
+  border:
+    3px solid var(--blue);
 
-  font-size:12px;
+  background:var(--paper);
+
+  text-align:center;
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+.music-player{
+
+  position:fixed;
+
+  width:
+    min(940px, calc(100% - 28px));
+
+  left:50%;
+
+  bottom:10px;
+
+  transform:translateX(-50%);
+
+  z-index:10000;
+
+  display:grid;
+
+  grid-template-columns:
+    auto
+    minmax(150px,1fr)
+    auto
+    minmax(150px,1.5fr)
+    auto;
+
+  gap:9px;
+
+  align-items:center;
+
+  padding:
+    6px 8px;
+
+  background:var(--paper);
+
+  border:
+    3px solid var(--blue);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+}
+
+
+.music-icon{
+
+  width:35px;
+
+  height:35px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:var(--orange);
+
+  border:
+    3px solid var(--blue);
+
+  font-weight:bold;
+
+}
+
+
+.music-info{
+
+  min-width:0;
+
+}
+
+
+.music-label{
+
+  font-size:8px;
+
+  margin-bottom:2px;
+
+}
+
+
+.music-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.music-controls{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.music-button{
+
+  width:33px;
+
+  height:29px;
+
+  border:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:inherit;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+
+.music-button:hover{
+
+  background:var(--orange);
+
+}
+
+
+.music-progress{
+
+  min-width:0;
+
+}
+
+
+.music-progress input{
+
+  width:100%;
+
+  accent-color:var(--orange);
+
+}
+
+
+.music-time{
+
+  min-width:72px;
+
+  text-align:center;
+
+  font-size:9px;
+
 }
 
 
@@ -551,279 +1490,721 @@ footer{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1050px){
+@media(max-width:900px){
 
   .layout{
+
     grid-template-columns:
-      210px
+      220px
       minmax(0,1fr);
 
-    gap:35px;
   }
 
-  .right{
-    display:none;
+  .notes-tools{
+
+    grid-template-columns:1fr;
+
+    gap:10px;
+
   }
+
+  .search{
+
+    width:100%;
+
+  }
+
 }
 
 
 @media(max-width:700px){
 
   .page{
-    padding:18px;
+
+    padding:
+      7px
+      7px
+      75px;
+
   }
 
-  .browser{
-    margin-bottom:50px;
+
+  .browser-menu{
+
+    display:none;
+
   }
+
+
+  .browser-address-row{
+
+    grid-template-columns:
+      31px
+      minmax(0,1fr)
+      31px;
+
+  }
+
+
+  .browser-address-row
+  .browser-control:nth-child(2){
+
+    display:none;
+
+  }
+
+
+  .browser-date{
+
+    display:none;
+
+  }
+
 
   .layout{
+
     display:block;
+
   }
+
 
   .left{
-    margin-bottom:45px;
+
+    margin-bottom:16px;
+
   }
 
-  .nav{
-    flex-direction:row;
-
-    flex-wrap:wrap;
-
-    gap:15px 25px;
-  }
-
-  .left-info{
-    display:none;
-  }
-
-  .notes{
-    min-height:200px;
-  }
 
   .archive-entry{
-    grid-template-columns:1fr;
 
-    gap:12px;
+    grid-template-columns:
+      72px
+      minmax(0,1fr)
+      25px;
+
+    gap:10px;
+
+    min-height:88px;
+
+    padding:
+      12px 10px;
+
   }
+
+
+  .archive-date{
+
+    padding-right:9px;
+
+  }
+
+
+  .archive-date-day{
+
+    font-size:19px;
+
+  }
+
+
+  .archive-title{
+
+    font-size:13px;
+
+  }
+
+
+  .archive-excerpt{
+
+    font-size:10px;
+
+  }
+
+
+  .archive-arrow{
+
+    font-size:17px;
+
+  }
+
 
   .article{
-    padding:35px 20px 45px;
+
+    padding:
+      20px 15px 35px;
+
   }
+
 
   .article-title{
-    font-size:28px;
+
+    font-size:24px;
+
   }
 
-  .article-body{
-    font-size:15px;
 
-    line-height:1.9;
+  .music-player{
+
+    width:
+      calc(100% - 10px);
+
+    bottom:5px;
+
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
+
+    gap:5px;
+
   }
+
+
+  .music-progress,
+  .music-time{
+
+    display:none;
+
+  }
+
 }
+
+
+@media(max-width:480px){
+
+  .browser-subtitle{
+
+    display:none;
+
+  }
+
+
+  .archive-entry{
+
+    grid-template-columns:
+      65px
+      minmax(0,1fr)
+      20px;
+
+  }
+
+
+  .archive-date-day{
+
+    font-size:17px;
+
+  }
+
+
+  .archive-title{
+
+    font-size:12px;
+
+  }
+
+}
+
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="page">
 
 
-  <!-- =====================================================
-       BROWSER
-  ====================================================== -->
+<!-- =======================================================
+     BROWSER
+======================================================= -->
 
-  <div class="browser">
+<header class="browser">
 
-    <span id="browserAddress">
-      https://qmarchive.github.io/notes/
-    </span>
+
+  <div class="browser-top">
+
+
+    <div class="browser-brand">
+
+      <span class="browser-brand-icon">
+        QM
+      </span>
+
+      QM ARCHIVE
+
+      <span class="browser-subtitle">
+        // A SMALL SPACE FOR ORDINARY DAYS.
+      </span>
+
+    </div>
+
+
+    <div class="browser-window-buttons">
+
+      <span>—</span>
+      <span>□</span>
+      <span>×</span>
+
+    </div>
+
 
   </div>
 
 
-  <!-- =====================================================
-       LAYOUT
-  ====================================================== -->
+  <div class="browser-menu">
 
-  <div class="layout">
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Favorites</span>
+    <span>Tools</span>
+    <span>Help</span>
+
+  </div>
 
 
-    <!-- ===================================================
-         LEFT
-    ==================================================== -->
+  <div class="browser-address-row">
 
-    <aside class="left">
 
-      <div class="brand">
-        QUỐC MẠNH
+    <div class="browser-control">
+      &lt;
+    </div>
+
+
+    <div class="browser-control">
+      &gt;
+    </div>
+
+
+    <div class="browser-control">
+      ^
+    </div>
+
+
+    <div
+      class="browser-address"
+      id="browserAddress"
+    >
+
+      https://qmarchive.github.io/notes/
+
+    </div>
+
+
+    <div class="browser-date">
+
+      <span id="browserDate">
+        22 SEP 2026
+      </span>
+
+      <br>
+
+      <span id="browserTime">
+        20:15
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+</header>
+
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<div class="layout">
+
+
+<!-- =====================================================
+     SYSTEM INFO
+====================================================== -->
+
+<aside class="left">
+
+
+  <section class="system-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <span class="window-title-icon">
+          S
+        </span>
+
+        SYSTEM INFO
+
       </div>
 
 
-      <div class="rule"></div>
+      <div class="window-buttons">
+
+        <span class="window-button">
+          ×
+        </span>
+
+      </div>
 
 
-      <nav class="nav">
+    </div>
+
+
+    <div class="system-content">
+
+
+      <div class="system-line">
+
+        Edgerunner.2046
+
+      </div>
+
+
+      <div class="system-line online">
+
+        + Online
+
+      </div>
+
+
+      <div class="system-line">
+
+        Since: 21.09.2026
+
+      </div>
+
+
+      <!-- NAV -->
+
+      <nav class="nav-list">
+
 
         <a href="/">
+
+          <span class="folder-icon"></span>
+
           home
+
         </a>
+
 
         <a href="/writings/">
+
+          <span class="folder-icon"></span>
+
           writings
+
         </a>
+
 
         <a href="/photographs/">
+
+          <span class="folder-icon"></span>
+
           photographs
+
         </a>
 
-        <a href="/notes/" class="active">
+
+        <a
+          href="/notes/"
+          class="active"
+        >
+
+          <span class="folder-icon"></span>
+
           notes
+
         </a>
 
-        <a href="/#about">
-          about
-        </a>
 
       </nav>
 
 
-      <div class="left-info">
+      <!-- CASSETTE -->
 
-        <div>
-          notes
-        </div>
+      <div class="cassette">
 
-        <div>
-          archive
-        </div>
-
-        <br>
-
-        <div class="label">
-          since
-        </div>
-
-        <div class="year">
-          2020
-        </div>
-
-      </div>
-
-    </aside>
-
-
-    <!-- ===================================================
-         MAIN
-    ==================================================== -->
-
-    <main class="main">
-
-      <section class="notes">
-
-
-        <header class="section-header">
-
-          <div class="section-title">
-            NOTES
-          </div>
-
-          <div
-            class="section-path"
-            id="sectionPath">
-
-            / notes /
-
-          </div>
-
-        </header>
-
-
-        <div id="main"></div>
-
-
-      </section>
-
-    </main>
-
-
-    <!-- ===================================================
-         RIGHT
-    ==================================================== -->
-
-    <aside class="right">
-
-
-      <div class="side-copy">
-        Hanoi, Vietnam
-      </div>
-
-
-      <div class="rule"></div>
-
-
-      <div class="right-note">
-
-        Nhật ký của một người bình thường.<br>
-
-        Viết lại những câu chuyện đáng lý<br>
-
-        chỉ cần bỏ qua.<br>
-
-        Chào Mạnh, chúng ta lại gặp nhau rồi.
-
-      </div>
-
-
-      <figure class="polaroid">
 
         <img
-          src="/hanoi-sample.jpg"
-          alt="Hanoi, always">
-
-        <figcaption>
-          Hanoi, always.
-        </figcaption>
-
-      </figure>
+          src="/home/home-cassette.gif"
+          alt="Cassette"
+        >
 
 
-      <div class="clock">
+        <div class="cassette-caption">
 
-        <span id="date">
-          21.09.2026
-        </span>
+          Không sao đâu, không sao đâu mà
 
-        <br>
+          <br>
 
-        <span id="time">
-          00:00:00
-        </span>
+          // 1998 -
+          <span id="cassetteYear">
+            2026
+          </span>
 
-        <br><br>
+        </div>
 
-        1998 — 2026
-
-        <br>
-
-        and beyond.
 
       </div>
 
 
-    </aside>
+    </div>
+
+
+  </section>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     NOTES
+====================================================== -->
+
+<main class="main">
+
+
+  <section class="notes-window">
+
+
+    <!-- TITLE BAR -->
+
+    <header class="notes-titlebar">
+
+
+      <div class="notes-title">
+
+        <span class="notes-title-icon">
+          N
+        </span>
+
+        NOTES
+
+      </div>
+
+
+      <div class="notes-buttons">
+
+        <span class="notes-button">
+          —
+        </span>
+
+        <span class="notes-button">
+          □
+        </span>
+
+        <span class="notes-button">
+          ×
+        </span>
+
+      </div>
+
+
+    </header>
+
+
+    <!-- INTRO + SEARCH -->
+
+    <div class="notes-tools">
+
+
+      <div class="notes-intro">
+
+        Lê đôi bàn chân bước đi trên con phố dài
+
+      </div>
+
+
+      <div class="search">
+
+
+        <span class="search-icon">
+          ⌕
+        </span>
+
+
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search notes by title..."
+          autocomplete="off"
+        >
+
+
+      </div>
+
+
+    </div>
+
+
+    <!-- ARCHIVE -->
+
+    <div
+      id="archive"
+      class="archive"
+    ></div>
+
+
+    <!-- ARTICLE -->
+
+    <article
+      id="article"
+      style="display:none;"
+    >
+
+      <div
+        id="articleMeta"
+        class="article-meta"
+      ></div>
+
+
+      <h1
+        id="articleTitle"
+        class="article-title"
+      ></h1>
+
+
+      <div
+        id="articleBody"
+        class="article-body"
+      ></div>
+
+
+      <a
+        href="/notes/"
+        class="article-back"
+      >
+
+        ← Back to Notes
+
+      </a>
+
+
+    </article>
+
+
+  </section>
+
+
+</main>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+  QM ARCHIVE
+  //
+  NOTES
+  //
+  <span id="footerYear">
+    2026
+  </span>
+
+</footer>
+
+
+
+<!-- =======================================================
+     MUSIC PLAYER
+======================================================= -->
+
+<div class="music-player">
+
+
+  <div class="music-icon">
+
+    ♪
+
+  </div>
+
+
+  <div class="music-info">
+
+
+    <div class="music-label">
+
+      NOW PLAYING
+
+    </div>
+
+
+    <div
+      class="music-title"
+      id="musicTitle"
+    >
+
+      QM Archive — Theme
+
+    </div>
 
 
   </div>
 
 
-  <footer>
-    best viewed at night.
-  </footer>
+  <div class="music-controls">
+
+
+    <button
+      class="music-button"
+      id="playButton"
+      type="button"
+    >
+
+      ▶
+
+    </button>
+
+
+  </div>
+
+
+  <div class="music-progress">
+
+    <input
+      id="progress"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      step="0.1"
+    >
+
+  </div>
+
+
+  <div
+    class="music-time"
+    id="musicTime"
+  >
+
+    00:00 / 00:00
+
+  </div>
 
 
 </div>
+
+
+<audio
+  id="audio"
+  preload="metadata"
+></audio>
+
 
 
 <script>
@@ -833,7 +2214,8 @@ footer{
 ========================================================= */
 
 const CONTENT_URL =
-  "/notes/content.json?v=" + Date.now();
+  "/notes/content.json?v=" +
+  Date.now();
 
 
 const POSTS_BASE =
@@ -842,7 +2224,7 @@ const POSTS_BASE =
 
 
 /* =========================================================
-   ESCAPE HTML
+   HELPERS
 ========================================================= */
 
 function escapeHTML(value){
@@ -864,154 +2246,301 @@ function escapeHTML(value){
 
 
 /* =========================================================
-   MARKDOWN → HTML
+   MARKDOWN
 ========================================================= */
 
-function markdownToHTML(markdown){
+function markdownToHTML(md){
 
   let text =
-    escapeHTML(markdown);
+    md
+      .replace(/\r\n/g,"\n")
+      .replace(/\r/g,"\n")
+      .trim();
 
 
-  /* IMAGES */
-
-  text =
-    text.replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
-
-      '<img src="$2" alt="$1">'
-    );
+  const lines =
+    text.split("\n");
 
 
-  /* LINKS */
+  const html = [];
 
-  text =
-    text.replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
+  let paragraph = [];
 
-      '<a href="$2">$1</a>'
-    );
+  let inList = false;
 
 
-  /* HEADINGS */
+  function flushParagraph(){
 
-  text =
-    text.replace(
-      /^### (.+)$/gm,
-
-      "<h3>$1</h3>"
-    );
+    if(!paragraph.length)
+      return;
 
 
-  text =
-    text.replace(
-      /^## (.+)$/gm,
-
-      "<h2>$1</h2>"
-    );
+    const content =
+      paragraph
+        .join(" ")
+        .trim();
 
 
-  text =
-    text.replace(
-      /^# (.+)$/gm,
+    if(content){
 
-      "<h1>$1</h1>"
-    );
+      html.push(
+        "<p>" +
+        formatInline(content) +
+        "</p>"
+      );
 
-
-  /* BOLD */
-
-  text =
-    text.replace(
-      /\*\*(.+?)\*\*/g,
-
-      "<strong>$1</strong>"
-    );
+    }
 
 
-  /* ITALIC */
+    paragraph = [];
 
-  text =
-    text.replace(
-      /\*(.+?)\*/g,
-
-      "<em>$1</em>"
-    );
+  }
 
 
-  /* BLOCKQUOTE */
+  function closeList(){
 
-  text =
-    text.replace(
-      /^&gt; (.+)$/gm,
+    if(inList){
 
-      "<blockquote>$1</blockquote>"
-    );
+      html.push("</ul>");
 
+      inList = false;
 
-  /* UNORDERED LIST */
+    }
 
-  text =
-    text.replace(
-      /^[-*] (.+)$/gm,
-
-      "<li>$1</li>"
-    );
+  }
 
 
-  text =
-    text.replace(
-      /(<li>.*<\/li>)/gs,
+  for(
+    let i=0;
+    i<lines.length;
+    i++
+  ){
 
-      "<ul>$1</ul>"
-    );
-
-
-  /*
-    Split Markdown into blocks.
-  */
-
-  const blocks =
-    text
-      .split(/\n\s*\n/)
-      .map(
-        block => block.trim()
-      )
-      .filter(Boolean);
+    const line =
+      lines[i];
 
 
-  return blocks
-    .map(block => {
+    if(!line.trim()){
 
-      if(
+      flushParagraph();
 
-        block.startsWith("<h1>") ||
+      closeList();
 
-        block.startsWith("<h2>") ||
+      continue;
 
-        block.startsWith("<h3>") ||
+    }
 
-        block.startsWith("<blockquote>") ||
 
-        block.startsWith("<ul>") ||
+    if(/^###\s+/.test(line)){
 
-        block.startsWith("<img")
+      flushParagraph();
 
-      ){
+      closeList();
 
-        return block;
+
+      html.push(
+
+        "<h3>" +
+
+        formatInline(
+          line.replace(
+            /^###\s+/,
+            ""
+          )
+        ) +
+
+        "</h3>"
+
+      );
+
+
+      continue;
+
+    }
+
+
+    if(/^##\s+/.test(line)){
+
+      flushParagraph();
+
+      closeList();
+
+
+      html.push(
+
+        "<h2>" +
+
+        formatInline(
+          line.replace(
+            /^##\s+/,
+            ""
+          )
+        ) +
+
+        "</h2>"
+
+      );
+
+
+      continue;
+
+    }
+
+
+    if(/^#\s+/.test(line)){
+
+      flushParagraph();
+
+      closeList();
+
+
+      html.push(
+
+        "<h1>" +
+
+        formatInline(
+          line.replace(
+            /^#\s+/,
+            ""
+          )
+        ) +
+
+        "</h1>"
+
+      );
+
+
+      continue;
+
+    }
+
+
+    if(/^>\s?/.test(line)){
+
+      flushParagraph();
+
+      closeList();
+
+
+      html.push(
+
+        "<blockquote>" +
+
+        formatInline(
+          line.replace(
+            /^>\s?/,
+            ""
+          )
+        ) +
+
+        "</blockquote>"
+
+      );
+
+
+      continue;
+
+    }
+
+
+    if(/^\s*[-*]\s+/.test(line)){
+
+      flushParagraph();
+
+
+      if(!inList){
+
+        html.push("<ul>");
+
+        inList = true;
 
       }
 
 
-      return (
-        "<p>" +
-        block.replace(/\n/g,"<br>") +
-        "</p>"
+      html.push(
+
+        "<li>" +
+
+        formatInline(
+          line.replace(
+            /^\s*[-*]\s+/,
+            ""
+          )
+        ) +
+
+        "</li>"
+
       );
 
-    })
-    .join("\n");
+
+      continue;
+
+    }
+
+
+    paragraph.push(line);
+
+  }
+
+
+  flushParagraph();
+
+  closeList();
+
+
+  return html.join("\n");
+
+}
+
+
+
+function formatInline(text){
+
+  let value =
+    escapeHTML(text);
+
+
+  value =
+    value.replace(
+
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+
+      '<img src="$2" alt="$1">'
+
+    );
+
+
+  value =
+    value.replace(
+
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+
+      '<a href="$2">$1</a>'
+
+    );
+
+
+  value =
+    value.replace(
+
+      /\*\*(.+?)\*\*/g,
+
+      "<strong>$1</strong>"
+
+    );
+
+
+  value =
+    value.replace(
+
+      /\*(.+?)\*/g,
+
+      "<em>$1</em>"
+
+    );
+
+
+  return value;
 
 }
 
@@ -1035,7 +2564,7 @@ async function loadJSON(){
   if(!response.ok){
 
     throw new Error(
-      "Could not load notes/content.json (" +
+      "Cannot load notes/content.json (" +
       response.status +
       ")"
     );
@@ -1055,26 +2584,10 @@ async function loadJSON(){
 
 async function loadMarkdown(slug){
 
-  const safeSlug =
-    decodeURIComponent(
-      String(slug || "")
-    ).trim();
-
-
-  /*
-    IMPORTANT:
-    Absolute GitHub Pages path.
-  */
-
   const url =
     POSTS_BASE +
-
-    encodeURIComponent(
-      safeSlug
-    ) +
-
+    encodeURIComponent(slug) +
     ".md?v=" +
-
     Date.now();
 
 
@@ -1090,64 +2603,103 @@ async function loadMarkdown(slug){
   if(!response.ok){
 
     throw new Error(
-      "Could not load Markdown file (" +
-      response.status +
-      "): " +
-      url
+      "Cannot load article: " +
+      slug
     );
 
   }
 
 
-  const text =
-    await response.text();
-
-
-  if(!text.trim()){
-
-    throw new Error(
-      "Markdown file is empty: " +
-      url
-    );
-
-  }
-
-
-  return text;
+  return await response.text();
 
 }
 
 
 
 /* =========================================================
-   RENDER ARCHIVE
+   DATE DISPLAY
+========================================================= */
+
+function formatDate(dateString){
+
+  if(!dateString){
+
+    return {
+      day:"",
+      month:"",
+      year:""
+    };
+
+  }
+
+
+  const parts =
+    String(dateString)
+      .split(/[.\-/]/);
+
+
+  if(parts.length !== 3){
+
+    return {
+      day:escapeHTML(dateString),
+      month:"",
+      year:""
+    };
+
+  }
+
+
+  return {
+
+    day:escapeHTML(
+      parts[0]
+    ),
+
+    month:
+      escapeHTML(
+        parts[1]
+      ),
+
+    year:
+      escapeHTML(
+        parts[2]
+      )
+
+  };
+
+}
+
+
+
+/* =========================================================
+   ARCHIVE
 ========================================================= */
 
 function renderArchive(items){
 
-  const main =
-    document.getElementById("main");
+  const archive =
+    document.getElementById(
+      "archive"
+    );
+
+
+  archive.style.display =
+    "block";
 
 
   document.getElementById(
-    "sectionPath"
-  ).textContent =
-    "/ notes /";
-
-
-  document.getElementById(
-    "browserAddress"
-  ).textContent =
-    "https://qmarchive.github.io/notes/";
+    "article"
+  ).style.display =
+    "none";
 
 
   if(!items.length){
 
-    main.innerHTML = `
+    archive.innerHTML = `
 
-      <div class="error">
+      <div class="empty">
 
-        No notes yet.
+        No notes found.
 
       </div>
 
@@ -1158,11 +2710,16 @@ function renderArchive(items){
   }
 
 
-  main.innerHTML = `
+  archive.innerHTML =
+    items.map(item => {
 
-    <div class="archive">
+      const date =
+        formatDate(
+          item.date
+        );
 
-      ${items.map(item => `
+
+      return `
 
         <a
 
@@ -1174,16 +2731,34 @@ function renderArchive(items){
 
         >
 
-          <div class="archive-year">
 
-            ${escapeHTML(
-              item.date || ""
-            )}
+          <div class="archive-date">
+
+            <span class="archive-date-day">
+
+              ${date.day}
+
+            </span>
+
+
+            <span class="archive-date-month">
+
+              ${date.month}
+
+            </span>
+
+
+            <span class="archive-date-year">
+
+              ${date.year}
+
+            </span>
 
           </div>
 
 
           <div class="archive-content">
+
 
             <div class="archive-title">
 
@@ -1202,22 +2777,29 @@ function renderArchive(items){
 
             </div>
 
+
           </div>
+
+
+          <div class="archive-arrow">
+
+            →
+
+          </div>
+
 
         </a>
 
-      `).join("")}
+      `;
 
-    </div>
-
-  `;
+    }).join("");
 
 }
 
 
 
 /* =========================================================
-   RENDER ARTICLE
+   ARTICLE
 ========================================================= */
 
 async function renderArticle(
@@ -1225,195 +2807,116 @@ async function renderArticle(
   slug
 ){
 
-  const main =
-    document.getElementById("main");
-
-
-  const decodedSlug =
-    decodeURIComponent(
-      String(slug || "")
-    ).trim();
-
-
   const item =
     items.find(
-      entry =>
-        String(
-          entry.slug || ""
-        ).trim() === decodedSlug
+      x =>
+        x.slug === slug
+    );
+
+
+  if(!item){
+
+    throw new Error(
+      "Note not found."
+    );
+
+  }
+
+
+  const markdown =
+    await loadMarkdown(
+      slug
     );
 
 
   document.getElementById(
-    "sectionPath"
-  ).textContent =
-    "/ notes / " +
-    decodedSlug;
+    "archive"
+  ).style.display =
+    "none";
+
+
+  document.querySelector(
+    ".notes-tools"
+  ).style.display =
+    "none";
+
+
+  const article =
+    document.getElementById(
+      "article"
+    );
+
+
+  article.style.display =
+    "block";
 
 
   document.getElementById(
-    "browserAddress"
+    "articleMeta"
   ).textContent =
-    "https://qmarchive.github.io/notes/?slug=" +
-    decodedSlug;
+    item.date || "";
 
 
-  /*
-    Metadata not found.
-  */
-
-  if(!item){
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          This note could not be found.
-        </strong>
-
-        <br><br>
-
-        slug:
-        ${escapeHTML(decodedSlug)}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/notes/"
-        >
-          ← back to notes
-        </a>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
+  document.getElementById(
+    "articleTitle"
+  ).textContent =
+    item.title || "";
 
 
-  /*
-    Loading state.
-  */
+  document.getElementById(
+    "articleBody"
+  ).innerHTML =
+    markdownToHTML(
+      markdown
+    );
 
-  main.innerHTML = `
-
-    <div class="error">
-
-      Loading note...
-
-    </div>
-
-  `;
+}
 
 
-  try{
 
-    const markdown =
-      await loadMarkdown(
-        decodedSlug
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function setupSearch(items){
+
+  const input =
+    document.getElementById(
+      "searchInput"
+    );
+
+
+  input.addEventListener(
+    "input",
+    function(){
+
+      const query =
+        this.value
+          .trim()
+          .toLowerCase();
+
+
+      const filtered =
+        !query
+
+          ? items
+
+          : items.filter(
+              item =>
+                String(
+                  item.title || ""
+                )
+                .toLowerCase()
+                .includes(query)
+            );
+
+
+      renderArchive(
+        filtered
       );
 
-
-    const html =
-      markdownToHTML(
-        markdown
-      );
-
-
-    main.innerHTML = `
-
-      <article class="article">
-
-
-        <div class="article-year">
-
-          ${escapeHTML(
-            item.date || ""
-          )}
-
-        </div>
-
-
-        <h1 class="article-title">
-
-          ${escapeHTML(
-            item.title || ""
-          )}
-
-        </h1>
-
-
-        <div class="article-body">
-
-          ${html}
-
-        </div>
-
-
-        <a
-          class="article-back"
-          href="/notes/"
-        >
-
-          ← back to notes
-
-        </a>
-
-
-      </article>
-
-    `;
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          The note exists, but its content could not be loaded.
-        </strong>
-
-        <br><br>
-
-        File expected:
-
-        <br>
-
-        /notes/posts/
-        ${escapeHTML(decodedSlug)}
-        .md
-
-        <br><br>
-
-        ${escapeHTML(
-          error.message
-        )}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/notes/"
-        >
-
-          ← back to notes
-
-        </a>
-
-      </div>
-
-    `;
-
-  }
+    }
+  );
 
 }
 
@@ -1463,30 +2966,67 @@ function updateClock(){
     ).padStart(2,"0");
 
 
-  const dateElement =
+  const browserDate =
     document.getElementById(
-      "date"
+      "browserDate"
     );
 
 
-  const timeElement =
+  const browserTime =
     document.getElementById(
-      "time"
+      "browserTime"
     );
 
 
-  if(dateElement){
+  const cassetteYear =
+    document.getElementById(
+      "cassetteYear"
+    );
 
-    dateElement.textContent =
-      date;
+
+  const footerYear =
+    document.getElementById(
+      "footerYear"
+    );
+
+
+  if(browserDate){
+
+    browserDate.textContent =
+      now
+        .toLocaleDateString(
+          "en-GB",
+          {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+          }
+        )
+        .toUpperCase();
 
   }
 
 
-  if(timeElement){
+  if(browserTime){
 
-    timeElement.textContent =
-      time;
+    browserTime.textContent =
+      time.slice(0,5);
+
+  }
+
+
+  if(cassetteYear){
+
+    cassetteYear.textContent =
+      now.getFullYear();
+
+  }
+
+
+  if(footerYear){
+
+    footerYear.textContent =
+      now.getFullYear();
 
   }
 
@@ -1495,10 +3035,215 @@ function updateClock(){
 
 
 /* =========================================================
+   MUSIC
+========================================================= */
+
+const audio =
+  document.getElementById(
+    "audio"
+  );
+
+
+const playButton =
+  document.getElementById(
+    "playButton"
+  );
+
+
+const progress =
+  document.getElementById(
+    "progress"
+  );
+
+
+const musicTime =
+  document.getElementById(
+    "musicTime"
+  );
+
+
+audio.src =
+  "/music/qm-archive.mp3";
+
+
+audio.volume =
+  0.7;
+
+
+function formatTime(seconds){
+
+  if(!Number.isFinite(seconds)){
+
+    return "00:00";
+
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  return (
+
+    String(minutes)
+      .padStart(2,"0")
+
+    +
+
+    ":" +
+
+    String(secs)
+      .padStart(2,"0")
+
+  );
+
+}
+
+
+playButton.addEventListener(
+  "click",
+  () => {
+
+    if(audio.paused){
+
+      audio.play()
+        .then(() => {
+
+          playButton.textContent =
+            "❚❚";
+
+        })
+        .catch(() => {
+
+          playButton.textContent =
+            "▶";
+
+        });
+
+    }else{
+
+      audio.pause();
+
+      playButton.textContent =
+        "▶";
+
+    }
+
+  }
+);
+
+
+audio.addEventListener(
+  "play",
+  () => {
+
+    playButton.textContent =
+      "❚❚";
+
+  }
+);
+
+
+audio.addEventListener(
+  "pause",
+  () => {
+
+    playButton.textContent =
+      "▶";
+
+  }
+);
+
+
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
+
+    musicTime.textContent =
+      "00:00 / " +
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    if(audio.duration){
+
+      progress.value =
+        (
+          audio.currentTime /
+          audio.duration
+        ) *
+        100;
+
+    }
+
+
+    musicTime.textContent =
+      formatTime(
+        audio.currentTime
+      ) +
+
+      " / " +
+
+      formatTime(
+        audio.duration
+      );
+
+  }
+);
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+    if(audio.duration){
+
+      audio.currentTime =
+        (
+          Number(
+            progress.value
+          ) /
+          100
+        ) *
+        audio.duration;
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
    INIT
 ========================================================= */
 
 async function init(){
+
+  updateClock();
+
+
+  setInterval(
+    updateClock,
+    1000
+  );
+
 
   try{
 
@@ -1510,7 +3255,9 @@ async function init(){
       Array.isArray(
         data.notes
       )
+
         ? data.notes
+
         : [];
 
 
@@ -1537,6 +3284,10 @@ async function init(){
         items
       );
 
+      setupSearch(
+        items
+      );
+
     }
 
 
@@ -1546,14 +3297,12 @@ async function init(){
 
 
     document.getElementById(
-      "main"
+      "archive"
     ).innerHTML = `
 
       <div class="error">
 
-        <strong>
-          Notes could not be loaded.
-        </strong>
+        Notes could not be loaded.
 
         <br><br>
 
@@ -1570,21 +3319,11 @@ async function init(){
 }
 
 
-
-/* =========================================================
-   START
-========================================================= */
-
-updateClock();
-
-setInterval(
-  updateClock,
-  1000
-);
-
 init();
 
 </script>
 
+
 </body>
+
 </html>
