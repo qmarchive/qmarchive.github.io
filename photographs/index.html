@@ -808,10 +808,21 @@ a[href]:hover{
 
   font-size:11px;
 
+  cursor:pointer;
+
 }
 
 
 .photo-filter:first-child{
+
+  background:var(--paper);
+
+  font-weight:normal;
+
+}
+
+
+.photo-filter.active{
 
   background:var(--orange);
 
@@ -821,6 +832,15 @@ a[href]:hover{
 
 
 .photo-filter:hover{
+
+  color:var(--white);
+
+  background:var(--teal);
+
+}
+
+
+.photo-filter.active:hover{
 
   color:var(--white);
 
@@ -2074,17 +2094,34 @@ a[href]:hover{
     <div class="photo-filters">
 
 
-      <span class="photo-filter">
+      <span
+        class="photo-filter active"
+        data-category="all"
+      >
+        All
+      </span>
+
+
+      <span
+        class="photo-filter"
+        data-category="hanoi"
+      >
         Hanoi
       </span>
 
 
-      <span class="photo-filter">
+      <span
+        class="photo-filter"
+        data-category="travel"
+      >
         Travel
       </span>
 
 
-      <span class="photo-filter">
+      <span
+        class="photo-filter"
+        data-category="friends"
+      >
         Friends
       </span>
 
@@ -2592,6 +2629,80 @@ async function loadMarkdown(slug){
 
 
 /* =========================================================
+   CATEGORY HELPER
+========================================================= */
+
+function getCategories(item){
+
+  const raw =
+    item.category ||
+    item.categories ||
+    "";
+
+
+  if(Array.isArray(raw)){
+
+    return raw
+      .map(
+        value =>
+          String(value)
+            .trim()
+            .toLowerCase()
+      )
+      .filter(Boolean);
+
+  }
+
+
+  return String(raw)
+    .split(",")
+    .map(
+      value =>
+        value
+          .trim()
+          .toLowerCase()
+    )
+    .filter(Boolean);
+
+}
+
+
+
+/* =========================================================
+   FILTER PHOTOGRAPHS
+========================================================= */
+
+function filterPhotographs(
+  items,
+  category
+){
+
+  if(category === "all"){
+
+    return items;
+
+  }
+
+
+  return items.filter(
+    item => {
+
+      const categories =
+        getCategories(item);
+
+
+      return categories.includes(
+        category.toLowerCase()
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =========================================================
    RENDER ARCHIVE
 ========================================================= */
 
@@ -2615,7 +2726,7 @@ function renderArchive(items){
 
       <div class="error">
 
-        No photographs yet.
+        No photographs in this category yet.
 
       </div>
 
@@ -2705,6 +2816,67 @@ function renderArchive(items){
 
 
 /* =========================================================
+   FILTER EVENTS
+========================================================= */
+
+function setupFilters(items){
+
+  const filters =
+    document.querySelectorAll(
+      ".photo-filter"
+    );
+
+
+  filters.forEach(
+    filter => {
+
+      filter.addEventListener(
+        "click",
+        () => {
+
+          const category =
+            filter.dataset.category ||
+            "all";
+
+
+          filters.forEach(
+            button => {
+
+              button.classList.remove(
+                "active"
+              );
+
+            }
+          );
+
+
+          filter.classList.add(
+            "active"
+          );
+
+
+          const filteredItems =
+            filterPhotographs(
+              items,
+              category
+            );
+
+
+          renderArchive(
+            filteredItems
+          );
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =========================================================
    RENDER ARTICLE
 ========================================================= */
 
@@ -2785,7 +2957,7 @@ async function renderArticle(
 
   /* =======================================================
      IMAGE
-  ====================================================== */
+  ======================================================= */
 
   const image =
     item.image ||
@@ -2796,7 +2968,7 @@ async function renderArticle(
 
   /* =======================================================
      LOADING
-  ====================================================== */
+  ======================================================= */
 
   main.innerHTML = `
 
@@ -3416,6 +3588,10 @@ async function init(){
       params.get("slug");
 
 
+    /* =====================================================
+       DETAIL PAGE
+    ===================================================== */
+
     if(slug){
 
       await renderArticle(
@@ -3423,9 +3599,21 @@ async function init(){
         slug
       );
 
-    }else{
+    }
+
+
+    /* =====================================================
+       ARCHIVE PAGE
+    ===================================================== */
+
+    else{
 
       renderArchive(
+        items
+      );
+
+
+      setupFilters(
         items
       );
 
