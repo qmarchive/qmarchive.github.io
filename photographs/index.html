@@ -45,12 +45,10 @@ body{
 
   color:#15172f;
 
-  /* CHỈ ĐỔI FONT */
   font-family:Arial,Helvetica,sans-serif;
 
   font-size:14px;
   line-height:1.5;
-
 }
 
 
@@ -166,7 +164,6 @@ body::before{
 
   color:var(--blue);
 
-  /* Writings: font mặc định là Arial */
   font-family:Arial,Helvetica,sans-serif;
 
   font-weight:bold;
@@ -222,7 +219,6 @@ body::before{
 
   color:var(--blue);
 
-  /* Chỉ icon kỹ thuật dùng monospace */
   font-family:monospace;
 
   font-size:10px;
@@ -337,7 +333,6 @@ a[href]:hover{
 
   color:var(--blue);
 
-  /* Writings/global UI font */
   font-family:Arial,Helvetica,sans-serif;
 
   font-weight:bold;
@@ -428,7 +423,6 @@ a[href]:hover{
 
   border-bottom:2px solid var(--blue);
 
-  /* Menu là UI text, theo font chính của Writings */
   font-family:Arial,Helvetica,sans-serif;
 
   font-size:12px;
@@ -632,7 +626,6 @@ a[href]:hover{
 
   text-decoration:none;
 
-  /* Writings dùng font chính ở navigation */
   font-family:Arial,Helvetica,sans-serif;
 
   font-size:16px;
@@ -646,23 +639,33 @@ a[href]:hover{
 }
 
 
+/* =========================================================
+   NAV HOVER
+   → CHỮ TRẮNG KHI HOVER
+========================================================= */
+
 .nav-list a:hover{
 
   background:var(--orange);
 
-  /* CHỈ THÊM BORDER KHI HOVER */
+  color:var(--white);
+
   outline:2px solid var(--blue);
 
 }
 
 
+/* =========================================================
+   ACTIVE NAV
+   → PHOTOGRAPHS ĐANG ACTIVE = CHỮ TRẮNG
+========================================================= */
+
 .nav-list a.active{
 
   background:var(--orange);
 
-  color:var(--blue);
+  color:var(--white);
 
-  /* CHỈ THÊM BORDER CHO ITEM ĐANG ACTIVE */
   outline:2px solid var(--blue);
 
 }
@@ -764,7 +767,6 @@ a[href]:hover{
 
   color:var(--blue);
 
-  /* Writings body/intro font */
   font-family:Arial,Helvetica,sans-serif;
 
   font-size:12px;
@@ -834,6 +836,8 @@ a[href]:hover{
 .photo-filter.active{
 
   background:var(--orange);
+
+  color:var(--white);
 
   font-weight:bold;
 
@@ -912,7 +916,6 @@ a[href]:hover{
 
   color:var(--blue);
 
-  /* Photo card text theo font chính */
   font-family:Arial,Helvetica,sans-serif;
 
 }
@@ -1015,7 +1018,6 @@ a[href]:hover{
 
   color:var(--blue);
 
-  /* Tiêu đề nội dung theo font chính */
   font-family:Arial,Helvetica,sans-serif;
 
   font-size:12px;
@@ -1046,7 +1048,6 @@ a[href]:hover{
     22px
     30px;
 
-  /* Nội dung chính theo font Writings */
   font-family:Arial,Helvetica,sans-serif;
 
 }
@@ -1073,7 +1074,6 @@ a[href]:hover{
 
   color:var(--blue);
 
-  /* Writings article title dùng font chính */
   font-family:Arial,Helvetica,sans-serif;
 
   font-size:28px;
@@ -1155,7 +1155,6 @@ a[href]:hover{
 
   color:var(--blue);
 
-  /* Writings article body */
   font-family:Arial,Helvetica,sans-serif;
 
   font-size:14px;
