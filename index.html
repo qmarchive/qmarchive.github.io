@@ -676,11 +676,10 @@ a[href]:hover{
 
 
 /* =========================================================
-   ONLY UPDATED PART
-   HOVER = ORANGE + WHITE TEXT + BLUE OUTLINE
+   NAV HOVER
 ========================================================= */
 
-.nav-list a:hover{
+.nav-list a:hover:not(.active){
 
   background:var(--orange);
 
@@ -3945,6 +3944,10 @@ async function init(){
       return;
 
     }
+
+
+    const savedState =
+      getMusicState();
 
 
     musicStarted = true;
