@@ -1,62 +1,37 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Notes — QUỐC MẠNH</title>
 
 <style>
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
 :root{
-
   --cream:#d8cfb5;
   --paper:#e7ddc0;
-
   --orange:#f05a32;
   --orange-dark:#c84327;
-
   --teal:#176f78;
   --teal-dark:#0d5059;
-
   --blue:#15172f;
   --blue-soft:#243b73;
-
   --green:#1d8a4a;
-
   --white:#f5ecd7;
-
   --border:3px solid var(--blue);
-
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
   box-sizing:border-box;
 }
 
-html,
+html{
+  min-height:100%;
+  background:#d8cfb5;
+}
+
 body{
   margin:0;
-  padding:0;
-}
-
-html{
-  background:var(--cream);
-}
-
-body{
-
   min-height:100vh;
 
   background:
@@ -64,345 +39,221 @@ body{
       rgba(255,255,255,.08),
       rgba(255,255,255,.08)
     ),
-    var(--cream);
+    #d8cfb5;
 
   color:var(--blue);
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  /* GLOBAL FONT */
+  font-family:Arial,Helvetica,sans-serif;
 
+  font-size:14px;
+  line-height:1.5;
+
+  overflow-x:hidden;
 }
 
-
-/* =========================================================
-   SCANLINES
-========================================================= */
-
+/* subtle scanlines */
 body::before{
-
   content:"";
-
   position:fixed;
-
   inset:0;
-
   pointer-events:none;
-
-  z-index:99999;
+  z-index:9999;
 
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(21,23,47,.035) 0px,
-      rgba(21,23,47,.035) 1px,
+      rgba(21,23,47,.025) 0,
+      rgba(21,23,47,.025) 1px,
       transparent 1px,
       transparent 4px
     );
-
-  opacity:.45;
-
 }
 
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-.page{
-
-  width:100%;
-
-  min-height:100vh;
-
-  padding:
-    10px
-    14px
-    82px;
-
-}
-
-
-/* =========================================================
+/* ═══════════════════════════════════════════════════════
    BROWSER
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
 .browser{
-
+  width:calc(100% - 24px);
+  margin:0 auto 14px;
   border:var(--border);
-
   background:var(--paper);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  margin-bottom:14px;
-
+  box-shadow:5px 5px 0 var(--blue);
 }
-
 
 .browser-top{
-
-  min-height:39px;
+  min-height:45px;
+  padding:7px 10px;
 
   display:flex;
-
   align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 8px;
+  gap:10px;
 
   background:var(--orange);
+  color:var(--blue);
 
   border-bottom:var(--border);
 
-}
-
-
-.browser-brand{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  color:var(--blue);
-
+  font-size:16px;
   font-weight:bold;
-
-  font-size:17px;
-
-  letter-spacing:1px;
-
+  letter-spacing:.8px;
 }
 
-
-.browser-brand-icon{
-
-  width:24px;
-
-  height:24px;
+.browser-icon{
+  width:29px;
+  height:29px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
-  border:2px solid var(--blue);
 
   background:var(--teal);
-
   color:var(--white);
-
-  font-size:12px;
-
-}
-
-
-.browser-subtitle{
-
-  font-size:11px;
-
-  font-weight:bold;
-
-}
-
-
-.browser-window-buttons{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.browser-window-buttons span{
-
-  width:23px;
-
-  height:23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
 
   border:2px solid var(--blue);
 
+  font-size:12px;
+  font-weight:bold;
+}
+
+.browser-brand{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.browser-sub{
+  font-size:13px;
+  letter-spacing:.7px;
+}
+
+.browser-menu{
+  min-height:34px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 10px;
+
+  border-bottom:var(--border);
+
   background:var(--paper);
+}
+
+.browser-menu span{
+  margin-right:28px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.browser-address-row{
+  min-height:50px;
+
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) 190px;
+  gap:10px;
+  align-items:center;
+
+  padding:7px 10px;
+
+  background:var(--paper);
+}
+
+.browser-buttons{
+  display:flex;
+  gap:7px;
+}
+
+.browser-button{
+  width:39px;
+  height:34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#efe6cc;
+  border:2px solid var(--blue);
 
   color:var(--blue);
 
-  font-size:11px;
-
-}
-
-
-.browser-menu{
-
-  display:flex;
-
-  gap:20px;
-
-  padding:
-    6px 10px;
-
-  border-bottom:2px solid var(--blue);
-
-  font-size:12px;
-
+  font-size:18px;
   font-weight:bold;
 
+  box-shadow:2px 2px 0 var(--blue);
 }
 
-
-.browser-address-row{
-
-  display:grid;
-
-  grid-template-columns:
-    31px
-    31px
-    31px
-    minmax(0,1fr)
-    175px;
-
-  gap:6px;
-
-  align-items:center;
-
-  padding:7px;
-
+.browser-button:active{
+  transform:translate(2px,2px);
+  box-shadow:none;
 }
-
-
-.browser-control{
-
-  width:31px;
-
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  font-weight:bold;
-
-}
-
 
 .browser-address{
-
   min-width:0;
-
-  height:27px;
+  height:34px;
 
   display:flex;
-
   align-items:center;
 
-  padding:
-    0 9px;
+  padding:0 10px;
 
   border:2px solid var(--blue);
+  background:#f1e9d1;
 
-  background:#eee5ce;
+  color:var(--blue);
 
-  color:#303249;
+  font-family:monospace;
+  font-size:12px;
 
   overflow:hidden;
-
   white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
 }
-
 
 .browser-date{
-
   text-align:center;
 
-  font-size:10px;
-
-  line-height:1.35;
-
+  font-family:monospace;
+  font-size:11px;
   font-weight:bold;
-
+  line-height:1.3;
 }
 
-
-/* =========================================================
+/* ═══════════════════════════════════════════════════════
    MAIN LAYOUT
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
-.layout{
-
-  display:grid;
-
-  grid-template-columns:
-    285px
-    minmax(0,1fr);
-
-  gap:16px;
-
+.page{
+  width:calc(100% - 34px);
   max-width:1600px;
 
-  margin:0 auto;
+  margin:0 auto 100px;
 
-  align-items:start;
+  display:grid;
+  grid-template-columns:285px minmax(0,1fr);
 
+  gap:18px;
 }
 
+/* ═══════════════════════════════════════════════════════
+   PANEL
+   ═══════════════════════════════════════════════════════ */
 
-/* =========================================================
-   LEFT / SYSTEM INFO
-========================================================= */
+.panel{
+  border:var(--border);
+  background:var(--paper);
 
-.left{
+  box-shadow:5px 5px 0 var(--blue);
 
   min-width:0;
-
 }
 
-
-.system-window{
-
-  overflow:hidden;
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-}
-
-
-.window-titlebar{
-
-  min-height:38px;
+.panel-title{
+  min-height:45px;
 
   display:flex;
-
   align-items:center;
 
-  justify-content:space-between;
-
-  padding:
-    5px 7px;
+  padding:7px 10px;
 
   background:var(--orange);
 
@@ -410,1644 +261,930 @@ body::before{
 
   color:var(--blue);
 
+  font-size:18px;
   font-weight:bold;
-
   letter-spacing:.8px;
-
-  font-size:14px;
-
 }
 
-
-.window-title{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-}
-
-
-.window-title-icon{
-
-  width:21px;
-
-  height:21px;
+.panel-icon{
+  width:28px;
+  height:28px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  flex-shrink:0;
+  margin-right:9px;
+
+  background:#eee5cb;
 
   border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-size:10px;
-
-  font-weight:bold;
-
-}
-
-
-.window-buttons{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.window-button{
-
-  width:20px;
-
-  height:20px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-size:11px;
-
-  line-height:1;
-
-}
-
-
-.system-content{
-
-  padding:13px;
-
-}
-
-
-.system-line{
-
-  margin:
-    7px 0;
 
   font-size:12px;
-
-}
-
-
-.online{
-
-  color:var(--green);
-
   font-weight:bold;
-
 }
 
+/* ═══════════════════════════════════════════════════════
+   LEFT COLUMN
+   ═══════════════════════════════════════════════════════ */
 
-/* =========================================================
+.sidebar{
+  min-width:0;
+}
+
+.system-info{
+  padding:22px 15px 14px;
+}
+
+.system-line{
+  margin-bottom:8px;
+}
+
+.system-online{
+  color:var(--green);
+  font-weight:bold;
+}
+
+.system-divider{
+  margin:18px 0 15px;
+
+  border-top:3px dashed var(--blue);
+}
+
+/* ═══════════════════════════════════════════════════════
    NAVIGATION
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
 .nav-list{
-
-  margin-top:17px;
-
-  padding-top:12px;
-
-  border-top:
-    2px dashed var(--blue);
-
+  display:flex;
+  flex-direction:column;
+  gap:2px;
 }
 
-
 .nav-list a{
-
   display:flex;
-
   align-items:center;
 
   min-height:38px;
-
-  padding:
-    6px 8px;
+  padding:6px 8px;
 
   color:var(--blue);
-
   text-decoration:none;
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family:Arial,Helvetica,sans-serif;
   font-size:14px;
-
   font-weight:bold;
 
   letter-spacing:.3px;
-
   line-height:1.4;
-
 }
-
 
 .nav-list a:hover{
-
   background:var(--orange);
-
   color:var(--white);
 
   outline:2px solid var(--blue);
-
 }
-
 
 .nav-list a.active{
-
   background:var(--orange);
-
   color:var(--white);
 
   outline:2px solid var(--blue);
-
 }
-
 
 .nav-list a.active:hover{
-
   color:var(--white);
-
 }
 
-
-/* =========================================================
+/* ═══════════════════════════════════════════════════════
    CASSETTE
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
 .cassette{
-
   margin-top:15px;
+  padding-top:15px;
 
-  padding-top:12px;
-
-  border-top:
-    2px dashed var(--blue);
-
+  border-top:3px dashed var(--blue);
 }
 
-
 .cassette img{
-
   display:block;
 
   width:100%;
-
   height:auto;
 
   border:3px solid var(--blue);
-
 }
 
-
 .cassette-caption{
-
   margin-top:8px;
 
   text-align:center;
 
+  font-family:monospace;
   font-size:10px;
-
-  line-height:1.5;
-
-  font-weight:bold;
-
+  line-height:1.35;
 }
 
+/* ═══════════════════════════════════════════════════════
+   NOTES PANEL
+   ═══════════════════════════════════════════════════════ */
 
-/* =========================================================
-   MAIN NOTES
-========================================================= */
-
-.main{
-
+.notes-panel{
   min-width:0;
-
 }
-
-
-.notes-window{
-
-  min-width:0;
-
-  background:var(--paper);
-
-  border:var(--border);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  overflow:hidden;
-
-}
-
-
-/* =========================================================
-   NOTES TITLE BAR
-========================================================= */
-
-.notes-titlebar{
-
-  min-height:38px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 7px;
-
-  background:var(--orange);
-
-  border-bottom:var(--border);
-
-}
-
-
-.notes-title{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  color:var(--blue);
-
-  font-size:14px;
-
-  font-weight:bold;
-
-  letter-spacing:.8px;
-
-}
-
-
-.notes-title-icon{
-
-  width:21px;
-
-  height:21px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  font-size:10px;
-
-  font-weight:bold;
-
-}
-
-
-.notes-buttons{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.notes-button{
-
-  width:20px;
-
-  height:20px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  font-size:11px;
-
-}
-
-
-/* =========================================================
-   INTRO + SEARCH
-========================================================= */
-
-.notes-tools{
-
-  display:grid;
-
-  grid-template-columns:
-    minmax(0,1fr)
-    320px;
-
-  gap:18px;
-
-  align-items:center;
-
-  padding:
-    13px 15px;
-
-  border-bottom:
-    2px dashed var(--blue);
-
-}
-
 
 .notes-intro{
-
-  font-size:12px;
-
-  line-height:1.5;
-
-}
-
-
-.search{
+  padding:20px 20px 16px;
 
   display:flex;
-
   align-items:center;
+  justify-content:space-between;
+  gap:20px;
 
-  gap:8px;
-
+  border-bottom:3px dashed var(--blue);
 }
 
+.notes-intro-text{
+  min-width:0;
+
+  font-size:15px;
+}
+
+.search{
+  width:380px;
+  max-width:45%;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
 .search-icon{
+  flex:0 0 auto;
 
-  font-size:24px;
-
+  font-size:22px;
   line-height:1;
-
-  flex-shrink:0;
-
 }
 
-
 .search input{
-
   width:100%;
+  height:39px;
 
-  height:31px;
+  padding:6px 10px;
 
   border:2px solid var(--blue);
 
-  background:#eee5ce;
+  background:#f0e8d0;
 
   color:var(--blue);
 
-  padding:
-    4px 9px;
-
   font-family:inherit;
-
-  font-size:11px;
+  font-size:13px;
 
   outline:none;
-
 }
-
 
 .search input:focus{
-
-  border-color:var(--orange);
-
+  outline:2px solid var(--orange);
 }
 
-
-.search input::placeholder{
-
-  color:#777;
-
-}
-
-
-/* =========================================================
-   DAILY LOG
-========================================================= */
+/* ═══════════════════════════════════════════════════════
+   ARCHIVE
+   ═══════════════════════════════════════════════════════ */
 
 .archive{
-
   width:100%;
-
 }
 
-
-.archive-entry{
+.archive-row{
+  min-height:115px;
 
   display:grid;
-
-  grid-template-columns:
-    105px
-    minmax(0,1fr)
-    35px;
-
-  gap:18px;
-
-  min-height:94px;
+  grid-template-columns:135px minmax(0,1fr) 45px;
 
   align-items:center;
 
-  padding:
-    13px 16px;
+  padding:16px 20px;
 
-  border-bottom:
-    1px dashed #74746f;
-
-  color:var(--blue);
+  border-bottom:1px dashed rgba(21,23,47,.45);
 
   text-decoration:none;
-
-  transition:
-    background .12s ease;
-
+  color:var(--blue);
 }
 
-
-.archive-entry:last-child{
-
-  border-bottom:0;
-
+.archive-row:last-child{
+  border-bottom:none;
 }
 
-
-.archive-entry:hover{
-
-  background:#eee5ce;
-
+.archive-row:hover{
+  background:rgba(240,90,50,.10);
 }
-
-
-.archive-entry:hover .archive-arrow{
-
-  color:var(--orange-dark);
-
-  transform:translateX(3px);
-
-}
-
-
-/* =========================================================
-   DATE
-========================================================= */
 
 .archive-date{
+  height:62px;
 
-  padding-right:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 
-  border-right:
-    2px solid var(--blue);
+  border-right:3px solid var(--blue);
+
+  font-family:monospace;
+}
+
+.archive-day{
+  font-size:28px;
+  font-weight:bold;
+  line-height:1;
+}
+
+.archive-month{
+  margin-top:4px;
 
   color:var(--teal);
 
-  font-size:12px;
-
+  font-size:11px;
   font-weight:bold;
-
-  line-height:1.35;
-
+  line-height:1.2;
 }
 
+.archive-year{
+  color:var(--teal);
 
-.archive-date-day{
-
-  display:block;
-
-  font-size:22px;
-
-  line-height:1;
-
-  color:var(--blue);
-
+  font-size:11px;
+  font-weight:bold;
+  line-height:1.2;
 }
-
-
-.archive-date-month{
-
-  display:block;
-
-  margin-top:3px;
-
-  font-size:9px;
-
-  text-transform:uppercase;
-
-}
-
-
-.archive-date-year{
-
-  display:block;
-
-  font-size:10px;
-
-}
-
-
-/* =========================================================
-   NOTE CONTENT
-========================================================= */
 
 .archive-content{
-
   min-width:0;
-
+  padding-left:22px;
 }
-
 
 .archive-title{
+  margin-bottom:7px;
 
-  margin-bottom:6px;
-
-  color:var(--blue);
-
-  font-size:15px;
+  font-size:17px;
+  line-height:1.2;
 
   font-weight:bold;
-
-  line-height:1.35;
-
 }
-
 
 .archive-excerpt{
-
-  color:#5f5d56;
-
-  font-size:11px;
-
-  line-height:1.55;
-
-}
-
-
-.archive-arrow{
-
-  color:var(--blue);
-
-  font-size:20px;
-
-  font-weight:bold;
-
-  text-align:center;
-
-  transition:
-    transform .12s ease;
-
-}
-
-
-/* =========================================================
-   EMPTY
-========================================================= */
-
-.empty{
-
-  padding:50px 20px;
-
-  color:#666;
+  color:#5b584d;
 
   font-size:12px;
-
+  line-height:1.5;
 }
 
+.archive-arrow{
+  text-align:center;
 
-/* =========================================================
+  font-family:monospace;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.empty{
+  padding:30px 20px;
+
+  font-family:monospace;
+  font-size:12px;
+}
+
+/* ═══════════════════════════════════════════════════════
    ARTICLE
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
 .article{
-
-  padding:
-    24px 22px 40px;
-
+  padding:28px 30px 40px;
 }
 
-
 .article-meta{
+  margin-bottom:10px;
 
   color:var(--teal);
 
+  font-family:monospace;
   font-size:11px;
-
-  font-weight:bold;
-
-  margin-bottom:12px;
-
 }
-
 
 .article-title{
-
   margin:0 0 25px;
 
-  color:var(--blue);
-
-  font-size:29px;
-
-  line-height:1.2;
-
+  font-size:30px;
+  line-height:1.12;
 }
-
 
 .article-body{
-
   max-width:850px;
 
-  padding-top:20px;
-
-  border-top:
-    2px dashed var(--blue);
-
-  color:#33344a;
-
-  font-size:14px;
-
-  line-height:1.8;
-
+  font-size:15px;
+  line-height:1.75;
 }
-
 
 .article-body p{
-
-  margin:
-    0 0 18px;
-
+  margin:0 0 18px;
 }
-
 
 .article-body h1,
 .article-body h2,
 .article-body h3{
+  margin:28px 0 12px;
 
-  color:var(--blue);
-
-  line-height:1.3;
-
+  line-height:1.2;
 }
-
 
 .article-body h1{
-
   font-size:25px;
-
-  margin:
-    30px 0 15px;
-
 }
-
 
 .article-body h2{
-
   font-size:21px;
-
-  margin:
-    28px 0 13px;
-
 }
-
 
 .article-body h3{
-
-  font-size:17px;
-
-  margin:
-    24px 0 10px;
-
+  font-size:18px;
 }
-
-
-.article-body strong{
-
-  font-weight:bold;
-
-}
-
-
-.article-body em{
-
-  color:#555;
-
-}
-
 
 .article-body blockquote{
+  margin:20px 0;
+  padding:10px 18px;
 
-  margin:
-    22px 0;
+  border-left:4px solid var(--orange);
 
-  padding:
-    10px 15px;
+  background:rgba(240,90,50,.08);
 
-  border-left:
-    5px solid var(--orange);
-
-  background:#ddd3b8;
-
+  font-style:italic;
 }
-
 
 .article-body ul{
-
-  padding-left:24px;
-
+  margin:0 0 18px;
+  padding-left:25px;
 }
-
 
 .article-body li{
-
-  margin-bottom:7px;
-
+  margin-bottom:6px;
 }
-
-
-.article-body a{
-
-  color:var(--orange-dark);
-
-  text-decoration:underline;
-
-}
-
 
 .article-body img{
-
   display:block;
 
   max-width:100%;
-
   height:auto;
 
-  margin:
-    22px 0;
+  margin:25px 0;
 
-  border:
-    3px solid var(--blue);
-
+  border:3px solid var(--blue);
 }
 
-
-.article-back{
-
-  display:inline-block;
-
-  margin-top:25px;
-
-  padding:
-    7px 10px;
-
-  border:
-    2px solid var(--blue);
-
-  background:var(--orange);
-
-  color:var(--white);
-
-  text-decoration:none;
-
-  font-size:11px;
-
+.article-body a{
+  color:var(--teal);
   font-weight:bold;
-
 }
 
-
-.article-back:hover{
-
-  background:var(--blue);
-
-}
-
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-.error{
-
-  padding:
-    40px 20px;
-
-  color:#8b2c1e;
-
-  font-size:11px;
-
-  line-height:1.8;
-
-}
-
-
-/* =========================================================
+/* ═══════════════════════════════════════════════════════
    FOOTER
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
 .footer{
-
-  max-width:1600px;
-
-  margin:
-    16px auto 0;
-
-  padding:
-    11px;
-
-  border:
-    3px solid var(--blue);
-
-  background:var(--paper);
+  margin:28px 0 120px;
 
   text-align:center;
 
-  font-size:10px;
-
-  font-weight:bold;
-
+  font-family:monospace;
+  font-size:11px;
+  line-height:1.5;
 }
 
-
-/* =========================================================
+/* ═══════════════════════════════════════════════════════
    MUSIC PLAYER
-========================================================= */
+   ═══════════════════════════════════════════════════════
+
+   IMPORTANT:
+   Music Player is deliberately scoped so the global
+   Arial font does not break its controls.
+   ═══════════════════════════════════════════════════════ */
 
 .music-player{
-
   position:fixed;
 
-  width:
-    min(940px, calc(100% - 28px));
-
   left:50%;
-
-  bottom:10px;
+  bottom:18px;
 
   transform:translateX(-50%);
 
-  z-index:10000;
+  width:min(1180px,calc(100% - 90px));
+
+  min-height:76px;
+
+  z-index:5000;
 
   display:grid;
-
-  grid-template-columns:
-    auto
-    minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
-    auto;
-
-  gap:9px;
+  grid-template-columns:55px 285px minmax(300px,1fr);
 
   align-items:center;
+  gap:14px;
 
-  padding:
-    6px 8px;
+  padding:10px 14px;
 
   background:var(--paper);
 
-  border:
-    3px solid var(--blue);
+  border:3px solid var(--blue);
 
-  box-shadow:
-    5px 5px 0 var(--blue);
+  box-shadow:5px 5px 0 var(--blue);
 
+  /* lock player typography */
+  font-family:Arial,Helvetica,sans-serif;
+
+  overflow:hidden;
 }
 
-
-.music-icon{
-
-  width:35px;
-
-  height:35px;
+.music-cover{
+  width:42px;
+  height:42px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   background:var(--orange);
 
-  border:
-    3px solid var(--blue);
-
-  font-weight:bold;
-
-}
-
-
-.music-info{
-
-  min-width:0;
-
-}
-
-
-.music-label{
-
-  font-size:8px;
-
-  margin-bottom:2px;
-
-}
-
-
-.music-title{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
-  font-weight:bold;
-
-}
-
-
-.music-artist{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  margin-top:1px;
-
-  color:var(--teal-dark);
-
-  font-size:9px;
-
-  font-weight:bold;
-
-}
-
-
-.music-controls{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.music-button{
-
-  width:33px;
-
-  height:29px;
-
-  border:
-    3px solid var(--blue);
-
-  background:#eee5ce;
+  border:2px solid var(--blue);
 
   color:var(--blue);
 
-  font-family:inherit;
-
+  font-family:monospace;
+  font-size:18px;
   font-weight:bold;
 
-  cursor:pointer;
-
+  flex:0 0 auto;
 }
 
-
-.music-button:hover{
-
-  background:var(--orange);
-
-}
-
-
-.music-progress{
-
+.music-info{
   min-width:0;
 
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
 }
 
+.music-now{
+  margin-bottom:2px;
 
-.music-progress input{
-
-  width:100%;
-
-  accent-color:var(--orange);
-
-}
-
-
-.music-time{
-
-  min-width:72px;
-
-  text-align:center;
-
+  font-family:monospace;
   font-size:9px;
 
+  text-transform:uppercase;
 }
 
+.music-title{
+  overflow:hidden;
+
+  white-space:nowrap;
+  text-overflow:ellipsis;
+
+  font-size:13px;
+  font-weight:bold;
+}
+
+.music-artist{
+  overflow:hidden;
+
+  white-space:nowrap;
+  text-overflow:ellipsis;
+
+  color:var(--teal);
+
+  font-size:11px;
+  font-weight:bold;
+}
+
+.music-controls{
+  min-width:0;
+
+  display:grid;
+  grid-template-columns:auto minmax(160px,1fr) auto;
+
+  align-items:center;
+  gap:10px;
+}
+
+.music-buttons{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.music-button{
+  width:38px;
+  height:36px;
+
+  flex:0 0 38px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:0;
+
+  border:3px solid var(--blue);
+
+  background:#eee5cb;
+
+  color:var(--blue);
+
+  /* prevent global font inheritance from changing controls */
+  font-family:monospace;
+  font-size:13px;
+  font-weight:bold;
+
+  line-height:1;
+  white-space:nowrap;
+
+  cursor:pointer;
+}
+
+.music-button:hover{
+  background:var(--orange);
+  color:var(--white);
+}
+
+.music-button:active{
+  transform:translate(1px,1px);
+}
+
+.music-button span,
+.music-button svg{
+  flex-shrink:0;
+}
+
+.music-progress-wrap{
+  min-width:0;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.music-progress{
+  width:100%;
+  min-width:0;
+
+  height:4px;
+
+  accent-color:var(--orange);
+}
+
+.music-time{
+  flex:0 0 auto;
+
+  font-family:monospace;
+  font-size:10px;
+  white-space:nowrap;
+}
 
 .music-volume{
+  width:110px;
 
-  width:100px;
-
+  accent-color:var(--orange);
 }
 
-
-.music-volume input{
-
-  width:100%;
-
-  accent-color:var(--teal);
-
-}
-
-
-/* =========================================================
+/* ═══════════════════════════════════════════════════════
    RESPONSIVE
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
-@media(max-width:900px){
+@media(max-width:1050px){
 
-  .layout{
+  .music-player{
+    width:calc(100% - 40px);
 
-    grid-template-columns:
-      220px
-      minmax(0,1fr);
-
+    grid-template-columns:50px 230px minmax(0,1fr);
   }
 
-  .notes-tools{
+  .music-volume{
+    width:80px;
+  }
+}
 
+@media(max-width:800px){
+
+  .browser-address-row{
+    grid-template-columns:auto minmax(0,1fr);
+  }
+
+  .browser-date{
+    display:none;
+  }
+
+  .page{
     grid-template-columns:1fr;
+  }
 
-    gap:10px;
+  .sidebar{
+    width:100%;
+  }
 
+  .notes-intro{
+    align-items:stretch;
+    flex-direction:column;
   }
 
   .search{
-
     width:100%;
-
+    max-width:none;
   }
-
-}
-
-
-@media(max-width:1200px){
 
   .music-player{
+    width:calc(100% - 24px);
 
-    grid-template-columns:
-      auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
-  }
-
-  .music-volume{
-
-    display:none;
-
-  }
-
-}
-
-
-@media(max-width:700px){
-
-  .page{
-
-    padding:
-      7px
-      7px
-      75px;
-
-  }
-
-
-  .browser-menu{
-
-    display:none;
-
-  }
-
-
-  .browser-address-row{
-
-    grid-template-columns:
-      31px
-      minmax(0,1fr)
-      31px;
-
-  }
-
-
-  .browser-address-row
-  .browser-control:nth-child(2){
-
-    display:none;
-
-  }
-
-
-  .browser-date{
-
-    display:none;
-
-  }
-
-
-  .layout{
-
-    display:block;
-
-  }
-
-
-  .left{
-
-    margin-bottom:16px;
-
-  }
-
-
-  .archive-entry{
-
-    grid-template-columns:
-      72px
-      minmax(0,1fr)
-      25px;
+    grid-template-columns:45px minmax(0,1fr);
 
     gap:10px;
-
-    min-height:88px;
-
-    padding:
-      12px 10px;
-
   }
 
+  .music-controls{
+    grid-column:1 / -1;
+  }
+
+  .music-volume{
+    display:none;
+  }
+}
+
+@media(max-width:560px){
+
+  .browser{
+    width:calc(100% - 12px);
+  }
+
+  .page{
+    width:calc(100% - 18px);
+  }
+
+  .browser-menu span{
+    margin-right:12px;
+    font-size:12px;
+  }
+
+  .archive-row{
+    grid-template-columns:75px minmax(0,1fr) 25px;
+    padding:14px 10px;
+  }
 
   .archive-date{
-
-    padding-right:9px;
-
+    height:55px;
   }
 
-
-  .archive-date-day{
-
-    font-size:19px;
-
+  .archive-day{
+    font-size:24px;
   }
 
+  .archive-content{
+    padding-left:12px;
+  }
 
   .archive-title{
-
-    font-size:13px;
-
+    font-size:15px;
   }
-
 
   .archive-excerpt{
-
-    font-size:10px;
-
+    font-size:11px;
   }
-
-
-  .archive-arrow{
-
-    font-size:17px;
-
-  }
-
 
   .article{
-
-    padding:
-      20px 15px 35px;
-
+    padding:22px 18px 30px;
   }
-
 
   .article-title{
-
-    font-size:24px;
-
+    font-size:25px;
   }
-
 
   .music-player{
+    bottom:8px;
 
-    width:
-      calc(100% - 10px);
+    width:calc(100% - 16px);
 
-    bottom:5px;
+    padding:8px;
 
-    grid-template-columns:
-      auto
-      minmax(0,1fr)
-      auto;
+    box-shadow:3px 3px 0 var(--blue);
+  }
 
+  .music-info{
+    min-width:0;
+  }
+
+  .music-buttons{
     gap:5px;
-
   }
 
-
-  .music-progress,
-  .music-time,
-  .music-volume{
-
-    display:none;
-
+  .music-button{
+    width:34px;
+    height:34px;
+    flex-basis:34px;
   }
 
+  .music-progress-wrap{
+    gap:7px;
+  }
+
+  .music-time{
+    font-size:9px;
+  }
 }
-
-
-@media(max-width:480px){
-
-  .browser-subtitle{
-
-    display:none;
-
-  }
-
-
-  .archive-entry{
-
-    grid-template-columns:
-      65px
-      minmax(0,1fr)
-      20px;
-
-  }
-
-
-  .archive-date-day{
-
-    font-size:17px;
-
-  }
-
-
-  .archive-title{
-
-    font-size:12px;
-
-  }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<div class="page">
-
-
-<!-- =======================================================
+<!-- ═══════════════════════════════════════════════════════
      BROWSER
-======================================================= -->
+     ═══════════════════════════════════════════════════════ -->
 
-<header class="browser">
-
+<div class="browser">
 
   <div class="browser-top">
-
+    <div class="browser-icon">QM</div>
 
     <div class="browser-brand">
-
-      <span class="browser-brand-icon">
-        QM
-      </span>
-
       QM ARCHIVE
-
-      <span class="browser-subtitle">
-        // A SMALL SPACE FOR ORDINARY DAYS.
-      </span>
-
     </div>
 
-
-    <div class="browser-window-buttons">
-
-      <span>—</span>
-      <span>□</span>
-      <span>×</span>
-
+    <div class="browser-sub">
+      // A SMALL SPACE FOR ORDINARY DAYS.
     </div>
 
-
+    <div style="margin-left:auto;display:flex;gap:7px;">
+      <div class="browser-button">—</div>
+      <div class="browser-button">□</div>
+      <div class="browser-button">×</div>
+    </div>
   </div>
 
-
   <div class="browser-menu">
-
     <span>File</span>
     <span>Edit</span>
     <span>View</span>
     <span>Favorites</span>
     <span>Tools</span>
     <span>Help</span>
-
   </div>
-
 
   <div class="browser-address-row">
 
-
-    <div class="browser-control">
-      &lt;
+    <div class="browser-buttons">
+      <div class="browser-button">&lt;</div>
+      <div class="browser-button">&gt;</div>
+      <div class="browser-button">^</div>
     </div>
 
-
-    <div class="browser-control">
-      &gt;
-    </div>
-
-
-    <div class="browser-control">
-      ^
-    </div>
-
-
-    <div
-      class="browser-address"
-      id="browserAddress"
-    >
-
+    <div class="browser-address">
       https://qmarchive.github.io/notes/
-
     </div>
-
 
     <div class="browser-date">
-
-      <span id="browserDate">
-        22 SEP 2026
-      </span>
-
-      <br>
-
-      <span id="browserTime">
-        20:15
-      </span>
-
+      <span id="browserDate">23 SEP 2026</span><br>
+      <span id="browserTime">17:00</span>
     </div>
-
 
   </div>
 
-
-</header>
-
+</div>
 
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
+<!-- ═══════════════════════════════════════════════════════
+     PAGE
+     ═══════════════════════════════════════════════════════ -->
 
-<div class="layout">
+<div class="page">
 
+  <!-- ═══════════════════════════════════════════════════
+       SIDEBAR
+       ═══════════════════════════════════════════════════ -->
 
-<!-- =====================================================
-     SYSTEM INFO
-====================================================== -->
+  <aside class="sidebar">
 
-<aside class="left">
+    <div class="panel">
 
-
-  <section class="system-window">
-
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          S
-        </span>
-
+      <div class="panel-title">
+        <div class="panel-icon">S</div>
         SYSTEM INFO
 
-      </div>
-
-
-      <div class="window-buttons">
-
-        <span class="window-button">
+        <div style="margin-left:auto;" class="browser-button">
           ×
-        </span>
-
+        </div>
       </div>
 
+      <div class="system-info">
 
-    </div>
+        <div class="system-line">
+          Edgerunner.2046
+        </div>
 
+        <div class="system-line system-online">
+          + Online
+        </div>
 
-    <div class="system-content">
+        <div class="system-line">
+          Since: 21.09.2026
+        </div>
 
+        <div class="system-divider"></div>
 
-      <div class="system-line">
+        <!-- NAV -->
 
-        Edgerunner.2046
+        <nav class="nav-list">
 
-      </div>
+          <a href="/">
+            HOME
+          </a>
 
+          <a href="/writings/">
+            WRITINGS
+          </a>
 
-      <div class="system-line online">
+          <a href="/photographs/">
+            PHOTOGRAPHS
+          </a>
 
-        + Online
+          <a href="/notes/" class="active">
+            NOTES
+          </a>
 
-      </div>
+        </nav>
 
+        <!-- CASSETTE -->
 
-      <div class="system-line">
+        <div class="cassette">
 
-        Since: 21.09.2026
+          <img
+            src="/home/home-cassette.gif"
+            alt="Cassette"
+          >
 
-      </div>
-
-
-      <nav class="nav-list">
-
-
-        <a href="/">
-
-          HOME
-
-        </a>
-
-
-        <a href="/writings/">
-
-          WRITINGS
-
-        </a>
-
-
-        <a href="/photographs/">
-
-          PHOTOGRAPHS
-
-        </a>
-
-
-        <a
-          href="/notes/"
-          class="active"
-        >
-
-          NOTES
-
-        </a>
-
-
-      </nav>
-
-
-      <div class="cassette">
-
-
-        <img
-          src="/home/home-cassette.gif"
-          alt="Cassette"
-        >
-
-
-        <div class="cassette-caption">
-
-          Không sao đâu, không sao đâu mà
-
-          <br>
-
-          // 1998 -
-          <span id="cassetteYear">
-            2026
-          </span>
+          <div class="cassette-caption">
+            Không sao đâu, không sao đâu mà //
+            1998 - <span id="cassetteYear">2026</span>
+          </div>
 
         </div>
 
-
       </div>
 
+    </div>
+
+  </aside>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       NOTES
+       ═══════════════════════════════════════════════════ -->
+
+  <main class="panel notes-panel">
+
+    <div class="panel-title">
+
+      <div class="panel-icon">
+        N
+      </div>
+
+      NOTES
+
+      <div style="margin-left:auto;display:flex;gap:7px;">
+
+        <div class="browser-button">
+          —
+        </div>
+
+        <div class="browser-button">
+          □
+        </div>
+
+        <div class="browser-button">
+          ×
+        </div>
+
+      </div>
 
     </div>
 
 
-  </section>
+    <!-- INTRO / SEARCH -->
 
+    <div class="notes-intro">
 
-</aside>
-
-
-
-<!-- =====================================================
-     NOTES
-====================================================== -->
-
-<main class="main">
-
-
-  <section class="notes-window">
-
-
-    <header class="notes-titlebar">
-
-
-      <div class="notes-title">
-
-        <span class="notes-title-icon">
-          N
-        </span>
-
-        NOTES
-
-      </div>
-
-
-      <div class="notes-buttons">
-
-        <span class="notes-button">
-          —
-        </span>
-
-        <span class="notes-button">
-          □
-        </span>
-
-        <span class="notes-button">
-          ×
-        </span>
-
-      </div>
-
-
-    </header>
-
-
-    <div class="notes-tools">
-
-
-      <div class="notes-intro">
-
+      <div class="notes-intro-text">
         Lê đôi bàn chân bước đi trên con phố dài
-
       </div>
-
 
       <div class="search">
 
-
-        <span class="search-icon">
+        <div class="search-icon">
           ⌕
-        </span>
-
+        </div>
 
         <input
           id="searchInput"
@@ -2056,953 +1193,735 @@ body::before{
           autocomplete="off"
         >
 
-
       </div>
-
 
     </div>
 
 
-    <div
-      id="archive"
-      class="archive"
-    ></div>
+    <!-- ARCHIVE -->
+
+    <div id="archive" class="archive">
+      <div class="empty">
+        Loading notes...
+      </div>
+    </div>
 
 
-    <article
-      id="article"
-      style="display:none;"
-    >
+    <!-- ARTICLE -->
 
-      <div
-        id="articleMeta"
-        class="article-meta"
-      ></div>
+    <div id="article" style="display:none;"></div>
 
-
-      <h1
-        id="articleTitle"
-        class="article-title"
-      ></h1>
-
-
-      <div
-        id="articleBody"
-        class="article-body"
-      ></div>
-
-
-      <a
-        href="/notes/"
-        class="article-back"
-      >
-
-        ← Back to Notes
-
-      </a>
-
-
-    </article>
-
-
-  </section>
-
-
-</main>
-
+  </main>
 
 </div>
 
 
-
-<!-- =======================================================
+<!-- ═══════════════════════════════════════════════════════
      FOOTER
-======================================================= -->
+     ═══════════════════════════════════════════════════════ -->
 
 <footer class="footer">
 
-  QM ARCHIVE
-  //
-  NOTES
-  //
-  <span id="footerYear">
-    2026
-  </span>
+  I don’t have a favorite place, I have my favorite people.<br>
+  And whenever i’m with my favorite people,<br>
+  it becomes my favorite place.<br><br>
+
+  QM ARCHIVE // NOTES //
+  <span id="footerYear">2026</span>
 
 </footer>
 
 
-
-<!-- =======================================================
+<!-- ═══════════════════════════════════════════════════════
      MUSIC PLAYER
-======================================================= -->
+     ═══════════════════════════════════════════════════════ -->
 
 <div class="music-player">
 
-
-  <div class="music-icon">
-
+  <div class="music-cover">
     ♪
-
   </div>
 
 
   <div class="music-info">
 
-
-    <div class="music-label">
-
+    <div class="music-now">
       NOW PLAYING
-
     </div>
 
-
     <div
-      class="music-title"
       id="musicTitle"
+      class="music-title"
     >
-
       Between the Takes
-
     </div>
-
 
     <div
-      class="music-artist"
       id="musicArtist"
+      class="music-artist"
     >
-
       Orient.bakureever
-
     </div>
-
 
   </div>
 
 
   <div class="music-controls">
 
+    <div class="music-buttons">
 
-    <button
-      class="music-button"
-      id="prevButton"
-      type="button"
-    >
+      <button
+        id="prevBtn"
+        class="music-button"
+        type="button"
+        aria-label="Previous"
+      >
+        |◀
+      </button>
 
-      |◀
+      <button
+        id="playBtn"
+        class="music-button"
+        type="button"
+        aria-label="Play"
+      >
+        ▶
+      </button>
 
-    </button>
+      <button
+        id="nextBtn"
+        class="music-button"
+        type="button"
+        aria-label="Next"
+      >
+        ▶|
+      </button>
 
-
-    <button
-      class="music-button"
-      id="playButton"
-      type="button"
-    >
-
-      ▶
-
-    </button>
-
-
-    <button
-      class="music-button"
-      id="nextButton"
-      type="button"
-    >
-
-      ▶|
-
-    </button>
+    </div>
 
 
-  </div>
+    <div class="music-progress-wrap">
 
+      <input
+        id="progress"
+        class="music-progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+        step="0.1"
+      >
 
-  <div class="music-progress">
+      <div
+        id="musicTime"
+        class="music-time"
+      >
+        00:00 / 00:00
+      </div>
 
-    <input
-      id="progress"
-      type="range"
-      min="0"
-      max="100"
-      value="0"
-      step="0.1"
-    >
+    </div>
 
-  </div>
-
-
-  <div
-    class="music-time"
-    id="musicTime"
-  >
-
-    00:00 / 00:00
-
-  </div>
-
-
-  <div class="music-volume">
 
     <input
       id="volume"
+      class="music-volume"
       type="range"
       min="0"
       max="1"
-      value=".7"
-      step=".01"
+      value="1"
+      step="0.01"
+      aria-label="Volume"
     >
 
   </div>
-
 
 </div>
 
 
-<audio
-  id="audio"
-  preload="metadata"
-></audio>
-
+<audio id="audio" preload="metadata"></audio>
 
 
 <script>
+/* ═══════════════════════════════════════════════════════
+   DATE / TIME
+   ═══════════════════════════════════════════════════════ */
 
-/* =========================================================
-   CONFIG
-========================================================= */
+function updateClock(){
 
-const CONTENT_URL =
-  "/notes/content.json?v=" +
-  Date.now();
+  const now = new Date();
+
+  const day = String(now.getDate()).padStart(2,"0");
+
+  const months = [
+    "JAN","FEB","MAR","APR","MAY","JUN",
+    "JUL","AUG","SEP","OCT","NOV","DEC"
+  ];
+
+  const month = months[now.getMonth()];
+  const year = now.getFullYear();
+
+  const hours = String(now.getHours()).padStart(2,"0");
+  const minutes = String(now.getMinutes()).padStart(2,"0");
+
+  const dateEl = document.getElementById("browserDate");
+  const timeEl = document.getElementById("browserTime");
+  const footerYear = document.getElementById("footerYear");
+  const cassetteYear = document.getElementById("cassetteYear");
+
+  if(dateEl){
+    dateEl.textContent =
+      `${day} ${month} ${year}`;
+  }
+
+  if(timeEl){
+    timeEl.textContent =
+      `${hours}:${minutes}`;
+  }
+
+  if(footerYear){
+    footerYear.textContent = year;
+  }
+
+  if(cassetteYear){
+    cassetteYear.textContent = year;
+  }
+}
+
+updateClock();
+setInterval(updateClock,1000);
 
 
-const POSTS_BASE =
-  "/notes/posts/";
+/* ═══════════════════════════════════════════════════════
+   NOTES DATA
+   ═══════════════════════════════════════════════════════ */
+
+let items = [];
+
+const archiveEl =
+  document.getElementById("archive");
+
+const articleEl =
+  document.getElementById("article");
+
+const searchInput =
+  document.getElementById("searchInput");
 
 
+function parseDate(date){
 
-/* =========================================================
-   HELPERS
-========================================================= */
+  const parts =
+    String(date || "").split(".");
+
+  if(parts.length !== 3){
+    return new Date(0);
+  }
+
+  const day = Number(parts[0]);
+  const month = Number(parts[1]) - 1;
+  const year = Number(parts[2]);
+
+  return new Date(year,month,day);
+}
+
+
+function sortNewest(list){
+
+  return [...list].sort(
+    (a,b) =>
+      parseDate(b.date) - parseDate(a.date)
+  );
+}
+
+
+function renderArchive(list){
+
+  if(!archiveEl){
+    return;
+  }
+
+  const latestItems =
+    sortNewest(list).slice(0,6);
+
+  if(!latestItems.length){
+
+    archiveEl.innerHTML = `
+      <div class="empty">
+        No notes found.
+      </div>
+    `;
+
+    return;
+  }
+
+  archiveEl.innerHTML =
+    latestItems.map(item => {
+
+      const parts =
+        String(item.date || "").split(".");
+
+      const day =
+        parts[0] || "";
+
+      const month =
+        parts[1] || "";
+
+      const year =
+        parts[2] || "";
+
+      return `
+
+        <a
+          class="archive-row"
+          href="/notes/?slug=${encodeURIComponent(item.slug)}"
+        >
+
+          <div class="archive-date">
+
+            <div class="archive-day">
+              ${day}
+            </div>
+
+            <div class="archive-month">
+              ${month}
+            </div>
+
+            <div class="archive-year">
+              ${year}
+            </div>
+
+          </div>
+
+
+          <div class="archive-content">
+
+            <div class="archive-title">
+              ${escapeHTML(item.title || "")}
+            </div>
+
+            <div class="archive-excerpt">
+              ${escapeHTML(item.excerpt || "")}
+            </div>
+
+          </div>
+
+
+          <div class="archive-arrow">
+            →
+          </div>
+
+        </a>
+      `;
+
+    }).join("");
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   ESCAPE HTML
+   ═══════════════════════════════════════════════════════ */
 
 function escapeHTML(value){
 
-  return String(value ?? "")
-
+  return String(value)
     .replace(/&/g,"&amp;")
-
     .replace(/</g,"&lt;")
-
     .replace(/>/g,"&gt;")
-
     .replace(/"/g,"&quot;")
-
     .replace(/'/g,"&#039;");
-
 }
 
 
-
-/* =========================================================
-   MARKDOWN
-========================================================= */
-
-function markdownToHTML(md){
-
-  let text =
-    md
-      .replace(/\r\n/g,"\n")
-      .replace(/\r/g,"\n")
-      .trim();
-
-
-  const lines =
-    text.split("\n");
-
-
-  const html = [];
-
-  let paragraph = [];
-
-  let inList = false;
-
-
-  function flushParagraph(){
-
-    if(!paragraph.length)
-      return;
-
-
-    const content =
-      paragraph
-        .join(" ")
-        .trim();
-
-
-    if(content){
-
-      html.push(
-        "<p>" +
-        formatInline(content) +
-        "</p>"
-      );
-
-    }
-
-
-    paragraph = [];
-
-  }
-
-
-  function closeList(){
-
-    if(inList){
-
-      html.push("</ul>");
-
-      inList = false;
-
-    }
-
-  }
-
-
-  for(
-    let i=0;
-    i<lines.length;
-    i++
-  ){
-
-    const line =
-      lines[i];
-
-
-    if(!line.trim()){
-
-      flushParagraph();
-
-      closeList();
-
-      continue;
-
-    }
-
-
-    if(/^###\s+/.test(line)){
-
-      flushParagraph();
-
-      closeList();
-
-
-      html.push(
-
-        "<h3>" +
-
-        formatInline(
-          line.replace(
-            /^###\s+/,
-            ""
-          )
-        ) +
-
-        "</h3>"
-
-      );
-
-
-      continue;
-
-    }
-
-
-    if(/^##\s+/.test(line)){
-
-      flushParagraph();
-
-      closeList();
-
-
-      html.push(
-
-        "<h2>" +
-
-        formatInline(
-          line.replace(
-            /^##\s+/,
-            ""
-          )
-        ) +
-
-        "</h2>"
-
-      );
-
-
-      continue;
-
-    }
-
-
-    if(/^#\s+/.test(line)){
-
-      flushParagraph();
-
-      closeList();
-
-
-      html.push(
-
-        "<h1>" +
-
-        formatInline(
-          line.replace(
-            /^#\s+/,
-            ""
-          )
-        ) +
-
-        "</h1>"
-
-      );
-
-
-      continue;
-
-    }
-
-
-    if(/^>\s?/.test(line)){
-
-      flushParagraph();
-
-      closeList();
-
-
-      html.push(
-
-        "<blockquote>" +
-
-        formatInline(
-          line.replace(
-            /^>\s?/,
-            ""
-          )
-        ) +
-
-        "</blockquote>"
-
-      );
-
-
-      continue;
-
-    }
-
-
-    if(/^\s*[-*]\s+/.test(line)){
-
-      flushParagraph();
-
-
-      if(!inList){
-
-        html.push("<ul>");
-
-        inList = true;
-
-      }
-
-
-      html.push(
-
-        "<li>" +
-
-        formatInline(
-          line.replace(
-            /^\s*[-*]\s+/,
-            ""
-          )
-        ) +
-
-        "</li>"
-
-      );
-
-
-      continue;
-
-    }
-
-
-    paragraph.push(line);
-
-  }
-
-
-  flushParagraph();
-
-  closeList();
-
-
-  return html.join("\n");
-
-}
-
-
-
-function formatInline(text){
-
-  let value =
-    escapeHTML(text);
-
-
-  value =
-    value.replace(
-
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
-
-      '<img src="$2" alt="$1">'
-
-    );
-
-
-  value =
-    value.replace(
-
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-
-      '<a href="$2">$1</a>'
-
-    );
-
-
-  value =
-    value.replace(
-
-      /\*\*(.+?)\*\*/g,
-
-      "<strong>$1</strong>"
-
-    );
-
-
-  value =
-    value.replace(
-
-      /\*(.+?)\*/g,
-
-      "<em>$1</em>"
-
-    );
-
-
-  return value;
-
-}
-
-
-
-/* =========================================================
-   LOAD JSON
-========================================================= */
+/* ═══════════════════════════════════════════════════════
+   JSON LOADER
+   ═══════════════════════════════════════════════════════ */
 
 async function loadJSON(){
 
   const response =
     await fetch(
-      CONTENT_URL,
+      "/notes/content.json?v=" + Date.now(),
       {
         cache:"no-store"
       }
     );
 
-
   if(!response.ok){
-
     throw new Error(
-      "Cannot load notes/content.json (" +
-      response.status +
-      ")"
+      "Unable to load notes/content.json"
     );
-
   }
 
+  const data =
+    await response.json();
 
-  return await response.json();
+  items =
+    Array.isArray(data.notes)
+      ? data.notes
+      : [];
 
+  renderArchive(items);
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   MARKDOWN
+   ═══════════════════════════════════════════════════════ */
 
-/* =========================================================
-   LOAD MARKDOWN
-========================================================= */
+function inlineMarkdown(text){
+
+  let html =
+    escapeHTML(text);
+
+  html =
+    html.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      '<img src="$2" alt="$1">'
+    );
+
+  html =
+    html.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      '<a href="$2">$1</a>'
+    );
+
+  html =
+    html.replace(
+      /\*\*([^*]+)\*\*/g,
+      "<strong>$1</strong>"
+    );
+
+  html =
+    html.replace(
+      /__([^_]+)__/g,
+      "<strong>$1</strong>"
+    );
+
+  html =
+    html.replace(
+      /\*([^*]+)\*/g,
+      "<em>$1</em>"
+    );
+
+  html =
+    html.replace(
+      /_([^_]+)_/g,
+      "<em>$1</em>"
+    );
+
+  return html;
+}
+
+
+function markdownToHTML(markdown){
+
+  const lines =
+    String(markdown || "")
+      .replace(/\r\n/g,"\n")
+      .replace(/\r/g,"\n")
+      .split("\n");
+
+  let html = "";
+  let paragraph = [];
+
+  function flushParagraph(){
+
+    if(!paragraph.length){
+      return;
+    }
+
+    html +=
+      `<p>${inlineMarkdown(
+        paragraph.join(" ")
+      )}</p>`;
+
+    paragraph = [];
+  }
+
+  let inList = false;
+
+  for(let i=0;i<lines.length;i++){
+
+    const line =
+      lines[i];
+
+    const trimmed =
+      line.trim();
+
+    if(!trimmed){
+
+      flushParagraph();
+
+      if(inList){
+
+        html += "</ul>";
+        inList = false;
+
+      }
+
+      continue;
+    }
+
+
+    /* H1 */
+
+    if(trimmed.startsWith("# ")){
+
+      flushParagraph();
+
+      if(inList){
+        html += "</ul>";
+        inList = false;
+      }
+
+      html +=
+        `<h1>${inlineMarkdown(
+          trimmed.slice(2)
+        )}</h1>`;
+
+      continue;
+    }
+
+
+    /* H2 */
+
+    if(trimmed.startsWith("## ")){
+
+      flushParagraph();
+
+      if(inList){
+        html += "</ul>";
+        inList = false;
+      }
+
+      html +=
+        `<h2>${inlineMarkdown(
+          trimmed.slice(3)
+        )}</h2>`;
+
+      continue;
+    }
+
+
+    /* H3 */
+
+    if(trimmed.startsWith("### ")){
+
+      flushParagraph();
+
+      if(inList){
+        html += "</ul>";
+        inList = false;
+      }
+
+      html +=
+        `<h3>${inlineMarkdown(
+          trimmed.slice(4)
+        )}</h3>`;
+
+      continue;
+    }
+
+
+    /* BLOCKQUOTE */
+
+    if(trimmed.startsWith("> ")){
+
+      flushParagraph();
+
+      if(inList){
+        html += "</ul>";
+        inList = false;
+      }
+
+      html +=
+        `<blockquote>${inlineMarkdown(
+          trimmed.slice(2)
+        )}</blockquote>`;
+
+      continue;
+    }
+
+
+    /* UL */
+
+    if(/^[-*]\s+/.test(trimmed)){
+
+      flushParagraph();
+
+      if(!inList){
+
+        html += "<ul>";
+        inList = true;
+
+      }
+
+      html +=
+        `<li>${inlineMarkdown(
+          trimmed.replace(/^[-*]\s+/,"")
+        )}</li>`;
+
+      continue;
+    }
+
+
+    paragraph.push(trimmed);
+  }
+
+  flushParagraph();
+
+  if(inList){
+    html += "</ul>";
+  }
+
+  return html;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   MARKDOWN LOADER
+   ═══════════════════════════════════════════════════════ */
 
 async function loadMarkdown(slug){
 
-  const url =
-    POSTS_BASE +
-    encodeURIComponent(slug) +
-    ".md?v=" +
-    Date.now();
-
-
   const response =
     await fetch(
-      url,
+      "/notes/posts/" +
+      encodeURIComponent(slug) +
+      ".md?v=" +
+      Date.now(),
       {
         cache:"no-store"
       }
     );
 
-
   if(!response.ok){
 
     throw new Error(
-      "Cannot load article: " +
-      slug
+      "Unable to load note: " + slug
     );
-
   }
 
-
-  return await response.text();
-
+  return response.text();
 }
 
 
-
-/* =========================================================
-   DATE DISPLAY
-========================================================= */
-
-function formatDate(dateString){
-
-  if(!dateString){
-
-    return {
-      day:"",
-      month:"",
-      year:""
-    };
-
-  }
-
-
-  const parts =
-    String(dateString)
-      .split(/[.\-/]/);
-
-
-  if(parts.length !== 3){
-
-    return {
-      day:escapeHTML(dateString),
-      month:"",
-      year:""
-    };
-
-  }
-
-
-  return {
-
-    day:escapeHTML(
-      parts[0]
-    ),
-
-    month:
-      escapeHTML(
-        parts[1]
-      ),
-
-    year:
-      escapeHTML(
-        parts[2]
-      )
-
-  };
-
-}
-
-
-
-/* =========================================================
-   ARCHIVE
-   SHOW 6 NEWEST NOTES
-========================================================= */
-
-function renderArchive(items){
-
-  const archive =
-    document.getElementById(
-      "archive"
-    );
-
-
-  archive.style.display =
-    "block";
-
-
-  document.getElementById(
-    "article"
-  ).style.display =
-    "none";
-
-
-  document.querySelector(
-    ".notes-tools"
-  ).style.display =
-    "grid";
-
-
-  if(!items.length){
-
-    archive.innerHTML = `
-
-      <div class="empty">
-
-        No notes found.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  /*
-    Sort by date first.
-
-    Expected format:
-    DD.MM.YYYY
-
-    Example:
-    21.09.2026
-    becomes:
-    20260921
-
-    This makes the newest
-    date appear first.
-  */
-
-  const latestItems =
-    [...items]
-      .sort(
-        (a,b) => {
-
-          const dateA =
-            String(
-              a.date || ""
-            )
-            .split(".")
-            .reverse()
-            .join("");
-
-
-          const dateB =
-            String(
-              b.date || ""
-            )
-            .split(".")
-            .reverse()
-            .join("");
-
-
-          return dateB.localeCompare(
-            dateA
-          );
-
-        }
-      )
-      .slice(0,6);
-
-
-  archive.innerHTML =
-    latestItems
-      .map(item => {
-
-        const date =
-          formatDate(
-            item.date
-          );
-
-
-        return `
-
-          <a
-
-            class="archive-entry"
-
-            href="/notes/?slug=${encodeURIComponent(
-              item.slug
-            )}"
-
-          >
-
-
-            <div class="archive-date">
-
-              <span class="archive-date-day">
-
-                ${date.day}
-
-              </span>
-
-
-              <span class="archive-date-month">
-
-                ${date.month}
-
-              </span>
-
-
-              <span class="archive-date-year">
-
-                ${date.year}
-
-              </span>
-
-            </div>
-
-
-            <div class="archive-content">
-
-
-              <div class="archive-title">
-
-                ${escapeHTML(
-                  item.title || ""
-                )}
-
-              </div>
-
-
-              <div class="archive-excerpt">
-
-                ${escapeHTML(
-                  item.excerpt || ""
-                )}
-
-              </div>
-
-
-            </div>
-
-
-            <div class="archive-arrow">
-
-              →
-
-            </div>
-
-
-          </a>
-
-        `;
-
-      })
-      .join("");
-
-}
-
-
-
-/* =========================================================
-   ARTICLE
-========================================================= */
-
-async function renderArticle(
-  items,
-  slug
-){
+/* ═══════════════════════════════════════════════════════
+   SHOW ARTICLE
+   ═══════════════════════════════════════════════════════ */
+
+async function showArticle(slug){
 
   const item =
     items.find(
-      x =>
-        x.slug === slug
+      entry => entry.slug === slug
     );
-
 
   if(!item){
-
-    throw new Error(
-      "Note not found."
-    );
-
+    return;
   }
 
+  document.title =
+    `${item.title} — QUỐC MẠNH`;
 
-  const markdown =
-    await loadMarkdown(
-      slug
-    );
+  archiveEl.style.display = "none";
 
-
-  document.getElementById(
-    "archive"
-  ).style.display =
+  document.querySelector(".notes-intro").style.display =
     "none";
 
-
-  document.querySelector(
-    ".notes-tools"
-  ).style.display =
-    "none";
-
-
-  const article =
-    document.getElementById(
-      "article"
-    );
-
-
-  article.style.display =
+  articleEl.style.display =
     "block";
 
+  articleEl.innerHTML = `
+    <article class="article">
 
-  document.getElementById(
-    "articleMeta"
-  ).textContent =
-    item.date || "";
+      <div class="article-meta">
+        ${escapeHTML(item.date || "")}
+      </div>
 
+      <h1 class="article-title">
+        ${escapeHTML(item.title || "")}
+      </h1>
 
-  document.getElementById(
-    "articleTitle"
-  ).textContent =
-    item.title || "";
+      <div class="article-body">
+        Loading...
+      </div>
 
+    </article>
+  `;
 
-  document.getElementById(
-    "articleBody"
-  ).innerHTML =
-    markdownToHTML(
-      markdown
-    );
+  try{
 
+    const markdown =
+      await loadMarkdown(slug);
+
+    const body =
+      articleEl.querySelector(".article-body");
+
+    body.innerHTML =
+      markdownToHTML(markdown);
+
+  }catch(error){
+
+    const body =
+      articleEl.querySelector(".article-body");
+
+    body.innerHTML = `
+      <p>
+        Unable to load this note.
+      </p>
+    `;
+
+    console.error(error);
+  }
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   INITIAL NOTES LOAD
+   ═══════════════════════════════════════════════════════ */
 
-/* =========================================================
+async function initNotes(){
+
+  try{
+
+    await loadJSON();
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    const slug =
+      params.get("slug");
+
+    if(slug){
+
+      showArticle(slug);
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    archiveEl.innerHTML = `
+      <div class="empty">
+        Unable to load notes.
+      </div>
+    `;
+  }
+}
+
+initNotes();
+
+
+/* ═══════════════════════════════════════════════════════
    SEARCH
-========================================================= */
+   ═══════════════════════════════════════════════════════ */
 
-function setupSearch(items){
+if(searchInput){
 
-  const input =
-    document.getElementById(
-      "searchInput"
-    );
-
-
-  input.addEventListener(
+  searchInput.addEventListener(
     "input",
     function(){
 
@@ -3011,133 +1930,26 @@ function setupSearch(items){
           .trim()
           .toLowerCase();
 
-
       const filtered =
-        !query
+        items.filter(item =>
+          String(item.title || "")
+            .toLowerCase()
+            .includes(query)
+        );
 
-          ? items
-
-          : items.filter(
-              item =>
-                String(
-                  item.title || ""
-                )
-                .toLowerCase()
-                .includes(query)
-            );
-
-
-      renderArchive(
-        filtered
-      );
-
+      renderArchive(filtered);
     }
   );
-
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   MUSIC PLAYER
+   ═══════════════════════════════════════════════════════ */
 
-/* =========================================================
-   CLOCK
-========================================================= */
+const MUSIC_STORAGE_KEY =
+  "qmArchiveMusic";
 
-function updateClock(){
-
-  const now =
-    new Date();
-
-
-  const time =
-    String(
-      now.getHours()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getMinutes()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getSeconds()
-    ).padStart(2,"0");
-
-
-  const browserDate =
-    document.getElementById(
-      "browserDate"
-    );
-
-
-  const browserTime =
-    document.getElementById(
-      "browserTime"
-    );
-
-
-  const cassetteYear =
-    document.getElementById(
-      "cassetteYear"
-    );
-
-
-  const footerYear =
-    document.getElementById(
-      "footerYear"
-    );
-
-
-  if(browserDate){
-
-    browserDate.textContent =
-      now
-        .toLocaleDateString(
-          "en-GB",
-          {
-            day:"2-digit",
-            month:"short",
-            year:"numeric"
-          }
-        )
-        .toUpperCase();
-
-  }
-
-
-  if(browserTime){
-
-    browserTime.textContent =
-      time.slice(0,5);
-
-  }
-
-
-  if(cassetteYear){
-
-    cassetteYear.textContent =
-      now.getFullYear();
-
-  }
-
-
-  if(footerYear){
-
-    footerYear.textContent =
-      now.getFullYear();
-
-  }
-
-}
-
-
-
-/* =========================================================
-   MUSIC
-   Shared with Home + Writings
-========================================================= */
 
 const MUSIC_TRACKS = [
 
@@ -3162,73 +1974,48 @@ const MUSIC_TRACKS = [
 ];
 
 
-const MUSIC_STORAGE_KEY =
-  "qmArchiveMusic";
-
-
 const audio =
-  document.getElementById(
-    "audio"
-  );
+  document.getElementById("audio");
 
+const playBtn =
+  document.getElementById("playBtn");
 
-const playButton =
-  document.getElementById(
-    "playButton"
-  );
+const prevBtn =
+  document.getElementById("prevBtn");
 
-
-const prevButton =
-  document.getElementById(
-    "prevButton"
-  );
-
-
-const nextButton =
-  document.getElementById(
-    "nextButton"
-  );
-
+const nextBtn =
+  document.getElementById("nextBtn");
 
 const progress =
-  document.getElementById(
-    "progress"
-  );
-
+  document.getElementById("progress");
 
 const volume =
-  document.getElementById(
-    "volume"
-  );
-
+  document.getElementById("volume");
 
 const musicTitle =
-  document.getElementById(
-    "musicTitle"
-  );
-
+  document.getElementById("musicTitle");
 
 const musicArtist =
-  document.getElementById(
-    "musicArtist"
-  );
-
+  document.getElementById("musicArtist");
 
 const musicTime =
-  document.getElementById(
-    "musicTime"
-  );
+  document.getElementById("musicTime");
 
 
-let currentTrack = 0;
+let musicState = {
+
+  track:0,
+
+  currentTime:0,
+
+  volume:1,
+
+  isPlaying:false
+
+};
 
 
-
-/* =========================================================
-   GET SAVED STATE
-========================================================= */
-
-function getMusicState(){
+function loadMusicState(){
 
   try{
 
@@ -3237,606 +2024,358 @@ function getMusicState(){
         MUSIC_STORAGE_KEY
       );
 
-
     if(!saved){
-
-      return null;
-
+      return;
     }
 
-
-    const state =
-      JSON.parse(
-        saved
-      );
-
+    const parsed =
+      JSON.parse(saved);
 
     if(
-      !state ||
-      typeof state !== "object"
+      Number.isInteger(parsed.track) &&
+      parsed.track >= 0 &&
+      parsed.track < MUSIC_TRACKS.length
     ){
-
-      return null;
-
+      musicState.track =
+        parsed.track;
     }
 
+    if(
+      typeof parsed.currentTime === "number" &&
+      parsed.currentTime >= 0
+    ){
+      musicState.currentTime =
+        parsed.currentTime;
+    }
 
-    return state;
+    if(
+      typeof parsed.volume === "number" &&
+      parsed.volume >= 0 &&
+      parsed.volume <= 1
+    ){
+      musicState.volume =
+        parsed.volume;
+    }
+
+    if(
+      typeof parsed.isPlaying === "boolean"
+    ){
+      musicState.isPlaying =
+        parsed.isPlaying;
+    }
 
   }catch(error){
 
     console.warn(
-      "Could not read music state.",
+      "Music state could not be restored.",
       error
     );
-
-
-    return null;
-
   }
-
 }
 
-
-
-/* =========================================================
-   SAVE STATE
-========================================================= */
 
 function saveMusicState(){
 
   try{
 
     localStorage.setItem(
-
       MUSIC_STORAGE_KEY,
-
       JSON.stringify({
-
-        track:
-          currentTrack,
-
-        currentTime:
-          Number.isFinite(
-            audio.currentTime
-          )
-            ? audio.currentTime
-            : 0,
-
-        volume:
-          Number(
-            audio.volume
-          ),
-
-        isPlaying:
-          !audio.paused
-
+        track:musicState.track,
+        currentTime:audio.currentTime || 0,
+        volume:audio.volume,
+        isPlaying:!audio.paused
       })
-
     );
 
   }catch(error){
 
     console.warn(
-      "Could not save music state.",
+      "Music state could not be saved.",
       error
     );
-
   }
-
 }
 
-
-
-/* =========================================================
-   FORMAT TIME
-========================================================= */
 
 function formatTime(seconds){
 
-  if(
-    !Number.isFinite(
-      seconds
-    )
-  ){
-
+  if(!Number.isFinite(seconds)){
     return "00:00";
-
   }
 
-
-  const minutes =
-    Math.floor(
-      seconds / 60
-    );
-
+  const mins =
+    Math.floor(seconds / 60);
 
   const secs =
-    Math.floor(
-      seconds % 60
-    );
-
+    Math.floor(seconds % 60);
 
   return (
-
-    String(
-      minutes
-    ).padStart(2,"0")
-
-    +
-
+    String(mins).padStart(2,"0") +
     ":" +
-
-    String(
-      secs
-    ).padStart(2,"0")
-
+    String(secs).padStart(2,"0")
   );
-
 }
 
 
-
-/* =========================================================
-   LOAD TRACK
-========================================================= */
-
-function loadTrack(
-  index,
-  autoplay=false
-){
-
-  if(
-    !MUSIC_TRACKS.length
-  ){
-
-    return;
-
-  }
-
-
-  currentTrack =
-
-    (
-      index +
-      MUSIC_TRACKS.length
-    )
-
-    %
-
-    MUSIC_TRACKS.length;
-
+function updateMusicUI(){
 
   const track =
-    MUSIC_TRACKS[
-      currentTrack
-    ];
+    MUSIC_TRACKS[musicState.track];
 
-
-  audio.src =
-    track.src;
-
+  if(!track){
+    return;
+  }
 
   musicTitle.textContent =
     track.title;
 
-
   musicArtist.textContent =
     track.artist;
 
+  const current =
+    audio.currentTime || 0;
 
-  progress.value =
-    0;
+  const duration =
+    audio.duration || 0;
 
+  if(duration > 0){
+
+    progress.value =
+      (current / duration) * 100;
+
+  }else{
+
+    progress.value = 0;
+
+  }
 
   musicTime.textContent =
-    "00:00 / 00:00";
+    `${formatTime(current)} / ${formatTime(duration)}`;
+
+  playBtn.textContent =
+    audio.paused ? "▶" : "Ⅱ";
+}
 
 
-  if(autoplay){
+function loadTrack(index, autoPlay=false){
+
+  if(index < 0){
+    index = MUSIC_TRACKS.length - 1;
+  }
+
+  if(index >= MUSIC_TRACKS.length){
+    index = 0;
+  }
+
+  musicState.track =
+    index;
+
+  musicState.currentTime = 0;
+
+  const track =
+    MUSIC_TRACKS[index];
+
+  audio.src =
+    track.src;
+
+  audio.load();
+
+  audio.addEventListener(
+    "loadedmetadata",
+    function restoreTime(){
+
+      audio.removeEventListener(
+        "loadedmetadata",
+        restoreTime
+      );
+
+      if(
+        musicState.currentTime > 0 &&
+        musicState.currentTime < audio.duration
+      ){
+
+        audio.currentTime =
+          musicState.currentTime;
+      }
+
+      updateMusicUI();
+
+    }
+  );
+
+  updateMusicUI();
+
+  saveMusicState();
+
+  if(autoPlay){
 
     audio.play()
+      .then(() => {
 
-      .then(
-        () => {
+        musicState.isPlaying = true;
 
-          playButton.textContent =
-            "❚❚";
+        saveMusicState();
+
+        updateMusicUI();
+
+      })
+      .catch(() => {
+
+        updateMusicUI();
+
+      });
+  }
+}
+
+
+loadMusicState();
+
+audio.volume =
+  musicState.volume;
+
+volume.value =
+  musicState.volume;
+
+
+/* restore selected track */
+
+loadTrack(
+  musicState.track,
+  false
+);
+
+
+/* restore saved position after metadata */
+
+audio.addEventListener(
+  "loadedmetadata",
+  function(){
+
+    if(
+      musicState.currentTime > 0 &&
+      musicState.currentTime < audio.duration
+    ){
+
+      audio.currentTime =
+        musicState.currentTime;
+    }
+
+    updateMusicUI();
+
+  }
+);
+
+
+/* play / pause */
+
+playBtn.addEventListener(
+  "click",
+  function(){
+
+    if(audio.paused){
+
+      audio.play()
+        .then(() => {
+
+          musicState.isPlaying = true;
 
           saveMusicState();
 
-        }
-      )
+          updateMusicUI();
 
-      .catch(
-        () => {
+        })
+        .catch(error => {
 
-          playButton.textContent =
-            "▶";
+          console.warn(
+            "Playback was blocked.",
+            error
+          );
 
-        }
-      );
-
-  }else{
-
-    playButton.textContent =
-      "▶";
-
-  }
-
-}
-
-
-
-/* =========================================================
-   RESTORE SAVED STATE
-========================================================= */
-
-function restoreMusicState(){
-
-  const state =
-    getMusicState();
-
-
-  if(!state){
-
-    audio.volume =
-      Number(
-        volume.value
-      );
-
-
-    loadTrack(
-      0,
-      false
-    );
-
-
-    return;
-
-  }
-
-
-  let savedTrack =
-    Number(
-      state.track
-    );
-
-
-  if(
-    !Number.isInteger(
-      savedTrack
-    )
-  ){
-
-    savedTrack = 0;
-
-  }
-
-
-  if(
-    savedTrack < 0 ||
-    savedTrack >=
-      MUSIC_TRACKS.length
-  ){
-
-    savedTrack = 0;
-
-  }
-
-
-  currentTrack =
-    savedTrack;
-
-
-  const savedVolume =
-    Number(
-      state.volume
-    );
-
-
-  if(
-
-    Number.isFinite(
-      savedVolume
-    )
-
-    &&
-
-    savedVolume >= 0
-
-    &&
-
-    savedVolume <= 1
-
-  ){
-
-    audio.volume =
-      savedVolume;
-
-
-    volume.value =
-      savedVolume;
-
-  }else{
-
-    audio.volume =
-      Number(
-        volume.value
-      );
-
-  }
-
-
-  loadTrack(
-    currentTrack,
-    false
-  );
-
-
-  const savedTime =
-    Number(
-      state.currentTime
-    );
-
-
-  if(
-
-    Number.isFinite(
-      savedTime
-    )
-
-    &&
-
-    savedTime > 0
-
-  ){
-
-    const restoreTime =
-      () => {
-
-        if(
-          savedTime <
-          audio.duration
-        ){
-
-          audio.currentTime =
-            savedTime;
-
-        }
-
-
-        audio.removeEventListener(
-          "loadedmetadata",
-          restoreTime
-        );
-
-      };
-
-
-    audio.addEventListener(
-      "loadedmetadata",
-      restoreTime
-    );
-
-  }
-
-}
-
-
-
-/* =========================================================
-   PLAY / PAUSE
-========================================================= */
-
-playButton.addEventListener(
-  "click",
-  () => {
-
-    if(
-      audio.paused
-    ){
-
-      audio.play()
-
-        .then(
-          () => {
-
-            playButton.textContent =
-              "❚❚";
-
-            saveMusicState();
-
-          }
-        )
-
-        .catch(
-          () => {
-
-            playButton.textContent =
-              "▶";
-
-          }
-        );
+        });
 
     }else{
 
       audio.pause();
 
-      playButton.textContent =
-        "▶";
+      musicState.isPlaying = false;
 
       saveMusicState();
 
+      updateMusicUI();
     }
-
   }
 );
 
 
+/* previous */
 
-/* =========================================================
-   PREVIOUS
-========================================================= */
-
-prevButton.addEventListener(
+prevBtn.addEventListener(
   "click",
-  () => {
+  function(){
+
+    const wasPlaying =
+      !audio.paused;
 
     loadTrack(
-      currentTrack - 1,
-      true
+      musicState.track - 1,
+      wasPlaying
     );
 
   }
 );
 
 
+/* next */
 
-/* =========================================================
-   NEXT
-========================================================= */
-
-nextButton.addEventListener(
+nextBtn.addEventListener(
   "click",
-  () => {
+  function(){
+
+    const wasPlaying =
+      !audio.paused;
 
     loadTrack(
-      currentTrack + 1,
-      true
+      musicState.track + 1,
+      wasPlaying
     );
 
   }
 );
 
 
-
-/* =========================================================
-   METADATA
-========================================================= */
-
-audio.addEventListener(
-  "loadedmetadata",
-  () => {
-
-    musicTime.textContent =
-
-      "00:00 / " +
-
-      formatTime(
-        audio.duration
-      );
-
-  }
-);
-
-
-
-/* =========================================================
-   TIME UPDATE
-========================================================= */
-
-audio.addEventListener(
-  "timeupdate",
-  () => {
-
-    if(
-      audio.duration
-    ){
-
-      progress.value =
-
-        (
-          audio.currentTime /
-          audio.duration
-        )
-
-        * 100;
-
-    }
-
-
-    musicTime.textContent =
-
-      formatTime(
-        audio.currentTime
-      )
-
-      +
-
-      " / "
-
-      +
-
-      formatTime(
-        audio.duration
-      );
-
-
-    if(
-
-      Math.floor(
-        audio.currentTime
-      ) % 5 === 0
-
-    ){
-
-      saveMusicState();
-
-    }
-
-  }
-);
-
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
+/* progress */
 
 progress.addEventListener(
   "input",
-  () => {
+  function(){
 
-    if(
-      audio.duration
-    ){
-
-      audio.currentTime =
-
-        (
-          Number(
-            progress.value
-          ) / 100
-        )
-
-        *
-
-        audio.duration;
-
-
-      saveMusicState();
-
+    if(!audio.duration){
+      return;
     }
 
+    audio.currentTime =
+      (Number(this.value) / 100) *
+      audio.duration;
+
+    saveMusicState();
+
+    updateMusicUI();
   }
 );
 
 
-
-/* =========================================================
-   VOLUME
-========================================================= */
+/* volume */
 
 volume.addEventListener(
   "input",
-  () => {
+  function(){
 
     audio.volume =
-      Number(
-        volume.value
-      );
+      Number(this.value);
 
+    musicState.volume =
+      audio.volume;
 
     saveMusicState();
 
@@ -3844,17 +2383,38 @@ volume.addEventListener(
 );
 
 
+/* time update */
 
-/* =========================================================
-   TRACK ENDED
-========================================================= */
+audio.addEventListener(
+  "timeupdate",
+  function(){
+
+    updateMusicUI();
+
+  }
+);
+
+
+/* metadata */
+
+audio.addEventListener(
+  "loadedmetadata",
+  function(){
+
+    updateMusicUI();
+
+  }
+);
+
+
+/* ended */
 
 audio.addEventListener(
   "ended",
-  () => {
+  function(){
 
     loadTrack(
-      currentTrack + 1,
+      musicState.track + 1,
       true
     );
 
@@ -3862,47 +2422,11 @@ audio.addEventListener(
 );
 
 
-
-/* =========================================================
-   PLAY / PAUSE STATE
-========================================================= */
-
-audio.addEventListener(
-  "play",
-  () => {
-
-    playButton.textContent =
-      "❚❚";
-
-
-    saveMusicState();
-
-  }
-);
-
-
-audio.addEventListener(
-  "pause",
-  () => {
-
-    playButton.textContent =
-      "▶";
-
-
-    saveMusicState();
-
-  }
-);
-
-
-
-/* =========================================================
-   BEFORE LEAVE
-========================================================= */
+/* save before leaving page */
 
 window.addEventListener(
   "beforeunload",
-  () => {
+  function(){
 
     saveMusicState();
 
@@ -3910,183 +2434,74 @@ window.addEventListener(
 );
 
 
-
-/* =========================================================
+/* ═══════════════════════════════════════════════════════
    FIRST USER INTERACTION
-========================================================= */
+   ═══════════════════════════════════════════════════════
 
-let musicStarted = false;
+   Browser autoplay policy prevents automatic playback
+   on page load.
 
+   If the previous state was playing, resume it after
+   the user's first interaction anywhere outside the
+   Music Player.
+   ═══════════════════════════════════════════════════════ */
 
-function startMusic(event){
+let musicInteractionHandled = false;
 
-  if(
-    musicStarted
-  ){
+function resumeSavedMusic(){
 
+  if(musicInteractionHandled){
     return;
-
   }
 
+  musicInteractionHandled = true;
 
   if(
-    event.target.closest(
-      ".music-player"
-    )
+    musicState.isPlaying &&
+    audio.paused
   ){
 
-    return;
+    audio.play()
+      .then(() => {
+
+        updateMusicUI();
+
+      })
+      .catch(() => {
+
+        /* Browser may still block autoplay. */
+
+      });
 
   }
-
-
-  musicStarted = true;
-
-
-  audio.play()
-
-    .then(
-      () => {
-
-        playButton.textContent =
-          "❚❚";
-
-        saveMusicState();
-
-      }
-    )
-
-    .catch(
-      () => {
-
-        musicStarted = false;
-
-      }
-    );
-
-
-  document.removeEventListener(
-    "pointerdown",
-    startMusic
-  );
-
 }
 
 
 document.addEventListener(
   "pointerdown",
-  startMusic
+  function(event){
+
+    if(
+      event.target.closest(".music-player")
+    ){
+      return;
+    }
+
+    resumeSavedMusic();
+
+  },
+  {
+    once:false,
+    passive:true
+  }
 );
 
 
+/* initial UI */
 
-/* =========================================================
-   INIT
-========================================================= */
-
-async function init(){
-
-  updateClock();
-
-
-  setInterval(
-    updateClock,
-    1000
-  );
-
-
-  /*
-     Restore the same music state
-     used by Home and Writings.
-  */
-
-  restoreMusicState();
-
-
-  try{
-
-    const data =
-      await loadJSON();
-
-
-    const items =
-      Array.isArray(
-        data.notes
-      )
-
-        ? data.notes
-
-        : [];
-
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const slug =
-      params.get(
-        "slug"
-      );
-
-
-    if(slug){
-
-      await renderArticle(
-        items,
-        slug
-      );
-
-    }else{
-
-      renderArchive(
-        items
-      );
-
-
-      setupSearch(
-        items
-      );
-
-    }
-
-
-  }catch(error){
-
-    console.error(
-      error
-    );
-
-
-    document.getElementById(
-      "archive"
-    ).innerHTML = `
-
-      <div class="error">
-
-        Notes could not be loaded.
-
-        <br><br>
-
-        ${escapeHTML(
-          error.message
-        )}
-
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-init();
+updateMusicUI();
 
 </script>
 
-
 </body>
-
 </html>
