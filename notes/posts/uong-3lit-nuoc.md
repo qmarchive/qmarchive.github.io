@@ -1,0 +1,1 @@
+Tôi đang cố gắng uống ba lít nước mỗi ngày. Trung bình cứ 30 phút tôi lại vào nhà vệ sinh. Mấy lợi ích trên mạng vẫn chưa được kiểm chứng, tôi bắt đầu thấy mình đang là cái máy đái di động. Nạn nhân của hệ thống lọc nước tinh vi. 
