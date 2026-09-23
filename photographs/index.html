@@ -1,103 +1,57 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>Photographs — QUỐC MẠNH</title>
-
+<title>QM ARCHIVE — Photographs</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
+:root{
+  --cream:#d8cfb5;
+  --paper:#e7ddc0;
+  --orange:#f05a32;
+  --orange-dark:#c84327;
+  --teal:#176f78;
+  --teal-dark:#0d5059;
+  --blue:#15172f;
+  --blue-soft:#243b73;
+  --green:#1d8a4a;
+  --white:#f5ecd7;
+  --border:3px solid var(--blue);
+}
 
 *{
   box-sizing:border-box;
 }
 
-html,
+html{
+  background:var(--cream);
+}
+
 body{
   margin:0;
-  padding:0;
-}
+  background:var(--cream);
+  color:var(--blue);
 
-html{
-  background:#d8cfb5;
-}
-
-body{
-  min-height:100vh;
-
-  background:
-    linear-gradient(
-      rgba(255,255,255,.08),
-      rgba(255,255,255,.08)
-    ),
-    #d8cfb5;
-
-  color:#15172f;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
+  /* SAME BASE TYPOGRAPHY AS WRITINGS */
+  font-family:Arial,Helvetica,sans-serif;
   font-size:14px;
-  line-height:1.5;
+  line-height:1.45;
 
+  overflow-x:hidden;
 }
 
-
 /* =========================================================
-   VARIABLES
+   SCREEN / SCANLINE
 ========================================================= */
 
-:root{
-
-  --cream:#d8cfb5;
-  --paper:#e7ddc0;
-
-  --orange:#f05a32;
-  --orange-dark:#c84327;
-
-  --teal:#176f78;
-  --teal-dark:#0d5059;
-
-  --blue:#15172f;
-  --blue-soft:#243b73;
-
-  --green:#1d8a4a;
-
-  --white:#f5ecd7;
-
-  --border:3px solid var(--blue);
-
-}
-
-
-/* =========================================================
-   SCANLINES
-========================================================= */
-
-body::before{
-
+body::after{
   content:"";
-
   position:fixed;
-
   inset:0;
-
   pointer-events:none;
-
-  z-index:99999;
+  z-index:9999;
 
   background:
     repeating-linear-gradient(
@@ -107,2329 +61,1078 @@ body::before{
       transparent 1px,
       transparent 4px
     );
-
-  opacity:.45;
-
 }
-
-
-/* =========================================================
-   PAGE
-========================================================= */
-
-.page{
-
-  width:100%;
-
-  min-height:100vh;
-
-  padding:
-    10px
-    14px
-    150px;
-
-}
-
-
-/* =========================================================
-   GENERIC WINDOW
-========================================================= */
-
-.window{
-
-  background:var(--paper);
-
-  border:var(--border);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  overflow:hidden;
-
-}
-
-
-.window-titlebar{
-
-  min-height:38px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 7px;
-
-  background:var(--orange);
-
-  border-bottom:var(--border);
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-weight:bold;
-
-  letter-spacing:.8px;
-
-  font-size:14px;
-
-  line-height:1.4;
-
-}
-
-
-.window--teal .window-titlebar{
-
-  background:var(--teal);
-
-  color:var(--white);
-
-}
-
-
-.window-title{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  min-width:0;
-
-}
-
-
-.window-title-icon{
-
-  width:21px;
-
-  height:21px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  flex-shrink:0;
-
-  border:2px solid currentColor;
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:10px;
-
-  font-weight:bold;
-
-}
-
-
-.window--teal
-.window-title-icon{
-
-  color:var(--blue);
-
-}
-
-
-.window-buttons{
-
-  display:flex;
-
-  gap:4px;
-
-  flex-shrink:0;
-
-}
-
-
-.window-button{
-
-  width:20px;
-
-  height:20px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:11px;
-
-  line-height:1;
-
-}
-
 
 /* =========================================================
    LINKS
 ========================================================= */
 
-a[href]:hover{
-
-  font-weight:bold;
-
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
+a:hover{
+  text-decoration:underline;
+}
 
 /* =========================================================
-   BROWSER
+   BROWSER BAR
 ========================================================= */
 
-.browser{
-
-  border:var(--border);
-
-  background:var(--paper);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  margin-bottom:14px;
-
-}
-
-
 .browser-top{
-
-  min-height:39px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 8px;
-
-  background:var(--orange);
-
-  border-bottom:var(--border);
-
-}
-
-
-.browser-brand{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-weight:bold;
-
-  font-size:17px;
-
-  letter-spacing:1px;
-
-}
-
-
-.browser-brand-icon{
-
-  width:24px;
-
-  height:24px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--teal);
-
+  height:34px;
+  background:var(--blue);
   color:var(--white);
 
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:0 12px;
 
   font-size:12px;
-
-}
-
-
-.browser-subtitle{
-
-  font-size:11px;
-
   font-weight:bold;
-
 }
 
-
-.browser-window-buttons{
-
-  display:flex;
-
-  gap:4px;
-
+.browser-dot{
+  width:9px;
+  height:9px;
+  background:var(--orange);
+  border:1px solid var(--white);
+  flex:none;
 }
 
-
-.browser-window-buttons span{
-
-  width:23px;
-
-  height:23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:11px;
-
+.browser-title{
+  white-space:nowrap;
 }
-
-
-.browser-menu{
-
-  display:flex;
-
-  gap:20px;
-
-  padding:
-    6px 10px;
-
-  border-bottom:2px solid var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:12px;
-
-  font-weight:bold;
-
-}
-
-
-.browser-address-row{
-
-  display:grid;
-
-  grid-template-columns:
-    31px
-    31px
-    31px
-    minmax(0,1fr)
-    175px;
-
-  gap:6px;
-
-  align-items:center;
-
-  padding:7px;
-
-}
-
-
-.browser-control{
-
-  width:31px;
-
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-weight:bold;
-
-}
-
 
 .browser-address{
-
-  min-width:0;
-
-  height:27px;
+  margin-left:auto;
 
   display:flex;
-
   align-items:center;
+  gap:6px;
 
-  padding:
-    0 9px;
+  min-width:0;
+}
 
-  border:2px solid var(--blue);
+.address-label{
+  font-size:11px;
+  font-weight:bold;
+  white-space:nowrap;
+}
 
-  background:#eee5ce;
+.address{
+  font-family:monospace;
+  font-size:12px;
 
-  color:#303249;
+  background:var(--white);
+  color:var(--blue);
 
+  padding:3px 8px;
+
+  min-width:0;
   overflow:hidden;
-
+  text-overflow:ellipsis;
   white-space:nowrap;
 
-  text-overflow:ellipsis;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:11px;
-
+  border:1px solid var(--white);
 }
-
-
-.browser-date{
-
-  text-align:center;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:10px;
-
-  line-height:1.35;
-
-  font-weight:bold;
-
-}
-
 
 /* =========================================================
    MAIN LAYOUT
 ========================================================= */
 
-.layout{
-
-  display:grid;
-
-  grid-template-columns:
-    285px
-    minmax(0,1fr);
-
-  gap:16px;
-
-  max-width:1600px;
-
-  margin:0 auto;
-
-  align-items:start;
-
+.page{
+  width:min(1600px,calc(100% - 28px));
+  margin:14px auto 30px;
 }
 
+.layout{
+  display:grid;
+  grid-template-columns:285px minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+}
 
 /* =========================================================
-   LEFT / SYSTEM INFO
+   SIDEBAR
 ========================================================= */
 
-.left{
-
-  min-width:0;
-
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
 }
-
-
-.system-window{
-
-  overflow:hidden;
-
-}
-
-
-.system-content{
-
-  padding:13px;
-
-}
-
-
-.system-line{
-
-  margin:
-    7px 0;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:12px;
-
-  line-height:1.5;
-
-}
-
-
-.online{
-
-  color:#168a43;
-
-  font-weight:bold;
-
-}
-
 
 /* =========================================================
-   NAVIGATION
+   PANEL
+========================================================= */
+
+.panel{
+  background:var(--paper);
+  border:var(--border);
+  box-shadow:4px 4px 0 var(--blue);
+}
+
+.panel-head{
+  background:var(--blue);
+  color:var(--white);
+
+  padding:7px 9px;
+
+  font-size:13px;
+  font-weight:bold;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.panel-body{
+  padding:10px;
+}
+
+/* =========================================================
+   SYSTEM INFO
+========================================================= */
+
+.system-line{
+  font-family:monospace;
+  font-size:12px;
+  line-height:1.55;
+}
+
+.system-online{
+  color:var(--green);
+  font-weight:bold;
+}
+
+/* =========================================================
+   NAV
 ========================================================= */
 
 .nav-list{
-
-  margin-top:14px;
-
-  padding-top:10px;
-
-  border-top:
-    2px dashed var(--blue);
-
+  display:flex;
+  flex-direction:column;
+  gap:4px;
 }
-
 
 .nav-list a{
+  display:block;
 
-  display:flex;
+  padding:7px 8px;
 
-  align-items:center;
+  border:2px solid transparent;
 
-  min-height:38px;
-
-  padding:
-    6px 8px;
-
-  color:var(--blue);
-
-  text-decoration:none;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:16px;
-
+  font-size:14px;
   font-weight:bold;
-
-  letter-spacing:.3px;
-
-  line-height:1.4;
-
 }
-
 
 .nav-list a:hover{
-
   background:var(--orange);
+  color:var(--white);
 
+  border-color:var(--blue);
+
+  text-decoration:none;
 }
-
 
 .nav-list a.active{
+  background:var(--teal);
+  color:var(--white);
 
-  background:var(--orange);
-
-  color:var(--blue);
-
+  border-color:var(--blue);
 }
-
 
 /* =========================================================
    CASSETTE
 ========================================================= */
 
 .cassette{
-
-  margin-top:14px;
-
-  padding:8px;
-
+  padding:10px;
 }
-
 
 .cassette img{
-
+  width:100%;
   display:block;
 
-  width:100%;
-
-  height:auto;
-
-  border:3px solid var(--blue);
-
+  border:2px solid var(--blue);
 }
-
-
-.cassette img[src$=".gif"]{
-
-  image-rendering:auto;
-
-}
-
 
 .cassette-caption{
-
-  margin-top:8px;
-
-  text-align:center;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  margin-top:6px;
 
   font-size:10px;
+  line-height:1.35;
 
-  line-height:1.5;
-
-  font-weight:bold;
-
+  font-family:monospace;
 }
 
-
 /* =========================================================
-   CENTER
+   CONTENT
 ========================================================= */
 
-.center{
-
+.content{
   min-width:0;
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:16px;
-
 }
 
-
 /* =========================================================
-   PHOTOGRAPHS WINDOW
+   SECTION HEADER
 ========================================================= */
 
-.photos-window{
+.section-head{
+  background:var(--blue);
+  color:var(--white);
 
-  min-width:0;
+  padding:12px 14px;
 
-  overflow:hidden;
+  border:var(--border);
 
+  box-shadow:4px 4px 0 var(--blue);
+
+  margin-bottom:18px;
 }
 
+.section-head h1{
+  margin:0 0 3px;
 
-/* =========================================================
-   PHOTO HEADER
-========================================================= */
+  font-size:25px;
+  line-height:1.15;
+}
 
-.photo-intro{
-
-  padding:
-    12px 16px;
-
-  border-bottom:
-    2px dashed var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+.section-head p{
+  margin:0;
 
   font-size:12px;
-
-  line-height:1.6;
-
+  line-height:1.5;
 }
-
 
 /* =========================================================
-   PHOTO FILTERS
+   SEARCH / FILTER
 ========================================================= */
 
-.photo-filters{
-
+.toolbar{
   display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
 
-  flex-wrap:wrap;
-
-  gap:7px;
-
-  padding:
-    10px 12px;
-
-  border-bottom:
-    var(--border);
-
-  background:var(--cream);
-
+  margin-bottom:16px;
 }
 
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
 
-.photo-filter{
+.filter-btn{
+  appearance:none;
 
-  display:inline-block;
-
-  padding:
-    5px 9px;
-
-  border:
-    2px solid var(--blue);
+  border:2px solid var(--blue);
 
   background:var(--paper);
-
   color:var(--blue);
 
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  padding:5px 9px;
 
-  font-size:11px;
-
-  line-height:1.4;
-
-  cursor:pointer;
-
-}
-
-
-.photo-filter:first-child{
-
-  background:var(--paper);
-
-  font-weight:normal;
-
-}
-
-
-.photo-filter.active{
-
-  background:var(--orange);
-
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:12px;
   font-weight:bold;
 
+  cursor:pointer;
 }
 
-
-.photo-filter:hover{
-
+.filter-btn:hover{
+  background:var(--orange);
   color:var(--white);
-
-  background:var(--teal);
-
 }
 
-
-.photo-filter.active:hover{
-
+.filter-btn.active{
+  background:var(--teal);
   color:var(--white);
-
-  background:var(--teal);
-
 }
 
-
-/* =========================================================
-   DETAIL MODE
-========================================================= */
-
-.photos-window.detail-mode
-.photo-filters{
-
-  display:none;
-
+.search{
+  display:flex;
+  align-items:center;
+  gap:5px;
 }
 
-
-/* =========================================================
-   3-COLUMN PHOTO GRID
-========================================================= */
-
-.archive{
-
-  width:100%;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-
-  gap:0;
-
+.search-icon{
+  font-size:15px;
+  line-height:1;
 }
 
+.search input{
+  width:190px;
 
-/* =========================================================
-   PHOTO CARD
-========================================================= */
+  border:2px solid var(--blue);
 
-.photo-entry{
-
-  min-width:0;
-
-  display:block;
-
-  padding:12px;
-
-  border-right:
-    3px solid var(--blue);
-
-  border-bottom:
-    3px solid var(--blue);
-
-  text-decoration:none;
-
-  background:var(--paper);
-
+  background:var(--white);
   color:var(--blue);
 
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  padding:6px 8px;
 
+  font-family:monospace;
+  font-size:13px;
+
+  outline:none;
 }
 
-
-.photo-entry:nth-child(3n){
-
-  border-right:0;
-
+.search input:focus{
+  border-color:var(--orange);
 }
-
-
-.photo-entry:hover{
-
-  background:#f5ecd7;
-
-}
-
 
 /* =========================================================
-   PHOTO FRAME
+   PHOTO ARCHIVE
 ========================================================= */
 
-.photo-frame{
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
 
+.photo-card{
+  background:var(--paper);
+
+  border:var(--border);
+
+  box-shadow:4px 4px 0 var(--blue);
+
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease;
+}
+
+.photo-card:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:6px 6px 0 var(--blue);
+}
+
+.photo-image{
+  display:block;
   width:100%;
 
   aspect-ratio:4 / 3;
 
-  overflow:hidden;
-
-  background:var(--blue);
-
-  border:
-    3px solid var(--blue);
-
-  margin-bottom:9px;
-
-}
-
-
-.photo-frame img{
-
-  display:block;
-
-  width:100%;
-
-  height:100%;
-
   object-fit:cover;
 
-  filter:
-    grayscale(.08)
-    brightness(.88)
-    saturate(.85);
+  border-bottom:var(--border);
 
-  transition:
-    filter .25s ease,
-    transform .25s ease;
-
+  background:#aaa;
 }
 
-
-.photo-entry:hover
-.photo-frame img{
-
-  filter:
-    grayscale(0)
-    brightness(.98)
-    saturate(1);
-
-  transform:
-    scale(1.015);
-
+.photo-info{
+  padding:9px 10px 11px;
 }
-
-
-/* =========================================================
-   PHOTO META
-========================================================= */
 
 .photo-date{
-
-  color:var(--teal);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
+  font-family:monospace;
   font-size:10px;
 
-  line-height:1.4;
+  margin-bottom:3px;
+
+  opacity:.8;
+}
+
+.photo-title{
+  font-size:15px;
+  line-height:1.25;
 
   font-weight:bold;
 
   margin-bottom:5px;
-
 }
 
+.photo-category{
+  display:inline-block;
 
-.photo-title{
+  padding:2px 5px;
 
-  color:var(--blue);
+  background:var(--orange);
+  color:var(--white);
 
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  font-size:10px;
+  font-weight:bold;
+}
 
+.photo-card:hover .photo-title{
+  color:var(--orange-dark);
+}
+
+.empty{
+  font-family:monospace;
   font-size:12px;
 
-  line-height:1.4;
-
-  font-weight:bold;
-
+  padding:25px 0;
 }
-
-
-.photo-entry:hover
-.photo-title{
-
-  color:var(--orange);
-
-}
-
 
 /* =========================================================
-   ARTICLE / DETAIL
+   DETAIL VIEW
 ========================================================= */
 
-.article{
+.detail{
+  background:var(--paper);
 
-  padding:
-    20px
-    22px
-    30px;
+  border:var(--border);
 
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
+  box-shadow:4px 4px 0 var(--blue);
 
+  padding:18px;
+
+  margin-bottom:20px;
 }
 
+.detail-back{
+  display:inline-block;
 
-.article-year{
+  margin-bottom:15px;
 
-  color:var(--teal);
+  padding:5px 8px;
 
+  border:2px solid var(--blue);
+
+  background:var(--orange);
+  color:var(--white);
+
+  font-size:12px;
+  font-weight:bold;
+}
+
+.detail-back:hover{
+  background:var(--teal);
+  text-decoration:none;
+}
+
+.detail-meta{
+  font-family:monospace;
   font-size:11px;
 
-  line-height:1.4;
-
-  font-weight:bold;
-
   margin-bottom:8px;
-
 }
 
+.detail-title{
+  margin:0 0 15px;
 
-.article-title{
-
-  color:var(--blue);
-
-  font-size:28px;
-
-  font-weight:bold;
-
-  line-height:1.25;
-
-  margin:
-    0 0 20px;
-
+  font-size:30px;
+  line-height:1.12;
 }
 
-
-/* =========================================================
-   DETAIL IMAGE
-========================================================= */
-
-.detail-photo{
-
+.detail-image{
   width:100%;
-
-  max-width:1100px;
-
-  margin:
-    0 0 24px;
-
-  padding:8px;
-
-  border:
-    3px solid var(--blue);
-
-  background:var(--blue);
-
-  box-shadow:
-    4px 4px 0 var(--blue);
-
-}
-
-
-.detail-photo img{
-
-  display:block;
-
-  width:100%;
-
-  height:auto;
-
-  max-height:760px;
+  max-height:720px;
 
   object-fit:contain;
 
+  display:block;
+
+  background:#111;
+
+  border:var(--border);
+
+  margin-bottom:20px;
 }
 
+.detail-body{
+  max-width:850px;
 
-.detail-photo-caption{
-
-  padding:
-    7px 2px 0;
-
-  color:var(--teal);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:10px;
-
-  line-height:1.5;
-
+  font-size:15px;
+  line-height:1.75;
 }
 
-
-/* =========================================================
-   ARTICLE BODY
-========================================================= */
-
-.article-body{
-
-  max-width:1000px;
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:14px;
-
-  line-height:1.9;
-
-  letter-spacing:.05px;
-
+.detail-body p{
+  margin:0 0 1.1em;
 }
 
+.detail-body h2{
+  margin:1.5em 0 .5em;
 
-.article-body p{
-
-  margin:
-    0 0 24px;
-
+  font-size:22px;
+  line-height:1.2;
 }
 
+.detail-body h3{
+  margin:1.4em 0 .5em;
 
-.article-body h1,
-.article-body h2,
-.article-body h3{
-
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-weight:bold;
-
+  font-size:18px;
+  line-height:1.25;
 }
 
+.detail-body blockquote{
+  margin:1.2em 0;
 
-.article-body h1{
+  padding:8px 12px;
 
-  font-size:25px;
+  border-left:5px solid var(--orange);
 
-  margin:
-    30px 0 20px;
-
+  background:rgba(21,23,47,.06);
 }
 
-
-.article-body h2{
-
-  font-size:20px;
-
-  margin:
-    30px 0 18px;
-
+.detail-body ul{
+  padding-left:22px;
 }
 
-
-.article-body h3{
-
-  font-size:17px;
-
-  margin:
-    25px 0 13px;
-
-}
-
-
-.article-body em{
-
-  color:var(--teal);
-
-}
-
-
-.article-body strong{
-
-  color:var(--orange);
-
-}
-
-
-.article-body blockquote{
-
-  margin:
-    25px 0;
-
-  padding:
-    12px 15px;
-
-  border-left:
-    5px solid var(--orange);
-
-  background:var(--white);
-
-  color:var(--teal);
-
-}
-
-
-.article-body ul,
-.article-body ol{
-
-  margin:
-    0 0 24px;
-
-  padding-left:25px;
-
-}
-
-
-.article-body li{
-
-  margin-bottom:7px;
-
-}
-
-
-.article-body a{
-
-  color:var(--teal);
-
-  font-weight:bold;
-
-}
-
-
-.article-body img{
+.detail-body img{
+  max-width:100%;
+  height:auto;
 
   display:block;
 
-  width:auto;
+  margin:18px 0;
 
-  max-width:100%;
-
-  height:auto;
-
-  margin:
-    30px 0;
-
-  border:
-    3px solid var(--blue);
-
+  border:2px solid var(--blue);
 }
 
-
-/* =========================================================
-   ARTICLE BACK
-========================================================= */
-
-.article-back{
-
-  display:inline-block;
-
-  margin-top:20px;
-
-  padding:
-    6px 10px;
-
-  border:
-    2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  text-decoration:none;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:11px;
-
+.detail-body a{
+  color:var(--orange-dark);
   font-weight:bold;
-
 }
-
-
-.article-back:hover{
-
-  color:var(--white);
-
-  background:var(--teal);
-
-}
-
 
 /* =========================================================
-   ERROR
-========================================================= */
-
-.error{
-
-  padding:
-    35px 20px;
-
-  border-top:
-    0;
-
-  background:#eee5ce;
-
-  color:#8b2c1e;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:11px;
-
-  line-height:1.8;
-
-}
-
-
-.error strong{
-
-  font-weight:bold;
-
-}
-
-
-/* =========================================================
-   FOOTER QUOTE
+   FOOTER
 ========================================================= */
 
 .footer{
+  margin-top:28px;
 
-  width:
-    min(940px, calc(100% - 28px));
+  padding:14px 0;
 
-  margin:
-    16px auto 0;
+  border-top:3px solid var(--blue);
 
-  padding:
-    10px 14px;
-
-  border:
-    3px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--teal);
-
-  text-align:center;
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-size:10px;
-
+  font-family:monospace;
+  font-size:11px;
   line-height:1.5;
-
-  font-weight:bold;
-
 }
-
 
 /* =========================================================
    MUSIC PLAYER
 ========================================================= */
 
 .music-player{
-
   position:fixed;
 
-  width:
-    min(940px, calc(100% - 28px));
+  left:14px;
+  bottom:14px;
 
-  left:50%;
+  z-index:1000;
 
-  right:auto;
+  width:285px;
 
-  bottom:10px;
+  background:var(--blue);
+  color:var(--white);
 
-  transform:translateX(-50%);
+  border:3px solid var(--orange);
 
-  z-index:10000;
+  box-shadow:5px 5px 0 rgba(21,23,47,.35);
 
-  display:grid;
-
-  grid-template-columns:
-    auto
-    minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
-    auto;
-
-  gap:9px;
-
-  align-items:center;
-
-  padding:
-    6px 8px;
-
-  background:var(--paper);
-
-  border:
-    3px solid var(--blue);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
+  padding:8px;
 }
 
-
-.music-icon{
-
-  width:35px;
-
-  height:35px;
-
+.music-top{
   display:flex;
-
   align-items:center;
+  gap:8px;
 
-  justify-content:center;
-
-  background:var(--orange);
-
-  border:
-    3px solid var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
-  font-weight:bold;
-
+  margin-bottom:7px;
 }
-
-
-.music-info{
-
-  min-width:0;
-
-}
-
-
-.music-label{
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  margin-bottom:2px;
-
-}
-
-
-.music-title{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
-  line-height:1.4;
-
-  font-weight:bold;
-
-}
-
-
-.music-artist{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  margin-top:2px;
-
-  color:var(--teal);
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  font-weight:bold;
-
-}
-
-
-.music-controls{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
 
 .music-button{
+  appearance:none;
 
-  width:33px;
+  border:2px solid var(--white);
 
-  height:29px;
+  background:var(--orange);
+  color:var(--white);
 
-  border:
-    3px solid var(--blue);
+  min-width:28px;
+  height:26px;
 
-  background:#eee5ce;
+  padding:0 6px;
 
-  color:var(--blue);
-
-  font-family:
-    "Courier New",
-    Courier,
-    monospace;
-
+  font-family:monospace;
+  font-size:11px;
   font-weight:bold;
 
   cursor:pointer;
-
 }
-
 
 .music-button:hover{
-
-  background:var(--orange);
-
+  background:var(--teal);
 }
 
+.music-info{
+  min-width:0;
+  flex:1;
+}
+
+.music-title{
+  font-size:12px;
+  font-weight:bold;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.music-artist{
+  margin-top:1px;
+
+  font-family:monospace;
+  font-size:9px;
+
+  opacity:.75;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 
 .music-progress{
-
-  min-width:0;
-
-}
-
-
-.music-progress input{
-
   width:100%;
+  height:5px;
 
   accent-color:var(--orange);
 
+  cursor:pointer;
 }
 
+.music-bottom{
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  margin-top:5px;
+}
 
 .music-time{
-
-  min-width:72px;
-
-  text-align:center;
-
+  font-family:monospace;
   font-size:9px;
 
-  line-height:1.4;
-
+  min-width:72px;
 }
-
 
 .music-volume{
+  flex:1;
+  height:4px;
 
-  width:100px;
+  accent-color:var(--orange);
 
+  cursor:pointer;
 }
-
-
-.music-volume input{
-
-  width:100%;
-
-  accent-color:var(--teal);
-
-}
-
 
 /* =========================================================
-   TABLET
+   RESPONSIVE
 ========================================================= */
 
-@media(max-width:1200px){
+@media(max-width:1000px){
 
   .layout{
-
-    grid-template-columns:
-      220px
-      minmax(0,1fr);
-
+    grid-template-columns:240px minmax(0,1fr);
   }
 
-
-  .archive{
-
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
-
-  }
-
-
-  .music-player{
-
-    grid-template-columns:
-      auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
-  }
-
-
-  .music-volume{
-
-    display:none;
-
+  .photo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 
 }
 
-
-/* =========================================================
-   MOBILE / SMALL TABLET
-========================================================= */
-
-@media(max-width:850px){
+@media(max-width:760px){
 
   .page{
-
-    padding:
-      7px
-      7px
-      125px;
-
+    width:calc(100% - 16px);
+    margin:8px auto 20px;
   }
-
-
-  .browser-menu{
-
-    display:none;
-
-  }
-
-
-  .browser-address-row{
-
-    grid-template-columns:
-      31px
-      minmax(0,1fr)
-      31px;
-
-  }
-
-
-  .browser-address-row
-  .browser-control:nth-child(2){
-
-    display:none;
-
-  }
-
-
-  .browser-date{
-
-    display:none;
-
-  }
-
 
   .layout{
-
-    display:block;
-
+    grid-template-columns:1fr;
   }
 
-
-  .left{
-
-    margin-bottom:16px;
-
+  .sidebar{
+    order:2;
   }
 
-
-  .nav-list{
-
-    display:grid;
-
-    grid-template-columns:
-      repeat(2,1fr);
-
+  .content{
+    order:1;
   }
 
-
-  .archive{
-
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-
+  .toolbar{
+    align-items:stretch;
+    flex-direction:column;
   }
 
-
-  .photo-entry:nth-child(3n){
-
-    border-right:
-      3px solid var(--blue);
-
+  .search{
+    width:100%;
   }
 
-
-  .photo-entry:nth-child(2n){
-
-    border-right:0;
-
+  .search input{
+    width:100%;
   }
 
+  .photo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 
   .music-player{
-
-    width:
-      calc(100% - 10px);
-
-    left:50%;
-
-    right:auto;
-
-    bottom:5px;
-
-    transform:translateX(-50%);
-
-    grid-template-columns:
-      auto
-      minmax(0,1fr)
-      auto;
-
-    gap:5px;
-
-  }
-
-
-  .music-progress,
-  .music-time,
-  .music-volume{
-
-    display:none;
-
+    left:8px;
+    right:8px;
+    bottom:8px;
+    width:auto;
   }
 
 }
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
 
 @media(max-width:480px){
 
-  .browser-subtitle{
-
+  .browser-address{
     display:none;
-
   }
 
-
-  .archive{
-
+  .photo-grid{
     grid-template-columns:1fr;
-
   }
 
-
-  .photo-entry,
-  .photo-entry:nth-child(2n),
-  .photo-entry:nth-child(3n){
-
-    border-right:0;
-
-  }
-
-
-  .article{
-
-    padding:
-      18px
-      14px
-      28px;
-
-  }
-
-
-  .article-title{
-
-    font-size:23px;
-
-  }
-
-
-  .article-body{
-
-    font-size:13px;
-
-    line-height:1.85;
-
-  }
-
-
-  .footer{
-
-    width:
-      calc(100% - 14px);
-
-    font-size:9px;
-
+  .detail-title{
+    font-size:25px;
   }
 
 }
-
 </style>
-
 </head>
 
-
 <body>
+
+<!-- =======================================================
+     BROWSER BAR
+======================================================= -->
+
+<div class="browser-top">
+
+  <div class="browser-dot"></div>
+
+  <div class="browser-title">
+    QM ARCHIVE
+  </div>
+
+  <div class="browser-address">
+    <span class="address-label">ADDRESS</span>
+    <span class="address">
+      qmarchive.github.io/photographs/
+    </span>
+  </div>
+
+</div>
 
 
 <div class="page">
 
-
-<!-- =======================================================
-     BROWSER
-======================================================= -->
-
-<header class="browser">
-
-
-  <div class="browser-top">
-
-
-    <div class="browser-brand">
-
-      <span class="browser-brand-icon">
-        QM
-      </span>
-
-      QM ARCHIVE
-
-      <span class="browser-subtitle">
-        // A SMALL SPACE FOR ORDINARY DAYS.
-      </span>
-
-    </div>
-
-
-    <div class="browser-window-buttons">
-
-      <span>—</span>
-      <span>□</span>
-      <span>×</span>
-
-    </div>
-
-
-  </div>
-
-
-  <div class="browser-menu">
-
-    <span>File</span>
-    <span>Edit</span>
-    <span>View</span>
-    <span>Favorites</span>
-    <span>Tools</span>
-    <span>Help</span>
-
-  </div>
-
-
-  <div class="browser-address-row">
-
-
-    <div class="browser-control">
-      &lt;
-    </div>
-
-
-    <div class="browser-control">
-      &gt;
-    </div>
-
-
-    <div class="browser-control">
-      ^
-    </div>
-
-
-    <div
-      class="browser-address"
-      id="browserAddress"
-    >
-
-      https://qmarchive.github.io/photographs/
-
-    </div>
-
-
-    <div class="browser-date">
-
-      <span id="browserDate">
-        22 SEP 2026
-      </span>
-
-      <br>
-
-      <span id="browserTime">
-        00:00
-      </span>
-
-    </div>
-
-
-  </div>
-
-
-</header>
-
-
-
-<!-- =======================================================
-     MAIN LAYOUT
-======================================================= -->
-
 <div class="layout">
 
-
 <!-- =====================================================
-     LEFT — SYSTEM INFO
-====================================================== -->
+     SIDEBAR
+===================================================== -->
 
-<aside class="left">
+<aside class="sidebar">
 
+  <!-- SYSTEM INFO -->
 
-  <section class="window system-window">
+  <section class="panel">
 
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          S
-        </span>
-
-        SYSTEM INFO
-
-      </div>
-
-
-      <div class="window-buttons">
-
-        <span class="window-button">
-          ×
-        </span>
-
-      </div>
-
-
+    <div class="panel-head">
+      SYSTEM INFO
+      <span>01</span>
     </div>
 
-
-    <div class="system-content">
-
+    <div class="panel-body">
 
       <div class="system-line">
+        QM ARCHIVE
+      </div>
 
+      <div class="system-line">
         Edgerunner.2046
-
       </div>
 
-
-      <div class="system-line online">
-
+      <div class="system-line system-online">
         + Online
-
       </div>
-
 
       <div class="system-line">
-
         Since: 21.09.2026
-
       </div>
-
-
-
-      <!-- NAV -->
-
-      <nav class="nav-list">
-
-
-        <a href="/">
-
-          HOME
-
-        </a>
-
-
-        <a href="/writings/">
-
-          WRITINGS
-
-        </a>
-
-
-        <a
-          href="/photographs/"
-          class="active"
-        >
-
-          PHOTOGRAPHS
-
-        </a>
-
-
-        <a href="/notes/">
-
-          NOTES
-
-        </a>
-
-
-      </nav>
-
-
-
-      <!-- CASSETTE -->
-
-      <div class="cassette">
-
-
-        <img
-          src="/home/home-cassette.gif"
-          alt="Life Goes On cassette"
-        >
-
-
-        <div class="cassette-caption">
-
-          Không sao đâu, không sao đâu mà<br>
-
-          // 1998 -
-          <span id="cassetteYear">
-            2026
-          </span>
-
-        </div>
-
-
-      </div>
-
 
     </div>
-
 
   </section>
 
+
+  <!-- NAVIGATION -->
+
+  <section class="panel">
+
+    <div class="panel-head">
+      NAVIGATION
+      <span>02</span>
+    </div>
+
+    <div class="panel-body">
+
+      <nav class="nav-list">
+
+        <a href="/">
+          HOME
+        </a>
+
+        <a href="/writings/">
+          WRITINGS
+        </a>
+
+        <a href="/photographs/" class="active">
+          PHOTOGRAPHS
+        </a>
+
+        <a href="/notes/">
+          NOTES
+        </a>
+
+        <a href="/about/">
+          ABOUT
+        </a>
+
+      </nav>
+
+    </div>
+
+  </section>
+
+
+  <!-- CASSETTE -->
+
+  <section class="panel">
+
+    <div class="panel-head">
+      CASSETTE
+      <span>03</span>
+    </div>
+
+    <div class="cassette">
+
+      <img
+        src="/home/home-cassette.gif"
+        alt="Cassette"
+      >
+
+      <div class="cassette-caption">
+        Không sao đâu, không sao đâu mà //
+        1998 - <span id="cassetteYear">2026</span>
+      </div>
+
+    </div>
+
+  </section>
 
 </aside>
 
 
-
 <!-- =====================================================
-     CENTER
-====================================================== -->
+     MAIN CONTENT
+===================================================== -->
 
-<main class="center">
+<main class="content">
 
+  <section class="section-head">
 
-  <section
-    class="window photos-window"
-    id="photosWindow"
-  >
+    <h1>Photographs</h1>
 
-
-    <!-- TITLE BAR -->
-
-    <div class="window-titlebar">
-
-
-      <div class="window-title">
-
-        <span class="window-title-icon">
-          P
-        </span>
-
-        PHOTOGRAPHS
-
-      </div>
-
-
-      <div class="window-buttons">
-
-        <span class="window-button">
-          —
-        </span>
-
-        <span class="window-button">
-          □
-        </span>
-
-        <span class="window-button">
-          ×
-        </span>
-
-      </div>
-
-
-    </div>
-
-
-
-    <!-- INTRO -->
-
-    <div class="photo-intro">
-
+    <p>
       Đây không phải triển lãm.
-
-    </div>
-
-
-
-    <!-- FILTERS -->
-
-    <div class="photo-filters">
-
-
-      <span
-        class="photo-filter active"
-        data-category="all"
-      >
-        All
-      </span>
-
-
-      <span
-        class="photo-filter"
-        data-category="hanoi"
-      >
-        Hanoi
-      </span>
-
-
-      <span
-        class="photo-filter"
-        data-category="travel"
-      >
-        Travel
-      </span>
-
-
-      <span
-        class="photo-filter"
-        data-category="friends"
-      >
-        Friends
-      </span>
-
-
-    </div>
-
-
-
-    <!-- DYNAMIC CONTENT -->
-
-    <div id="main"></div>
-
+    </p>
 
   </section>
 
 
+  <!-- TOOLBAR -->
+
+  <div class="toolbar">
+
+    <div class="filters">
+
+      <button
+        class="filter-btn active"
+        data-filter="All"
+      >
+        All
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="Hanoi"
+      >
+        Hanoi
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="Travel"
+      >
+        Travel
+      </button>
+
+      <button
+        class="filter-btn"
+        data-filter="Friends"
+      >
+        Friends
+      </button>
+
+    </div>
+
+
+    <div class="search">
+
+      <span class="search-icon">
+        ⌕
+      </span>
+
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search photographs..."
+        autocomplete="off"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- ARCHIVE -->
+
+  <div id="archiveView">
+
+    <div
+      id="photoGrid"
+      class="photo-grid"
+    ></div>
+
+  </div>
+
+
+  <!-- DETAIL -->
+
+  <div
+    id="detailView"
+    style="display:none;"
+  ></div>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    I don’t have a favorite place, I have my favorite people.<br>
+
+    And whenever i’m with my favorite people,<br>
+
+    it becomes my favorite place.
+
+  </footer>
+
 </main>
 
-
+</div>
 </div>
 
 
-
-<!-- =======================================================
-     FOOTER QUOTE
-======================================================= -->
-
-<footer class="footer">
-
-  I don’t have a favorite place, I have my favorite people.
-  And whenever i’m with my favorite people,
-  it becomes my favorite place.
-
-</footer>
-
-
-
-<!-- =======================================================
+<!-- =====================================================
      MUSIC PLAYER
-======================================================= -->
+===================================================== -->
 
 <div class="music-player">
 
-
-  <div class="music-icon">
-
-    ♪
-
-  </div>
-
-
-  <div class="music-info">
-
-
-    <div class="music-label">
-
-      NOW PLAYING
-
-    </div>
-
-
-    <div
-      class="music-title"
-      id="musicTitle"
-    >
-
-      Between the Takes
-
-    </div>
-
-
-    <div
-      class="music-artist"
-      id="musicArtist"
-    >
-
-      Orient.bakureever
-
-    </div>
-
-
-  </div>
-
-
-  <div class="music-controls">
-
+  <div class="music-top">
 
     <button
       class="music-button"
-      id="prevButton"
+      id="prevBtn"
       type="button"
     >
-
-      |◀
-
+      ◀
     </button>
 
-
     <button
       class="music-button"
-      id="playButton"
+      id="playBtn"
       type="button"
     >
-
       ▶
-
     </button>
-
 
     <button
       class="music-button"
-      id="nextButton"
+      id="nextBtn"
       type="button"
     >
-
-      ▶|
-
+      ▶▶
     </button>
 
+    <div class="music-info">
+
+      <div
+        class="music-title"
+        id="musicTitle"
+      >
+        Between the Takes
+      </div>
+
+      <div
+        class="music-artist"
+        id="musicArtist"
+      >
+        Orient.bakureever
+      </div>
+
+    </div>
 
   </div>
 
 
-  <div class="music-progress">
-
-
-    <input
-      id="progress"
-      type="range"
-      min="0"
-      max="100"
-      value="0"
-      step="0.1"
-    >
-
-
-  </div>
-
-
-  <div
-    class="music-time"
-    id="musicTime"
+  <input
+    class="music-progress"
+    id="progress"
+    type="range"
+    min="0"
+    max="100"
+    value="0"
+    step="0.1"
   >
 
-    00:00 / 00:00
 
-  </div>
+  <div class="music-bottom">
 
-
-  <div class="music-volume">
-
+    <span
+      class="music-time"
+      id="musicTime"
+    >
+      0:00 / 0:00
+    </span>
 
     <input
+      class="music-volume"
       id="volume"
       type="range"
       min="0"
       max="1"
-      value=".7"
-      step=".01"
+      value="0.7"
+      step="0.01"
     >
-
 
   </div>
 
-
 </div>
-
 
 
 <audio
@@ -2438,25 +1141,13 @@ a[href]:hover{
 ></audio>
 
 
-
 <script>
 
 /* =========================================================
    CONFIG
 ========================================================= */
 
-const CONTENT_URL =
-  "/photographs/content.json?v=" +
-  Date.now();
-
-const POSTS_BASE =
-  "/photographs/posts/";
-
-
-
-/* =========================================================
-   MUSIC
-========================================================= */
+const MUSIC_STORAGE_KEY = "qmArchiveMusic";
 
 const MUSIC_TRACKS = [
 
@@ -2480,19 +1171,589 @@ const MUSIC_TRACKS = [
 
 ];
 
-const MUSIC_STORAGE_KEY =
-  "qmArchiveMusic";
 
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const photoGrid =
+  document.getElementById("photoGrid");
+
+const archiveView =
+  document.getElementById("archiveView");
+
+const detailView =
+  document.getElementById("detailView");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const filterButtons =
+  document.querySelectorAll(".filter-btn");
+
+const cassetteYear =
+  document.getElementById("cassetteYear");
 
 
 /* =========================================================
-   HELPERS
+   YEAR
+========================================================= */
+
+cassetteYear.textContent =
+  new Date().getFullYear();
+
+
+/* =========================================================
+   PHOTO DATA
+========================================================= */
+
+let photographs = [];
+
+let activeFilter = "All";
+
+
+async function loadPhotographs(){
+
+  try{
+
+    const response =
+      await fetch(
+        "/photographs/content.json?v=" +
+        Date.now(),
+        {
+          cache:"no-store"
+        }
+      );
+
+    if(!response.ok){
+      throw new Error(
+        "Could not load photographs content."
+      );
+    }
+
+    const data =
+      await response.json();
+
+    photographs =
+      Array.isArray(data.photographs)
+        ? data.photographs
+        : [];
+
+    renderArchive();
+
+  }catch(error){
+
+    console.error(error);
+
+    photoGrid.innerHTML = `
+      <div class="empty">
+        Could not load photographs.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   SORT DATE
+========================================================= */
+
+function dateValue(date){
+
+  return String(date || "")
+    .split(".")
+    .reverse()
+    .join("");
+
+}
+
+
+/* =========================================================
+   RENDER ARCHIVE
+========================================================= */
+
+function renderArchive(){
+
+  const query =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  let items =
+    [...photographs];
+
+
+  if(activeFilter !== "All"){
+
+    items =
+      items.filter(item =>
+        String(item.category || "")
+          .toLowerCase() ===
+        activeFilter.toLowerCase()
+      );
+
+  }
+
+
+  if(query){
+
+    items =
+      items.filter(item =>
+        String(item.title || "")
+          .toLowerCase()
+          .includes(query)
+      );
+
+  }
+
+
+  items.sort((a,b) =>
+    dateValue(b.date)
+      .localeCompare(dateValue(a.date))
+  );
+
+
+  if(!items.length){
+
+    photoGrid.innerHTML = `
+      <div class="empty">
+        No photographs found.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  photoGrid.innerHTML =
+    items.map(item => {
+
+      const slug =
+        encodeURIComponent(
+          item.slug || ""
+        );
+
+      return `
+
+        <a
+          class="photo-card"
+          href="/photographs/?slug=${slug}"
+        >
+
+          <img
+            class="photo-image"
+            src="${item.image || ""}"
+            alt="${escapeHTML(item.title || "Photograph")}"
+            loading="lazy"
+          >
+
+          <div class="photo-info">
+
+            <div class="photo-date">
+              ${escapeHTML(item.date || "")}
+            </div>
+
+            <div class="photo-title">
+              ${escapeHTML(item.title || "")}
+            </div>
+
+            ${
+              item.category
+              ? `
+                <span class="photo-category">
+                  ${escapeHTML(item.category)}
+                </span>
+              `
+              : ""
+            }
+
+          </div>
+
+        </a>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+filterButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      filterButtons.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      activeFilter =
+        button.dataset.filter || "All";
+
+      renderArchive();
+
+    }
+  );
+
+});
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+searchInput.addEventListener(
+  "input",
+  renderArchive
+);
+
+
+/* =========================================================
+   DETAIL VIEW
+========================================================= */
+
+function getSlug(){
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  return params.get("slug");
+
+}
+
+
+async function loadDetail(slug){
+
+  const item =
+    photographs.find(
+      photo =>
+        String(photo.slug) === String(slug)
+    );
+
+
+  if(!item){
+
+    archiveView.style.display =
+      "block";
+
+    detailView.style.display =
+      "none";
+
+    return;
+
+  }
+
+
+  archiveView.style.display =
+    "none";
+
+  detailView.style.display =
+    "block";
+
+
+  detailView.innerHTML = `
+
+    <article class="detail">
+
+      <a
+        class="detail-back"
+        href="/photographs/"
+      >
+        ← BACK TO PHOTOGRAPHS
+      </a>
+
+      <div class="detail-meta">
+        ${escapeHTML(item.date || "")}
+        ${item.category ? " // " + escapeHTML(item.category) : ""}
+      </div>
+
+      <h1 class="detail-title">
+        ${escapeHTML(item.title || "")}
+      </h1>
+
+      ${
+        item.image
+        ? `
+          <img
+            class="detail-image"
+            src="${item.image}"
+            alt="${escapeHTML(item.title || "Photograph")}"
+          >
+        `
+        : ""
+      }
+
+      <div
+        class="detail-body"
+        id="detailBody"
+      >
+        Loading...
+      </div>
+
+    </article>
+
+  `;
+
+
+  try{
+
+    const response =
+      await fetch(
+        "/photographs/posts/" +
+        encodeURIComponent(slug) +
+        ".md?v=" +
+        Date.now(),
+        {
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "Markdown post not found."
+      );
+
+    }
+
+
+    const markdown =
+      await response.text();
+
+
+    document.getElementById(
+      "detailBody"
+    ).innerHTML =
+      markdownToHTML(markdown);
+
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById(
+      "detailBody"
+    ).innerHTML = `
+      <p>
+        Could not load this photograph note.
+      </p>
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   MARKDOWN
+========================================================= */
+
+function markdownToHTML(markdown){
+
+  let text =
+    String(markdown || "")
+      .replace(/\r\n/g,"\n")
+      .replace(/\r/g,"\n")
+      .trim();
+
+
+  const lines =
+    text.split("\n");
+
+  let html = "";
+
+  let paragraph = [];
+
+  function flushParagraph(){
+
+    if(!paragraph.length){
+      return;
+    }
+
+    html +=
+      "<p>" +
+      paragraph.join(" ") +
+      "</p>";
+
+    paragraph = [];
+
+  }
+
+
+  for(let line of lines){
+
+    line =
+      line.trim();
+
+
+    if(!line){
+
+      flushParagraph();
+
+      continue;
+
+    }
+
+
+    if(/^###\s+/.test(line)){
+
+      flushParagraph();
+
+      html +=
+        "<h3>" +
+        inlineMarkdown(
+          line.replace(/^###\s+/,"")
+        ) +
+        "</h3>";
+
+      continue;
+
+    }
+
+
+    if(/^##\s+/.test(line)){
+
+      flushParagraph();
+
+      html +=
+        "<h2>" +
+        inlineMarkdown(
+          line.replace(/^##\s+/,"")
+        ) +
+        "</h2>";
+
+      continue;
+
+    }
+
+
+    if(/^>\s+/.test(line)){
+
+      flushParagraph();
+
+      html +=
+        "<blockquote>" +
+        inlineMarkdown(
+          line.replace(/^>\s+/,"")
+        ) +
+        "</blockquote>";
+
+      continue;
+
+    }
+
+
+    if(/^- /.test(line)){
+
+      flushParagraph();
+
+      html += "<ul>";
+
+      while(
+        line &&
+        /^- /.test(line)
+      ){
+
+        html +=
+          "<li>" +
+          inlineMarkdown(
+            line.replace(/^- /,"")
+          ) +
+          "</li>";
+
+        const index =
+          lines.indexOf(line);
+
+        break;
+
+      }
+
+      html += "</ul>";
+
+      continue;
+
+    }
+
+
+    paragraph.push(
+      inlineMarkdown(line)
+    );
+
+  }
+
+
+  flushParagraph();
+
+
+  return html;
+
+}
+
+
+/* =========================================================
+   INLINE MARKDOWN
+========================================================= */
+
+function inlineMarkdown(text){
+
+  let value =
+    escapeHTML(text);
+
+
+  value =
+    value.replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      '<img src="$2" alt="$1">'
+    );
+
+
+  value =
+    value.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      '<a href="$2">$1</a>'
+    );
+
+
+  value =
+    value.replace(
+      /\*\*([^*]+)\*\*/g,
+      "<strong>$1</strong>"
+    );
+
+
+  value =
+    value.replace(
+      /\*([^*]+)\*/g,
+      "<em>$1</em>"
+    );
+
+
+  return value;
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
 ========================================================= */
 
 function escapeHTML(value){
 
-  return String(value ?? "")
-
+  return String(value || "")
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -2502,1093 +1763,135 @@ function escapeHTML(value){
 }
 
 
-
 /* =========================================================
-   MARKDOWN → HTML
+   INIT PHOTO
 ========================================================= */
 
-function markdownToHTML(markdown){
+async function initPhotographs(){
 
-  let text =
-    escapeHTML(markdown);
+  await loadPhotographs();
 
+  const slug =
+    getSlug();
 
-  text =
-    text.replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
+  if(slug){
 
-      function(match, alt, src){
-
-        return `
-
-          <figure class="photo-detail">
-
-            <img
-              src="${src}"
-              alt="${alt}"
-            >
-
-          </figure>
-
-        `;
-
-      }
-    );
-
-
-  text =
-    text.replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-
-      '<a href="$2">$1</a>'
-    );
-
-
-  text =
-    text.replace(
-      /^### (.+)$/gm,
-
-      "<h3>$1</h3>"
-    );
-
-
-  text =
-    text.replace(
-      /^## (.+)$/gm,
-
-      "<h2>$1</h2>"
-    );
-
-
-  text =
-    text.replace(
-      /^# (.+)$/gm,
-
-      "<h1>$1</h1>"
-    );
-
-
-  text =
-    text.replace(
-      /\*\*(.+?)\*\*/g,
-
-      "<strong>$1</strong>"
-    );
-
-
-  text =
-    text.replace(
-      /\*(.+?)\*/g,
-
-      "<em>$1</em>"
-    );
-
-
-  text =
-    text.replace(
-      /^&gt; (.+)$/gm,
-
-      "<blockquote>$1</blockquote>"
-    );
-
-
-  text =
-    text.replace(
-      /^[-*] (.+)$/gm,
-
-      "<li>$1</li>"
-    );
-
-
-  text =
-    text.replace(
-      /(<li>.*<\/li>)/gs,
-
-      "<ul>$1</ul>"
-    );
-
-
-  const blocks =
-    text
-
-      .split(/\n\s*\n/)
-
-      .map(
-        block =>
-          block.trim()
-      )
-
-      .filter(Boolean);
-
-
-  return blocks
-
-    .map(
-      block => {
-
-        if(
-
-          block.startsWith("<h1>") ||
-
-          block.startsWith("<h2>") ||
-
-          block.startsWith("<h3>") ||
-
-          block.startsWith("<blockquote>") ||
-
-          block.startsWith("<ul>") ||
-
-          block.startsWith("<figure")
-
-        ){
-
-          return block;
-
-        }
-
-
-        return (
-
-          "<p>" +
-
-          block.replace(
-            /\n/g,
-            "<br>"
-          ) +
-
-          "</p>"
-
-        );
-
-      }
-    )
-
-    .join("\n");
-
-}
-
-
-
-/* =========================================================
-   LOAD JSON
-========================================================= */
-
-async function loadJSON(){
-
-  const response =
-    await fetch(
-      CONTENT_URL,
-      {
-        cache:"no-store"
-      }
-    );
-
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load photographs/content.json (" +
-      response.status +
-      ")"
-    );
-
-  }
-
-
-  return await response.json();
-
-}
-
-
-
-/* =========================================================
-   LOAD MARKDOWN
-========================================================= */
-
-async function loadMarkdown(slug){
-
-  const safeSlug =
-    decodeURIComponent(
-      String(slug || "")
-    ).trim();
-
-
-  const url =
-    POSTS_BASE +
-    encodeURIComponent(
-      safeSlug
-    ) +
-    ".md?v=" +
-    Date.now();
-
-
-  const response =
-    await fetch(
-      url,
-      {
-        cache:"no-store"
-      }
-    );
-
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load Markdown file (" +
-      response.status +
-      "): " +
-      url
-    );
-
-  }
-
-
-  const text =
-    await response.text();
-
-
-  if(!text.trim()){
-
-    throw new Error(
-      "Markdown file is empty: " +
-      url
-    );
-
-  }
-
-
-  return text;
-
-}
-
-
-
-/* =========================================================
-   CATEGORY HELPER
-========================================================= */
-
-function getCategories(item){
-
-  const raw =
-    item.category ||
-    item.categories ||
-    "";
-
-
-  if(Array.isArray(raw)){
-
-    return raw
-      .map(
-        value =>
-          String(value)
-            .trim()
-            .toLowerCase()
-      )
-      .filter(Boolean);
-
-  }
-
-
-  return String(raw)
-    .split(",")
-    .map(
-      value =>
-        value
-          .trim()
-          .toLowerCase()
-    )
-    .filter(Boolean);
-
-}
-
-
-
-/* =========================================================
-   FILTER PHOTOGRAPHS
-========================================================= */
-
-function filterPhotographs(
-  items,
-  category
-){
-
-  if(category === "all"){
-
-    return items;
-
-  }
-
-
-  return items.filter(
-    item => {
-
-      const categories =
-        getCategories(item);
-
-
-      return categories.includes(
-        category.toLowerCase()
-      );
-
-    }
-  );
-
-}
-
-
-
-/* =========================================================
-   DATE PARSER
-========================================================= */
-
-function parseArchiveDate(value){
-
-  const text =
-    String(value || "")
-      .trim();
-
-
-  let match =
-    text.match(
-      /^(\d{1,2})[.](\d{1,2})[.](\d{4})$/
-    );
-
-
-  if(match){
-
-    return new Date(
-      Number(match[3]),
-      Number(match[2]) - 1,
-      Number(match[1])
-    ).getTime();
-
-  }
-
-
-  match =
-    text.match(
-      /^(\d{1,2})[/](\d{1,2})[/](\d{4})$/
-    );
-
-
-  if(match){
-
-    return new Date(
-      Number(match[3]),
-      Number(match[2]) - 1,
-      Number(match[1])
-    ).getTime();
-
-  }
-
-
-  match =
-    text.match(
-      /^(\d{4})-(\d{1,2})-(\d{1,2})$/
-    );
-
-
-  if(match){
-
-    return new Date(
-      Number(match[1]),
-      Number(match[2]) - 1,
-      Number(match[3])
-    ).getTime();
-
-  }
-
-
-  match =
-    text.match(
-      /^(\d{4})$/
-    );
-
-
-  if(match){
-
-    return new Date(
-      Number(match[1]),
-      0,
-      1
-    ).getTime();
-
-  }
-
-
-  return 0;
-
-}
-
-
-
-/* =========================================================
-   RENDER ARCHIVE
-========================================================= */
-
-function renderArchive(items){
-
-  const main =
-    document.getElementById(
-      "main"
-    );
-
-
-  document.getElementById(
-    "browserAddress"
-  ).textContent =
-    "https://qmarchive.github.io/photographs/";
-
-
-  if(!items.length){
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        No photographs in this category yet.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  const sortedItems =
-
-    items
-
-      .map(
-        (item,index) => ({
-
-          item,
-
-          index,
-
-          timestamp:
-            parseArchiveDate(
-              item.date
-            )
-
-        })
-      )
-
-      .sort(
-        (a,b) => {
-
-          if(
-            b.timestamp !==
-            a.timestamp
-          ){
-
-            return (
-              b.timestamp -
-              a.timestamp
-            );
-
-          }
-
-
-          return (
-            a.index -
-            b.index
-          );
-
-        }
-      )
-
-      .map(
-        entry =>
-          entry.item
-      );
-
-
-  main.innerHTML = `
-
-    <div class="archive">
-
-      ${sortedItems.map(
-        item => {
-
-          const slug =
-            String(
-              item.slug || ""
-            );
-
-
-          const image =
-            item.image ||
-            item.src ||
-            item.thumbnail ||
-            "";
-
-
-          return `
-
-            <a
-              class="photo-entry"
-              href="/photographs/?slug=${encodeURIComponent(
-                slug
-              )}"
-            >
-
-              <div class="photo-frame">
-
-                <img
-                  src="${escapeHTML(image)}"
-                  alt="${escapeHTML(
-                    item.title || ""
-                  )}"
-                  loading="lazy"
-                >
-
-              </div>
-
-
-              <div class="photo-date">
-
-                ${escapeHTML(
-                  item.date || ""
-                )}
-
-              </div>
-
-
-              <div class="photo-title">
-
-                ${escapeHTML(
-                  item.title || ""
-                )}
-
-              </div>
-
-            </a>
-
-          `;
-
-        }
-      ).join("")}
-
-    </div>
-
-  `;
-
-}
-
-
-
-/* =========================================================
-   FILTER EVENTS
-========================================================= */
-
-function setupFilters(items){
-
-  const filters =
-    document.querySelectorAll(
-      ".photo-filter"
-    );
-
-
-  filters.forEach(
-    filter => {
-
-      filter.addEventListener(
-        "click",
-        () => {
-
-          const category =
-            filter.dataset.category ||
-            "all";
-
-
-          filters.forEach(
-            button => {
-
-              button.classList.remove(
-                "active"
-              );
-
-            }
-          );
-
-
-          filter.classList.add(
-            "active"
-          );
-
-
-          const filteredItems =
-            filterPhotographs(
-              items,
-              category
-            );
-
-
-          renderArchive(
-            filteredItems
-          );
-
-        }
-      );
-
-    }
-  );
-
-}
-
-
-
-/* =========================================================
-   RENDER ARTICLE
-========================================================= */
-
-async function renderArticle(
-  items,
-  slug
-){
-
-  const main =
-    document.getElementById(
-      "main"
-    );
-
-
-  const decodedSlug =
-    decodeURIComponent(
-      String(slug || "")
-    ).trim();
-
-
-  const item =
-    items.find(
-      entry =>
-        String(
-          entry.slug || ""
-        ).trim() ===
-        decodedSlug
-    );
-
-
-  document.getElementById(
-    "browserAddress"
-  ).textContent =
-    "https://qmarchive.github.io/photographs/?slug=" +
-    decodedSlug;
-
-
-  if(!item){
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          This photograph could not be found.
-        </strong>
-
-        <br><br>
-
-        slug:
-        ${escapeHTML(
-          decodedSlug
-        )}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/photographs/"
-        >
-
-          ← back to photographs
-
-        </a>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  const image =
-    item.image ||
-    item.src ||
-    item.thumbnail ||
-    "";
-
-
-  main.innerHTML = `
-
-    <div class="error">
-
-      Loading photograph...
-
-    </div>
-
-  `;
-
-
-  try{
-
-    const markdown =
-      await loadMarkdown(
-        decodedSlug
-      );
-
-
-    const html =
-      markdownToHTML(
-        markdown
-      );
-
-
-    main.innerHTML = `
-
-      <article class="article">
-
-
-        <div class="article-year">
-
-          ${escapeHTML(
-            item.date || ""
-          )}
-
-        </div>
-
-
-        <h1 class="article-title">
-
-          ${escapeHTML(
-            item.title || ""
-          )}
-
-        </h1>
-
-
-        ${
-          image
-            ? `
-
-              <figure class="detail-photo">
-
-                <img
-                  src="${escapeHTML(image)}"
-                  alt="${escapeHTML(
-                    item.title || ""
-                  )}"
-                >
-
-                <figcaption
-                  class="detail-photo-caption"
-                >
-
-                  ${escapeHTML(
-                    item.title || ""
-                  )}
-
-                </figcaption>
-
-              </figure>
-
-            `
-            : ""
-        }
-
-
-        <div class="article-body">
-
-          ${html}
-
-        </div>
-
-
-        <a
-          class="article-back"
-          href="/photographs/"
-        >
-
-          ← back to photographs
-
-        </a>
-
-
-      </article>
-
-    `;
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          The photograph exists, but its content could not be loaded.
-        </strong>
-
-        <br><br>
-
-        File expected:
-
-        <br>
-
-        /photographs/posts/
-        ${escapeHTML(decodedSlug)}
-        .md
-
-        <br><br>
-
-        ${escapeHTML(
-          error.message
-        )}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/photographs/"
-        >
-
-          ← back to photographs
-
-        </a>
-
-      </div>
-
-    `;
+    await loadDetail(slug);
 
   }
 
 }
 
 
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
-function updateClock(){
-
-  const now =
-    new Date();
-
-
-  const time =
-    String(
-      now.getHours()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getMinutes()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getSeconds()
-    ).padStart(2,"0");
-
-
-  const browserTime =
-    document.getElementById(
-      "browserTime"
-    );
-
-
-  const browserDate =
-    document.getElementById(
-      "browserDate"
-    );
-
-
-  const cassetteYear =
-    document.getElementById(
-      "cassetteYear"
-    );
-
-
-  if(browserTime){
-
-    browserTime.textContent =
-      time.slice(0,5);
-
-  }
-
-
-  if(browserDate){
-
-    browserDate.textContent =
-      now
-        .toLocaleDateString(
-          "en-GB",
-          {
-            day:"2-digit",
-            month:"short",
-            year:"numeric"
-          }
-        )
-        .toUpperCase();
-
-  }
-
-
-  if(cassetteYear){
-
-    cassetteYear.textContent =
-      now.getFullYear();
-
-  }
-
-}
-
+initPhotographs();
 
 
 /* =========================================================
    MUSIC PLAYER
+   SHARED LOCAL STORAGE
 ========================================================= */
 
 const audio =
-  document.getElementById(
-    "audio"
-  );
+  document.getElementById("audio");
 
+const prevBtn =
+  document.getElementById("prevBtn");
 
-const playButton =
-  document.getElementById(
-    "playButton"
-  );
+const playBtn =
+  document.getElementById("playBtn");
 
-
-const prevButton =
-  document.getElementById(
-    "prevButton"
-  );
-
-
-const nextButton =
-  document.getElementById(
-    "nextButton"
-  );
-
+const nextBtn =
+  document.getElementById("nextBtn");
 
 const progress =
-  document.getElementById(
-    "progress"
-  );
-
+  document.getElementById("progress");
 
 const volume =
-  document.getElementById(
-    "volume"
-  );
-
+  document.getElementById("volume");
 
 const musicTitle =
-  document.getElementById(
-    "musicTitle"
-  );
-
+  document.getElementById("musicTitle");
 
 const musicArtist =
-  document.getElementById(
-    "musicArtist"
-  );
-
+  document.getElementById("musicArtist");
 
 const musicTime =
-  document.getElementById(
-    "musicTime"
-  );
+  document.getElementById("musicTime");
 
 
 let currentTrack = 0;
 
 
+function loadMusicState(){
 
-/* =========================================================
-   FORMAT TIME
-========================================================= */
+  try{
 
-function formatTime(seconds){
+    const saved =
+      JSON.parse(
+        localStorage.getItem(
+          MUSIC_STORAGE_KEY
+        ) || "{}"
+      );
 
-  if(!Number.isFinite(seconds)){
 
-    return "00:00";
+    if(
+      Number.isInteger(saved.track) &&
+      saved.track >= 0 &&
+      saved.track < MUSIC_TRACKS.length
+    ){
+
+      currentTrack =
+        saved.track;
+
+    }
+
+
+    if(
+      typeof saved.volume === "number"
+    ){
+
+      volume.value =
+        saved.volume;
+
+    }
+
+
+    audio.volume =
+      Number(volume.value);
+
+
+  }catch(error){
+
+    console.warn(
+      "Could not restore music state.",
+      error
+    );
 
   }
 
-
-  const minutes =
-    Math.floor(
-      seconds / 60
-    );
-
-
-  const secs =
-    Math.floor(
-      seconds % 60
-    );
-
-
-  return (
-
-    String(minutes).padStart(2,"0") +
-
-    ":" +
-
-    String(secs).padStart(2,"0")
-
-  );
-
 }
 
-
-
-/* =========================================================
-   SAVE STATE
-========================================================= */
 
 function saveMusicState(){
 
   try{
 
     localStorage.setItem(
-
       MUSIC_STORAGE_KEY,
-
       JSON.stringify({
 
         track:currentTrack,
 
         currentTime:
-          Number.isFinite(
-            audio.currentTime
-          )
-            ? audio.currentTime
-            : 0,
+          audio.currentTime || 0,
 
         volume:
-          Number(
-            audio.volume
-          ),
+          audio.volume,
 
         isPlaying:
           !audio.paused
 
       })
-
     );
 
   }catch(error){
@@ -3603,76 +1906,7 @@ function saveMusicState(){
 }
 
 
-
-/* =========================================================
-   GET SAVED STATE
-========================================================= */
-
-function getSavedMusicState(){
-
-  try{
-
-    const raw =
-      localStorage.getItem(
-        MUSIC_STORAGE_KEY
-      );
-
-
-    if(!raw){
-
-      return null;
-
-    }
-
-
-    const state =
-      JSON.parse(raw);
-
-
-    if(
-      !state ||
-      typeof state !== "object"
-    ){
-
-      return null;
-
-    }
-
-
-    return state;
-
-  }catch(error){
-
-    console.warn(
-      "Could not read music state.",
-      error
-    );
-
-
-    return null;
-
-  }
-
-}
-
-
-
-/* =========================================================
-   LOAD TRACK
-========================================================= */
-
-function loadTrack(
-  index,
-  autoplay=false,
-  startTime=0
-){
-
-  if(!MUSIC_TRACKS.length){
-
-    return;
-
-  }
-
+function setTrack(index, preserveTime = false){
 
   currentTrack =
     (index + MUSIC_TRACKS.length) %
@@ -3695,325 +1929,121 @@ function loadTrack(
     track.artist;
 
 
+  if(!preserveTime){
+
+    audio.currentTime = 0;
+
+  }
+
+
+  saveMusicState();
+
+}
+
+
+function formatTime(seconds){
+
+  if(!Number.isFinite(seconds)){
+    return "0:00";
+  }
+
+
+  const mins =
+    Math.floor(seconds / 60);
+
+  const secs =
+    Math.floor(seconds % 60)
+      .toString()
+      .padStart(2,"0");
+
+
+  return `${mins}:${secs}`;
+
+}
+
+
+function updateMusicUI(){
+
+  const duration =
+    audio.duration || 0;
+
+  const current =
+    audio.currentTime || 0;
+
+
   progress.value =
-    0;
+    duration
+      ? (current / duration) * 100
+      : 0;
 
 
   musicTime.textContent =
-    "00:00 / 00:00";
+    `${formatTime(current)} / ${formatTime(duration)}`;
 
 
-  audio.addEventListener(
-
-    "loadedmetadata",
-
-    function restoreTime(){
-
-      audio.removeEventListener(
-        "loadedmetadata",
-        restoreTime
-      );
-
-
-      if(
-        Number.isFinite(
-          startTime
-        ) &&
-        startTime > 0 &&
-        startTime < audio.duration
-      ){
-
-        try{
-
-          audio.currentTime =
-            startTime;
-
-        }catch(error){
-
-          console.warn(
-            "Could not restore music position.",
-            error
-          );
-
-        }
-
-      }
-
-
-      if(autoplay){
-
-        audio.play()
-
-          .then(() => {
-
-            playButton.textContent =
-              "❚❚";
-
-          })
-
-          .catch(() => {
-
-            playButton.textContent =
-              "▶";
-
-          });
-
-      }
-
-    }
-
-  );
+  playBtn.textContent =
+    audio.paused
+      ? "▶"
+      : "Ⅱ";
 
 }
 
 
-
-/* =========================================================
-   RESTORE SAVED MUSIC STATE
-========================================================= */
-
-function restoreMusicState(){
-
-  const state =
-    getSavedMusicState();
-
-
-  if(!state){
-
-    loadTrack(
-      0,
-      false,
-      0
-    );
-
-    return;
-
-  }
-
-
-  const savedTrack =
-    Number.isInteger(
-      state.track
-    )
-      ? state.track
-      : 0;
-
-
-  const savedTime =
-    Number.isFinite(
-      Number(
-        state.currentTime
-      )
-    )
-      ? Number(
-          state.currentTime
-        )
-      : 0;
-
-
-  const savedVolume =
-    Number.isFinite(
-      Number(
-        state.volume
-      )
-    )
-      ? Number(
-          state.volume
-        )
-      : 0.7;
-
-
-  audio.volume =
-    Math.min(
-      1,
-      Math.max(
-        0,
-        savedVolume
-      )
-    );
-
-
-  volume.value =
-    audio.volume;
-
-
-  loadTrack(
-    savedTrack,
-    false,
-    savedTime
-  );
-
-
-  if(state.isPlaying){
-
-    window.__qmMusicShouldResume =
-      true;
-
-  }
-
-}
-
-
-
-/* =========================================================
-   PLAY / PAUSE
-========================================================= */
-
-playButton.addEventListener(
+prevBtn.addEventListener(
   "click",
   () => {
 
+    setTrack(
+      currentTrack - 1
+    );
+
+    audio.play();
+
+  }
+);
+
+
+nextBtn.addEventListener(
+  "click",
+  () => {
+
+    setTrack(
+      currentTrack + 1
+    );
+
+    audio.play();
+
+  }
+);
+
+
+playBtn.addEventListener(
+  "click",
+  async () => {
+
     if(audio.paused){
 
-      audio.play()
+      try{
 
-        .then(() => {
+        await audio.play();
 
-          playButton.textContent =
-            "❚❚";
+      }catch(error){
 
-          saveMusicState();
+        console.warn(error);
 
-        })
-
-        .catch(() => {
-
-          playButton.textContent =
-            "▶";
-
-        });
+      }
 
     }else{
 
       audio.pause();
 
-      playButton.textContent =
-        "▶";
-
-      saveMusicState();
-
     }
 
-  }
-);
-
-
-
-/* =========================================================
-   PREVIOUS
-========================================================= */
-
-prevButton.addEventListener(
-  "click",
-  () => {
-
-    loadTrack(
-      currentTrack - 1,
-      true,
-      0
-    );
+    saveMusicState();
 
   }
 );
 
-
-
-/* =========================================================
-   NEXT
-========================================================= */
-
-nextButton.addEventListener(
-  "click",
-  () => {
-
-    loadTrack(
-      currentTrack + 1,
-      true,
-      0
-    );
-
-  }
-);
-
-
-
-/* =========================================================
-   METADATA
-========================================================= */
-
-audio.addEventListener(
-  "loadedmetadata",
-  () => {
-
-    musicTime.textContent =
-      "00:00 / " +
-      formatTime(
-        audio.duration
-      );
-
-  }
-);
-
-
-
-/* =========================================================
-   TIME UPDATE
-========================================================= */
-
-audio.addEventListener(
-  "timeupdate",
-  () => {
-
-    if(audio.duration){
-
-      progress.value =
-        (
-          audio.currentTime /
-          audio.duration
-        ) * 100;
-
-    }
-
-
-    musicTime.textContent =
-      formatTime(
-        audio.currentTime
-      ) +
-
-      " / " +
-
-      formatTime(
-        audio.duration
-      );
-
-
-    const now =
-      Date.now();
-
-
-    if(
-      !window.__qmLastMusicSave ||
-      now -
-      window.__qmLastMusicSave >
-      1000
-    ){
-
-      window.__qmLastMusicSave =
-        now;
-
-
-      saveMusicState();
-
-    }
-
-  }
-);
-
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
 
 progress.addEventListener(
   "input",
@@ -4023,13 +2053,8 @@ progress.addEventListener(
 
       audio.currentTime =
         (
-          Number(progress.value) /
-          100
-        ) *
-        audio.duration;
-
-
-      saveMusicState();
+          Number(progress.value) / 100
+        ) * audio.duration;
 
     }
 
@@ -4037,20 +2062,12 @@ progress.addEventListener(
 );
 
 
-
-/* =========================================================
-   VOLUME
-========================================================= */
-
 volume.addEventListener(
   "input",
   () => {
 
     audio.volume =
-      Number(
-        volume.value
-      );
-
+      Number(volume.value);
 
     saveMusicState();
 
@@ -4058,136 +2075,105 @@ volume.addEventListener(
 );
 
 
-
-/* =========================================================
-   ENDED
-========================================================= */
-
 audio.addEventListener(
-  "ended",
+  "timeupdate",
   () => {
 
-    loadTrack(
-      currentTrack + 1,
-      true,
-      0
-    );
+    updateMusicUI();
 
   }
 );
 
 
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
 
-/* =========================================================
-   PLAY EVENT
-========================================================= */
+    updateMusicUI();
+
+    try{
+
+      const saved =
+        JSON.parse(
+          localStorage.getItem(
+            MUSIC_STORAGE_KEY
+          ) || "{}"
+        );
+
+
+      if(
+        saved.track === currentTrack &&
+        typeof saved.currentTime === "number"
+      ){
+
+        audio.currentTime =
+          Math.min(
+            saved.currentTime,
+            audio.duration || saved.currentTime
+          );
+
+      }
+
+    }catch(error){}
+
+  }
+);
+
 
 audio.addEventListener(
   "play",
   () => {
 
-    playButton.textContent =
-      "❚❚";
-
+    updateMusicUI();
     saveMusicState();
 
   }
 );
 
-
-
-/* =========================================================
-   PAUSE EVENT
-========================================================= */
 
 audio.addEventListener(
   "pause",
   () => {
 
-    playButton.textContent =
-      "▶";
-
+    updateMusicUI();
     saveMusicState();
 
   }
 );
 
 
-
-/* =========================================================
-   BEFORE UNLOAD
-========================================================= */
-
-window.addEventListener(
-  "beforeunload",
+audio.addEventListener(
+  "ended",
   () => {
 
-    saveMusicState();
+    setTrack(
+      currentTrack + 1
+    );
+
+    audio.play();
 
   }
 );
-
 
 
 /* =========================================================
    FIRST USER INTERACTION
 ========================================================= */
 
-let musicInteractionHandled =
-  false;
-
-
-function resumeMusicAfterInteraction(){
-
-  if(
-    musicInteractionHandled
-  ){
-
-    return;
-
-  }
-
-
-  musicInteractionHandled =
-    true;
-
-
-  if(
-    window.__qmMusicShouldResume &&
-    audio.paused
-  ){
-
-    audio.play()
-
-      .then(() => {
-
-        playButton.textContent =
-          "❚❚";
-
-      })
-
-      .catch(() => {
-
-        /*
-          Autoplay may still be blocked.
-          User can press Play.
-        */
-
-      });
-
-  }
-
-}
+let musicInteractionHandled = false;
 
 
 document.addEventListener(
   "pointerdown",
-  event => {
+  () => {
+
+    if(musicInteractionHandled){
+      return;
+    }
+
 
     if(
-      event.target.closest(
-        ".music-player"
-      )
+      eventTargetIsMusic()
     ){
 
       return;
@@ -4195,147 +2181,62 @@ document.addEventListener(
     }
 
 
-    resumeMusicAfterInteraction();
+    musicInteractionHandled = true;
+
+
+    try{
+
+      const saved =
+        JSON.parse(
+          localStorage.getItem(
+            MUSIC_STORAGE_KEY
+          ) || "{}"
+        );
+
+
+      if(saved.isPlaying){
+
+        audio.play()
+          .catch(() => {});
+
+      }
+
+    }catch(error){}
 
   },
   {
-    once:true,
     passive:true
   }
 );
 
 
+function eventTargetIsMusic(){
 
-/* =========================================================
-   INIT
-========================================================= */
+  const target =
+    window.event &&
+    window.event.target;
 
-async function init(){
-
-  updateClock();
-
-
-  setInterval(
-    updateClock,
-    1000
-  );
-
-
-  audio.volume =
-    Number(
-      volume.value
-    );
-
-
-  restoreMusicState();
-
-
-  try{
-
-    const data =
-      await loadJSON();
-
-
-    const items =
-      Array.isArray(
-        data.photographs
-      )
-        ? data.photographs
-        : [];
-
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const slug =
-      params.get("slug");
-
-
-    /* =====================================================
-       DETAIL PAGE
-    ===================================================== */
-
-    if(slug){
-
-      const photosWindow =
-        document.getElementById(
-          "photosWindow"
-        );
-
-
-      if(photosWindow){
-
-        photosWindow.classList.add(
-          "detail-mode"
-        );
-
-      }
-
-
-      await renderArticle(
-        items,
-        slug
-      );
-
-    }
-
-
-    /* =====================================================
-       ARCHIVE PAGE
-    ===================================================== */
-
-    else{
-
-      renderArchive(
-        items
-      );
-
-
-      setupFilters(
-        items
-      );
-
-    }
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    document.getElementById(
-      "main"
-    ).innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          Photographs could not be loaded.
-        </strong>
-
-        <br><br>
-
-        ${escapeHTML(
-          error.message
-        )}
-
-      </div>
-
-    `;
-
-  }
+  return target &&
+    target.closest &&
+    target.closest(".music-player");
 
 }
 
 
-init();
+/* =========================================================
+   INIT MUSIC
+========================================================= */
+
+loadMusicState();
+
+setTrack(
+  currentTrack,
+  true
+);
+
+updateMusicUI();
 
 </script>
 
-
 </body>
-
 </html>
