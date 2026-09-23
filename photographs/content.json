@@ -13,6 +13,34 @@
       "slug": "slow",
       "image": "/photographs/Images/slow.png",
       "category": "Friends"
+    },
+    {
+      "date": "12.05.2013",
+      "title": "Duy Quân",
+      "slug": "duy-quan",
+      "image": "/photographs/Images/duy-quan.png",
+      "category": "Friends"
+    },
+    {
+      "date": "09.11.2010",
+      "title": "Đại Dương",
+      "slug": "dai-duong",
+      "image": "/photographs/Images/dai-duong.png",
+      "category": "Friends"
+    },
+    {
+      "date": "28.02.2012",
+      "title": "Việt Fit",
+      "slug": "viet-fit",
+      "image": "/photographs/Images/viet-fit.png",
+      "category": "Friends"
+    },
+    {
+      "date": "12.05.2013",
+      "title": "Thái Vọc",
+      "slug": "thai-voc",
+      "image": "/photographs/Images/thai-voc.png",
+      "category": "Friends"
     }
   ]
 }
