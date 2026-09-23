@@ -40,9 +40,12 @@ body{
   color:#15172f;
 
   font-family:
-    "Courier New",
-    Courier,
-    monospace;
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:14px;
+  line-height:1.45;
 }
 
 
@@ -498,6 +501,8 @@ a[href]:hover{
 
   text-overflow:ellipsis;
 
+  font-family:monospace;
+
   font-size:11px;
 
 }
@@ -506,6 +511,8 @@ a[href]:hover{
 .browser-date{
 
   text-align:center;
+
+  font-family:monospace;
 
   font-size:10px;
 
@@ -652,8 +659,6 @@ a[href]:hover{
 
   align-items:center;
 
-  gap:10px;
-
   min-height:36px;
 
   padding:
@@ -677,49 +682,13 @@ a[href]:hover{
 }
 
 
-/* =========================================================
-   CSS FOLDER ICON
-========================================================= */
+.nav-list a.active{
 
-.folder-icon{
+  background:var(--orange);
 
-  width:21px;
-
-  height:15px;
-
-  display:inline-block;
-
-  position:relative;
-
-  flex-shrink:0;
-
-  background:#e8b82e;
+  color:var(--white);
 
   border:2px solid var(--blue);
-
-}
-
-
-.folder-icon::before{
-
-  content:"";
-
-  position:absolute;
-
-  left:1px;
-
-  top:-6px;
-
-  width:9px;
-
-  height:6px;
-
-  background:#e8b82e;
-
-  border:
-    2px solid var(--blue);
-
-  border-bottom:0;
 
 }
 
@@ -746,6 +715,8 @@ a[href]:hover{
 
   margin:
     7px 0;
+
+  font-family:monospace;
 
   font-size:12px;
 
@@ -801,6 +772,8 @@ a[href]:hover{
   margin-top:8px;
 
   text-align:center;
+
+  font-family:monospace;
 
   font-size:10px;
 
@@ -902,6 +875,8 @@ a[href]:hover{
 
   text-align:right;
 
+  font-family:monospace;
+
   font-size:9px;
 
 }
@@ -977,6 +952,8 @@ a[href]:hover{
 
 .archive-date{
 
+  font-family:monospace;
+
   font-size:10px;
 
 }
@@ -994,6 +971,8 @@ a[href]:hover{
 .archive-arrow{
 
   float:right;
+
+  font-family:monospace;
 
 }
 
@@ -1206,6 +1185,8 @@ a[href]:hover{
 
 .clock-time{
 
+  font-family:monospace;
+
   font-size:24px;
 
   font-weight:bold;
@@ -1218,6 +1199,8 @@ a[href]:hover{
 .clock-date{
 
   margin-top:5px;
+
+  font-family:monospace;
 
   font-size:11px;
 
@@ -1385,7 +1368,7 @@ a[href]:hover{
 
   color:var(--blue);
 
-  font-family:inherit;
+  font-family:monospace;
 
   font-weight:bold;
 
@@ -1422,6 +1405,8 @@ a[href]:hover{
   min-width:72px;
 
   text-align:center;
+
+  font-family:monospace;
 
   font-size:9px;
 
@@ -1464,6 +1449,8 @@ a[href]:hover{
 
   text-align:center;
 
+  font-family:monospace;
+
   font-size:10px;
 
   font-weight:bold;
@@ -1484,6 +1471,8 @@ a[href]:hover{
   background:#eee5ce;
 
   color:#8b2c1e;
+
+  font-family:monospace;
 
   font-size:11px;
 
@@ -1912,16 +1901,12 @@ a[href]:hover{
         class="active"
       >
 
-        <span class="folder-icon"></span>
-
         HOME
 
       </a>
 
 
       <a href="/writings/">
-
-        <span class="folder-icon"></span>
 
         WRITINGS
 
@@ -1930,16 +1915,12 @@ a[href]:hover{
 
       <a href="/photographs/">
 
-        <span class="folder-icon"></span>
-
         PHOTOGRAPHS
 
       </a>
 
 
       <a href="/notes/">
-
-        <span class="folder-icon"></span>
 
         NOTES
 
