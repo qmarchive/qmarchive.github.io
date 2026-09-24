@@ -2,7 +2,7 @@ Viết về những lần được chơi với nghề.
 
 Viết về những con game.
 
-Viết cho điệu nhẩy cuổi. Rằng chẳng thể ngờ được đấy lại là lần cuối cùng.
+Viết cho điệu nhẩy cuối. Rằng chẳng thể ngờ được đấy lại là lần cuối cùng.
 
 Viết cho một nửa niềm vui, cho gấp đôi nỗi buồn. Cho sự hờn dỗi, thờ ơ. Cho cả hôm qua, hôm nay, những ngày về sau nữa. 
 
