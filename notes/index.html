@@ -645,6 +645,26 @@ body::before{
   font-weight:bold;
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   BACK BUTTON
+   ═══════════════════════════════════════════════════════ */
+
+.back{
+  display:inline-block;
+  margin-top:25px;
+  padding:7px 10px;
+  border:2px solid var(--blue);
+  background:var(--orange);
+  color:var(--white);
+  font-weight:bold;
+}
+
+.back:hover{
+  background:var(--blue);
+}
+
+
 /* ═══════════════════════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════════════════════ */
@@ -1845,6 +1865,13 @@ async function showArticle(slug){
       <div class="article-body">
         Loading...
       </div>
+
+      <a
+        href="/notes/"
+        class="back"
+      >
+        ← Back to Notes
+      </a>
 
     </article>
   `;
