@@ -1,2 +1,3 @@
+Thân tặng Slow iêu quý của tao.
 
-Halo
+Đọc kỹ nhé chuẩn bị viết cái gì dài ngoằng đây này. Đừng hoảng.
