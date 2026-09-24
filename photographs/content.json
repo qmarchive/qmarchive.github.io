@@ -90,6 +90,139 @@
       "slug": "ha-xu",
       "image": "/photographs/Images/ha-xu.png",
       "category": "Friends"
+    },
+    {
+      "date": "03.08.2017",
+      "title": "A. Vũ Xương",
+      "slug": "vu-xuong",
+      "image": "/photographs/Images/vu-xuong.png",
+      "category": "Friends"
+    },
+    {
+      "date": "03.09.2024",
+      "title": "Tuấn Anh",
+      "slug": "tuan-anh",
+      "image": "/photographs/Images/tuan-anh.png",
+      "category": "Friends"
+    },
+    {
+      "date": "03.09.2013",
+      "title": "Trọng Anh",
+      "slug": "trong-anh",
+      "image": "/photographs/Images/trong-anh.png",
+      "category": "Friends"
+    },
+    {
+      "date": "14.09.2013",
+      "title": "Tiến Nam",
+      "slug": "tien-nam",
+      "image": "/photographs/Images/tien-nam.png",
+      "category": "Friends"
+    },
+    {
+      "date": "26.05.2017",
+      "title": "Teddy",
+      "slug": "teddy",
+      "image": "/photographs/Images/teddy.png",
+      "category": "Friends"
+    },
+    {
+      "date": "19.10.2017",
+      "title": "A. Russel",
+      "slug": "russel",
+      "image": "/photographs/Images/russel.png",
+      "category": "Friends"
+    },
+    {
+      "date": "19.11.2018",
+      "title": "A. Hoàng R15",
+      "slug": "r15",
+      "image": "/photographs/Images/r15.png",
+      "category": "Friends"
+    },
+    {
+      "date": "25.12.2014",
+      "title": "Nam Kều",
+      "slug": "nam-keu",
+      "image": "/photographs/Images/nam-keu.png",
+      "category": "Friends"
+    },
+    {
+      "date": "04.11.2014",
+      "title": "Lâm",
+      "slug": "lam",
+      "image": "/photographs/Imageslam.png",
+      "category": "Friends"
+    },
+    {
+      "date": "06.09.2013",
+      "title": "Kin",
+      "slug": "kin",
+      "image": "/photographs/Images/kin.png",
+      "category": "Friends"
+    },
+    {
+      "date": "13.10.2014",
+      "title": "Ken",
+      "slug": "ken",
+      "image": "/photographs/Images/ken.png",
+      "category": "Friends"
+    },
+    {
+      "date": "25.03.2014",
+      "title": "Huy",
+      "slug": "huy",
+      "image": "/photographs/Images/huy.png",
+      "category": "Friends"
+    },
+    {
+      "date": "17.06.2013",
+      "title": "Hùng giò",
+      "slug": "hung-gio",
+      "image": "/photographs/Images/hung-gio.png",
+      "category": "Friends"
+    },
+    {
+      "date": "03.09.2017",
+      "title": "Hoàng Sư Huynh",
+      "slug": "hoang-su-huynh",
+      "image": "/photographs/Images/hoang-su-huynh.png",
+      "category": "Friends"
+    },
+    {
+      "date": "01.12.2013",
+      "title": "Hiếu B",
+      "slug": "hieu-b",
+      "image": "/photographs/Images/hieu-b.png",
+      "category": "Friends"
+    },
+    {
+      "date": "18.04.2017",
+      "title": "Giáo sư Tuấn",
+      "slug": "giao-su-tuan",
+      "image": "/photographs/Images/giao-su-tuan.png",
+      "category": "Friends"
+    },
+    {
+      "date": "01.02.2014",
+      "title": "Dũng Lê",
+      "slug": "dung-le",
+      "image": "/photographs/Images/dung-le.png",
+      "category": "Friends"
+    },
+    {
+      "date": "03.09.2013",
+      "title": "Bờm",
+      "slug": "bom",
+      "image": "/photographs/Images/bom.png",
+      "category": "Friends"
+    },
+    {
+      "date": "25.01.2013",
+      "title": "Bình Minh",
+      "slug": "binh-minh",
+      "image": "/photographs/Images/binh-minh.png",
+      "category": "Friends"
     }
   ]
 }
