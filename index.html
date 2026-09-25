@@ -193,61 +193,51 @@ a[href]:hover{font-weight:bold}
 .side-quote{padding:15px;border:3px solid var(--blue);background:#e7ddc0;font-size:10px;line-height:1.6;font-weight:bold}
 
 /* =========================================================
-   AUDIO PANEL — NEW
+   AUDIO OBJECT — NO WINDOW FRAME
 ========================================================= */
-.audio-content{padding:9px}
-.audio-visual{
-  position:relative;min-height:145px;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;border:3px solid var(--blue);background:#eee5ce;
+.audio-object{
+  margin-top:auto;
+  padding:0 8px 2px;
+  min-width:0;
 }
-.audio-visual img{
-  width:100%;height:145px;display:block;object-fit:contain;
-  background:#eee5ce;
+.audio-cassette{width:100%;cursor:pointer;user-select:none}
+.audio-cassette-image{display:block;width:100%;height:auto;border:0}
+.audio-track-row{
+  display:grid;grid-template-columns:24px minmax(0,1fr) 24px;gap:3px;align-items:center;
+  margin-top:2px;min-height:24px;font-family:monospace;font-size:10px;
 }
-.audio-idle{
-  width:100%;height:145px;display:flex;align-items:center;justify-content:center;
-  color:#676474;font-family:monospace;font-size:10px;font-weight:bold;letter-spacing:1px;
+.audio-nav{
+  border:0;background:transparent;color:var(--blue);padding:0;margin:0;
+  font-family:monospace;font-size:15px;line-height:1;cursor:pointer;text-align:center;
 }
-.audio-controls-row{
-  display:grid;grid-template-columns:auto auto auto minmax(0,1fr);gap:5px;
-  align-items:center;margin-top:8px;
-}
-.audio-button{
-  width:32px;height:28px;border:3px solid var(--blue);background:#eee5ce;color:var(--blue);
-  font-family:monospace;font-weight:bold;cursor:pointer;
-}
-.audio-button:hover{background:var(--teal);color:var(--white)}
+.audio-nav:hover{color:var(--teal-dark);font-weight:bold}
 .audio-name{
-  min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
-  padding-left:5px;font-family:monospace;font-size:10px;font-weight:bold;
+  min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;
+  color:var(--blue);font-family:monospace;font-size:10px;font-weight:normal;
+  cursor:pointer;transition:font-weight .16s ease;
 }
-.audio-status{margin-top:6px;font-family:monospace;font-size:8px;color:var(--teal-dark);text-align:right}
+.audio-name:hover{font-weight:bold}
 .audio-panel-hidden{display:none!important}
 
 /* =========================================================
-   VISITORS PANEL — NEW
+   VISITORS + QUOTE — MERGED
 ========================================================= */
+.visitors-window{margin-top:auto}
 .visitors-content{padding:14px 15px 15px}
-.visitors-count-label{
-  text-align:center;font-family:monospace;font-size:9px;font-weight:bold;letter-spacing:1px;
+.visitors-quote{
+  position:relative;min-height:58px;display:grid;align-items:center;
+  margin-bottom:12px;padding-bottom:12px;border-bottom:2px solid var(--blue);
+  font-size:10px;line-height:1.6;font-weight:bold;
 }
-.visitors-count{
-  margin:4px 0 10px;text-align:center;font-family:monospace;font-size:25px;
-  font-weight:bold;letter-spacing:2px;
-}
-.visitors-presence{
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  font-family:monospace;font-size:10px;font-weight:bold;
-}
-.visitor-dot{
-  width:7px;height:7px;border-radius:50%;background:#1d8a4a;
-  box-shadow:0 0 0 rgba(29,138,74,0);
-  animation:visitorPulse 2.8s ease-in-out infinite;
-}
-@keyframes visitorPulse{
-  0%,100%{opacity:.65;box-shadow:0 0 0 rgba(29,138,74,0)}
-  50%{opacity:1;box-shadow:0 0 5px rgba(29,138,74,.32)}
-}
+.visitors-quote-layer{grid-area:1 / 1;transition:opacity .28s ease}
+.visitors-quote-new{opacity:0}
+.visitors-window:hover .visitors-quote-old{opacity:0}
+.visitors-window:hover .visitors-quote-new{opacity:1}
+.visitors-count-label{text-align:center;font-family:monospace;font-size:9px;font-weight:bold;letter-spacing:1px}
+.visitors-count{margin:4px 0 10px;text-align:center;font-family:monospace;font-size:25px;font-weight:bold;letter-spacing:2px}
+.visitors-presence{display:flex;align-items:center;justify-content:center;gap:7px;font-family:monospace;font-size:10px;font-weight:bold}
+.visitor-dot{width:7px;height:7px;border-radius:50%;background:#1d8a4a;box-shadow:0 0 0 rgba(29,138,74,0);animation:visitorPulse 2.8s ease-in-out infinite}
+@keyframes visitorPulse{0%,100%{opacity:.65;box-shadow:0 0 0 rgba(29,138,74,0)}50%{opacity:1;box-shadow:0 0 5px rgba(29,138,74,.32)}}
 .visitor-error{font-family:monospace;font-size:8px;text-align:center;color:#8b2c1e}
 
 /* =========================================================
@@ -301,13 +291,14 @@ a[href]:hover{font-weight:bold}
   .browser-address-row .browser-control:nth-child(2){display:none}
   .browser-date{display:none}
   .layout{display:block}
-  .left{margin-bottom:16px}
+  .left{margin-bottom:16px;height:auto}
   .profile-image{height:230px}
   .profile-image img{width:88%;height:225px;transform:scale(.98)}
   .nav-list{display:grid;grid-template-columns:repeat(2,1fr)}
   .archive-grid{grid-template-columns:1fr}
   .photos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .right{margin-top:16px}
+  .right{margin-top:16px;height:auto}
+  .visitors-window{margin-top:0}
   .music-player{
     width:calc(100% - 10px);left:50%;right:auto;bottom:5px;transform:translateX(-50%);
     grid-template-columns:auto minmax(0,1fr) auto;gap:5px;
@@ -391,26 +382,18 @@ a[href]:hover{font-weight:bold}
   </div>
 </section>
 
-<!-- AUDIO — NEW -->
-<section class="window window--teal audio-window">
-  <div class="window-titlebar">
-    <div class="window-title"><span class="window-title-icon">A</span>AUDIO</div>
-    <div class="window-buttons"><span class="window-button">—</span><span class="window-button">□</span><span class="window-button">×</span></div>
+<!-- AUDIO — NO WINDOW FRAME -->
+<div class="audio-object">
+  <div class="audio-cassette" id="audioCassette" role="button" tabindex="0" aria-label="Play audio">
+    <img id="audioStatic" class="audio-cassette-image" src="/home/home-audio-static.png" alt="Audio cassette">
+    <img id="audioGif" class="audio-cassette-image audio-panel-hidden" src="" alt="Audio cassette animation">
   </div>
-  <div class="audio-content">
-    <div class="audio-visual">
-      <img id="audioStatic" src="/home/home-audio-static.png" alt="Audio cassette">
-      <img id="audioGif" class="audio-panel-hidden" src="" alt="Audio cassette animation">
-    </div>
-    <div class="audio-controls-row">
-      <button class="audio-button" id="audioPrevButton" type="button">|◀</button>
-      <button class="audio-button" id="audioPlayButton" type="button">▶</button>
-      <button class="audio-button" id="audioNextButton" type="button">▶|</button>
-      <div class="audio-name" id="audioName">Loading...</div>
-    </div>
-    <div class="audio-status" id="audioStatus">READY</div>
+  <div class="audio-track-row">
+    <button class="audio-nav" id="audioPrevButton" type="button" aria-label="Previous audio">&lt;</button>
+    <div class="audio-name" id="audioName" role="button" tabindex="0">Loading...</div>
+    <button class="audio-nav" id="audioNextButton" type="button" aria-label="Next audio">&gt;</button>
   </div>
-</section>
+</div>
 
 </aside>
 
@@ -501,21 +484,20 @@ a[href]:hover{font-weight:bold}
   </div>
 </section>
 
-<div class="side-quote">Một nơi nào đó nằm giữa những ước mơ và đống deadline lộn xộn</div>
-
-<!-- VISITORS — NEW -->
+<!-- VISITORS + QUOTE — MERGED -->
 <section class="window visitors-window">
   <div class="window-titlebar">
     <div class="window-title"><span class="window-title-icon">V</span>VISITORS</div>
     <div class="window-buttons"><span class="window-button">—</span><span class="window-button">□</span><span class="window-button">×</span></div>
   </div>
   <div class="visitors-content">
+    <div class="visitors-quote">
+      <div class="visitors-quote-layer visitors-quote-old">Một nơi nào đó nằm giữa những ước mơ và đống deadline lộn xộn</div>
+      <div class="visitors-quote-layer visitors-quote-new">Mệt rồi à ? Nghỉ ngơi một chút rồi tiếp tục. Cố lên nhé.</div>
+    </div>
     <div class="visitors-count-label">TOTAL VIEWS</div>
     <div class="visitors-count" id="visitorCount">—</div>
-    <div class="visitors-presence">
-      <span class="visitor-dot"></span>
-      <span>someone is here</span>
-    </div>
+    <div class="visitors-presence"><span class="visitor-dot"></span><span>someone is here</span></div>
     <div class="visitor-error" id="visitorError"></div>
   </div>
 </section>
@@ -812,12 +794,11 @@ let currentTrack = 0;
    AUDIO ARCHIVE
 ========================================================= */
 
+const audioCassette = document.getElementById("audioCassette");
 const audioGif = document.getElementById("audioGif");
 const audioStatic = document.getElementById("audioStatic");
 const audioName = document.getElementById("audioName");
-const audioStatus = document.getElementById("audioStatus");
 const audioPrevButton = document.getElementById("audioPrevButton");
-const audioPlayButton = document.getElementById("audioPlayButton");
 const audioNextButton = document.getElementById("audioNextButton");
 
 let AUDIO_TRACKS = [];
@@ -825,38 +806,27 @@ let currentAudioTrack = 0;
 
 function resolveAudioSrc(file){
   const value = String(file || "").trim();
-
   if(!value) return "";
-
   if(/^https?:\/\//i.test(value)) return value;
-
   if(value.startsWith("/")) return value;
-
   return "/audio/" + value;
 }
 
 function renderAudioTrack(){
   if(!AUDIO_TRACKS.length){
     audioName.textContent = "No audio yet.";
-    audioStatus.textContent = "NO RECORDINGS";
     audioPrevButton.disabled = true;
-    audioPlayButton.disabled = true;
     audioNextButton.disabled = true;
     return;
   }
 
   const track = AUDIO_TRACKS[currentAudioTrack];
-
   const title = track.title || "QUỐC MẠNH";
   const date = track.date ? " — " + track.date : "";
 
   audioName.textContent = title + date;
-  audioStatus.textContent = audioRecorder.paused ? "READY" : "PLAYING";
-
   audioPrevButton.disabled = false;
-  audioPlayButton.disabled = false;
   audioNextButton.disabled = false;
-  audioPlayButton.textContent = audioRecorder.paused ? "▶" : "❚❚";
 }
 
 function stopAudioGif(){
@@ -872,89 +842,76 @@ function startAudioGif(){
   audioGif.classList.remove("audio-panel-hidden");
 }
 
-function loadAudioTrack(index, autoplay=false){
+function stopMusicForAudio(){
+  if(!audio.paused) audio.pause();
+}
+
+function stopAudioForMusic(){
+  if(!audioRecorder.paused) audioRecorder.pause();
+  stopAudioGif();
+}
+
+function startAudioPlayback(){
+  if(!AUDIO_TRACKS.length) return;
+  stopMusicForAudio();
+  audioRecorder.play().catch(()=>{
+    stopAudioGif();
+  });
+}
+
+function toggleAudioPlayback(){
+  if(!AUDIO_TRACKS.length) return;
+  if(audioRecorder.paused) startAudioPlayback();
+  else audioRecorder.pause();
+}
+
+function loadAudioTrack(index,autoplay=false){
   if(!AUDIO_TRACKS.length) return;
 
-  currentAudioTrack =
-    (index + AUDIO_TRACKS.length) % AUDIO_TRACKS.length;
-
+  currentAudioTrack = (index + AUDIO_TRACKS.length) % AUDIO_TRACKS.length;
   const track = AUDIO_TRACKS[currentAudioTrack];
 
   audioRecorder.src = resolveAudioSrc(track.file);
   audioRecorder.load();
-
   audioRecorder.currentTime = 0;
   stopAudioGif();
   renderAudioTrack();
 
-  if(autoplay){
-    audioRecorder.play().then(()=>{
-      startAudioGif();
-      audioPlayButton.textContent = "❚❚";
-      audioStatus.textContent = "PLAYING";
-    }).catch(()=>{
-      audioPlayButton.textContent = "▶";
-      audioStatus.textContent = "READY";
-    });
-  }
+  if(autoplay) startAudioPlayback();
 }
 
-function stopMusicForAudio(){
-  if(!audio.paused){
-    audio.pause();
+audioCassette.addEventListener("click",toggleAudioPlayback);
+audioName.addEventListener("click",toggleAudioPlayback);
+
+audioCassette.addEventListener("keydown",(event)=>{
+  if(event.key === "Enter" || event.key === " "){
+    event.preventDefault();
+    toggleAudioPlayback();
   }
-}
+});
 
-function stopAudioForMusic(){
-  if(!audioRecorder.paused){
-    audioRecorder.pause();
-    stopAudioGif();
-    audioPlayButton.textContent = "▶";
-    audioStatus.textContent = "READY";
-  }
-}
-
-audioPlayButton.addEventListener("click",()=>{
-  if(!AUDIO_TRACKS.length) return;
-
-  if(audioRecorder.paused){
-    stopMusicForAudio();
-
-    audioRecorder.play().then(()=>{
-      startAudioGif();
-      audioPlayButton.textContent = "❚❚";
-      audioStatus.textContent = "PLAYING";
-    }).catch(()=>{
-      audioPlayButton.textContent = "▶";
-      audioStatus.textContent = "READY";
-    });
-
-  }else{
-    audioRecorder.pause();
+audioName.addEventListener("keydown",(event)=>{
+  if(event.key === "Enter" || event.key === " "){
+    event.preventDefault();
+    toggleAudioPlayback();
   }
 });
 
 audioPrevButton.addEventListener("click",()=>{
-  stopMusicForAudio();
   loadAudioTrack(currentAudioTrack - 1,true);
 });
 
 audioNextButton.addEventListener("click",()=>{
-  stopMusicForAudio();
   loadAudioTrack(currentAudioTrack + 1,true);
 });
 
 audioRecorder.addEventListener("play",()=>{
   stopMusicForAudio();
   startAudioGif();
-  audioPlayButton.textContent = "❚❚";
-  audioStatus.textContent = "PLAYING";
 });
 
 audioRecorder.addEventListener("pause",()=>{
   stopAudioGif();
-  audioPlayButton.textContent = "▶";
-  audioStatus.textContent = "PAUSED";
 });
 
 audioRecorder.addEventListener("ended",()=>{
@@ -965,25 +922,16 @@ audioRecorder.addEventListener("ended",()=>{
 async function loadAudioArchive(){
   try{
     const data = await loadJSON(AUDIO_URL);
+    AUDIO_TRACKS = Array.isArray(data.audio) ? data.audio : [];
 
-    AUDIO_TRACKS =
-      Array.isArray(data.audio)
-        ? data.audio
-        : [];
-
-    if(AUDIO_TRACKS.length){
-      loadAudioTrack(0,false);
-    }else{
-      renderAudioTrack();
-    }
+    if(AUDIO_TRACKS.length) loadAudioTrack(0,false);
+    else renderAudioTrack();
 
   }catch(error){
     console.error(error);
     AUDIO_TRACKS = [];
     audioName.textContent = "Audio content could not be loaded.";
-    audioStatus.textContent = "ERROR";
     audioPrevButton.disabled = true;
-    audioPlayButton.disabled = true;
     audioNextButton.disabled = true;
   }
 }
