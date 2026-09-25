@@ -2067,6 +2067,13 @@ a[href]:hover{
         </a>
 
 
+        <a href="/music/">
+
+          MUSIC
+
+        </a>
+
+
       </nav>
 
 
@@ -2395,30 +2402,14 @@ const POSTS_BASE =
    MUSIC
 ========================================================= */
 
-const MUSIC_TRACKS = [
-
-  {
-    title:"Between the Takes",
-    artist:"Orient.bakureever",
-    src:"/music/between-the-takes.mp3"
-  },
-
-  {
-    title:"Wednesday's Origami",
-    artist:"Orient.bakureever",
-    src:"/music/wednesdays-origami.mp3"
-  },
-
-  {
-    title:"Where the Cat Goes at Night",
-    artist:"Orient.bakureever",
-    src:"/music/where-the-cat-goes-at-night.mp3"
-  }
-
-];
+let MUSIC_TRACKS = [];
 
 const MUSIC_STORAGE_KEY =
   "qmArchiveMusic";
+
+const MUSIC_URL =
+  "/music/content.json?v=" +
+  Date.now();
 
 
 
@@ -3595,6 +3586,92 @@ function getSavedMusicState(){
 
 
 /* =========================================================
+   LOAD MUSIC JSON
+========================================================= */
+
+async function loadMusicArchive(){
+
+  const response =
+    await fetch(
+      MUSIC_URL,
+      {
+        cache:"no-store"
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+      "Could not load music/content.json (" +
+      response.status +
+      ")"
+    );
+
+  }
+
+
+  const data =
+    await response.json();
+
+
+  const items =
+
+    Array.isArray(data)
+
+      ? data
+
+      : (
+
+        Array.isArray(
+          data.music
+        )
+
+          ? data.music
+
+          : []
+
+      );
+
+
+  MUSIC_TRACKS =
+    items
+      .map(
+        track => ({
+
+          title:
+            String(
+              track.title || ""
+            ),
+
+          artist:
+            String(
+              track.artist || ""
+            ),
+
+          src:
+            track.file
+              ? (
+                  "/music/" +
+                  String(track.file)
+                    .replace(/^\/+/,"")
+                )
+              : String(
+                  track.src || ""
+                )
+
+        })
+      )
+      .filter(
+        track =>
+          track.src
+      );
+
+}
+
+
+
+/* =========================================================
    LOAD TRACK
 ========================================================= */
 
@@ -3711,11 +3788,23 @@ function loadTrack(
 
 function restoreMusicState(){
 
+  if(!MUSIC_TRACKS.length){
+
+    return;
+
+  }
+
+
   const state =
     getSavedMusicState();
 
 
   if(!state){
+
+    audio.volume =
+      Number(
+        volume.value
+      );
 
     loadTrack(
       0,
@@ -3779,14 +3868,6 @@ function restoreMusicState(){
     false,
     savedTime
   );
-
-
-  if(state.isPlaying){
-
-    window.__qmMusicShouldResume =
-      true;
-
-  }
 
 }
 
@@ -4067,83 +4148,6 @@ window.addEventListener(
 
 
 /* =========================================================
-   FIRST USER INTERACTION
-========================================================= */
-
-let musicInteractionHandled =
-  false;
-
-
-function resumeMusicAfterInteraction(){
-
-  if(
-    musicInteractionHandled
-  ){
-
-    return;
-
-  }
-
-
-  musicInteractionHandled =
-    true;
-
-
-  if(
-    window.__qmMusicShouldResume &&
-    audio.paused
-  ){
-
-    audio.play()
-
-      .then(() => {
-
-        playButton.textContent =
-          "❚❚";
-
-      })
-
-      .catch(() => {
-
-        /*
-          Autoplay may still be blocked.
-          User can press Play.
-        */
-
-      });
-
-  }
-
-}
-
-
-document.addEventListener(
-  "pointerdown",
-  event => {
-
-    if(
-      event.target.closest(
-        ".music-player"
-      )
-    ){
-
-      return;
-
-    }
-
-
-    resumeMusicAfterInteraction();
-
-  },
-  {
-    once:true,
-    passive:true
-  }
-);
-
-
-
-/* =========================================================
    INIT
 ========================================================= */
 
@@ -4164,7 +4168,19 @@ async function init(){
     );
 
 
-  restoreMusicState();
+  try{
+
+    await loadMusicArchive();
+
+    restoreMusicState();
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+  }
 
 
   try{
@@ -4191,10 +4207,6 @@ async function init(){
       params.get("slug");
 
 
-    /* =====================================================
-       DETAIL PAGE
-    ===================================================== */
-
     if(slug){
 
       const photosWindow =
@@ -4217,14 +4229,7 @@ async function init(){
         slug
       );
 
-    }
-
-
-    /* =====================================================
-       ARCHIVE PAGE
-    ===================================================== */
-
-    else{
+    }else{
 
       renderArchive(
         items
