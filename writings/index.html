@@ -23,15 +23,9 @@
   --border:3px solid var(--blue);
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
-html,body{
-  margin:0;
-  padding:0;
-  min-height:100%;
-}
+html,body{margin:0;padding:0;min-height:100%;}
 
 body{
   background:var(--cream);
@@ -58,25 +52,12 @@ body::before{
     );
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-
-/* =========================
-   PAGE
-========================= */
+a{color:inherit;text-decoration:none;}
 
 .page{
   width:min(1600px, calc(100% - 28px));
   margin:14px auto 30px;
 }
-
-
-/* =========================
-   BROWSER BAR
-========================= */
 
 .browser{
   border:var(--border);
@@ -97,23 +78,12 @@ a{
   font-weight:bold;
 }
 
-.browser-dots{
-  display:flex;
-  gap:5px;
-}
-
+.browser-dots{display:flex;gap:5px;}
 .browser-dots span{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--white);
-  display:block;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--white);display:block;
 }
-
-.browser-title{
-  margin-left:4px;
-  letter-spacing:.04em;
-}
+.browser-title{margin-left:4px;letter-spacing:.04em;}
 
 .browser-address{
   min-height:38px;
@@ -124,11 +94,7 @@ a{
   background:var(--paper);
 }
 
-.address-label{
-  font-size:11px;
-  font-weight:bold;
-  text-transform:uppercase;
-}
+.address-label{font-size:11px;font-weight:bold;text-transform:uppercase;}
 
 .address{
   flex:1;
@@ -142,22 +108,12 @@ a{
   white-space:nowrap;
 }
 
-
-/* =========================
-   LAYOUT
-========================= */
-
 .layout{
   display:grid;
   grid-template-columns:285px minmax(0,1fr);
   gap:18px;
   align-items:start;
 }
-
-
-/* =========================
-   PANELS
-========================= */
 
 .panel{
   border:var(--border);
@@ -175,19 +131,9 @@ a{
   text-transform:uppercase;
 }
 
-.panel-body{
-  padding:12px;
-}
+.panel-body{padding:12px;}
 
-
-/* =========================
-   LEFT / SYSTEM INFO
-========================= */
-
-.system-info{
-  position:sticky;
-  top:14px;
-}
+.system-info{position:sticky;top:14px;}
 
 .system-line{
   display:flex;
@@ -199,14 +145,8 @@ a{
   font-size:12px;
 }
 
-.system-line:last-child{
-  border-bottom:0;
-}
-
-.online{
-  color:var(--green);
-  font-weight:bold;
-}
+.system-line:last-child{border-bottom:0;}
+.online{color:var(--green);font-weight:bold;}
 
 .profile-mini{
   margin-top:16px;
@@ -220,10 +160,7 @@ a{
   border:2px solid var(--blue);
 }
 
-.cassette{
-  margin-top:16px;
-  text-align:center;
-}
+.cassette{margin-top:16px;text-align:center;}
 
 .cassette img{
   width:100%;
@@ -262,14 +199,7 @@ a{
   border-color:var(--blue);
 }
 
-
-/* =========================
-   WRITINGS
-========================= */
-
-.writings{
-  min-width:0;
-}
+.writings{min-width:0;}
 
 .section-head{
   border:var(--border);
@@ -298,14 +228,7 @@ a{
   box-shadow:6px 6px 0 var(--blue);
 }
 
-.content-inner{
-  padding:18px;
-}
-
-
-/* =========================
-   SEARCH
-========================= */
+.content-inner{padding:18px;}
 
 .search{
   display:flex;
@@ -316,10 +239,7 @@ a{
   margin-bottom:18px;
 }
 
-.search-icon{
-  font-size:22px;
-  line-height:1;
-}
+.search-icon{font-size:22px;line-height:1;}
 
 .search input{
   width:100%;
@@ -332,14 +252,7 @@ a{
   outline:none;
 }
 
-.search input:focus{
-  border-color:var(--orange);
-}
-
-
-/* =========================
-   ARCHIVE
-========================= */
+.search input:focus{border-color:var(--orange);}
 
 .archive{
   display:grid;
@@ -396,11 +309,6 @@ a{
   font-size:12px;
 }
 
-
-/* =========================
-   ARTICLE
-========================= */
-
 .article-meta{
   font-family:monospace;
   font-size:11px;
@@ -422,9 +330,7 @@ a{
   line-height:1.75;
 }
 
-.article-body p{
-  margin:0 0 16px;
-}
+.article-body p{margin:0 0 16px;}
 
 .article-body h1,
 .article-body h2,
@@ -433,13 +339,8 @@ a{
   margin:25px 0 10px;
 }
 
-.article-body h2{
-  font-size:21px;
-}
-
-.article-body h3{
-  font-size:18px;
-}
+.article-body h2{font-size:21px;}
+.article-body h3{font-size:18px;}
 
 .article-body img{
   max-width:100%;
@@ -457,9 +358,7 @@ a{
   font-style:italic;
 }
 
-.article-body ul{
-  padding-left:22px;
-}
+.article-body ul{padding-left:22px;}
 
 .article-body a{
   color:var(--orange-dark);
@@ -476,14 +375,7 @@ a{
   font-weight:bold;
 }
 
-.back:hover{
-  background:var(--blue);
-}
-
-
-/* =========================
-   FOOTER
-========================= */
+.back:hover{background:var(--blue);}
 
 .footer{
   margin-top:22px;
@@ -495,145 +387,72 @@ a{
   line-height:1.5;
 }
 
-
-/* =========================================================
-   MUSIC PLAYER
-========================================================= */
-
 .music-player{
-
   position:fixed;
-
   width:min(940px, calc(100% - 28px));
-
   left:50%;
-
   bottom:10px;
-
   transform:translateX(-50%);
-
   z-index:10000;
-
   display:grid;
-
-  grid-template-columns:
-    auto
-    minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
-    auto;
-
+  grid-template-columns:auto minmax(150px,1fr) auto minmax(150px,1.5fr) auto auto;
   gap:9px;
-
   align-items:center;
-
   padding:6px 8px;
-
   background:var(--paper);
-
   border:3px solid var(--blue);
-
   box-shadow:5px 5px 0 var(--blue);
-
 }
 
 .music-icon{
-
   width:35px;
   height:35px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   background:var(--orange);
-
   border:3px solid var(--blue);
-
   font-weight:bold;
-
 }
 
-.music-info{
-  min-width:0;
-}
+.music-info{min-width:0;}
 
-.music-label{
-
-  font-size:8px;
-
-  margin-bottom:2px;
-
-}
+.music-label{font-size:8px;margin-bottom:2px;}
 
 .music-title{
-
   overflow:hidden;
-
   white-space:nowrap;
-
   text-overflow:ellipsis;
-
   font-size:11px;
-
   font-weight:bold;
-
 }
 
 .music-artist{
-
   overflow:hidden;
-
   white-space:nowrap;
-
   text-overflow:ellipsis;
-
   margin-top:1px;
-
   color:var(--teal-dark);
-
   font-size:9px;
-
   font-weight:bold;
-
 }
 
-.music-controls{
-
-  display:flex;
-
-  gap:4px;
-
-}
+.music-controls{display:flex;gap:4px;}
 
 .music-button{
-
   width:33px;
-
   height:29px;
-
   border:3px solid var(--blue);
-
   background:#eee5ce;
-
   color:var(--blue);
-
   font-family:monospace;
-
   font-weight:bold;
-
   cursor:pointer;
-
 }
 
-.music-button:hover{
-  background:var(--orange);
-}
+.music-button:hover{background:var(--orange);}
 
-.music-progress{
-  min-width:0;
-}
+.music-progress{min-width:0;}
 
 .music-progress input{
   width:100%;
@@ -641,128 +460,62 @@ a{
 }
 
 .music-time{
-
   min-width:72px;
-
   text-align:center;
-
   font-size:9px;
-
 }
 
-.music-volume{
-  width:100px;
-}
+.music-volume{width:100px;}
 
 .music-volume input{
   width:100%;
   accent-color:var(--teal);
 }
 
-
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media(max-width:1200px){
-
   .music-player{
-
-    grid-template-columns:
-      auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
+    grid-template-columns:auto minmax(120px,1fr) auto minmax(120px,1fr) auto;
   }
-
-  .music-volume{
-    display:none;
-  }
-
+  .music-volume{display:none;}
 }
 
 @media(max-width:900px){
-
-  .layout{
-    grid-template-columns:1fr;
-  }
-
-  .system-info{
-    position:static;
-  }
-
-  .archive{
-    grid-template-columns:1fr;
-  }
-
+  .layout{grid-template-columns:1fr;}
+  .system-info{position:static;}
+  .archive{grid-template-columns:1fr;}
 }
 
 @media(max-width:850px){
-
   .music-player{
-
     width:calc(100% - 10px);
-
     left:50%;
-
     bottom:5px;
-
     transform:translateX(-50%);
-
-    grid-template-columns:
-      auto
-      minmax(0,1fr)
-      auto;
-
+    grid-template-columns:auto minmax(0,1fr) auto;
     gap:5px;
-
   }
-
   .music-progress,
   .music-time,
-  .music-volume{
-    display:none;
-  }
-
+  .music-volume{display:none;}
 }
 
 @media(max-width:600px){
-
   .page{
     width:calc(100% - 16px);
     margin:8px auto 90px;
   }
-
-  .layout{
-    gap:12px;
-  }
-
-  .content-inner{
-    padding:12px;
-  }
-
-  .section-head h1{
-    font-size:21px;
-  }
-
-  .article-title{
-    font-size:24px;
-  }
-
+  .layout{gap:12px;}
+  .content-inner{padding:12px;}
+  .section-head h1{font-size:21px;}
+  .article-title{font-size:24px;}
 }
 
 </style>
 </head>
 
-
 <body>
 
 <div class="page">
-
-
-  <!-- BROWSER -->
 
   <div class="browser">
 
@@ -780,7 +533,6 @@ a{
 
     </div>
 
-
     <div class="browser-address">
 
       <span class="address-label">
@@ -795,14 +547,7 @@ a{
 
   </div>
 
-
-
-  <!-- MAIN -->
-
   <div class="layout">
-
-
-    <!-- LEFT -->
 
     <aside>
 
@@ -850,6 +595,11 @@ a{
               NOTES
             </a>
 
+            <!-- ADDED: MUSIC -->
+            <a href="/music/">
+              MUSIC
+            </a>
+
           </div>
 
           <div class="cassette">
@@ -875,10 +625,6 @@ a{
 
     </aside>
 
-
-
-    <!-- CENTER -->
-
     <main class="writings">
 
       <div class="section-head">
@@ -893,12 +639,9 @@ a{
 
       </div>
 
-
       <div class="content-panel">
 
         <div class="content-inner">
-
-          <!-- SEARCH -->
 
           <div class="search">
 
@@ -915,16 +658,10 @@ a{
 
           </div>
 
-
-          <!-- ARCHIVE -->
-
           <div
             id="archive"
             class="archive"
           ></div>
-
-
-          <!-- ARTICLE -->
 
           <article
             id="article"
@@ -959,7 +696,6 @@ a{
 
       </div>
 
-
       <footer class="footer">
 
         <div>
@@ -986,18 +722,11 @@ a{
 
 </div>
 
-
-
-<!-- =====================================================
-     MUSIC PLAYER
-====================================================== -->
-
 <div class="music-player">
 
   <div class="music-icon">
     ♪
   </div>
-
 
   <div class="music-info">
 
@@ -1020,7 +749,6 @@ a{
     </div>
 
   </div>
-
 
   <div class="music-controls">
 
@@ -1050,7 +778,6 @@ a{
 
   </div>
 
-
   <div class="music-progress">
 
     <input
@@ -1064,14 +791,12 @@ a{
 
   </div>
 
-
   <div
     class="music-time"
     id="musicTime"
   >
     00:00 / 00:00
   </div>
-
 
   <div class="music-volume">
 
@@ -1088,14 +813,10 @@ a{
 
 </div>
 
-
-
 <audio
   id="audio"
   preload="metadata"
 ></audio>
-
-
 
 <script>
 
@@ -1111,37 +832,15 @@ const POSTS_BASE =
   "/writings/posts/";
 
 
-
 /* =========================================================
    MUSIC
 ========================================================= */
 
-const MUSIC_TRACKS = [
-
-  {
-    title:"Between the Takes",
-    artist:"Orient.bakureever",
-    src:"/music/between-the-takes.mp3"
-  },
-
-  {
-    title:"Wednesday's Origami",
-    artist:"Orient.bakureever",
-    src:"/music/wednesdays-origami.mp3"
-  },
-
-  {
-    title:"Where the Cat Goes at Night",
-    artist:"Orient.bakureever",
-    src:"/music/where-the-cat-goes-at-night.mp3"
-  }
-
-];
+let MUSIC_TRACKS = [];
 
 
 const MUSIC_STORAGE_KEY =
   "qmArchiveMusic";
-
 
 
 /* =========================================================
@@ -1151,7 +850,6 @@ const MUSIC_STORAGE_KEY =
 function escapeHTML(value){
 
   return String(value ?? "")
-
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -1159,7 +857,6 @@ function escapeHTML(value){
     .replace(/'/g,"&#039;");
 
 }
-
 
 
 /* =========================================================
@@ -1174,7 +871,6 @@ function markdownToHTML(md){
       .replace(/\r/g,"\n")
       .trim();
 
-
   const lines =
     text.split("\n");
 
@@ -1183,7 +879,6 @@ function markdownToHTML(md){
   let paragraph = [];
 
   let inList = false;
-
 
   function flushParagraph(){
 
@@ -1209,7 +904,6 @@ function markdownToHTML(md){
 
   }
 
-
   function closeList(){
 
     if(inList){
@@ -1222,7 +916,6 @@ function markdownToHTML(md){
 
   }
 
-
   for(
     let i=0;
     i<lines.length;
@@ -1231,7 +924,6 @@ function markdownToHTML(md){
 
     const line =
       lines[i];
-
 
     if(!line.trim()){
 
@@ -1242,7 +934,6 @@ function markdownToHTML(md){
       continue;
 
     }
-
 
     if(/^###\s+/.test(line)){
 
@@ -1262,7 +953,6 @@ function markdownToHTML(md){
 
     }
 
-
     if(/^##\s+/.test(line)){
 
       flushParagraph();
@@ -1280,7 +970,6 @@ function markdownToHTML(md){
       continue;
 
     }
-
 
     if(/^#\s+/.test(line)){
 
@@ -1300,7 +989,6 @@ function markdownToHTML(md){
 
     }
 
-
     if(/^>\s?/.test(line)){
 
       flushParagraph();
@@ -1318,7 +1006,6 @@ function markdownToHTML(md){
       continue;
 
     }
-
 
     if(/^\s*[-*]\s+/.test(line)){
 
@@ -1347,11 +1034,9 @@ function markdownToHTML(md){
 
     }
 
-
     paragraph.push(line);
 
   }
-
 
   flushParagraph();
 
@@ -1362,12 +1047,10 @@ function markdownToHTML(md){
 }
 
 
-
 function formatInline(text){
 
   let value =
     escapeHTML(text);
-
 
   value =
     value.replace(
@@ -1375,13 +1058,11 @@ function formatInline(text){
       '<img src="$2" alt="$1">'
     );
 
-
   value =
     value.replace(
       /\[([^\]]+)\]\(([^)]+)\)/g,
       '<a href="$2">$1</a>'
     );
-
 
   value =
     value.replace(
@@ -1389,18 +1070,15 @@ function formatInline(text){
       "<strong>$1</strong>"
     );
 
-
   value =
     value.replace(
       /\*(.+?)\*/g,
       "<em>$1</em>"
     );
 
-
   return value;
 
 }
-
 
 
 /* =========================================================
@@ -1417,7 +1095,6 @@ async function loadJSON(){
       }
     );
 
-
   if(!response.ok){
 
     throw new Error(
@@ -1426,11 +1103,9 @@ async function loadJSON(){
 
   }
 
-
   return await response.json();
 
 }
-
 
 
 /* =========================================================
@@ -1445,7 +1120,6 @@ async function loadMarkdown(slug){
     ".md?v=" +
     Date.now();
 
-
   const response =
     await fetch(
       url,
@@ -1453,7 +1127,6 @@ async function loadMarkdown(slug){
         cache:"no-store"
       }
     );
-
 
   if(!response.ok){
 
@@ -1464,11 +1137,9 @@ async function loadMarkdown(slug){
 
   }
 
-
   return await response.text();
 
 }
-
 
 
 /* =========================================================
@@ -1481,16 +1152,10 @@ function parseArchiveDate(value){
     String(value || "")
       .trim();
 
-
-  /*
-     DD.MM.YYYY
-  */
-
   let match =
     text.match(
       /^(\d{1,2})[.](\d{1,2})[.](\d{4})$/
     );
-
 
   if(match){
 
@@ -1501,18 +1166,12 @@ function parseArchiveDate(value){
     ).getTime();
 
   }
-
-
-  /*
-     DD/MM/YYYY
-  */
 
   match =
     text.match(
       /^(\d{1,2})[/](\d{1,2})[/](\d{4})$/
     );
 
-
   if(match){
 
     return new Date(
@@ -1523,16 +1182,10 @@ function parseArchiveDate(value){
 
   }
 
-
-  /*
-     YYYY-MM-DD
-  */
-
   match =
     text.match(
       /^(\d{4})-(\d{1,2})-(\d{1,2})$/
     );
-
 
   if(match){
 
@@ -1544,17 +1197,10 @@ function parseArchiveDate(value){
 
   }
 
-
-  /*
-     Chỉ có năm
-     Ví dụ: 2020
-  */
-
   match =
     text.match(
       /^(\d{4})$/
     );
-
 
   if(match){
 
@@ -1566,16 +1212,9 @@ function parseArchiveDate(value){
 
   }
 
-
-  /*
-     Không đọc được ngày
-     → đưa xuống cuối
-  */
-
   return 0;
 
 }
-
 
 
 /* =========================================================
@@ -1589,9 +1228,7 @@ function renderArchive(items){
       "archive"
     );
 
-
   archive.innerHTML = "";
-
 
   if(!items.length){
 
@@ -1601,15 +1238,6 @@ function renderArchive(items){
     return;
 
   }
-
-
-  /*
-     Luôn sắp xếp:
-     MỚI NHẤT → CŨ NHẤT
-
-     Không phụ thuộc vào thứ tự
-     trong content.json.
-  */
 
   const sortedItems =
 
@@ -1632,10 +1260,6 @@ function renderArchive(items){
       .sort(
         (a,b) => {
 
-          /*
-             Ngày mới hơn đứng trước.
-          */
-
           if(
             b.timestamp !==
             a.timestamp
@@ -1647,13 +1271,6 @@ function renderArchive(items){
             );
 
           }
-
-
-          /*
-             Nếu hai bài có cùng ngày,
-             giữ nguyên thứ tự ban đầu
-             trong content.json.
-          */
 
           return (
             a.index -
@@ -1668,7 +1285,6 @@ function renderArchive(items){
           entry.item
       );
 
-
   sortedItems.forEach(
     item => {
 
@@ -1677,17 +1293,14 @@ function renderArchive(items){
           "a"
         );
 
-
       entry.className =
         "archive-entry";
-
 
       entry.href =
         "/writings/?slug=" +
         encodeURIComponent(
           item.slug
         );
-
 
       entry.innerHTML = `
 
@@ -1715,7 +1328,6 @@ function renderArchive(items){
 
       `;
 
-
       archive.appendChild(
         entry
       );
@@ -1724,7 +1336,6 @@ function renderArchive(items){
   );
 
 }
-
 
 
 /* =========================================================
@@ -1741,7 +1352,6 @@ async function renderArticle(
       x => x.slug === slug
     );
 
-
   if(!item){
 
     throw new Error(
@@ -1750,42 +1360,35 @@ async function renderArticle(
 
   }
 
-
   const markdown =
     await loadMarkdown(
       slug
     );
-
 
   document.getElementById(
     "archive"
   ).style.display =
     "none";
 
-
   document.querySelector(
     ".search"
   ).style.display =
     "none";
-
 
   document.getElementById(
     "article"
   ).style.display =
     "block";
 
-
   document.getElementById(
     "articleMeta"
   ).textContent =
     item.date || "";
 
-
   document.getElementById(
     "articleTitle"
   ).textContent =
     item.title || "";
-
 
   document.getElementById(
     "articleBody"
@@ -1795,7 +1398,6 @@ async function renderArticle(
     );
 
 }
-
 
 
 /* =========================================================
@@ -1809,7 +1411,6 @@ function setupSearch(items){
       "searchInput"
     );
 
-
   input.addEventListener(
     "input",
     function(){
@@ -1818,7 +1419,6 @@ function setupSearch(items){
         this.value
           .trim()
           .toLowerCase();
-
 
       const filtered =
         !query
@@ -1836,7 +1436,6 @@ function setupSearch(items){
                 )
             );
 
-
       renderArchive(
         filtered
       );
@@ -1845,7 +1444,6 @@ function setupSearch(items){
   );
 
 }
-
 
 
 /* =========================================================
@@ -1857,12 +1455,10 @@ function updateYear(){
   const year =
     new Date().getFullYear();
 
-
   document.getElementById(
     "year"
   ).textContent =
     year;
-
 
   document.getElementById(
     "cassetteYear"
@@ -1870,7 +1466,6 @@ function updateYear(){
     year;
 
 }
-
 
 
 /* =========================================================
@@ -1882,57 +1477,135 @@ const audio =
     "audio"
   );
 
-
 const playButton =
   document.getElementById(
     "playButton"
   );
-
 
 const prevButton =
   document.getElementById(
     "prevButton"
   );
 
-
 const nextButton =
   document.getElementById(
     "nextButton"
   );
-
 
 const progress =
   document.getElementById(
     "progress"
   );
 
-
 const volume =
   document.getElementById(
     "volume"
   );
-
 
 const musicTitle =
   document.getElementById(
     "musicTitle"
   );
 
-
 const musicArtist =
   document.getElementById(
     "musicArtist"
   );
-
 
 const musicTime =
   document.getElementById(
     "musicTime"
   );
 
-
 let currentTrack = 0;
 
+
+/* =========================================================
+   LOAD MUSIC JSON
+========================================================= */
+
+const MUSIC_URL =
+  "/music/content.json?v=" +
+  Date.now();
+
+
+async function loadMusicArchive(){
+
+  const response =
+    await fetch(
+      MUSIC_URL,
+      {
+        cache:"no-store"
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+      "Cannot load music/content.json"
+    );
+
+  }
+
+
+  const data =
+    await response.json();
+
+
+  const items =
+
+    Array.isArray(data)
+
+      ? data
+
+      : (
+
+        Array.isArray(
+          data.music
+        )
+
+          ? data.music
+
+          : []
+
+      );
+
+
+  MUSIC_TRACKS =
+    items
+      .map(
+        track => ({
+
+          title:
+            String(
+              track.title || ""
+            ),
+
+          artist:
+            String(
+              track.artist || ""
+            ),
+
+          src:
+            track.file
+              ? (
+                  "/music/" +
+                  String(track.file)
+                    .replace(/^\/+/,"")
+                )
+              : String(
+                  track.src || ""
+                )
+
+        })
+      )
+      .filter(
+        track =>
+          track.src
+      );
+
+}
 
 
 /* =========================================================
@@ -1948,16 +1621,13 @@ function getMusicState(){
         MUSIC_STORAGE_KEY
       );
 
-
     if(!saved)
       return null;
-
 
     const state =
       JSON.parse(
         saved
       );
-
 
     if(
       !state ||
@@ -1967,7 +1637,6 @@ function getMusicState(){
       return null;
 
     }
-
 
     return state;
 
@@ -1983,7 +1652,6 @@ function getMusicState(){
   }
 
 }
-
 
 
 /* =========================================================
@@ -2034,7 +1702,6 @@ function saveMusicState(){
 }
 
 
-
 /* =========================================================
    TIME FORMAT
 ========================================================= */
@@ -2051,18 +1718,15 @@ function formatTime(seconds){
 
   }
 
-
   const minutes =
     Math.floor(
       seconds / 60
     );
 
-
   const secs =
     Math.floor(
       seconds % 60
     );
-
 
   return (
 
@@ -2083,7 +1747,6 @@ function formatTime(seconds){
 }
 
 
-
 /* =========================================================
    LOAD TRACK
 ========================================================= */
@@ -2101,7 +1764,6 @@ function loadTrack(
 
   }
 
-
   currentTrack =
 
     (
@@ -2113,32 +1775,25 @@ function loadTrack(
 
     MUSIC_TRACKS.length;
 
-
   const track =
     MUSIC_TRACKS[
       currentTrack
     ];
 
-
   audio.src =
     track.src;
-
 
   musicTitle.textContent =
     track.title;
 
-
   musicArtist.textContent =
     track.artist;
-
 
   progress.value =
     0;
 
-
   musicTime.textContent =
     "00:00 / 00:00";
-
 
   if(autoplay){
 
@@ -2174,16 +1829,20 @@ function loadTrack(
 }
 
 
-
 /* =========================================================
    RESTORE MUSIC STATE
 ========================================================= */
 
 function restoreMusicState(){
 
+  if(!MUSIC_TRACKS.length){
+
+    return;
+
+  }
+
   const state =
     getMusicState();
-
 
   if(!state){
 
@@ -2192,23 +1851,19 @@ function restoreMusicState(){
         volume.value
       );
 
-
     loadTrack(
       0,
       false
     );
 
-
     return;
 
   }
-
 
   let savedTrack =
     Number(
       state.track
     );
-
 
   if(
     !Number.isInteger(
@@ -2220,7 +1875,6 @@ function restoreMusicState(){
 
   }
 
-
   if(
     savedTrack < 0 ||
     savedTrack >=
@@ -2231,16 +1885,13 @@ function restoreMusicState(){
 
   }
 
-
   currentTrack =
     savedTrack;
-
 
   const savedVolume =
     Number(
       state.volume
     );
-
 
   if(
 
@@ -2261,7 +1912,6 @@ function restoreMusicState(){
     audio.volume =
       savedVolume;
 
-
     volume.value =
       savedVolume;
 
@@ -2274,18 +1924,15 @@ function restoreMusicState(){
 
   }
 
-
   loadTrack(
     currentTrack,
     false
   );
 
-
   const savedTime =
     Number(
       state.currentTime
     );
-
 
   if(
 
@@ -2312,14 +1959,12 @@ function restoreMusicState(){
 
         }
 
-
         audio.removeEventListener(
           "loadedmetadata",
           restoreTime
         );
 
       };
-
 
     audio.addEventListener(
       "loadedmetadata",
@@ -2329,7 +1974,6 @@ function restoreMusicState(){
   }
 
 }
-
 
 
 /* =========================================================
@@ -2381,7 +2025,6 @@ playButton.addEventListener(
 );
 
 
-
 /* =========================================================
    PREVIOUS
 ========================================================= */
@@ -2399,7 +2042,6 @@ prevButton.addEventListener(
 );
 
 
-
 /* =========================================================
    NEXT
 ========================================================= */
@@ -2415,7 +2057,6 @@ nextButton.addEventListener(
 
   }
 );
-
 
 
 /* =========================================================
@@ -2436,7 +2077,6 @@ audio.addEventListener(
 
   }
 );
-
 
 
 /* =========================================================
@@ -2462,7 +2102,6 @@ audio.addEventListener(
 
     }
 
-
     musicTime.textContent =
 
       formatTime(
@@ -2479,7 +2118,6 @@ audio.addEventListener(
         audio.duration
       );
 
-
     if(
 
       Math.floor(
@@ -2494,7 +2132,6 @@ audio.addEventListener(
 
   }
 );
-
 
 
 /* =========================================================
@@ -2521,14 +2158,12 @@ progress.addEventListener(
 
         audio.duration;
 
-
       saveMusicState();
 
     }
 
   }
 );
-
 
 
 /* =========================================================
@@ -2544,12 +2179,10 @@ volume.addEventListener(
         volume.value
       );
 
-
     saveMusicState();
 
   }
 );
-
 
 
 /* =========================================================
@@ -2569,7 +2202,6 @@ audio.addEventListener(
 );
 
 
-
 /* =========================================================
    PLAY / PAUSE STATE
 ========================================================= */
@@ -2581,12 +2213,10 @@ audio.addEventListener(
     playButton.textContent =
       "❚❚";
 
-
     saveMusicState();
 
   }
 );
-
 
 audio.addEventListener(
   "pause",
@@ -2595,12 +2225,10 @@ audio.addEventListener(
     playButton.textContent =
       "▶";
 
-
     saveMusicState();
 
   }
 );
-
 
 
 /* =========================================================
@@ -2617,81 +2245,6 @@ window.addEventListener(
 );
 
 
-
-/* =========================================================
-   FIRST USER INTERACTION
-========================================================= */
-
-let musicStarted = false;
-
-
-function startMusic(event){
-
-  if(
-    musicStarted
-  ){
-
-    return;
-
-  }
-
-
-  /*
-     Do not interfere when the
-     user touches the player.
-  */
-
-  if(
-    event.target.closest(
-      ".music-player"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  musicStarted = true;
-
-
-  audio.play()
-
-    .then(
-      () => {
-
-        playButton.textContent =
-          "❚❚";
-
-        saveMusicState();
-
-      }
-    )
-
-    .catch(
-      () => {
-
-        musicStarted = false;
-
-      }
-    );
-
-
-  document.removeEventListener(
-    "pointerdown",
-    startMusic
-  );
-
-}
-
-
-document.addEventListener(
-  "pointerdown",
-  startMusic
-);
-
-
-
 /* =========================================================
    INIT
 ========================================================= */
@@ -2699,15 +2252,6 @@ document.addEventListener(
 async function init(){
 
   updateYear();
-
-
-  /*
-     Restore shared music state
-     from Home.
-  */
-
-  restoreMusicState();
-
 
   const archive =
     document.getElementById(
@@ -2717,9 +2261,27 @@ async function init(){
 
   try{
 
+    await loadMusicArchive();
+
+    restoreMusicState();
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+  }
+
+  try{
+
     const data =
       await loadJSON();
-
 
     const items =
 
@@ -2739,18 +2301,15 @@ async function init(){
 
         );
 
-
     const params =
       new URLSearchParams(
         window.location.search
       );
 
-
     const slug =
       params.get(
         "slug"
       );
-
 
     if(slug){
 
@@ -2765,7 +2324,6 @@ async function init(){
         items
       );
 
-
       setupSearch(
         items
       );
@@ -2777,7 +2335,6 @@ async function init(){
     console.error(
       error
     );
-
 
     archive.innerHTML = `
 
@@ -2798,7 +2355,6 @@ async function init(){
   }
 
 }
-
 
 init();
 
