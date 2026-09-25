@@ -1,1 +1,19 @@
-
+{
+  "music": [
+    {
+      "title": "Between the Takes",
+      "artist": "Orient.bakureever",
+      "file": "between-the-takes.mp3"
+    },
+    {
+      "title": "Wednesday's Origami",
+      "artist": "Orient.bakureever",
+      "file": "wednesdays-origami.mp3"
+    },
+    {
+      "title": "Where the Cat Goes at Night",
+      "artist": "Orient.bakureever",
+      "file": "where-the-cat-goes-at-night.mp3"
+    }
+  ]
+}
