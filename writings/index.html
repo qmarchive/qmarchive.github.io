@@ -125,26 +125,21 @@ a{
 
 .browser-window-controls{
   display:flex;
-  gap:5px;
-  flex:0 0 auto;
+  gap:4px;
+  flex-shrink:0;
 }
 
 .browser-window-control{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
+  width:23px;
+  height:23px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:
-    background .12s,
-    color .12s,
-    transform .12s;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:11px;
 }
 
  .browser-window-control:hover,
@@ -160,19 +155,13 @@ a{
 }
 
 .browser-menu{
-  min-height:34px;
   display:flex;
-  align-items:center;
   gap:20px;
   padding:6px 10px;
-  border-top:2px solid var(--blue);
   border-bottom:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
+  font-family:Arial,Helvetica,sans-serif;
   font-size:12px;
   font-weight:bold;
-  overflow:auto;
-  white-space:nowrap;
 }
 
 .browser-menu span{
@@ -268,14 +257,14 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
   padding:5px 7px;
   background:var(--orange);
   color:var(--blue);
-  font-size:14px;
+  font-family:Arial,Helvetica,sans-serif;
   font-weight:bold;
-  letter-spacing:.06em;
-  text-transform:uppercase;
+  letter-spacing:.8px;
+  font-size:14px;
+  line-height:1.4;
 }
 
 .panel-title-main{
@@ -286,39 +275,38 @@ a{
 }
 
 .panel-title-icon{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
+  width:21px;
+  height:21px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
-  flex:0 0 auto;
+  flex-shrink:0;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:10px;
+  font-weight:bold;
 }
 
 .window-controls{
   display:flex;
-  gap:5px;
-  flex:0 0 auto;
+  gap:4px;
+  flex-shrink:0;
 }
 
 .window-control{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
+  width:20px;
+  height:20px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:
-    background .12s,
-    color .12s,
-    transform .12s;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:11px;
+  line-height:1;
 }
 
  .window-control:hover,
@@ -384,9 +372,10 @@ a{
 
 .nav{
   margin-top:14px;
+  padding-top:10px;
+  border-top:2px dashed var(--blue);
   display:flex;
   flex-direction:column;
-  gap:5px;
 }
 
 .nav a{
@@ -394,20 +383,22 @@ a{
   align-items:center;
   min-height:38px;
   padding:6px 8px;
-  border:2px solid transparent;
+  color:var(--blue);
+  text-decoration:none;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
   font-weight:bold;
-  font-size:14px;
-  transition:
-    background .12s,
-    color .12s,
-    border-color .12s;
+  letter-spacing:.3px;
+  line-height:1.4;
+  border:0;
 }
 
 .nav a:hover,
 .nav a.active{
   background:var(--orange);
   color:var(--white);
-  border-color:var(--blue);
+  outline:2px solid var(--blue);
+  border:0;
 }
 
 /* =========================================================
@@ -448,15 +439,18 @@ a{
 }
 
 .section-head-icon{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
+  width:21px;
+  height:21px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
-  flex:0 0 auto;
+  flex-shrink:0;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:10px;
+  font-weight:bold;
 }
 
 .section-head-text{
