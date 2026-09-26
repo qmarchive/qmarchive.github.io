@@ -49,6 +49,8 @@ body::before{
   box-shadow:5px 5px 0 var(--blue);
   overflow:hidden;
 }
+
+/* WINDOW TITLE — title is framed, standalone letter icon removed */
 .window-titlebar{
   min-height:38px;
   display:flex;
@@ -63,13 +65,21 @@ body::before{
   font-size:14px;
 }
 .window--teal .window-titlebar{background:var(--teal);color:var(--white)}
-.window-title{display:flex;align-items:center;gap:8px;min-width:0}
-.window-title-icon{
-  width:21px;height:21px;display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;border:2px solid currentColor;background:var(--paper);color:var(--blue);
-  font-size:10px;font-weight:bold;
+.window-title{
+  display:flex;
+  align-items:center;
+  min-width:0;
+  padding:3px 8px;
+  min-height:26px;
+  border:2px solid currentColor;
+  background:var(--paper);
+  color:var(--blue);
+  line-height:1.2;
 }
-.window--teal .window-title-icon{color:var(--blue)}
+.window--teal .window-title{
+  color:var(--blue);
+}
+.window-title-icon{display:none}
 .window-buttons{display:flex;gap:4px;flex-shrink:0}
 .window-button{
   width:20px;height:20px;display:flex;align-items:center;justify-content:center;
