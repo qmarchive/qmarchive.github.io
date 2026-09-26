@@ -100,20 +100,7 @@ a{
 .browser-brand{
   display:flex;
   align-items:center;
-  gap:8px;
   min-width:0;
-}
-
-.browser-brand-icon{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  flex:0 0 auto;
 }
 
 .browser-title{
@@ -170,7 +157,7 @@ a{
 }
 
 .browser-menu span:hover{
-  color:var(--orange-dark);
+  color:var(--orange);
 }
 
 .browser-address-row{
@@ -225,6 +212,7 @@ a{
 .browser-date{
   font-size:10px;
   text-align:right;
+  justify-self:end;
   white-space:nowrap;
   font-family:monospace;
 }
@@ -272,23 +260,17 @@ a{
 .panel-title-main{
   display:flex;
   align-items:center;
-  gap:8px;
   min-width:0;
+  padding:3px 8px;
+  min-height:26px;
+  border:2px solid currentColor;
+  background:var(--paper);
+  color:var(--blue);
+  line-height:1.2;
 }
 
 .panel-title-icon{
-  width:21px;
-  height:21px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
-  font-family:monospace;
-  font-size:10px;
-  font-weight:bold;
+  display:none;
 }
 
 .window-controls{
@@ -436,23 +418,17 @@ a{
 .section-head-left{
   display:flex;
   align-items:center;
-  gap:8px;
   min-width:0;
+  padding:3px 8px;
+  min-height:26px;
+  border:2px solid currentColor;
+  background:var(--paper);
+  color:var(--blue);
+  line-height:1.2;
 }
 
 .section-head-icon{
-  width:21px;
-  height:21px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
-  font-family:monospace;
-  font-size:10px;
-  font-weight:bold;
+  display:none;
 }
 
 .section-head-text{
@@ -916,10 +892,6 @@ a{
 
       <div class="browser-brand">
 
-        <div class="browser-brand-icon">
-          QM
-        </div>
-
         <div class="browser-title">
           QM ARCHIVE // A SMALL SPACE FOR ORDINARY DAYS.
         </div>
@@ -996,10 +968,6 @@ a{
         <div class="panel-title">
 
           <div class="panel-title-main">
-
-            <div class="panel-title-icon">
-              S
-            </div>
 
             <span>
               SYSTEM INFO
@@ -1097,10 +1065,6 @@ a{
       <div class="section-head">
 
         <div class="section-head-left">
-
-          <div class="section-head-icon">
-            W
-          </div>
 
           <div class="section-head-text">
 
