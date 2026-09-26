@@ -72,135 +72,58 @@ a{
 }
 
 /* =========================================================
-   BROWSER — MASTER HOME VERSION
+   BROWSER — SYNCHRONIZED WITH HOME
 ========================================================= */
 
 .browser{
-  border:var(--border);
-  background:var(--paper);
-  box-shadow:5px 5px 0 var(--blue);
-  margin-bottom:14px;
+  border:var(--border);background:var(--paper);box-shadow:5px 5px 0 var(--blue);margin-bottom:14px;
 }
-
 .browser-top{
-  min-height:39px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:5px 8px;
-  background:var(--orange);
-  border-bottom:var(--border);
+  min-height:39px;display:flex;align-items:center;justify-content:space-between;
+  padding:5px 8px;background:var(--orange);border-bottom:var(--border);
 }
-
-.browser-brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:var(--blue);
-  font-weight:bold;
-  font-size:17px;
-  letter-spacing:1px;
+.browser-brand{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:bold;font-size:17px;letter-spacing:1px}
+.browser-brand-icon{
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--teal);color:var(--white);font-size:12px;
 }
-
-.browser-subtitle{
-  font-size:11px;
-  font-weight:bold;
-}
-
-.browser-window-buttons{
-  display:flex;
-  gap:4px;
-}
-
+.browser-subtitle{font-size:11px;font-weight:bold}
+.browser-window-buttons{display:flex;gap:4px}
 .browser-window-buttons span{
-  width:23px;
-  height:23px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
-  font-size:11px;
+  width:23px;height:23px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);color:var(--blue);font-size:11px;
   cursor:pointer;
   transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
-
 .browser-window-buttons span:active{
   transform:translate(2px,2px);
   box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
   background:#ddd3b7;
 }
-
-.browser-menu{
-  display:flex;
-  gap:20px;
-  padding:6px 10px;
-  border-bottom:2px solid var(--blue);
-  font-size:12px;
-  font-weight:bold;
-}
-
-.browser-menu span{
-  cursor:pointer;
-  transition:color .08s ease;
-}
-
-.browser-menu span:hover{
-  color:var(--orange);
-}
-
+.browser-menu{display:flex;gap:20px;padding:6px 10px;border-bottom:2px solid var(--blue);font-size:12px;font-weight:bold}
+.browser-menu span{cursor:pointer;transition:color .08s ease}
+.browser-menu span:hover{color:var(--orange)}
 .browser-address-row{
-  display:grid;
-  grid-template-columns:31px 31px 31px minmax(0,1fr) 175px;
-  gap:6px;
-  align-items:center;
-  padding:7px;
+  display:grid;grid-template-columns:31px 31px 31px minmax(0,1fr) 175px;
+  gap:6px;align-items:center;padding:7px;
 }
-
 .browser-control{
-  width:31px;
-  height:27px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  font-weight:bold;
+  width:31px;height:27px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);font-weight:bold;
   cursor:pointer;
   transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
-
 .browser-control:active{
   transform:translate(2px,2px);
   box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
   background:#ddd3b7;
 }
-
 .browser-address{
-  min-width:0;
-  height:27px;
-  display:flex;
-  align-items:center;
-  padding:0 9px;
-  border:2px solid var(--blue);
-  background:#eee5ce;
-  color:#303249;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  font-family:monospace;
-  font-size:11px;
+  min-width:0;height:27px;display:flex;align-items:center;padding:0 9px;
+  border:2px solid var(--blue);background:#eee5ce;color:#303249;overflow:hidden;
+  white-space:nowrap;text-overflow:ellipsis;font-family:monospace;font-size:11px;
 }
-
-.browser-date{
-  text-align:right;
-  font-family:monospace;
-  font-size:10px;
-  line-height:1.35;
-  font-weight:bold;
-  padding-right:2px;
-}
+.browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
 
 /* =========================================================
    MASTER GRID
@@ -231,57 +154,51 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
   padding:5px 7px;
   background:var(--orange);
+  border-bottom:var(--border);
   color:var(--blue);
-  font-size:14px;
+  font-family:Arial,Helvetica,sans-serif;
   font-weight:bold;
-  letter-spacing:.06em;
-  text-transform:uppercase;
+  letter-spacing:.8px;
+  font-size:14px;
+  line-height:1.4;
 }
 
 .panel-title-main{
   display:flex;
   align-items:center;
-  gap:8px;
   min-width:0;
+  padding:3px 8px;
+  min-height:26px;
+  border:2px solid currentColor;
+  background:var(--paper);
+  color:var(--blue);
+  line-height:1.2;
 }
 
 .panel-title-icon{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  flex:0 0 auto;
+  display:none;
 }
 
 .window-controls{
   display:flex;
-  gap:5px;
-  flex:0 0 auto;
+  gap:4px;
+  flex-shrink:0;
 }
 
 .window-control{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
+  width:20px;
+  height:20px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:
-    background .12s,
-    color .12s,
-    transform .12s;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:11px;
+  line-height:1;
 }
 
  .window-control:hover,
@@ -347,9 +264,10 @@ a{
 
 .nav{
   margin-top:14px;
+  padding-top:10px;
+  border-top:2px dashed var(--blue);
   display:flex;
   flex-direction:column;
-  gap:5px;
 }
 
 .nav a{
@@ -357,20 +275,22 @@ a{
   align-items:center;
   min-height:38px;
   padding:6px 8px;
-  border:2px solid transparent;
+  color:var(--blue);
+  text-decoration:none;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
   font-weight:bold;
-  font-size:14px;
-  transition:
-    background .12s,
-    color .12s,
-    border-color .12s;
+  letter-spacing:.3px;
+  line-height:1.4;
+  border:0;
 }
 
 .nav a:hover,
 .nav a.active{
   background:var(--orange);
   color:var(--white);
-  border-color:var(--blue);
+  outline:2px solid var(--blue);
+  border:0;
 }
 
 /* =========================================================
@@ -406,20 +326,17 @@ a{
 .section-head-left{
   display:flex;
   align-items:center;
-  gap:8px;
   min-width:0;
+  padding:3px 8px;
+  min-height:26px;
+  border:2px solid currentColor;
+  background:var(--paper);
+  color:var(--blue);
+  line-height:1.2;
 }
 
 .section-head-icon{
-  width:24px;
-  height:24px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  flex:0 0 auto;
+  display:none;
 }
 
 .section-head-text{
@@ -793,22 +710,14 @@ a{
 
 }
 
-@media(max-width:850px){
-
-  .browser-menu{
-    display:none;
-  }
+@media(max-width:700px){
 
   .browser-address-row{
     grid-template-columns:
       31px
-      minmax(0,1fr)
-      31px;
-  }
-
-  .browser-address-row
-  .browser-control:nth-child(2){
-    display:none;
+      31px
+      31px
+      minmax(0,1fr);
   }
 
   .browser-date{
@@ -852,7 +761,19 @@ a{
 
 @media(max-width:480px){
 
-  .browser-subtitle{
+  .browser-menu{
+    gap:12px;
+  }
+
+  .browser-address-row{
+    grid-template-columns:
+      31px
+      31px
+      minmax(0,1fr);
+  }
+
+  .browser-address-row
+  .browser-control:nth-child(3){
     display:none;
   }
 
@@ -873,69 +794,35 @@ a{
        BROWSER
   ====================================================== -->
 
-  <div class="browser">
-
+  <header class="browser">
     <div class="browser-top">
-
       <div class="browser-brand">
-
         QM ARCHIVE
-
-        <span class="browser-subtitle">
-          // A SMALL SPACE FOR ORDINARY DAYS.
-        </span>
-
+        <span class="browser-subtitle">// A SMALL SPACE FOR ORDINARY DAYS.</span>
       </div>
 
       <div class="browser-window-buttons">
-
-        <span>—</span>
-        <span>□</span>
-        <span>×</span>
-
+        <span>—</span><span>□</span><span>×</span>
       </div>
-
     </div>
 
     <div class="browser-menu">
-
-      <span>File</span>
-      <span>Edit</span>
-      <span>View</span>
-      <span>Favorites</span>
-      <span>Tools</span>
-      <span>Help</span>
-
+      <span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span>
     </div>
 
     <div class="browser-address-row">
+      <div class="browser-control">&lt;</div>
+      <div class="browser-control">&gt;</div>
+      <div class="browser-control">^</div>
 
-      <div class="browser-control">
-        &lt;
-      </div>
-
-      <div class="browser-control">
-        &gt;
-      </div>
-
-      <div class="browser-control">
-        ^
-      </div>
-
-      <div class="browser-address">
-        https://qmarchive.github.io/writings/
-      </div>
+      <div class="browser-address">https://qmarchive.github.io/writings/</div>
 
       <div class="browser-date">
-
         <span id="browserDate">26 SEP 2026</span><br>
-        <span id="browserTime">19:03</span>
-
+        <span id="browserTime">19:09</span>
       </div>
-
     </div>
-
-  </div>
+  </header>
 
   <!-- =====================================================
        MASTER GRID
@@ -954,10 +841,6 @@ a{
         <div class="panel-title">
 
           <div class="panel-title-main">
-
-            <div class="panel-title-icon">
-              S
-            </div>
 
             <span>
               SYSTEM INFO
@@ -1055,10 +938,6 @@ a{
       <div class="section-head">
 
         <div class="section-head-left">
-
-          <div class="section-head-icon">
-            W
-          </div>
 
           <div class="section-head-text">
 
@@ -1287,31 +1166,23 @@ a{
 
 function updateBrowserDate(){
 
-  const now =
-    new Date();
+  const now = new Date();
 
   const time =
     String(now.getHours()).padStart(2,"0") + ":" +
-    String(now.getMinutes()).padStart(2,"0") + ":" +
-    String(now.getSeconds()).padStart(2,"0");
+    String(now.getMinutes()).padStart(2,"0");
 
   const browserTime =
-    document.getElementById(
-      "browserTime"
-    );
+    document.getElementById("browserTime");
 
   const browserDate =
-    document.getElementById(
-      "browserDate"
-    );
+    document.getElementById("browserDate");
 
   if(browserTime){
-    browserTime.textContent =
-      time.slice(0,5);
+    browserTime.textContent = time;
   }
 
   if(browserDate){
-
     browserDate.textContent =
       now.toLocaleDateString(
         "en-GB",
@@ -1321,16 +1192,14 @@ function updateBrowserDate(){
           year:"numeric"
         }
       ).toUpperCase();
-
   }
-
 }
 
 updateBrowserDate();
 
 setInterval(
   updateBrowserDate,
-  1000
+  60000
 );
 
 
