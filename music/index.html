@@ -682,12 +682,12 @@ a[href]:hover{
   display:grid;
 
   grid-template-columns:
-    300px
+    240px
     minmax(0,1fr);
 
   gap:18px;
 
-  padding:14px;
+  padding:12px;
 
   border-bottom:var(--border);
 
@@ -786,7 +786,7 @@ a[href]:hover{
 
   font-family:Arial,Helvetica,sans-serif;
 
-  font-size:28px;
+  font-size:24px;
 
   line-height:1.2;
 
@@ -822,7 +822,7 @@ a[href]:hover{
 
   line-height:1.5;
 
-  margin-bottom:12px;
+  margin-bottom:9px;
 
 }
 
@@ -831,11 +831,11 @@ a[href]:hover{
 
   color:var(--blue);
 
-  font-size:13px;
+  font-size:12px;
 
-  line-height:1.7;
+  line-height:1.6;
 
-  margin-bottom:14px;
+  margin-bottom:10px;
 
 }
 
@@ -850,7 +850,7 @@ a[href]:hover{
 
   align-items:center;
 
-  padding:7px;
+  padding:6px;
 
   border:3px solid var(--blue);
 
@@ -870,9 +870,9 @@ a[href]:hover{
 
 .main-player-button{
 
-  width:38px;
+  width:36px;
 
-  height:34px;
+  height:32px;
 
   border:3px solid var(--blue);
 
@@ -1094,78 +1094,186 @@ a[href]:hover{
 
 
 /* =========================================================
-   ALBUM GRID
+   ALBUM TABLE
 ========================================================= */
 
-.album-grid{
+.album-table{
 
-  display:grid;
+  border:
+    3px solid var(--blue);
 
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
+  background:var(--paper);
 
-  gap:0;
+  max-height:
+    316px;
 
-  border-top:3px solid var(--blue);
+  overflow-y:auto;
 
-  border-left:3px solid var(--blue);
+  overflow-x:hidden;
 
 }
 
 
-.album-card{
+.album-table-header{
 
-  min-width:0;
+  display:grid;
 
-  padding:10px;
+  grid-template-columns:
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    105px
+    95px
+    42px;
 
-  border-right:3px solid var(--blue);
+  gap:10px;
 
-  border-bottom:3px solid var(--blue);
+  align-items:center;
+
+  min-height:38px;
+
+  padding:
+    6px 10px;
+
+  border-bottom:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+.album-row{
+
+  display:grid;
+
+  grid-template-columns:
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    105px
+    95px
+    42px;
+
+  gap:10px;
+
+  align-items:center;
+
+  min-height:68px;
+
+  padding:
+    7px 10px;
+
+  border-bottom:
+    2px dashed var(--blue);
 
   background:var(--paper);
+
+  color:var(--blue);
 
   cursor:pointer;
 
 }
 
 
-.album-card:hover{
+.album-row:last-child{
+
+  border-bottom:0;
+
+}
+
+
+.album-row:hover{
 
   background:#f5ecd7;
 
 }
 
 
-.album-card.selected{
+.album-row:active{
 
-  background:#f5ecd7;
-
-  outline:3px solid var(--orange);
-
-  outline-offset:-6px;
+  transform:
+    translate(2px,2px);
 
 }
 
 
-.album-cover{
+.album-row.selected{
 
-  width:100%;
+  background:var(--orange);
 
-  aspect-ratio:1 / 1;
+  color:var(--white);
+
+}
+
+
+.album-number{
+
+  font-family:monospace;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.album-main{
+
+  min-width:0;
+
+  display:grid;
+
+  grid-template-columns:
+    58px
+    minmax(0,1fr);
+
+  gap:9px;
+
+  align-items:center;
+
+}
+
+
+.album-thumb{
+
+  width:58px;
+
+  height:50px;
 
   overflow:hidden;
 
-  border:3px solid var(--blue);
+  border:
+    3px solid var(--blue);
 
   background:var(--blue);
 
-  margin-bottom:8px;
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--white);
+
+  font-family:monospace;
+
+  font-size:8px;
+
+  text-align:center;
 
 }
 
 
-.album-cover img{
+.album-thumb img{
 
   display:block;
 
@@ -1175,34 +1283,23 @@ a[href]:hover{
 
   object-fit:cover;
 
-  filter:
-    grayscale(.08)
-    brightness(.88)
-    saturate(.85);
-
-  transition:
-    filter .2s ease,
-    transform .2s ease;
-
 }
 
 
-.album-card:hover
-.album-cover img{
+.album-name{
 
-  filter:
-    grayscale(0)
-    brightness(.98)
-    saturate(1);
-
-  transform:scale(1.015);
+  min-width:0;
 
 }
 
 
 .album-title{
 
-  color:var(--blue);
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
 
   font-size:13px;
 
@@ -1210,29 +1307,47 @@ a[href]:hover{
 
   font-weight:bold;
 
-  margin-bottom:3px;
-
 }
 
 
 .album-artist{
 
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
   color:var(--teal);
 
   font-family:monospace;
 
-  font-size:10px;
+  font-size:9px;
 
   line-height:1.4;
 
   font-weight:bold;
+
+  margin-top:3px;
+
+}
+
+
+.album-row.selected
+.album-artist{
+
+  color:var(--white);
 
 }
 
 
 .album-meta{
 
-  color:var(--blue);
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
 
   font-family:monospace;
 
@@ -1240,18 +1355,97 @@ a[href]:hover{
 
   line-height:1.5;
 
-  margin-top:5px;
+}
+
+
+.album-arrow{
+
+  text-align:center;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+}
+
+
+.album-table::-webkit-scrollbar{
+
+  width:12px;
+
+}
+
+
+.album-table::-webkit-scrollbar-track{
+
+  background:#eee5ce;
+
+  border-left:2px solid var(--blue);
+
+}
+
+
+.album-table::-webkit-scrollbar-thumb{
+
+  background:var(--blue);
+
+  border:2px solid #eee5ce;
 
 }
 
 
 /* =========================================================
-   TRACKLIST
+   TRACKLIST TABLE
 ========================================================= */
 
 .tracklist{
 
-  border-top:3px solid var(--blue);
+  border:
+    3px solid var(--blue);
+
+  max-height:
+    316px;
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
+}
+
+
+.tracklist-header{
+
+  display:grid;
+
+  grid-template-columns:
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    90px
+    105px
+    42px;
+
+  gap:10px;
+
+  align-items:center;
+
+  min-height:38px;
+
+  padding:
+    6px 10px;
+
+  border-bottom:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  font-weight:bold;
 
 }
 
@@ -1261,25 +1455,35 @@ a[href]:hover{
   display:grid;
 
   grid-template-columns:
-    45px
-    minmax(0,1fr)
-    145px
-    65px;
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    90px
+    105px
+    42px;
 
   gap:10px;
 
   align-items:center;
 
-  min-height:55px;
+  min-height:68px;
 
   padding:
     7px 10px;
 
-  border-bottom:2px solid var(--blue);
+  border-bottom:
+    2px dashed var(--blue);
 
   background:var(--paper);
 
   cursor:pointer;
+
+}
+
+
+.track-row:last-child{
+
+  border-bottom:0;
 
 }
 
@@ -1293,7 +1497,8 @@ a[href]:hover{
 
 .track-row:active{
 
-  transform:translate(2px,2px);
+  transform:
+    translate(2px,2px);
 
 }
 
@@ -1321,6 +1526,59 @@ a[href]:hover{
 .track-name{
 
   min-width:0;
+
+  display:grid;
+
+  grid-template-columns:
+    58px
+    minmax(0,1fr);
+
+  gap:9px;
+
+  align-items:center;
+
+}
+
+
+.track-thumb{
+
+  width:58px;
+
+  height:50px;
+
+  overflow:hidden;
+
+  border:
+    3px solid var(--blue);
+
+  background:var(--blue);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--white);
+
+  font-family:monospace;
+
+  font-size:8px;
+
+  text-align:center;
+
+}
+
+
+.track-thumb img{
+
+  display:block;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
 
 }
 
@@ -1360,6 +1618,8 @@ a[href]:hover{
 
   font-weight:bold;
 
+  margin-top:3px;
+
 }
 
 
@@ -1371,7 +1631,9 @@ a[href]:hover{
 }
 
 
-.track-album{
+.track-album,
+.track-duration,
+.track-date{
 
   overflow:hidden;
 
@@ -1386,13 +1648,38 @@ a[href]:hover{
 }
 
 
-.track-duration{
+.track-play{
 
-  text-align:right;
+  text-align:center;
 
-  font-family:monospace;
+  font-size:17px;
 
-  font-size:9px;
+  font-weight:bold;
+
+}
+
+
+.tracklist::-webkit-scrollbar{
+
+  width:12px;
+
+}
+
+
+.tracklist::-webkit-scrollbar-track{
+
+  background:#eee5ce;
+
+  border-left:2px solid var(--blue);
+
+}
+
+
+.tracklist::-webkit-scrollbar-thumb{
+
+  background:var(--blue);
+
+  border:2px solid #eee5ce;
 
 }
 
@@ -1450,7 +1737,7 @@ a[href]:hover{
     min(940px, calc(100% - 28px));
 
   margin:
-    16px auto 0;
+    60px auto 0;
 
   padding:
     10px 14px;
@@ -1476,220 +1763,6 @@ a[href]:hover{
 
 
 /* =========================================================
-   FIXED MUSIC PLAYER
-========================================================= */
-
-.music-player{
-
-  position:fixed;
-
-  width:
-    min(940px, calc(100% - 28px));
-
-  left:50%;
-
-  right:auto;
-
-  bottom:10px;
-
-  transform:translateX(-50%);
-
-  z-index:10000;
-
-  display:grid;
-
-  grid-template-columns:
-    auto
-    minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
-    auto;
-
-  gap:9px;
-
-  align-items:center;
-
-  padding:
-    6px 8px;
-
-  background:var(--paper);
-
-  border:
-    3px solid var(--blue);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-}
-
-
-.music-icon{
-
-  width:35px;
-
-  height:35px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:var(--orange);
-
-  border:
-    3px solid var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-}
-
-
-.music-info{
-
-  min-width:0;
-
-}
-
-
-.music-label{
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  margin-bottom:2px;
-
-}
-
-
-.music-title{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
-  line-height:1.4;
-
-  font-weight:bold;
-
-}
-
-
-.music-artist{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  margin-top:2px;
-
-  color:var(--teal);
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  font-weight:bold;
-
-}
-
-
-.music-controls{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.music-button{
-
-  width:33px;
-
-  height:29px;
-
-  border:
-    3px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-
-.music-button:hover{
-
-  background:var(--orange);
-
-  color:var(--white);
-
-}
-
-
-.music-progress{
-
-  min-width:0;
-
-}
-
-
-.music-progress input{
-
-  width:100%;
-
-  accent-color:var(--orange);
-
-}
-
-
-.music-time{
-
-  min-width:72px;
-
-  text-align:center;
-
-  font-size:9px;
-
-  line-height:1.4;
-
-}
-
-
-.music-volume{
-
-  width:100px;
-
-}
-
-
-.music-volume input{
-
-  width:100%;
-
-  accent-color:var(--teal);
-
-}
-
-
-/* =========================================================
    TABLET
 ========================================================= */
 
@@ -1704,29 +1777,10 @@ a[href]:hover{
   }
 
 
-  .album-grid{
+  .album-table,
+  .tracklist{
 
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
-
-  }
-
-
-  .music-player{
-
-    grid-template-columns:
-      auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
-  }
-
-
-  .music-volume{
-
-    display:none;
+    max-height:316px;
 
   }
 
@@ -1760,8 +1814,8 @@ a[href]:hover{
 
     grid-template-columns:
       31px
-      31px
-      minmax(0,1fr);
+      minmax(0,1fr)
+      31px;
 
   }
 
@@ -1770,13 +1824,6 @@ a[href]:hover{
   .browser-control:nth-child(2){
 
     display:none;
-
-  }
-
-
-  .browser-address{
-
-    grid-column:3;
 
   }
 
@@ -1845,59 +1892,26 @@ a[href]:hover{
   }
 
 
-  .album-grid{
+  .album-table,
+  .tracklist{
 
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
+    overflow-x:auto;
 
   }
 
 
+  .album-table-header,
+  .album-row{
+
+    min-width:760px;
+
+  }
+
+
+  .tracklist-header,
   .track-row{
 
-    grid-template-columns:
-      35px
-      minmax(0,1fr)
-      55px;
-
-  }
-
-
-  .track-album{
-
-    display:none;
-
-  }
-
-
-  .music-player{
-
-    width:
-      calc(100% - 10px);
-
-    left:50%;
-
-    right:auto;
-
-    bottom:5px;
-
-    transform:translateX(-50%);
-
-    grid-template-columns:
-      auto
-      minmax(0,1fr)
-      auto;
-
-    gap:5px;
-
-  }
-
-
-  .music-progress,
-  .music-time,
-  .music-volume{
-
-    display:none;
+    min-width:760px;
 
   }
 
@@ -1938,13 +1952,6 @@ a[href]:hover{
   }
 
 
-  .album-grid{
-
-    grid-template-columns:1fr;
-
-  }
-
-
   .music-tab{
 
     min-width:0;
@@ -1953,6 +1960,16 @@ a[href]:hover{
 
     padding:
       8px 10px;
+
+  }
+
+
+  .album-table-header,
+  .album-row,
+  .tracklist-header,
+  .track-row{
+
+    min-width:760px;
 
   }
 
@@ -2466,122 +2483,6 @@ a[href]:hover{
 
 
 
-<!-- =======================================================
-     FIXED MUSIC PLAYER
-======================================================= -->
-
-<div class="music-player">
-
-
-  <div class="music-icon">
-    ♪
-  </div>
-
-
-  <div class="music-info">
-
-
-    <div class="music-label">
-      NOW PLAYING
-    </div>
-
-
-    <div
-      class="music-title"
-      id="musicTitle"
-    >
-      —
-    </div>
-
-
-    <div
-      class="music-artist"
-      id="musicArtist"
-    >
-      —
-    </div>
-
-
-  </div>
-
-
-  <div class="music-controls">
-
-
-    <button
-      class="music-button"
-      id="prevButton"
-      type="button"
-    >
-      |◀
-    </button>
-
-
-    <button
-      class="music-button"
-      id="playButton"
-      type="button"
-    >
-      ▶
-    </button>
-
-
-    <button
-      class="music-button"
-      id="nextButton"
-      type="button"
-    >
-      ▶|
-    </button>
-
-
-  </div>
-
-
-  <div class="music-progress">
-
-
-    <input
-      id="progress"
-      type="range"
-      min="0"
-      max="100"
-      value="0"
-      step="0.1"
-    >
-
-
-  </div>
-
-
-  <div
-    class="music-time"
-    id="musicTime"
-  >
-    00:00 / 00:00
-  </div>
-
-
-  <div class="music-volume">
-
-
-    <input
-      id="volume"
-      type="range"
-      min="0"
-      max="1"
-      value=".7"
-      step=".01"
-    >
-
-
-  </div>
-
-
-</div>
-
-
-
 <audio
   id="audio"
   preload="metadata"
@@ -2655,9 +2556,58 @@ function normalizePath(value){
   }
 
   return "/music/" +
-    text.replace(/^\/+/,"");
+    text.replace(/^\/+/ ,"");
 
 }
+
+
+/*
+  COVER PATHS
+
+  Album / track covers are stored in:
+
+    /music/covers/
+
+  The JSON can therefore use either:
+
+    "cover": "where-the-cat-goes-at-night.png"
+
+  or:
+
+    "cover": "covers/where-the-cat-goes-at-night.png"
+
+  Both resolve to /music/covers/...
+
+  PNG is intentionally supported as the archive cover format.
+  The browser loads the image directly from the path supplied here.
+*/
+
+function normalizeCoverPath(value){
+
+  const text =
+    String(value || "").trim();
+
+  if(!text){
+    return "";
+  }
+
+  if(
+    text.startsWith("http://") ||
+    text.startsWith("https://") ||
+    text.startsWith("/")
+  ){
+
+    return text;
+
+  }
+
+  return "/music/covers/" +
+    text
+      .replace(/^\/+/ ,"")
+      .replace(/^covers\//i,"");
+
+}
+
 
 
 function formatTime(seconds){
@@ -2841,15 +2791,21 @@ async function loadMusicArchive(){
             date:
               String(
                 track.date ||
+                track.releaseDate ||
                 track.albumDate ||
                 ""
               ).trim(),
 
-            duration:
+            releaseDate:
               String(
-                track.duration ||
+                track.releaseDate ||
+                track.albumDate ||
+                track.date ||
                 ""
               ).trim(),
+
+            duration:
+              "",
 
             description:
               String(
@@ -2872,7 +2828,7 @@ async function loadMusicArchive(){
               ),
 
             cover:
-              normalizePath(
+              normalizeCoverPath(
                 track.cover ||
                 track.image ||
                 track.artwork ||
@@ -2880,7 +2836,7 @@ async function loadMusicArchive(){
               ),
 
             albumCover:
-              normalizePath(
+              normalizeCoverPath(
                 track.albumCover ||
                 track.albumImage ||
                 ""
@@ -2893,6 +2849,31 @@ async function loadMusicArchive(){
       .filter(
         track =>
           track.src
+      )
+      .sort(
+        (a,b) => {
+
+          const dateA =
+            parseDate(a.date);
+
+          const dateB =
+            parseDate(b.date);
+
+          if(dateA === dateB){
+            return a.index - b.index;
+          }
+
+          if(!dateA){
+            return -1;
+          }
+
+          if(!dateB){
+            return 1;
+          }
+
+          return dateA - dateB;
+
+        }
       );
 
 
@@ -2941,9 +2922,20 @@ async function loadMusicArchive(){
                 "Orient.bakureever"
               ).trim(),
 
+            releaseDate:
+              String(
+                album.releaseDate ||
+                album.date ||
+                album.year ||
+                albumTracks[0]?.releaseDate ||
+                albumTracks[0]?.date ||
+                ""
+              ).trim(),
+
             date:
               String(
                 album.date ||
+                album.releaseDate ||
                 album.year ||
                 albumTracks[0]?.date ||
                 ""
@@ -2956,7 +2948,7 @@ async function loadMusicArchive(){
               ).trim(),
 
             cover:
-              normalizePath(
+              normalizeCoverPath(
                 album.cover ||
                 album.image ||
                 album.artwork ||
@@ -3016,8 +3008,14 @@ async function loadMusicArchive(){
             tracks[0]?.artist ||
             "Orient.bakureever",
 
+          releaseDate:
+            tracks[0]?.releaseDate ||
+            tracks[0]?.date ||
+            "",
+
           date:
             tracks[0]?.date ||
+            tracks[0]?.releaseDate ||
             "",
 
           description:
@@ -3145,42 +3143,42 @@ const audio =
 
 const playButton =
   document.getElementById(
-    "playButton"
+    "mainPlayButton"
   );
 
 const prevButton =
   document.getElementById(
-    "prevButton"
+    "mainPrevButton"
   );
 
 const nextButton =
   document.getElementById(
-    "nextButton"
+    "mainNextButton"
   );
 
 const progress =
   document.getElementById(
-    "progress"
+    "mainProgress"
   );
 
 const volume =
   document.getElementById(
-    "volume"
+    "mainVolume"
   );
 
 const musicTitle =
   document.getElementById(
-    "musicTitle"
+    "mainMusicTitle"
   );
 
 const musicArtist =
   document.getElementById(
-    "musicArtist"
+    "mainMusicArtist"
   );
 
 const musicTime =
   document.getElementById(
-    "musicTime"
+    "mainTime"
   );
 
 
@@ -3513,6 +3511,112 @@ function restoreMusicState(){
 
 
 /* =========================================================
+   AUTO-READ MP3 DURATIONS
+========================================================= */
+
+function updateTrackDurationCells(
+  trackIndex,
+  durationText
+){
+
+  document
+    .querySelectorAll(
+      `[data-track-duration-index="${trackIndex}"]`
+    )
+    .forEach(
+      cell => {
+
+        cell.textContent =
+          durationText;
+
+      }
+    );
+
+}
+
+
+function readTrackDuration(
+  track,
+  trackIndex
+){
+
+  if(!track || !track.src){
+    return;
+  }
+
+
+  const probe =
+    new Audio();
+
+
+  probe.preload =
+    "metadata";
+
+
+  probe.addEventListener(
+    "loadedmetadata",
+    () => {
+
+      if(Number.isFinite(probe.duration)){
+
+        track.duration =
+          formatTime(probe.duration);
+
+        updateTrackDurationCells(
+          trackIndex,
+          track.duration
+        );
+
+      }
+
+      probe.src = "";
+
+    },
+    {once:true}
+  );
+
+
+  probe.addEventListener(
+    "error",
+    () => {
+
+      updateTrackDurationCells(
+        trackIndex,
+        "--:--"
+      );
+
+      probe.src = "";
+
+    },
+    {once:true}
+  );
+
+
+  probe.src =
+    track.src;
+
+  probe.load();
+
+}
+
+
+function loadTrackDurations(){
+
+  MUSIC_TRACKS.forEach(
+    (track,index) => {
+
+      readTrackDuration(
+        track,
+        index
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
    RENDER ALBUM VIEW
 ========================================================= */
 
@@ -3547,14 +3651,24 @@ function renderAlbums(){
       Album Collection
     </div>
 
-    <div class="content-subheading">
-      Những album đã nghe, đang nghe, và sẽ còn nghe.
-    </div>
 
-    <div class="album-grid">
+
+    <div class="album-table">
+
+      <div class="album-table-header">
+
+        <div>#</div>
+        <div>TITLE</div>
+        <div>ARTIST</div>
+        <div>RELEASE</div>
+        <div>TRACKS</div>
+        <div></div>
+
+      </div>
+
 
       ${ALBUMS.map(
-        album => {
+        (album,index) => {
 
           const selected =
             album.title ===
@@ -3564,60 +3678,73 @@ function renderAlbums(){
           return `
 
             <div
-              class="album-card ${selected ? "selected" : ""}"
+              class="album-row ${
+                selected ? "selected" : ""
+              }"
               data-album="${escapeHTML(
                 album.title
               )}"
             >
 
-              <div class="album-cover">
+              <div class="album-number">
 
-                ${
-                  album.cover
-
-                    ? `
-
-                      <img
-                        src="${escapeHTML(
-                          album.cover
-                        )}"
-                        alt="${escapeHTML(
-                          album.title
-                        )}"
-                        loading="lazy"
-                      >
-
-                    `
-
-                    : `
-
-                      <div
-                        style="
-                          width:100%;
-                          height:100%;
-                          display:flex;
-                          align-items:center;
-                          justify-content:center;
-                          color:#f5ecd7;
-                          font-family:monospace;
-                          font-size:10px;
-                          text-align:center;
-                        "
-                      >
-                        NO COVER
-                      </div>
-
-                    `
-                }
+                ${String(
+                  index + 1
+                ).padStart(2,"0")}
 
               </div>
 
 
-              <div class="album-title">
+              <div class="album-main">
 
-                ${escapeHTML(
-                  album.title
-                )}
+                <div class="album-thumb">
+
+                  ${
+                    album.cover
+
+                      ? `
+
+                        <img
+                          src="${escapeHTML(
+                            album.cover
+                          )}"
+                          alt="${escapeHTML(
+                            album.title
+                          )}"
+                          loading="lazy"
+                        >
+
+                      `
+
+                      : `NO COVER`
+
+                  }
+
+                </div>
+
+
+                <div class="album-name">
+
+                  <div class="album-title">
+
+                    ${escapeHTML(
+                      album.title ||
+                      "Untitled Album"
+                    )}
+
+                  </div>
+
+
+                  <div class="album-artist">
+
+                    ${escapeHTML(
+                      album.artist ||
+                      "Unknown artist"
+                    )}
+
+                  </div>
+
+                </div>
 
               </div>
 
@@ -3625,7 +3752,8 @@ function renderAlbums(){
               <div class="album-artist">
 
                 ${escapeHTML(
-                  album.artist
+                  album.artist ||
+                  "Unknown artist"
                 )}
 
               </div>
@@ -3633,20 +3761,25 @@ function renderAlbums(){
 
               <div class="album-meta">
 
-                ${
-                  album.date
-                    ? escapeHTML(
-                        album.date
-                      ) + "  |  "
-                    : ""
-                }
+                ${escapeHTML(
+                  album.releaseDate ||
+                  album.date ||
+                  "—"
+                )}
+
+              </div>
+
+
+              <div class="album-meta">
 
                 ${album.tracks.length}
-                ${
-                  album.tracks.length === 1
-                    ? "song"
-                    : "songs"
-                }
+
+              </div>
+
+
+              <div class="album-arrow">
+
+                →
 
               </div>
 
@@ -3664,20 +3797,41 @@ function renderAlbums(){
 
   container
     .querySelectorAll(
-      ".album-card"
+      ".album-row"
     )
     .forEach(
-      card => {
+      row => {
 
-        card.addEventListener(
+        row.addEventListener(
           "click",
           () => {
 
             selectedAlbum =
-              card.dataset.album || "";
+              row.dataset.album || "";
 
 
-            renderAlbums();
+            currentView =
+              "tracklist";
+
+
+            document
+              .querySelectorAll(
+                ".music-tab"
+              )
+              .forEach(
+                tab => {
+
+                  tab.classList.toggle(
+                    "active",
+                    tab.dataset.view ===
+                    "tracklist"
+                  );
+
+                }
+              );
+
+
+            renderTracklist();
 
           }
         );
@@ -3691,6 +3845,7 @@ function renderAlbums(){
 /* =========================================================
    RENDER TRACKLIST
 ========================================================= */
+
 
 function renderTracklist(){
 
@@ -3717,23 +3872,76 @@ function renderTracklist(){
   }
 
 
+  const album =
+    ALBUMS.find(
+      item =>
+        item.title ===
+        selectedAlbum
+    );
+
+
+  const visibleTracks =
+    album
+      ? album.tracks
+      : MUSIC_TRACKS;
+
+
+  if(!visibleTracks.length){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        No tracks in this album yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
   container.innerHTML = `
 
     <div class="content-heading">
-      Tracklist
+
+      ${
+        album
+          ? escapeHTML(album.title)
+          : "Tracklist"
+      }
+
     </div>
 
-    <div class="content-subheading">
-      Tất cả những bài đang nằm trong kho nhạc.
-    </div>
 
     <div class="tracklist">
 
-      ${MUSIC_TRACKS.map(
+      <div class="tracklist-header">
+
+        <div>#</div>
+        <div>TITLE</div>
+        <div>ALBUM</div>
+        <div>DURATION</div>
+        <div>DATE</div>
+        <div></div>
+
+      </div>
+
+
+      ${visibleTracks.map(
         (track,index) => {
 
+          const globalIndex =
+            MUSIC_TRACKS.indexOf(
+              track
+            );
+
+
           const playing =
-            index === currentTrack &&
+            globalIndex ===
+            currentTrack &&
             !audio.paused;
 
 
@@ -3743,7 +3951,7 @@ function renderTracklist(){
               class="track-row ${
                 playing ? "playing" : ""
               }"
-              data-track-index="${index}"
+              data-track-index="${globalIndex}"
             >
 
               <div class="track-number">
@@ -3757,22 +3965,54 @@ function renderTracklist(){
 
               <div class="track-name">
 
-                <div class="track-title">
+                <div class="track-thumb">
 
-                  ${escapeHTML(
-                    track.title ||
-                    "Untitled"
-                  )}
+                  ${
+                    track.cover ||
+                    track.albumCover
+
+                      ? `
+
+                        <img
+                          src="${escapeHTML(
+                            track.cover ||
+                            track.albumCover
+                          )}"
+                          alt="${escapeHTML(
+                            track.title
+                          )}"
+                          loading="lazy"
+                        >
+
+                      `
+
+                      : `NO COVER`
+
+                  }
 
                 </div>
 
 
-                <div class="track-artist">
+                <div>
 
-                  ${escapeHTML(
-                    track.artist ||
-                    "Unknown artist"
-                  )}
+                  <div class="track-title">
+
+                    ${escapeHTML(
+                      track.title ||
+                      "Untitled"
+                    )}
+
+                  </div>
+
+
+                  <div class="track-artist">
+
+                    ${escapeHTML(
+                      track.artist ||
+                      "Unknown artist"
+                    )}
+
+                  </div>
 
                 </div>
 
@@ -3789,12 +4029,32 @@ function renderTracklist(){
               </div>
 
 
-              <div class="track-duration">
+              <div
+                class="track-duration"
+                data-track-duration-index="${globalIndex}"
+              >
 
                 ${escapeHTML(
                   track.duration ||
                   "--:--"
                 )}
+
+              </div>
+
+
+              <div class="track-date">
+
+                ${escapeHTML(
+                  track.date ||
+                  "—"
+                )}
+
+              </div>
+
+
+              <div class="track-play">
+
+                ▶
 
               </div>
 
@@ -3887,6 +4147,23 @@ function setupTabs(){
 
           currentView =
             view;
+
+
+          if(view === "tracklist"){
+
+            selectedAlbum =
+              null;
+
+          }else if(
+            view === "album" &&
+            !selectedAlbum &&
+            ALBUMS.length
+          ){
+
+            selectedAlbum =
+              ALBUMS[0].title;
+
+          }
 
 
           tabs.forEach(
@@ -4020,69 +4297,6 @@ nextButton.addEventListener(
 
   }
 );
-
-
-/* =========================================================
-   MAIN PLAYER BUTTONS
-========================================================= */
-
-document
-  .getElementById(
-    "mainPlayButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      if(audio.paused){
-
-        audio.play()
-          .catch(() => {});
-
-      }else{
-
-        audio.pause();
-
-      }
-
-    }
-  );
-
-
-document
-  .getElementById(
-    "mainPrevButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      loadTrack(
-        currentTrack - 1,
-        true,
-        0
-      );
-
-    }
-  );
-
-
-document
-  .getElementById(
-    "mainNextButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      loadTrack(
-        currentTrack + 1,
-        true,
-        0
-      );
-
-    }
-  );
 
 
 /* =========================================================
@@ -4457,6 +4671,8 @@ async function init(){
     restoreMusicState();
 
     renderCurrentView();
+
+    loadTrackDurations();
 
   }catch(error){
 
