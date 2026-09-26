@@ -72,15 +72,14 @@ a{
 }
 
 /* =========================================================
-   BROWSER — SYNCHRONIZED WITH PHOTOGRAPHS
+   BROWSER — MASTER HOME VERSION
 ========================================================= */
 
 .browser{
   border:var(--border);
   background:var(--paper);
   box-shadow:5px 5px 0 var(--blue);
-  margin:0 auto 14px;
-  max-width:1600px;
+  margin-bottom:14px;
 }
 
 .browser-top{
@@ -88,36 +87,32 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
   padding:5px 8px;
   background:var(--orange);
   border-bottom:var(--border);
-  color:var(--blue);
-  font-size:14px;
-  font-weight:bold;
 }
 
 .browser-brand{
   display:flex;
   align-items:center;
-  min-width:0;
+  gap:8px;
+  color:var(--blue);
+  font-weight:bold;
+  font-size:17px;
+  letter-spacing:1px;
 }
 
-.browser-title{
-  min-width:0;
-  letter-spacing:.04em;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+.browser-subtitle{
+  font-size:11px;
+  font-weight:bold;
 }
 
-.browser-window-controls{
+.browser-window-buttons{
   display:flex;
   gap:4px;
-  flex-shrink:0;
 }
 
-.browser-window-control{
+.browser-window-buttons span{
   width:23px;
   height:23px;
   display:flex;
@@ -126,20 +121,15 @@ a{
   border:2px solid var(--blue);
   background:var(--paper);
   color:var(--blue);
-  font-family:monospace;
   font-size:11px;
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
 
- .browser-window-control:hover,
-.browser-window-control:active{
-  background:var(--blue);
-  color:var(--paper);
-  transform:translate(-1px,-1px);
-}
-
-.browser-window-control:active{
-  box-shadow:inset 2px 2px 0 rgba(21,23,47,.45);
-  transform:translate(0,0);
+.browser-window-buttons span:active{
+  transform:translate(2px,2px);
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
 }
 
 .browser-menu{
@@ -147,13 +137,13 @@ a{
   gap:20px;
   padding:6px 10px;
   border-bottom:2px solid var(--blue);
-  font-family:Arial,Helvetica,sans-serif;
   font-size:12px;
   font-weight:bold;
 }
 
 .browser-menu span{
-  cursor:default;
+  cursor:pointer;
+  transition:color .08s ease;
 }
 
 .browser-menu span:hover{
@@ -166,55 +156,50 @@ a{
   gap:6px;
   align-items:center;
   padding:7px;
-  background:var(--paper);
 }
 
 .browser-control{
   width:31px;
   height:27px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
   display:flex;
   align-items:center;
   justify-content:center;
+  border:2px solid var(--blue);
+  background:var(--paper);
   font-weight:bold;
-  font-size:13px;
   cursor:pointer;
-  transition:
-    background .12s,
-    color .12s,
-    transform .12s;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
 
-.browser-control:hover{
-  background:var(--blue);
-  color:var(--paper);
-  transform:translate(-1px,-1px);
+.browser-control:active{
+  transform:translate(2px,2px);
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
 }
 
 .browser-address{
   min-width:0;
   height:27px;
-  border:2px solid var(--blue);
-  background:#f1e9d0;
-  color:var(--blue);
   display:flex;
   align-items:center;
-  padding:0 8px;
-  font-family:monospace;
-  font-size:12px;
+  padding:0 9px;
+  border:2px solid var(--blue);
+  background:#eee5ce;
+  color:#303249;
   overflow:hidden;
   white-space:nowrap;
   text-overflow:ellipsis;
+  font-family:monospace;
+  font-size:11px;
 }
 
 .browser-date{
-  font-size:10px;
   text-align:right;
-  justify-self:end;
-  white-space:nowrap;
   font-family:monospace;
+  font-size:10px;
+  line-height:1.35;
+  font-weight:bold;
+  padding-right:2px;
 }
 
 /* =========================================================
@@ -246,51 +231,57 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:10px;
   padding:5px 7px;
   background:var(--orange);
-  border-bottom:var(--border);
   color:var(--blue);
-  font-family:Arial,Helvetica,sans-serif;
-  font-weight:bold;
-  letter-spacing:.8px;
   font-size:14px;
-  line-height:1.4;
+  font-weight:bold;
+  letter-spacing:.06em;
+  text-transform:uppercase;
 }
 
 .panel-title-main{
   display:flex;
   align-items:center;
+  gap:8px;
   min-width:0;
-  padding:3px 8px;
-  min-height:26px;
-  border:2px solid currentColor;
-  background:var(--paper);
-  color:var(--blue);
-  line-height:1.2;
 }
 
 .panel-title-icon{
-  display:none;
+  width:24px;
+  height:24px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex:0 0 auto;
 }
 
 .window-controls{
   display:flex;
-  gap:4px;
-  flex-shrink:0;
+  gap:5px;
+  flex:0 0 auto;
 }
 
 .window-control{
-  width:20px;
-  height:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:24px;
+  height:24px;
   border:2px solid var(--blue);
   background:var(--paper);
   color:var(--blue);
-  font-family:monospace;
-  font-size:11px;
-  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:
+    background .12s,
+    color .12s,
+    transform .12s;
 }
 
  .window-control:hover,
@@ -356,10 +347,9 @@ a{
 
 .nav{
   margin-top:14px;
-  padding-top:10px;
-  border-top:2px dashed var(--blue);
   display:flex;
   flex-direction:column;
+  gap:5px;
 }
 
 .nav a{
@@ -367,22 +357,20 @@ a{
   align-items:center;
   min-height:38px;
   padding:6px 8px;
-  color:var(--blue);
-  text-decoration:none;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:16px;
+  border:2px solid transparent;
   font-weight:bold;
-  letter-spacing:.3px;
-  line-height:1.4;
-  border:0;
+  font-size:14px;
+  transition:
+    background .12s,
+    color .12s,
+    border-color .12s;
 }
 
 .nav a:hover,
 .nav a.active{
   background:var(--orange);
   color:var(--white);
-  outline:2px solid var(--blue);
-  border:0;
+  border-color:var(--blue);
 }
 
 /* =========================================================
@@ -418,17 +406,20 @@ a{
 .section-head-left{
   display:flex;
   align-items:center;
+  gap:8px;
   min-width:0;
-  padding:3px 8px;
-  min-height:26px;
-  border:2px solid currentColor;
-  background:var(--paper);
-  color:var(--blue);
-  line-height:1.2;
 }
 
 .section-head-icon{
-  display:none;
+  width:24px;
+  height:24px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex:0 0 auto;
 }
 
 .section-head-text{
@@ -802,14 +793,22 @@ a{
 
 }
 
-@media(max-width:700px){
+@media(max-width:850px){
+
+  .browser-menu{
+    display:none;
+  }
 
   .browser-address-row{
     grid-template-columns:
       31px
-      31px
-      31px
-      minmax(0,1fr);
+      minmax(0,1fr)
+      31px;
+  }
+
+  .browser-address-row
+  .browser-control:nth-child(2){
+    display:none;
   }
 
   .browser-date{
@@ -853,19 +852,7 @@ a{
 
 @media(max-width:480px){
 
-  .browser-menu{
-    gap:12px;
-  }
-
-  .browser-address-row{
-    grid-template-columns:
-      31px
-      31px
-      minmax(0,1fr);
-  }
-
-  .browser-address-row
-  .browser-control:nth-child(3){
+  .browser-subtitle{
     display:none;
   }
 
@@ -892,25 +879,19 @@ a{
 
       <div class="browser-brand">
 
-        <div class="browser-title">
-          QM ARCHIVE // A SMALL SPACE FOR ORDINARY DAYS.
-        </div>
+        QM ARCHIVE
+
+        <span class="browser-subtitle">
+          // A SMALL SPACE FOR ORDINARY DAYS.
+        </span>
 
       </div>
 
-      <div class="browser-window-controls">
+      <div class="browser-window-buttons">
 
-        <div class="browser-window-control">
-          −
-        </div>
-
-        <div class="browser-window-control">
-          □
-        </div>
-
-        <div class="browser-window-control">
-          ×
-        </div>
+        <span>—</span>
+        <span>□</span>
+        <span>×</span>
 
       </div>
 
@@ -945,7 +926,12 @@ a{
         https://qmarchive.github.io/writings/
       </div>
 
-      <div class="browser-date" id="browserDate"></div>
+      <div class="browser-date">
+
+        <span id="browserDate">26 SEP 2026</span><br>
+        <span id="browserTime">19:03</span>
+
+      </div>
 
     </div>
 
@@ -968,6 +954,10 @@ a{
         <div class="panel-title">
 
           <div class="panel-title-main">
+
+            <div class="panel-title-icon">
+              S
+            </div>
 
             <span>
               SYSTEM INFO
@@ -1065,6 +1055,10 @@ a{
       <div class="section-head">
 
         <div class="section-head-left">
+
+          <div class="section-head-icon">
+            W
+          </div>
 
           <div class="section-head-text">
 
@@ -1293,41 +1287,42 @@ a{
 
 function updateBrowserDate(){
 
-  const el =
+  const now =
+    new Date();
+
+  const time =
+    String(now.getHours()).padStart(2,"0") + ":" +
+    String(now.getMinutes()).padStart(2,"0") + ":" +
+    String(now.getSeconds()).padStart(2,"0");
+
+  const browserTime =
+    document.getElementById(
+      "browserTime"
+    );
+
+  const browserDate =
     document.getElementById(
       "browserDate"
     );
 
-  if(!el) return;
+  if(browserTime){
+    browserTime.textContent =
+      time.slice(0,5);
+  }
 
-  const now =
-    new Date();
+  if(browserDate){
 
-  const day =
-    String(
-      now.getDate()
-    ).padStart(2,"0");
+    browserDate.textContent =
+      now.toLocaleDateString(
+        "en-GB",
+        {
+          day:"2-digit",
+          month:"short",
+          year:"numeric"
+        }
+      ).toUpperCase();
 
-  const month =
-    String(
-      now.getMonth() + 1
-    ).padStart(2,"0");
-
-  const year =
-    now.getFullYear();
-
-  const hours =
-    String(
-      now.getHours()
-    ).padStart(2,"0");
-
-  const minutes =
-    String(
-      now.getMinutes()
-    ).padStart(2,"0");
-
-  el.innerHTML =
-    `${day}.${month}.${year}<br>${hours}:${minutes}`;
+  }
 
 }
 
@@ -1335,7 +1330,7 @@ updateBrowserDate();
 
 setInterval(
   updateBrowserDate,
-  60000
+  1000
 );
 
 
