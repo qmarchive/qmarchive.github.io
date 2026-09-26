@@ -1763,220 +1763,6 @@ a[href]:hover{
 
 
 /* =========================================================
-   FIXED MUSIC PLAYER
-========================================================= */
-
-.music-player{
-
-  position:fixed;
-
-  width:
-    min(940px, calc(100% - 28px));
-
-  left:50%;
-
-  right:auto;
-
-  bottom:10px;
-
-  transform:translateX(-50%);
-
-  z-index:10000;
-
-  display:grid;
-
-  grid-template-columns:
-    auto
-    minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
-    auto;
-
-  gap:9px;
-
-  align-items:center;
-
-  padding:
-    6px 8px;
-
-  background:var(--paper);
-
-  border:
-    3px solid var(--blue);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-}
-
-
-.music-icon{
-
-  width:35px;
-
-  height:35px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:var(--orange);
-
-  border:
-    3px solid var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-}
-
-
-.music-info{
-
-  min-width:0;
-
-}
-
-
-.music-label{
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  margin-bottom:2px;
-
-}
-
-
-.music-title{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
-  line-height:1.4;
-
-  font-weight:bold;
-
-}
-
-
-.music-artist{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  margin-top:2px;
-
-  color:var(--teal);
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  font-weight:bold;
-
-}
-
-
-.music-controls{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.music-button{
-
-  width:33px;
-
-  height:29px;
-
-  border:
-    3px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-
-.music-button:hover{
-
-  background:var(--orange);
-
-  color:var(--white);
-
-}
-
-
-.music-progress{
-
-  min-width:0;
-
-}
-
-
-.music-progress input{
-
-  width:100%;
-
-  accent-color:var(--orange);
-
-}
-
-
-.music-time{
-
-  min-width:72px;
-
-  text-align:center;
-
-  font-size:9px;
-
-  line-height:1.4;
-
-}
-
-
-.music-volume{
-
-  width:100px;
-
-}
-
-
-.music-volume input{
-
-  width:100%;
-
-  accent-color:var(--teal);
-
-}
-
-
-/* =========================================================
    TABLET
 ========================================================= */
 
@@ -1995,25 +1781,6 @@ a[href]:hover{
   .tracklist{
 
     max-height:316px;
-
-  }
-
-
-  .music-player{
-
-    grid-template-columns:
-      auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
-  }
-
-
-  .music-volume{
-
-    display:none;
 
   }
 
@@ -2145,38 +1912,6 @@ a[href]:hover{
   .track-row{
 
     min-width:760px;
-
-  }
-
-
-  .music-player{
-
-    width:
-      calc(100% - 10px);
-
-    left:50%;
-
-    right:auto;
-
-    bottom:5px;
-
-    transform:translateX(-50%);
-
-    grid-template-columns:
-      auto
-      minmax(0,1fr)
-      auto;
-
-    gap:5px;
-
-  }
-
-
-  .music-progress,
-  .music-time,
-  .music-volume{
-
-    display:none;
 
   }
 
@@ -2748,122 +2483,6 @@ a[href]:hover{
 
 
 
-<!-- =======================================================
-     FIXED MUSIC PLAYER
-======================================================= -->
-
-<div class="music-player">
-
-
-  <div class="music-icon">
-    ♪
-  </div>
-
-
-  <div class="music-info">
-
-
-    <div class="music-label">
-      NOW PLAYING
-    </div>
-
-
-    <div
-      class="music-title"
-      id="musicTitle"
-    >
-      —
-    </div>
-
-
-    <div
-      class="music-artist"
-      id="musicArtist"
-    >
-      —
-    </div>
-
-
-  </div>
-
-
-  <div class="music-controls">
-
-
-    <button
-      class="music-button"
-      id="prevButton"
-      type="button"
-    >
-      |◀
-    </button>
-
-
-    <button
-      class="music-button"
-      id="playButton"
-      type="button"
-    >
-      ▶
-    </button>
-
-
-    <button
-      class="music-button"
-      id="nextButton"
-      type="button"
-    >
-      ▶|
-    </button>
-
-
-  </div>
-
-
-  <div class="music-progress">
-
-
-    <input
-      id="progress"
-      type="range"
-      min="0"
-      max="100"
-      value="0"
-      step="0.1"
-    >
-
-
-  </div>
-
-
-  <div
-    class="music-time"
-    id="musicTime"
-  >
-    00:00 / 00:00
-  </div>
-
-
-  <div class="music-volume">
-
-
-    <input
-      id="volume"
-      type="range"
-      min="0"
-      max="1"
-      value=".7"
-      step=".01"
-    >
-
-
-  </div>
-
-
-</div>
-
-
-
 <audio
   id="audio"
   preload="metadata"
@@ -3233,6 +2852,31 @@ async function loadMusicArchive(){
       .filter(
         track =>
           track.src
+      )
+      .sort(
+        (a,b) => {
+
+          const dateA =
+            parseDate(a.date);
+
+          const dateB =
+            parseDate(b.date);
+
+          if(dateA === dateB){
+            return a.index - b.index;
+          }
+
+          if(!dateA){
+            return -1;
+          }
+
+          if(!dateB){
+            return 1;
+          }
+
+          return dateA - dateB;
+
+        }
       );
 
 
@@ -3502,42 +3146,42 @@ const audio =
 
 const playButton =
   document.getElementById(
-    "playButton"
+    "mainPlayButton"
   );
 
 const prevButton =
   document.getElementById(
-    "prevButton"
+    "mainPrevButton"
   );
 
 const nextButton =
   document.getElementById(
-    "nextButton"
+    "mainNextButton"
   );
 
 const progress =
   document.getElementById(
-    "progress"
+    "mainProgress"
   );
 
 const volume =
   document.getElementById(
-    "volume"
+    "mainVolume"
   );
 
 const musicTitle =
   document.getElementById(
-    "musicTitle"
+    "mainMusicTitle"
   );
 
 const musicArtist =
   document.getElementById(
-    "musicArtist"
+    "mainMusicArtist"
   );
 
 const musicTime =
   document.getElementById(
-    "musicTime"
+    "mainTime"
   );
 
 
@@ -3904,9 +3548,6 @@ function renderAlbums(){
       Album Collection
     </div>
 
-    <div class="content-subheading">
-      Những album đã nghe, đang nghe, và sẽ còn nghe.
-    </div>
 
 
     <div class="album-table">
@@ -4167,32 +3808,6 @@ function renderTracklist(){
         album
           ? escapeHTML(album.title)
           : "Tracklist"
-      }
-
-    </div>
-
-
-    <div class="content-subheading">
-
-      ${
-        album
-          ? (
-              escapeHTML(
-                album.artist ||
-                "Unknown artist"
-              ) +
-              (
-                album.releaseDate ||
-                album.date
-                  ? "  //  " +
-                    escapeHTML(
-                      album.releaseDate ||
-                      album.date
-                    )
-                  : ""
-              )
-            )
-          : "Tất cả những bài đang nằm trong kho nhạc."
       }
 
     </div>
@@ -4576,69 +4191,6 @@ nextButton.addEventListener(
 
   }
 );
-
-
-/* =========================================================
-   MAIN PLAYER BUTTONS
-========================================================= */
-
-document
-  .getElementById(
-    "mainPlayButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      if(audio.paused){
-
-        audio.play()
-          .catch(() => {});
-
-      }else{
-
-        audio.pause();
-
-      }
-
-    }
-  );
-
-
-document
-  .getElementById(
-    "mainPrevButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      loadTrack(
-        currentTrack - 1,
-        true,
-        0
-      );
-
-    }
-  );
-
-
-document
-  .getElementById(
-    "mainNextButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      loadTrack(
-        currentTrack + 1,
-        true,
-        0
-      );
-
-    }
-  );
 
 
 /* =========================================================
