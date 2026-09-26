@@ -2,16 +2,25 @@
   "music": [
     {
       "title": "Between the Takes",
+      "date": "24.01.2026",
+      "album": "Where the Cat goes at Night",
+      "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
       "file": "between-the-takes.mp3"
     },
     {
       "title": "Wednesday's Origami",
+      "date": "24.01.2026",
+      "album": "Where the Cat goes at Night",
+      "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
       "file": "wednesdays-origami.mp3"
     },
     {
       "title": "Where the Cat Goes at Night",
+      "date": "24.01.2026",
+      "album": "Where the Cat goes at Night",
+      "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
       "file": "where-the-cat-goes-at-night.mp3"
     }
