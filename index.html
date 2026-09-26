@@ -122,6 +122,8 @@ a[href]:hover{font-weight:bold}
   background:#ddd3b7;
 }
 .browser-menu{display:flex;gap:20px;padding:6px 10px;border-bottom:2px solid var(--blue);font-size:12px;font-weight:bold}
+.browser-menu span{cursor:pointer;transition:color .08s ease}
+.browser-menu span:hover{color:var(--orange)}
 .browser-address-row{
   display:grid;grid-template-columns:31px 31px 31px minmax(0,1fr) 175px;
   gap:6px;align-items:center;padding:7px;
@@ -142,7 +144,7 @@ a[href]:hover{font-weight:bold}
   border:2px solid var(--blue);background:#eee5ce;color:#303249;overflow:hidden;
   white-space:nowrap;text-overflow:ellipsis;font-family:monospace;font-size:11px;
 }
-.browser-date{text-align:center;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold}
+.browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
 
 .layout{
   display:grid;grid-template-columns:285px minmax(0,1fr) 315px;
