@@ -73,7 +73,6 @@
       "file": "melting-glass.mp3"
     },
     {
-      
       "title": "The Crease",
       "date": "14.03.2026",
       "album": "Zarathustra's Forgotten Headphones",
@@ -82,13 +81,59 @@
       "file": "the-crease.mp3"
     },
     {
-      
       "title": "Dimension Silente",
       "date": "14.03.2026",
       "album": "Zarathustra's Forgotten Headphones",
       "cover": "covers/zarathustras-forgotten-headphones.png",
       "artist": "Orient.bakureever",
       "file": "dimension-silente.mp3"
-    }
+    },
+    {
+      "title": "Ghost Frequency",
+      "date": "14.03.2026",
+      "album": "Noise",
+      "cover": "covers/noise.png",
+      "artist": "Orient.bakureever",
+      "file": "ghost-frequency.mp3"
+    },
+    {
+      "title": "Beyond My Eyes",
+      "date": "14.03.2026",
+      "album": "Noise",
+      "cover": "covers/noise.png",
+      "artist": "Orient.bakureever",
+      "file": "beyond-my-eyes.mp3"
+    },
+    {
+      "title": "La Vida Loca",
+      "date": "14.03.2026",
+      "album": "Noise",
+      "cover": "covers/noise.png",
+      "artist": "Orient.bakureever",
+      "file": "lavidaloca.mp3"
+    },
+    {
+      "title": "1314925",
+      "date": "14.03.2026",
+      "album": "Noise",
+      "cover": "covers/noise.png",
+      "artist": "Orient.bakureever",
+      "file": "1314925.mp3"
+    },
+    {
+      "title": "Monsoon",
+      "date": "14.03.2026",
+      "album": "Noise",
+      "cover": "covers/noise.png",
+      "artist": "Orient.bakureever",
+      "file": "monsoon.mp3"
+    },
+    {
+      "title": "Done",
+      "date": "14.03.2026",
+      "album": "Noise",
+      "cover": "covers/noise.png",
+      "artist": "Orient.bakureever",
+      "file": "Done.mp3"
   ]
 }
