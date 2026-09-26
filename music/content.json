@@ -2,7 +2,7 @@
   "music": [
     {
       "title": "Between The Takes",
-      "date": "24.01.2026",
+      "date": "26.03.2026",
       "album": "Between The Takes",
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
@@ -10,7 +10,7 @@
     },
     {
       "title": "Wednesday's Origami",
-      "date": "24.01.2026",
+      "date": "26.03.2026",
       "album": "Between The Takes",
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
@@ -39,6 +39,30 @@
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
       "file": "it-wont-live.mp3"
+    },
+    {
+      "title": "West Lake",
+      "date": "26.03.2026",
+      "album": "Between The Takes",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "westlake.mp3"
+    },
+    {
+      "title": "Half Step",
+      "date": "26.03.2026",
+      "album": "Between The Takes",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "half-step.mp3"
+    },
+    {
+      "title": "Verbogen",
+      "date": "24.01.2026",
+      "album": "Where the Cat goes at Night",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "verbogen.mp3"
     }
   ]
 }
