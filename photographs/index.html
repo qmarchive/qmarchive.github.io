@@ -317,257 +317,54 @@ a[href]:hover{
 ========================================================= */
 
 .browser{
-
-  border:var(--border);
-
-  background:var(--paper);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  margin-bottom:14px;
-
+  border:var(--border);background:var(--paper);box-shadow:5px 5px 0 var(--blue);margin-bottom:14px;
 }
-
-
 .browser-top{
-
-  min-height:39px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 8px;
-
-  background:var(--orange);
-
-  border-bottom:var(--border);
-
+  min-height:39px;display:flex;align-items:center;justify-content:space-between;
+  padding:5px 8px;background:var(--orange);border-bottom:var(--border);
 }
-
-
-.browser-brand{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  color:var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-weight:bold;
-
-  font-size:17px;
-
-  letter-spacing:1px;
-
-}
-
-
+.browser-brand{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:bold;font-size:17px;letter-spacing:1px}
 .browser-brand-icon{
-
-  width:24px;
-
-  height:24px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--teal);
-
-  color:var(--white);
-
-  font-family:monospace;
-
-  font-size:12px;
-
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--teal);color:var(--white);font-size:12px;
 }
-
-
-.browser-subtitle{
-
-  font-size:11px;
-
-  font-weight:bold;
-
-}
-
-
-.browser-window-buttons{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
+.browser-subtitle{font-size:11px;font-weight:bold}
+.browser-window-buttons{display:flex;gap:4px}
 .browser-window-buttons span{
-
-  width:23px;
-
-  height:23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-size:11px;
-
+  width:23px;height:23px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);color:var(--blue);font-size:11px;
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
-
-
 .browser-window-buttons span:active{
-
   transform:translate(2px,2px);
-
-  box-shadow:none;
-
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
 }
-
-
-.browser-menu{
-
-  display:flex;
-
-  gap:20px;
-
-  padding:
-    6px 10px;
-
-  border-bottom:2px solid var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-size:12px;
-
-  font-weight:bold;
-
-}
-
-.browser-menu span{
-  cursor:default;
-}
-
-.browser-menu span:hover{
-  color:var(--orange);
-}
-
-
+.browser-menu{display:flex;gap:20px;padding:6px 10px;border-bottom:2px solid var(--blue);font-size:12px;font-weight:bold}
+.browser-menu span{cursor:pointer;transition:color .08s ease}
+.browser-menu span:hover{color:var(--orange)}
 .browser-address-row{
-
-  display:grid;
-
-  grid-template-columns:
-    31px
-    31px
-    31px
-    minmax(0,1fr)
-    175px;
-
-  gap:6px;
-
-  align-items:center;
-
-  padding:7px;
-
+  display:grid;grid-template-columns:31px 31px 31px minmax(0,1fr) 175px;
+  gap:6px;align-items:center;padding:7px;
 }
-
-
 .browser-control{
-
-  width:31px;
-
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-
+  width:31px;height:27px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);font-weight:bold;
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
-
-
+.browser-control:active{
+  transform:translate(2px,2px);
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
+}
 .browser-address{
-
-  min-width:0;
-
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  padding:
-    0 9px;
-
-  border:2px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:#303249;
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-family:monospace;
-
-  font-size:11px;
-
+  min-width:0;height:27px;display:flex;align-items:center;padding:0 9px;
+  border:2px solid var(--blue);background:#eee5ce;color:#303249;overflow:hidden;
+  white-space:nowrap;text-overflow:ellipsis;font-family:monospace;font-size:11px;
 }
-
-
-.browser-date{
-
-  text-align:right;
-
-  font-family:monospace;
-
-  font-size:10px;
-
-  line-height:1.35;
-
-  font-weight:bold;
-
-}
-
+.browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
 
 /* =========================================================
    MAIN LAYOUT
@@ -1914,91 +1711,35 @@ a[href]:hover{
 ======================================================= -->
 
 <header class="browser">
-
-
   <div class="browser-top">
-
-
     <div class="browser-brand">
-
       QM ARCHIVE
       <span class="browser-subtitle">// A SMALL SPACE FOR ORDINARY DAYS.</span>
-
     </div>
-
-
     <div class="browser-window-buttons">
-
-      <span>—</span>
-      <span>□</span>
-      <span>×</span>
-
+      <span>—</span><span>□</span><span>×</span>
     </div>
-
-
   </div>
-
 
   <div class="browser-menu">
-
-    <span>File</span>
-    <span>Edit</span>
-    <span>View</span>
-    <span>Favorites</span>
-    <span>Tools</span>
-    <span>Help</span>
-
+    <span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span>
   </div>
-
 
   <div class="browser-address-row">
+    <div class="browser-control">&lt;</div>
+    <div class="browser-control">&gt;</div>
+    <div class="browser-control">^</div>
 
-
-    <div class="browser-control">
-      &lt;
-    </div>
-
-
-    <div class="browser-control">
-      &gt;
-    </div>
-
-
-    <div class="browser-control">
-      ^
-    </div>
-
-
-    <div
-      class="browser-address"
-      id="browserAddress"
-    >
-
+    <div class="browser-address">
       https://qmarchive.github.io/photographs/
-
     </div>
-
 
     <div class="browser-date">
-
-      <span id="browserDate">
-        22 SEP 2026
-      </span>
-
-      <br>
-
-      <span id="browserTime">
-        00:00
-      </span>
-
+      <span id="browserDate">22 SEP 2026</span><br>
+      <span id="browserTime">13:31</span>
     </div>
-
-
   </div>
-
-
 </header>
-
 
 
 <!-- =======================================================
@@ -2825,7 +2566,7 @@ function parseArchiveDate(value){
 
   match =
     text.match(
-      /^(\d{1,2})[/](\d{1,2})[/](\d{4})$/
+      /^(\d{1,2})[/](\d{1,2})[.](\d{4})$/
     );
 
 
@@ -3337,80 +3078,47 @@ async function renderArticle(
 
 function updateClock(){
 
-  const now =
-    new Date();
-
+  const now = new Date();
 
   const time =
-    String(
-      now.getHours()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getMinutes()
-    ).padStart(2,"0") +
-
-    ":" +
-
-    String(
-      now.getSeconds()
-    ).padStart(2,"0");
-
+    String(now.getHours()).padStart(2,"0") + ":" +
+    String(now.getMinutes()).padStart(2,"0") + ":" +
+    String(now.getSeconds()).padStart(2,"0");
 
   const browserTime =
-    document.getElementById(
-      "browserTime"
-    );
-
+    document.getElementById("browserTime");
 
   const browserDate =
-    document.getElementById(
-      "browserDate"
-    );
-
+    document.getElementById("browserDate");
 
   const cassetteYear =
-    document.getElementById(
-      "cassetteYear"
-    );
-
+    document.getElementById("cassetteYear");
 
   if(browserTime){
-
     browserTime.textContent =
       time.slice(0,5);
-
   }
-
 
   if(browserDate){
 
     browserDate.textContent =
-      now
-        .toLocaleDateString(
-          "en-GB",
-          {
-            day:"2-digit",
-            month:"short",
-            year:"numeric"
-          }
-        )
-        .toUpperCase();
+      now.toLocaleDateString(
+        "en-GB",
+        {
+          day:"2-digit",
+          month:"short",
+          year:"numeric"
+        }
+      ).toUpperCase();
 
   }
 
-
   if(cassetteYear){
-
     cassetteYear.textContent =
       now.getFullYear();
-
   }
 
 }
-
 
 
 /* =========================================================
