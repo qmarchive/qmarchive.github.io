@@ -54,6 +54,12 @@ body::before{
     );
 }
 
+.page{
+  width:100%;
+  min-height:100vh;
+  padding:10px 14px 150px;
+}
+
 .browser{
   width:100%;
   margin:0 0 14px;
@@ -76,14 +82,6 @@ body::before{
   letter-spacing:.8px;
 }
 
-.browser-icon{
-  width:24px;height:24px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--teal);color:var(--white);
-  border:2px solid var(--blue);
-  font-size:12px;font-weight:bold;
-}
-
 .browser-brand{font-size:14px;font-weight:bold;}
 .browser-sub{font-size:13px;letter-spacing:.7px;}
 
@@ -95,7 +93,16 @@ body::before{
   background:var(--paper);
 }
 
-.browser-menu span{margin-right:0;font-weight:bold;font-size:12px;}
+.browser-menu span{
+  margin-right:0;
+  font-weight:bold;
+  font-size:12px;
+  cursor:default;
+}
+
+.browser-menu span:hover{
+  color:var(--orange);
+}
 
 .browser-address-row{
   display:grid;
@@ -125,12 +132,14 @@ body::before{
   overflow:hidden;white-space:nowrap;
 }
 
-.browser-date{text-align:center;font-family:monospace;font-size:11px;font-weight:bold;line-height:1.3;}
-
-.page{
-  width:100%;
-  min-height:100vh;
-  padding:10px 14px 150px;
+.browser-date{
+  text-align:right;
+  padding-right:2px;
+  font-family:monospace;
+  font-size:11px;
+  font-weight:bold;
+  line-height:1.3;
+  white-space:nowrap;
 }
 
 .layout{
@@ -145,15 +154,26 @@ body::before{
 .panel{border:var(--border);background:var(--paper);box-shadow:5px 5px 0 var(--blue);min-width:0;}
 
 .panel-title{
-  min-height:38px;display:flex;align-items:center;padding:5px 7px;
-  background:var(--orange);border-bottom:var(--border);color:var(--blue);
-  font-size:14px;font-weight:bold;letter-spacing:.8px;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  padding:5px 7px;
+  background:var(--orange);
+  border-bottom:var(--border);
+  color:var(--blue);
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:.8px;
 }
 
-.panel-icon{
-  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
-  margin-right:9px;background:#eee5cb;border:2px solid var(--blue);
-  font-size:12px;font-weight:bold;
+.panel-title-label{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:2px 7px;
+  border:2px solid var(--blue);
+  background:#eee5cb;
+  line-height:1.2;
 }
 
 .sidebar{min-width:0;}
@@ -287,7 +307,6 @@ body::before{
 
 @media(max-width:800px){
 
-  /* MOBILE LAYOUT */
   .page{
     padding-left:10px;
     padding-right:10px;
@@ -307,7 +326,6 @@ body::before{
     width:100%;
   }
 
-  /* MOBILE BROWSER */
   .browser-top{
     min-height:39px;
     flex-wrap:nowrap;
@@ -350,7 +368,6 @@ body::before{
     display:none;
   }
 
-  /* NOTES CONTENT */
   .notes-intro{
     align-items:stretch;
     flex-direction:column;
@@ -362,7 +379,6 @@ body::before{
     max-width:none;
   }
 
-  /* MUSIC PLAYER */
   .music-player{
     width:calc(100% - 24px);
     grid-template-columns:45px minmax(0,1fr);
@@ -383,12 +399,6 @@ body::before{
 
   .browser-top{
     gap:7px;
-  }
-
-  .browser-icon{
-    width:24px;
-    height:24px;
-    flex:0 0 24px;
   }
 
   .browser-brand{
@@ -480,7 +490,6 @@ body::before{
 
 <div class="browser">
   <div class="browser-top">
-    <div class="browser-icon">QM</div>
     <div class="browser-brand">QM ARCHIVE</div>
     <div class="browser-sub">// A SMALL SPACE FOR ORDINARY DAYS.</div>
     <div style="margin-left:auto;display:flex;gap:7px;">
@@ -518,8 +527,7 @@ body::before{
     <div class="panel">
 
       <div class="panel-title">
-        <div class="panel-icon">S</div>
-        SYSTEM INFO
+        <div class="panel-title-label">SYSTEM INFO</div>
         <div style="margin-left:auto;" class="browser-button">×</div>
       </div>
 
@@ -555,8 +563,7 @@ body::before{
   <main class="panel notes-panel">
 
     <div class="panel-title">
-      <div class="panel-icon">N</div>
-      NOTES
+      <div class="panel-title-label">NOTES</div>
       <div style="margin-left:auto;display:flex;gap:7px;">
         <div class="browser-button">—</div>
         <div class="browser-button">□</div>
@@ -1390,14 +1397,6 @@ function restoreMusicState(){
 
   volume.value =
     musicState.volume;
-
-  /*
-    Important:
-    The saved playing state is restored as state only.
-    It does NOT automatically start playback.
-    Music starts only from an intentional Music Player
-    interaction.
-  */
 
   loadTrack(
     musicState.track,
