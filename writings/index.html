@@ -25,7 +25,11 @@
 
 *{box-sizing:border-box;}
 
-html,body{margin:0;padding:0;min-height:100%;}
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+}
 
 body{
   background:var(--cream);
@@ -52,7 +56,14 @@ body::before{
     );
 }
 
-a{color:inherit;text-decoration:none;}
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* =========================================================
+   PAGE / MASTER OUTER LAYOUT
+========================================================= */
 
 .page{
   width:100%;
@@ -60,81 +71,171 @@ a{color:inherit;text-decoration:none;}
   padding:10px 14px 150px;
 }
 
+/* =========================================================
+   BROWSER — SYNCHRONIZED WITH PHOTOGRAPHS
+========================================================= */
+
 .browser{
   border:var(--border);
   background:var(--paper);
   box-shadow:5px 5px 0 var(--blue);
-  margin-bottom:14px;
+  margin:0 auto 14px;
   max-width:1600px;
-  margin-left:auto;
-  margin-right:auto;
 }
 
 .browser-top{
   min-height:39px;
   display:flex;
   align-items:center;
-  gap:8px;
+  justify-content:space-between;
+  gap:10px;
   padding:5px 8px;
-  background:var(--blue);
-  color:var(--white);
-  font-size:12px;
+  background:var(--orange);
+  color:var(--blue);
+  font-size:14px;
   font-weight:bold;
 }
 
-.browser-dots{display:flex;gap:5px;}
-
-.browser-dots span{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--white);
-  display:block;
-  transition:background .12s,color .12s,transform .12s;
+.browser-brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
 }
 
-.browser-dots:hover span{
-  background:var(--orange);
-  transform:translateY(-1px);
+.browser-brand-icon{
+  width:24px;
+  height:24px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex:0 0 auto;
 }
 
 .browser-title{
-  margin-left:4px;
+  min-width:0;
   letter-spacing:.04em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-.browser-address{
-  min-height:38px;
+.browser-window-controls{
+  display:flex;
+  gap:5px;
+  flex:0 0 auto;
+}
+
+.browser-window-control{
+  width:24px;
+  height:24px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
   display:flex;
   align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:
+    background .12s,
+    color .12s,
+    transform .12s;
+}
+
+.browser-window-control:hover{
+  background:var(--blue);
+  color:var(--paper);
+  transform:translate(-1px,-1px);
+}
+
+.browser-menu{
+  min-height:34px;
+  display:flex;
+  align-items:center;
+  gap:20px;
   padding:6px 10px;
-  gap:8px;
+  border-top:2px solid var(--blue);
+  border-bottom:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  font-size:12px;
+  font-weight:bold;
+  overflow:auto;
+  white-space:nowrap;
+}
+
+.browser-menu span{
+  cursor:default;
+}
+
+.browser-menu span:hover{
+  color:var(--orange-dark);
+}
+
+.browser-address-row{
+  display:grid;
+  grid-template-columns:31px 31px 31px minmax(0,1fr) 175px;
+  gap:6px;
+  align-items:center;
+  padding:7px;
   background:var(--paper);
 }
 
-.address-label{
-  font-size:11px;
+.browser-control{
+  width:31px;
+  height:27px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-weight:bold;
-  text-transform:uppercase;
+  font-size:13px;
+  cursor:pointer;
+  transition:
+    background .12s,
+    color .12s,
+    transform .12s;
 }
 
-.address{
-  flex:1;
+.browser-control:hover{
+  background:var(--blue);
+  color:var(--paper);
+  transform:translate(-1px,-1px);
+}
+
+.browser-address{
   min-width:0;
+  height:27px;
   border:2px solid var(--blue);
-  background:#f0e8d1;
-  padding:5px 8px;
+  background:#f1e9d0;
+  color:var(--blue);
+  display:flex;
+  align-items:center;
+  padding:0 8px;
   font-family:monospace;
   font-size:12px;
   overflow:hidden;
   white-space:nowrap;
-  transition:background .12s,color .12s,border-color .12s;
+  text-overflow:ellipsis;
 }
 
-.address:hover{
-  background:var(--blue);
-  color:var(--white);
+.browser-date{
+  font-size:10px;
+  text-align:right;
+  white-space:nowrap;
+  font-family:monospace;
 }
+
+/* =========================================================
+   MASTER GRID
+========================================================= */
 
 .layout{
   display:grid;
@@ -145,10 +246,15 @@ a{color:inherit;text-decoration:none;}
   align-items:start;
 }
 
+/* =========================================================
+   SYSTEM INFO — SYNCHRONIZED WITH PHOTOGRAPHS
+========================================================= */
+
 .panel{
   border:var(--border);
   background:var(--paper);
   box-shadow:5px 5px 0 var(--blue);
+  min-width:0;
 }
 
 .panel-title{
@@ -156,27 +262,68 @@ a{color:inherit;text-decoration:none;}
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:var(--blue);
-  color:var(--white);
+  gap:10px;
   padding:5px 7px;
+  background:var(--orange);
+  color:var(--blue);
   font-size:14px;
   font-weight:bold;
   letter-spacing:.06em;
   text-transform:uppercase;
 }
 
-.panel-title::after{
-  content:"□  −  ×";
-  font-size:10px;
-  letter-spacing:.1em;
-  opacity:.9;
+.panel-title-main{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
 }
 
-.panel-title:hover::after{
-  color:var(--orange);
+.panel-title-icon{
+  width:24px;
+  height:24px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex:0 0 auto;
 }
 
-.panel-body{padding:13px;}
+.window-controls{
+  display:flex;
+  gap:5px;
+  flex:0 0 auto;
+}
+
+.window-control{
+  width:24px;
+  height:24px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:
+    background .12s,
+    color .12s,
+    transform .12s;
+}
+
+.window-control:hover{
+  background:var(--blue);
+  color:var(--paper);
+  transform:translate(-1px,-1px);
+}
+
+.panel-body{
+  padding:13px;
+}
 
 .system-info{
   position:sticky;
@@ -193,23 +340,18 @@ a{color:inherit;text-decoration:none;}
   font-size:12px;
 }
 
-.system-line:last-child{border-bottom:0;}
-.online{color:var(--green);font-weight:bold;}
-
-.profile-mini{
-  margin-top:16px;
-  border-top:2px solid var(--blue);
-  padding-top:12px;
+.system-line:last-child{
+  border-bottom:0;
 }
 
-.profile-mini img{
-  width:100%;
-  display:block;
-  border:2px solid var(--blue);
+.online{
+  color:var(--green);
+  font-weight:bold;
 }
 
 .cassette{
   margin-top:14px;
+  padding-top:0;
   text-align:center;
 }
 
@@ -229,20 +371,24 @@ a{color:inherit;text-decoration:none;}
 }
 
 .nav{
-  margin-top:16px;
+  margin-top:14px;
   display:flex;
   flex-direction:column;
   gap:5px;
 }
 
 .nav a{
-  display:block;
+  display:flex;
+  align-items:center;
   min-height:38px;
-  padding:7px 8px;
+  padding:6px 8px;
   border:2px solid transparent;
   font-weight:bold;
   font-size:14px;
-  transition:background .12s,color .12s,border-color .12s;
+  transition:
+    background .12s,
+    color .12s,
+    border-color .12s;
 }
 
 .nav a:hover,
@@ -252,6 +398,10 @@ a{color:inherit;text-decoration:none;}
   border-color:var(--blue);
 }
 
+/* =========================================================
+   WRITINGS CONTENT — PRESERVED
+========================================================= */
+
 .writings{
   min-width:0;
   display:flex;
@@ -259,24 +409,66 @@ a{color:inherit;text-decoration:none;}
   gap:16px;
 }
 
+/*
+  The article presentation below intentionally remains
+  Writing-specific. Only the outer window/header is
+  synchronized with Photographs.
+*/
+
 .section-head{
   border:var(--border);
-  background:var(--blue);
-  color:var(--white);
-  padding:12px 14px;
+  background:var(--orange);
+  color:var(--blue);
   box-shadow:5px 5px 0 var(--blue);
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:5px 7px;
+}
+
+.section-head-left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+
+.section-head-icon{
+  width:24px;
+  height:24px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex:0 0 auto;
+}
+
+.section-head-text{
+  min-width:0;
 }
 
 .section-head h1{
   margin:0;
-  font-size:25px;
-  letter-spacing:.03em;
+  font-size:14px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
 }
 
 .section-head p{
-  margin:4px 0 0;
-  color:#ddd6c5;
-  font-size:12px;
+  margin:3px 0 0;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:normal;
+}
+
+.section-head-controls{
+  display:flex;
+  gap:5px;
+  flex:0 0 auto;
 }
 
 .content-panel{
@@ -286,7 +478,9 @@ a{color:inherit;text-decoration:none;}
   box-shadow:5px 5px 0 var(--blue);
 }
 
-.content-inner{padding:13px;}
+.content-inner{
+  padding:13px;
+}
 
 .search{
   display:flex;
@@ -297,7 +491,10 @@ a{color:inherit;text-decoration:none;}
   margin-bottom:18px;
 }
 
-.search-icon{font-size:22px;line-height:1;}
+.search-icon{
+  font-size:22px;
+  line-height:1;
+}
 
 .search input{
   width:100%;
@@ -310,7 +507,9 @@ a{color:inherit;text-decoration:none;}
   outline:none;
 }
 
-.search input:focus{border-color:var(--orange);}
+.search input:focus{
+  border-color:var(--orange);
+}
 
 .archive{
   display:grid;
@@ -388,7 +587,9 @@ a{color:inherit;text-decoration:none;}
   line-height:1.75;
 }
 
-.article-body p{margin:0 0 16px;}
+.article-body p{
+  margin:0 0 16px;
+}
 
 .article-body h1,
 .article-body h2,
@@ -416,7 +617,9 @@ a{color:inherit;text-decoration:none;}
   font-style:italic;
 }
 
-.article-body ul{padding-left:22px;}
+.article-body ul{
+  padding-left:22px;
+}
 
 .article-body a{
   color:var(--orange-dark);
@@ -433,7 +636,9 @@ a{color:inherit;text-decoration:none;}
   font-weight:bold;
 }
 
-.back:hover{background:var(--blue);}
+.back:hover{
+  background:var(--blue);
+}
 
 .footer{
   margin-top:0;
@@ -444,6 +649,10 @@ a{color:inherit;text-decoration:none;}
   font-size:11px;
   line-height:1.5;
 }
+
+/* =========================================================
+   MUSIC PLAYER — PRESERVED
+========================================================= */
 
 .music-player{
   position:fixed;
@@ -473,9 +682,14 @@ a{color:inherit;text-decoration:none;}
   font-weight:bold;
 }
 
-.music-info{min-width:0;}
+.music-info{
+  min-width:0;
+}
 
-.music-label{font-size:8px;margin-bottom:2px;}
+.music-label{
+  font-size:8px;
+  margin-bottom:2px;
+}
 
 .music-title{
   overflow:hidden;
@@ -495,7 +709,10 @@ a{color:inherit;text-decoration:none;}
   font-weight:bold;
 }
 
-.music-controls{display:flex;gap:4px;}
+.music-controls{
+  display:flex;
+  gap:4px;
+}
 
 .music-button{
   width:33px;
@@ -506,7 +723,10 @@ a{color:inherit;text-decoration:none;}
   font-family:monospace;
   font-weight:bold;
   cursor:pointer;
-  transition:background .12s,color .12s,transform .12s;
+  transition:
+    background .12s,
+    color .12s,
+    transform .12s;
 }
 
 .music-button:hover{
@@ -515,7 +735,9 @@ a{color:inherit;text-decoration:none;}
   transform:translate(-1px,-1px);
 }
 
-.music-progress{min-width:0;}
+.music-progress{
+  min-width:0;
+}
 
 .music-progress input{
   width:100%;
@@ -528,49 +750,145 @@ a{color:inherit;text-decoration:none;}
   font-size:9px;
 }
 
-.music-volume{width:100px;}
+.music-volume{
+  width:100px;
+}
 
 .music-volume input{
   width:100%;
   accent-color:var(--teal);
 }
 
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media(max-width:1200px){
+
   .music-player{
-    grid-template-columns:auto minmax(120px,1fr) auto minmax(120px,1fr) auto;
+    grid-template-columns:
+      auto
+      minmax(120px,1fr)
+      auto
+      minmax(120px,1fr)
+      auto;
   }
-  .music-volume{display:none;}
+
+  .music-volume{
+    display:none;
+  }
+
 }
 
 @media(max-width:900px){
-  .layout{grid-template-columns:1fr;}
-  .system-info{position:static;}
-  .archive{grid-template-columns:1fr;}
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .system-info{
+    position:static;
+  }
+
+  .archive{
+    grid-template-columns:1fr;
+  }
+
 }
 
 @media(max-width:850px){
+
   .music-player{
     width:calc(100% - 10px);
     left:50%;
     bottom:5px;
     transform:translateX(-50%);
-    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
     gap:5px;
   }
+
   .music-progress,
   .music-time,
-  .music-volume{display:none;}
+  .music-volume{
+    display:none;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .browser-address-row{
+    grid-template-columns:
+      31px
+      31px
+      31px
+      minmax(0,1fr);
+  }
+
+  .browser-date{
+    display:none;
+  }
+
 }
 
 @media(max-width:600px){
+
   .page{
     padding-left:10px;
     padding-right:10px;
   }
-  .layout{gap:12px;}
-  .content-inner{padding:10px;}
-  .section-head h1{font-size:21px;}
-  .article-title{font-size:24px;}
+
+  .layout{
+    gap:12px;
+  }
+
+  .content-inner{
+    padding:10px;
+  }
+
+  .section-head p{
+    display:none;
+  }
+
+  .archive{
+    grid-template-columns:1fr;
+  }
+
+  .article-title{
+    font-size:24px;
+  }
+
+}
+
+/* =========================================================
+   EXTRA SMALL
+========================================================= */
+
+@media(max-width:480px){
+
+  .browser-menu{
+    gap:12px;
+  }
+
+  .browser-address-row{
+    grid-template-columns:
+      31px
+      31px
+      minmax(0,1fr);
+  }
+
+  .browser-address-row
+  .browser-control:nth-child(3){
+    display:none;
+  }
+
+  .panel-body{
+    padding:10px;
+  }
+
 }
 
 </style>
@@ -580,44 +898,115 @@ a{color:inherit;text-decoration:none;}
 
 <div class="page">
 
+  <!-- =====================================================
+       BROWSER
+  ====================================================== -->
+
   <div class="browser">
 
     <div class="browser-top">
 
-      <div class="browser-dots">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="browser-brand">
+
+        <div class="browser-brand-icon">
+          QM
+        </div>
+
+        <div class="browser-title">
+          QM ARCHIVE // A SMALL SPACE FOR ORDINARY DAYS.
+        </div>
+
       </div>
 
-      <div class="browser-title">
-        QM ARCHIVE / WRITINGS
+      <div class="browser-window-controls">
+
+        <div class="browser-window-control">
+          −
+        </div>
+
+        <div class="browser-window-control">
+          □
+        </div>
+
+        <div class="browser-window-control">
+          ×
+        </div>
+
       </div>
 
     </div>
 
-    <div class="browser-address">
+    <div class="browser-menu">
 
-      <span class="address-label">
-        Address
-      </span>
+      <span>File</span>
+      <span>Edit</span>
+      <span>View</span>
+      <span>Favorites</span>
+      <span>Tools</span>
+      <span>Help</span>
 
-      <div class="address">
+    </div>
+
+    <div class="browser-address-row">
+
+      <div class="browser-control">
+        &lt;
+      </div>
+
+      <div class="browser-control">
+        &gt;
+      </div>
+
+      <div class="browser-control">
+        ^
+      </div>
+
+      <div class="browser-address">
         https://qmarchive.github.io/writings/
       </div>
+
+      <div class="browser-date" id="browserDate"></div>
 
     </div>
 
   </div>
 
+  <!-- =====================================================
+       MASTER GRID
+  ====================================================== -->
+
   <div class="layout">
+
+    <!-- ===================================================
+         SYSTEM INFO
+    ==================================================== -->
 
     <aside>
 
       <div class="panel system-info">
 
         <div class="panel-title">
-          System Info
+
+          <div class="panel-title-main">
+
+            <div class="panel-title-icon">
+              S
+            </div>
+
+            <span>
+              SYSTEM INFO
+            </span>
+
+          </div>
+
+          <div class="window-controls">
+
+            <div class="window-control">
+              ×
+            </div>
+
+          </div>
+
         </div>
 
         <div class="panel-body">
@@ -639,9 +1028,14 @@ a{color:inherit;text-decoration:none;}
 
           <div class="nav">
 
-            <a href="/">HOME</a>
+            <a href="/">
+              HOME
+            </a>
 
-            <a href="/writings/" class="active">
+            <a
+              href="/writings/"
+              class="active"
+            >
               WRITINGS
             </a>
 
@@ -667,9 +1061,11 @@ a{color:inherit;text-decoration:none;}
             >
 
             <div class="cassette-caption">
+
               Không sao đâu, không sao đâu mà //
               1998 -
               <span id="cassetteYear">2026</span>
+
             </div>
 
           </div>
@@ -680,17 +1076,59 @@ a{color:inherit;text-decoration:none;}
 
     </aside>
 
+    <!-- ===================================================
+         WRITINGS
+    ==================================================== -->
+
     <main class="writings">
+
+      <!-- Writing title window:
+           same outer window language as Photographs,
+           Writing-specific content preserved. -->
 
       <div class="section-head">
 
-        <h1>WRITINGS</h1>
+        <div class="section-head-left">
 
-        <p>
-          Hà Nội đầy nắng và gió. Lão Hạc nhớ chó anh thì nhớ em :&gt;
-        </p>
+          <div class="section-head-icon">
+            W
+          </div>
+
+          <div class="section-head-text">
+
+            <h1>
+              WRITINGS
+            </h1>
+
+            <p>
+              Hà Nội đầy nắng và gió. Lão Hạc nhớ chó anh thì nhớ em :&gt;
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="section-head-controls">
+
+          <div class="window-control">
+            −
+          </div>
+
+          <div class="window-control">
+            □
+          </div>
+
+          <div class="window-control">
+            ×
+          </div>
+
+        </div>
 
       </div>
+
+      <!-- =================================================
+           WRITING CONTENT — UNCHANGED PRESENTATION
+      ================================================== -->
 
       <div class="content-panel">
 
@@ -698,7 +1136,9 @@ a{color:inherit;text-decoration:none;}
 
           <div class="search">
 
-            <span class="search-icon">⌕</span>
+            <span class="search-icon">
+              ⌕
+            </span>
 
             <input
               id="searchInput"
@@ -709,17 +1149,35 @@ a{color:inherit;text-decoration:none;}
 
           </div>
 
-          <div id="archive" class="archive"></div>
+          <div
+            id="archive"
+            class="archive"
+          ></div>
 
-          <article id="article" style="display:none;">
+          <article
+            id="article"
+            style="display:none;"
+          >
 
-            <div id="articleMeta" class="article-meta"></div>
+            <div
+              id="articleMeta"
+              class="article-meta"
+            ></div>
 
-            <h1 id="articleTitle" class="article-title"></h1>
+            <h1
+              id="articleTitle"
+              class="article-title"
+            ></h1>
 
-            <div id="articleBody" class="article-body"></div>
+            <div
+              id="articleBody"
+              class="article-body"
+            ></div>
 
-            <a href="/writings/" class="back">
+            <a
+              href="/writings/"
+              class="back"
+            >
               ← Back to Writings
             </a>
 
@@ -755,9 +1213,15 @@ a{color:inherit;text-decoration:none;}
 
 </div>
 
+<!-- =======================================================
+     MUSIC PLAYER
+======================================================== -->
+
 <div class="music-player">
 
-  <div class="music-icon">♪</div>
+  <div class="music-icon">
+    ♪
+  </div>
 
   <div class="music-info">
 
@@ -765,11 +1229,17 @@ a{color:inherit;text-decoration:none;}
       NOW PLAYING
     </div>
 
-    <div class="music-title" id="musicTitle">
+    <div
+      class="music-title"
+      id="musicTitle"
+    >
       Between the Takes
     </div>
 
-    <div class="music-artist" id="musicArtist">
+    <div
+      class="music-artist"
+      id="musicArtist"
+    >
       Orient.bakureever
     </div>
 
@@ -777,11 +1247,29 @@ a{color:inherit;text-decoration:none;}
 
   <div class="music-controls">
 
-    <button class="music-button" id="prevButton" type="button">|◀</button>
+    <button
+      class="music-button"
+      id="prevButton"
+      type="button"
+    >
+      |◀
+    </button>
 
-    <button class="music-button" id="playButton" type="button">▶</button>
+    <button
+      class="music-button"
+      id="playButton"
+      type="button"
+    >
+      ▶
+    </button>
 
-    <button class="music-button" id="nextButton" type="button">▶|</button>
+    <button
+      class="music-button"
+      id="nextButton"
+      type="button"
+    >
+      ▶|
+    </button>
 
   </div>
 
@@ -798,7 +1286,10 @@ a{color:inherit;text-decoration:none;}
 
   </div>
 
-  <div class="music-time" id="musicTime">
+  <div
+    class="music-time"
+    id="musicTime"
+  >
     00:00 / 00:00
   </div>
 
@@ -817,9 +1308,64 @@ a{color:inherit;text-decoration:none;}
 
 </div>
 
-<audio id="audio" preload="metadata"></audio>
+<audio
+  id="audio"
+  preload="metadata"
+></audio>
 
 <script>
+
+/* =========================================================
+   DATE / BROWSER CLOCK
+========================================================= */
+
+function updateBrowserDate(){
+
+  const el =
+    document.getElementById(
+      "browserDate"
+    );
+
+  if(!el) return;
+
+  const now =
+    new Date();
+
+  const day =
+    String(
+      now.getDate()
+    ).padStart(2,"0");
+
+  const month =
+    String(
+      now.getMonth() + 1
+    ).padStart(2,"0");
+
+  const year =
+    now.getFullYear();
+
+  const hours =
+    String(
+      now.getHours()
+    ).padStart(2,"0");
+
+  const minutes =
+    String(
+      now.getMinutes()
+    ).padStart(2,"0");
+
+  el.innerHTML =
+    `${day}.${month}.${year}<br>${hours}:${minutes}`;
+
+}
+
+updateBrowserDate();
+
+setInterval(
+  updateBrowserDate,
+  60000
+);
+
 
 /* =========================================================
    CONTENT
@@ -929,6 +1475,7 @@ function markdownToHTML(md){
 
       flushParagraph();
       closeList();
+
       continue;
 
     }
@@ -1216,7 +1763,9 @@ function parseArchiveDate(value){
 function renderArchive(items){
 
   const archive =
-    document.getElementById("archive");
+    document.getElementById(
+      "archive"
+    );
 
   archive.innerHTML = "";
 
@@ -1234,12 +1783,19 @@ function renderArchive(items){
     items
       .map(
         (item,index) => ({
+
           item,
+
           index,
+
           timestamp:
-            parseArchiveDate(item.date)
+            parseArchiveDate(
+              item.date
+            )
+
         })
       )
+
       .sort(
         (a,b) => {
 
@@ -1262,6 +1818,7 @@ function renderArchive(items){
 
         }
       )
+
       .map(
         entry =>
           entry.item
@@ -1271,27 +1828,37 @@ function renderArchive(items){
     item => {
 
       const entry =
-        document.createElement("a");
+        document.createElement(
+          "a"
+        );
 
       entry.className =
         "archive-entry";
 
       entry.href =
         "/writings/?slug=" +
-        encodeURIComponent(item.slug);
+        encodeURIComponent(
+          item.slug
+        );
 
       entry.innerHTML = `
 
         <div class="archive-date">
-          ${escapeHTML(item.date || "")}
+          ${escapeHTML(
+            item.date || ""
+          )}
         </div>
 
         <div class="archive-title">
-          ${escapeHTML(item.title || "")}
+          ${escapeHTML(
+            item.title || ""
+          )}
         </div>
 
         <div class="archive-excerpt">
-          ${escapeHTML(item.excerpt || "")}
+          ${escapeHTML(
+            item.excerpt || ""
+          )}
         </div>
 
         <div class="archive-arrow">
@@ -1300,7 +1867,9 @@ function renderArchive(items){
 
       `;
 
-      archive.appendChild(entry);
+      archive.appendChild(
+        entry
+      );
 
     }
   );
@@ -1312,7 +1881,10 @@ function renderArchive(items){
    ARTICLE
 ========================================================= */
 
-async function renderArticle(items,slug){
+async function renderArticle(
+  items,
+  slug
+){
 
   const item =
     items.find(
@@ -1328,25 +1900,41 @@ async function renderArticle(items,slug){
   }
 
   const markdown =
-    await loadMarkdown(slug);
+    await loadMarkdown(
+      slug
+    );
 
-  document.getElementById("archive").style.display =
+  document.getElementById(
+    "archive"
+  ).style.display =
     "none";
 
-  document.querySelector(".search").style.display =
+  document.querySelector(
+    ".search"
+  ).style.display =
     "none";
 
-  document.getElementById("article").style.display =
+  document.getElementById(
+    "article"
+  ).style.display =
     "block";
 
-  document.getElementById("articleMeta").textContent =
+  document.getElementById(
+    "articleMeta"
+  ).textContent =
     item.date || "";
 
-  document.getElementById("articleTitle").textContent =
+  document.getElementById(
+    "articleTitle"
+  ).textContent =
     item.title || "";
 
-  document.getElementById("articleBody").innerHTML =
-    markdownToHTML(markdown);
+  document.getElementById(
+    "articleBody"
+  ).innerHTML =
+    markdownToHTML(
+      markdown
+    );
 
 }
 
@@ -1358,7 +1946,9 @@ async function renderArticle(items,slug){
 function setupSearch(items){
 
   const input =
-    document.getElementById("searchInput");
+    document.getElementById(
+      "searchInput"
+    );
 
   input.addEventListener(
     "input",
@@ -1371,15 +1961,23 @@ function setupSearch(items){
 
       const filtered =
         !query
+
           ? items
+
           : items.filter(
               item =>
-                String(item.title || "")
-                  .toLowerCase()
-                  .includes(query)
+                String(
+                  item.title || ""
+                )
+                .toLowerCase()
+                .includes(
+                  query
+                )
             );
 
-      renderArchive(filtered);
+      renderArchive(
+        filtered
+      );
 
     }
   );
@@ -1396,10 +1994,14 @@ function updateYear(){
   const year =
     new Date().getFullYear();
 
-  document.getElementById("year").textContent =
+  document.getElementById(
+    "year"
+  ).textContent =
     year;
 
-  document.getElementById("cassetteYear").textContent =
+  document.getElementById(
+    "cassetteYear"
+  ).textContent =
     year;
 
 }
@@ -1410,31 +2012,49 @@ function updateYear(){
 ========================================================= */
 
 const audio =
-  document.getElementById("audio");
+  document.getElementById(
+    "audio"
+  );
 
 const playButton =
-  document.getElementById("playButton");
+  document.getElementById(
+    "playButton"
+  );
 
 const prevButton =
-  document.getElementById("prevButton");
+  document.getElementById(
+    "prevButton"
+  );
 
 const nextButton =
-  document.getElementById("nextButton");
+  document.getElementById(
+    "nextButton"
+  );
 
 const progress =
-  document.getElementById("progress");
+  document.getElementById(
+    "progress"
+  );
 
 const volume =
-  document.getElementById("volume");
+  document.getElementById(
+    "volume"
+  );
 
 const musicTitle =
-  document.getElementById("musicTitle");
+  document.getElementById(
+    "musicTitle"
+  );
 
 const musicArtist =
-  document.getElementById("musicArtist");
+  document.getElementById(
+    "musicArtist"
+  );
 
 const musicTime =
-  document.getElementById("musicTime");
+  document.getElementById(
+    "musicTime"
+  );
 
 let currentTrack = 0;
 
@@ -1470,28 +2090,50 @@ async function loadMusicArchive(){
     await response.json();
 
   const items =
+
     Array.isArray(data)
+
       ? data
+
       : (
-        Array.isArray(data.music)
+
+        Array.isArray(
+          data.music
+        )
+
           ? data.music
+
           : []
+
       );
+
 
   MUSIC_TRACKS =
     items
       .map(
         track => ({
-          title:String(track.title || ""),
-          artist:String(track.artist || ""),
+
+          title:
+            String(
+              track.title || ""
+            ),
+
+          artist:
+            String(
+              track.artist || ""
+            ),
+
           src:
             track.file
               ? (
-                "/music/" +
-                String(track.file)
-                  .replace(/^\/+/,"")
-              )
-              : String(track.src || "")
+                  "/music/" +
+                  String(track.file)
+                    .replace(/^\/+/,"")
+                )
+              : String(
+                  track.src || ""
+                )
+
         })
       )
       .filter(
@@ -1519,7 +2161,9 @@ function getMusicState(){
       return null;
 
     const state =
-      JSON.parse(saved);
+      JSON.parse(
+        saved
+      );
 
     if(
       !state ||
@@ -1560,16 +2204,23 @@ function saveMusicState(){
 
       JSON.stringify({
 
-        track:currentTrack,
+        track:
+          currentTrack,
 
         currentTime:
-          Number.isFinite(audio.currentTime)
+          Number.isFinite(
+            audio.currentTime
+          )
             ? audio.currentTime
             : 0,
 
-        volume:Number(audio.volume),
+        volume:
+          Number(
+            audio.volume
+          ),
 
-        isPlaying:!audio.paused
+        isPlaying:
+          !audio.paused
 
       })
 
@@ -1594,7 +2245,9 @@ function saveMusicState(){
 function formatTime(seconds){
 
   if(
-    !Number.isFinite(seconds)
+    !Number.isFinite(
+      seconds
+    )
   ){
 
     return "00:00";
@@ -1602,16 +2255,29 @@ function formatTime(seconds){
   }
 
   const minutes =
-    Math.floor(seconds / 60);
+    Math.floor(
+      seconds / 60
+    );
 
   const secs =
-    Math.floor(seconds % 60);
+    Math.floor(
+      seconds % 60
+    );
 
   return (
-    String(minutes).padStart(2,"0")
+
+    String(
+      minutes
+    ).padStart(2,"0")
+
     +
+
     ":" +
-    String(secs).padStart(2,"0")
+
+    String(
+      secs
+    ).padStart(2,"0")
+
   );
 
 }
@@ -1621,21 +2287,34 @@ function formatTime(seconds){
    LOAD TRACK
 ========================================================= */
 
-function loadTrack(index,autoplay=false){
+function loadTrack(
+  index,
+  autoplay=false
+){
 
-  if(!MUSIC_TRACKS.length){
+  if(
+    !MUSIC_TRACKS.length
+  ){
+
     return;
+
   }
 
   currentTrack =
+
     (
       index +
       MUSIC_TRACKS.length
-    ) %
+    )
+
+    %
+
     MUSIC_TRACKS.length;
 
   const track =
-    MUSIC_TRACKS[currentTrack];
+    MUSIC_TRACKS[
+      currentTrack
+    ];
 
   audio.src =
     track.src;
@@ -1655,6 +2334,7 @@ function loadTrack(index,autoplay=false){
   if(autoplay){
 
     audio.play()
+
       .then(
         () => {
 
@@ -1665,6 +2345,7 @@ function loadTrack(index,autoplay=false){
 
         }
       )
+
       .catch(
         () => {
 
@@ -1691,7 +2372,9 @@ function loadTrack(index,autoplay=false){
 function restoreMusicState(){
 
   if(!MUSIC_TRACKS.length){
+
     return;
+
   }
 
   const state =
@@ -1700,24 +2383,38 @@ function restoreMusicState(){
   if(!state){
 
     audio.volume =
-      Number(volume.value);
+      Number(
+        volume.value
+      );
 
-    loadTrack(0,false);
+    loadTrack(
+      0,
+      false
+    );
 
     return;
 
   }
 
   let savedTrack =
-    Number(state.track);
+    Number(
+      state.track
+    );
 
-  if(!Number.isInteger(savedTrack)){
+  if(
+    !Number.isInteger(
+      savedTrack
+    )
+  ){
+
     savedTrack = 0;
+
   }
 
   if(
     savedTrack < 0 ||
-    savedTrack >= MUSIC_TRACKS.length
+    savedTrack >=
+      MUSIC_TRACKS.length
   ){
 
     savedTrack = 0;
@@ -1728,12 +2425,24 @@ function restoreMusicState(){
     savedTrack;
 
   const savedVolume =
-    Number(state.volume);
+    Number(
+      state.volume
+    );
 
   if(
-    Number.isFinite(savedVolume) &&
-    savedVolume >= 0 &&
+
+    Number.isFinite(
+      savedVolume
+    )
+
+    &&
+
+    savedVolume >= 0
+
+    &&
+
     savedVolume <= 1
+
   ){
 
     audio.volume =
@@ -1745,25 +2454,40 @@ function restoreMusicState(){
   }else{
 
     audio.volume =
-      Number(volume.value);
+      Number(
+        volume.value
+      );
 
   }
 
-  loadTrack(currentTrack,false);
+  loadTrack(
+    currentTrack,
+    false
+  );
 
   const savedTime =
-    Number(state.currentTime);
+    Number(
+      state.currentTime
+    );
 
   if(
-    Number.isFinite(savedTime) &&
+
+    Number.isFinite(
+      savedTime
+    )
+
+    &&
+
     savedTime > 0
+
   ){
 
     const restoreTime =
       () => {
 
         if(
-          savedTime < audio.duration
+          savedTime <
+          audio.duration
         ){
 
           audio.currentTime =
@@ -1796,9 +2520,12 @@ playButton.addEventListener(
   "click",
   () => {
 
-    if(audio.paused){
+    if(
+      audio.paused
+    ){
 
       audio.play()
+
         .then(
           () => {
 
@@ -1809,6 +2536,7 @@ playButton.addEventListener(
 
           }
         )
+
         .catch(
           () => {
 
@@ -1834,7 +2562,7 @@ playButton.addEventListener(
 
 
 /* =========================================================
-   PREVIOUS / NEXT
+   PREVIOUS
 ========================================================= */
 
 prevButton.addEventListener(
@@ -1848,6 +2576,11 @@ prevButton.addEventListener(
 
   }
 );
+
+
+/* =========================================================
+   NEXT
+========================================================= */
 
 nextButton.addEventListener(
   "click",
@@ -1871,8 +2604,12 @@ audio.addEventListener(
   () => {
 
     musicTime.textContent =
+
       "00:00 / " +
-      formatTime(audio.duration);
+
+      formatTime(
+        audio.duration
+      );
 
   }
 );
@@ -1886,23 +2623,43 @@ audio.addEventListener(
   "timeupdate",
   () => {
 
-    if(audio.duration){
+    if(
+      audio.duration
+    ){
 
       progress.value =
+
         (
           audio.currentTime /
           audio.duration
-        ) * 100;
+        )
+
+        * 100;
 
     }
 
     musicTime.textContent =
-      formatTime(audio.currentTime) +
-      " / " +
-      formatTime(audio.duration);
+
+      formatTime(
+        audio.currentTime
+      )
+
+      +
+
+      " / "
+
+      +
+
+      formatTime(
+        audio.duration
+      );
 
     if(
-      Math.floor(audio.currentTime) % 5 === 0
+
+      Math.floor(
+        audio.currentTime
+      ) % 5 === 0
+
     ){
 
       saveMusicState();
@@ -1914,19 +2671,27 @@ audio.addEventListener(
 
 
 /* =========================================================
-   PROGRESS / VOLUME
+   PROGRESS
 ========================================================= */
 
 progress.addEventListener(
   "input",
   () => {
 
-    if(audio.duration){
+    if(
+      audio.duration
+    ){
 
       audio.currentTime =
+
         (
-          Number(progress.value) / 100
-        ) *
+          Number(
+            progress.value
+          ) / 100
+        )
+
+        *
+
         audio.duration;
 
       saveMusicState();
@@ -1936,12 +2701,19 @@ progress.addEventListener(
   }
 );
 
+
+/* =========================================================
+   VOLUME
+========================================================= */
+
 volume.addEventListener(
   "input",
   () => {
 
     audio.volume =
-      Number(volume.value);
+      Number(
+        volume.value
+      );
 
     saveMusicState();
 
@@ -2018,7 +2790,9 @@ async function init(){
   updateYear();
 
   const archive =
-    document.getElementById("archive");
+    document.getElementById(
+      "archive"
+    );
 
   try{
 
@@ -2028,10 +2802,14 @@ async function init(){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     audio.volume =
-      Number(volume.value);
+      Number(
+        volume.value
+      );
 
   }
 
@@ -2041,12 +2819,21 @@ async function init(){
       await loadJSON();
 
     const items =
+
       Array.isArray(data)
+
         ? data
+
         : (
-          Array.isArray(data.writings)
+
+          Array.isArray(
+            data.writings
+          )
+
             ? data.writings
+
             : []
+
         );
 
     const params =
@@ -2055,7 +2842,9 @@ async function init(){
       );
 
     const slug =
-      params.get("slug");
+      params.get(
+        "slug"
+      );
 
     if(slug){
 
@@ -2066,15 +2855,21 @@ async function init(){
 
     }else{
 
-      renderArchive(items);
+      renderArchive(
+        items
+      );
 
-      setupSearch(items);
+      setupSearch(
+        items
+      );
 
     }
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     archive.innerHTML = `
 
@@ -2084,7 +2879,9 @@ async function init(){
 
         <br><br>
 
-        ${escapeHTML(error.message)}
+        ${escapeHTML(
+          error.message
+        )}
 
       </div>
 
