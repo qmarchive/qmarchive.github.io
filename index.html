@@ -80,24 +80,6 @@ body::before{
   color:var(--blue);
 }
 .window-title-icon{display:none}
-
-/* WELCOME TITLE — visual hover transition only */
-.welcome-title{
-  display:grid;
-  grid-template-columns:minmax(0,1fr);
-  align-items:center;
-  min-width:245px;
-  position:relative;
-}
-.welcome-text{
-  grid-area:1 / 1;
-  transition:opacity .38s ease;
-  white-space:nowrap;
-}
-.welcome-text-new{opacity:0}
-.welcome-title:hover .welcome-text-old{opacity:0}
-.welcome-title:hover .welcome-text-new{opacity:1}
-
 .window-buttons{display:flex;gap:4px;flex-shrink:0}
 .window-button{
   width:20px;height:20px;display:flex;align-items:center;justify-content:center;
@@ -394,9 +376,21 @@ a[href]:hover{font-weight:bold}
 @media(max-width:850px){
   .page{padding:7px 7px 75px}
   .browser-menu{display:none}
-  .browser-address-row{grid-template-columns:31px minmax(0,1fr) 31px}
-  .browser-address-row .browser-control:nth-child(2){display:none}
-  .browser-date{display:none}
+  .browser-address-row{
+    grid-template-columns:31px 31px minmax(0,1fr);
+  }
+
+  .browser-address-row .browser-control:nth-child(2){
+    display:none;
+  }
+
+  .browser-address{
+    grid-column:3;
+  }
+
+  .browser-date{
+    display:none;
+  }
   .layout{display:block}
   .left{margin-bottom:16px;height:auto}
   .profile-image{height:230px}
@@ -571,10 +565,8 @@ a[href]:hover{font-weight:bold}
 <section class="window hero-window">
 
   <div class="window-titlebar">
-    <div class="window-title welcome-title">
-      <span class="window-title-icon">W</span>
-      <span class="welcome-text welcome-text-old">WELCOME TO THE REAL WORLD !</span>
-      <span class="welcome-text welcome-text-new">It sucks. You’re gonna love it.</span>
+    <div class="window-title">
+      <span class="window-title-icon">W</span>WELCOME.EXE
     </div>
 
     <div class="window-buttons">
@@ -615,7 +607,7 @@ a[href]:hover{font-weight:bold}
 
   <div class="window-titlebar">
     <div class="window-title">
-      <span class="window-title-icon">N</span>NOTES
+      <span class="window-title-icon">N</span>NOTES.TXT
     </div>
 
     <a class="more-link" href="/notes/">→ more</a>
@@ -677,7 +669,7 @@ a[href]:hover{font-weight:bold}
 
   <div class="window-titlebar">
     <div class="window-title">
-      <span class="window-title-icon">J</span>PORTRAIT
+      <span class="window-title-icon">J</span>PORTRAIT.JPG
     </div>
 
     <div class="window-buttons">
