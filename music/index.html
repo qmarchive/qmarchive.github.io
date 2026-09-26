@@ -2805,10 +2805,7 @@ async function loadMusicArchive(){
               ).trim(),
 
             duration:
-              String(
-                track.duration ||
-                ""
-              ).trim(),
+              "",
 
             description:
               String(
@@ -3514,6 +3511,112 @@ function restoreMusicState(){
 
 
 /* =========================================================
+   AUTO-READ MP3 DURATIONS
+========================================================= */
+
+function updateTrackDurationCells(
+  trackIndex,
+  durationText
+){
+
+  document
+    .querySelectorAll(
+      `[data-track-duration-index="${trackIndex}"]`
+    )
+    .forEach(
+      cell => {
+
+        cell.textContent =
+          durationText;
+
+      }
+    );
+
+}
+
+
+function readTrackDuration(
+  track,
+  trackIndex
+){
+
+  if(!track || !track.src){
+    return;
+  }
+
+
+  const probe =
+    new Audio();
+
+
+  probe.preload =
+    "metadata";
+
+
+  probe.addEventListener(
+    "loadedmetadata",
+    () => {
+
+      if(Number.isFinite(probe.duration)){
+
+        track.duration =
+          formatTime(probe.duration);
+
+        updateTrackDurationCells(
+          trackIndex,
+          track.duration
+        );
+
+      }
+
+      probe.src = "";
+
+    },
+    {once:true}
+  );
+
+
+  probe.addEventListener(
+    "error",
+    () => {
+
+      updateTrackDurationCells(
+        trackIndex,
+        "--:--"
+      );
+
+      probe.src = "";
+
+    },
+    {once:true}
+  );
+
+
+  probe.src =
+    track.src;
+
+  probe.load();
+
+}
+
+
+function loadTrackDurations(){
+
+  MUSIC_TRACKS.forEach(
+    (track,index) => {
+
+      readTrackDuration(
+        track,
+        index
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
    RENDER ALBUM VIEW
 ========================================================= */
 
@@ -3926,7 +4029,10 @@ function renderTracklist(){
               </div>
 
 
-              <div class="track-duration">
+              <div
+                class="track-duration"
+                data-track-duration-index="${globalIndex}"
+              >
 
                 ${escapeHTML(
                   track.duration ||
@@ -4565,6 +4671,8 @@ async function init(){
     restoreMusicState();
 
     renderCurrentView();
+
+    loadTrackDurations();
 
   }catch(error){
 
