@@ -2937,9 +2937,58 @@ function normalizePath(value){
   }
 
   return "/music/" +
-    text.replace(/^\/+/,"");
+    text.replace(/^\/+/ ,"");
 
 }
+
+
+/*
+  COVER PATHS
+
+  Album / track covers are stored in:
+
+    /music/covers/
+
+  The JSON can therefore use either:
+
+    "cover": "where-the-cat-goes-at-night.png"
+
+  or:
+
+    "cover": "covers/where-the-cat-goes-at-night.png"
+
+  Both resolve to /music/covers/...
+
+  PNG is intentionally supported as the archive cover format.
+  The browser loads the image directly from the path supplied here.
+*/
+
+function normalizeCoverPath(value){
+
+  const text =
+    String(value || "").trim();
+
+  if(!text){
+    return "";
+  }
+
+  if(
+    text.startsWith("http://") ||
+    text.startsWith("https://") ||
+    text.startsWith("/")
+  ){
+
+    return text;
+
+  }
+
+  return "/music/covers/" +
+    text
+      .replace(/^\/+/ ,"")
+      .replace(/^covers\//i,"");
+
+}
+
 
 
 function formatTime(seconds){
@@ -3163,7 +3212,7 @@ async function loadMusicArchive(){
               ),
 
             cover:
-              normalizePath(
+              normalizeCoverPath(
                 track.cover ||
                 track.image ||
                 track.artwork ||
@@ -3171,7 +3220,7 @@ async function loadMusicArchive(){
               ),
 
             albumCover:
-              normalizePath(
+              normalizeCoverPath(
                 track.albumCover ||
                 track.albumImage ||
                 ""
@@ -3258,7 +3307,7 @@ async function loadMusicArchive(){
               ).trim(),
 
             cover:
-              normalizePath(
+              normalizeCoverPath(
                 album.cover ||
                 album.image ||
                 album.artwork ||
