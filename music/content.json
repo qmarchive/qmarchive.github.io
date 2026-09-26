@@ -3,7 +3,7 @@
     {
       "title": "Between the Takes",
       "date": "24.01.2026",
-      "album": "Where the Cat goes at Night",
+      "album": "Between The Takes",
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
       "file": "between-the-takes.mp3"
@@ -11,7 +11,7 @@
     {
       "title": "Wednesday's Origami",
       "date": "24.01.2026",
-      "album": "Where the Cat goes at Night",
+      "album": "Between The Takes",
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
       "file": "wednesdays-origami.mp3"
@@ -23,6 +23,21 @@
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
       "file": "where-the-cat-goes-at-night.mp3"
-    }
+    },
+    {
+      "title": "j & J",
+      "date": "24.01.2026",
+      "album": "Where the Cat goes at Night",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "j-j.mp3"
+    },
+    {
+      "title": "It Won't Live",
+      "date": "24.01.2026",
+      "album": "Where the Cat goes at Night",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "it-wont-live.mp3"
   ]
 }
