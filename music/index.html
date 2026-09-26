@@ -1,1 +1,4491 @@
+<!DOCTYPE html>
+<html lang="vi">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Music — QUỐC MẠNH</title>
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+}
+
+html{
+  background:#d8cfb5;
+}
+
+body{
+  min-height:100vh;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.08)
+    ),
+    #d8cfb5;
+
+  color:#15172f;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:14px;
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+  --cream:#d8cfb5;
+  --paper:#e7ddc0;
+
+  --orange:#f05a32;
+  --orange-dark:#c84327;
+
+  --teal:#176f78;
+  --teal-dark:#0d5059;
+
+  --blue:#15172f;
+  --blue-soft:#243b73;
+
+  --green:#1d8a4a;
+
+  --white:#f5ecd7;
+
+  --border:3px solid var(--blue);
+
+}
+
+
+/* =========================================================
+   SCANLINES
+========================================================= */
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:99999;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(21,23,47,.035) 0px,
+      rgba(21,23,47,.035) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+
+  opacity:.45;
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+
+  width:100%;
+
+  min-height:100vh;
+
+  padding:
+    10px
+    14px
+    150px;
+
+}
+
+
+/* =========================================================
+   GENERIC WINDOW
+========================================================= */
+
+.window{
+
+  background:var(--paper);
+
+  border:var(--border);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+  overflow:hidden;
+
+}
+
+
+.window-titlebar{
+
+  min-height:38px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:
+    5px 7px;
+
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
+  color:var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-weight:bold;
+
+  letter-spacing:.8px;
+
+  font-size:14px;
+
+  line-height:1.4;
+
+}
+
+
+.window-title{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  min-width:0;
+
+}
+
+
+.window-title-label{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  min-height:26px;
+
+  padding:2px 7px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5cb;
+
+  line-height:1.2;
+
+}
+
+
+.window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+  flex-shrink:0;
+
+}
+
+
+.window-button{
+
+  width:20px;
+
+  height:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:11px;
+
+  line-height:1;
+
+}
+
+
+.window-button:active{
+
+  transform:translate(2px,2px);
+
+  box-shadow:none;
+
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a[href]:hover{
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   BROWSER
+========================================================= */
+
+.browser{
+
+  border:var(--border);
+
+  background:var(--paper);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+  margin-bottom:14px;
+
+}
+
+
+.browser-top{
+
+  min-height:39px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:
+    5px 8px;
+
+  background:var(--orange);
+
+  border-bottom:var(--border);
+
+}
+
+
+.browser-brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  color:var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-weight:bold;
+
+  font-size:17px;
+
+  letter-spacing:1px;
+
+}
+
+
+.browser-subtitle{
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.browser-window-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.browser-window-buttons span{
+
+  width:23px;
+
+  height:23px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:11px;
+
+}
+
+
+.browser-window-buttons span:active{
+
+  transform:translate(2px,2px);
+
+  box-shadow:none;
+
+}
+
+
+.browser-menu{
+
+  display:flex;
+
+  gap:20px;
+
+  padding:
+    6px 10px;
+
+  border-bottom:2px solid var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:12px;
+
+  font-weight:bold;
+
+}
+
+.browser-menu span{
+  cursor:default;
+}
+
+.browser-menu span:hover{
+  color:var(--orange);
+}
+
+
+.browser-address-row{
+
+  display:grid;
+
+  grid-template-columns:
+    31px
+    31px
+    31px
+    minmax(0,1fr)
+    175px;
+
+  gap:6px;
+
+  align-items:center;
+
+  padding:7px;
+
+}
+
+
+.browser-control{
+
+  width:31px;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:2px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-weight:bold;
+
+}
+
+
+.browser-address{
+
+  min-width:0;
+
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:
+    0 9px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:#303249;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-family:monospace;
+
+  font-size:11px;
+
+}
+
+
+.browser-date{
+
+  text-align:right;
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  line-height:1.35;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.layout{
+
+  display:grid;
+
+  grid-template-columns:
+    285px
+    minmax(0,1fr);
+
+  gap:16px;
+
+  max-width:1600px;
+
+  margin:0 auto;
+
+  align-items:start;
+
+}
+
+
+/* =========================================================
+   LEFT / SYSTEM INFO
+========================================================= */
+
+.left{
+
+  min-width:0;
+
+}
+
+
+.system-window{
+
+  overflow:hidden;
+
+}
+
+
+.system-content{
+
+  padding:13px;
+
+}
+
+
+.system-line{
+
+  margin:
+    7px 0;
+
+  font-family:monospace;
+
+  font-size:12px;
+
+  line-height:1.5;
+
+}
+
+
+.online{
+
+  color:#168a43;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-list{
+
+  margin-top:14px;
+
+  padding-top:10px;
+
+  border-top:
+    2px dashed var(--blue);
+
+}
+
+
+.nav-list a{
+
+  display:flex;
+
+  align-items:center;
+
+  min-height:38px;
+
+  padding:
+    6px 8px;
+
+  color:var(--blue);
+
+  text-decoration:none;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  letter-spacing:.3px;
+
+  line-height:1.4;
+
+}
+
+
+.nav-list a:hover{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+  outline:2px solid var(--blue);
+
+}
+
+
+.nav-list a.active{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+  outline:2px solid var(--blue);
+
+}
+
+
+/* =========================================================
+   MUSIC WINDOW
+========================================================= */
+
+.music-window{
+
+  min-width:0;
+
+  overflow:hidden;
+
+}
+
+
+/* =========================================================
+   MUSIC INTRO
+========================================================= */
+
+.music-intro{
+
+  padding:
+    12px 16px;
+
+  border-bottom:
+    2px dashed var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:12px;
+
+  line-height:1.6;
+
+}
+
+
+/* =========================================================
+   CURRENT TRACK
+========================================================= */
+
+.now-playing{
+
+  display:grid;
+
+  grid-template-columns:
+    300px
+    minmax(0,1fr);
+
+  gap:18px;
+
+  padding:14px;
+
+  border-bottom:var(--border);
+
+  background:var(--paper);
+
+}
+
+
+.now-playing-cover{
+
+  width:100%;
+
+  aspect-ratio:1 / 1;
+
+  overflow:hidden;
+
+  border:3px solid var(--blue);
+
+  background:var(--blue);
+
+}
+
+
+.now-playing-cover img{
+
+  display:block;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+
+.now-playing-cover.placeholder{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--white);
+
+  font-family:monospace;
+
+  font-size:12px;
+
+  text-align:center;
+
+}
+
+
+.now-playing-info{
+
+  min-width:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+}
+
+
+.now-playing-label{
+
+  display:inline-flex;
+
+  align-self:flex-start;
+
+  padding:
+    4px 7px;
+
+  margin-bottom:10px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5cb;
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+.now-playing-title{
+
+  color:var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:28px;
+
+  line-height:1.2;
+
+  font-weight:bold;
+
+  margin-bottom:5px;
+
+}
+
+
+.now-playing-artist{
+
+  color:var(--teal);
+
+  font-family:monospace;
+
+  font-size:12px;
+
+  font-weight:bold;
+
+  margin-bottom:8px;
+
+}
+
+
+.now-playing-meta{
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  margin-bottom:12px;
+
+}
+
+
+.now-playing-description{
+
+  color:var(--blue);
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  margin-bottom:14px;
+
+}
+
+
+.main-player-controls{
+
+  display:grid;
+
+  grid-template-columns:auto minmax(0,1fr) auto auto;
+
+  gap:7px;
+
+  align-items:center;
+
+  padding:7px;
+
+  border:3px solid var(--blue);
+
+  background:#eee5ce;
+
+}
+
+
+.main-player-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.main-player-button{
+
+  width:38px;
+
+  height:34px;
+
+  border:3px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+
+.main-player-button:hover{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+}
+
+
+.main-player-button:active{
+
+  transform:translate(2px,2px);
+
+}
+
+
+.main-progress{
+
+  min-width:0;
+
+}
+
+
+.main-progress input{
+
+  width:100%;
+
+  accent-color:var(--orange);
+
+}
+
+
+.main-time{
+
+  min-width:74px;
+
+  text-align:center;
+
+  font-family:monospace;
+
+  font-size:9px;
+
+}
+
+
+.main-volume{
+
+  width:100px;
+
+}
+
+
+.main-volume input{
+
+  width:100%;
+
+  accent-color:var(--teal);
+
+}
+
+
+/* =========================================================
+   ALBUM / TRACKLIST TABS
+========================================================= */
+
+.music-tabs{
+
+  display:flex;
+
+  gap:8px;
+
+  padding:
+    10px 12px;
+
+  border-bottom:
+    2px dashed var(--blue);
+
+  background:var(--cream);
+
+}
+
+
+.music-tab{
+
+  min-width:145px;
+
+  padding:
+    8px 18px;
+
+  border:
+    3px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:13px;
+
+  font-weight:bold;
+
+  text-align:center;
+
+  cursor:pointer;
+
+  user-select:none;
+
+  transition:
+    transform .08s ease,
+    background .12s ease,
+    color .12s ease;
+
+}
+
+
+.music-tab:hover{
+
+  background:var(--teal);
+
+  color:var(--white);
+
+}
+
+
+.music-tab:active{
+
+  transform:translate(2px,2px);
+
+}
+
+
+.music-tab.active{
+
+  position:relative;
+
+  top:-2px;
+
+  background:var(--orange);
+
+  color:var(--white);
+
+  box-shadow:
+    4px 4px 0 var(--blue);
+
+}
+
+
+.music-tab.active:hover{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+}
+
+
+/* =========================================================
+   MUSIC CONTENT
+========================================================= */
+
+.music-content{
+
+  padding:14px;
+
+  background:var(--paper);
+
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.content-heading{
+
+  color:var(--blue);
+
+  font-size:18px;
+
+  line-height:1.3;
+
+  font-weight:bold;
+
+  margin-bottom:3px;
+
+}
+
+
+.content-subheading{
+
+  color:var(--teal);
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  margin-bottom:13px;
+
+}
+
+
+/* =========================================================
+   ALBUM GRID
+========================================================= */
+
+.album-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:0;
+
+  border-top:3px solid var(--blue);
+
+  border-left:3px solid var(--blue);
+
+}
+
+
+.album-card{
+
+  min-width:0;
+
+  padding:10px;
+
+  border-right:3px solid var(--blue);
+
+  border-bottom:3px solid var(--blue);
+
+  background:var(--paper);
+
+  cursor:pointer;
+
+}
+
+
+.album-card:hover{
+
+  background:#f5ecd7;
+
+}
+
+
+.album-card.selected{
+
+  background:#f5ecd7;
+
+  outline:3px solid var(--orange);
+
+  outline-offset:-6px;
+
+}
+
+
+.album-cover{
+
+  width:100%;
+
+  aspect-ratio:1 / 1;
+
+  overflow:hidden;
+
+  border:3px solid var(--blue);
+
+  background:var(--blue);
+
+  margin-bottom:8px;
+
+}
+
+
+.album-cover img{
+
+  display:block;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  filter:
+    grayscale(.08)
+    brightness(.88)
+    saturate(.85);
+
+  transition:
+    filter .2s ease,
+    transform .2s ease;
+
+}
+
+
+.album-card:hover
+.album-cover img{
+
+  filter:
+    grayscale(0)
+    brightness(.98)
+    saturate(1);
+
+  transform:scale(1.015);
+
+}
+
+
+.album-title{
+
+  color:var(--blue);
+
+  font-size:13px;
+
+  line-height:1.35;
+
+  font-weight:bold;
+
+  margin-bottom:3px;
+
+}
+
+
+.album-artist{
+
+  color:var(--teal);
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  line-height:1.4;
+
+  font-weight:bold;
+
+}
+
+
+.album-meta{
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:9px;
+
+  line-height:1.5;
+
+  margin-top:5px;
+
+}
+
+
+/* =========================================================
+   TRACKLIST
+========================================================= */
+
+.tracklist{
+
+  border-top:3px solid var(--blue);
+
+}
+
+
+.track-row{
+
+  display:grid;
+
+  grid-template-columns:
+    45px
+    minmax(0,1fr)
+    145px
+    65px;
+
+  gap:10px;
+
+  align-items:center;
+
+  min-height:55px;
+
+  padding:
+    7px 10px;
+
+  border-bottom:2px solid var(--blue);
+
+  background:var(--paper);
+
+  cursor:pointer;
+
+}
+
+
+.track-row:hover{
+
+  background:#f5ecd7;
+
+}
+
+
+.track-row:active{
+
+  transform:translate(2px,2px);
+
+}
+
+
+.track-row.playing{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+}
+
+
+.track-number{
+
+  font-family:monospace;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.track-name{
+
+  min-width:0;
+
+}
+
+
+.track-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:13px;
+
+  line-height:1.4;
+
+  font-weight:bold;
+
+}
+
+
+.track-artist{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  color:var(--teal);
+
+  font-family:monospace;
+
+  font-size:9px;
+
+  line-height:1.4;
+
+  font-weight:bold;
+
+}
+
+
+.track-row.playing
+.track-artist{
+
+  color:var(--white);
+
+}
+
+
+.track-album{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-family:monospace;
+
+  font-size:9px;
+
+}
+
+
+.track-duration{
+
+  text-align:right;
+
+  font-family:monospace;
+
+  font-size:9px;
+
+}
+
+
+/* =========================================================
+   EMPTY / ERROR
+========================================================= */
+
+.error{
+
+  padding:
+    35px 20px;
+
+  background:#eee5ce;
+
+  color:#8b2c1e;
+
+  font-family:monospace;
+
+  font-size:11px;
+
+  line-height:1.8;
+
+}
+
+
+.empty{
+
+  padding:
+    30px 15px;
+
+  border:
+    3px dashed var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:11px;
+
+  line-height:1.8;
+
+}
+
+
+/* =========================================================
+   FOOTER QUOTE
+========================================================= */
+
+.footer{
+
+  width:
+    min(940px, calc(100% - 28px));
+
+  margin:
+    16px auto 0;
+
+  padding:
+    10px 14px;
+
+  border:
+    3px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--teal);
+
+  text-align:center;
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   FIXED MUSIC PLAYER
+========================================================= */
+
+.music-player{
+
+  position:fixed;
+
+  width:
+    min(940px, calc(100% - 28px));
+
+  left:50%;
+
+  right:auto;
+
+  bottom:10px;
+
+  transform:translateX(-50%);
+
+  z-index:10000;
+
+  display:grid;
+
+  grid-template-columns:
+    auto
+    minmax(150px,1fr)
+    auto
+    minmax(150px,1.5fr)
+    auto
+    auto;
+
+  gap:9px;
+
+  align-items:center;
+
+  padding:
+    6px 8px;
+
+  background:var(--paper);
+
+  border:
+    3px solid var(--blue);
+
+  box-shadow:
+    5px 5px 0 var(--blue);
+
+}
+
+
+.music-icon{
+
+  width:35px;
+
+  height:35px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:var(--orange);
+
+  border:
+    3px solid var(--blue);
+
+  font-family:monospace;
+
+  font-weight:bold;
+
+}
+
+
+.music-info{
+
+  min-width:0;
+
+}
+
+
+.music-label{
+
+  font-size:8px;
+
+  line-height:1.3;
+
+  margin-bottom:2px;
+
+}
+
+
+.music-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:11px;
+
+  line-height:1.4;
+
+  font-weight:bold;
+
+}
+
+
+.music-artist{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  margin-top:2px;
+
+  color:var(--teal);
+
+  font-size:8px;
+
+  line-height:1.3;
+
+  font-weight:bold;
+
+}
+
+
+.music-controls{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.music-button{
+
+  width:33px;
+
+  height:29px;
+
+  border:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+
+.music-button:hover{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+}
+
+
+.music-progress{
+
+  min-width:0;
+
+}
+
+
+.music-progress input{
+
+  width:100%;
+
+  accent-color:var(--orange);
+
+}
+
+
+.music-time{
+
+  min-width:72px;
+
+  text-align:center;
+
+  font-size:9px;
+
+  line-height:1.4;
+
+}
+
+
+.music-volume{
+
+  width:100px;
+
+}
+
+
+.music-volume input{
+
+  width:100%;
+
+  accent-color:var(--teal);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1200px){
+
+  .layout{
+
+    grid-template-columns:
+      220px
+      minmax(0,1fr);
+
+  }
+
+
+  .album-grid{
+
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+
+  }
+
+
+  .music-player{
+
+    grid-template-columns:
+      auto
+      minmax(120px,1fr)
+      auto
+      minmax(120px,1fr)
+      auto;
+
+  }
+
+
+  .music-volume{
+
+    display:none;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE / SMALL TABLET
+========================================================= */
+
+@media(max-width:850px){
+
+  .page{
+
+    padding:
+      7px
+      7px
+      125px;
+
+  }
+
+
+  .browser-menu{
+
+    display:none;
+
+  }
+
+
+  .browser-address-row{
+
+    grid-template-columns:
+      31px
+      minmax(0,1fr)
+      31px;
+
+  }
+
+
+  .browser-address-row
+  .browser-control:nth-child(2){
+
+    display:none;
+
+  }
+
+
+  .browser-date{
+
+    display:none;
+
+  }
+
+
+  .layout{
+
+    display:block;
+
+  }
+
+
+  .left{
+
+    margin-bottom:16px;
+
+  }
+
+
+  .nav-list{
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+
+  .now-playing{
+
+    grid-template-columns:180px minmax(0,1fr);
+
+    gap:12px;
+
+  }
+
+
+  .now-playing-title{
+
+    font-size:22px;
+
+  }
+
+
+  .main-player-controls{
+
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
+
+  }
+
+
+  .main-volume{
+
+    display:none;
+
+  }
+
+
+  .album-grid{
+
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+  }
+
+
+  .track-row{
+
+    grid-template-columns:
+      35px
+      minmax(0,1fr)
+      55px;
+
+  }
+
+
+  .track-album{
+
+    display:none;
+
+  }
+
+
+  .music-player{
+
+    width:
+      calc(100% - 10px);
+
+    left:50%;
+
+    right:auto;
+
+    bottom:5px;
+
+    transform:translateX(-50%);
+
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      auto;
+
+    gap:5px;
+
+  }
+
+
+  .music-progress,
+  .music-time,
+  .music-volume{
+
+    display:none;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .browser-subtitle{
+
+    display:none;
+
+  }
+
+
+  .now-playing{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .now-playing-cover{
+
+    max-width:260px;
+
+  }
+
+
+  .now-playing-title{
+
+    font-size:20px;
+
+  }
+
+
+  .album-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .music-tab{
+
+    min-width:0;
+
+    flex:1;
+
+    padding:
+      8px 10px;
+
+  }
+
+
+  .footer{
+
+    width:
+      calc(100% - 14px);
+
+    font-size:9px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+<!-- =======================================================
+     BROWSER
+======================================================= -->
+
+<header class="browser">
+
+
+  <div class="browser-top">
+
+
+    <div class="browser-brand">
+
+      QM ARCHIVE
+
+      <span class="browser-subtitle">
+        // A SMALL SPACE FOR ORDINARY DAYS.
+      </span>
+
+    </div>
+
+
+    <div class="browser-window-buttons">
+
+      <span>—</span>
+      <span>□</span>
+      <span>×</span>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="browser-menu">
+
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Favorites</span>
+    <span>Tools</span>
+    <span>Help</span>
+
+  </div>
+
+
+  <div class="browser-address-row">
+
+
+    <div class="browser-control">
+      &lt;
+    </div>
+
+
+    <div class="browser-control">
+      &gt;
+    </div>
+
+
+    <div class="browser-control">
+      ^
+    </div>
+
+
+    <div
+      class="browser-address"
+      id="browserAddress"
+    >
+
+      https://qmarchive.github.io/music/
+
+    </div>
+
+
+    <div class="browser-date">
+
+      <span id="browserDate">
+        22 SEP 2026
+      </span>
+
+      <br>
+
+      <span id="browserTime">
+        00:00
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+</header>
+
+
+
+<!-- =======================================================
+     MAIN LAYOUT
+======================================================= -->
+
+<div class="layout">
+
+
+<!-- =====================================================
+     LEFT — SYSTEM INFO
+====================================================== -->
+
+<aside class="left">
+
+
+  <section class="window system-window">
+
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <div class="window-title-label">
+          SYSTEM INFO
+        </div>
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">
+          ×
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="system-content">
+
+
+      <div class="system-line">
+        Edgerunner.2046
+      </div>
+
+
+      <div class="system-line online">
+        + Online
+      </div>
+
+
+      <div class="system-line">
+        Since: 21.09.2026
+      </div>
+
+
+
+      <!-- NAV -->
+
+      <nav class="nav-list">
+
+
+        <a href="/">
+          HOME
+        </a>
+
+
+        <a href="/writings/">
+          WRITINGS
+        </a>
+
+
+        <a href="/photographs/">
+          PHOTOGRAPHS
+        </a>
+
+
+        <a href="/notes/">
+          NOTES
+        </a>
+
+
+        <a
+          href="/music/"
+          class="active"
+        >
+          MUSIC
+        </a>
+
+
+      </nav>
+
+
+      <!--
+        Không có cassette ở trang MUSIC.
+        Theo yêu cầu: bỏ ô băng cassette QM ARCHIVE.
+      -->
+
+
+    </div>
+
+
+  </section>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     CENTER
+====================================================== -->
+
+<main class="center">
+
+
+  <section
+    class="window music-window"
+    id="musicWindow"
+  >
+
+
+    <!-- TITLE BAR -->
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <div class="window-title-label">
+          MUSIC
+        </div>
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">
+          —
+        </span>
+
+        <span class="window-button">
+          □
+        </span>
+
+        <span class="window-button">
+          ×
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- INTRO -->
+
+    <div class="music-intro">
+
+      Hello mấy con vợ
+
+    </div>
+
+
+
+    <!-- CURRENT TRACK -->
+
+    <div class="now-playing">
+
+
+      <div
+        class="now-playing-cover"
+        id="nowPlayingCover"
+      >
+
+        <div>
+          NO COVER
+        </div>
+
+      </div>
+
+
+      <div class="now-playing-info">
+
+
+        <div class="now-playing-label">
+
+          NOW PLAYING
+
+        </div>
+
+
+        <div
+          class="now-playing-title"
+          id="mainMusicTitle"
+        >
+
+          —
+
+        </div>
+
+
+        <div
+          class="now-playing-artist"
+          id="mainMusicArtist"
+        >
+
+          —
+
+        </div>
+
+
+        <div
+          class="now-playing-meta"
+          id="mainMusicMeta"
+        >
+
+          —
+
+        </div>
+
+
+        <div
+          class="now-playing-description"
+          id="mainMusicDescription"
+        >
+
+          —
+
+        </div>
+
+
+        <div class="main-player-controls">
+
+
+          <div class="main-player-buttons">
+
+
+            <button
+              class="main-player-button"
+              id="mainPrevButton"
+              type="button"
+            >
+
+              |◀
+
+            </button>
+
+
+            <button
+              class="main-player-button"
+              id="mainPlayButton"
+              type="button"
+            >
+
+              ▶
+
+            </button>
+
+
+            <button
+              class="main-player-button"
+              id="mainNextButton"
+              type="button"
+            >
+
+              ▶|
+
+            </button>
+
+
+          </div>
+
+
+          <div class="main-progress">
+
+
+            <input
+              id="mainProgress"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+            >
+
+
+          </div>
+
+
+          <div
+            class="main-time"
+            id="mainTime"
+          >
+
+            00:00 / 00:00
+
+          </div>
+
+
+          <div class="main-volume">
+
+
+            <input
+              id="mainVolume"
+              type="range"
+              min="0"
+              max="1"
+              value=".7"
+              step=".01"
+            >
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ALBUM / TRACKLIST -->
+
+    <div class="music-tabs">
+
+
+      <div
+        class="music-tab active"
+        data-view="album"
+      >
+
+        ALBUM
+
+      </div>
+
+
+      <div
+        class="music-tab"
+        data-view="tracklist"
+      >
+
+        TRACKLIST
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- DYNAMIC MUSIC CONTENT -->
+
+    <div
+      class="music-content"
+      id="musicContent"
+    ></div>
+
+
+  </section>
+
+
+</main>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     FOOTER QUOTE
+======================================================= -->
+
+<footer class="footer">
+
+  I don’t have a favorite place, I have my favorite people.
+  And whenever i’m with my favorite people,
+  it becomes my favorite place.
+
+</footer>
+
+
+
+<!-- =======================================================
+     FIXED MUSIC PLAYER
+======================================================= -->
+
+<div class="music-player">
+
+
+  <div class="music-icon">
+    ♪
+  </div>
+
+
+  <div class="music-info">
+
+
+    <div class="music-label">
+      NOW PLAYING
+    </div>
+
+
+    <div
+      class="music-title"
+      id="musicTitle"
+    >
+      —
+    </div>
+
+
+    <div
+      class="music-artist"
+      id="musicArtist"
+    >
+      —
+    </div>
+
+
+  </div>
+
+
+  <div class="music-controls">
+
+
+    <button
+      class="music-button"
+      id="prevButton"
+      type="button"
+    >
+      |◀
+    </button>
+
+
+    <button
+      class="music-button"
+      id="playButton"
+      type="button"
+    >
+      ▶
+    </button>
+
+
+    <button
+      class="music-button"
+      id="nextButton"
+      type="button"
+    >
+      ▶|
+    </button>
+
+
+  </div>
+
+
+  <div class="music-progress">
+
+
+    <input
+      id="progress"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      step="0.1"
+    >
+
+
+  </div>
+
+
+  <div
+    class="music-time"
+    id="musicTime"
+  >
+    00:00 / 00:00
+  </div>
+
+
+  <div class="music-volume">
+
+
+    <input
+      id="volume"
+      type="range"
+      min="0"
+      max="1"
+      value=".7"
+      step=".01"
+    >
+
+
+  </div>
+
+
+</div>
+
+
+
+<audio
+  id="audio"
+  preload="metadata"
+></audio>
+
+
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const MUSIC_URL =
+  "/music/content.json?v=" +
+  Date.now();
+
+const MUSIC_STORAGE_KEY =
+  "qmArchiveMusic";
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let MUSIC_TRACKS = [];
+
+let ALBUMS = [];
+
+let currentTrack = 0;
+
+let currentView = "album";
+
+let selectedAlbum = null;
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function normalizePath(value){
+
+  const text =
+    String(value || "").trim();
+
+  if(!text){
+    return "";
+  }
+
+  if(
+    text.startsWith("http://") ||
+    text.startsWith("https://") ||
+    text.startsWith("/")
+  ){
+
+    return text;
+
+  }
+
+  return "/music/" +
+    text.replace(/^\/+/,"");
+
+}
+
+
+function formatTime(seconds){
+
+  if(!Number.isFinite(seconds)){
+    return "00:00";
+  }
+
+  const minutes =
+    Math.floor(seconds / 60);
+
+  const secs =
+    Math.floor(seconds % 60);
+
+  return (
+    String(minutes).padStart(2,"0") +
+    ":" +
+    String(secs).padStart(2,"0")
+  );
+
+}
+
+
+function parseDate(value){
+
+  const text =
+    String(value || "").trim();
+
+  let match =
+    text.match(
+      /^(\d{1,2})[.](\d{1,2})[.](\d{4})$/
+    );
+
+  if(match){
+
+    return new Date(
+      Number(match[3]),
+      Number(match[2]) - 1,
+      Number(match[1])
+    ).getTime();
+
+  }
+
+  match =
+    text.match(
+      /^(\d{1,2})[/](\d{1,2})[/](\d{4})$/
+    );
+
+  if(match){
+
+    return new Date(
+      Number(match[3]),
+      Number(match[2]) - 1,
+      Number(match[1])
+    ).getTime();
+
+  }
+
+  match =
+    text.match(
+      /^(\d{4})-(\d{1,2})-(\d{1,2})$/
+    );
+
+  if(match){
+
+    return new Date(
+      Number(match[1]),
+      Number(match[2]) - 1,
+      Number(match[3])
+    ).getTime();
+
+  }
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   LOAD MUSIC JSON
+========================================================= */
+
+async function loadMusicArchive(){
+
+  const response =
+    await fetch(
+      MUSIC_URL,
+      {
+        cache:"no-store"
+      }
+    );
+
+  if(!response.ok){
+
+    throw new Error(
+      "Could not load music/content.json (" +
+      response.status +
+      ")"
+    );
+
+  }
+
+  const data =
+    await response.json();
+
+
+  /*
+    Supported structures:
+
+    1. {
+         "music":[
+           {
+             "title":"",
+             "artist":"",
+             "file":""
+           }
+         ]
+       }
+
+    2. {
+         "tracks":[ ... ],
+         "albums":[ ... ]
+       }
+
+    3. A plain array of tracks.
+  */
+
+
+  let rawTracks = [];
+
+  if(Array.isArray(data)){
+
+    rawTracks = data;
+
+  }else if(Array.isArray(data.music)){
+
+    rawTracks = data.music;
+
+  }else if(Array.isArray(data.tracks)){
+
+    rawTracks = data.tracks;
+
+  }
+
+
+  const explicitAlbums =
+    Array.isArray(data?.albums)
+      ? data.albums
+      : [];
+
+
+  MUSIC_TRACKS =
+    rawTracks
+      .map(
+        (track,index) => {
+
+          const albumName =
+            String(
+              track.album ||
+              track.albumTitle ||
+              ""
+            ).trim();
+
+          return {
+
+            index,
+
+            title:
+              String(
+                track.title || ""
+              ).trim(),
+
+            artist:
+              String(
+                track.artist || ""
+              ).trim(),
+
+            album:
+              albumName,
+
+            date:
+              String(
+                track.date ||
+                track.albumDate ||
+                ""
+              ).trim(),
+
+            duration:
+              String(
+                track.duration ||
+                ""
+              ).trim(),
+
+            description:
+              String(
+                track.description ||
+                track.desc ||
+                ""
+              ).trim(),
+
+            file:
+              String(
+                track.file ||
+                ""
+              ).trim(),
+
+            src:
+              normalizePath(
+                track.file ||
+                track.src ||
+                ""
+              ),
+
+            cover:
+              normalizePath(
+                track.cover ||
+                track.image ||
+                track.artwork ||
+                ""
+              ),
+
+            albumCover:
+              normalizePath(
+                track.albumCover ||
+                track.albumImage ||
+                ""
+              )
+
+          };
+
+        }
+      )
+      .filter(
+        track =>
+          track.src
+      );
+
+
+  /*
+    Build albums.
+
+    If content.json provides an explicit "albums" array,
+    it is used first.
+
+    Otherwise tracks are grouped by the "album" field.
+
+    If no album field exists, all tracks become one
+    archive album.
+  */
+
+  if(explicitAlbums.length){
+
+    ALBUMS =
+      explicitAlbums.map(
+        (album,index) => {
+
+          const albumTitle =
+            String(
+              album.title ||
+              album.name ||
+              "Untitled Album"
+            ).trim();
+
+          const albumTracks =
+            MUSIC_TRACKS.filter(
+              track =>
+                track.album === albumTitle
+            );
+
+          return {
+
+            index,
+
+            title:
+              albumTitle,
+
+            artist:
+              String(
+                album.artist ||
+                albumTracks[0]?.artist ||
+                "Orient.bakureever"
+              ).trim(),
+
+            date:
+              String(
+                album.date ||
+                album.year ||
+                albumTracks[0]?.date ||
+                ""
+              ).trim(),
+
+            description:
+              String(
+                album.description ||
+                ""
+              ).trim(),
+
+            cover:
+              normalizePath(
+                album.cover ||
+                album.image ||
+                album.artwork ||
+                albumTracks[0]?.albumCover ||
+                albumTracks[0]?.cover ||
+                ""
+              ),
+
+            tracks:
+              albumTracks
+
+          };
+
+        }
+      );
+
+  }else{
+
+    const grouped = new Map();
+
+    MUSIC_TRACKS.forEach(
+      track => {
+
+        const key =
+          track.album ||
+          "QM ARCHIVE";
+
+        if(!grouped.has(key)){
+
+          grouped.set(
+            key,
+            []
+          );
+
+        }
+
+        grouped
+          .get(key)
+          .push(track);
+
+      }
+    );
+
+
+    ALBUMS =
+      Array.from(
+        grouped.entries()
+      )
+      .map(
+        ([title,tracks],index) => ({
+
+          index,
+
+          title,
+
+          artist:
+            tracks[0]?.artist ||
+            "Orient.bakureever",
+
+          date:
+            tracks[0]?.date ||
+            "",
+
+          description:
+            "",
+
+          cover:
+            tracks[0]?.albumCover ||
+            tracks[0]?.cover ||
+            "",
+
+          tracks
+
+        })
+      );
+
+  }
+
+
+  if(
+    !selectedAlbum &&
+    ALBUMS.length
+  ){
+
+    selectedAlbum =
+      ALBUMS[0].title;
+
+  }
+
+}
+
+
+/* =========================================================
+   MUSIC STATE
+========================================================= */
+
+function saveMusicState(){
+
+  try{
+
+    localStorage.setItem(
+      MUSIC_STORAGE_KEY,
+      JSON.stringify({
+
+        track:currentTrack,
+
+        currentTime:
+          Number.isFinite(
+            audio.currentTime
+          )
+            ? audio.currentTime
+            : 0,
+
+        volume:
+          Number(
+            audio.volume
+          ),
+
+        isPlaying:
+          !audio.paused
+
+      })
+    );
+
+  }catch(error){
+
+    console.warn(
+      "Could not save music state.",
+      error
+    );
+
+  }
+
+}
+
+
+function getSavedMusicState(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(
+        MUSIC_STORAGE_KEY
+      );
+
+    if(!raw){
+      return null;
+    }
+
+    const state =
+      JSON.parse(raw);
+
+    if(
+      !state ||
+      typeof state !== "object"
+    ){
+
+      return null;
+
+    }
+
+    return state;
+
+  }catch(error){
+
+    console.warn(
+      "Could not read music state.",
+      error
+    );
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
+   MAIN PLAYER
+========================================================= */
+
+const audio =
+  document.getElementById(
+    "audio"
+  );
+
+const playButton =
+  document.getElementById(
+    "playButton"
+  );
+
+const prevButton =
+  document.getElementById(
+    "prevButton"
+  );
+
+const nextButton =
+  document.getElementById(
+    "nextButton"
+  );
+
+const progress =
+  document.getElementById(
+    "progress"
+  );
+
+const volume =
+  document.getElementById(
+    "volume"
+  );
+
+const musicTitle =
+  document.getElementById(
+    "musicTitle"
+  );
+
+const musicArtist =
+  document.getElementById(
+    "musicArtist"
+  );
+
+const musicTime =
+  document.getElementById(
+    "musicTime"
+  );
+
+
+/* =========================================================
+   MAIN DISPLAY
+========================================================= */
+
+function updateMainDisplay(){
+
+  if(!MUSIC_TRACKS.length){
+
+    document.getElementById(
+      "mainMusicTitle"
+    ).textContent = "—";
+
+    document.getElementById(
+      "mainMusicArtist"
+    ).textContent = "—";
+
+    document.getElementById(
+      "mainMusicMeta"
+    ).textContent = "No music yet.";
+
+    document.getElementById(
+      "mainMusicDescription"
+    ).textContent = "";
+
+    document.getElementById(
+      "nowPlayingCover"
+    ).innerHTML =
+      "<div>NO COVER</div>";
+
+    document.getElementById(
+      "nowPlayingCover"
+    ).classList.add(
+      "placeholder"
+    );
+
+    return;
+
+  }
+
+
+  const track =
+    MUSIC_TRACKS[currentTrack];
+
+  const album =
+    ALBUMS.find(
+      item =>
+        item.tracks.some(
+          entry =>
+            entry === track
+        )
+    );
+
+
+  document.getElementById(
+    "mainMusicTitle"
+  ).textContent =
+    track.title || "Untitled";
+
+
+  document.getElementById(
+    "mainMusicArtist"
+  ).textContent =
+    track.artist || "Unknown artist";
+
+
+  document.getElementById(
+    "mainMusicMeta"
+  ).textContent =
+    [
+      track.date,
+      album?.title || track.album,
+      "Track " +
+      (currentTrack + 1) +
+      "/" +
+      MUSIC_TRACKS.length
+    ]
+    .filter(Boolean)
+    .join("  |  ");
+
+
+  document.getElementById(
+    "mainMusicDescription"
+  ).textContent =
+    track.description || "";
+
+
+  const cover =
+    track.cover ||
+    track.albumCover ||
+    album?.cover ||
+    "";
+
+
+  const coverBox =
+    document.getElementById(
+      "nowPlayingCover"
+    );
+
+
+  if(cover){
+
+    coverBox.classList.remove(
+      "placeholder"
+    );
+
+    coverBox.innerHTML = `
+
+      <img
+        src="${escapeHTML(cover)}"
+        alt="${escapeHTML(
+          track.title || ""
+        )}"
+      >
+
+    `;
+
+  }else{
+
+    coverBox.classList.add(
+      "placeholder"
+    );
+
+    coverBox.innerHTML =
+      "<div>NO COVER</div>";
+
+  }
+
+
+  musicTitle.textContent =
+    track.title || "Untitled";
+
+  musicArtist.textContent =
+    track.artist || "Unknown artist";
+
+
+  renderTracklistPlayingState();
+
+}
+
+
+/* =========================================================
+   LOAD TRACK
+========================================================= */
+
+function loadTrack(
+  index,
+  autoplay=false,
+  startTime=0
+){
+
+  if(!MUSIC_TRACKS.length){
+    return;
+  }
+
+
+  currentTrack =
+    (
+      index +
+      MUSIC_TRACKS.length
+    ) %
+    MUSIC_TRACKS.length;
+
+
+  const track =
+    MUSIC_TRACKS[currentTrack];
+
+
+  audio.src =
+    track.src;
+
+
+  updateMainDisplay();
+
+
+  progress.value =
+    0;
+
+
+  musicTime.textContent =
+    "00:00 / 00:00";
+
+
+  audio.addEventListener(
+
+    "loadedmetadata",
+
+    function restoreTime(){
+
+      audio.removeEventListener(
+        "loadedmetadata",
+        restoreTime
+      );
+
+
+      if(
+        Number.isFinite(startTime) &&
+        startTime > 0 &&
+        startTime < audio.duration
+      ){
+
+        try{
+
+          audio.currentTime =
+            startTime;
+
+        }catch(error){
+
+          console.warn(
+            "Could not restore music position.",
+            error
+          );
+
+        }
+
+      }
+
+
+      if(autoplay){
+
+        audio.play()
+          .then(() => {
+
+            playButton.textContent =
+              "❚❚";
+
+          })
+          .catch(() => {
+
+            playButton.textContent =
+              "▶";
+
+          });
+
+      }
+
+    }
+
+  );
+
+}
+
+
+/* =========================================================
+   RESTORE MUSIC STATE
+========================================================= */
+
+function restoreMusicState(){
+
+  if(!MUSIC_TRACKS.length){
+    return;
+  }
+
+
+  const state =
+    getSavedMusicState();
+
+
+  if(!state){
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+    loadTrack(
+      0,
+      false,
+      0
+    );
+
+    return;
+
+  }
+
+
+  const savedTrack =
+    Number.isInteger(state.track)
+      ? state.track
+      : 0;
+
+
+  const savedTime =
+    Number.isFinite(
+      Number(
+        state.currentTime
+      )
+    )
+      ? Number(
+          state.currentTime
+        )
+      : 0;
+
+
+  const savedVolume =
+    Number.isFinite(
+      Number(
+        state.volume
+      )
+    )
+      ? Number(
+          state.volume
+        )
+      : .7;
+
+
+  audio.volume =
+    Math.min(
+      1,
+      Math.max(
+        0,
+        savedVolume
+      )
+    );
+
+
+  volume.value =
+    audio.volume;
+
+
+  loadTrack(
+    savedTrack,
+    false,
+    savedTime
+  );
+
+}
+
+
+/* =========================================================
+   RENDER ALBUM VIEW
+========================================================= */
+
+function renderAlbums(){
+
+  const container =
+    document.getElementById(
+      "musicContent"
+    );
+
+
+  if(!ALBUMS.length){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        No albums yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = `
+
+    <div class="content-heading">
+      Album Collection
+    </div>
+
+    <div class="content-subheading">
+      Những album đã nghe, đang nghe, và sẽ còn nghe.
+    </div>
+
+    <div class="album-grid">
+
+      ${ALBUMS.map(
+        album => {
+
+          const selected =
+            album.title ===
+            selectedAlbum;
+
+
+          return `
+
+            <div
+              class="album-card ${selected ? "selected" : ""}"
+              data-album="${escapeHTML(
+                album.title
+              )}"
+            >
+
+              <div class="album-cover">
+
+                ${
+                  album.cover
+
+                    ? `
+
+                      <img
+                        src="${escapeHTML(
+                          album.cover
+                        )}"
+                        alt="${escapeHTML(
+                          album.title
+                        )}"
+                        loading="lazy"
+                      >
+
+                    `
+
+                    : `
+
+                      <div
+                        style="
+                          width:100%;
+                          height:100%;
+                          display:flex;
+                          align-items:center;
+                          justify-content:center;
+                          color:#f5ecd7;
+                          font-family:monospace;
+                          font-size:10px;
+                          text-align:center;
+                        "
+                      >
+                        NO COVER
+                      </div>
+
+                    `
+                }
+
+              </div>
+
+
+              <div class="album-title">
+
+                ${escapeHTML(
+                  album.title
+                )}
+
+              </div>
+
+
+              <div class="album-artist">
+
+                ${escapeHTML(
+                  album.artist
+                )}
+
+              </div>
+
+
+              <div class="album-meta">
+
+                ${
+                  album.date
+                    ? escapeHTML(
+                        album.date
+                      ) + "  |  "
+                    : ""
+                }
+
+                ${album.tracks.length}
+                ${
+                  album.tracks.length === 1
+                    ? "song"
+                    : "songs"
+                }
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      ).join("")}
+
+    </div>
+
+  `;
+
+
+  container
+    .querySelectorAll(
+      ".album-card"
+    )
+    .forEach(
+      card => {
+
+        card.addEventListener(
+          "click",
+          () => {
+
+            selectedAlbum =
+              card.dataset.album || "";
+
+
+            renderAlbums();
+
+          }
+        );
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER TRACKLIST
+========================================================= */
+
+function renderTracklist(){
+
+  const container =
+    document.getElementById(
+      "musicContent"
+    );
+
+
+  if(!MUSIC_TRACKS.length){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        No tracks yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = `
+
+    <div class="content-heading">
+      Tracklist
+    </div>
+
+    <div class="content-subheading">
+      Tất cả những bài đang nằm trong kho nhạc.
+    </div>
+
+    <div class="tracklist">
+
+      ${MUSIC_TRACKS.map(
+        (track,index) => {
+
+          const playing =
+            index === currentTrack &&
+            !audio.paused;
+
+
+          return `
+
+            <div
+              class="track-row ${
+                playing ? "playing" : ""
+              }"
+              data-track-index="${index}"
+            >
+
+              <div class="track-number">
+
+                ${String(
+                  index + 1
+                ).padStart(2,"0")}
+
+              </div>
+
+
+              <div class="track-name">
+
+                <div class="track-title">
+
+                  ${escapeHTML(
+                    track.title ||
+                    "Untitled"
+                  )}
+
+                </div>
+
+
+                <div class="track-artist">
+
+                  ${escapeHTML(
+                    track.artist ||
+                    "Unknown artist"
+                  )}
+
+                </div>
+
+              </div>
+
+
+              <div class="track-album">
+
+                ${escapeHTML(
+                  track.album ||
+                  "—"
+                )}
+
+              </div>
+
+
+              <div class="track-duration">
+
+                ${escapeHTML(
+                  track.duration ||
+                  "--:--"
+                )}
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      ).join("")}
+
+    </div>
+
+  `;
+
+
+  container
+    .querySelectorAll(
+      ".track-row"
+    )
+    .forEach(
+      row => {
+
+        row.addEventListener(
+          "click",
+          () => {
+
+            const index =
+              Number(
+                row.dataset.trackIndex
+              );
+
+
+            loadTrack(
+              index,
+              true,
+              0
+            );
+
+          }
+        );
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER CURRENT TAB
+========================================================= */
+
+function renderCurrentView(){
+
+  if(currentView === "tracklist"){
+
+    renderTracklist();
+
+  }else{
+
+    renderAlbums();
+
+  }
+
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+function setupTabs(){
+
+  const tabs =
+    document.querySelectorAll(
+      ".music-tab"
+    );
+
+
+  tabs.forEach(
+    tab => {
+
+      tab.addEventListener(
+        "click",
+        () => {
+
+          const view =
+            tab.dataset.view ||
+            "album";
+
+
+          currentView =
+            view;
+
+
+          tabs.forEach(
+            item => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            }
+          );
+
+
+          tab.classList.add(
+            "active"
+          );
+
+
+          renderCurrentView();
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   TRACKLIST PLAYING STATE
+========================================================= */
+
+function renderTracklistPlayingState(){
+
+  if(currentView !== "tracklist"){
+    return;
+  }
+
+  const rows =
+    document.querySelectorAll(
+      ".track-row"
+    );
+
+
+  rows.forEach(
+    row => {
+
+      const index =
+        Number(
+          row.dataset.trackIndex
+        );
+
+
+      row.classList.toggle(
+        "playing",
+        index === currentTrack &&
+        !audio.paused
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   PLAYER BUTTONS
+========================================================= */
+
+playButton.addEventListener(
+  "click",
+  () => {
+
+    if(audio.paused){
+
+      audio.play()
+        .then(() => {
+
+          playButton.textContent =
+            "❚❚";
+
+          saveMusicState();
+
+        })
+        .catch(() => {
+
+          playButton.textContent =
+            "▶";
+
+        });
+
+    }else{
+
+      audio.pause();
+
+      playButton.textContent =
+        "▶";
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+prevButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack - 1,
+      true,
+      0
+    );
+
+  }
+);
+
+
+nextButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true,
+      0
+    );
+
+  }
+);
+
+
+/* =========================================================
+   MAIN PLAYER BUTTONS
+========================================================= */
+
+document
+  .getElementById(
+    "mainPlayButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(audio.paused){
+
+        audio.play()
+          .catch(() => {});
+
+      }else{
+
+        audio.pause();
+
+      }
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "mainPrevButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      loadTrack(
+        currentTrack - 1,
+        true,
+        0
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "mainNextButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      loadTrack(
+        currentTrack + 1,
+        true,
+        0
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress(
+  input
+){
+
+  if(audio.duration){
+
+    audio.currentTime =
+      (
+        Number(input.value) /
+        100
+      ) *
+      audio.duration;
+
+    saveMusicState();
+
+  }
+
+}
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+    updateProgress(
+      progress
+    );
+
+  }
+);
+
+
+document
+  .getElementById(
+    "mainProgress"
+  )
+  .addEventListener(
+    "input",
+    function(){
+
+      updateProgress(
+        this
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   VOLUME
+========================================================= */
+
+function updateVolume(value){
+
+  audio.volume =
+    Number(value);
+
+  volume.value =
+    audio.volume;
+
+  document
+    .getElementById(
+      "mainVolume"
+    )
+    .value =
+      audio.volume;
+
+  saveMusicState();
+
+}
+
+
+volume.addEventListener(
+  "input",
+  () => {
+
+    updateVolume(
+      volume.value
+    );
+
+  }
+);
+
+
+document
+  .getElementById(
+    "mainVolume"
+  )
+  .addEventListener(
+    "input",
+    function(){
+
+      updateVolume(
+        this.value
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   AUDIO EVENTS
+========================================================= */
+
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
+
+    const time =
+      "00:00 / " +
+      formatTime(
+        audio.duration
+      );
+
+
+    musicTime.textContent =
+      time;
+
+
+    document
+      .getElementById(
+        "mainTime"
+      )
+      .textContent =
+        time;
+
+  }
+);
+
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    const percentage =
+      audio.duration
+        ? (
+            audio.currentTime /
+            audio.duration
+          ) * 100
+        : 0;
+
+
+    progress.value =
+      percentage;
+
+
+    document
+      .getElementById(
+        "mainProgress"
+      )
+      .value =
+        percentage;
+
+
+    const time =
+      formatTime(
+        audio.currentTime
+      ) +
+      " / " +
+      formatTime(
+        audio.duration
+      );
+
+
+    musicTime.textContent =
+      time;
+
+
+    document
+      .getElementById(
+        "mainTime"
+      )
+      .textContent =
+        time;
+
+
+    const now =
+      Date.now();
+
+
+    if(
+      !window.__qmLastMusicSave ||
+      now -
+      window.__qmLastMusicSave >
+      1000
+    ){
+
+      window.__qmLastMusicSave =
+        now;
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+audio.addEventListener(
+  "play",
+  () => {
+
+    playButton.textContent =
+      "❚❚";
+
+
+    document
+      .getElementById(
+        "mainPlayButton"
+      )
+      .textContent =
+        "❚❚";
+
+
+    renderTracklistPlayingState();
+
+    saveMusicState();
+
+  }
+);
+
+
+audio.addEventListener(
+  "pause",
+  () => {
+
+    playButton.textContent =
+      "▶";
+
+
+    document
+      .getElementById(
+        "mainPlayButton"
+      )
+      .textContent =
+        "▶";
+
+
+    renderTracklistPlayingState();
+
+    saveMusicState();
+
+  }
+);
+
+
+audio.addEventListener(
+  "ended",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true,
+      0
+    );
+
+  }
+);
+
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    saveMusicState();
+
+  }
+);
+
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+
+  const time =
+    String(
+      now.getHours()
+    ).padStart(2,"0") +
+
+    ":" +
+
+    String(
+      now.getMinutes()
+    ).padStart(2,"0") +
+
+    ":" +
+
+    String(
+      now.getSeconds()
+    ).padStart(2,"0");
+
+
+  const browserTime =
+    document.getElementById(
+      "browserTime"
+    );
+
+
+  const browserDate =
+    document.getElementById(
+      "browserDate"
+    );
+
+
+  if(browserTime){
+
+    browserTime.textContent =
+      time.slice(0,5);
+
+  }
+
+
+  if(browserDate){
+
+    browserDate.textContent =
+      now
+        .toLocaleDateString(
+          "en-GB",
+          {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+          }
+        )
+        .toUpperCase();
+
+  }
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+async function init(){
+
+  updateClock();
+
+  setInterval(
+    updateClock,
+    1000
+  );
+
+
+  audio.volume =
+    Number(
+      volume.value
+    );
+
+
+  setupTabs();
+
+
+  try{
+
+    await loadMusicArchive();
+
+    restoreMusicState();
+
+    renderCurrentView();
+
+  }catch(error){
+
+    console.error(error);
+
+
+    document.getElementById(
+      "musicContent"
+    ).innerHTML = `
+
+      <div class="error">
+
+        <strong>
+          Music could not be loaded.
+        </strong>
+
+        <br><br>
+
+        ${escapeHTML(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+init();
+
+</script>
+
+
+</body>
+
+</html>
