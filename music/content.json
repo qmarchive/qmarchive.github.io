@@ -255,6 +255,70 @@
       "cover": "covers/haranova.png",
       "artist": "Orient.bakureever",
       "file": "velkora.mp3"
+    },
+    {
+      "title": "Unfamiliar",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "unfamiliar.mp3"
+    },
+    {
+      "title": "Three Note",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "three-note.mp3"
+    },
+    {
+      "title": "Mono",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "mono.mp3"
+    },
+    {
+      "title": "Longing",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "longing.mp3"
+    },
+    {
+      "title": "Billie",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "billie.mp3"
+    },
+    {
+      "title": "weightless",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "weightless.mp3"
+    },
+    {
+      "title": "Pulse",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "pulse.mp3"
+    },
+    {
+      "title": "Ancient",
+      "date": "19.08.2026",
+      "album": "She Danced",
+      "cover": "covers/she-danced.png",
+      "artist": "Orient.bakureever",
+      "file": "ancient.mp3"
     }
   ]
 }
