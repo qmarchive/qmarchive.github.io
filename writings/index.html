@@ -572,6 +572,16 @@ a{
   background:var(--orange);
   border:3px solid var(--blue);
   font-weight:bold;
+  transition:box-shadow .18s ease,opacity .18s ease;
+}
+
+.music-icon.playing{
+  animation:musicIconPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes musicIconPulse{
+  0%,100%{box-shadow:0 0 0 rgba(240,90,50,0)}
+  50%{box-shadow:0 0 7px rgba(240,90,50,.55)}
 }
 
 .music-info{
@@ -1064,7 +1074,7 @@ a{
 
 <div class="music-player">
 
-  <div class="music-icon">
+  <div class="music-icon" id="musicIcon">
     ♪
   </div>
 
@@ -1892,7 +1902,26 @@ const musicTime =
     "musicTime"
   );
 
+const musicIcon =
+  document.getElementById(
+    "musicIcon"
+  );
+
 let currentTrack = 0;
+
+
+function setMusicIconPlaying(isPlaying){
+
+  if(!musicIcon){
+    return;
+  }
+
+  musicIcon.classList.toggle(
+    "playing",
+    Boolean(isPlaying)
+  );
+
+}
 
 
 /* =========================================================
@@ -1902,6 +1931,43 @@ let currentTrack = 0;
 const MUSIC_URL =
   "/music/content.json?v=" +
   Date.now();
+
+
+/*
+  Music files were moved from:
+
+    /music/<file>.mp3
+
+  to:
+
+    /music/posts/<file>.mp3
+
+  content.json may still list only the bare file name
+  ("between-the-takes.mp3") or already include the
+  "posts/" prefix — both resolve to the same, correct
+  location.
+*/
+function resolveMusicSrc(file){
+
+  const value =
+    String(file || "").trim();
+
+  if(!value){
+    return "";
+  }
+
+  if(/^https?:\/\//i.test(value)){
+    return value;
+  }
+
+  if(value.startsWith("/")){
+    return value;
+  }
+
+  return "/music/posts/" +
+    value.replace(/^posts\//i,"");
+
+}
 
 
 async function loadMusicArchive(){
@@ -1961,12 +2027,10 @@ async function loadMusicArchive(){
 
           src:
             track.file
-              ? (
-                  "/music/" +
-                  String(track.file)
-                    .replace(/^\/+/,"")
+              ? resolveMusicSrc(
+                  track.file
                 )
-              : String(
+              : resolveMusicSrc(
                   track.src || ""
                 )
 
@@ -2158,7 +2222,13 @@ function loadTrack(
   musicTitle.textContent =
     track.title;
 
+  musicTitle.title =
+    track.title;
+
   musicArtist.textContent =
+    track.artist;
+
+  musicArtist.title =
     track.artist;
 
   progress.value =
@@ -2177,6 +2247,8 @@ function loadTrack(
           playButton.textContent =
             "❚❚";
 
+          setMusicIconPlaying(true);
+
           saveMusicState();
 
         }
@@ -2188,6 +2260,8 @@ function loadTrack(
           playButton.textContent =
             "▶";
 
+          setMusicIconPlaying(false);
+
         }
       );
 
@@ -2195,6 +2269,8 @@ function loadTrack(
 
     playButton.textContent =
       "▶";
+
+    setMusicIconPlaying(false);
 
   }
 
@@ -2585,6 +2661,8 @@ audio.addEventListener(
     playButton.textContent =
       "❚❚";
 
+    setMusicIconPlaying(true);
+
     saveMusicState();
 
   }
@@ -2596,6 +2674,8 @@ audio.addEventListener(
 
     playButton.textContent =
       "▶";
+
+    setMusicIconPlaying(false);
 
     saveMusicState();
 
