@@ -1814,8 +1814,8 @@ a[href]:hover{
 
     grid-template-columns:
       31px
-      minmax(0,1fr)
-      31px;
+      31px
+      minmax(0,1fr);
 
   }
 
@@ -1824,6 +1824,13 @@ a[href]:hover{
   .browser-control:nth-child(2){
 
     display:none;
+
+  }
+
+
+  .browser-address{
+
+    grid-column:3;
 
   }
 
@@ -1879,8 +1886,38 @@ a[href]:hover{
 
     grid-template-columns:
       auto
-      minmax(0,1fr)
-      auto;
+      minmax(0,1fr);
+
+    grid-template-areas:
+      "buttons time"
+      "progress progress";
+
+    gap:7px;
+
+  }
+
+
+  .main-player-buttons{
+
+    grid-area:buttons;
+
+  }
+
+
+  .main-progress{
+
+    grid-area:progress;
+
+  }
+
+
+  .main-time{
+
+    grid-area:time;
+
+    min-width:0;
+
+    white-space:nowrap;
 
   }
 
@@ -1948,6 +1985,31 @@ a[href]:hover{
   .now-playing-title{
 
     font-size:20px;
+
+  }
+
+
+  .main-player-controls{
+
+    grid-template-columns:
+      minmax(0,1fr)
+      auto;
+
+  }
+
+
+  .main-player-button{
+
+    width:34px;
+
+    height:31px;
+
+  }
+
+
+  .main-player-buttons{
+
+    gap:3px;
 
   }
 
