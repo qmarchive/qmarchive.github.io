@@ -2607,6 +2607,28 @@ function normalizePath(value){
     return "";
   }
 
+  /*
+    MUSIC FILES
+
+    Relative audio filenames are now stored in:
+
+      /music/posts/
+
+    So content.json can use:
+
+      "file": "between-the-takes.mp3"
+
+    and the player resolves it to:
+
+      /music/posts/between-the-takes.mp3
+
+    Explicit paths such as:
+
+      "file": "posts/between-the-takes.mp3"
+
+    are also supported.
+  */
+
   if(
     text.startsWith("http://") ||
     text.startsWith("https://") ||
@@ -2617,8 +2639,18 @@ function normalizePath(value){
 
   }
 
-  return "/music/" +
+  const clean =
     text.replace(/^\/+/ ,"");
+
+  if(
+    clean.startsWith("posts/")
+  ){
+
+    return "/music/" + clean;
+
+  }
+
+  return "/music/posts/" + clean;
 
 }
 
