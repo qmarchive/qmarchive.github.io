@@ -2,7 +2,7 @@
   "music": [
     {
       "title": "Between The Takes",
-      "date": "26.03.2026",
+      "date": "12.03.2026",
       "album": "Between The Takes",
       "cover": "covers/between-the-takes.png",
       "artist": "Orient.bakureever",
@@ -10,7 +10,7 @@
     },
     {
       "title": "Wednesday's Origami",
-      "date": "26.03.2026",
+      "date": "16.03.2026",
       "album": "Between The Takes",
       "cover": "covers/between-the-takes.png",
       "artist": "Orient.bakureever",
@@ -26,7 +26,7 @@
     },
     {
       "title": "J & J",
-      "date": "28.01.2026",
+      "date": "25.01.2026",
       "album": "3.AM",
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
@@ -34,7 +34,7 @@
     },
     {
       "title": "It Won't Live",
-      "date": "01.04.2026",
+      "date": "28.01.2026",
       "album": "3.AM",
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
@@ -42,7 +42,7 @@
     },
     {
       "title": "West Lake",
-      "date": "26.03.2026",
+      "date": "20.03.2026",
       "album": "Between The Takes",
       "cover": "covers/between-the-takes.png",
       "artist": "Orient.bakureever",
@@ -50,7 +50,7 @@
     },
     {
       "title": "Half Step",
-      "date": "26.03.2026",
+      "date": "21.03.2026",
       "album": "Between The Takes",
       "cover": "covers/between-the-takes.png",
       "artist": "Orient.bakureever",
@@ -58,7 +58,7 @@
     },
     {
       "title": "Verbogen",
-      "date": "14.03.2026",
+      "date": "26.01.2026",
       "album": "3.AM",
       "cover": "covers/where-the-cat-goes-at-night.png",
       "artist": "Orient.bakureever",
@@ -66,7 +66,7 @@
     },
     {
       "title": "Melting Glass",
-      "date": "14.03.2026",
+      "date": "01.02.2026",
       "album": "Zarathustra's Forgotten Headphones",
       "cover": "covers/zarathustras-forgotten-headphones.png",
       "artist": "Orient.bakureever",
@@ -74,7 +74,7 @@
     },
     {
       "title": "The Crease",
-      "date": "14.03.2026",
+      "date": "02.02.2026",
       "album": "Zarathustra's Forgotten Headphones",
       "cover": "covers/zarathustras-forgotten-headphones.png",
       "artist": "Orient.bakureever",
@@ -82,7 +82,7 @@
     },
     {
       "title": "Dimension Silente",
-      "date": "14.03.2026",
+      "date": "03.02.2026",
       "album": "Zarathustra's Forgotten Headphones",
       "cover": "covers/zarathustras-forgotten-headphones.png",
       "artist": "Orient.bakureever",
@@ -90,7 +90,7 @@
     },
     {
       "title": "Ghost Frequency",
-      "date": "14.03.2026",
+      "date": "14.02.2026",
       "album": "Noise",
       "cover": "covers/noise.png",
       "artist": "Orient.bakureever",
@@ -98,7 +98,7 @@
     },
     {
       "title": "Beyond My Eyes",
-      "date": "14.03.2026",
+      "date": "15.02.2026",
       "album": "Noise",
       "cover": "covers/noise.png",
       "artist": "Orient.bakureever",
@@ -106,7 +106,7 @@
     },
     {
       "title": "La Vida Loca",
-      "date": "14.03.2026",
+      "date": "16.02.2026",
       "album": "Noise",
       "cover": "covers/noise.png",
       "artist": "Orient.bakureever",
@@ -114,7 +114,7 @@
     },
     {
       "title": "1314925",
-      "date": "14.03.2026",
+      "date": "17.02.2026",
       "album": "Noise",
       "cover": "covers/noise.png",
       "artist": "Orient.bakureever",
@@ -122,7 +122,7 @@
     },
     {
       "title": "Monsoon",
-      "date": "14.03.2026",
+      "date": "18.02.2026",
       "album": "Noise",
       "cover": "covers/noise.png",
       "artist": "Orient.bakureever",
@@ -130,7 +130,7 @@
     },
     {
       "title": "Done",
-      "date": "14.03.2026",
+      "date": "20.02.2026",
       "album": "Noise",
       "cover": "covers/noise.png",
       "artist": "Orient.bakureever",
@@ -143,6 +143,118 @@
       "cover": "covers/between-the-takes.png",
       "artist": "Orient.bakureever",
       "file": "raincode.mp3"
+    },
+    {
+      "title": "Meow",
+      "date": "27.01.2026",
+      "album": "3.AM",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "meow.mp3"
+    },
+    {
+      "title": "Trigger Bloom",
+      "date": "29.01.2026",
+      "album": "3.AM",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "trigger-bloom.mp3"
+    },
+    {
+      "title": "Verbogen",
+      "date": "30.01.2026",
+      "album": "3.AM",
+      "cover": "covers/where-the-cat-goes-at-night.png",
+      "artist": "Orient.bakureever",
+      "file": "ink-sway.mp3"
+    },
+    {
+      "title": "Velvet Dust",
+      "date": "26.03.2026",
+      "album": "Between The Takes",
+      "cover": "covers/between-the-takes.png",
+      "artist": "Orient.bakureever",
+      "file": "velvet-dust.mp3"
+    },
+    {
+      "title": "Overman's Ashes",
+      "date": "01.05.2026",
+      "album": "B-Roll",
+      "cover": "covers/b-roll.png",
+      "artist": "Orient.bakureever",
+      "file": "overmans-ashes.mp3"
+    },
+    {
+      "title": "Station Three Eighteen",
+      "date": "03.05.2026",
+      "album": "B-Roll",
+      "cover": "covers/b-roll.png",
+      "artist": "Orient.bakureever",
+      "file": "station-three-eighteen.mp3"
+    },
+    {
+      "title": "Lagged Frame",
+      "date": "07.05.2026",
+      "album": "B-Roll",
+      "cover": "covers/b-roll.png",
+      "artist": "Orient.bakureever",
+      "file": "lagged-frame.mp3"
+    },
+    {
+      "title": "Flicker Fade",
+      "date": "02.05.2026",
+      "album": "B-Roll",
+      "cover": "covers/b-roll.png",
+      "artist": "Orient.bakureever",
+      "file": "flicker-fade.mp3"
+    },
+    {
+      "title": "Zerakaya",
+      "date": "21.07.2026",
+      "album": "Ha Ra No Va",
+      "cover": "covers/haranova.png",
+      "artist": "Orient.bakureever",
+      "file": "zerakaya.mp3"
+    },
+    {
+      "title": "Aum Veloka",
+      "date": "21.07.2026",
+      "album": "Ha Ra No Va",
+      "cover": "covers/haranova.png",
+      "artist": "Orient.bakureever",
+      "file": "aum-veloka.mp3"
+    },
+    {
+      "title": "Ha Ra No Va",
+      "date": "21.07.2026",
+      "album": "Ha Ra No Va",
+      "cover": "covers/haranova.png",
+      "artist": "Orient.bakureever",
+      "file": "haranova.mp3"
+    },
+    {
+      "title": "Hazenevel",
+      "date": "21.07.2026",
+      "album": "Ha Ra No Va",
+      "cover": "covers/haranova.png",
+      "artist": "Orient.bakureever",
+      "file": "hazenevel.mp3"
+    },
+    {
+      "title": "Ne Ra Ho",
+      "date": "21.07.2026",
+      "album": "Ha Ra No Va",
+      "cover": "covers/haranova.png",
+      "artist": "Orient.bakureever",
+      "file": "neraho.mp3"
+    },
+    {
+      "title": "Velkora",
+      "date": "21.07.2026",
+      "album": "Ha Ra No Va",
+      "cover": "covers/haranova.png",
+      "artist": "Orient.bakureever",
+      "file": "velkora.mp3"
     }
   ]
 }
