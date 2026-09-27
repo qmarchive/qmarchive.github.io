@@ -2617,8 +2617,28 @@ function normalizePath(value){
 
   }
 
-  return "/music/" +
-    text.replace(/^\/+/ ,"");
+  /*
+    Các file nhạc (.mp3) đã được chuyển sang:
+
+      /music/posts/
+
+    JSON có thể vẫn chỉ ghi tên file, ví dụ:
+
+      "file": "between-the-takes.mp3"
+
+    hoặc đã có sẵn tiền tố "posts/":
+
+      "file": "posts/between-the-takes.mp3"
+
+    Cả hai đều được chuẩn hóa về đúng vị trí mới:
+
+      /music/posts/between-the-takes.mp3
+  */
+
+  return "/music/posts/" +
+    text
+      .replace(/^\/+/ ,"")
+      .replace(/^posts\//i,"");
 
 }
 
