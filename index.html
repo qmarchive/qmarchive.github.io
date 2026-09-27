@@ -354,6 +354,14 @@ a[href]:hover{font-weight:bold}
 .music-icon{
   width:35px;height:35px;display:flex;align-items:center;justify-content:center;
   background:var(--orange);border:3px solid var(--blue);font-weight:bold;
+  transition:box-shadow .18s ease,opacity .18s ease;
+}
+.music-icon.playing{
+  animation:musicIconPulse 2.4s ease-in-out infinite;
+}
+@keyframes musicIconPulse{
+  0%,100%{box-shadow:0 0 0 rgba(240,90,50,0)}
+  50%{box-shadow:0 0 7px rgba(240,90,50,.55)}
 }
 .music-info{min-width:0}
 .music-label{font-size:8px;margin-bottom:2px}
@@ -760,7 +768,7 @@ a[href]:hover{font-weight:bold}
 
 <div class="music-player">
 
-  <div class="music-icon">♪</div>
+  <div class="music-icon" id="musicIcon">♪</div>
 
   <div class="music-info">
     <div class="music-label">NOW PLAYING</div>
@@ -1231,8 +1239,25 @@ const musicArtist =
 const musicTime =
   document.getElementById("musicTime");
 
+const musicIcon =
+  document.getElementById("musicIcon");
+
 let currentTrack = 0;
 
+/*
+  Music files were moved from:
+
+    /music/<file>.mp3
+
+  to:
+
+    /music/posts/<file>.mp3
+
+  content.json may still list only the bare file name
+  ("between-the-takes.mp3") or already include the
+  "posts/" prefix — both resolve to the same, correct
+  location.
+*/
 function resolveMusicSrc(file){
 
   const value =
@@ -1250,7 +1275,20 @@ function resolveMusicSrc(file){
     return value;
   }
 
-  return "/music/" + value;
+  return "/music/posts/" +
+    value.replace(/^posts\//i,"");
+}
+
+function setMusicIconPlaying(isPlaying){
+
+  if(!musicIcon){
+    return;
+  }
+
+  musicIcon.classList.toggle(
+    "playing",
+    Boolean(isPlaying)
+  );
 }
 
 async function loadMusicArchive(){
@@ -1863,7 +1901,13 @@ function loadTrack(
   musicTitle.textContent =
     track.title;
 
+  musicTitle.title =
+    track.title;
+
   musicArtist.textContent =
+    track.artist;
+
+  musicArtist.title =
     track.artist;
 
   progress.value =
@@ -1882,6 +1926,8 @@ function loadTrack(
         playButton.textContent =
           "❚❚";
 
+        setMusicIconPlaying(true);
+
         saveMusicState();
 
       })
@@ -1889,6 +1935,8 @@ function loadTrack(
 
         playButton.textContent =
           "▶";
+
+        setMusicIconPlaying(false);
 
         saveMusicState();
 
@@ -1898,6 +1946,8 @@ function loadTrack(
 
     playButton.textContent =
       "▶";
+
+    setMusicIconPlaying(false);
 
   }
 }
@@ -2065,6 +2115,8 @@ audio.addEventListener(
     playButton.textContent =
       "❚❚";
 
+    setMusicIconPlaying(true);
+
     saveMusicState();
 
   }
@@ -2076,6 +2128,8 @@ audio.addEventListener(
 
     playButton.textContent =
       "▶";
+
+    setMusicIconPlaying(false);
 
     saveMusicState();
 
