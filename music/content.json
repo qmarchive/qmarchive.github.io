@@ -135,6 +135,14 @@
       "cover": "covers/noise.png",
       "artist": "Orient.bakureever",
       "file": "done.mp3"
+    },
+    {
+      "title": "Rain Code",
+      "date": "26.03.2026",
+      "album": "Between The Takes",
+      "cover": "covers/between-the-takes.png",
+      "artist": "Orient.bakureever",
+      "file": "raincode.mp3"
     }
   ]
 }
