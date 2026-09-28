@@ -10,7 +10,7 @@
   content="width=device-width, initial-scale=1.0"
 >
 
-<title>Photographs — QUỐC MẠNH</title>
+<title>Music — QUỐC MẠNH</title>
 
 
 <style>
@@ -177,15 +177,6 @@ body::before{
 }
 
 
-.window--teal .window-titlebar{
-
-  background:var(--teal);
-
-  color:var(--white);
-
-}
-
-
 .window-title{
 
   display:flex;
@@ -197,6 +188,7 @@ body::before{
   min-width:0;
 
 }
+
 
 .window-title-label{
 
@@ -213,43 +205,6 @@ body::before{
   background:#eee5cb;
 
   line-height:1.2;
-
-}
-
-
-.window-title-icon{
-
-  width:21px;
-
-  height:21px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  flex-shrink:0;
-
-  border:2px solid currentColor;
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-size:10px;
-
-  font-weight:bold;
-
-}
-
-
-.window--teal
-.window-title-icon{
-
-  color:var(--blue);
 
 }
 
@@ -317,261 +272,173 @@ a[href]:hover{
 ========================================================= */
 
 .browser{
-
-  border:var(--border);
-
-  background:var(--paper);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-  margin-bottom:14px;
-
+  border:var(--border);background:var(--paper);box-shadow:5px 5px 0 var(--blue);margin-bottom:14px;
+  position:relative;
 }
-
-
 .browser-top{
-
-  min-height:39px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    5px 8px;
-
-  background:var(--orange);
-
-  border-bottom:var(--border);
-
+  min-height:39px;display:flex;align-items:center;justify-content:space-between;
+  padding:5px 8px;background:var(--orange);border-bottom:var(--border);
 }
-
-
-.browser-brand{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  color:var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-weight:bold;
-
-  font-size:17px;
-
-  letter-spacing:1px;
-
-}
-
-
+.browser-brand{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:bold;font-size:17px;letter-spacing:1px}
 .browser-brand-icon{
-
-  width:24px;
-
-  height:24px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--teal);
-
-  color:var(--white);
-
-  font-family:monospace;
-
-  font-size:12px;
-
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--teal);color:var(--white);font-size:12px;
 }
-
-
-.browser-subtitle{
-
-  font-size:11px;
-
-  font-weight:bold;
-
-}
-
-
-.browser-window-buttons{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
+.browser-subtitle{font-size:11px;font-weight:bold}
+.browser-window-buttons{display:flex;gap:4px}
 .browser-window-buttons span{
-
-  width:23px;
-
-  height:23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-size:11px;
-
+  width:23px;height:23px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);color:var(--blue);font-size:11px;
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
-
-
 .browser-window-buttons span:active{
-
   transform:translate(2px,2px);
-
-  box-shadow:none;
-
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
 }
-
-
-.browser-menu{
-
-  display:flex;
-
-  gap:20px;
-
-  padding:
-    6px 10px;
-
-  border-bottom:2px solid var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-size:12px;
-
-  font-weight:bold;
-
-}
-
-.browser-menu span{
-  cursor:default;
-}
-
-.browser-menu span:hover{
+.browser-menu{display:flex;gap:20px;padding:6px 10px;border-bottom:2px solid var(--blue);font-size:12px;font-weight:bold}
+.browser-menu span{cursor:pointer;transition:color .08s ease,transform .08s ease}
+.browser-menu span:hover{color:var(--orange)}
+.browser-menu span.menu-active{
   color:var(--orange);
+  transform:translateY(1px);
 }
-
-
 .browser-address-row{
-
-  display:grid;
-
-  grid-template-columns:
-    31px
-    31px
-    31px
-    minmax(0,1fr)
-    175px;
-
-  gap:6px;
-
-  align-items:center;
-
-  padding:7px;
-
+  display:grid;grid-template-columns:31px 31px minmax(0,1fr) 175px;
+  gap:6px;align-items:center;padding:7px;
+  position:relative;
 }
-
-
 .browser-control{
-
-  width:31px;
-
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border:2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-
+  width:31px;height:27px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);font-weight:bold;
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
-
-
+.browser-control:active{
+  transform:translate(2px,2px);
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
+}
 .browser-address{
-
-  min-width:0;
-
-  height:27px;
-
-  display:flex;
-
-  align-items:center;
-
-  padding:
-    0 9px;
-
-  border:2px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:#303249;
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
+  min-width:0;height:27px;display:flex;align-items:center;padding:0 9px;
+  border:2px solid var(--blue);background:#eee5ce;color:#303249;overflow:hidden;
+  white-space:nowrap;text-overflow:ellipsis;font-family:monospace;font-size:11px;
+  cursor:pointer;
+  user-select:all;
+  -webkit-user-select:all;
+}
+.browser-address.selected{
+  background:var(--blue);
+  color:var(--white);
+}
+.browser-address-dropdown{
+  position:absolute;
+  left:68px;
+  right:181px;
+  top:43px;
+  z-index:10002;
+  display:none;
+  padding:5px 0;
+  border:3px solid var(--blue);
+  background:var(--paper);
+  box-shadow:5px 5px 0 var(--blue);
+}
+.browser-address-dropdown.open{
+  display:block;
+  animation:browserDropdownIn .12s ease-out;
+}
+.browser-address-option{
+  display:block;
+  padding:7px 10px;
+  color:var(--blue);
   font-family:monospace;
-
   font-size:11px;
-
-}
-
-
-.browser-date{
-
-  text-align:right;
-
-  font-family:monospace;
-
-  font-size:10px;
-
-  line-height:1.35;
-
   font-weight:bold;
-
+  cursor:pointer;
 }
-
-
-/* =========================================================
-   MAIN LAYOUT
-========================================================= */
+.browser-address-option:hover{
+  background:var(--orange);
+  color:var(--white);
+}
+@keyframes browserDropdownIn{
+  from{opacity:0;transform:translateY(-3px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.browser-menu-popup{
+  position:absolute;
+  z-index:10003;
+  display:none;
+  min-width:245px;
+  padding:12px 14px;
+  border:3px solid var(--blue);
+  background:var(--paper);
+  box-shadow:5px 5px 0 var(--blue);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:11px;
+  line-height:1.6;
+  font-weight:bold;
+}
+.browser-menu-popup.open{
+  display:block;
+  animation:browserMenuPopupIn .12s ease-out;
+}
+.browser-menu-popup-title{
+  margin-bottom:6px;
+  padding-bottom:5px;
+  border-bottom:2px dotted var(--blue);
+}
+.browser-menu-popup-text{
+  white-space:pre-line;
+}
+@keyframes browserMenuPopupIn{
+  from{opacity:0;transform:translateY(-3px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.browser-loading{
+  position:fixed;
+  inset:0;
+  z-index:99998;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(216,207,181,.92);
+}
+.browser-loading.open{
+  display:flex;
+}
+.browser-loading-window{
+  width:min(430px,calc(100% - 40px));
+  padding:14px;
+  border:3px solid var(--blue);
+  background:var(--paper);
+  box-shadow:5px 5px 0 var(--blue);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:11px;
+  font-weight:bold;
+}
+.browser-loading-title{
+  margin-bottom:8px;
+}
+.browser-loading-bar{
+  height:16px;
+  padding:2px;
+  border:2px solid var(--blue);
+  overflow:hidden;
+}
+.browser-loading-progress{
+  width:0;
+  height:100%;
+  background:var(--orange);
+  animation:browserLoadingProgress .55s steps(8,end) forwards;
+}
+@keyframes browserLoadingProgress{
+  from{width:0}
+  to{width:100%}
+}
+.browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
 
 .layout{
 
@@ -684,11 +551,6 @@ a[href]:hover{
 }
 
 
-/* =========================================================
-   NAV HOVER
-   → CHỮ TRẮNG KHI HOVER
-========================================================= */
-
 .nav-list a:hover{
 
   background:var(--orange);
@@ -699,11 +561,6 @@ a[href]:hover{
 
 }
 
-
-/* =========================================================
-   ACTIVE NAV
-   → PHOTOGRAPHS ĐANG ACTIVE = CHỮ TRẮNG
-========================================================= */
 
 .nav-list a.active{
 
@@ -717,77 +574,10 @@ a[href]:hover{
 
 
 /* =========================================================
-   CASSETTE
+   MUSIC WINDOW
 ========================================================= */
 
-.cassette{
-
-  margin-top:14px;
-
-  padding:8px;
-
-}
-
-
-.cassette img{
-
-  display:block;
-
-  width:100%;
-
-  height:auto;
-
-  border:3px solid var(--blue);
-
-}
-
-
-.cassette img[src$=".gif"]{
-
-  image-rendering:auto;
-
-}
-
-
-.cassette-caption{
-
-  margin-top:8px;
-
-  text-align:center;
-
-  font-family:monospace;
-
-  font-size:10px;
-
-  line-height:1.5;
-
-  font-weight:bold;
-
-}
-
-
-/* =========================================================
-   CENTER
-========================================================= */
-
-.center{
-
-  min-width:0;
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:16px;
-
-}
-
-
-/* =========================================================
-   PHOTOGRAPHS WINDOW
-========================================================= */
-
-.photos-window{
+.music-window{
 
   min-width:0;
 
@@ -797,10 +587,10 @@ a[href]:hover{
 
 
 /* =========================================================
-   PHOTO HEADER
+   MUSIC INTRO
 ========================================================= */
 
-.photo-intro{
+.music-intro{
 
   padding:
     12px 16px;
@@ -822,187 +612,44 @@ a[href]:hover{
 
 
 /* =========================================================
-   PHOTO FILTERS
+   CURRENT TRACK
 ========================================================= */
 
-.photo-filters{
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:7px;
-
-  padding:
-    10px 12px;
-
-  border-bottom:
-    var(--border);
-
-  background:var(--cream);
-
-}
-
-
-.photo-filter{
-
-  display:inline-block;
-
-  padding:
-    5px 9px;
-
-  border:
-    2px solid var(--blue);
-
-  background:var(--paper);
-
-  color:var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-size:11px;
-
-  line-height:1.4;
-
-  cursor:pointer;
-
-}
-
-
-.photo-filter:first-child{
-
-  background:var(--paper);
-
-  font-weight:normal;
-
-}
-
-
-.photo-filter.active{
-
-  background:var(--orange);
-
-  color:var(--white);
-
-  font-weight:bold;
-
-}
-
-
-.photo-filter:hover{
-
-  color:var(--white);
-
-  background:var(--teal);
-
-}
-
-
-.photo-filter.active:hover{
-
-  color:var(--white);
-
-  background:var(--teal);
-
-}
-
-
-/* =========================================================
-   DETAIL MODE
-========================================================= */
-
-.photos-window.detail-mode
-.photo-filters{
-
-  display:none;
-
-}
-
-
-/* =========================================================
-   3-COLUMN PHOTO GRID
-========================================================= */
-
-.archive{
-
-  width:100%;
+.now-playing{
 
   display:grid;
 
   grid-template-columns:
-    repeat(3,minmax(0,1fr));
+    240px
+    minmax(0,1fr);
 
-  gap:0;
-
-}
-
-
-/* =========================================================
-   PHOTO CARD
-========================================================= */
-
-.photo-entry{
-
-  min-width:0;
-
-  display:block;
+  gap:18px;
 
   padding:12px;
 
-  border-right:
-    3px solid var(--blue);
-
-  border-bottom:
-    3px solid var(--blue);
-
-  text-decoration:none;
+  border-bottom:var(--border);
 
   background:var(--paper);
 
-  color:var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
 }
 
 
-.photo-entry:nth-child(3n){
-
-  border-right:0;
-
-}
-
-
-.photo-entry:hover{
-
-  background:#f5ecd7;
-
-}
-
-
-/* =========================================================
-   PHOTO FRAME
-========================================================= */
-
-.photo-frame{
+.now-playing-cover{
 
   width:100%;
 
-  aspect-ratio:4 / 3;
+  aspect-ratio:1 / 1;
 
   overflow:hidden;
 
+  border:3px solid var(--blue);
+
   background:var(--blue);
-
-  border:
-    3px solid var(--blue);
-
-  margin-bottom:9px;
 
 }
 
 
-.photo-frame img{
+.now-playing-cover img{
 
   display:block;
 
@@ -1012,45 +659,74 @@ a[href]:hover{
 
   object-fit:cover;
 
-  filter:
-    grayscale(.08)
-    brightness(.88)
-    saturate(.85);
+}
 
-  transition:
-    filter .25s ease,
-    transform .25s ease;
+
+.now-playing-cover.placeholder{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--white);
+
+  font-family:monospace;
+
+  font-size:12px;
+
+  text-align:center;
 
 }
 
 
-.photo-entry:hover
-.photo-frame img{
+.now-playing-info{
 
-  filter:
-    grayscale(0)
-    brightness(.98)
-    saturate(1);
+  min-width:0;
 
-  transform:
-    scale(1.015);
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
 
 }
 
 
-/* =========================================================
-   PHOTO META
-========================================================= */
+.now-playing-label{
 
-.photo-date{
+  display:inline-flex;
 
-  color:var(--teal);
+  align-self:flex-start;
+
+  padding:
+    4px 7px;
+
+  margin-bottom:10px;
+
+  border:2px solid var(--blue);
+
+  background:#eee5cb;
 
   font-family:monospace;
 
   font-size:10px;
 
-  line-height:1.4;
+  font-weight:bold;
+
+}
+
+
+.now-playing-title{
+
+  color:var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:24px;
+
+  line-height:1.2;
 
   font-weight:bold;
 
@@ -1059,54 +735,13 @@ a[href]:hover{
 }
 
 
-.photo-title{
-
-  color:var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-size:12px;
-
-  line-height:1.4;
-
-  font-weight:bold;
-
-}
-
-
-.photo-entry:hover
-.photo-title{
-
-  color:var(--orange);
-
-}
-
-
-/* =========================================================
-   ARTICLE / DETAIL
-========================================================= */
-
-.article{
-
-  padding:
-    20px
-    22px
-    30px;
-
-  font-family:Arial,Helvetica,sans-serif;
-
-}
-
-
-.article-year{
+.now-playing-artist{
 
   color:var(--teal);
 
   font-family:monospace;
 
-  font-size:11px;
-
-  line-height:1.4;
+  font-size:12px;
 
   font-weight:bold;
 
@@ -1115,43 +750,224 @@ a[href]:hover{
 }
 
 
-.article-title{
+.now-playing-meta{
 
   color:var(--blue);
 
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:monospace;
 
-  font-size:28px;
+  font-size:10px;
+
+  line-height:1.5;
+
+  margin-bottom:9px;
+
+}
+
+
+.now-playing-description{
+
+  color:var(--blue);
+
+  font-size:12px;
+
+  line-height:1.6;
+
+  margin-bottom:10px;
+
+}
+
+
+.main-player-controls{
+
+  display:grid;
+
+  grid-template-columns:auto minmax(0,1fr) auto auto;
+
+  gap:7px;
+
+  align-items:center;
+
+  padding:6px;
+
+  border:3px solid var(--blue);
+
+  background:#eee5ce;
+
+}
+
+
+.main-player-buttons{
+
+  display:flex;
+
+  gap:4px;
+
+}
+
+
+.main-player-button{
+
+  width:36px;
+
+  height:32px;
+
+  border:3px solid var(--blue);
+
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:monospace;
 
   font-weight:bold;
 
-  line-height:1.25;
+  cursor:pointer;
 
-  margin:
-    0 0 20px;
+}
+
+
+.main-player-button:hover{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+}
+
+
+.main-player-button:active{
+
+  transform:translate(2px,2px);
+
+}
+
+
+.main-progress{
+
+  min-width:0;
+
+}
+
+
+.main-progress input{
+
+  width:100%;
+
+  accent-color:var(--orange);
+
+}
+
+
+.main-time{
+
+  min-width:74px;
+
+  text-align:center;
+
+  font-family:monospace;
+
+  font-size:9px;
+
+}
+
+
+.main-volume{
+
+  width:100px;
+
+}
+
+
+.main-volume input{
+
+  width:100%;
+
+  accent-color:var(--teal);
 
 }
 
 
 /* =========================================================
-   DETAIL IMAGE
+   ALBUM / TRACKLIST TABS
 ========================================================= */
 
-.detail-photo{
+.music-tabs{
 
-  width:100%;
+  display:flex;
 
-  max-width:1100px;
+  gap:8px;
 
-  margin:
-    0 0 24px;
+  padding:
+    10px 12px;
 
-  padding:8px;
+  border-bottom:
+    2px dashed var(--blue);
+
+  background:var(--cream);
+
+}
+
+
+.music-tab{
+
+  min-width:145px;
+
+  padding:
+    8px 18px;
 
   border:
     3px solid var(--blue);
 
-  background:var(--blue);
+  background:var(--paper);
+
+  color:var(--blue);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:13px;
+
+  font-weight:bold;
+
+  text-align:center;
+
+  cursor:pointer;
+
+  user-select:none;
+
+  transition:
+    transform .08s ease,
+    background .12s ease,
+    color .12s ease;
+
+}
+
+
+.music-tab:hover{
+
+  background:var(--teal);
+
+  color:var(--white);
+
+}
+
+
+.music-tab:active{
+
+  transform:translate(2px,2px);
+
+}
+
+
+.music-tab.active{
+
+  position:relative;
+
+  top:-2px;
+
+  background:var(--orange);
+
+  color:var(--white);
 
   box-shadow:
     4px 4px 0 var(--blue);
@@ -1159,25 +975,48 @@ a[href]:hover{
 }
 
 
-.detail-photo img{
+.music-tab.active:hover{
 
-  display:block;
+  background:var(--orange);
 
-  width:100%;
-
-  height:auto;
-
-  max-height:760px;
-
-  object-fit:contain;
+  color:var(--white);
 
 }
 
 
-.detail-photo-caption{
+/* =========================================================
+   MUSIC CONTENT
+========================================================= */
 
-  padding:
-    7px 2px 0;
+.music-content{
+
+  padding:14px;
+
+  background:var(--paper);
+
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.content-heading{
+
+  color:var(--blue);
+
+  font-size:18px;
+
+  line-height:1.3;
+
+  font-weight:bold;
+
+  margin-bottom:3px;
+
+}
+
+
+.content-subheading{
 
   color:var(--teal);
 
@@ -1187,180 +1026,134 @@ a[href]:hover{
 
   line-height:1.5;
 
+  margin-bottom:13px;
+
 }
 
 
 /* =========================================================
-   ARTICLE BODY
+   ALBUM TABLE
 ========================================================= */
 
-.article-body{
-
-  max-width:1000px;
-
-  color:var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-size:14px;
-
-  line-height:1.9;
-
-  letter-spacing:.05px;
-
-}
-
-
-.article-body p{
-
-  margin:
-    0 0 24px;
-
-}
-
-
-.article-body h1,
-.article-body h2,
-.article-body h3{
-
-  color:var(--blue);
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-weight:bold;
-
-}
-
-
-.article-body h1{
-
-  font-size:25px;
-
-  margin:
-    30px 0 20px;
-
-}
-
-
-.article-body h2{
-
-  font-size:20px;
-
-  margin:
-    30px 0 18px;
-
-}
-
-
-.article-body h3{
-
-  font-size:17px;
-
-  margin:
-    25px 0 13px;
-
-}
-
-
-.article-body em{
-
-  color:var(--teal);
-
-}
-
-
-.article-body strong{
-
-  color:var(--orange);
-
-}
-
-
-.article-body blockquote{
-
-  margin:
-    25px 0;
-
-  padding:
-    12px 15px;
-
-  border-left:
-    5px solid var(--orange);
-
-  background:var(--white);
-
-  color:var(--teal);
-
-}
-
-
-.article-body ul,
-.article-body ol{
-
-  margin:
-    0 0 24px;
-
-  padding-left:25px;
-
-}
-
-
-.article-body li{
-
-  margin-bottom:7px;
-
-}
-
-
-.article-body a{
-
-  color:var(--teal);
-
-  font-weight:bold;
-
-}
-
-
-.article-body img{
-
-  display:block;
-
-  width:auto;
-
-  max-width:100%;
-
-  height:auto;
-
-  margin:
-    30px 0;
+.album-table{
 
   border:
     3px solid var(--blue);
 
+  background:var(--paper);
+
+  max-height:
+    316px;
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
 }
 
 
-/* =========================================================
-   ARTICLE BACK
-========================================================= */
+.album-table-header{
 
-.article-back{
+  display:grid;
 
-  display:inline-block;
+  grid-template-columns:
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    105px
+    95px
+    42px;
 
-  margin-top:20px;
+  gap:10px;
+
+  align-items:center;
+
+  min-height:38px;
 
   padding:
     6px 10px;
 
-  border:
-    2px solid var(--blue);
+  border-bottom:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+.album-row{
+
+  display:grid;
+
+  grid-template-columns:
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    105px
+    95px
+    42px;
+
+  gap:10px;
+
+  align-items:center;
+
+  min-height:68px;
+
+  padding:
+    7px 10px;
+
+  border-bottom:
+    2px dashed var(--blue);
 
   background:var(--paper);
 
   color:var(--blue);
 
-  text-decoration:none;
+  cursor:pointer;
+
+}
+
+
+.album-row:last-child{
+
+  border-bottom:0;
+
+}
+
+
+.album-row:hover{
+
+  background:#f5ecd7;
+
+}
+
+
+.album-row:active{
+
+  transform:
+    translate(2px,2px);
+
+}
+
+
+.album-row.selected{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+}
+
+
+.album-number{
 
   font-family:monospace;
 
@@ -1371,26 +1164,472 @@ a[href]:hover{
 }
 
 
-.article-back:hover{
+.album-main{
+
+  min-width:0;
+
+  display:grid;
+
+  grid-template-columns:
+    58px
+    minmax(0,1fr);
+
+  gap:9px;
+
+  align-items:center;
+
+}
+
+
+.album-thumb{
+
+  width:58px;
+
+  height:50px;
+
+  overflow:hidden;
+
+  border:
+    3px solid var(--blue);
+
+  background:var(--blue);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
 
   color:var(--white);
 
-  background:var(--teal);
+  font-family:monospace;
+
+  font-size:8px;
+
+  text-align:center;
+
+}
+
+
+.album-thumb img{
+
+  display:block;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+
+.album-name{
+
+  min-width:0;
+
+}
+
+
+.album-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:13px;
+
+  line-height:1.35;
+
+  font-weight:bold;
+
+}
+
+
+.album-artist{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  color:var(--teal);
+
+  font-family:monospace;
+
+  font-size:9px;
+
+  line-height:1.4;
+
+  font-weight:bold;
+
+  margin-top:3px;
+
+}
+
+
+.album-row.selected
+.album-artist{
+
+  color:var(--white);
+
+}
+
+
+.album-meta{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-family:monospace;
+
+  font-size:9px;
+
+  line-height:1.5;
+
+}
+
+
+.album-arrow{
+
+  text-align:center;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+}
+
+
+.album-table::-webkit-scrollbar{
+
+  width:12px;
+
+}
+
+
+.album-table::-webkit-scrollbar-track{
+
+  background:#eee5ce;
+
+  border-left:2px solid var(--blue);
+
+}
+
+
+.album-table::-webkit-scrollbar-thumb{
+
+  background:var(--blue);
+
+  border:2px solid #eee5ce;
 
 }
 
 
 /* =========================================================
-   ERROR
+   TRACKLIST TABLE
+========================================================= */
+
+.tracklist{
+
+  border:
+    3px solid var(--blue);
+
+  max-height:
+    316px;
+
+  overflow-y:auto;
+
+  overflow-x:hidden;
+
+}
+
+
+.tracklist-header{
+
+  display:grid;
+
+  grid-template-columns:
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    90px
+    105px
+    42px;
+
+  gap:10px;
+
+  align-items:center;
+
+  min-height:38px;
+
+  padding:
+    6px 10px;
+
+  border-bottom:
+    3px solid var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:10px;
+
+  font-weight:bold;
+
+}
+
+
+.track-row{
+
+  display:grid;
+
+  grid-template-columns:
+    42px
+    minmax(240px,2fr)
+    minmax(130px,1fr)
+    90px
+    105px
+    42px;
+
+  gap:10px;
+
+  align-items:center;
+
+  min-height:68px;
+
+  padding:
+    7px 10px;
+
+  border-bottom:
+    2px dashed var(--blue);
+
+  background:var(--paper);
+
+  cursor:pointer;
+
+}
+
+
+.track-row:last-child{
+
+  border-bottom:0;
+
+}
+
+
+.track-row:hover{
+
+  background:#f5ecd7;
+
+}
+
+
+.track-row:active{
+
+  transform:
+    translate(2px,2px);
+
+}
+
+
+.track-row.playing{
+
+  background:var(--orange);
+
+  color:var(--white);
+
+}
+
+
+.track-number{
+
+  font-family:monospace;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+}
+
+
+.track-name{
+
+  min-width:0;
+
+  display:grid;
+
+  grid-template-columns:
+    58px
+    minmax(0,1fr);
+
+  gap:9px;
+
+  align-items:center;
+
+}
+
+
+.track-thumb{
+
+  width:58px;
+
+  height:50px;
+
+  overflow:hidden;
+
+  border:
+    3px solid var(--blue);
+
+  background:var(--blue);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--white);
+
+  font-family:monospace;
+
+  font-size:8px;
+
+  text-align:center;
+
+}
+
+
+.track-thumb img{
+
+  display:block;
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+
+.track-title{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-size:13px;
+
+  line-height:1.4;
+
+  font-weight:bold;
+
+}
+
+
+.track-artist{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  color:var(--teal);
+
+  font-family:monospace;
+
+  font-size:9px;
+
+  line-height:1.4;
+
+  font-weight:bold;
+
+  margin-top:3px;
+
+}
+
+
+.track-row.playing
+.track-artist{
+
+  color:var(--white);
+
+}
+
+
+.track-album,
+.track-duration,
+.track-date{
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  font-family:monospace;
+
+  font-size:9px;
+
+}
+
+
+.track-play{
+
+  text-align:center;
+
+  font-size:17px;
+
+  font-weight:bold;
+
+}
+
+
+.tracklist::-webkit-scrollbar{
+
+  width:12px;
+
+}
+
+
+.tracklist::-webkit-scrollbar-track{
+
+  background:#eee5ce;
+
+  border-left:2px solid var(--blue);
+
+}
+
+
+.tracklist::-webkit-scrollbar-thumb{
+
+  background:var(--blue);
+
+  border:2px solid #eee5ce;
+
+}
+
+
+/* =========================================================
+   EMPTY / ERROR
 ========================================================= */
 
 .error{
 
   padding:
     35px 20px;
-
-  border-top:
-    0;
 
   background:#eee5ce;
 
@@ -1405,9 +1644,23 @@ a[href]:hover{
 }
 
 
-.error strong{
+.empty{
 
-  font-weight:bold;
+  padding:
+    30px 15px;
+
+  border:
+    3px dashed var(--blue);
+
+  background:#eee5ce;
+
+  color:var(--blue);
+
+  font-family:monospace;
+
+  font-size:11px;
+
+  line-height:1.8;
 
 }
 
@@ -1422,7 +1675,7 @@ a[href]:hover{
     min(940px, calc(100% - 28px));
 
   margin:
-    16px auto 0;
+    60px auto 0;
 
   padding:
     10px 14px;
@@ -1448,218 +1701,6 @@ a[href]:hover{
 
 
 /* =========================================================
-   MUSIC PLAYER
-========================================================= */
-
-.music-player{
-
-  position:fixed;
-
-  width:
-    min(940px, calc(100% - 28px));
-
-  left:50%;
-
-  right:auto;
-
-  bottom:10px;
-
-  transform:translateX(-50%);
-
-  z-index:10000;
-
-  display:grid;
-
-  grid-template-columns:
-    auto
-    minmax(150px,1fr)
-    auto
-    minmax(150px,1.5fr)
-    auto
-    auto;
-
-  gap:9px;
-
-  align-items:center;
-
-  padding:
-    6px 8px;
-
-  background:var(--paper);
-
-  border:
-    3px solid var(--blue);
-
-  box-shadow:
-    5px 5px 0 var(--blue);
-
-}
-
-
-.music-icon{
-
-  width:35px;
-
-  height:35px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:var(--orange);
-
-  border:
-    3px solid var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-}
-
-
-.music-info{
-
-  min-width:0;
-
-}
-
-
-.music-label{
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  margin-bottom:2px;
-
-}
-
-
-.music-title{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  font-size:11px;
-
-  line-height:1.4;
-
-  font-weight:bold;
-
-}
-
-
-.music-artist{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  margin-top:2px;
-
-  color:var(--teal);
-
-  font-size:8px;
-
-  line-height:1.3;
-
-  font-weight:bold;
-
-}
-
-
-.music-controls{
-
-  display:flex;
-
-  gap:4px;
-
-}
-
-
-.music-button{
-
-  width:33px;
-
-  height:29px;
-
-  border:
-    3px solid var(--blue);
-
-  background:#eee5ce;
-
-  color:var(--blue);
-
-  font-family:monospace;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-
-.music-button:hover{
-
-  background:var(--orange);
-
-}
-
-
-.music-progress{
-
-  min-width:0;
-
-}
-
-
-.music-progress input{
-
-  width:100%;
-
-  accent-color:var(--orange);
-
-}
-
-
-.music-time{
-
-  min-width:72px;
-
-  text-align:center;
-
-  font-size:9px;
-
-  line-height:1.4;
-
-}
-
-
-.music-volume{
-
-  width:100px;
-
-}
-
-
-.music-volume input{
-
-  width:100%;
-
-  accent-color:var(--teal);
-
-}
-
-
-/* =========================================================
    TABLET
 ========================================================= */
 
@@ -1674,29 +1715,10 @@ a[href]:hover{
   }
 
 
-  .archive{
+  .album-table,
+  .tracklist{
 
-    grid-template-columns:
-      repeat(3,minmax(0,1fr));
-
-  }
-
-
-  .music-player{
-
-    grid-template-columns:
-      auto
-      minmax(120px,1fr)
-      auto
-      minmax(120px,1fr)
-      auto;
-
-  }
-
-
-  .music-volume{
-
-    display:none;
+    max-height:316px;
 
   }
 
@@ -1721,9 +1743,7 @@ a[href]:hover{
 
   .browser-menu{
 
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px 16px;
+    display:none;
 
   }
 
@@ -1738,19 +1758,42 @@ a[href]:hover{
   }
 
 
+  .browser-address-row
+  .browser-control:nth-child(2){
+
+    display:none;
+
+  }
+
+
   .browser-address{
 
-    grid-column:auto;
+    grid-column:3;
 
   }
 
 
   .browser-date{
 
-    display:block;
-    grid-column:1 / -1;
-    text-align:right;
-    padding-right:2px;
+    display:none;
+
+  }
+
+
+  .browser-address-dropdown{
+
+    left:7px;
+    right:7px;
+    top:43px;
+
+  }
+
+
+  .browser-menu-popup{
+
+    left:7px!important;
+    right:7px;
+    width:auto;
 
   }
 
@@ -1779,57 +1822,89 @@ a[href]:hover{
   }
 
 
-  .archive{
+  .now-playing{
 
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
+    grid-template-columns:180px minmax(0,1fr);
 
-  }
-
-
-  .photo-entry:nth-child(3n){
-
-    border-right:
-      3px solid var(--blue);
+    gap:12px;
 
   }
 
 
-  .photo-entry:nth-child(2n){
+  .now-playing-title{
 
-    border-right:0;
+    font-size:22px;
 
   }
 
 
-  .music-player{
-
-    width:
-      calc(100% - 10px);
-
-    left:50%;
-
-    right:auto;
-
-    bottom:5px;
-
-    transform:translateX(-50%);
+  .main-player-controls{
 
     grid-template-columns:
       auto
-      minmax(0,1fr)
-      auto;
+      minmax(0,1fr);
 
-    gap:5px;
+    grid-template-areas:
+      "buttons time"
+      "progress progress";
+
+    gap:7px;
 
   }
 
 
-  .music-progress,
-  .music-time,
-  .music-volume{
+  .main-player-buttons{
+
+    grid-area:buttons;
+
+  }
+
+
+  .main-progress{
+
+    grid-area:progress;
+
+  }
+
+
+  .main-time{
+
+    grid-area:time;
+
+    min-width:0;
+
+    white-space:nowrap;
+
+  }
+
+
+  .main-volume{
 
     display:none;
+
+  }
+
+
+  .album-table,
+  .tracklist{
+
+    overflow-x:auto;
+
+  }
+
+
+  .album-table-header,
+  .album-row{
+
+    min-width:760px;
+
+  }
+
+
+  .tracklist-header,
+  .track-row{
+
+    min-width:760px;
 
   }
 
@@ -1840,46 +1915,118 @@ a[href]:hover{
    SMALL MOBILE
 ========================================================= */
 
+@media(max-width:700px){
+
+  .browser-address-row{
+
+    grid-template-columns:
+      31px
+      31px
+      31px
+      minmax(0,1fr);
+
+  }
+
+  .browser-date{
+
+    display:none;
+
+  }
+
+}
+
+
 @media(max-width:480px){
 
-  .archive{
+  .browser-subtitle{
+
+    display:none;
+
+  }
+
+
+  .browser-address-row{
+
+    grid-template-columns:
+      31px
+      31px
+      minmax(0,1fr);
+
+  }
+
+
+  .browser-address-row
+  .browser-control:nth-child(3){
+
+    display:none;
+
+  }
+
+
+  .now-playing{
 
     grid-template-columns:1fr;
 
   }
 
 
-  .photo-entry,
-  .photo-entry:nth-child(2n),
-  .photo-entry:nth-child(3n){
+  .now-playing-cover{
 
-    border-right:0;
+    max-width:260px;
 
   }
 
 
-  .article{
+  .now-playing-title{
+
+    font-size:20px;
+
+  }
+
+
+  .main-player-controls{
+
+    grid-template-columns:
+      minmax(0,1fr)
+      auto;
+
+  }
+
+
+  .main-player-button{
+
+    width:34px;
+
+    height:31px;
+
+  }
+
+
+  .main-player-buttons{
+
+    gap:3px;
+
+  }
+
+
+  .music-tab{
+
+    min-width:0;
+
+    flex:1;
 
     padding:
-      18px
-      14px
-      28px;
+      8px 10px;
 
   }
 
 
-  .article-title{
+  .album-table-header,
+  .album-row,
+  .tracklist-header,
+  .track-row{
 
-    font-size:23px;
-
-  }
-
-
-  .article-body{
-
-    font-size:13px;
-
-    line-height:1.85;
+    min-width:760px;
 
   }
 
@@ -1896,108 +2043,50 @@ a[href]:hover{
 }
 
 
+
 /* =========================================================
-   BROWSER — SYNCHRONIZED WITH WRITINGS BASELINE
+   MOBILE BROWSER — FINAL LAYOUT FIX
 ========================================================= */
 
-.browser{
-  border:var(--border);background:var(--paper);box-shadow:5px 5px 0 var(--blue);margin-bottom:14px;
-  position:relative;
-}
-.browser-top{
-  min-height:39px;display:flex;align-items:center;justify-content:space-between;
-  padding:5px 8px;background:var(--orange);border-bottom:var(--border);
-}
-.browser-brand{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:bold;font-size:17px;letter-spacing:1px}
-.browser-brand-icon{
-  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--blue);background:var(--teal);color:var(--white);font-size:12px;
-}
-.browser-subtitle{font-size:11px;font-weight:bold}
-.browser-window-buttons{display:flex;gap:4px}
-.browser-window-buttons span{
-  width:23px;height:23px;display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--blue);background:var(--paper);color:var(--blue);font-size:11px;
-  cursor:pointer;
-  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
-}
-.browser-window-buttons span:active{
-  transform:translate(2px,2px);
-  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
-  background:#ddd3b7;
-}
-.browser-menu{display:flex;gap:20px;padding:6px 10px;border-bottom:2px solid var(--blue);font-size:12px;font-weight:bold}
-.browser-menu span{cursor:pointer;transition:color .08s ease,transform .08s ease}
-.browser-menu span:hover{color:var(--orange)}
-.browser-menu span.menu-active{color:var(--orange);transform:translateY(1px)}
-.browser-address-row{
-  display:grid;grid-template-columns:31px 31px minmax(0,1fr) 175px;
-  gap:6px;align-items:center;padding:7px;
-  position:relative;
-}
-.browser-control{
-  width:31px;height:27px;display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--blue);background:var(--paper);font-weight:bold;
-  cursor:pointer;
-  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
-}
-.browser-control:active{
-  transform:translate(2px,2px);
-  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
-  background:#ddd3b7;
-}
-.browser-address{
-  min-width:0;height:27px;display:flex;align-items:center;padding:0 9px;
-  border:2px solid var(--blue);background:#eee5ce;color:#303249;overflow:hidden;
-  white-space:nowrap;text-overflow:ellipsis;font-family:monospace;font-size:11px;
-  cursor:pointer;
-  user-select:all;
-  -webkit-user-select:all;
-}
-.browser-address.selected{background:var(--blue);color:var(--white)}
-.browser-address-dropdown{
-  position:absolute;left:68px;right:181px;top:43px;z-index:10002;
-  display:none;padding:5px 0;border:3px solid var(--blue);background:var(--paper);
-  box-shadow:5px 5px 0 var(--blue);
-}
-.browser-address-dropdown.open{display:block;animation:browserDropdownIn .12s ease-out}
-.browser-address-option{
-  display:block;padding:7px 10px;color:var(--blue);font-family:monospace;
-  font-size:11px;font-weight:bold;cursor:pointer;
-}
-.browser-address-option:hover{background:var(--orange);color:var(--white)}
-@keyframes browserDropdownIn{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
-.browser-menu-popup{
-  position:absolute;z-index:10003;display:none;min-width:245px;padding:12px 14px;
-  border:3px solid var(--blue);background:var(--paper);box-shadow:5px 5px 0 var(--blue);
-  color:var(--blue);font-family:monospace;font-size:11px;line-height:1.6;font-weight:bold;
-}
-.browser-menu-popup.open{display:block;animation:browserMenuPopupIn .12s ease-out}
-.browser-menu-popup-title{margin-bottom:6px;padding-bottom:5px;border-bottom:2px dotted var(--blue)}
-.browser-menu-popup-text{white-space:pre-line}
-@keyframes browserMenuPopupIn{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
-.browser-loading{
-  position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;
-  background:rgba(216,207,181,.92);
-}
-.browser-loading.open{display:flex}
-.browser-loading-window{
-  width:min(430px,calc(100% - 40px));padding:14px;border:3px solid var(--blue);
-  background:var(--paper);box-shadow:5px 5px 0 var(--blue);color:var(--blue);
-  font-family:monospace;font-size:11px;font-weight:bold;
-}
-.browser-loading-title{margin-bottom:8px}
-.browser-loading-bar{height:16px;padding:2px;border:2px solid var(--blue);overflow:hidden}
-.browser-loading-progress{width:0;height:100%;background:var(--orange);animation:browserLoadingProgress .55s steps(8,end) forwards}
-@keyframes browserLoadingProgress{from{width:0}to{width:100%}}
-.browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
-
 @media(max-width:850px){
-  .browser-address-dropdown{
-    left:68px;
-    right:181px;
-    top:43px;
+  .browser-menu{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
   }
+
+  .browser-address-row{
+    grid-template-columns:31px 31px minmax(0,1fr);
+    grid-template-rows:auto auto;
+  }
+
+  .browser-address-row .browser-control:nth-child(1),
+  .browser-address-row .browser-control:nth-child(2){
+    display:flex;
+  }
+
+  .browser-address{
+    grid-column:3;
+    grid-row:1;
+    width:100%;
+    min-width:0;
+  }
+
+  .browser-date{
+    display:block;
+    grid-column:1 / -1;
+    grid-row:2;
+    width:100%;
+    text-align:right;
+    padding-right:2px;
+  }
+
+  .browser-address-dropdown{
+    left:7px;
+    right:7px;
+    top:74px;
+  }
+
   .browser-menu-popup{
     left:7px!important;
     right:7px;
@@ -2007,8 +2096,8 @@ a[href]:hover{
 
 @media(max-width:600px){
   .browser-menu{gap:5px 13px;font-size:12px}
-  .browser-brand{font-size:16px}
-  .browser-subtitle{font-size:10px}
+  .browser-brand{font-size:16px;min-width:0;flex-wrap:wrap}
+  .browser-subtitle{font-size:10px;display:inline}
   .browser-address{font-size:11px}
   .browser-window-buttons span{width:22px;height:22px}
 }
@@ -2016,7 +2105,7 @@ a[href]:hover{
 @media(max-width:480px){
   .browser-menu{gap:4px 10px;font-size:11px}
   .browser-brand{font-size:15px}
-  .browser-subtitle{font-size:9px}
+  .browser-subtitle{font-size:9px;display:inline}
   .browser-address-row{gap:5px;padding:6px}
   .browser-control{width:30px;height:27px}
   .browser-date{font-size:9px}
@@ -2038,112 +2127,30 @@ a[href]:hover{
 ======================================================= -->
 
 <header class="browser">
-
-
   <div class="browser-top">
-
-
-    <div class="browser-brand">
-
-      QM ARCHIVE
-      <span class="browser-subtitle">// A SMALL SPACE FOR ORDINARY DAYS.</span>
-
-    </div>
-
-
-    <div class="browser-window-buttons">
-
-      <span>—</span>
-      <span>□</span>
-      <span>×</span>
-
-    </div>
-
-
+    <div class="browser-brand">QM ARCHIVE <span class="browser-subtitle">// A SMALL SPACE FOR ORDINARY DAYS.</span></div>
+    <div class="browser-window-buttons"><span>—</span><span>□</span><span>×</span></div>
   </div>
-
-
   <div class="browser-menu">
-
-    <span data-browser-menu="file">File</span>
-    <span data-browser-menu="edit">Edit</span>
-    <span data-browser-menu="view">View</span>
-    <span data-browser-menu="favorites">Favorites</span>
-    <span data-browser-menu="tools">Tools</span>
-    <span data-browser-menu="help">Help</span>
-
+    <span data-browser-menu="file">File</span><span data-browser-menu="edit">Edit</span><span data-browser-menu="view">View</span><span data-browser-menu="favorites">Favorites</span><span data-browser-menu="tools">Tools</span><span data-browser-menu="help">Help</span>
   </div>
-
-
   <div class="browser-address-row">
-
-
-    <div class="browser-control" id="browserBack">
-      &lt;
-    </div>
-
-
-    <div class="browser-control" id="browserForward">
-      &gt;
-    </div>
-
-
-    <div
-      class="browser-address"
-      id="browserAddress"
-      role="button"
-      tabindex="0"
-      aria-label="Current archive location"
-    >
-
-      https://qmarchive.github.io/photographs/
-
-    </div>
-
-
-    <div class="browser-date">
-
-      <span id="browserDate">
-        22 SEP 2026
-      </span>
-
-      <br>
-
-      <span id="browserTime">
-        00:00
-      </span>
-
-    </div>
-
-
+    <div class="browser-control" id="browserBack">&lt;</div>
+    <div class="browser-control" id="browserForward">&gt;</div>
+    <div class="browser-address" id="browserAddress" role="button" tabindex="0" aria-label="Current archive location">https://qmarchive.github.io/music/</div>
+    <div class="browser-date"><span id="browserDate">22 SEP 2026</span><br><span id="browserTime">00:00</span></div>
     <div class="browser-address-dropdown" id="browserAddressDropdown">
-      <div class="browser-address-option" data-path="/">/</div>
-      <div class="browser-address-option" data-path="/writings/">/writings/</div>
-      <div class="browser-address-option" data-path="/photographs/">/photographs/</div>
-      <div class="browser-address-option" data-path="/notes/">/notes/</div>
-      <div class="browser-address-option" data-path="/music/">/music/</div>
+      <div class="browser-address-option" data-path="/">/</div><div class="browser-address-option" data-path="/writings/">/writings/</div><div class="browser-address-option" data-path="/photographs/">/photographs/</div><div class="browser-address-option" data-path="/notes/">/notes/</div><div class="browser-address-option" data-path="/music/">/music/</div>
     </div>
-
-
   </div>
-
-
-  <div class="browser-menu-popup" id="browserMenuPopup">
-    <div class="browser-menu-popup-title" id="browserMenuPopupTitle"></div>
-    <div class="browser-menu-popup-text" id="browserMenuPopupText"></div>
-  </div>
-
-
+  <div class="browser-menu-popup" id="browserMenuPopup"><div class="browser-menu-popup-title" id="browserMenuPopupTitle"></div><div class="browser-menu-popup-text" id="browserMenuPopupText"></div></div>
 </header>
 
-<div class="browser-loading" id="browserLoading">
-  <div class="browser-loading-window">
-    <div class="browser-loading-title" id="browserLoadingText">Loading archive...</div>
-    <div class="browser-loading-bar">
-      <div class="browser-loading-progress"></div>
-    </div>
-  </div>
-</div>
+
+
+<!-- =======================================================
+     MAIN LAYOUT
+======================================================= -->
 
 <div class="layout">
 
@@ -2163,7 +2170,9 @@ a[href]:hover{
 
       <div class="window-title">
 
-        <div class="window-title-label">SYSTEM INFO</div>
+        <div class="window-title-label">
+          SYSTEM INFO
+        </div>
 
       </div>
 
@@ -2184,23 +2193,17 @@ a[href]:hover{
 
 
       <div class="system-line">
-
         Edgerunner.2046
-
       </div>
 
 
       <div class="system-line online">
-
         + Online
-
       </div>
 
 
       <div class="system-line">
-
         Since: 21.09.2026
-
       </div>
 
 
@@ -2211,71 +2214,40 @@ a[href]:hover{
 
 
         <a href="/">
-
           HOME
-
         </a>
 
 
         <a href="/writings/">
-
           WRITINGS
-
         </a>
 
 
-        <a
-          href="/photographs/"
-          class="active"
-        >
-
+        <a href="/photographs/">
           PHOTOGRAPHS
-
         </a>
 
 
         <a href="/notes/">
-
           NOTES
-
         </a>
 
 
-        <a href="/music/">
-
+        <a
+          href="/music/"
+          class="active"
+        >
           MUSIC
-
         </a>
 
 
       </nav>
 
 
-
-      <!-- CASSETTE -->
-
-      <div class="cassette">
-
-
-        <img
-          src="/home/home-cassette.gif"
-          alt="Life Goes On cassette"
-        >
-
-
-        <div class="cassette-caption">
-
-          Không sao đâu, không sao đâu mà<br>
-
-          // 1998 -
-          <span id="cassetteYear">
-            2026
-          </span>
-
-        </div>
-
-
-      </div>
+      <!--
+        Không có cassette ở trang MUSIC.
+        Theo yêu cầu: bỏ ô băng cassette QM ARCHIVE.
+      -->
 
 
     </div>
@@ -2296,8 +2268,8 @@ a[href]:hover{
 
 
   <section
-    class="window photos-window"
-    id="photosWindow"
+    class="window music-window"
+    id="musicWindow"
   >
 
 
@@ -2308,7 +2280,9 @@ a[href]:hover{
 
       <div class="window-title">
 
-        <div class="window-title-label">PHOTOGRAPHS</div>
+        <div class="window-title-label">
+          MUSIC
+        </div>
 
       </div>
 
@@ -2336,58 +2310,210 @@ a[href]:hover{
 
     <!-- INTRO -->
 
-    <div class="photo-intro">
+    <div class="music-intro">
 
-      Đây không phải triển lãm.
-
-    </div>
-
-
-
-    <!-- FILTERS -->
-
-    <div class="photo-filters">
-
-
-      <span
-        class="photo-filter active"
-        data-category="all"
-      >
-        All
-      </span>
-
-
-      <span
-        class="photo-filter"
-        data-category="hanoi"
-      >
-        Hanoi
-      </span>
-
-
-      <span
-        class="photo-filter"
-        data-category="travel"
-      >
-        Travel
-      </span>
-
-
-      <span
-        class="photo-filter"
-        data-category="friends"
-      >
-        Friends
-      </span>
-
+      Hello mấy con vợ
 
     </div>
 
 
 
-    <!-- DYNAMIC CONTENT -->
+    <!-- CURRENT TRACK -->
 
-    <div id="main"></div>
+    <div class="now-playing">
+
+
+      <div
+        class="now-playing-cover"
+        id="nowPlayingCover"
+      >
+
+        <div>
+          NO COVER
+        </div>
+
+      </div>
+
+
+      <div class="now-playing-info">
+
+
+        <div class="now-playing-label">
+
+          NOW PLAYING
+
+        </div>
+
+
+        <div
+          class="now-playing-title"
+          id="mainMusicTitle"
+        >
+
+          —
+
+        </div>
+
+
+        <div
+          class="now-playing-artist"
+          id="mainMusicArtist"
+        >
+
+          —
+
+        </div>
+
+
+        <div
+          class="now-playing-meta"
+          id="mainMusicMeta"
+        >
+
+          —
+
+        </div>
+
+
+        <div
+          class="now-playing-description"
+          id="mainMusicDescription"
+        >
+
+          —
+
+        </div>
+
+
+        <div class="main-player-controls">
+
+
+          <div class="main-player-buttons">
+
+
+            <button
+              class="main-player-button"
+              id="mainPrevButton"
+              type="button"
+            >
+
+              |◀
+
+            </button>
+
+
+            <button
+              class="main-player-button"
+              id="mainPlayButton"
+              type="button"
+            >
+
+              ▶
+
+            </button>
+
+
+            <button
+              class="main-player-button"
+              id="mainNextButton"
+              type="button"
+            >
+
+              ▶|
+
+            </button>
+
+
+          </div>
+
+
+          <div class="main-progress">
+
+
+            <input
+              id="mainProgress"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+            >
+
+
+          </div>
+
+
+          <div
+            class="main-time"
+            id="mainTime"
+          >
+
+            00:00 / 00:00
+
+          </div>
+
+
+          <div class="main-volume">
+
+
+            <input
+              id="mainVolume"
+              type="range"
+              min="0"
+              max="1"
+              value=".7"
+              step=".01"
+            >
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ALBUM / TRACKLIST -->
+
+    <div class="music-tabs">
+
+
+      <div
+        class="music-tab active"
+        data-view="album"
+      >
+
+        ALBUM
+
+      </div>
+
+
+      <div
+        class="music-tab"
+        data-view="tracklist"
+      >
+
+        TRACKLIST
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- DYNAMIC MUSIC CONTENT -->
+
+    <div
+      class="music-content"
+      id="musicContent"
+    ></div>
 
 
   </section>
@@ -2414,136 +2540,14 @@ a[href]:hover{
 
 
 
-<!-- =======================================================
-     MUSIC PLAYER
-======================================================= -->
-
-<div class="music-player">
-
-
-  <div class="music-icon">
-
-    ♪
-
-  </div>
-
-
-  <div class="music-info">
-
-
-    <div class="music-label">
-
-      NOW PLAYING
-
+<div class="browser-loading" id="browserLoading">
+  <div class="browser-loading-window">
+    <div class="browser-loading-title" id="browserLoadingText">Loading archive...</div>
+    <div class="browser-loading-bar">
+      <div class="browser-loading-progress"></div>
     </div>
-
-
-    <div
-      class="music-title"
-      id="musicTitle"
-    >
-
-      Between the Takes
-
-    </div>
-
-
-    <div
-      class="music-artist"
-      id="musicArtist"
-    >
-
-      Orient.bakureever
-
-    </div>
-
-
   </div>
-
-
-  <div class="music-controls">
-
-
-    <button
-      class="music-button"
-      id="prevButton"
-      type="button"
-    >
-
-      |◀
-
-    </button>
-
-
-    <button
-      class="music-button"
-      id="playButton"
-      type="button"
-    >
-
-      ▶
-
-    </button>
-
-
-    <button
-      class="music-button"
-      id="nextButton"
-      type="button"
-    >
-
-      ▶|
-
-    </button>
-
-
-  </div>
-
-
-  <div class="music-progress">
-
-
-    <input
-      id="progress"
-      type="range"
-      min="0"
-      max="100"
-      value="0"
-      step="0.1"
-    >
-
-
-  </div>
-
-
-  <div
-    class="music-time"
-    id="musicTime"
-  >
-
-    00:00 / 00:00
-
-  </div>
-
-
-  <div class="music-volume">
-
-
-    <input
-      id="volume"
-      type="range"
-      min="0"
-      max="1"
-      value=".7"
-      step=".01"
-    >
-
-
-  </div>
-
-
 </div>
-
 
 
 <audio
@@ -2559,28 +2563,27 @@ a[href]:hover{
    CONFIG
 ========================================================= */
 
-const CONTENT_URL =
-  "/photographs/content.json?v=" +
-  Date.now();
-
-const POSTS_BASE =
-  "/photographs/posts/";
-
-
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-let MUSIC_TRACKS = [];
-
-const MUSIC_STORAGE_KEY =
-  "qmArchiveMusic";
-
 const MUSIC_URL =
   "/music/content.json?v=" +
   Date.now();
 
+const MUSIC_STORAGE_KEY =
+  "qmArchiveMusic";
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let MUSIC_TRACKS = [];
+
+let ALBUMS = [];
+
+let currentTrack = 0;
+
+let currentView = "album";
+
+let selectedAlbum = null;
 
 
 /* =========================================================
@@ -2600,358 +2603,131 @@ function escapeHTML(value){
 }
 
 
-
-/* =========================================================
-   MARKDOWN → HTML
-========================================================= */
-
-function markdownToHTML(markdown){
-
-  let text =
-    escapeHTML(markdown);
-
-
-  text =
-    text.replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
-
-      function(match, alt, src){
-
-        return `
-
-          <figure class="photo-detail">
-
-            <img
-              src="${src}"
-              alt="${alt}"
-            >
-
-          </figure>
-
-        `;
-
-      }
-    );
-
-
-  text =
-    text.replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-
-      '<a href="$2">$1</a>'
-    );
-
-
-  text =
-    text.replace(
-      /^### (.+)$/gm,
-
-      "<h3>$1</h3>"
-    );
-
-
-  text =
-    text.replace(
-      /^## (.+)$/gm,
-
-      "<h2>$1</h2>"
-    );
-
-
-  text =
-    text.replace(
-      /^# (.+)$/gm,
-
-      "<h1>$1</h1>"
-    );
-
-
-  text =
-    text.replace(
-      /\*\*(.+?)\*\*/g,
-
-      "<strong>$1</strong>"
-    );
-
-
-  text =
-    text.replace(
-      /\*(.+?)\*/g,
-
-      "<em>$1</em>"
-    );
-
-
-  text =
-    text.replace(
-      /^&gt; (.+)$/gm,
-
-      "<blockquote>$1</blockquote>"
-    );
-
-
-  text =
-    text.replace(
-      /^[-*] (.+)$/gm,
-
-      "<li>$1</li>"
-    );
-
-
-  text =
-    text.replace(
-      /(<li>.*<\/li>)/gs,
-
-      "<ul>$1</ul>"
-    );
-
-
-  const blocks =
-    text
-
-      .split(/\n\s*\n/)
-
-      .map(
-        block =>
-          block.trim()
-      )
-
-      .filter(Boolean);
-
-
-  return blocks
-
-    .map(
-      block => {
-
-        if(
-
-          block.startsWith("<h1>") ||
-
-          block.startsWith("<h2>") ||
-
-          block.startsWith("<h3>") ||
-
-          block.startsWith("<blockquote>") ||
-
-          block.startsWith("<ul>") ||
-
-          block.startsWith("<figure")
-
-        ){
-
-          return block;
-
-        }
-
-
-        return (
-
-          "<p>" +
-
-          block.replace(
-            /\n/g,
-            "<br>"
-          ) +
-
-          "</p>"
-
-        );
-
-      }
-    )
-
-    .join("\n");
-
-}
-
-
-
-/* =========================================================
-   LOAD JSON
-========================================================= */
-
-async function loadJSON(){
-
-  const response =
-    await fetch(
-      CONTENT_URL,
-      {
-        cache:"no-store"
-      }
-    );
-
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load photographs/content.json (" +
-      response.status +
-      ")"
-    );
-
-  }
-
-
-  return await response.json();
-
-}
-
-
-
-/* =========================================================
-   LOAD MARKDOWN
-========================================================= */
-
-async function loadMarkdown(slug){
-
-  const safeSlug =
-    decodeURIComponent(
-      String(slug || "")
-    ).trim();
-
-
-  const url =
-    POSTS_BASE +
-    encodeURIComponent(
-      safeSlug
-    ) +
-    ".md?v=" +
-    Date.now();
-
-
-  const response =
-    await fetch(
-      url,
-      {
-        cache:"no-store"
-      }
-    );
-
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load Markdown file (" +
-      response.status +
-      "): " +
-      url
-    );
-
-  }
-
+function normalizePath(value){
 
   const text =
-    await response.text();
+    String(value || "").trim();
 
+  if(!text){
+    return "";
+  }
 
-  if(!text.trim()){
+  if(
+    text.startsWith("http://") ||
+    text.startsWith("https://") ||
+    text.startsWith("/")
+  ){
 
-    throw new Error(
-      "Markdown file is empty: " +
-      url
-    );
+    return text;
 
   }
 
+  /*
+    Các file nhạc (.mp3) đã được chuyển sang:
 
-  return text;
+      /music/posts/
+
+    JSON có thể vẫn chỉ ghi tên file, ví dụ:
+
+      "file": "between-the-takes.mp3"
+
+    hoặc đã có sẵn tiền tố "posts/":
+
+      "file": "posts/between-the-takes.mp3"
+
+    Cả hai đều được chuẩn hóa về đúng vị trí mới:
+
+      /music/posts/between-the-takes.mp3
+  */
+
+  return "/music/posts/" +
+    text
+      .replace(/^\/+/ ,"")
+      .replace(/^posts\//i,"");
+
+}
+
+
+/*
+  COVER PATHS
+
+  Album / track covers are stored in:
+
+    /music/covers/
+
+  The JSON can therefore use either:
+
+    "cover": "where-the-cat-goes-at-night.png"
+
+  or:
+
+    "cover": "covers/where-the-cat-goes-at-night.png"
+
+  Both resolve to /music/covers/...
+
+  PNG is intentionally supported as the archive cover format.
+  The browser loads the image directly from the path supplied here.
+*/
+
+function normalizeCoverPath(value){
+
+  const text =
+    String(value || "").trim();
+
+  if(!text){
+    return "";
+  }
+
+  if(
+    text.startsWith("http://") ||
+    text.startsWith("https://") ||
+    text.startsWith("/")
+  ){
+
+    return text;
+
+  }
+
+  return "/music/covers/" +
+    text
+      .replace(/^\/+/ ,"")
+      .replace(/^covers\//i,"");
 
 }
 
 
 
-/* =========================================================
-   CATEGORY HELPER
-========================================================= */
+function formatTime(seconds){
 
-function getCategories(item){
-
-  const raw =
-    item.category ||
-    item.categories ||
-    "";
-
-
-  if(Array.isArray(raw)){
-
-    return raw
-      .map(
-        value =>
-          String(value)
-            .trim()
-            .toLowerCase()
-      )
-      .filter(Boolean);
-
+  if(!Number.isFinite(seconds)){
+    return "00:00";
   }
 
+  const minutes =
+    Math.floor(seconds / 60);
 
-  return String(raw)
-    .split(",")
-    .map(
-      value =>
-        value
-          .trim()
-          .toLowerCase()
-    )
-    .filter(Boolean);
+  const secs =
+    Math.floor(seconds % 60);
 
-}
-
-
-
-/* =========================================================
-   FILTER PHOTOGRAPHS
-========================================================= */
-
-function filterPhotographs(
-  items,
-  category
-){
-
-  if(category === "all"){
-
-    return items;
-
-  }
-
-
-  return items.filter(
-    item => {
-
-      const categories =
-        getCategories(item);
-
-
-      return categories.includes(
-        category.toLowerCase()
-      );
-
-    }
+  return (
+    String(minutes).padStart(2,"0") +
+    ":" +
+    String(secs).padStart(2,"0")
   );
 
 }
 
 
-
-/* =========================================================
-   DATE PARSER
-========================================================= */
-
-function parseArchiveDate(value){
+function parseDate(value){
 
   const text =
-    String(value || "")
-      .trim();
-
+    String(value || "").trim();
 
   let match =
     text.match(
       /^(\d{1,2})[.](\d{1,2})[.](\d{4})$/
     );
 
-
   if(match){
 
     return new Date(
@@ -2961,14 +2737,12 @@ function parseArchiveDate(value){
     ).getTime();
 
   }
-
 
   match =
     text.match(
       /^(\d{1,2})[/](\d{1,2})[/](\d{4})$/
     );
 
-
   if(match){
 
     return new Date(
@@ -2979,12 +2753,10 @@ function parseArchiveDate(value){
 
   }
 
-
   match =
     text.match(
       /^(\d{4})-(\d{1,2})-(\d{1,2})$/
     );
-
 
   if(match){
 
@@ -2996,55 +2768,960 @@ function parseArchiveDate(value){
 
   }
 
-
-  match =
-    text.match(
-      /^(\d{4})$/
-    );
-
-
-  if(match){
-
-    return new Date(
-      Number(match[1]),
-      0,
-      1
-    ).getTime();
-
-  }
-
-
   return 0;
 
 }
 
 
-
 /* =========================================================
-   RENDER ARCHIVE
+   LOAD MUSIC JSON
 ========================================================= */
 
-function renderArchive(items){
+async function loadMusicArchive(){
 
-  const main =
+  const response =
+    await fetch(
+      MUSIC_URL,
+      {
+        cache:"no-store"
+      }
+    );
+
+  if(!response.ok){
+
+    throw new Error(
+      "Could not load music/content.json (" +
+      response.status +
+      ")"
+    );
+
+  }
+
+  const data =
+    await response.json();
+
+
+  /*
+    Supported structures:
+
+    1. {
+         "music":[
+           {
+             "title":"",
+             "artist":"",
+             "file":""
+           }
+         ]
+       }
+
+    2. {
+         "tracks":[ ... ],
+         "albums":[ ... ]
+       }
+
+    3. A plain array of tracks.
+  */
+
+
+  let rawTracks = [];
+
+  if(Array.isArray(data)){
+
+    rawTracks = data;
+
+  }else if(Array.isArray(data.music)){
+
+    rawTracks = data.music;
+
+  }else if(Array.isArray(data.tracks)){
+
+    rawTracks = data.tracks;
+
+  }
+
+
+  const explicitAlbums =
+    Array.isArray(data?.albums)
+      ? data.albums
+      : [];
+
+
+  MUSIC_TRACKS =
+    rawTracks
+      .map(
+        (track,index) => {
+
+          const albumName =
+            String(
+              track.album ||
+              track.albumTitle ||
+              ""
+            ).trim();
+
+          return {
+
+            index,
+
+            title:
+              String(
+                track.title || ""
+              ).trim(),
+
+            artist:
+              String(
+                track.artist || ""
+              ).trim(),
+
+            album:
+              albumName,
+
+            date:
+              String(
+                track.date ||
+                track.releaseDate ||
+                track.albumDate ||
+                ""
+              ).trim(),
+
+            releaseDate:
+              String(
+                track.releaseDate ||
+                track.albumDate ||
+                track.date ||
+                ""
+              ).trim(),
+
+            duration:
+              "",
+
+            description:
+              String(
+                track.description ||
+                track.desc ||
+                ""
+              ).trim(),
+
+            file:
+              String(
+                track.file ||
+                ""
+              ).trim(),
+
+            src:
+              normalizePath(
+                track.file ||
+                track.src ||
+                ""
+              ),
+
+            cover:
+              normalizeCoverPath(
+                track.cover ||
+                track.image ||
+                track.artwork ||
+                ""
+              ),
+
+            albumCover:
+              normalizeCoverPath(
+                track.albumCover ||
+                track.albumImage ||
+                ""
+              )
+
+          };
+
+        }
+      )
+      .filter(
+        track =>
+          track.src
+      )
+      .sort(
+        (a,b) => {
+
+          const dateA =
+            parseDate(a.date);
+
+          const dateB =
+            parseDate(b.date);
+
+          if(dateA === dateB){
+            return a.index - b.index;
+          }
+
+          if(!dateA){
+            return -1;
+          }
+
+          if(!dateB){
+            return 1;
+          }
+
+          return dateA - dateB;
+
+        }
+      );
+
+
+  /*
+    Build albums.
+
+    If content.json provides an explicit "albums" array,
+    it is used first.
+
+    Otherwise tracks are grouped by the "album" field.
+
+    If no album field exists, all tracks become one
+    archive album.
+  */
+
+  if(explicitAlbums.length){
+
+    ALBUMS =
+      explicitAlbums.map(
+        (album,index) => {
+
+          const albumTitle =
+            String(
+              album.title ||
+              album.name ||
+              "Untitled Album"
+            ).trim();
+
+          const albumTracks =
+            MUSIC_TRACKS.filter(
+              track =>
+                track.album === albumTitle
+            );
+
+          return {
+
+            index,
+
+            title:
+              albumTitle,
+
+            artist:
+              String(
+                album.artist ||
+                albumTracks[0]?.artist ||
+                "Orient.bakureever"
+              ).trim(),
+
+            releaseDate:
+              String(
+                album.releaseDate ||
+                album.date ||
+                album.year ||
+                albumTracks[0]?.releaseDate ||
+                albumTracks[0]?.date ||
+                ""
+              ).trim(),
+
+            date:
+              String(
+                album.date ||
+                album.releaseDate ||
+                album.year ||
+                albumTracks[0]?.date ||
+                ""
+              ).trim(),
+
+            description:
+              String(
+                album.description ||
+                ""
+              ).trim(),
+
+            cover:
+              normalizeCoverPath(
+                album.cover ||
+                album.image ||
+                album.artwork ||
+                albumTracks[0]?.albumCover ||
+                albumTracks[0]?.cover ||
+                ""
+              ),
+
+            tracks:
+              albumTracks
+
+          };
+
+        }
+      );
+
+  }else{
+
+    const grouped = new Map();
+
+    MUSIC_TRACKS.forEach(
+      track => {
+
+        const key =
+          track.album ||
+          "QM ARCHIVE";
+
+        if(!grouped.has(key)){
+
+          grouped.set(
+            key,
+            []
+          );
+
+        }
+
+        grouped
+          .get(key)
+          .push(track);
+
+      }
+    );
+
+
+    ALBUMS =
+      Array.from(
+        grouped.entries()
+      )
+      .map(
+        ([title,tracks],index) => ({
+
+          index,
+
+          title,
+
+          artist:
+            tracks[0]?.artist ||
+            "Orient.bakureever",
+
+          releaseDate:
+            tracks[0]?.releaseDate ||
+            tracks[0]?.date ||
+            "",
+
+          date:
+            tracks[0]?.date ||
+            tracks[0]?.releaseDate ||
+            "",
+
+          description:
+            "",
+
+          cover:
+            tracks[0]?.albumCover ||
+            tracks[0]?.cover ||
+            "",
+
+          tracks
+
+        })
+      );
+
+  }
+
+
+  if(
+    !selectedAlbum &&
+    ALBUMS.length
+  ){
+
+    selectedAlbum =
+      ALBUMS[0].title;
+
+  }
+
+}
+
+
+/* =========================================================
+   MUSIC STATE
+========================================================= */
+
+function saveMusicState(){
+
+  try{
+
+    localStorage.setItem(
+      MUSIC_STORAGE_KEY,
+      JSON.stringify({
+
+        track:currentTrack,
+
+        currentTime:
+          Number.isFinite(
+            audio.currentTime
+          )
+            ? audio.currentTime
+            : 0,
+
+        volume:
+          Number(
+            audio.volume
+          ),
+
+        isPlaying:
+          !audio.paused
+
+      })
+    );
+
+  }catch(error){
+
+    console.warn(
+      "Could not save music state.",
+      error
+    );
+
+  }
+
+}
+
+
+function getSavedMusicState(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(
+        MUSIC_STORAGE_KEY
+      );
+
+    if(!raw){
+      return null;
+    }
+
+    const state =
+      JSON.parse(raw);
+
+    if(
+      !state ||
+      typeof state !== "object"
+    ){
+
+      return null;
+
+    }
+
+    return state;
+
+  }catch(error){
+
+    console.warn(
+      "Could not read music state.",
+      error
+    );
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
+   MAIN PLAYER
+========================================================= */
+
+const audio =
+  document.getElementById(
+    "audio"
+  );
+
+const playButton =
+  document.getElementById(
+    "mainPlayButton"
+  );
+
+const prevButton =
+  document.getElementById(
+    "mainPrevButton"
+  );
+
+const nextButton =
+  document.getElementById(
+    "mainNextButton"
+  );
+
+const progress =
+  document.getElementById(
+    "mainProgress"
+  );
+
+const volume =
+  document.getElementById(
+    "mainVolume"
+  );
+
+const musicTitle =
+  document.getElementById(
+    "mainMusicTitle"
+  );
+
+const musicArtist =
+  document.getElementById(
+    "mainMusicArtist"
+  );
+
+const musicTime =
+  document.getElementById(
+    "mainTime"
+  );
+
+
+/* =========================================================
+   MAIN DISPLAY
+========================================================= */
+
+function updateMainDisplay(){
+
+  if(!MUSIC_TRACKS.length){
+
     document.getElementById(
-      "main"
+      "mainMusicTitle"
+    ).textContent = "—";
+
+    document.getElementById(
+      "mainMusicArtist"
+    ).textContent = "—";
+
+    document.getElementById(
+      "mainMusicMeta"
+    ).textContent = "No music yet.";
+
+    document.getElementById(
+      "mainMusicDescription"
+    ).textContent = "";
+
+    document.getElementById(
+      "nowPlayingCover"
+    ).innerHTML =
+      "<div>NO COVER</div>";
+
+    document.getElementById(
+      "nowPlayingCover"
+    ).classList.add(
+      "placeholder"
+    );
+
+    return;
+
+  }
+
+
+  const track =
+    MUSIC_TRACKS[currentTrack];
+
+  const album =
+    ALBUMS.find(
+      item =>
+        item.tracks.some(
+          entry =>
+            entry === track
+        )
     );
 
 
   document.getElementById(
-    "browserAddress"
+    "mainMusicTitle"
   ).textContent =
-    "https://qmarchive.github.io/photographs/";
+    track.title || "Untitled";
 
 
-  if(!items.length){
+  document.getElementById(
+    "mainMusicArtist"
+  ).textContent =
+    track.artist || "Unknown artist";
 
-    main.innerHTML = `
 
-      <div class="error">
+  document.getElementById(
+    "mainMusicMeta"
+  ).textContent =
+    [
+      track.date,
+      album?.title || track.album,
+      "Track " +
+      (currentTrack + 1) +
+      "/" +
+      MUSIC_TRACKS.length
+    ]
+    .filter(Boolean)
+    .join("  |  ");
 
-        No photographs in this category yet.
+
+  document.getElementById(
+    "mainMusicDescription"
+  ).textContent =
+    track.description || "";
+
+
+  const cover =
+    track.cover ||
+    track.albumCover ||
+    album?.cover ||
+    "";
+
+
+  const coverBox =
+    document.getElementById(
+      "nowPlayingCover"
+    );
+
+
+  if(cover){
+
+    coverBox.classList.remove(
+      "placeholder"
+    );
+
+    coverBox.innerHTML = `
+
+      <img
+        src="${escapeHTML(cover)}"
+        alt="${escapeHTML(
+          track.title || ""
+        )}"
+      >
+
+    `;
+
+  }else{
+
+    coverBox.classList.add(
+      "placeholder"
+    );
+
+    coverBox.innerHTML =
+      "<div>NO COVER</div>";
+
+  }
+
+
+  musicTitle.textContent =
+    track.title || "Untitled";
+
+  musicArtist.textContent =
+    track.artist || "Unknown artist";
+
+
+  renderTracklistPlayingState();
+
+}
+
+
+/* =========================================================
+   LOAD TRACK
+========================================================= */
+
+function loadTrack(
+  index,
+  autoplay=false,
+  startTime=0
+){
+
+  if(!MUSIC_TRACKS.length){
+    return;
+  }
+
+
+  currentTrack =
+    (
+      index +
+      MUSIC_TRACKS.length
+    ) %
+    MUSIC_TRACKS.length;
+
+
+  const track =
+    MUSIC_TRACKS[currentTrack];
+
+
+  audio.src =
+    track.src;
+
+
+  updateMainDisplay();
+
+
+  progress.value =
+    0;
+
+
+  musicTime.textContent =
+    "00:00 / 00:00";
+
+
+  audio.addEventListener(
+
+    "loadedmetadata",
+
+    function restoreTime(){
+
+      audio.removeEventListener(
+        "loadedmetadata",
+        restoreTime
+      );
+
+
+      if(
+        Number.isFinite(startTime) &&
+        startTime > 0 &&
+        startTime < audio.duration
+      ){
+
+        try{
+
+          audio.currentTime =
+            startTime;
+
+        }catch(error){
+
+          console.warn(
+            "Could not restore music position.",
+            error
+          );
+
+        }
+
+      }
+
+
+      if(autoplay){
+
+        audio.play()
+          .then(() => {
+
+            playButton.textContent =
+              "❚❚";
+
+          })
+          .catch(() => {
+
+            playButton.textContent =
+              "▶";
+
+          });
+
+      }
+
+    }
+
+  );
+
+}
+
+
+/* =========================================================
+   RESTORE MUSIC STATE
+========================================================= */
+
+function restoreMusicState(){
+
+  if(!MUSIC_TRACKS.length){
+    return;
+  }
+
+
+  const state =
+    getSavedMusicState();
+
+
+  if(!state){
+
+    audio.volume =
+      Number(
+        volume.value
+      );
+
+    loadTrack(
+      0,
+      false,
+      0
+    );
+
+    return;
+
+  }
+
+
+  const savedTrack =
+    Number.isInteger(state.track)
+      ? state.track
+      : 0;
+
+
+  const savedTime =
+    Number.isFinite(
+      Number(
+        state.currentTime
+      )
+    )
+      ? Number(
+          state.currentTime
+        )
+      : 0;
+
+
+  const savedVolume =
+    Number.isFinite(
+      Number(
+        state.volume
+      )
+    )
+      ? Number(
+          state.volume
+        )
+      : .7;
+
+
+  audio.volume =
+    Math.min(
+      1,
+      Math.max(
+        0,
+        savedVolume
+      )
+    );
+
+
+  volume.value =
+    audio.volume;
+
+
+  loadTrack(
+    savedTrack,
+    false,
+    savedTime
+  );
+
+}
+
+
+/* =========================================================
+   AUTO-READ MP3 DURATIONS
+========================================================= */
+
+function updateTrackDurationCells(
+  trackIndex,
+  durationText
+){
+
+  document
+    .querySelectorAll(
+      `[data-track-duration-index="${trackIndex}"]`
+    )
+    .forEach(
+      cell => {
+
+        cell.textContent =
+          durationText;
+
+      }
+    );
+
+}
+
+
+function readTrackDuration(
+  track,
+  trackIndex
+){
+
+  if(!track || !track.src){
+    return;
+  }
+
+
+  const probe =
+    new Audio();
+
+
+  probe.preload =
+    "metadata";
+
+
+  probe.addEventListener(
+    "loadedmetadata",
+    () => {
+
+      if(Number.isFinite(probe.duration)){
+
+        track.duration =
+          formatTime(probe.duration);
+
+        updateTrackDurationCells(
+          trackIndex,
+          track.duration
+        );
+
+      }
+
+      probe.src = "";
+
+    },
+    {once:true}
+  );
+
+
+  probe.addEventListener(
+    "error",
+    () => {
+
+      updateTrackDurationCells(
+        trackIndex,
+        "--:--"
+      );
+
+      probe.src = "";
+
+    },
+    {once:true}
+  );
+
+
+  probe.src =
+    track.src;
+
+  probe.load();
+
+}
+
+
+function loadTrackDurations(){
+
+  MUSIC_TRACKS.forEach(
+    (track,index) => {
+
+      readTrackDuration(
+        track,
+        index
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   RENDER ALBUM VIEW
+========================================================= */
+
+function renderAlbums(){
+
+  const container =
+    document.getElementById(
+      "musicContent"
+    );
+
+
+  if(!ALBUMS.length){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        No albums yet.
 
       </div>
 
@@ -3055,115 +3732,145 @@ function renderArchive(items){
   }
 
 
-  const sortedItems =
+  container.innerHTML = `
 
-    items
-
-      .map(
-        (item,index) => ({
-
-          item,
-
-          index,
-
-          timestamp:
-            parseArchiveDate(
-              item.date
-            )
-
-        })
-      )
-
-      .sort(
-        (a,b) => {
-
-          if(
-            b.timestamp !==
-            a.timestamp
-          ){
-
-            return (
-              b.timestamp -
-              a.timestamp
-            );
-
-          }
+    <div class="content-heading">
+      Album Collection
+    </div>
 
 
-          return (
-            a.index -
-            b.index
-          );
 
-        }
-      )
+    <div class="album-table">
 
-      .map(
-        entry =>
-          entry.item
-      );
+      <div class="album-table-header">
 
+        <div>#</div>
+        <div>TITLE</div>
+        <div>ARTIST</div>
+        <div>RELEASE</div>
+        <div>TRACKS</div>
+        <div></div>
 
-  main.innerHTML = `
-
-    <div class="archive">
-
-      ${sortedItems.map(
-        item => {
-
-          const slug =
-            String(
-              item.slug || ""
-            );
+      </div>
 
 
-          const image =
-            item.image ||
-            item.src ||
-            item.thumbnail ||
-            "";
+      ${ALBUMS.map(
+        (album,index) => {
+
+          const selected =
+            album.title ===
+            selectedAlbum;
 
 
           return `
 
-            <a
-              class="photo-entry"
-              href="/photographs/?slug=${encodeURIComponent(
-                slug
+            <div
+              class="album-row ${
+                selected ? "selected" : ""
+              }"
+              data-album="${escapeHTML(
+                album.title
               )}"
             >
 
-              <div class="photo-frame">
+              <div class="album-number">
 
-                <img
-                  src="${escapeHTML(image)}"
-                  alt="${escapeHTML(
-                    item.title || ""
-                  )}"
-                  loading="lazy"
-                >
+                ${String(
+                  index + 1
+                ).padStart(2,"0")}
 
               </div>
 
 
-              <div class="photo-date">
+              <div class="album-main">
+
+                <div class="album-thumb">
+
+                  ${
+                    album.cover
+
+                      ? `
+
+                        <img
+                          src="${escapeHTML(
+                            album.cover
+                          )}"
+                          alt="${escapeHTML(
+                            album.title
+                          )}"
+                          loading="lazy"
+                        >
+
+                      `
+
+                      : `NO COVER`
+
+                  }
+
+                </div>
+
+
+                <div class="album-name">
+
+                  <div class="album-title">
+
+                    ${escapeHTML(
+                      album.title ||
+                      "Untitled Album"
+                    )}
+
+                  </div>
+
+
+                  <div class="album-artist">
+
+                    ${escapeHTML(
+                      album.artist ||
+                      "Unknown artist"
+                    )}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="album-artist">
 
                 ${escapeHTML(
-                  item.date || ""
+                  album.artist ||
+                  "Unknown artist"
                 )}
 
               </div>
 
 
-              <div class="photo-title">
+              <div class="album-meta">
 
                 ${escapeHTML(
-                  item.title || ""
+                  album.releaseDate ||
+                  album.date ||
+                  "—"
                 )}
 
               </div>
 
-            </a>
+
+              <div class="album-meta">
+
+                ${album.tracks.length}
+
+              </div>
+
+
+              <div class="album-arrow">
+
+                →
+
+              </div>
+
+            </div>
 
           `;
 
@@ -3174,136 +3881,74 @@ function renderArchive(items){
 
   `;
 
-}
+
+  container
+    .querySelectorAll(
+      ".album-row"
+    )
+    .forEach(
+      row => {
+
+        row.addEventListener(
+          "click",
+          () => {
+
+            selectedAlbum =
+              row.dataset.album || "";
 
 
-
-/* =========================================================
-   FILTER EVENTS
-========================================================= */
-
-function setupFilters(items){
-
-  const filters =
-    document.querySelectorAll(
-      ".photo-filter"
-    );
+            currentView =
+              "tracklist";
 
 
-  filters.forEach(
-    filter => {
+            document
+              .querySelectorAll(
+                ".music-tab"
+              )
+              .forEach(
+                tab => {
 
-      filter.addEventListener(
-        "click",
-        () => {
+                  tab.classList.toggle(
+                    "active",
+                    tab.dataset.view ===
+                    "tracklist"
+                  );
 
-          const category =
-            filter.dataset.category ||
-            "all";
-
-
-          filters.forEach(
-            button => {
-
-              button.classList.remove(
-                "active"
+                }
               );
 
-            }
-          );
 
+            renderTracklist();
 
-          filter.classList.add(
-            "active"
-          );
+          }
+        );
 
-
-          const filteredItems =
-            filterPhotographs(
-              items,
-              category
-            );
-
-
-          renderArchive(
-            filteredItems
-          );
-
-        }
-      );
-
-    }
-  );
+      }
+    );
 
 }
 
 
-
 /* =========================================================
-   RENDER ARTICLE
+   RENDER TRACKLIST
 ========================================================= */
 
-async function renderArticle(
-  items,
-  slug
-){
 
-  const main =
+function renderTracklist(){
+
+  const container =
     document.getElementById(
-      "main"
+      "musicContent"
     );
 
 
-  const decodedSlug =
-    decodeURIComponent(
-      String(slug || "")
-    ).trim();
+  if(!MUSIC_TRACKS.length){
 
+    container.innerHTML = `
 
-  const item =
-    items.find(
-      entry =>
-        String(
-          entry.slug || ""
-        ).trim() ===
-        decodedSlug
-    );
+      <div class="empty">
 
-
-  document.getElementById(
-    "browserAddress"
-  ).textContent =
-    "https://qmarchive.github.io/photographs/?slug=" +
-    decodedSlug;
-
-
-  if(!item){
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          This photograph could not be found.
-        </strong>
-
-        <br><br>
-
-        slug:
-        ${escapeHTML(
-          decodedSlug
-        )}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/photographs/"
-        >
-
-          ← back to photographs
-
-        </a>
+        No tracks yet.
 
       </div>
 
@@ -3314,162 +3959,706 @@ async function renderArticle(
   }
 
 
-  const image =
-    item.image ||
-    item.src ||
-    item.thumbnail ||
-    "";
+  const album =
+    ALBUMS.find(
+      item =>
+        item.title ===
+        selectedAlbum
+    );
 
 
-  main.innerHTML = `
+  const visibleTracks =
+    album
+      ? album.tracks
+      : MUSIC_TRACKS;
 
-    <div class="error">
 
-      Loading photograph...
+  if(!visibleTracks.length){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        No tracks in this album yet.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = `
+
+    <div class="content-heading">
+
+      ${
+        album
+          ? escapeHTML(album.title)
+          : "Tracklist"
+      }
+
+    </div>
+
+
+    <div class="tracklist">
+
+      <div class="tracklist-header">
+
+        <div>#</div>
+        <div>TITLE</div>
+        <div>ALBUM</div>
+        <div>DURATION</div>
+        <div>DATE</div>
+        <div></div>
+
+      </div>
+
+
+      ${visibleTracks.map(
+        (track,index) => {
+
+          const globalIndex =
+            MUSIC_TRACKS.indexOf(
+              track
+            );
+
+
+          const playing =
+            globalIndex ===
+            currentTrack &&
+            !audio.paused;
+
+
+          return `
+
+            <div
+              class="track-row ${
+                playing ? "playing" : ""
+              }"
+              data-track-index="${globalIndex}"
+            >
+
+              <div class="track-number">
+
+                ${String(
+                  index + 1
+                ).padStart(2,"0")}
+
+              </div>
+
+
+              <div class="track-name">
+
+                <div class="track-thumb">
+
+                  ${
+                    track.cover ||
+                    track.albumCover
+
+                      ? `
+
+                        <img
+                          src="${escapeHTML(
+                            track.cover ||
+                            track.albumCover
+                          )}"
+                          alt="${escapeHTML(
+                            track.title
+                          )}"
+                          loading="lazy"
+                        >
+
+                      `
+
+                      : `NO COVER`
+
+                  }
+
+                </div>
+
+
+                <div>
+
+                  <div class="track-title">
+
+                    ${escapeHTML(
+                      track.title ||
+                      "Untitled"
+                    )}
+
+                  </div>
+
+
+                  <div class="track-artist">
+
+                    ${escapeHTML(
+                      track.artist ||
+                      "Unknown artist"
+                    )}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="track-album">
+
+                ${escapeHTML(
+                  track.album ||
+                  "—"
+                )}
+
+              </div>
+
+
+              <div
+                class="track-duration"
+                data-track-duration-index="${globalIndex}"
+              >
+
+                ${escapeHTML(
+                  track.duration ||
+                  "--:--"
+                )}
+
+              </div>
+
+
+              <div class="track-date">
+
+                ${escapeHTML(
+                  track.date ||
+                  "—"
+                )}
+
+              </div>
+
+
+              <div class="track-play">
+
+                ▶
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      ).join("")}
 
     </div>
 
   `;
 
 
-  try{
+  container
+    .querySelectorAll(
+      ".track-row"
+    )
+    .forEach(
+      row => {
 
-    const markdown =
-      await loadMarkdown(
-        decodedSlug
-      );
+        row.addEventListener(
+          "click",
+          () => {
 
-
-    const html =
-      markdownToHTML(
-        markdown
-      );
-
-
-    main.innerHTML = `
-
-      <article class="article">
+            const index =
+              Number(
+                row.dataset.trackIndex
+              );
 
 
-        <div class="article-year">
+            loadTrack(
+              index,
+              true,
+              0
+            );
 
-          ${escapeHTML(
-            item.date || ""
-          )}
+          }
+        );
 
-        </div>
+      }
+    );
 
-
-        <h1 class="article-title">
-
-          ${escapeHTML(
-            item.title || ""
-          )}
-
-        </h1>
+}
 
 
-        ${
-          image
-            ? `
+/* =========================================================
+   RENDER CURRENT TAB
+========================================================= */
 
-              <figure class="detail-photo">
+function renderCurrentView(){
 
-                <img
-                  src="${escapeHTML(image)}"
-                  alt="${escapeHTML(
-                    item.title || ""
-                  )}"
-                >
+  if(currentView === "tracklist"){
 
-                <figcaption
-                  class="detail-photo-caption"
-                >
+    renderTracklist();
 
-                  ${escapeHTML(
-                    item.title || ""
-                  )}
+  }else{
 
-                </figcaption>
-
-              </figure>
-
-            `
-            : ""
-        }
-
-
-        <div class="article-body">
-
-          ${html}
-
-        </div>
-
-
-        <a
-          class="article-back"
-          href="/photographs/"
-        >
-
-          ← back to photographs
-
-        </a>
-
-
-      </article>
-
-    `;
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    main.innerHTML = `
-
-      <div class="error">
-
-        <strong>
-          The photograph exists, but its content could not be loaded.
-        </strong>
-
-        <br><br>
-
-        File expected:
-
-        <br>
-
-        /photographs/posts/
-        ${escapeHTML(decodedSlug)}
-        .md
-
-        <br><br>
-
-        ${escapeHTML(
-          error.message
-        )}
-
-        <br><br>
-
-        <a
-          class="article-back"
-          href="/photographs/"
-        >
-
-          ← back to photographs
-
-        </a>
-
-      </div>
-
-    `;
+    renderAlbums();
 
   }
 
 }
 
 
+/* =========================================================
+   TABS
+========================================================= */
+
+function setupTabs(){
+
+  const tabs =
+    document.querySelectorAll(
+      ".music-tab"
+    );
+
+
+  tabs.forEach(
+    tab => {
+
+      tab.addEventListener(
+        "click",
+        () => {
+
+          const view =
+            tab.dataset.view ||
+            "album";
+
+
+          currentView =
+            view;
+
+
+          if(view === "tracklist"){
+
+            selectedAlbum =
+              null;
+
+          }else if(
+            view === "album" &&
+            !selectedAlbum &&
+            ALBUMS.length
+          ){
+
+            selectedAlbum =
+              ALBUMS[0].title;
+
+          }
+
+
+          tabs.forEach(
+            item => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            }
+          );
+
+
+          tab.classList.add(
+            "active"
+          );
+
+
+          renderCurrentView();
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   TRACKLIST PLAYING STATE
+========================================================= */
+
+function renderTracklistPlayingState(){
+
+  if(currentView !== "tracklist"){
+    return;
+  }
+
+  const rows =
+    document.querySelectorAll(
+      ".track-row"
+    );
+
+
+  rows.forEach(
+    row => {
+
+      const index =
+        Number(
+          row.dataset.trackIndex
+        );
+
+
+      row.classList.toggle(
+        "playing",
+        index === currentTrack &&
+        !audio.paused
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   PLAYER BUTTONS
+========================================================= */
+
+playButton.addEventListener(
+  "click",
+  () => {
+
+    if(audio.paused){
+
+      audio.play()
+        .then(() => {
+
+          playButton.textContent =
+            "❚❚";
+
+          saveMusicState();
+
+        })
+        .catch(() => {
+
+          playButton.textContent =
+            "▶";
+
+        });
+
+    }else{
+
+      audio.pause();
+
+      playButton.textContent =
+        "▶";
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+prevButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack - 1,
+      true,
+      0
+    );
+
+  }
+);
+
+
+nextButton.addEventListener(
+  "click",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true,
+      0
+    );
+
+  }
+);
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress(
+  input
+){
+
+  if(audio.duration){
+
+    audio.currentTime =
+      (
+        Number(input.value) /
+        100
+      ) *
+      audio.duration;
+
+    saveMusicState();
+
+  }
+
+}
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+    updateProgress(
+      progress
+    );
+
+  }
+);
+
+
+document
+  .getElementById(
+    "mainProgress"
+  )
+  .addEventListener(
+    "input",
+    function(){
+
+      updateProgress(
+        this
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   VOLUME
+========================================================= */
+
+function updateVolume(value){
+
+  audio.volume =
+    Number(value);
+
+  volume.value =
+    audio.volume;
+
+  document
+    .getElementById(
+      "mainVolume"
+    )
+    .value =
+      audio.volume;
+
+  saveMusicState();
+
+}
+
+
+volume.addEventListener(
+  "input",
+  () => {
+
+    updateVolume(
+      volume.value
+    );
+
+  }
+);
+
+
+document
+  .getElementById(
+    "mainVolume"
+  )
+  .addEventListener(
+    "input",
+    function(){
+
+      updateVolume(
+        this.value
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   AUDIO EVENTS
+========================================================= */
+
+audio.addEventListener(
+  "loadedmetadata",
+  () => {
+
+    const time =
+      "00:00 / " +
+      formatTime(
+        audio.duration
+      );
+
+
+    musicTime.textContent =
+      time;
+
+
+    document
+      .getElementById(
+        "mainTime"
+      )
+      .textContent =
+        time;
+
+  }
+);
+
+
+audio.addEventListener(
+  "timeupdate",
+  () => {
+
+    const percentage =
+      audio.duration
+        ? (
+            audio.currentTime /
+            audio.duration
+          ) * 100
+        : 0;
+
+
+    progress.value =
+      percentage;
+
+
+    document
+      .getElementById(
+        "mainProgress"
+      )
+      .value =
+        percentage;
+
+
+    const time =
+      formatTime(
+        audio.currentTime
+      ) +
+      " / " +
+      formatTime(
+        audio.duration
+      );
+
+
+    musicTime.textContent =
+      time;
+
+
+    document
+      .getElementById(
+        "mainTime"
+      )
+      .textContent =
+        time;
+
+
+    const now =
+      Date.now();
+
+
+    if(
+      !window.__qmLastMusicSave ||
+      now -
+      window.__qmLastMusicSave >
+      1000
+    ){
+
+      window.__qmLastMusicSave =
+        now;
+
+      saveMusicState();
+
+    }
+
+  }
+);
+
+
+audio.addEventListener(
+  "play",
+  () => {
+
+    playButton.textContent =
+      "❚❚";
+
+
+    document
+      .getElementById(
+        "mainPlayButton"
+      )
+      .textContent =
+        "❚❚";
+
+
+    renderTracklistPlayingState();
+
+    saveMusicState();
+
+  }
+);
+
+
+audio.addEventListener(
+  "pause",
+  () => {
+
+    playButton.textContent =
+      "▶";
+
+
+    document
+      .getElementById(
+        "mainPlayButton"
+      )
+      .textContent =
+        "▶";
+
+
+    renderTracklistPlayingState();
+
+    saveMusicState();
+
+  }
+);
+
+
+audio.addEventListener(
+  "ended",
+  () => {
+
+    loadTrack(
+      currentTrack + 1,
+      true,
+      0
+    );
+
+  }
+);
+
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    saveMusicState();
+
+  }
+);
 
 
 /* =========================================================
@@ -3512,198 +4701,538 @@ const browserLoadingText =
   document.getElementById("browserLoadingText");
 
 const browserMenuMessages = {
-  file:{title:"FILE",text:"Tìm cái gì ở đây ?"},
-  edit:{title:"EDIT",text:"Không có gì đâu mà kiếm !"},
-  view:{title:"VIEW",text:"Cố chấp thế nhờ !"},
-  favorites:{title:"FAVORITES",text:"Dù sao thì …"},
-  tools:{title:"TOOLS",text:"Chúc một ngày tốt lành"},
-  help:{title:"HELP",text:"Built by: Quốc Mạnh, Orient.bakureever, Edge Runner.2046\nHà Nội, Việt Nam\nVersion 2.4"}
+
+  file:{
+    title:"FILE",
+    text:"Tìm cái gì ở đây ?"
+  },
+
+  edit:{
+    title:"EDIT",
+    text:"Không có gì đâu mà kiếm !"
+  },
+
+  view:{
+    title:"VIEW",
+    text:"Cố chấp thế nhờ !"
+  },
+
+  favorites:{
+    title:"FAVORITES",
+    text:"Dù sao thì …"
+  },
+
+  tools:{
+    title:"TOOLS",
+    text:"Chúc một ngày tốt lành"
+  },
+
+  help:{
+    title:"HELP",
+    text:"Built by: Quốc Mạnh, Orient.bakureever, Edge Runner.2046\nHà Nội, Việt Nam\nVersion 2.4"
+  }
+
 };
 
 function normalizeArchivePath(path){
-  if(!path || path === "/index.html") return "/";
-  let value = String(path).split("?")[0].split("#")[0];
-  if(!value.startsWith("/")) value = "/" + value;
-  if(value !== "/" && !value.endsWith("/")) value += "/";
+
+  if(!path || path === "/index.html"){
+    return "/";
+  }
+
+  let value =
+    String(path).split("?")[0].split("#")[0];
+
+  if(!value.startsWith("/")){
+    value = "/" + value;
+  }
+
+  if(
+    value !== "/" &&
+    !value.endsWith("/")
+  ){
+    value += "/";
+  }
+
   return value;
 }
 
 function updateBrowserAddress(){
-  if(!browserAddress) return;
-  const path = normalizeArchivePath(window.location.pathname);
-  browserAddress.textContent = window.location.origin + path;
+
+  if(!browserAddress){
+    return;
+  }
+
+  const path =
+    normalizeArchivePath(
+      window.location.pathname
+    );
+
+  browserAddress.textContent =
+    window.location.origin + path;
 }
 
 function selectBrowserAddress(){
-  if(!browserAddress) return;
+
+  if(!browserAddress){
+    return;
+  }
+
   browserAddress.classList.add("selected");
-  const selection = window.getSelection();
-  const range = document.createRange();
-  range.selectNodeContents(browserAddress);
+
+  const selection =
+    window.getSelection();
+
+  const range =
+    document.createRange();
+
+  range.selectNodeContents(
+    browserAddress
+  );
+
   selection.removeAllRanges();
   selection.addRange(range);
 }
 
 function closeBrowserAddressDropdown(){
-  if(browserAddressDropdown) browserAddressDropdown.classList.remove("open");
-  if(browserAddress) browserAddress.classList.remove("selected");
-  const selection = window.getSelection();
-  if(selection) selection.removeAllRanges();
-}
 
-function showBrowserAddressDropdown(){
-  selectBrowserAddress();
-  browserAddressDropdown.classList.toggle("open");
-}
-
-function showBrowserMenu(key){
-  const data = browserMenuMessages[key];
-  if(!data) return;
-
-  document.querySelectorAll(".browser-menu span").forEach(item=>{
-    item.classList.remove("menu-active");
-  });
-
-  const activeItem = document.querySelector('[data-browser-menu="' + key + '"]');
-  if(activeItem) activeItem.classList.add("menu-active");
-
-  browserMenuPopupTitle.textContent = data.title;
-  browserMenuPopupText.textContent = data.text;
-
-  const browser = document.querySelector(".browser");
-  const browserRect = browser.getBoundingClientRect();
-  const activeRect = activeItem.getBoundingClientRect();
-
-  browserMenuPopup.style.left = Math.max(7, activeRect.left - browserRect.left) + "px";
-  browserMenuPopup.style.top = (activeRect.bottom - browserRect.top + 5) + "px";
-  browserMenuPopup.classList.add("open");
-}
-
-function closeBrowserMenu(){
-  if(browserMenuPopup) browserMenuPopup.classList.remove("open");
-  document.querySelectorAll(".browser-menu span").forEach(item=>{
-    item.classList.remove("menu-active");
-  });
-}
-
-function fakeLoading(targetPath,label="Loading archive..."){
-  if(!browserLoading){
-    window.location.href = targetPath;
+  if(!browserAddressDropdown){
     return;
   }
 
-  const progress = browserLoading.querySelector(".browser-loading-progress");
-  if(progress){
-    progress.style.animation = "none";
-    void progress.offsetWidth;
-    progress.style.animation = "browserLoadingProgress .55s steps(8,end) forwards";
+  browserAddressDropdown.classList.remove(
+    "open"
+  );
+
+  if(browserAddress){
+    browserAddress.classList.remove(
+      "selected"
+    );
   }
 
-  browserLoadingText.textContent = label;
-  browserLoading.classList.add("open");
+  const selection =
+    window.getSelection();
 
-  window.setTimeout(()=>{
-    window.location.href = targetPath;
-  },600);
+  if(selection){
+    selection.removeAllRanges();
+  }
 }
 
-function navigateArchive(targetPath){
-  const path = normalizeArchivePath(targetPath);
-  const currentPath = normalizeArchivePath(window.location.pathname);
+function showBrowserAddressDropdown(){
+
+  selectBrowserAddress();
+
+  browserAddressDropdown.classList.toggle(
+    "open"
+  );
+}
+
+function showBrowserMenu(key){
+
+  const data =
+    browserMenuMessages[key];
+
+  if(!data){
+    return;
+  }
+
+  document
+    .querySelectorAll(".browser-menu span")
+    .forEach(item=>{
+      item.classList.remove(
+        "menu-active"
+      );
+    });
+
+  const activeItem =
+    document.querySelector(
+      '[data-browser-menu="' +
+      key +
+      '"]'
+    );
+
+  if(activeItem){
+    activeItem.classList.add(
+      "menu-active"
+    );
+  }
+
+  browserMenuPopupTitle.textContent =
+    data.title;
+
+  browserMenuPopupText.textContent =
+    data.text;
+
+  const browser =
+    document.querySelector(".browser");
+
+  const browserRect =
+    browser.getBoundingClientRect();
+
+  const activeRect =
+    activeItem.getBoundingClientRect();
+
+  browserMenuPopup.style.left =
+    Math.max(
+      7,
+      activeRect.left - browserRect.left
+    ) + "px";
+
+  browserMenuPopup.style.top =
+    (
+      activeRect.bottom -
+      browserRect.top +
+      5
+    ) + "px";
+
+  browserMenuPopup.classList.add(
+    "open"
+  );
+}
+
+function closeBrowserMenu(){
+
+  if(browserMenuPopup){
+    browserMenuPopup.classList.remove(
+      "open"
+    );
+  }
+
+  document
+    .querySelectorAll(".browser-menu span")
+    .forEach(item=>{
+      item.classList.remove(
+        "menu-active"
+      );
+    });
+
+}
+
+function fakeLoading(
+  targetPath,
+  label="Loading archive..."
+){
+
+  if(!browserLoading){
+    window.location.href =
+      targetPath;
+    return;
+  }
+
+  const progress =
+    browserLoading.querySelector(
+      ".browser-loading-progress"
+    );
+
+  if(progress){
+    progress.style.animation =
+      "none";
+
+    void progress.offsetWidth;
+
+    progress.style.animation =
+      "browserLoadingProgress .55s steps(8,end) forwards";
+  }
+
+  browserLoadingText.textContent =
+    label;
+
+  browserLoading.classList.add(
+    "open"
+  );
+
+  window.setTimeout(
+    ()=>{
+      window.location.href =
+        targetPath;
+    },
+    600
+  );
+}
+
+function navigateArchive(
+  targetPath
+){
+
+  const path =
+    normalizeArchivePath(
+      targetPath
+    );
+
+  const currentPath =
+    normalizeArchivePath(
+      window.location.pathname
+    );
+
   if(path === currentPath){
     closeBrowserAddressDropdown();
     closeBrowserMenu();
     return;
   }
-  fakeLoading(path,"Loading " + path + "...");
+
+  fakeLoading(
+    path,
+    "Loading " +
+    path +
+    "..."
+  );
 }
 
 function getArchiveIndex(){
-  const currentPath = normalizeArchivePath(window.location.pathname);
-  const index = ARCHIVE_PATHS.indexOf(currentPath);
+
+  const currentPath =
+    normalizeArchivePath(
+      window.location.pathname
+    );
+
+  const index =
+    ARCHIVE_PATHS.indexOf(
+      currentPath
+    );
+
   return index >= 0 ? index : 0;
 }
 
-function navigateArchiveStep(direction){
-  const currentIndex = getArchiveIndex();
-  const nextIndex = (currentIndex + direction + ARCHIVE_PATHS.length) % ARCHIVE_PATHS.length;
-  navigateArchive(ARCHIVE_PATHS[nextIndex]);
+function navigateArchiveStep(
+  direction
+){
+
+  const currentIndex =
+    getArchiveIndex();
+
+  const nextIndex =
+    (
+      currentIndex +
+      direction +
+      ARCHIVE_PATHS.length
+    ) %
+    ARCHIVE_PATHS.length;
+
+  navigateArchive(
+    ARCHIVE_PATHS[nextIndex]
+  );
 }
 
 if(browserAddress){
-  browserAddress.addEventListener("click",event=>{
-    event.stopPropagation();
-    showBrowserAddressDropdown();
-    window.setTimeout(selectBrowserAddress,0);
-  });
 
-  browserAddress.addEventListener("keydown",event=>{
-    if(event.key !== "Enter" && event.key !== " ") return;
-    event.preventDefault();
-    showBrowserAddressDropdown();
-    window.setTimeout(selectBrowserAddress,0);
-  });
+  browserAddress.addEventListener(
+    "click",
+    event=>{
+
+      event.stopPropagation();
+
+      showBrowserAddressDropdown();
+
+      window.setTimeout(
+        selectBrowserAddress,
+        0
+      );
+
+    }
+  );
+
+  browserAddress.addEventListener(
+    "keydown",
+    event=>{
+
+      event.preventDefault();
+
+      if(
+        event.key === "Enter" ||
+        event.key === " "
+      ){
+
+        showBrowserAddressDropdown();
+
+        window.setTimeout(
+          selectBrowserAddress,
+          0
+        );
+
+      }
+
+    }
+  );
+
 }
 
-document.querySelectorAll(".browser-address-option").forEach(option=>{
-  option.addEventListener("click",event=>{
-    event.stopPropagation();
-    navigateArchive(option.dataset.path);
+document
+  .querySelectorAll(
+    ".browser-address-option"
+  )
+  .forEach(option=>{
+
+    option.addEventListener(
+      "click",
+      event=>{
+
+        event.stopPropagation();
+
+        navigateArchive(
+          option.dataset.path
+        );
+
+      }
+    );
+
   });
-});
 
 if(browserBack){
-  browserBack.addEventListener("click",()=>navigateArchiveStep(-1));
+
+  browserBack.addEventListener(
+    "click",
+    ()=>{
+      navigateArchiveStep(-1);
+    }
+  );
+
 }
 
 if(browserForward){
-  browserForward.addEventListener("click",()=>navigateArchiveStep(1));
+
+  browserForward.addEventListener(
+    "click",
+    ()=>{
+      navigateArchiveStep(1);
+    }
+  );
+
 }
 
-document.querySelectorAll("[data-browser-menu]").forEach(item=>{
-  item.addEventListener("click",event=>{
-    event.stopPropagation();
-    const key = item.dataset.browserMenu;
-    if(browserMenuPopup.classList.contains("open") && item.classList.contains("menu-active")){
-      closeBrowserMenu();
-    }else{
-      closeBrowserAddressDropdown();
-      showBrowserMenu(key);
-    }
-  });
-});
+document
+  .querySelectorAll(
+    "[data-browser-menu]"
+  )
+  .forEach(item=>{
 
-document.addEventListener("click",()=>{
-  closeBrowserAddressDropdown();
-  closeBrowserMenu();
-});
+    item.addEventListener(
+      "click",
+      event=>{
+
+        event.stopPropagation();
+
+        const key =
+          item.dataset.browserMenu;
+
+        if(
+          browserMenuPopup.classList.contains(
+            "open"
+          ) &&
+          item.classList.contains(
+            "menu-active"
+          )
+        ){
+
+          closeBrowserMenu();
+
+        }else{
+
+          closeBrowserAddressDropdown();
+
+          showBrowserMenu(key);
+
+        }
+
+      }
+    );
+
+  });
+
+document.addEventListener(
+  "click",
+  ()=>{
+    closeBrowserAddressDropdown();
+    closeBrowserMenu();
+  }
+);
 
 if(browserAddressDropdown){
-  browserAddressDropdown.addEventListener("click",event=>event.stopPropagation());
+
+  browserAddressDropdown.addEventListener(
+    "click",
+    event=>{
+      event.stopPropagation();
+    }
+  );
+
 }
 
 if(browserMenuPopup){
-  browserMenuPopup.addEventListener("click",event=>event.stopPropagation());
+
+  browserMenuPopup.addEventListener(
+    "click",
+    event=>{
+      event.stopPropagation();
+    }
+  );
+
 }
 
-document.addEventListener("click",event=>{
-  const link = event.target.closest('a[href^="/"]');
-  if(!link) return;
+document.addEventListener(
+  "click",
+  event=>{
 
-  const href = link.getAttribute("href");
-  if(!href || href.startsWith("#") || href.startsWith("/#")) return;
+    const link =
+      event.target.closest(
+        'a[href^="/"]'
+      );
 
-  const target = new URL(href,window.location.origin);
-  if(target.origin !== window.location.origin) return;
+    if(!link){
+      return;
+    }
 
-  const current = normalizeArchivePath(window.location.pathname);
-  const targetPath = normalizeArchivePath(target.pathname);
+    const href =
+      link.getAttribute("href");
 
-  if(current === targetPath && !target.search) return;
+    if(
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("/#")
+    ){
+      return;
+    }
 
-  event.preventDefault();
-  fakeLoading(target.pathname + target.search + target.hash,"Loading archive...");
-});
+    const target =
+      new URL(
+        href,
+        window.location.origin
+      );
+
+    if(
+      target.origin !==
+      window.location.origin
+    ){
+      return;
+    }
+
+    const current =
+      normalizeArchivePath(
+        window.location.pathname
+      );
+
+    const targetPath =
+      normalizeArchivePath(
+        target.pathname
+      );
+
+    if(
+      current === targetPath &&
+      !target.search
+    ){
+      return;
+    }
+
+    event.preventDefault();
+
+    fakeLoading(
+      target.pathname +
+      target.search +
+      target.hash,
+      "Loading archive..."
+    );
+
+  }
+);
 
 updateBrowserAddress();
 
@@ -3747,12 +5276,6 @@ function updateClock(){
     );
 
 
-  const cassetteYear =
-    document.getElementById(
-      "cassetteYear"
-    );
-
-
   if(browserTime){
 
     browserTime.textContent =
@@ -3777,780 +5300,7 @@ function updateClock(){
 
   }
 
-
-  if(cassetteYear){
-
-    cassetteYear.textContent =
-      now.getFullYear();
-
-  }
-
 }
-
-
-
-/* =========================================================
-   MUSIC PLAYER
-========================================================= */
-
-const audio =
-  document.getElementById(
-    "audio"
-  );
-
-
-const playButton =
-  document.getElementById(
-    "playButton"
-  );
-
-
-const prevButton =
-  document.getElementById(
-    "prevButton"
-  );
-
-
-const nextButton =
-  document.getElementById(
-    "nextButton"
-  );
-
-
-const progress =
-  document.getElementById(
-    "progress"
-  );
-
-
-const volume =
-  document.getElementById(
-    "volume"
-  );
-
-
-const musicTitle =
-  document.getElementById(
-    "musicTitle"
-  );
-
-
-const musicArtist =
-  document.getElementById(
-    "musicArtist"
-  );
-
-
-const musicTime =
-  document.getElementById(
-    "musicTime"
-  );
-
-
-let currentTrack = 0;
-
-
-
-/* =========================================================
-   FORMAT TIME
-========================================================= */
-
-function formatTime(seconds){
-
-  if(!Number.isFinite(seconds)){
-
-    return "00:00";
-
-  }
-
-
-  const minutes =
-    Math.floor(
-      seconds / 60
-    );
-
-
-  const secs =
-    Math.floor(
-      seconds % 60
-    );
-
-
-  return (
-
-    String(minutes).padStart(2,"0") +
-
-    ":" +
-
-    String(secs).padStart(2,"0")
-
-  );
-
-}
-
-
-
-/* =========================================================
-   SAVE STATE
-========================================================= */
-
-function saveMusicState(){
-
-  try{
-
-    localStorage.setItem(
-
-      MUSIC_STORAGE_KEY,
-
-      JSON.stringify({
-
-        track:currentTrack,
-
-        currentTime:
-          Number.isFinite(
-            audio.currentTime
-          )
-            ? audio.currentTime
-            : 0,
-
-        volume:
-          Number(
-            audio.volume
-          ),
-
-        isPlaying:
-          !audio.paused
-
-      })
-
-    );
-
-  }catch(error){
-
-    console.warn(
-      "Could not save music state.",
-      error
-    );
-
-  }
-
-}
-
-
-
-/* =========================================================
-   GET SAVED STATE
-========================================================= */
-
-function getSavedMusicState(){
-
-  try{
-
-    const raw =
-      localStorage.getItem(
-        MUSIC_STORAGE_KEY
-      );
-
-
-    if(!raw){
-
-      return null;
-
-    }
-
-
-    const state =
-      JSON.parse(raw);
-
-
-    if(
-      !state ||
-      typeof state !== "object"
-    ){
-
-      return null;
-
-    }
-
-
-    return state;
-
-  }catch(error){
-
-    console.warn(
-      "Could not read music state.",
-      error
-    );
-
-
-    return null;
-
-  }
-
-}
-
-
-
-/* =========================================================
-   LOAD MUSIC JSON
-========================================================= */
-
-async function loadMusicArchive(){
-
-  const response =
-    await fetch(
-      MUSIC_URL,
-      {
-        cache:"no-store"
-      }
-    );
-
-
-  if(!response.ok){
-
-    throw new Error(
-      "Could not load music/content.json (" +
-      response.status +
-      ")"
-    );
-
-  }
-
-
-  const data =
-    await response.json();
-
-
-  const items =
-
-    Array.isArray(data)
-
-      ? data
-
-      : (
-
-        Array.isArray(
-          data.music
-        )
-
-          ? data.music
-
-          : []
-
-      );
-
-
-  MUSIC_TRACKS =
-    items
-      .map(
-        track => ({
-
-          title:
-            String(
-              track.title || ""
-            ),
-
-          artist:
-            String(
-              track.artist || ""
-            ),
-
-          src:
-            track.file
-              ? (
-                  "/music/" +
-                  String(track.file)
-                    .replace(/^\/+/,"")
-                )
-              : String(
-                  track.src || ""
-                )
-
-        })
-      )
-      .filter(
-        track =>
-          track.src
-      );
-
-}
-
-
-
-/* =========================================================
-   LOAD TRACK
-========================================================= */
-
-function loadTrack(
-  index,
-  autoplay=false,
-  startTime=0
-){
-
-  if(!MUSIC_TRACKS.length){
-
-    return;
-
-  }
-
-
-  currentTrack =
-    (index + MUSIC_TRACKS.length) %
-    MUSIC_TRACKS.length;
-
-
-  const track =
-    MUSIC_TRACKS[currentTrack];
-
-
-  audio.src =
-    track.src;
-
-
-  musicTitle.textContent =
-    track.title;
-
-
-  musicArtist.textContent =
-    track.artist;
-
-
-  progress.value =
-    0;
-
-
-  musicTime.textContent =
-    "00:00 / 00:00";
-
-
-  audio.addEventListener(
-
-    "loadedmetadata",
-
-    function restoreTime(){
-
-      audio.removeEventListener(
-        "loadedmetadata",
-        restoreTime
-      );
-
-
-      if(
-        Number.isFinite(
-          startTime
-        ) &&
-        startTime > 0 &&
-        startTime < audio.duration
-      ){
-
-        try{
-
-          audio.currentTime =
-            startTime;
-
-        }catch(error){
-
-          console.warn(
-            "Could not restore music position.",
-            error
-          );
-
-        }
-
-      }
-
-
-      if(autoplay){
-
-        audio.play()
-
-          .then(() => {
-
-            playButton.textContent =
-              "❚❚";
-
-          })
-
-          .catch(() => {
-
-            playButton.textContent =
-              "▶";
-
-          });
-
-      }
-
-    }
-
-  );
-
-}
-
-
-
-/* =========================================================
-   RESTORE SAVED MUSIC STATE
-========================================================= */
-
-function restoreMusicState(){
-
-  if(!MUSIC_TRACKS.length){
-
-    return;
-
-  }
-
-
-  const state =
-    getSavedMusicState();
-
-
-  if(!state){
-
-    audio.volume =
-      Number(
-        volume.value
-      );
-
-    loadTrack(
-      0,
-      false,
-      0
-    );
-
-    return;
-
-  }
-
-
-  const savedTrack =
-    Number.isInteger(
-      state.track
-    )
-      ? state.track
-      : 0;
-
-
-  const savedTime =
-    Number.isFinite(
-      Number(
-        state.currentTime
-      )
-    )
-      ? Number(
-          state.currentTime
-        )
-      : 0;
-
-
-  const savedVolume =
-    Number.isFinite(
-      Number(
-        state.volume
-      )
-    )
-      ? Number(
-          state.volume
-        )
-      : 0.7;
-
-
-  audio.volume =
-    Math.min(
-      1,
-      Math.max(
-        0,
-        savedVolume
-      )
-    );
-
-
-  volume.value =
-    audio.volume;
-
-
-  loadTrack(
-    savedTrack,
-    false,
-    savedTime
-  );
-
-}
-
-
-
-/* =========================================================
-   PLAY / PAUSE
-========================================================= */
-
-playButton.addEventListener(
-  "click",
-  () => {
-
-    if(audio.paused){
-
-      audio.play()
-
-        .then(() => {
-
-          playButton.textContent =
-            "❚❚";
-
-          saveMusicState();
-
-        })
-
-        .catch(() => {
-
-          playButton.textContent =
-            "▶";
-
-        });
-
-    }else{
-
-      audio.pause();
-
-      playButton.textContent =
-        "▶";
-
-      saveMusicState();
-
-    }
-
-  }
-);
-
-
-
-/* =========================================================
-   PREVIOUS
-========================================================= */
-
-prevButton.addEventListener(
-  "click",
-  () => {
-
-    loadTrack(
-      currentTrack - 1,
-      true,
-      0
-    );
-
-  }
-);
-
-
-
-/* =========================================================
-   NEXT
-========================================================= */
-
-nextButton.addEventListener(
-  "click",
-  () => {
-
-    loadTrack(
-      currentTrack + 1,
-      true,
-      0
-    );
-
-  }
-);
-
-
-
-/* =========================================================
-   METADATA
-========================================================= */
-
-audio.addEventListener(
-  "loadedmetadata",
-  () => {
-
-    musicTime.textContent =
-      "00:00 / " +
-      formatTime(
-        audio.duration
-      );
-
-  }
-);
-
-
-
-/* =========================================================
-   TIME UPDATE
-========================================================= */
-
-audio.addEventListener(
-  "timeupdate",
-  () => {
-
-    if(audio.duration){
-
-      progress.value =
-        (
-          audio.currentTime /
-          audio.duration
-        ) * 100;
-
-    }
-
-
-    musicTime.textContent =
-      formatTime(
-        audio.currentTime
-      ) +
-
-      " / " +
-
-      formatTime(
-        audio.duration
-      );
-
-
-    const now =
-      Date.now();
-
-
-    if(
-      !window.__qmLastMusicSave ||
-      now -
-      window.__qmLastMusicSave >
-      1000
-    ){
-
-      window.__qmLastMusicSave =
-        now;
-
-
-      saveMusicState();
-
-    }
-
-  }
-);
-
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-progress.addEventListener(
-  "input",
-  () => {
-
-    if(audio.duration){
-
-      audio.currentTime =
-        (
-          Number(progress.value) /
-          100
-        ) *
-        audio.duration;
-
-
-      saveMusicState();
-
-    }
-
-  }
-);
-
-
-
-/* =========================================================
-   VOLUME
-========================================================= */
-
-volume.addEventListener(
-  "input",
-  () => {
-
-    audio.volume =
-      Number(
-        volume.value
-      );
-
-
-    saveMusicState();
-
-  }
-);
-
-
-
-/* =========================================================
-   ENDED
-========================================================= */
-
-audio.addEventListener(
-  "ended",
-  () => {
-
-    loadTrack(
-      currentTrack + 1,
-      true,
-      0
-    );
-
-  }
-);
-
-
-
-/* =========================================================
-   PLAY EVENT
-========================================================= */
-
-audio.addEventListener(
-  "play",
-  () => {
-
-    playButton.textContent =
-      "❚❚";
-
-    saveMusicState();
-
-  }
-);
-
-
-
-/* =========================================================
-   PAUSE EVENT
-========================================================= */
-
-audio.addEventListener(
-  "pause",
-  () => {
-
-    playButton.textContent =
-      "▶";
-
-    saveMusicState();
-
-  }
-);
-
-
-
-/* =========================================================
-   BEFORE UNLOAD
-========================================================= */
-
-window.addEventListener(
-  "beforeunload",
-  () => {
-
-    saveMusicState();
-
-  }
-);
-
 
 
 /* =========================================================
@@ -4560,7 +5310,6 @@ window.addEventListener(
 async function init(){
 
   updateClock();
-
 
   setInterval(
     updateClock,
@@ -4574,80 +5323,18 @@ async function init(){
     );
 
 
+  setupTabs();
+
+
   try{
 
     await loadMusicArchive();
 
     restoreMusicState();
 
-  }catch(error){
+    renderCurrentView();
 
-    console.error(
-      error
-    );
-
-  }
-
-
-  try{
-
-    const data =
-      await loadJSON();
-
-
-    const items =
-      Array.isArray(
-        data.photographs
-      )
-        ? data.photographs
-        : [];
-
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const slug =
-      params.get("slug");
-
-
-    if(slug){
-
-      const photosWindow =
-        document.getElementById(
-          "photosWindow"
-        );
-
-
-      if(photosWindow){
-
-        photosWindow.classList.add(
-          "detail-mode"
-        );
-
-      }
-
-
-      await renderArticle(
-        items,
-        slug
-      );
-
-    }else{
-
-      renderArchive(
-        items
-      );
-
-
-      setupFilters(
-        items
-      );
-
-    }
-
+    loadTrackDurations();
 
   }catch(error){
 
@@ -4655,13 +5342,13 @@ async function init(){
 
 
     document.getElementById(
-      "main"
+      "musicContent"
     ).innerHTML = `
 
       <div class="error">
 
         <strong>
-          Photographs could not be loaded.
+          Music could not be loaded.
         </strong>
 
         <br><br>
