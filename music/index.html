@@ -1741,9 +1741,14 @@ a[href]:hover{
   }
 
 
+  /* MOBILE keeps the same browser information as desktop.
+     Only the layout changes. Nothing is hidden. */
+
   .browser-menu{
 
-    display:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
 
   }
 
@@ -1758,24 +1763,19 @@ a[href]:hover{
   }
 
 
-  .browser-address-row
-  .browser-control:nth-child(2){
-
-    display:none;
-
-  }
-
-
   .browser-address{
 
-    grid-column:3;
+    grid-column:auto;
 
   }
 
 
   .browser-date{
 
-    display:none;
+    display:block;
+    grid-column:1 / -1;
+    text-align:right;
+    padding-right:2px;
 
   }
 
@@ -1784,7 +1784,7 @@ a[href]:hover{
 
     left:7px;
     right:7px;
-    top:43px;
+    top:74px;
 
   }
 
@@ -1917,20 +1917,26 @@ a[href]:hover{
 
 @media(max-width:700px){
 
-  .browser-address-row{
-
-    grid-template-columns:
-      31px
-      31px
-      31px
-      minmax(0,1fr);
-
+  .browser-menu{
+    gap:5px 13px;
+    font-size:12px;
   }
 
-  .browser-date{
+  .browser-brand{
+    font-size:16px;
+  }
 
-    display:none;
+  .browser-subtitle{
+    font-size:10px;
+  }
 
+  .browser-address{
+    font-size:11px;
+  }
+
+  .browser-window-buttons span{
+    width:22px;
+    height:22px;
   }
 
 }
@@ -1938,28 +1944,33 @@ a[href]:hover{
 
 @media(max-width:480px){
 
-  .browser-subtitle{
-
-    display:none;
-
+  .browser-menu{
+    gap:4px 10px;
+    font-size:11px;
   }
 
+  .browser-brand{
+    font-size:15px;
+    min-width:0;
+    flex-wrap:wrap;
+  }
+
+  .browser-subtitle{
+    font-size:9px;
+  }
 
   .browser-address-row{
-
-    grid-template-columns:
-      31px
-      31px
-      minmax(0,1fr);
-
+    gap:5px;
+    padding:6px;
   }
 
+  .browser-control{
+    width:30px;
+    height:27px;
+  }
 
-  .browser-address-row
-  .browser-control:nth-child(3){
-
-    display:none;
-
+  .browser-date{
+    font-size:9px;
   }
 
 
