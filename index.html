@@ -466,7 +466,7 @@ a[href]:hover{font-weight:bold}
 .music-player{
   position:fixed;width:min(940px,calc(100% - 28px));left:50%;right:auto;bottom:10px;
   transform:translateX(-50%);z-index:10000;display:grid;
-  grid-template-columns:auto minmax(150px,1fr) auto minmax(150px,1.5fr) auto auto;
+  grid-template-columns:auto minmax(150px,1fr) auto minmax(150px,1.5fr) auto;
   gap:9px;align-items:center;padding:6px 8px;background:var(--paper);
   border:3px solid var(--blue);box-shadow:5px 5px 0 var(--blue);
 }
@@ -490,19 +490,17 @@ a[href]:hover{font-weight:bold}
 .music-button{
   width:33px;height:29px;border:3px solid var(--blue);background:#eee5ce;color:var(--blue);
   font-family:monospace;font-weight:bold;cursor:pointer;
-  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
+  transition:background .12s,color .12s,transform .12s;
 }
-.music-button:hover{background:var(--orange)}
-.music-button:active{
-  transform:translate(2px,2px);
-  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+.music-button:hover{
+  background:var(--orange);
+  color:var(--white);
+  transform:translate(-1px,-1px);
 }
 .music-button:disabled{opacity:.4;cursor:default}
 .music-progress{min-width:0}
 .music-progress input{width:100%;accent-color:var(--orange)}
-.music-time{min-width:72px;text-align:center;font-family:monospace;font-size:9px}
-.music-volume{width:100px}
-.music-volume input{width:100%;accent-color:var(--teal)}
+.music-time{min-width:72px;text-align:center;font-size:9px}
 
 .footer{
   width:min(520px,calc(100% - 28px));margin:16px auto 0;padding:10px;border:3px solid var(--blue);
@@ -514,10 +512,9 @@ a[href]:hover{font-weight:bold}
   .layout{grid-template-columns:220px minmax(0,1fr) 250px}
   .archive-entry{grid-template-columns:1fr;gap:3px}
   .music-player{
-    grid-template-columns:auto minmax(100px,1fr) auto minmax(100px,1fr) minmax(58px,auto) 78px;
+    grid-template-columns:auto minmax(100px,1fr) auto minmax(100px,1fr) minmax(58px,auto);
     gap:6px;
   }
-  .music-volume{display:block;width:78px}
   .profile-image{height:190px}
   .profile-image img{height:185px;transform:scale(.98)}
 }
@@ -579,19 +576,13 @@ a[href]:hover{font-weight:bold}
     bottom:5px;
     transform:translateX(-50%);
     grid-template-columns:auto minmax(0,1fr) auto;
-    grid-template-areas:
-      "icon info controls"
-      "progress time volume";
-    gap:5px 6px;
+    gap:5px;
     padding:6px;
   }
-  .music-icon{grid-area:icon}
-  .music-info{grid-area:info}
-  .music-controls{grid-area:controls}
-  .music-progress{grid-area:progress;display:block;min-width:0}
-  .music-time{grid-area:time;display:block;min-width:72px;font-size:8px}
-  .music-volume{grid-area:volume;display:block;width:70px;min-width:55px}
-  .music-volume input{width:100%}
+  .music-progress,
+  .music-time{
+    display:none;
+  }
 }
 @media(max-width:600px){
 
@@ -625,36 +616,6 @@ a[href]:hover{font-weight:bold}
 
   .audio-name{
     font-size:9px;
-  }
-
-  .music-player{
-    grid-template-columns:auto minmax(0,1fr) auto;
-    grid-template-areas:
-      "icon info controls"
-      "progress time volume";
-    gap:4px;
-    padding:5px;
-  }
-
-  .music-icon{
-    width:31px;
-    height:31px;
-  }
-
-  .music-button{
-    width:29px;
-    height:27px;
-    font-size:11px;
-  }
-
-  .music-time{
-    min-width:58px;
-    font-size:7px;
-  }
-
-  .music-volume{
-    width:58px;
-    min-width:48px;
   }
 
 }
@@ -1066,17 +1027,6 @@ a[href]:hover{font-weight:bold}
   </div>
 
   <div class="music-time" id="musicTime">00:00 / 00:00</div>
-
-  <div class="music-volume">
-    <input
-      id="volume"
-      type="range"
-      min="0"
-      max="1"
-      value=".7"
-      step=".01"
-    >
-  </div>
 
 </div>
 
@@ -1492,9 +1442,6 @@ const nextButton =
 const progress =
   document.getElementById("progress");
 
-const volume =
-  document.getElementById("volume");
-
 const musicTitle =
   document.getElementById("musicTitle");
 
@@ -1503,6 +1450,8 @@ const musicArtist =
 
 const musicTime =
   document.getElementById("musicTime");
+
+audio.volume = 0.7;
 
 const musicIcon =
   document.getElementById("musicIcon");
@@ -2003,8 +1952,6 @@ function saveMusicState(){
             ? audio.currentTime
             : 0,
 
-        volume:
-          Number(audio.volume),
 
         isPlaying:
           !audio.paused
@@ -2033,9 +1980,6 @@ function restoreMusicState(){
 
   if(!state){
 
-    audio.volume =
-      Number(volume.value);
-
     loadTrack(
       0,
       false
@@ -2062,28 +2006,6 @@ function restoreMusicState(){
 
   currentTrack =
     savedTrack;
-
-  const savedVolume =
-    Number(state.volume);
-
-  if(
-    Number.isFinite(savedVolume) &&
-    savedVolume >= 0 &&
-    savedVolume <= 1
-  ){
-
-    audio.volume =
-      savedVolume;
-
-    volume.value =
-      savedVolume;
-
-  }else{
-
-    audio.volume =
-      Number(volume.value);
-
-  }
 
   loadTrack(
     currentTrack,
@@ -2343,18 +2265,6 @@ progress.addEventListener(
       saveMusicState();
 
     }
-
-  }
-);
-
-volume.addEventListener(
-  "input",
-  ()=>{
-
-    audio.volume =
-      Number(volume.value);
-
-    saveMusicState();
 
   }
 );
