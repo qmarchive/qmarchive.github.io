@@ -513,20 +513,54 @@ a[href]:hover{font-weight:bold}
 @media(max-width:1200px){
   .layout{grid-template-columns:220px minmax(0,1fr) 250px}
   .archive-entry{grid-template-columns:1fr;gap:3px}
-  .music-player{grid-template-columns:auto minmax(120px,1fr) auto minmax(120px,1fr) auto}
-  .music-volume{display:none}
+  .music-player{
+    grid-template-columns:auto minmax(100px,1fr) auto minmax(100px,1fr) minmax(58px,auto) 78px;
+    gap:6px;
+  }
+  .music-volume{display:block;width:78px}
   .profile-image{height:190px}
   .profile-image img{height:185px;transform:scale(.98)}
 }
 @media(max-width:850px){
-  .page{padding:7px 7px 75px}
-  .browser-menu{display:none}
-  .browser-address-row{grid-template-columns:31px 31px minmax(0,1fr)}
-  .browser-address-row .browser-control:nth-child(2){display:none}
-  .browser-address{grid-column:3}
-  .browser-date{display:none}
+  .page{padding:7px 7px 112px}
+
+  .browser-top{gap:7px}
+  .browser-brand{min-width:0;font-size:15px;gap:6px}
+  .browser-brand-icon{flex-shrink:0}
+  .browser-subtitle{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .browser-window-buttons{flex-shrink:0}
+
+  .browser-menu{
+    display:flex;
+    gap:16px;
+    padding:6px 9px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    white-space:nowrap;
+    scrollbar-width:thin;
+  }
+  .browser-menu span{flex:0 0 auto}
+
+  .browser-address-row{
+    grid-template-columns:31px 31px minmax(0,1fr);
+    grid-template-areas:
+      "back forward address"
+      "date date date";
+    gap:6px;
+  }
+  .browser-address-row .browser-control:nth-child(1){grid-area:back}
+  .browser-address-row .browser-control:nth-child(2){grid-area:forward;display:flex}
+  .browser-address{grid-area:address}
+  .browser-date{
+    grid-area:date;
+    display:block;
+    text-align:left;
+    padding:0 2px 1px;
+    font-size:9px;
+  }
   .browser-address-dropdown{left:7px;right:7px;top:43px}
   .browser-menu-popup{left:7px!important;right:7px;width:auto}
+
   .layout{display:block}
   .left{margin-bottom:16px;height:auto}
   .profile-image{height:230px}
@@ -535,19 +569,56 @@ a[href]:hover{font-weight:bold}
   .archive-grid{grid-template-columns:1fr}
   .photos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .right{margin-top:16px;height:auto}
+
   .music-player{
-    width:calc(100% - 10px);left:50%;right:auto;bottom:5px;transform:translateX(-50%);
-    grid-template-columns:auto minmax(0,1fr) auto;gap:5px;
+    width:calc(100% - 10px);
+    left:50%;
+    right:auto;
+    bottom:5px;
+    transform:translateX(-50%);
+    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-areas:
+      "icon info controls"
+      "progress time volume";
+    gap:5px 6px;
+    padding:6px;
   }
-  .music-progress,.music-time,.music-volume{display:none}
+  .music-icon{grid-area:icon}
+  .music-info{grid-area:info}
+  .music-controls{grid-area:controls}
+  .music-progress{grid-area:progress;display:block;min-width:0}
+  .music-time{grid-area:time;display:block;min-width:72px;font-size:8px}
+  .music-volume{grid-area:volume;display:block;width:70px;min-width:55px}
+  .music-volume input{width:100%}
 }
 @media(max-width:480px){
-  .browser-subtitle{display:none}
+  .browser-brand{font-size:14px;letter-spacing:.6px}
+  .browser-subtitle{display:block;font-size:9px}
+  .browser-window-buttons span{width:21px;height:21px}
+  .browser-menu{gap:14px;font-size:11px}
+  .browser-address-row{grid-template-columns:29px 29px minmax(0,1fr)}
+  .browser-control{width:29px;height:27px}
+  .browser-address{font-size:10px;padding:0 7px}
+  .browser-date{font-size:8px}
+  .browser-address-dropdown{top:43px}
   .photos-grid{grid-template-columns:1fr}
   .hero-caption{position:static;max-width:none;margin:8px}
   .profile-image{height:215px}
   .profile-image img{height:210px;transform:scale(.98)}
   .audio-name{font-size:9px}
+
+  .music-player{
+    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-areas:
+      "icon info controls"
+      "progress time volume";
+    gap:4px;
+    padding:5px;
+  }
+  .music-icon{width:31px;height:31px}
+  .music-button{width:29px;height:27px;font-size:11px}
+  .music-time{min-width:58px;font-size:7px}
+  .music-volume{width:58px;min-width:48px}
 }
 
 </style>
