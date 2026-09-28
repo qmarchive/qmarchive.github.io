@@ -76,8 +76,8 @@ a{
 ========================================================= */
 
 .browser{
-  position:relative;
   border:var(--border);background:var(--paper);box-shadow:5px 5px 0 var(--blue);margin-bottom:14px;
+  position:relative;
 }
 .browser-top{
   min-height:39px;display:flex;align-items:center;justify-content:space-between;
@@ -109,9 +109,9 @@ a{
   transform:translateY(1px);
 }
 .browser-address-row{
-  position:relative;
   display:grid;grid-template-columns:31px 31px minmax(0,1fr) 175px;
   gap:6px;align-items:center;padding:7px;
+  position:relative;
 }
 .browser-control{
   width:31px;height:27px;display:flex;align-items:center;justify-content:center;
@@ -128,117 +128,121 @@ a{
   min-width:0;height:27px;display:flex;align-items:center;padding:0 9px;
   border:2px solid var(--blue);background:#eee5ce;color:#303249;overflow:hidden;
   white-space:nowrap;text-overflow:ellipsis;font-family:monospace;font-size:11px;
-  cursor:pointer;user-select:all;-webkit-user-select:all;
+  cursor:pointer;
+  user-select:all;
+  -webkit-user-select:all;
 }
 .browser-address.selected{
-  background:var(--blue);color:var(--paper);
+  background:var(--blue);
+  color:var(--white);
 }
 .browser-address-dropdown{
   position:absolute;
-  top:calc(100% - 1px);
-  left:calc(31px + 6px + 31px + 6px);
+  left:68px;
   right:181px;
+  top:43px;
   z-index:10002;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  box-shadow:4px 4px 0 var(--blue);
   display:none;
-  padding:4px;
-  animation:browserDropIn .1s ease;
+  padding:5px 0;
+  border:3px solid var(--blue);
+  background:var(--paper);
+  box-shadow:5px 5px 0 var(--blue);
 }
-.browser-address-dropdown.open{display:block;}
+.browser-address-dropdown.open{
+  display:block;
+  animation:browserDropdownIn .12s ease-out;
+}
 .browser-address-option{
   display:block;
-  width:100%;
-  padding:7px 9px;
-  border:0;
-  background:transparent;
+  padding:7px 10px;
   color:var(--blue);
-  text-align:left;
   font-family:monospace;
   font-size:11px;
+  font-weight:bold;
   cursor:pointer;
 }
 .browser-address-option:hover{
   background:var(--orange);
   color:var(--white);
 }
+@keyframes browserDropdownIn{
+  from{opacity:0;transform:translateY(-3px)}
+  to{opacity:1;transform:translateY(0)}
+}
 .browser-menu-popup{
   position:absolute;
-  top:74px;
-  left:8px;
   z-index:10003;
-  min-width:210px;
-  max-width:330px;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  box-shadow:4px 4px 0 var(--blue);
-  padding:9px 10px;
   display:none;
-  animation:browserDropIn .1s ease;
-}
-.browser-menu-popup.open{display:block;}
-.browser-menu-popup-title{
-  font-weight:bold;
-  font-size:11px;
-  margin-bottom:5px;
-  color:var(--orange-dark);
-}
-.browser-menu-popup-text{
+  min-width:245px;
+  padding:12px 14px;
+  border:3px solid var(--blue);
+  background:var(--paper);
+  box-shadow:5px 5px 0 var(--blue);
+  color:var(--blue);
   font-family:monospace;
   font-size:11px;
-  line-height:1.5;
+  line-height:1.6;
+  font-weight:bold;
+}
+.browser-menu-popup.open{
+  display:block;
+  animation:browserMenuPopupIn .12s ease-out;
+}
+.browser-menu-popup-title{
+  margin-bottom:6px;
+  padding-bottom:5px;
+  border-bottom:2px dotted var(--blue);
+}
+.browser-menu-popup-text{
   white-space:pre-line;
+}
+@keyframes browserMenuPopupIn{
+  from{opacity:0;transform:translateY(-3px)}
+  to{opacity:1;transform:translateY(0)}
 }
 .browser-loading{
   position:fixed;
   inset:0;
-  z-index:20000;
+  z-index:99998;
   display:none;
   align-items:center;
   justify-content:center;
-  background:rgba(21,23,47,.12);
+  background:rgba(216,207,181,.92);
 }
-.browser-loading.open{display:flex;}
+.browser-loading.open{
+  display:flex;
+}
 .browser-loading-window{
-  width:min(320px,calc(100% - 40px));
+  width:min(430px,calc(100% - 40px));
+  padding:14px;
   border:3px solid var(--blue);
   background:var(--paper);
   box-shadow:5px 5px 0 var(--blue);
-  padding:12px;
-}
-.browser-loading-label{
+  color:var(--blue);
   font-family:monospace;
   font-size:11px;
   font-weight:bold;
-  margin-bottom:9px;
+}
+.browser-loading-title{
+  margin-bottom:8px;
 }
 .browser-loading-bar{
-  height:14px;
+  height:16px;
+  padding:2px;
   border:2px solid var(--blue);
-  background:#eee5ce;
   overflow:hidden;
 }
 .browser-loading-progress{
   width:0;
   height:100%;
   background:var(--orange);
-  animation:browserLoadingProgress .55s ease forwards;
-}
-@keyframes browserDropIn{
-  from{opacity:0;transform:translateY(-3px)}
-  to{opacity:1;transform:translateY(0)}
+  animation:browserLoadingProgress .55s steps(8,end) forwards;
 }
 @keyframes browserLoadingProgress{
-  0%{width:0}
-  70%{width:78%}
-  100%{width:100%}
+  from{width:0}
+  to{width:100%}
 }
 .browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
-
-/* =========================================================
-   MASTER GRID
-========================================================= */
 
 .layout{
   display:grid;
@@ -810,7 +814,13 @@ a{
 }
 
 @media(max-width:850px){
-
+  .browser-menu{display:none}
+  .browser-address-row{grid-template-columns:31px 31px minmax(0,1fr)}
+  .browser-address-row .browser-control:nth-child(2){display:none}
+  .browser-address{grid-column:3}
+  .browser-date{display:none}
+  .browser-address-dropdown{left:7px;right:7px;top:43px}
+  .browser-menu-popup{left:7px!important;right:7px;width:auto}
   .music-player{
     width:calc(100% - 10px);
     left:50%;
@@ -837,17 +847,8 @@ a{
     grid-template-columns:
       31px
       31px
+      31px
       minmax(0,1fr);
-  }
-  .browser-address-dropdown{
-    left:68px;
-    right:7px;
-  }
-  .browser-menu-popup{
-    top:74px;
-    left:7px;
-    right:7px;
-    max-width:none;
   }
 
   .browser-date{
@@ -902,8 +903,9 @@ a{
       minmax(0,1fr);
   }
 
-  .browser-menu-popup{
-    top:74px;
+  .browser-address-row
+  .browser-control:nth-child(3){
+    display:none;
   }
 
   .panel-body{
@@ -924,63 +926,26 @@ a{
   ====================================================== -->
 
   <header class="browser">
-    <div class="browser-top">
-      <div class="browser-brand">
-        QM ARCHIVE
-        <span class="browser-subtitle">// A SMALL SPACE FOR ORDINARY DAYS.</span>
-      </div>
-
-      <div class="browser-window-buttons">
-        <span>—</span><span>□</span><span>×</span>
-      </div>
+  <div class="browser-top">
+    <div class="browser-brand">QM ARCHIVE <span class="browser-subtitle">// A SMALL SPACE FOR ORDINARY DAYS.</span></div>
+    <div class="browser-window-buttons"><span>—</span><span>□</span><span>×</span></div>
+  </div>
+  <div class="browser-menu">
+    <span data-browser-menu="file">File</span><span data-browser-menu="edit">Edit</span><span data-browser-menu="view">View</span><span data-browser-menu="favorites">Favorites</span><span data-browser-menu="tools">Tools</span><span data-browser-menu="help">Help</span>
+  </div>
+  <div class="browser-address-row">
+    <div class="browser-control" id="browserBack">&lt;</div>
+    <div class="browser-control" id="browserForward">&gt;</div>
+    <div class="browser-address" id="browserAddress" role="button" tabindex="0" aria-label="Current archive location">https://qmarchive.github.io/writings/</div>
+    <div class="browser-date"><span id="browserDate">22 SEP 2026</span><br><span id="browserTime">13:31</span></div>
+    <div class="browser-address-dropdown" id="browserAddressDropdown">
+      <div class="browser-address-option" data-path="/">/</div><div class="browser-address-option" data-path="/writings/">/writings/</div><div class="browser-address-option" data-path="/photographs/">/photographs/</div><div class="browser-address-option" data-path="/notes/">/notes/</div><div class="browser-address-option" data-path="/music/">/music/</div>
     </div>
+  </div>
+  <div class="browser-menu-popup" id="browserMenuPopup"><div class="browser-menu-popup-title" id="browserMenuPopupTitle"></div><div class="browser-menu-popup-text" id="browserMenuPopupText"></div></div>
+</header>
 
-    <div class="browser-menu">
-      <span data-browser-menu="File">File</span>
-      <span data-browser-menu="Edit">Edit</span>
-      <span data-browser-menu="View">View</span>
-      <span data-browser-menu="Favorites">Favorites</span>
-      <span data-browser-menu="Tools">Tools</span>
-      <span data-browser-menu="Help">Help</span>
-    </div>
-
-    <div class="browser-address-row">
-      <div class="browser-control" id="browserBack">&lt;</div>
-      <div class="browser-control" id="browserForward">&gt;</div>
-
-      <div
-        class="browser-address"
-        id="browserAddress"
-        role="button"
-        tabindex="0"
-        aria-label="Current archive URL"
-      >https://qmarchive.github.io/writings/</div>
-
-      <div class="browser-address-dropdown" id="browserAddressDropdown">
-        <button class="browser-address-option" type="button" data-path="/">/</button>
-        <button class="browser-address-option" type="button" data-path="/writings/">/writings/</button>
-        <button class="browser-address-option" type="button" data-path="/photographs/">/photographs/</button>
-        <button class="browser-address-option" type="button" data-path="/notes/">/notes/</button>
-        <button class="browser-address-option" type="button" data-path="/music/">/music/</button>
-      </div>
-
-      <div class="browser-date">
-        <span id="browserDate">26 SEP 2026</span><br>
-        <span id="browserTime">19:09</span>
-      </div>
-    </div>
-
-    <div class="browser-menu-popup" id="browserMenuPopup">
-      <div class="browser-menu-popup-title" id="browserMenuPopupTitle"></div>
-      <div class="browser-menu-popup-text" id="browserMenuPopupText"></div>
-    </div>
-  </header>
-
-  <!-- =====================================================
-       MASTER GRID
-  ====================================================== -->
-
-  <div class="layout">
+<div class="layout">
 
     <!-- ===================================================
          SYSTEM INFO
@@ -1305,14 +1270,7 @@ a{
 
 </div>
 
-<div class="browser-loading" id="browserLoading" aria-hidden="true">
-  <div class="browser-loading-window">
-    <div class="browser-loading-label">LOADING ARCHIVE...</div>
-    <div class="browser-loading-bar">
-      <div class="browser-loading-progress"></div>
-    </div>
-  </div>
-</div>
+<div class="browser-loading" id="browserLoading"><div class="browser-loading-window"><div class="browser-loading-title" id="browserLoadingText">Loading archive...</div><div class="browser-loading-bar"><div class="browser-loading-progress"></div></div></div></div>
 
 <audio
   id="audio"
@@ -2860,20 +2818,17 @@ const ARCHIVE_PATHS = [
   "/music/"
 ];
 
-const BROWSER_MENU_TEXT = {
-  File: "Tìm cái gì ở đây ?",
-  Edit: "Không có gì đâu mà kiếm !",
-  View: "Cố chấp thế nhờ !",
-  Favorites: "Dù sao thì …",
-  Tools: "Chúc một ngày tốt lành",
-  Help: "Built by: Quốc Mạnh, Orient.bakureever, Edge Runner.2046\nHà Nội, Việt Nam\nVersion 2.4"
-};
-
 const browserAddress =
   document.getElementById("browserAddress");
 
 const browserAddressDropdown =
   document.getElementById("browserAddressDropdown");
+
+const browserBack =
+  document.getElementById("browserBack");
+
+const browserForward =
+  document.getElementById("browserForward");
 
 const browserMenuPopup =
   document.getElementById("browserMenuPopup");
@@ -2887,112 +2842,225 @@ const browserMenuPopupText =
 const browserLoading =
   document.getElementById("browserLoading");
 
-const browserBack =
-  document.getElementById("browserBack");
+const browserLoadingText =
+  document.getElementById("browserLoadingText");
 
-const browserForward =
-  document.getElementById("browserForward");
+const browserMenuMessages = {
 
-function getArchivePath(){
-  const path = window.location.pathname.replace(/\/+$/,"/");
+  file:{
+    title:"FILE",
+    text:"Tìm cái gì ở đây ?"
+  },
 
-  if(path === "/"){
+  edit:{
+    title:"EDIT",
+    text:"Không có gì đâu mà kiếm !"
+  },
+
+  view:{
+    title:"VIEW",
+    text:"Cố chấp thế nhờ !"
+  },
+
+  favorites:{
+    title:"FAVORITES",
+    text:"Dù sao thì …"
+  },
+
+  tools:{
+    title:"TOOLS",
+    text:"Chúc một ngày tốt lành"
+  },
+
+  help:{
+    title:"HELP",
+    text:"Built by: Quốc Mạnh, Orient.bakureever, Edge Runner.2046\nHà Nội, Việt Nam\nVersion 2.4"
+  }
+
+};
+
+function normalizeArchivePath(path){
+
+  if(!path || path === "/index.html"){
     return "/";
   }
 
-  for(const archivePath of ARCHIVE_PATHS){
-    if(
-      archivePath !== "/" &&
-      path.startsWith(archivePath)
-    ){
-      return archivePath;
-    }
+  let value =
+    String(path).split("?")[0].split("#")[0];
+
+  if(!value.startsWith("/")){
+    value = "/" + value;
   }
 
-  return "/";
+  if(
+    value !== "/" &&
+    !value.endsWith("/")
+  ){
+    value += "/";
+  }
+
+  return value;
 }
 
 function updateBrowserAddress(){
+
   if(!browserAddress){
     return;
   }
 
-  const currentPath =
-    getArchivePath();
+  const path =
+    normalizeArchivePath(
+      window.location.pathname
+    );
 
   browserAddress.textContent =
-    "https://qmarchive.github.io" +
-    currentPath;
+    window.location.origin + path;
 }
 
-function getArchiveIndex(){
-  return Math.max(
-    0,
-    ARCHIVE_PATHS.indexOf(
-      getArchivePath()
-    )
-  );
-}
+function selectBrowserAddress(){
 
-function closeBrowserAddressDropdown(){
-  if(browserAddressDropdown){
-    browserAddressDropdown.classList.remove("open");
-  }
-
-  if(browserAddress){
-    browserAddress.classList.remove("selected");
-  }
-}
-
-function closeBrowserMenuPopup(){
-  if(browserMenuPopup){
-    browserMenuPopup.classList.remove("open");
-  }
-
-  document
-    .querySelectorAll("[data-browser-menu]")
-    .forEach(
-      item =>
-        item.classList.remove("menu-active")
-    );
-}
-
-function showBrowserMenu(menu){
-  if(
-    !browserMenuPopup ||
-    !browserMenuPopupTitle ||
-    !browserMenuPopupText
-  ){
+  if(!browserAddress){
     return;
   }
 
-  closeBrowserAddressDropdown();
+  browserAddress.classList.add("selected");
 
-  const text =
-    BROWSER_MENU_TEXT[menu] || "";
+  const selection =
+    window.getSelection();
 
-  browserMenuPopupTitle.textContent =
-    menu;
+  const range =
+    document.createRange();
 
-  browserMenuPopupText.textContent =
-    text;
+  range.selectNodeContents(
+    browserAddress
+  );
 
-  browserMenuPopup.classList.add("open");
-
-  document
-    .querySelectorAll("[data-browser-menu]")
-    .forEach(
-      item => {
-        item.classList.toggle(
-          "menu-active",
-          item.dataset.browserMenu === menu
-        );
-      }
-    );
+  selection.removeAllRanges();
+  selection.addRange(range);
 }
 
-function showBrowserLoading(){
+function closeBrowserAddressDropdown(){
+
+  if(!browserAddressDropdown){
+    return;
+  }
+
+  browserAddressDropdown.classList.remove(
+    "open"
+  );
+
+  if(browserAddress){
+    browserAddress.classList.remove(
+      "selected"
+    );
+  }
+
+  const selection =
+    window.getSelection();
+
+  if(selection){
+    selection.removeAllRanges();
+  }
+}
+
+function showBrowserAddressDropdown(){
+
+  selectBrowserAddress();
+
+  browserAddressDropdown.classList.toggle(
+    "open"
+  );
+}
+
+function showBrowserMenu(key){
+
+  const data =
+    browserMenuMessages[key];
+
+  if(!data){
+    return;
+  }
+
+  document
+    .querySelectorAll(".browser-menu span")
+    .forEach(item=>{
+      item.classList.remove(
+        "menu-active"
+      );
+    });
+
+  const activeItem =
+    document.querySelector(
+      '[data-browser-menu="' +
+      key +
+      '"]'
+    );
+
+  if(activeItem){
+    activeItem.classList.add(
+      "menu-active"
+    );
+  }
+
+  browserMenuPopupTitle.textContent =
+    data.title;
+
+  browserMenuPopupText.textContent =
+    data.text;
+
+  const browser =
+    document.querySelector(".browser");
+
+  const browserRect =
+    browser.getBoundingClientRect();
+
+  const activeRect =
+    activeItem.getBoundingClientRect();
+
+  browserMenuPopup.style.left =
+    Math.max(
+      7,
+      activeRect.left - browserRect.left
+    ) + "px";
+
+  browserMenuPopup.style.top =
+    (
+      activeRect.bottom -
+      browserRect.top +
+      5
+    ) + "px";
+
+  browserMenuPopup.classList.add(
+    "open"
+  );
+}
+
+function closeBrowserMenu(){
+
+  if(browserMenuPopup){
+    browserMenuPopup.classList.remove(
+      "open"
+    );
+  }
+
+  document
+    .querySelectorAll(".browser-menu span")
+    .forEach(item=>{
+      item.classList.remove(
+        "menu-active"
+      );
+    });
+
+}
+
+function fakeLoading(
+  targetPath,
+  label="Loading archive..."
+){
+
   if(!browserLoading){
+    window.location.href =
+      targetPath;
     return;
   }
 
@@ -3002,42 +3070,91 @@ function showBrowserLoading(){
     );
 
   if(progress){
-    progress.style.animation = "none";
-    void progress.offsetWidth;
     progress.style.animation =
-      "browserLoadingProgress .55s ease forwards";
+      "none";
+
+    void progress.offsetWidth;
+
+    progress.style.animation =
+      "browserLoadingProgress .55s steps(8,end) forwards";
   }
 
-  browserLoading.classList.add("open");
-  browserLoading.setAttribute(
-    "aria-hidden",
-    "false"
+  browserLoadingText.textContent =
+    label;
+
+  browserLoading.classList.add(
+    "open"
+  );
+
+  window.setTimeout(
+    ()=>{
+      window.location.href =
+        targetPath;
+    },
+    600
   );
 }
 
-function navigateArchive(path){
-  if(
-    !ARCHIVE_PATHS.includes(path)
-  ){
+function navigateArchive(
+  targetPath
+){
+
+  const path =
+    normalizeArchivePath(
+      targetPath
+    );
+
+  const currentPath =
+    normalizeArchivePath(
+      window.location.pathname
+    );
+
+  if(path === currentPath){
+    closeBrowserAddressDropdown();
+    closeBrowserMenu();
     return;
   }
 
-  if(
-    path === getArchivePath() &&
-    path !== "/writings/"
-  ){
-    return;
-  }
+  fakeLoading(
+    path,
+    "Loading " +
+    path +
+    "..."
+  );
+}
 
-  closeBrowserAddressDropdown();
-  closeBrowserMenuPopup();
-  showBrowserLoading();
+function getArchiveIndex(){
 
-  window.setTimeout(
-    () => {
-      window.location.href = path;
-    },
-    560
+  const currentPath =
+    normalizeArchivePath(
+      window.location.pathname
+    );
+
+  const index =
+    ARCHIVE_PATHS.indexOf(
+      currentPath
+    );
+
+  return index >= 0 ? index : 0;
+}
+
+function navigateArchiveStep(
+  direction
+){
+
+  const currentIndex =
+    getArchiveIndex();
+
+  const nextIndex =
+    (
+      currentIndex +
+      direction +
+      ARCHIVE_PATHS.length
+    ) %
+    ARCHIVE_PATHS.length;
+
+  navigateArchive(
+    ARCHIVE_PATHS[nextIndex]
   );
 }
 
@@ -3045,44 +3162,38 @@ if(browserAddress){
 
   browserAddress.addEventListener(
     "click",
-    () => {
-      closeBrowserMenuPopup();
+    event=>{
 
-      browserAddress.classList.add("selected");
+      event.stopPropagation();
 
-      if(browserAddressDropdown){
-        browserAddressDropdown.classList.toggle(
-          "open"
-        );
-      }
+      showBrowserAddressDropdown();
 
-      const selection =
-        window.getSelection();
-
-      const range =
-        document.createRange();
-
-      range.selectNodeContents(
-        browserAddress
+      window.setTimeout(
+        selectBrowserAddress,
+        0
       );
 
-      selection.removeAllRanges();
-      selection.addRange(range);
     }
   );
 
   browserAddress.addEventListener(
     "keydown",
-    event => {
+    event=>{
+
+      event.preventDefault();
 
       if(
         event.key === "Enter" ||
         event.key === " "
       ){
 
-        event.preventDefault();
+        showBrowserAddressDropdown();
 
-        browserAddress.click();
+        window.setTimeout(
+          selectBrowserAddress,
+          0
+        );
+
       }
 
     }
@@ -3091,81 +3202,32 @@ if(browserAddress){
 }
 
 document
-  .querySelectorAll(".browser-address-option")
-  .forEach(
-    option => {
+  .querySelectorAll(
+    ".browser-address-option"
+  )
+  .forEach(option=>{
 
-      option.addEventListener(
-        "click",
-        () => {
+    option.addEventListener(
+      "click",
+      event=>{
 
-          navigateArchive(
-            option.dataset.path
-          );
+        event.stopPropagation();
 
-        }
-      );
+        navigateArchive(
+          option.dataset.path
+        );
 
-    }
-  );
+      }
+    );
 
-document
-  .querySelectorAll("[data-browser-menu]")
-  .forEach(
-    item => {
-
-      item.addEventListener(
-        "click",
-        event => {
-
-          event.stopPropagation();
-
-          const menu =
-            item.dataset.browserMenu;
-
-          if(
-            browserMenuPopup &&
-            browserMenuPopup.classList.contains("open") &&
-            browserMenuPopupTitle.textContent === menu
-          ){
-
-            closeBrowserMenuPopup();
-
-          }else{
-
-            showBrowserMenu(menu);
-
-          }
-
-        }
-      );
-
-    }
-  );
+  });
 
 if(browserBack){
 
   browserBack.addEventListener(
     "click",
-    () => {
-
-      const index =
-        getArchiveIndex();
-
-      const previousIndex =
-        (
-          index -
-          1 +
-          ARCHIVE_PATHS.length
-        ) %
-        ARCHIVE_PATHS.length;
-
-      navigateArchive(
-        ARCHIVE_PATHS[
-          previousIndex
-        ]
-      );
-
+    ()=>{
+      navigateArchiveStep(-1);
     }
   );
 
@@ -3175,145 +3237,149 @@ if(browserForward){
 
   browserForward.addEventListener(
     "click",
-    () => {
-
-      const index =
-        getArchiveIndex();
-
-      const nextIndex =
-        (
-          index +
-          1
-        ) %
-        ARCHIVE_PATHS.length;
-
-      navigateArchive(
-        ARCHIVE_PATHS[
-          nextIndex
-        ]
-      );
-
+    ()=>{
+      navigateArchiveStep(1);
     }
   );
 
 }
 
-/*
-  Internal archive links are handled at document level
-  because writing cards are rendered asynchronously.
-*/
+document
+  .querySelectorAll(
+    "[data-browser-menu]"
+  )
+  .forEach(item=>{
+
+    item.addEventListener(
+      "click",
+      event=>{
+
+        event.stopPropagation();
+
+        const key =
+          item.dataset.browserMenu;
+
+        if(
+          browserMenuPopup.classList.contains(
+            "open"
+          ) &&
+          item.classList.contains(
+            "menu-active"
+          )
+        ){
+
+          closeBrowserMenu();
+
+        }else{
+
+          closeBrowserAddressDropdown();
+
+          showBrowserMenu(key);
+
+        }
+
+      }
+    );
+
+  });
+
 document.addEventListener(
   "click",
-  event => {
+  ()=>{
+    closeBrowserAddressDropdown();
+    closeBrowserMenu();
+  }
+);
+
+if(browserAddressDropdown){
+
+  browserAddressDropdown.addEventListener(
+    "click",
+    event=>{
+      event.stopPropagation();
+    }
+  );
+
+}
+
+if(browserMenuPopup){
+
+  browserMenuPopup.addEventListener(
+    "click",
+    event=>{
+      event.stopPropagation();
+    }
+  );
+
+}
+
+document.addEventListener(
+  "click",
+  event=>{
 
     const link =
-      event.target.closest("a");
+      event.target.closest(
+        'a[href^="/"]'
+      );
 
     if(!link){
-      return;
-    }
-
-    if(
-      link.closest(".browser") === null &&
-      link.target &&
-      link.target !== "_self"
-    ){
       return;
     }
 
     const href =
       link.getAttribute("href");
 
-    if(!href){
+    if(
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("/#")
+    ){
       return;
     }
 
-    if(
-      href.startsWith("/") &&
-      !href.startsWith("//")
-    ){
-
-      const url =
-        new URL(
-          href,
-          window.location.origin
-        );
-
-      const targetPath =
-        url.pathname.endsWith("/")
-          ? url.pathname
-          : url.pathname + "/";
-
-      const archivePath =
-        ARCHIVE_PATHS.find(
-          path =>
-            targetPath === path ||
-            (
-              path !== "/" &&
-              targetPath.startsWith(path)
-            )
-        );
-
-      if(archivePath){
-
-        event.preventDefault();
-
-        if(
-          targetPath === window.location.pathname &&
-          url.search === window.location.search
-        ){
-          return;
-        }
-
-        closeBrowserAddressDropdown();
-        closeBrowserMenuPopup();
-        showBrowserLoading();
-
-        window.setTimeout(
-          () => {
-            window.location.href =
-              href;
-          },
-          560
-        );
-
-      }
-
-    }
-
-  }
-);
-
-document.addEventListener(
-  "click",
-  event => {
+    const target =
+      new URL(
+        href,
+        window.location.origin
+      );
 
     if(
-      browserAddressDropdown &&
-      !event.target.closest(
-        ".browser-address-row"
-      )
+      target.origin !==
+      window.location.origin
     ){
-      closeBrowserAddressDropdown();
+      return;
     }
 
+    const current =
+      normalizeArchivePath(
+        window.location.pathname
+      );
+
+    const targetPath =
+      normalizeArchivePath(
+        target.pathname
+      );
+
     if(
-      browserMenuPopup &&
-      !event.target.closest(
-        ".browser-menu"
-      ) &&
-      !event.target.closest(
-        ".browser-menu-popup"
-      )
+      current === targetPath &&
+      !target.search
     ){
-      closeBrowserMenuPopup();
+      return;
     }
+
+    event.preventDefault();
+
+    fakeLoading(
+      target.pathname +
+      target.search +
+      target.hash,
+      "Loading archive..."
+    );
 
   }
 );
 
 updateBrowserAddress();
-
 
 /* =========================================================
    INIT
