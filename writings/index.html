@@ -504,6 +504,8 @@ a{
 }
 
 .search input{
+  position:relative;
+  z-index:3;
   width:100%;
   border:2px solid var(--blue);
   background:#f0e8d1;
@@ -512,6 +514,14 @@ a{
   font-family:monospace;
   font-size:13px;
   outline:none;
+  pointer-events:auto;
+  user-select:text;
+  -webkit-user-select:text;
+  -webkit-touch-callout:default;
+  -webkit-appearance:none;
+  appearance:none;
+  touch-action:manipulation;
+  cursor:text;
 }
 
 .search input:focus{
@@ -1941,6 +1951,39 @@ function setupSearch(items){
     document.getElementById(
       "searchInput"
     );
+
+  if(!input){
+    return;
+  }
+
+  /*
+    Keep the search field fully interactive on touch devices.
+    The archive browser uses document-level click handlers, so
+    the search field explicitly keeps those interactions outside
+    of its own focus/touch handling.
+  */
+  input.addEventListener(
+    "pointerdown",
+    event=>{
+      event.stopPropagation();
+      input.focus();
+    }
+  );
+
+  input.addEventListener(
+    "click",
+    event=>{
+      event.stopPropagation();
+    }
+  );
+
+  input.addEventListener(
+    "touchstart",
+    event=>{
+      event.stopPropagation();
+    },
+    {passive:true}
+  );
 
   input.addEventListener(
     "input",
