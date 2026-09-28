@@ -1905,6 +1905,150 @@ a[href]:hover{
 
 }
 
+
+/* =========================================================
+   BROWSER — SYNCHRONIZED WITH WRITINGS BASELINE
+========================================================= */
+
+.browser{
+  border:var(--border);background:var(--paper);box-shadow:5px 5px 0 var(--blue);margin-bottom:14px;
+  position:relative;
+}
+.browser-top{
+  min-height:39px;display:flex;align-items:center;justify-content:space-between;
+  padding:5px 8px;background:var(--orange);border-bottom:var(--border);
+}
+.browser-brand{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:bold;font-size:17px;letter-spacing:1px}
+.browser-brand-icon{
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--teal);color:var(--white);font-size:12px;
+}
+.browser-subtitle{font-size:11px;font-weight:bold}
+.browser-window-buttons{display:flex;gap:4px}
+.browser-window-buttons span{
+  width:23px;height:23px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);color:var(--blue);font-size:11px;
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
+}
+.browser-window-buttons span:active{
+  transform:translate(2px,2px);
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
+}
+.browser-menu{display:flex;gap:20px;padding:6px 10px;border-bottom:2px solid var(--blue);font-size:12px;font-weight:bold}
+.browser-menu span{cursor:pointer;transition:color .08s ease,transform .08s ease}
+.browser-menu span:hover{color:var(--orange)}
+.browser-menu span.menu-active{color:var(--orange);transform:translateY(1px)}
+.browser-address-row{
+  display:grid;grid-template-columns:31px 31px minmax(0,1fr) 175px;
+  gap:6px;align-items:center;padding:7px;
+  position:relative;
+}
+.browser-control{
+  width:31px;height:27px;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--blue);background:var(--paper);font-weight:bold;
+  cursor:pointer;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
+}
+.browser-control:active{
+  transform:translate(2px,2px);
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
+}
+.browser-address{
+  min-width:0;height:27px;display:flex;align-items:center;padding:0 9px;
+  border:2px solid var(--blue);background:#eee5ce;color:#303249;overflow:hidden;
+  white-space:nowrap;text-overflow:ellipsis;font-family:monospace;font-size:11px;
+  cursor:pointer;
+  user-select:all;
+  -webkit-user-select:all;
+}
+.browser-address.selected{background:var(--blue);color:var(--white)}
+.browser-address-dropdown{
+  position:absolute;left:68px;right:181px;top:43px;z-index:10002;
+  display:none;padding:5px 0;border:3px solid var(--blue);background:var(--paper);
+  box-shadow:5px 5px 0 var(--blue);
+}
+.browser-address-dropdown.open{display:block;animation:browserDropdownIn .12s ease-out}
+.browser-address-option{
+  display:block;padding:7px 10px;color:var(--blue);font-family:monospace;
+  font-size:11px;font-weight:bold;cursor:pointer;
+}
+.browser-address-option:hover{background:var(--orange);color:var(--white)}
+@keyframes browserDropdownIn{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+.browser-menu-popup{
+  position:absolute;z-index:10003;display:none;min-width:245px;padding:12px 14px;
+  border:3px solid var(--blue);background:var(--paper);box-shadow:5px 5px 0 var(--blue);
+  color:var(--blue);font-family:monospace;font-size:11px;line-height:1.6;font-weight:bold;
+}
+.browser-menu-popup.open{display:block;animation:browserMenuPopupIn .12s ease-out}
+.browser-menu-popup-title{margin-bottom:6px;padding-bottom:5px;border-bottom:2px dotted var(--blue)}
+.browser-menu-popup-text{white-space:pre-line}
+@keyframes browserMenuPopupIn{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+.browser-loading{
+  position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;
+  background:rgba(216,207,181,.92);
+}
+.browser-loading.open{display:flex}
+.browser-loading-window{
+  width:min(430px,calc(100% - 40px));padding:14px;border:3px solid var(--blue);
+  background:var(--paper);box-shadow:5px 5px 0 var(--blue);color:var(--blue);
+  font-family:monospace;font-size:11px;font-weight:bold;
+}
+.browser-loading-title{margin-bottom:8px}
+.browser-loading-bar{height:16px;padding:2px;border:2px solid var(--blue);overflow:hidden}
+.browser-loading-progress{width:0;height:100%;background:var(--orange);animation:browserLoadingProgress .55s steps(8,end) forwards}
+@keyframes browserLoadingProgress{from{width:0}to{width:100%}}
+.browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
+
+@media(max-width:850px){
+  .browser-menu{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
+  }
+  .browser-address-row{
+    grid-template-columns:31px 31px minmax(0,1fr);
+  }
+  .browser-address{
+    grid-column:auto;
+  }
+  .browser-date{
+    display:block;
+    grid-column:1 / -1;
+    text-align:right;
+    padding-right:2px;
+  }
+  .browser-address-dropdown{
+    left:7px;
+    right:7px;
+    top:74px;
+  }
+  .browser-menu-popup{
+    left:7px!important;
+    right:7px;
+    width:auto;
+  }
+}
+
+@media(max-width:600px){
+  .browser-menu{gap:5px 13px;font-size:12px}
+  .browser-brand{font-size:16px}
+  .browser-subtitle{font-size:10px}
+  .browser-address{font-size:11px}
+  .browser-window-buttons span{width:22px;height:22px}
+}
+
+@media(max-width:480px){
+  .browser-menu{gap:4px 10px;font-size:11px}
+  .browser-brand{font-size:15px}
+  .browser-subtitle{font-size:9px}
+  .browser-address-row{gap:5px;padding:6px}
+  .browser-control{width:30px;height:27px}
+  .browser-date{font-size:9px}
+}
+
 </style>
 
 </head>
@@ -1948,12 +2092,12 @@ a[href]:hover{
 
   <div class="browser-menu">
 
-    <span>File</span>
-    <span>Edit</span>
-    <span>View</span>
-    <span>Favorites</span>
-    <span>Tools</span>
-    <span>Help</span>
+    <span data-browser-menu="file">File</span>
+    <span data-browser-menu="edit">Edit</span>
+    <span data-browser-menu="view">View</span>
+    <span data-browser-menu="favorites">Favorites</span>
+    <span data-browser-menu="tools">Tools</span>
+    <span data-browser-menu="help">Help</span>
 
   </div>
 
@@ -1961,24 +2105,22 @@ a[href]:hover{
   <div class="browser-address-row">
 
 
-    <div class="browser-control">
+    <div class="browser-control" id="browserBack">
       &lt;
     </div>
 
 
-    <div class="browser-control">
+    <div class="browser-control" id="browserForward">
       &gt;
-    </div>
-
-
-    <div class="browser-control">
-      ^
     </div>
 
 
     <div
       class="browser-address"
       id="browserAddress"
+      role="button"
+      tabindex="0"
+      aria-label="Current archive location"
     >
 
       https://qmarchive.github.io/photographs/
@@ -2001,16 +2143,34 @@ a[href]:hover{
     </div>
 
 
+    <div class="browser-address-dropdown" id="browserAddressDropdown">
+      <div class="browser-address-option" data-path="/">/</div>
+      <div class="browser-address-option" data-path="/writings/">/writings/</div>
+      <div class="browser-address-option" data-path="/photographs/">/photographs/</div>
+      <div class="browser-address-option" data-path="/notes/">/notes/</div>
+      <div class="browser-address-option" data-path="/music/">/music/</div>
+    </div>
+
+
+  </div>
+
+
+  <div class="browser-menu-popup" id="browserMenuPopup">
+    <div class="browser-menu-popup-title" id="browserMenuPopupTitle"></div>
+    <div class="browser-menu-popup-text" id="browserMenuPopupText"></div>
   </div>
 
 
 </header>
 
-
-
-<!-- =======================================================
-     MAIN LAYOUT
-======================================================= -->
+<div class="browser-loading" id="browserLoading">
+  <div class="browser-loading-window">
+    <div class="browser-loading-title" id="browserLoadingText">Loading archive...</div>
+    <div class="browser-loading-bar">
+      <div class="browser-loading-progress"></div>
+    </div>
+  </div>
+</div>
 
 <div class="layout">
 
@@ -3337,6 +3497,242 @@ async function renderArticle(
 }
 
 
+
+
+/* =========================================================
+   ARCHIVE BROWSER
+========================================================= */
+
+const ARCHIVE_PATHS = [
+  "/",
+  "/writings/",
+  "/photographs/",
+  "/notes/",
+  "/music/"
+];
+
+const browserAddress =
+  document.getElementById("browserAddress");
+
+const browserAddressDropdown =
+  document.getElementById("browserAddressDropdown");
+
+const browserBack =
+  document.getElementById("browserBack");
+
+const browserForward =
+  document.getElementById("browserForward");
+
+const browserMenuPopup =
+  document.getElementById("browserMenuPopup");
+
+const browserMenuPopupTitle =
+  document.getElementById("browserMenuPopupTitle");
+
+const browserMenuPopupText =
+  document.getElementById("browserMenuPopupText");
+
+const browserLoading =
+  document.getElementById("browserLoading");
+
+const browserLoadingText =
+  document.getElementById("browserLoadingText");
+
+const browserMenuMessages = {
+  file:{title:"FILE",text:"Tìm cái gì ở đây ?"},
+  edit:{title:"EDIT",text:"Không có gì đâu mà kiếm !"},
+  view:{title:"VIEW",text:"Cố chấp thế nhờ !"},
+  favorites:{title:"FAVORITES",text:"Dù sao thì …"},
+  tools:{title:"TOOLS",text:"Chúc một ngày tốt lành"},
+  help:{title:"HELP",text:"Built by: Quốc Mạnh, Orient.bakureever, Edge Runner.2046\nHà Nội, Việt Nam\nVersion 2.4"}
+};
+
+function normalizeArchivePath(path){
+  if(!path || path === "/index.html") return "/";
+  let value = String(path).split("?")[0].split("#")[0];
+  if(!value.startsWith("/")) value = "/" + value;
+  if(value !== "/" && !value.endsWith("/")) value += "/";
+  return value;
+}
+
+function updateBrowserAddress(){
+  if(!browserAddress) return;
+  const path = normalizeArchivePath(window.location.pathname);
+  browserAddress.textContent = window.location.origin + path;
+}
+
+function selectBrowserAddress(){
+  if(!browserAddress) return;
+  browserAddress.classList.add("selected");
+  const selection = window.getSelection();
+  const range = document.createRange();
+  range.selectNodeContents(browserAddress);
+  selection.removeAllRanges();
+  selection.addRange(range);
+}
+
+function closeBrowserAddressDropdown(){
+  if(browserAddressDropdown) browserAddressDropdown.classList.remove("open");
+  if(browserAddress) browserAddress.classList.remove("selected");
+  const selection = window.getSelection();
+  if(selection) selection.removeAllRanges();
+}
+
+function showBrowserAddressDropdown(){
+  selectBrowserAddress();
+  browserAddressDropdown.classList.toggle("open");
+}
+
+function showBrowserMenu(key){
+  const data = browserMenuMessages[key];
+  if(!data) return;
+
+  document.querySelectorAll(".browser-menu span").forEach(item=>{
+    item.classList.remove("menu-active");
+  });
+
+  const activeItem = document.querySelector('[data-browser-menu="' + key + '"]');
+  if(activeItem) activeItem.classList.add("menu-active");
+
+  browserMenuPopupTitle.textContent = data.title;
+  browserMenuPopupText.textContent = data.text;
+
+  const browser = document.querySelector(".browser");
+  const browserRect = browser.getBoundingClientRect();
+  const activeRect = activeItem.getBoundingClientRect();
+
+  browserMenuPopup.style.left = Math.max(7, activeRect.left - browserRect.left) + "px";
+  browserMenuPopup.style.top = (activeRect.bottom - browserRect.top + 5) + "px";
+  browserMenuPopup.classList.add("open");
+}
+
+function closeBrowserMenu(){
+  if(browserMenuPopup) browserMenuPopup.classList.remove("open");
+  document.querySelectorAll(".browser-menu span").forEach(item=>{
+    item.classList.remove("menu-active");
+  });
+}
+
+function fakeLoading(targetPath,label="Loading archive..."){
+  if(!browserLoading){
+    window.location.href = targetPath;
+    return;
+  }
+
+  const progress = browserLoading.querySelector(".browser-loading-progress");
+  if(progress){
+    progress.style.animation = "none";
+    void progress.offsetWidth;
+    progress.style.animation = "browserLoadingProgress .55s steps(8,end) forwards";
+  }
+
+  browserLoadingText.textContent = label;
+  browserLoading.classList.add("open");
+
+  window.setTimeout(()=>{
+    window.location.href = targetPath;
+  },600);
+}
+
+function navigateArchive(targetPath){
+  const path = normalizeArchivePath(targetPath);
+  const currentPath = normalizeArchivePath(window.location.pathname);
+  if(path === currentPath){
+    closeBrowserAddressDropdown();
+    closeBrowserMenu();
+    return;
+  }
+  fakeLoading(path,"Loading " + path + "...");
+}
+
+function getArchiveIndex(){
+  const currentPath = normalizeArchivePath(window.location.pathname);
+  const index = ARCHIVE_PATHS.indexOf(currentPath);
+  return index >= 0 ? index : 0;
+}
+
+function navigateArchiveStep(direction){
+  const currentIndex = getArchiveIndex();
+  const nextIndex = (currentIndex + direction + ARCHIVE_PATHS.length) % ARCHIVE_PATHS.length;
+  navigateArchive(ARCHIVE_PATHS[nextIndex]);
+}
+
+if(browserAddress){
+  browserAddress.addEventListener("click",event=>{
+    event.stopPropagation();
+    showBrowserAddressDropdown();
+    window.setTimeout(selectBrowserAddress,0);
+  });
+
+  browserAddress.addEventListener("keydown",event=>{
+    if(event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    showBrowserAddressDropdown();
+    window.setTimeout(selectBrowserAddress,0);
+  });
+}
+
+document.querySelectorAll(".browser-address-option").forEach(option=>{
+  option.addEventListener("click",event=>{
+    event.stopPropagation();
+    navigateArchive(option.dataset.path);
+  });
+});
+
+if(browserBack){
+  browserBack.addEventListener("click",()=>navigateArchiveStep(-1));
+}
+
+if(browserForward){
+  browserForward.addEventListener("click",()=>navigateArchiveStep(1));
+}
+
+document.querySelectorAll("[data-browser-menu]").forEach(item=>{
+  item.addEventListener("click",event=>{
+    event.stopPropagation();
+    const key = item.dataset.browserMenu;
+    if(browserMenuPopup.classList.contains("open") && item.classList.contains("menu-active")){
+      closeBrowserMenu();
+    }else{
+      closeBrowserAddressDropdown();
+      showBrowserMenu(key);
+    }
+  });
+});
+
+document.addEventListener("click",()=>{
+  closeBrowserAddressDropdown();
+  closeBrowserMenu();
+});
+
+if(browserAddressDropdown){
+  browserAddressDropdown.addEventListener("click",event=>event.stopPropagation());
+}
+
+if(browserMenuPopup){
+  browserMenuPopup.addEventListener("click",event=>event.stopPropagation());
+}
+
+document.addEventListener("click",event=>{
+  const link = event.target.closest('a[href^="/"]');
+  if(!link) return;
+
+  const href = link.getAttribute("href");
+  if(!href || href.startsWith("#") || href.startsWith("/#")) return;
+
+  const target = new URL(href,window.location.origin);
+  if(target.origin !== window.location.origin) return;
+
+  const current = normalizeArchivePath(window.location.pathname);
+  const targetPath = normalizeArchivePath(target.pathname);
+
+  if(current === targetPath && !target.search) return;
+
+  event.preventDefault();
+  fakeLoading(target.pathname + target.search + target.hash,"Loading archive...");
+});
+
+updateBrowserAddress();
 
 /* =========================================================
    CLOCK
