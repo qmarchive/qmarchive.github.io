@@ -814,13 +814,47 @@ a{
 }
 
 @media(max-width:850px){
-  .browser-menu{display:none}
-  .browser-address-row{grid-template-columns:31px 31px minmax(0,1fr)}
-  .browser-address-row .browser-control:nth-child(2){display:none}
-  .browser-address{grid-column:3}
-  .browser-date{display:none}
-  .browser-address-dropdown{left:7px;right:7px;top:43px}
-  .browser-menu-popup{left:7px!important;right:7px;width:auto}
+
+  /*
+    MOBILE keeps the same browser information as desktop.
+    Only the layout changes to fit the narrower screen.
+  */
+  .browser-menu{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
+  }
+
+  .browser-address-row{
+    grid-template-columns:
+      31px
+      31px
+      minmax(0,1fr);
+  }
+
+  .browser-address{
+    grid-column:auto;
+  }
+
+  .browser-date{
+    display:block;
+    grid-column:1 / -1;
+    text-align:right;
+    padding-right:2px;
+  }
+
+  .browser-address-dropdown{
+    left:7px;
+    right:7px;
+    top:74px;
+  }
+
+  .browser-menu-popup{
+    left:7px!important;
+    right:7px;
+    width:auto;
+  }
+
   .music-player{
     width:calc(100% - 10px);
     left:50%;
@@ -841,22 +875,6 @@ a{
 
 }
 
-@media(max-width:700px){
-
-  .browser-address-row{
-    grid-template-columns:
-      31px
-      31px
-      31px
-      minmax(0,1fr);
-  }
-
-  .browser-date{
-    display:none;
-  }
-
-}
-
 @media(max-width:600px){
 
   .page{
@@ -872,8 +890,22 @@ a{
     padding:10px;
   }
 
+  .section-head{
+    align-items:flex-start;
+  }
+
+  .section-head-left{
+    flex:1 1 auto;
+    min-width:0;
+  }
+
   .section-head p{
-    display:none;
+    display:block;
+    line-height:1.35;
+  }
+
+  .section-head-controls{
+    flex:0 0 auto;
   }
 
   .archive{
@@ -893,19 +925,24 @@ a{
 @media(max-width:480px){
 
   .browser-menu{
-    gap:12px;
+    gap:6px 12px;
   }
 
-  .browser-address-row{
-    grid-template-columns:
-      31px
-      31px
-      minmax(0,1fr);
+  .browser-top{
+    align-items:flex-start;
   }
 
-  .browser-address-row
-  .browser-control:nth-child(3){
-    display:none;
+  .browser-brand{
+    min-width:0;
+    flex-wrap:wrap;
+  }
+
+  .browser-subtitle{
+    width:100%;
+  }
+
+  .browser-date{
+    font-size:9px;
   }
 
   .panel-body{
