@@ -1721,7 +1721,9 @@ a[href]:hover{
 
   .browser-menu{
 
-    display:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
 
   }
 
@@ -1731,29 +1733,22 @@ a[href]:hover{
     grid-template-columns:
       31px
       31px
-      minmax(0,1fr);
-
-  }
-
-
-  .browser-address-row
-  .browser-control:nth-child(2){
-
-    display:none;
+      minmax(0,1fr)
+      175px;
 
   }
 
 
   .browser-address{
 
-    grid-column:3;
+    grid-column:auto;
 
   }
 
 
   .browser-date{
 
-    display:none;
+    display:block;
 
   }
 
@@ -1844,13 +1839,6 @@ a[href]:hover{
 ========================================================= */
 
 @media(max-width:480px){
-
-  .browser-subtitle{
-
-    display:none;
-
-  }
-
 
   .archive{
 
@@ -2003,27 +1991,10 @@ a[href]:hover{
 .browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
 
 @media(max-width:850px){
-  .browser-menu{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px 16px;
-  }
-  .browser-address-row{
-    grid-template-columns:31px 31px minmax(0,1fr);
-  }
-  .browser-address{
-    grid-column:auto;
-  }
-  .browser-date{
-    display:block;
-    grid-column:1 / -1;
-    text-align:right;
-    padding-right:2px;
-  }
   .browser-address-dropdown{
-    left:7px;
-    right:7px;
-    top:74px;
+    left:68px;
+    right:181px;
+    top:43px;
   }
   .browser-menu-popup{
     left:7px!important;
