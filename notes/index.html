@@ -253,6 +253,27 @@ body::before{
   letter-spacing:.8px;
 }
 
+.panel-title .browser-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;
+  height:26px;
+  border:2px solid var(--blue);
+  background:#eee5cb;
+  color:var(--blue);
+  font-family:inherit;
+  font-size:12px;
+  font-weight:bold;
+  line-height:1;
+  box-sizing:border-box;
+}
+
+.panel-title .browser-button:hover{
+  background:var(--blue);
+  color:var(--white);
+}
+
 .panel-title-label{
   display:inline-flex;
   align-items:center;
@@ -298,11 +319,9 @@ body::before{
 .search{width:380px;max-width:45%;display:flex;align-items:center;gap:10px;}
 .search-icon{flex:0 0 auto;font-size:22px;line-height:1;}
 
-.search{position:relative;z-index:50;pointer-events:auto;}
-
 .search input{
   width:100%;height:39px;padding:6px 10px;border:2px solid var(--blue);
-  background:#f0e8d0;color:var(--blue);font-family:inherit;font-size:13px;outline:none;position:relative;z-index:51;pointer-events:auto;user-select:text;-webkit-user-select:text;touch-action:manipulation;cursor:text;
+  background:#f0e8d0;color:var(--blue);font-family:inherit;font-size:13px;outline:none;position:relative;z-index:3;pointer-events:auto;user-select:text;-webkit-user-select:text;touch-action:manipulation;cursor:text;
 }
 
 .search input:focus{outline:2px solid var(--orange);}
@@ -1166,15 +1185,35 @@ initNotes();
 
 if(searchInput){
 
-  ["pointerdown","mousedown","touchstart","click"].forEach(type=>{
-    searchInput.addEventListener(
-      type,
-      event=>{
-        event.stopPropagation();
-      },
-      true
-    );
-  });
+  searchInput.addEventListener(
+    "pointerdown",
+    event=>{
+      event.stopPropagation();
+      searchInput.focus();
+    }
+  );
+
+  searchInput.addEventListener(
+    "mousedown",
+    event=>{
+      event.stopPropagation();
+    }
+  );
+
+  searchInput.addEventListener(
+    "click",
+    event=>{
+      event.stopPropagation();
+    }
+  );
+
+  searchInput.addEventListener(
+    "touchstart",
+    event=>{
+      event.stopPropagation();
+    },
+    {passive:true}
+  );
 
   searchInput.addEventListener(
     "input",
