@@ -522,44 +522,46 @@ a[href]:hover{font-weight:bold}
   .profile-image img{height:185px;transform:scale(.98)}
 }
 @media(max-width:850px){
-  .page{padding:7px 7px 112px}
 
-  .browser-top{gap:7px}
-  .browser-brand{min-width:0;font-size:15px;gap:6px}
-  .browser-brand-icon{flex-shrink:0}
-  .browser-subtitle{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .browser-window-buttons{flex-shrink:0}
-
+  /*
+    MOBILE keeps the same browser information and visual scale as desktop.
+    Only the layout changes to fit the narrower screen.
+  */
   .browser-menu{
     display:flex;
-    gap:16px;
-    padding:6px 9px;
-    overflow-x:auto;
-    overflow-y:hidden;
-    white-space:nowrap;
-    scrollbar-width:thin;
+    flex-wrap:wrap;
+    gap:6px 16px;
   }
-  .browser-menu span{flex:0 0 auto}
 
   .browser-address-row{
-    grid-template-columns:31px 31px minmax(0,1fr);
-    grid-template-areas:
-      "back forward address"
-      "date date date";
-    gap:6px;
+    grid-template-columns:
+      31px
+      31px
+      minmax(0,1fr);
   }
-  .browser-address-row .browser-control:nth-child(1){grid-area:back}
-  .browser-address-row .browser-control:nth-child(2){grid-area:forward;display:flex}
-  .browser-address{grid-area:address}
+
+  .browser-address{
+    grid-column:auto;
+  }
+
   .browser-date{
-    grid-area:date;
     display:block;
-    text-align:left;
-    padding:0 2px 1px;
-    font-size:9px;
+    grid-column:1 / -1;
+    text-align:right;
+    padding-right:2px;
   }
-  .browser-address-dropdown{left:7px;right:7px;top:43px}
-  .browser-menu-popup{left:7px!important;right:7px;width:auto}
+
+  .browser-address-dropdown{
+    left:7px;
+    right:7px;
+    top:74px;
+  }
+
+  .browser-menu-popup{
+    left:7px!important;
+    right:7px;
+    width:auto;
+  }
 
   .layout{display:block}
   .left{margin-bottom:16px;height:auto}
@@ -591,21 +593,39 @@ a[href]:hover{font-weight:bold}
   .music-volume{grid-area:volume;display:block;width:70px;min-width:55px}
   .music-volume input{width:100%}
 }
-@media(max-width:480px){
-  .browser-brand{font-size:14px;letter-spacing:.6px}
-  .browser-subtitle{display:block;font-size:9px}
-  .browser-window-buttons span{width:21px;height:21px}
-  .browser-menu{gap:14px;font-size:11px}
-  .browser-address-row{grid-template-columns:29px 29px minmax(0,1fr)}
-  .browser-control{width:29px;height:27px}
-  .browser-address{font-size:10px;padding:0 7px}
-  .browser-date{font-size:8px}
-  .browser-address-dropdown{top:43px}
-  .photos-grid{grid-template-columns:1fr}
-  .hero-caption{position:static;max-width:none;margin:8px}
-  .profile-image{height:215px}
-  .profile-image img{height:210px;transform:scale(.98)}
-  .audio-name{font-size:9px}
+@media(max-width:600px){
+
+  .page{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .layout{
+    gap:12px;
+  }
+
+  .hero-caption{
+    position:static;
+    max-width:none;
+    margin:8px;
+  }
+
+  .photos-grid{
+    grid-template-columns:1fr;
+  }
+
+  .profile-image{
+    height:215px;
+  }
+
+  .profile-image img{
+    height:210px;
+    transform:scale(.98);
+  }
+
+  .audio-name{
+    font-size:9px;
+  }
 
   .music-player{
     grid-template-columns:auto minmax(0,1fr) auto;
@@ -615,10 +635,28 @@ a[href]:hover{font-weight:bold}
     gap:4px;
     padding:5px;
   }
-  .music-icon{width:31px;height:31px}
-  .music-button{width:29px;height:27px;font-size:11px}
-  .music-time{min-width:58px;font-size:7px}
-  .music-volume{width:58px;min-width:48px}
+
+  .music-icon{
+    width:31px;
+    height:31px;
+  }
+
+  .music-button{
+    width:29px;
+    height:27px;
+    font-size:11px;
+  }
+
+  .music-time{
+    min-width:58px;
+    font-size:7px;
+  }
+
+  .music-volume{
+    width:58px;
+    min-width:48px;
+  }
+
 }
 
 </style>
