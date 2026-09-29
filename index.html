@@ -632,7 +632,28 @@ a[href]:hover{font-weight:bold}
 
 }
 
-</style>
+/* FIX: tiêu đề WELCOME trên mobile (desktop không bị ảnh hưởng) */
+@media(max-width:600px){
+
+  .hero-window .window-titlebar{
+    gap:6px;
+  }
+
+  .welcome-title{
+    min-width:0;
+    flex:1 1 auto;
+  }
+
+  .welcome-text{
+    white-space:normal;
+    font-size:11px;
+    letter-spacing:.3px;
+    line-height:1.25;
+  }
+
+}
+  </style>
+
 </head>
 
 <body>
