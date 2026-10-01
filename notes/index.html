@@ -267,11 +267,20 @@ body::before{
   font-weight:bold;
   line-height:1;
   box-sizing:border-box;
+  cursor:pointer;
+  user-select:none;
+  transition:transform .08s ease,box-shadow .08s ease,background .08s ease;
 }
 
 .panel-title .browser-button:hover{
-  background:var(--blue);
-  color:var(--white);
+  background:#eee5cb;
+  color:var(--blue);
+}
+
+.panel-title .browser-button:active{
+  transform:translate(2px,2px);
+  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
+  background:#ddd3b7;
 }
 
 .panel-title-label{
