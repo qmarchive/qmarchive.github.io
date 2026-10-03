@@ -1,7 +1,7 @@
 {
   "writings": [
     {
-      "date": "2020",
+      "date": "29/03/2020",
       "title": "Nỗi ám ảnh thân mến",
       "slug": "noi-am-anh-than-men",
       "excerpt": "Đến cuối cùng, tôi mới nhận ra điều lấy đi bản thể của mình không phải là bóng lưng một người khuất xa."
@@ -65,6 +65,12 @@
       "title": "Bật TV",
       "slug": "bat-tv",
       "excerpt": "Thế là xong. 30 phút cuộc đời"
+    },
+    {
+      "date": "03/10/2026",
+      "title": "Dân tổ nơi đất khách quê người",
+      "slug": "dan-to-noi-dat-khach-que-nguoi",
+      "excerpt": "Sớm thôi. Tôi sẽ trở về nhà."
     }
   ]
 }
