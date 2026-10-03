@@ -586,6 +586,63 @@ a{
   font-size:12px;
 }
 
+.pagination{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:18px;
+  padding-top:14px;
+  border-top:2px solid var(--blue);
+  font-family:monospace;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.pagination-button{
+  min-width:30px;
+  height:29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 8px;
+  border:2px solid var(--blue);
+  background:#eee4c9;
+  color:var(--blue);
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+  transition:background .12s,color .12s,transform .12s;
+}
+
+.pagination-button:hover{
+  background:var(--orange);
+  color:var(--white);
+  transform:translate(-1px,-1px);
+}
+
+.pagination-button.active{
+  background:var(--orange);
+  color:var(--white);
+  cursor:default;
+  transform:none;
+}
+
+.pagination-button.disabled{
+  opacity:.45;
+  cursor:default;
+  pointer-events:none;
+}
+
+.pagination-ellipsis{
+  min-width:20px;
+  height:29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
 .article-meta{
   font-family:monospace;
   font-size:11px;
@@ -1164,6 +1221,12 @@ a{
           <div
             id="archive"
             class="archive"
+          ></div>
+
+          <div
+            id="pagination"
+            class="pagination"
+            aria-label="Writings pagination"
           ></div>
 
           <article
@@ -1765,71 +1828,422 @@ function parseArchiveDate(value){
    ARCHIVE
 ========================================================= */
 
-function renderArchive(items){
+const POSTS_PER_PAGE = 12;
+
+function getPageFromURL(){
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const page =
+    Number(
+      params.get("page")
+    );
+
+  return (
+    Number.isInteger(page) &&
+    page > 0
+  )
+    ? page
+    : 1;
+
+}
+
+function updatePageURL(page){
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  if(page <= 1){
+
+    params.delete("page");
+
+  }else{
+
+    params.set(
+      "page",
+      String(page)
+    );
+
+  }
+
+  const query =
+    params.toString();
+
+  const url =
+    window.location.pathname +
+    (
+      query
+        ? "?" + query
+        : ""
+    ) +
+    window.location.hash;
+
+  window.history.pushState(
+    {
+      ...window.history.state,
+      writingsPage:page
+    },
+    "",
+    url
+  );
+
+}
+
+function sortArchiveItems(items){
+
+  return items
+    .map(
+      (item,index) => ({
+
+        item,
+
+        index,
+
+        timestamp:
+          parseArchiveDate(
+            item.date
+          )
+
+      })
+    )
+
+    .sort(
+      (a,b) => {
+
+        if(
+          b.timestamp !==
+          a.timestamp
+        ){
+
+          return (
+            b.timestamp -
+            a.timestamp
+          );
+
+        }
+
+        return (
+          a.index -
+          b.index
+        );
+
+      }
+    )
+
+    .map(
+      entry =>
+        entry.item
+    );
+
+}
+
+function createPaginationButton(
+  label,
+  page,
+  currentPage,
+  disabled=false
+){
+
+  const button =
+    document.createElement(
+      "button"
+    );
+
+  button.type = "button";
+
+  button.className =
+    "pagination-button";
+
+  if(
+    page === currentPage &&
+    !disabled
+  ){
+
+    button.classList.add(
+      "active"
+    );
+
+    button.setAttribute(
+      "aria-current",
+      "page"
+    );
+
+  }
+
+  if(disabled){
+
+    button.classList.add(
+      "disabled"
+    );
+
+    button.disabled = true;
+
+  }
+
+  button.textContent =
+    label;
+
+  if(!disabled && page !== currentPage){
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        renderArchive(
+          window.__WRITINGS_FILTERED_ITEMS || [],
+          page
+        );
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      }
+    );
+
+  }
+
+  return button;
+
+}
+
+function renderPagination(
+  totalPages,
+  currentPage
+){
+
+  const pagination =
+    document.getElementById(
+      "pagination"
+    );
+
+  if(!pagination){
+
+    return;
+
+  }
+
+  pagination.innerHTML = "";
+
+  if(totalPages <= 1){
+
+    pagination.style.display =
+      "none";
+
+    return;
+
+  }
+
+  pagination.style.display =
+    "flex";
+
+  const appendEllipsis =
+    () => {
+
+      const span =
+        document.createElement(
+          "span"
+        );
+
+      span.className =
+        "pagination-ellipsis";
+
+      span.textContent =
+        "…";
+
+      pagination.appendChild(
+        span
+      );
+
+    };
+
+  const appendPage =
+    page => {
+
+      pagination.appendChild(
+        createPaginationButton(
+          String(page),
+          page,
+          currentPage
+        )
+      );
+
+    };
+
+  pagination.appendChild(
+    createPaginationButton(
+      "← PREV",
+      Math.max(
+        1,
+        currentPage - 1
+      ),
+      currentPage,
+      currentPage === 1
+    )
+  );
+
+  if(totalPages <= 7){
+
+    for(
+      let page = 1;
+      page <= totalPages;
+      page++
+    ){
+
+      appendPage(page);
+
+    }
+
+  }else{
+
+    appendPage(1);
+
+    let start =
+      Math.max(
+        2,
+        currentPage - 2
+      );
+
+    let end =
+      Math.min(
+        totalPages - 1,
+        currentPage + 2
+      );
+
+    if(currentPage <= 4){
+
+      start = 2;
+      end = 5;
+
+    }
+
+    if(currentPage >= totalPages - 3){
+
+      start =
+        totalPages - 4;
+
+      end =
+        totalPages - 1;
+
+    }
+
+    if(start > 2){
+
+      appendEllipsis();
+
+    }
+
+    for(
+      let page = start;
+      page <= end;
+      page++
+    ){
+
+      appendPage(page);
+
+    }
+
+    if(end < totalPages - 1){
+
+      appendEllipsis();
+
+    }
+
+    appendPage(totalPages);
+
+  }
+
+  pagination.appendChild(
+    createPaginationButton(
+      "NEXT →",
+      Math.min(
+        totalPages,
+        currentPage + 1
+      ),
+      currentPage,
+      currentPage === totalPages
+    )
+  );
+
+}
+
+function renderArchive(
+  items,
+  requestedPage=1
+){
 
   const archive =
     document.getElementById(
       "archive"
     );
 
+  const pagination =
+    document.getElementById(
+      "pagination"
+    );
+
   archive.innerHTML = "";
+
+  window.__WRITINGS_FILTERED_ITEMS =
+    items;
 
   if(!items.length){
 
     archive.innerHTML =
       '<div class="empty">No writings found.</div>';
 
+    if(pagination){
+
+      pagination.innerHTML = "";
+
+      pagination.style.display =
+        "none";
+
+    }
+
     return;
 
   }
 
   const sortedItems =
+    sortArchiveItems(
+      items
+    );
 
-    items
-      .map(
-        (item,index) => ({
+  const totalPages =
+    Math.ceil(
+      sortedItems.length /
+      POSTS_PER_PAGE
+    );
 
-          item,
+  const currentPage =
+    Math.min(
+      Math.max(
+        1,
+        requestedPage
+      ),
+      totalPages
+    );
 
-          index,
+  const start =
+    (
+      currentPage - 1
+    ) *
+    POSTS_PER_PAGE;
 
-          timestamp:
-            parseArchiveDate(
-              item.date
-            )
+  const pageItems =
+    sortedItems.slice(
+      start,
+      start + POSTS_PER_PAGE
+    );
 
-        })
-      )
-
-      .sort(
-        (a,b) => {
-
-          if(
-            b.timestamp !==
-            a.timestamp
-          ){
-
-            return (
-              b.timestamp -
-              a.timestamp
-            );
-
-          }
-
-          return (
-            a.index -
-            b.index
-          );
-
-        }
-      )
-
-      .map(
-        entry =>
-          entry.item
-      );
-
-  sortedItems.forEach(
+  pageItems.forEach(
     item => {
 
       const entry =
@@ -1879,8 +2293,23 @@ function renderArchive(items){
     }
   );
 
-}
+  renderPagination(
+    totalPages,
+    currentPage
+  );
 
+  if(
+    currentPage !==
+    getPageFromURL()
+  ){
+
+    updatePageURL(
+      currentPage
+    );
+
+  }
+
+}
 
 /* =========================================================
    ARTICLE
@@ -2013,15 +2442,18 @@ function setupSearch(items){
                 )
             );
 
+      window.__WRITINGS_FILTERED_ITEMS =
+        filtered;
+
       renderArchive(
-        filtered
+        filtered,
+        1
       );
 
     }
   );
 
 }
-
 
 /* =========================================================
    YEAR
@@ -3519,6 +3951,9 @@ async function init(){
 
         );
 
+    window.__WRITINGS_ALL_ITEMS =
+      items;
+
     const params =
       new URLSearchParams(
         window.location.search
@@ -3539,7 +3974,8 @@ async function init(){
     }else{
 
       renderArchive(
-        items
+        items,
+        getPageFromURL()
       );
 
       setupSearch(
@@ -3573,6 +4009,39 @@ async function init(){
   }
 
 }
+
+window.addEventListener(
+  "popstate",
+  () => {
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    if(
+      params.has("slug")
+    ){
+
+      window.location.reload();
+
+      return;
+
+    }
+
+    if(
+      window.__WRITINGS_ALL_ITEMS
+    ){
+
+      renderArchive(
+        window.__WRITINGS_ALL_ITEMS,
+        getPageFromURL()
+      );
+
+    }
+
+  }
+);
 
 init();
 
