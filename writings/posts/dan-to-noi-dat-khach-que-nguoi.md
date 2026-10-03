@@ -2,7 +2,7 @@
 
 Chính xác hơn là họ đã để quên khả năng đi lại mà Chúa từng ban phát cho loài người chúng ta.
 
-Những sinh vật ấy có một loại thiết bị chuyên biệt. Họ cứ thế lướt qua nhau trên những cỗ máy một bánh, bay lên rồi hạ xuống mượt mà.
+Những sinh vật ấy có một loại thiết bị chuyên dụng. Họ cứ thế lướt qua nhau trên các cỗ máy một bánh, bay lên rồi hạ xuống mượt mà.
 
 Họ đứng trên đó, cắm cái ống nối từ thứ phương tiện kia vào lồng ngực. Cỗ máy này hoạt động hoàn toàn nhờ năng lượng của sinh vật sống trên hành tinh. Họ điều khiển nó bằng ý thức.
 
