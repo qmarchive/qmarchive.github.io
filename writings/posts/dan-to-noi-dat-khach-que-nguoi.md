@@ -2,13 +2,13 @@
 
 Chính xác hơn là họ đã để quên khả năng đi lại mà Chúa đã ban phát cho loài người chúng ta.
 
-Những sinh vật ấy có một loại thiết bị chuyên biệt dùng để di chuyển. Họ cứ thế lướt qua nhau trên những cỗ máy hai bánh, có thể bay lên rồi hạ xuống một cách mượt mà.
+Những sinh vật ấy có một loại thiết bị chuyên biệt. Họ cứ thế lướt qua nhau trên những cỗ máy một bánh, bay lên rồi hạ xuống mượt mà.
 
-Họ đứng trên đó, cắm một cái ống nối từ thứ phương tiện kia vào lồng ngực. Cỗ máy này hoạt động hoàn toàn nhờ năng lượng của sinh vật sống trên hành tinh. Họ điều khiển nó bằng ý thức.
+Họ đứng trên đó, cắm cái ống nối từ thứ phương tiện kia vào lồng ngực. Cỗ máy này hoạt động hoàn toàn nhờ năng lượng của sinh vật sống trên hành tinh. Họ điều khiển nó bằng ý thức.
 
-Một phút giây lơ là để sự vô thức chen vào cũng đủ tạo ra một tai nạn hàng không nghiêm trọng ở xứ này.
+Một giây lơ là để sự vô thức chen vào cũng đủ tạo ra tai nạn hàng không nghiêm trọng ở xứ này.
 
-Tôi mất một thời gian để làm quen với thứ máy móc kỳ lạ ấy. Thực ra cũng không khó lắm.
+Tôi mất khoảng vài ngày để làm quen với thứ máy móc kỳ lạ ấy. Thực ra cũng không khó lắm.
 
 Hồi còn ở quê nhà, tôi từng là một dân tổ.
 
@@ -28,7 +28,7 @@ Nhưng kỳ lạ là suốt cả ngày không có một chút ánh sáng. Tôi c
 
 Bầu trời luôn tối đen, hàng vạn vì sao lấp lánh ở phía trên. Khung cảnh ấy làm tôi nhớ đến những đỉnh núi về đêm tuyệt đẹp vùng Tây Bắc.
 
-Sinh vật ở đây đều đã quen với thứ khí hậu oi bức, ngột ngạt. Cơ thể chúng đã tiến hóa theo hướng không còn tuyến mồ hôi để coi cái nóng là vấn đề cần phải giải quyết.
+Sinh vật ở đây đã quen với thứ khí hậu oi bức, ngột ngạt. Cơ thể chúng đã tiến hóa theo hướng không còn tuyến mồ hôi để coi cái nóng là vấn đề cần phải can thiệp.
 
 Tôi nghĩ họ cũng chung hành tinh với chúng ta. Chỉ là cuộc di cư của họ diễn ra sớm hơn tôi một vài nhịp.
 
@@ -38,7 +38,7 @@ Họ ăn những viên nhỏ đủ màu, trông không khác gì M&M.
 
 Bữa nào cũng vậy.
 
-Hình như họ còn chẳng có bữa chính. Mỗi khi phương tiện di chuyển chậm lại, tôi lại thấy họ bắt đầu ăn.
+Hình như họ còn chẳng có bữa chính. Mỗi khi lướt chậm lại, tôi lại thấy họ bắt đầu ăn.
 
 Tôi cũng thử một viên.
 
@@ -60,7 +60,7 @@ Có thể tôi cũng trông giống họ.
 
 Tôi chưa tìm được cái gương nào, hay bất kỳ vật thể nào có khả năng phản chiếu để kiểm chứng điều đó.
 
-Tôi phóng tầm mắt ra điểm xa nhất của hảnh tinh này ở vị trí tôi đang đứng.
+Tôi phóng tầm mắt ra điểm xa nhất của hành tinh này ở vị trí tôi đang đứng.
 
 Từng hàng xe hai bánh cứ vút qua.
 
@@ -75,3 +75,5 @@ Chỉ có việc tôi còn đủ oxy để lết đến đích hay không thì p
 Tôi sẽ về.
 
 Sớm thôi.
+
+Tôi sẽ về.
