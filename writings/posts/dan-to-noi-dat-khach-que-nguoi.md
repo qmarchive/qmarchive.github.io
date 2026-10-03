@@ -22,7 +22,7 @@ Dù sao thì, tạm gác chuyện di chuyển. Nó không phải vấn đề qu�
 
 Thứ đáng bận tâm hơn là ở đây nóng khủng khiếp.
 
-Đây là kiểu nóng khiến tôi bắt đầu nghi ngờ sự vô lý về khoảng cách giữa Mặt Trời và hành tinh này.
+Đây là kiểu nóng khiến tôi bắt đầu nghi ngờ sự vô lý về khoảng cách giữa Mặt Trời và hành tinh sở tại.
 
 Nhưng kỳ lạ là suốt cả ngày không có một chút ánh sáng. Tôi cũng mất hoàn toàn ý thức về việc ngày tháng năm.
 
