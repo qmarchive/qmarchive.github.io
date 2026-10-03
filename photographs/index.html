@@ -3070,7 +3070,15 @@ function parseArchiveDate(value){
    RENDER ARCHIVE
 ========================================================= */
 
-function renderArchive(items){
+function renderArchive(
+  items,
+  category = "all"
+){
+
+  const currentCategory =
+    String(category || "all")
+      .trim()
+      .toLowerCase();
 
   const main =
     document.getElementById(
@@ -3190,9 +3198,24 @@ function renderArchive(items){
 
   function pageHref(page){
 
-    return page === 1
-      ? "/photographs/"
-      : "/photographs/?page=" + page;
+    const params = [];
+
+    if(currentCategory !== "all"){
+      params.push(
+        "category=" +
+        encodeURIComponent(currentCategory)
+      );
+    }
+
+    if(page > 1){
+      params.push(
+        "page=" + page
+      );
+    }
+
+    return params.length
+      ? "/photographs/?" + params.join("&")
+      : "/photographs/";
 
   }
 
@@ -3297,14 +3320,27 @@ function renderArchive(items){
             "";
 
 
-          const detailHref =
-            "/photographs/?slug=" +
-            encodeURIComponent(slug) +
-            (
-              currentPage > 1
-                ? "&page=" + currentPage
-                : ""
+          const detailParams = [
+            "slug=" +
+            encodeURIComponent(slug)
+          ];
+
+          if(currentCategory !== "all"){
+            detailParams.push(
+              "category=" +
+              encodeURIComponent(currentCategory)
             );
+          }
+
+          if(currentPage > 1){
+            detailParams.push(
+              "page=" + currentPage
+            );
+          }
+
+          const detailHref =
+            "/photographs/?" +
+            detailParams.join("&");
 
 
           return `
@@ -3443,8 +3479,22 @@ function setupFilters(items){
             );
 
 
+          const nextHref =
+            category === "all"
+              ? "/photographs/"
+              : "/photographs/?category=" +
+                encodeURIComponent(category);
+
+          window.history.pushState(
+            {},
+            "",
+            nextHref
+          );
+
+
           renderArchive(
-            filteredItems
+            filteredItems,
+            category
           );
 
         }
@@ -3456,7 +3506,6 @@ function setupFilters(items){
 }
 
 
-
 /* =========================================================
    RENDER ARTICLE
 ========================================================= */
@@ -3464,7 +3513,8 @@ function setupFilters(items){
 async function renderArticle(
   items,
   slug,
-  page
+  page,
+  category
 ){
 
   const main =
@@ -3490,10 +3540,30 @@ async function renderArticle(
       ? currentPage
       : 1;
 
+  const currentCategory =
+    String(category || "all")
+      .trim()
+      .toLowerCase();
+
+  const backParams = [];
+
+  if(currentCategory !== "all"){
+    backParams.push(
+      "category=" +
+      encodeURIComponent(currentCategory)
+    );
+  }
+
+  if(backPage > 1){
+    backParams.push(
+      "page=" + backPage
+    );
+  }
+
   const backHref =
-    backPage === 1
-      ? "/photographs/"
-      : "/photographs/?page=" + backPage;
+    backParams.length
+      ? "/photographs/?" + backParams.join("&")
+      : "/photographs/";
 
 
   const item =
@@ -3506,16 +3576,29 @@ async function renderArticle(
     );
 
 
+  const detailAddressParams = [
+    "slug=" +
+    encodeURIComponent(decodedSlug)
+  ];
+
+  if(currentCategory !== "all"){
+    detailAddressParams.push(
+      "category=" +
+      encodeURIComponent(currentCategory)
+    );
+  }
+
+  if(backPage > 1){
+    detailAddressParams.push(
+      "page=" + backPage
+    );
+  }
+
   document.getElementById(
     "browserAddress"
   ).textContent =
-    "https://qmarchive.github.io/photographs/?slug=" +
-    decodedSlug +
-    (
-      backPage > 1
-        ? "&page=" + backPage
-        : ""
-    );
+    "https://qmarchive.github.io/photographs/?" +
+    detailAddressParams.join("&");
 
 
   if(!item){
@@ -4856,6 +4939,27 @@ async function init(){
     const page =
       params.get("page");
 
+    const requestedCategory =
+      String(
+        params.get("category") || "all"
+      )
+        .trim()
+        .toLowerCase();
+
+    const validCategories = [
+      "all",
+      "hanoi",
+      "travel",
+      "friends"
+    ];
+
+    const category =
+      validCategories.includes(
+        requestedCategory
+      )
+        ? requestedCategory
+        : "all";
+
 
     if(slug){
 
@@ -4877,19 +4981,42 @@ async function init(){
       await renderArticle(
         items,
         slug,
-        page
+        page,
+        category
       );
 
     }else{
 
+      const filteredItems =
+        filterPhotographs(
+          items,
+          category
+        );
+
       renderArchive(
-        items
+        filteredItems,
+        category
       );
 
 
       setupFilters(
         items
       );
+
+
+      document
+        .querySelectorAll(
+          ".photo-filter"
+        )
+        .forEach(
+          filter => {
+            filter.classList.toggle(
+              "active",
+              (filter.dataset.category || "all") ===
+              category
+            );
+          }
+        );
 
     }
 
