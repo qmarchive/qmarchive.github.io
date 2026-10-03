@@ -1,6 +1,6 @@
 Ở cái hành tinh tôi đang tạm trú, họ không di chuyển bằng chân.
 
-Chính xác hơn là họ đã để quên khả năng đi lại mà Chúa đã ban phát cho loài người chúng ta.
+Chính xác hơn là họ đã để quên khả năng đi lại mà Chúa từng ban phát cho loài người chúng ta.
 
 Những sinh vật ấy có một loại thiết bị chuyên biệt. Họ cứ thế lướt qua nhau trên những cỗ máy một bánh, bay lên rồi hạ xuống mượt mà.
 
