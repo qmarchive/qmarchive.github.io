@@ -57,7 +57,7 @@ body::before{
 .page{
   width:100%;
   min-height:100vh;
-  padding:10px 14px 40px;
+  padding:10px 14px 20px;
 }
 
 .browser{
@@ -335,9 +335,19 @@ body::before{
 
 .search input:focus{outline:2px solid var(--orange);}
 
-.archive{width:100%;}
+/* LIST: shows 5 notes (5 x 115px), scrolls from the 6th note onward */
+.archive{
+  width:100%;
+  max-height:575px;
+  overflow-y:auto;
+}
+
+.archive::-webkit-scrollbar{width:14px;}
+.archive::-webkit-scrollbar-track{background:#eee5ce;border-left:2px solid var(--blue);}
+.archive::-webkit-scrollbar-thumb{background:var(--orange);border:2px solid var(--blue);}
+
 .archive-row{
-  min-height:115px;display:grid;grid-template-columns:135px minmax(0,1fr) 45px;
+  height:115px;display:grid;grid-template-columns:135px minmax(0,1fr) 45px;
   align-items:center;padding:16px 20px;border-bottom:1px dashed rgba(21,23,47,.45);
   text-decoration:none;color:var(--blue);
 }
@@ -865,7 +875,7 @@ function renderArchive(list){
 
   if(!archiveEl) return;
 
-  const latestItems = sortNewest(list).slice(0,6);
+  const latestItems = sortNewest(list);
 
   if(!latestItems.length){
 
