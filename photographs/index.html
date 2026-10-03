@@ -1083,6 +1083,59 @@ a[href]:hover{
 
 
 /* =========================================================
+   PHOTO PAGINATION
+========================================================= */
+
+.photo-pagination{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:5px;
+  padding:12px;
+  border-top:3px solid var(--blue);
+  background:var(--cream);
+}
+
+.photo-pagination a{
+  min-width:30px;
+  height:28px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 8px;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  text-decoration:none;
+  font-family:monospace;
+  font-size:11px;
+  line-height:1;
+  font-weight:bold;
+}
+
+.photo-pagination a:hover,
+.photo-pagination a.active{
+  background:var(--orange);
+  color:var(--white);
+}
+
+.photo-pagination a:active{
+  transform:translate(1px,1px);
+}
+
+.photo-pagination span{
+  min-width:20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  font-family:monospace;
+  font-size:11px;
+  font-weight:bold;
+}
+
+/* =========================================================
    ARTICLE / DETAIL
 ========================================================= */
 
@@ -2557,6 +2610,8 @@ const CONTENT_URL =
 const POSTS_BASE =
   "/photographs/posts/";
 
+const PHOTOS_PER_PAGE = 9;
+
 
 
 /* =========================================================
@@ -3022,12 +3077,10 @@ function renderArchive(items){
       "main"
     );
 
-
   document.getElementById(
     "browserAddress"
   ).textContent =
     "https://qmarchive.github.io/photographs/";
-
 
   if(!items.length){
 
@@ -3095,11 +3148,140 @@ function renderArchive(items){
       );
 
 
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const requestedPage =
+    Number.parseInt(
+      params.get("page") || "1",
+      10
+    );
+
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        sortedItems.length /
+        PHOTOS_PER_PAGE
+      )
+    );
+
+  const currentPage =
+    Number.isFinite(requestedPage) &&
+    requestedPage >= 1
+      ? Math.min(
+          requestedPage,
+          totalPages
+        )
+      : 1;
+
+  const startIndex =
+    (currentPage - 1) *
+    PHOTOS_PER_PAGE;
+
+  const pageItems =
+    sortedItems.slice(
+      startIndex,
+      startIndex + PHOTOS_PER_PAGE
+    );
+
+
+  function pageHref(page){
+
+    return page === 1
+      ? "/photographs/"
+      : "/photographs/?page=" + page;
+
+  }
+
+
+  function renderPageNumbers(){
+
+    if(totalPages <= 1){
+      return "";
+    }
+
+    const pages = [];
+
+    if(totalPages <= 7){
+
+      for(
+        let page = 1;
+        page <= totalPages;
+        page++
+      ){
+        pages.push(page);
+      }
+
+    }else{
+
+      pages.push(1);
+
+      if(currentPage > 4){
+        pages.push("...");
+      }
+
+      const startPage =
+        Math.max(
+          2,
+          currentPage - 1
+        );
+
+      const endPage =
+        Math.min(
+          totalPages - 1,
+          currentPage + 1
+        );
+
+      for(
+        let page = startPage;
+        page <= endPage;
+        page++
+      ){
+        pages.push(page);
+      }
+
+      if(currentPage < totalPages - 3){
+        pages.push("...");
+      }
+
+      pages.push(totalPages);
+
+    }
+
+    return pages
+      .map(
+        page => {
+
+          if(page === "..."){
+            return `<span>…</span>`;
+          }
+
+          return `
+            <a
+              href="${pageHref(page)}"
+              class="${page === currentPage ? "active" : ""}"
+              aria-label="Page ${page}"
+              ${page === currentPage ? 'aria-current="page"' : ""}
+            >
+              ${page}
+            </a>
+          `;
+
+        }
+      )
+      .join("");
+
+  }
+
+
   main.innerHTML = `
 
     <div class="archive">
 
-      ${sortedItems.map(
+      ${pageItems.map(
         item => {
 
           const slug =
@@ -3115,13 +3297,21 @@ function renderArchive(items){
             "";
 
 
+          const detailHref =
+            "/photographs/?slug=" +
+            encodeURIComponent(slug) +
+            (
+              currentPage > 1
+                ? "&page=" + currentPage
+                : ""
+            );
+
+
           return `
 
             <a
               class="photo-entry"
-              href="/photographs/?slug=${encodeURIComponent(
-                slug
-              )}"
+              href="${detailHref}"
             >
 
               <div class="photo-frame">
@@ -3163,10 +3353,47 @@ function renderArchive(items){
 
     </div>
 
+    ${
+      totalPages > 1
+        ? `
+          <div class="photo-pagination">
+
+            ${
+              currentPage > 1
+                ? `
+                  <a
+                    href="${pageHref(currentPage - 1)}"
+                    aria-label="Previous page"
+                  >
+                    PREV
+                  </a>
+                `
+                : ""
+            }
+
+            ${renderPageNumbers()}
+
+            ${
+              currentPage < totalPages
+                ? `
+                  <a
+                    href="${pageHref(currentPage + 1)}"
+                    aria-label="Next page"
+                  >
+                    NEXT
+                  </a>
+                `
+                : ""
+            }
+
+          </div>
+        `
+        : ""
+    }
+
   `;
 
 }
-
 
 
 /* =========================================================
@@ -3236,7 +3463,8 @@ function setupFilters(items){
 
 async function renderArticle(
   items,
-  slug
+  slug,
+  page
 ){
 
   const main =
@@ -3249,6 +3477,23 @@ async function renderArticle(
     decodeURIComponent(
       String(slug || "")
     ).trim();
+
+  const currentPage =
+    Number.parseInt(
+      String(page || "1"),
+      10
+    );
+
+  const backPage =
+    Number.isFinite(currentPage) &&
+    currentPage > 1
+      ? currentPage
+      : 1;
+
+  const backHref =
+    backPage === 1
+      ? "/photographs/"
+      : "/photographs/?page=" + backPage;
 
 
   const item =
@@ -3265,7 +3510,12 @@ async function renderArticle(
     "browserAddress"
   ).textContent =
     "https://qmarchive.github.io/photographs/?slug=" +
-    decodedSlug;
+    decodedSlug +
+    (
+      backPage > 1
+        ? "&page=" + backPage
+        : ""
+    );
 
 
   if(!item){
@@ -3289,7 +3539,7 @@ async function renderArticle(
 
         <a
           class="article-back"
-          href="/photographs/"
+          href="${backHref}"
         >
 
           ← back to photographs
@@ -3399,7 +3649,7 @@ async function renderArticle(
 
         <a
           class="article-back"
-          href="/photographs/"
+          href="${backHref}"
         >
 
           ← back to photographs
@@ -3445,7 +3695,7 @@ async function renderArticle(
 
         <a
           class="article-back"
-          href="/photographs/"
+          href="${backHref}"
         >
 
           ← back to photographs
@@ -4603,6 +4853,9 @@ async function init(){
     const slug =
       params.get("slug");
 
+    const page =
+      params.get("page");
+
 
     if(slug){
 
@@ -4623,7 +4876,8 @@ async function init(){
 
       await renderArticle(
         items,
-        slug
+        slug,
+        page
       );
 
     }else{
