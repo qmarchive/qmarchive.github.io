@@ -2258,6 +2258,11 @@ function renderArchive(
         "/writings/?slug=" +
         encodeURIComponent(
           item.slug
+        ) +
+        (
+          currentPage > 1
+            ? "&page=" + currentPage
+            : ""
         );
 
       entry.innerHTML = `
@@ -2369,6 +2374,27 @@ async function renderArticle(
     markdownToHTML(
       markdown
     );
+
+  const backLink =
+    document.querySelector(".back");
+
+  if(backLink){
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    const page =
+      Number(
+        params.get("page")
+      );
+
+    backLink.href =
+      page > 1
+        ? "/writings/?page=" + page
+        : "/writings/";
+  }
 
 }
 
