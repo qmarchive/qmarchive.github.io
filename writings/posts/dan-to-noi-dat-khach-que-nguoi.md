@@ -4,7 +4,7 @@ Chính xác hơn là họ đã để quên khả năng đi lại mà Chúa từn
 
 Những sinh vật ấy có một loại thiết bị chuyên dụng. Họ cứ thế lướt qua nhau trên các cỗ máy một bánh, bay lên rồi hạ xuống mượt mà.
 
-Họ đứng trên đó, cắm cái ống nối từ thứ phương tiện kia vào lồng ngực. Cỗ máy này hoạt động hoàn toàn nhờ năng lượng của sinh vật sống trên hành tinh. Họ điều khiển nó bằng ý thức.
+Họ đứng trên đó, cắm cái ống nối từ thứ phương tiện kia vào lồng ngực. Cỗ máy này hoạt động hoàn toàn nhờ năng lượng của sinh vật sống. Họ điều khiển nó bằng ý thức.
 
 Một giây lơ là để sự vô thức chen vào cũng đủ tạo ra tai nạn hàng không nghiêm trọng ở xứ này.
 
@@ -14,7 +14,7 @@ Hồi còn ở quê nhà, tôi từng là một dân tổ.
 
 29K1 4ever.
 
-Tôi vẫn luôn tự hào với danh xưng ấy.
+Tôi vẫn luôn tự hào với danh xưng đó.
 
 Mấy khứa ngày đấy giờ không biết lưu lạc ở đâu.
 
