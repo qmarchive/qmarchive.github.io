@@ -1649,6 +1649,36 @@ a[href]:hover{
 
   cursor:pointer;
 
+  box-sizing:border-box;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:1px;
+
+  padding:0;
+
+  line-height:1;
+
+  white-space:nowrap;
+
+  overflow:visible;
+
+}
+
+
+.music-button-bar,
+.music-button-arrow{
+
+  display:block;
+
+  flex:0 0 auto;
+
+  line-height:1;
+
 }
 
 
@@ -1889,7 +1919,7 @@ a[href]:hover{
 
     flex:0 0 auto;
 
-    min-width:0;
+    min-width:max-content;
 
   }
 
@@ -2628,7 +2658,7 @@ a[href]:hover{
       type="button"
     >
 
-      |◀
+      <span class="music-button-bar">|</span><span class="music-button-arrow">◀</span>
 
     </button>
 
@@ -2639,7 +2669,7 @@ a[href]:hover{
       type="button"
     >
 
-      ▶
+      <span class="music-button-arrow">▶</span>
 
     </button>
 
@@ -2650,7 +2680,7 @@ a[href]:hover{
       type="button"
     >
 
-      ▶|
+      <span class="music-button-arrow">▶</span><span class="music-button-bar">|</span>
 
     </button>
 
