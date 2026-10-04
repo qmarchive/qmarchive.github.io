@@ -1731,10 +1731,18 @@ a[href]:hover{
 
     grid-template-columns:
       auto
-      minmax(120px,1fr)
+      minmax(0,1fr)
       auto
-      minmax(120px,1fr)
+      minmax(0,1fr)
       auto;
+
+    gap:6px;
+
+  }
+
+  .music-player > *{
+
+    min-width:0;
 
   }
 
@@ -1826,11 +1834,81 @@ a[href]:hover{
     transform:translateX(-50%);
 
     grid-template-columns:
-      auto
       minmax(0,1fr)
       auto;
 
-    gap:5px;
+    gap:6px;
+
+    padding:6px;
+
+    align-items:center;
+
+  }
+
+
+  .music-info{
+
+    min-width:0;
+
+    overflow:hidden;
+
+  }
+
+
+  .music-title,
+  .music-artist{
+
+    min-width:0;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+  }
+
+
+  .music-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:4px;
+
+    flex:0 0 auto;
+
+  }
+
+
+  .music-button{
+
+    flex:0 0 33px;
+
+    width:33px;
+
+    height:29px;
+
+    box-sizing:border-box;
+
+    transform:none;
+
+  }
+
+
+  .music-button:hover{
+
+    transform:none;
+
+  }
+
+
+  .music-button:active{
+
+    transform:translate(1px,1px);
 
   }
 
@@ -1904,6 +1982,39 @@ a[href]:hover{
   }
 
 }
+@media(max-width:480px){
+
+  .music-player{
+
+    width:
+      calc(100% - 10px);
+
+    gap:5px;
+
+    padding:5px;
+
+  }
+
+
+  .music-controls{
+
+    gap:3px;
+
+  }
+
+
+  .music-button{
+
+    flex-basis:32px;
+
+    width:32px;
+
+    height:28px;
+
+  }
+
+}
+
 
 
 /* =========================================================
