@@ -741,13 +741,7 @@ a{
   transform:translateX(-50%);
   z-index:10000;
   display:grid;
-  grid-template-columns:
-    auto
-    minmax(0,1fr)
-    auto
-    minmax(0,1.5fr)
-    auto
-    auto;
+  grid-template-columns:auto minmax(150px,1fr) auto minmax(150px,1.5fr) auto auto;
   gap:9px;
   align-items:center;
   padding:6px 8px;
@@ -806,7 +800,6 @@ a{
 
 .music-controls{
   display:flex;
-  align-items:center;
   gap:4px;
   flex:0 0 auto;
   min-width:max-content;
@@ -825,9 +818,11 @@ a{
   background:#eee5ce;
   color:var(--blue);
   font-family:monospace;
+  font-size:13px;
   font-weight:bold;
   line-height:1;
   white-space:nowrap;
+  overflow:visible;
   cursor:pointer;
   transition:
     background .12s,
@@ -878,14 +873,7 @@ a{
       auto
       minmax(0,1fr)
       auto;
-  }
-
-  .music-player > *{
-    min-width:0;
-  }
-
-  .music-controls{
-    min-width:max-content;
+    gap:6px;
   }
 
   .music-volume{
@@ -962,46 +950,11 @@ a{
       minmax(0,1fr)
       auto;
     gap:5px;
-    padding:6px;
-    align-items:center;
-  }
-
-  .music-info{
-    min-width:0;
-    overflow:hidden;
-  }
-
-  .music-title,
-  .music-artist{
-    min-width:0;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
   }
 
   .music-controls{
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    gap:4px;
     flex:0 0 auto;
     min-width:max-content;
-  }
-
-  .music-button{
-    flex:0 0 33px;
-    width:33px;
-    height:29px;
-    box-sizing:border-box;
-    transform:none;
-  }
-
-  .music-button:hover{
-    transform:none;
-  }
-
-  .music-button:active{
-    transform:translate(1px,1px);
   }
 
   .music-progress,
@@ -1060,22 +1013,6 @@ a{
 ========================================================= */
 
 @media(max-width:480px){
-
-  .music-player{
-    width:calc(100% - 10px);
-    gap:5px;
-    padding:5px;
-  }
-
-  .music-controls{
-    gap:3px;
-  }
-
-  .music-button{
-    flex-basis:32px;
-    width:32px;
-    height:28px;
-  }
 
   .browser-menu{
     gap:6px 12px;
