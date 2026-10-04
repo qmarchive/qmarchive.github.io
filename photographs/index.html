@@ -1834,14 +1834,22 @@ a[href]:hover{
     transform:translateX(-50%);
 
     grid-template-columns:
+      auto
       minmax(0,1fr)
       auto;
 
-    gap:6px;
+    gap:5px;
 
     padding:6px;
 
     align-items:center;
+
+  }
+
+
+  .music-player > *{
+
+    min-width:0;
 
   }
 
@@ -1880,6 +1888,8 @@ a[href]:hover{
     gap:4px;
 
     flex:0 0 auto;
+
+    min-width:0;
 
   }
 
@@ -1982,6 +1992,7 @@ a[href]:hover{
   }
 
 }
+
 @media(max-width:480px){
 
   .music-player{
@@ -1989,7 +2000,7 @@ a[href]:hover{
     width:
       calc(100% - 10px);
 
-    gap:5px;
+    gap:4px;
 
     padding:5px;
 
@@ -2005,16 +2016,15 @@ a[href]:hover{
 
   .music-button{
 
-    flex-basis:32px;
+    flex-basis:31px;
 
-    width:32px;
+    width:31px;
 
     height:28px;
 
   }
 
 }
-
 
 
 /* =========================================================
