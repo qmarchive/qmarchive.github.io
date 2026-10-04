@@ -506,8 +506,10 @@ a[href]:hover{font-weight:bold}
 .music-artist{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-top:1px;color:var(--teal-dark);font-size:9px;font-weight:bold}
 .music-controls{display:flex;gap:4px}
 .music-button{
-  width:33px;height:29px;border:3px solid var(--blue);background:#eee5ce;color:var(--blue);
-  font-family:monospace;font-weight:bold;cursor:pointer;
+  width:33px;height:29px;box-sizing:border-box;padding:0;border:3px solid var(--blue);background:#eee5ce;color:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-family:monospace;font-size:13px;font-weight:bold;line-height:1;white-space:nowrap;
+  cursor:pointer;overflow:visible;
   transition:background .12s,color .12s,transform .12s;
 }
 .music-button:hover{
