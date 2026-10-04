@@ -4382,9 +4382,10 @@ async function loadMusicArchive(){
           src:
             track.file
               ? (
-                  "/music/" +
+                  "/music/posts/" +
                   String(track.file)
                     .replace(/^\/+/,"")
+                    .replace(/^posts\//i,"")
                 )
               : String(
                   track.src || ""
