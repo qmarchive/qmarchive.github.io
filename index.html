@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/favicon.png">
-<meta name="google-site-verification" content="hbzo4VpWZQZD32e_SsRYjcJKU1E8fzPMUo_087f-LY0" />
+<meta name="google-site-verification" content="hbzo4VpWZQZD32e_SsRYjcJKU1E8fzPMUo_087f-LY0">
 
 <title>QUỐC MẠNH — QM ARCHIVE</title>
 
@@ -301,84 +301,6 @@ a[href]:hover{font-weight:bold}
   from{width:0}
   to{width:100%}
 }
-.easter-egg-overlay{
-  position:fixed;
-  inset:0;
-  z-index:100000;
-  display:none;
-  background:rgba(0,0,0,.5);
-}
-
-.easter-egg-overlay.open{
-  display:block;
-  animation:easterEggOverlayIn .25s ease-out forwards;
-}
-
-.easter-egg-popup{
-  position:fixed;
-  left:50%;
-  top:50%;
-  z-index:100001;
-  width:min(680px,calc(100% - 32px));
-  max-height:calc(100vh - 32px);
-  overflow:auto;
-  transform:translate(-50%,-50%);
-  padding:22px 24px 24px;
-  border:3px solid var(--blue);
-  background:var(--paper);
-  box-shadow:5px 5px 0 var(--blue);
-  color:var(--blue);
-  font-family:monospace;
-  font-size:13px;
-  line-height:1.8;
-  font-weight:bold;
-  display:none;
-}
-
-.easter-egg-popup.open{
-  display:block;
-  animation:easterEggPopupIn .3s ease-out forwards;
-}
-
-.easter-egg-close{
-  position:absolute;
-  top:7px;
-  right:7px;
-  width:24px;
-  height:24px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid var(--blue);
-  background:var(--paper);
-  color:var(--blue);
-  font-family:monospace;
-  font-size:12px;
-  line-height:1;
-  cursor:pointer;
-  padding:0;
-}
-
-.easter-egg-close:active{
-  transform:translate(2px,2px);
-  box-shadow:inset 2px 2px 0 rgba(21,23,47,.22);
-}
-
-.easter-egg-text{
-  padding:8px 12px 4px;
-  white-space:normal;
-}
-
-@keyframes easterEggOverlayIn{
-  from{opacity:0}
-  to{opacity:1}
-}
-
-@keyframes easterEggPopupIn{
-  from{opacity:0;transform:translate(-50%,-48%)}
-  to{opacity:1;transform:translate(-50%,-50%)}
-}
-
 .browser-date{text-align:right;font-family:monospace;font-size:10px;line-height:1.35;font-weight:bold;padding-right:2px}
 
 .layout{
@@ -586,8 +508,10 @@ a[href]:hover{font-weight:bold}
 .music-artist{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-top:1px;color:var(--teal-dark);font-size:9px;font-weight:bold}
 .music-controls{display:flex;gap:4px}
 .music-button{
-  width:33px;height:29px;border:3px solid var(--blue);background:#eee5ce;color:var(--blue);
-  font-family:monospace;font-weight:bold;cursor:pointer;
+  width:33px;height:29px;box-sizing:border-box;padding:0;border:3px solid var(--blue);background:#eee5ce;color:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-family:monospace;font-size:13px;font-weight:bold;line-height:1;white-space:nowrap;
+  cursor:pointer;overflow:visible;
   transition:background .12s,color .12s,transform .12s;
 }
 .music-button:hover{
@@ -676,10 +600,14 @@ a[href]:hover{font-weight:bold}
     right:auto;
     bottom:5px;
     transform:translateX(-50%);
-    grid-template-columns:minmax(0,1fr) auto;
-    gap:6px;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    gap:5px;
     padding:6px;
     align-items:center;
+  }
+
+  .music-player > *{
+    min-width:0;
   }
 
   .music-info{
@@ -798,6 +726,86 @@ a[href]:hover{font-weight:bold}
   }
 
 }
+  
+/* EASTER EGG */
+.easter-egg-overlay{
+  position:fixed;
+  inset:0;
+  z-index:100000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.5);
+}
+.easter-egg-overlay.open{
+  display:flex;
+  animation:easterEggOverlayIn .35s ease-out forwards;
+}
+.easter-egg-popup{
+  position:relative;
+  width:min(680px,100%);
+  max-height:min(80vh,720px);
+  overflow:auto;
+  padding:22px 48px 22px 22px;
+  border:3px solid var(--blue);
+  background:var(--paper);
+  box-shadow:6px 6px 0 var(--blue);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:12px;
+  line-height:1.8;
+  font-weight:bold;
+}
+.easter-egg-close{
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:27px;
+  height:27px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid var(--blue);
+  background:var(--paper);
+  color:var(--blue);
+  font-family:monospace;
+  font-size:12px;
+  font-weight:bold;
+  line-height:1;
+  cursor:pointer;
+}
+.easter-egg-close:active{
+  transform:translate(1px,1px);
+}
+.easter-egg-popup.fade-out{
+  animation:easterEggPopupOut 1.8s ease forwards;
+}
+.easter-egg-overlay.fade-out{
+  animation:easterEggOverlayOut 1.8s ease forwards;
+}
+@keyframes easterEggOverlayIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes easterEggOverlayOut{
+  from{opacity:1}
+  to{opacity:0}
+}
+@keyframes easterEggPopupOut{
+  from{opacity:1}
+  to{opacity:0}
+}
+@media(max-width:600px){
+  .easter-egg-overlay{padding:12px}
+  .easter-egg-popup{
+    max-height:82vh;
+    padding:20px 42px 20px 17px;
+    font-size:11px;
+    line-height:1.7;
+  }
+}
+
   </style>
 
 </head>
@@ -1209,15 +1217,6 @@ a[href]:hover{font-weight:bold}
 
 </div>
 
-<div class="easter-egg-overlay" id="easterEggOverlay"></div>
-
-<div class="easter-egg-popup" id="easterEggPopup" role="dialog" aria-modal="true" aria-label="A message">
-  <button class="easter-egg-close" id="easterEggClose" type="button" aria-label="Close">×</button>
-  <div class="easter-egg-text">
-    Không sao đâu. Mọi chuyện rồi sẽ ổn. Cố lên. Rồi chúng ta sẽ gặp lại nhau ở một cuộc đời mới. Chúng ta sẽ lại yêu thương, quan tâm và lo lắng cho nhau. Còn giờ thì đến lúc phải chào tạm biệt rồi. Sống tốt phần mình và cũng sống tốt hộ phần của tôi luôn nhé. Love so much my Fam and my Friends.
-  </div>
-</div>
-
 <div class="browser-loading" id="browserLoading">
   <div class="browser-loading-window">
     <div class="browser-loading-title" id="browserLoadingText">
@@ -1232,6 +1231,15 @@ a[href]:hover{font-weight:bold}
 
 <audio id="audio" preload="metadata"></audio>
 <audio id="audioRecorder" preload="metadata"></audio>
+
+
+<div class="easter-egg-overlay" id="easterEggOverlay" aria-hidden="true">
+  <div class="easter-egg-popup" id="easterEggPopup" role="dialog" aria-modal="true">
+    <button class="easter-egg-close" id="easterEggClose" type="button" aria-label="Close">×</button>
+    Không sao đâu. Mọi chuyện rồi sẽ ổn. Cố lên. Rồi chúng ta sẽ gặp lại nhau ở một cuộc đời mới. Chúng ta sẽ lại yêu thương, quan tâm và lo lắng cho nhau. Còn giờ thì đến lúc phải chào tạm biệt rồi. Sống tốt phần mình và cũng sống tốt hộ phần của tôi luôn nhé. Love so much my Fam and my Friends.
+  </div>
+</div>
+
 
 <script>
 
@@ -3259,12 +3267,21 @@ document.addEventListener(
 
 updateBrowserAddress();
 
+
 /* =========================================================
    EASTER EGG
-   ↑ ↑ ↓ ↓ ← → ← → Q M
 ========================================================= */
 
-const easterEggSequence = [
+const easterEggOverlay =
+  document.getElementById("easterEggOverlay");
+
+const easterEggPopup =
+  document.getElementById("easterEggPopup");
+
+const easterEggClose =
+  document.getElementById("easterEggClose");
+
+const EASTER_EGG_SEQUENCE = [
   "ArrowUp",
   "ArrowUp",
   "ArrowDown",
@@ -3277,82 +3294,79 @@ const easterEggSequence = [
   "m"
 ];
 
-const easterEggOverlay =
-  document.getElementById("easterEggOverlay");
-
-const easterEggPopup =
-  document.getElementById("easterEggPopup");
-
-const easterEggClose =
-  document.getElementById("easterEggClose");
-
-let easterEggIndex = 0;
-let easterEggTimer = null;
+let easterEggProgress = 0;
+let easterEggTimeout = null;
 
 function closeEasterEgg(){
-  if(easterEggTimer){
-    window.clearTimeout(easterEggTimer);
-    easterEggTimer = null;
+
+  if(!easterEggOverlay){
+    return;
   }
 
-  easterEggPopup.classList.remove("open");
-  easterEggOverlay.classList.remove("open");
-  easterEggIndex = 0;
+  if(easterEggTimeout){
+    window.clearTimeout(easterEggTimeout);
+    easterEggTimeout = null;
+  }
+
+  easterEggOverlay.classList.remove("open","fade-out");
+  easterEggPopup.classList.remove("fade-out");
+  easterEggOverlay.setAttribute("aria-hidden","true");
+  easterEggProgress = 0;
 }
 
 function openEasterEgg(){
-  easterEggIndex = 0;
 
-  easterEggOverlay.classList.add("open");
-  easterEggPopup.classList.add("open");
-
-  if(easterEggTimer){
-    window.clearTimeout(easterEggTimer);
+  if(!easterEggOverlay){
+    return;
   }
 
-  easterEggTimer = window.setTimeout(
-    closeEasterEgg,
-    60000
-  );
+  if(easterEggTimeout){
+    window.clearTimeout(easterEggTimeout);
+  }
+
+  easterEggOverlay.classList.remove("fade-out");
+  easterEggPopup.classList.remove("fade-out");
+  easterEggOverlay.classList.add("open");
+  easterEggOverlay.setAttribute("aria-hidden","false");
+  easterEggProgress = 0;
+
+  easterEggTimeout = window.setTimeout(()=>{
+    easterEggPopup.classList.add("fade-out");
+    easterEggOverlay.classList.add("fade-out");
+
+    easterEggTimeout = window.setTimeout(()=>{
+      closeEasterEgg();
+    },1800);
+  },60000);
 }
 
-document.addEventListener(
-  "keydown",
-  event=>{
+document.addEventListener("keydown",event=>{
 
-    if(
-      easterEggPopup.classList.contains("open")
-    ){
-      return;
+  if(easterEggOverlay && easterEggOverlay.classList.contains("open")){
+    return;
+  }
+
+  const key =
+    event.key.length === 1
+      ? event.key.toLowerCase()
+      : event.key;
+
+  if(key === EASTER_EGG_SEQUENCE[easterEggProgress]){
+    easterEggProgress += 1;
+
+    if(easterEggProgress === EASTER_EGG_SEQUENCE.length){
+      openEasterEgg();
     }
 
-    const expected =
-      easterEggSequence[easterEggIndex];
+  }else{
 
-    const key =
-      event.key.length === 1
-        ? event.key.toLowerCase()
-        : event.key;
-
-    if(key === expected){
-      easterEggIndex++;
-
-      if(
-        easterEggIndex ===
-        easterEggSequence.length
-      ){
-        openEasterEgg();
-      }
-
-      return;
-    }
-
-    easterEggIndex =
-      key === easterEggSequence[0]
+    easterEggProgress =
+      key === EASTER_EGG_SEQUENCE[0]
         ? 1
         : 0;
   }
-);
+
+});
 
 if(easterEggClose){
   easterEggClose.addEventListener(
