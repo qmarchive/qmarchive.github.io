@@ -2066,54 +2066,70 @@ a[href]:hover{
 
 .hanoi-weather-content{
   min-height:0;
-  padding:12px;
+  padding:10px;
   display:flex;
   flex-direction:column;
   gap:0;
   flex:1;
   overflow-y:auto;
-  overflow-x:hidden;
+  scrollbar-width:auto;
+  scrollbar-color:var(--blue) #eee5ce;
+}
+
+.hanoi-weather-content::-webkit-scrollbar{
+  width:12px;
+}
+
+.hanoi-weather-content::-webkit-scrollbar-track{
+  background:#eee5ce;
+  border-left:2px solid var(--blue);
+}
+
+.hanoi-weather-content::-webkit-scrollbar-thumb{
+  background:var(--blue);
+  border:2px solid #eee5ce;
 }
 
 .weather-current{
-  padding:2px 0 10px;
+  padding:1px 0 8px;
   border-bottom:2px dashed var(--blue);
+  flex:0 0 auto;
 }
 
 .weather-location{
-  visibility:hidden;
   color:var(--blue);
   font-family:Arial,Helvetica,sans-serif;
-  font-size:18px;
-  line-height:1.2;
+  font-size:17px;
+  line-height:1.15;
   font-weight:bold;
+  visibility:hidden;
 }
 
 .weather-status{
-  margin-top:3px;
+  margin-top:2px;
   color:var(--teal);
   font-family:monospace;
-  font-size:10px;
-  line-height:1.4;
+  font-size:9px;
+  line-height:1.3;
   font-weight:bold;
   text-transform:uppercase;
 }
 
 .weather-temperature{
-  margin-top:8px;
+  margin-top:6px;
   color:var(--blue);
   font-family:Arial,Helvetica,sans-serif;
-  font-size:38px;
+  font-size:34px;
   line-height:1;
   font-weight:bold;
 }
 
 .weather-feels{
-  margin-top:5px;
+  margin-top:4px;
   color:var(--blue);
   font-family:monospace;
-  font-size:9px;
-  line-height:1.5;
+  font-size:8px;
+  line-height:1.4;
 }
 
 .weather-grid{
@@ -2125,7 +2141,7 @@ a[href]:hover{
 
 .weather-item{
   min-width:0;
-  padding:10px 5px;
+  padding:7px 5px;
   border-bottom:2px dashed var(--blue);
 }
 
@@ -2143,18 +2159,18 @@ a[href]:hover{
 .weather-label{
   color:var(--teal);
   font-family:monospace;
-  font-size:9px;
-  line-height:1.4;
+  font-size:8px;
+  line-height:1.3;
   font-weight:bold;
   text-transform:uppercase;
 }
 
 .weather-value{
-  margin-top:3px;
+  margin-top:2px;
   color:var(--blue);
   font-family:monospace;
-  font-size:11px;
-  line-height:1.5;
+  font-size:10px;
+  line-height:1.35;
   font-weight:bold;
   overflow-wrap:anywhere;
 }
@@ -2163,7 +2179,8 @@ a[href]:hover{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:0;
-  padding-top:10px;
+  padding-top:8px;
+  flex:0 0 auto;
 }
 
 .weather-sun-item{
@@ -2180,14 +2197,15 @@ a[href]:hover{
 }
 
 .weather-updated{
-  margin-top:auto;
-  padding-top:10px;
+  margin-top:0;
+  padding-top:8px;
   color:var(--blue);
   font-family:monospace;
-  font-size:8px;
-  line-height:1.5;
+  font-size:7px;
+  line-height:1.4;
   font-weight:bold;
   text-align:right;
+  flex:0 0 auto;
 }
 
 .weather-live{
@@ -2206,43 +2224,25 @@ a[href]:hover{
   color:#8b2c1e;
 }
 
-.hanoi-weather-content::-webkit-scrollbar{
-
-  width:12px;
-
-}
-
-.hanoi-weather-content::-webkit-scrollbar-track{
-
-  background:#eee5ce;
-
-  border-left:2px solid var(--blue);
-
-}
-
-.hanoi-weather-content::-webkit-scrollbar-thumb{
-
-  background:var(--blue);
-
-  border:2px solid #eee5ce;
-
-}
-
 @media(max-width:1200px){
-  .hanoi-weather-content{padding:11px;}
-  .weather-temperature{font-size:34px;}
+  .hanoi-weather-content{padding:9px;}
+  .weather-temperature{font-size:32px;}
+  .weather-item{padding-top:6px;padding-bottom:6px;}
+  .weather-sun{padding-top:7px;}
+  .weather-updated{padding-top:7px;}
 }
 
 @media(max-width:850px){
   .hanoi-weather{margin-top:16px;}
-  .hanoi-weather-content{min-height:0;}
-  .weather-temperature{font-size:36px;}
+  .hanoi-weather-content{min-height:0;overflow-y:visible;}
+  .weather-temperature{font-size:34px;}
 }
 
 @media(max-width:480px){
+  .hanoi-weather-content{padding:9px;}
   .weather-grid{grid-template-columns:1fr 1fr;}
   .weather-temperature{font-size:32px;}
-  .weather-item{padding-top:8px;padding-bottom:8px;}
+  .weather-item{padding-top:6px;padding-bottom:6px;}
 }
 
 </style>
@@ -5580,7 +5580,9 @@ function renderHanoiWeather(data){
 
   const visibilityKm =
     typeof current.visibility === "number"
-      ? current.visibility / 1000
+      ? current.visibility >= 1000
+        ? current.visibility / 1000
+        : current.visibility
       : null;
 
   const pressureUnit =
