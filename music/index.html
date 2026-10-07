@@ -2052,6 +2052,174 @@ a[href]:hover{
 
 }
 
+
+/* =========================================================
+   HANOI WEATHER
+========================================================= */
+
+.hanoi-weather{
+  margin-top:16px;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+}
+
+.hanoi-weather-content{
+  min-height:0;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  flex:1;
+}
+
+.weather-current{
+  padding:2px 0 10px;
+  border-bottom:2px dashed var(--blue);
+}
+
+.weather-location{
+  color:var(--blue);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:18px;
+  line-height:1.2;
+  font-weight:bold;
+}
+
+.weather-status{
+  margin-top:3px;
+  color:var(--teal);
+  font-family:monospace;
+  font-size:10px;
+  line-height:1.4;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.weather-temperature{
+  margin-top:8px;
+  color:var(--blue);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:38px;
+  line-height:1;
+  font-weight:bold;
+}
+
+.weather-feels{
+  margin-top:5px;
+  color:var(--blue);
+  font-family:monospace;
+  font-size:9px;
+  line-height:1.5;
+}
+
+.weather-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  flex:1;
+}
+
+.weather-item{
+  min-width:0;
+  padding:10px 5px;
+  border-bottom:2px dashed var(--blue);
+}
+
+.weather-item:nth-child(odd){
+  padding-left:0;
+  padding-right:8px;
+  border-right:2px dashed var(--blue);
+}
+
+.weather-item:nth-child(even){
+  padding-left:8px;
+  padding-right:0;
+}
+
+.weather-label{
+  color:var(--teal);
+  font-family:monospace;
+  font-size:9px;
+  line-height:1.4;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.weather-value{
+  margin-top:3px;
+  color:var(--blue);
+  font-family:monospace;
+  font-size:11px;
+  line-height:1.5;
+  font-weight:bold;
+  overflow-wrap:anywhere;
+}
+
+.weather-sun{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  padding-top:10px;
+}
+
+.weather-sun-item{
+  min-width:0;
+}
+
+.weather-sun-item:first-child{
+  padding-right:8px;
+  border-right:2px dashed var(--blue);
+}
+
+.weather-sun-item:last-child{
+  padding-left:8px;
+}
+
+.weather-updated{
+  margin-top:auto;
+  padding-top:10px;
+  color:var(--blue);
+  font-family:monospace;
+  font-size:8px;
+  line-height:1.5;
+  font-weight:bold;
+  text-align:right;
+}
+
+.weather-live{
+  color:var(--green);
+}
+
+.weather-loading,
+.weather-error{
+  color:var(--blue);
+  font-family:monospace;
+  font-size:10px;
+  line-height:1.7;
+}
+
+.weather-error{
+  color:#8b2c1e;
+}
+
+@media(max-width:1200px){
+  .hanoi-weather-content{padding:11px;}
+  .weather-temperature{font-size:34px;}
+}
+
+@media(max-width:850px){
+  .hanoi-weather{margin-top:16px;}
+  .hanoi-weather-content{min-height:0;}
+  .weather-temperature{font-size:36px;}
+}
+
+@media(max-width:480px){
+  .weather-grid{grid-template-columns:1fr 1fr;}
+  .weather-temperature{font-size:32px;}
+  .weather-item{padding-top:8px;padding-bottom:8px;}
+}
+
 </style>
 
 </head>
@@ -2196,6 +2364,42 @@ a[href]:hover{
 
   </section>
 
+
+
+  <section class="window hanoi-weather" id="hanoiWeather">
+
+    <div class="window-titlebar">
+
+
+      <div class="window-title">
+
+        <div class="window-title-label">
+          HANOI WEATHER
+        </div>
+
+      </div>
+
+
+      <div class="window-buttons">
+
+        <span class="window-button">
+          ×
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="hanoi-weather-content" id="hanoiWeatherContent">
+      <div class="weather-loading" id="weatherLoading">
+        Loading weather data...
+      </div>
+    </div>
+
+
+  </section>
 
 </aside>
 
@@ -5177,6 +5381,393 @@ document.addEventListener(
 );
 
 updateBrowserAddress();
+
+
+/* =========================================================
+   HANOI WEATHER DATA
+========================================================= */
+
+const HANOI_WEATHER_URL =
+  "https://api.open-meteo.com/v1/forecast" +
+  "?latitude=21.0285" +
+  "&longitude=105.8542" +
+  "&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,pressure_msl,wind_speed_10m,wind_direction_10m,visibility" +
+  "&hourly=precipitation_probability" +
+  "&daily=sunrise,sunset,uv_index_max" +
+  "&timezone=Asia%2FBangkok" +
+  "&forecast_days=1" +
+  "&temperature_unit=celsius" +
+  "&wind_speed_unit=kmh" +
+  "&precipitation_unit=mm";
+
+const musicWindow =
+  document.getElementById(
+    "musicWindow"
+  );
+
+const hanoiWeather =
+  document.getElementById(
+    "hanoiWeather"
+  );
+
+const hanoiWeatherContent =
+  document.getElementById(
+    "hanoiWeatherContent"
+  );
+
+function weatherCondition(code){
+
+  const map = {
+    0:"Clear sky",
+    1:"Mainly clear",
+    2:"Partly cloudy",
+    3:"Overcast",
+    45:"Fog",
+    48:"Depositing rime fog",
+    51:"Light drizzle",
+    53:"Moderate drizzle",
+    55:"Dense drizzle",
+    56:"Light freezing drizzle",
+    57:"Dense freezing drizzle",
+    61:"Slight rain",
+    63:"Moderate rain",
+    65:"Heavy rain",
+    66:"Light freezing rain",
+    67:"Heavy freezing rain",
+    71:"Slight snow",
+    73:"Moderate snow",
+    75:"Heavy snow",
+    77:"Snow grains",
+    80:"Slight rain showers",
+    81:"Moderate rain showers",
+    82:"Violent rain showers",
+    85:"Slight snow showers",
+    86:"Heavy snow showers",
+    95:"Thunderstorm",
+    96:"Thunderstorm + slight hail",
+    99:"Thunderstorm + heavy hail"
+  };
+
+  return map[code] || "Unknown conditions";
+
+}
+
+function weatherDirection(degrees){
+
+  if(
+    typeof degrees !== "number" ||
+    Number.isNaN(degrees)
+  ){
+    return "—";
+  }
+
+  const directions = [
+    "N","NE","E","SE","S","SW","W","NW"
+  ];
+
+  return directions[
+    Math.round(degrees / 45) % 8
+  ];
+
+}
+
+function weatherNumber(value,digits=0){
+
+  if(
+    typeof value !== "number" ||
+    Number.isNaN(value)
+  ){
+    return "—";
+  }
+
+  return value.toFixed(digits);
+
+}
+
+function weatherTime(value){
+
+  if(!value){
+    return "—";
+  }
+
+  const parts =
+    String(value).split("T");
+
+  return parts[1] ? parts[1].slice(0,5) : "—";
+
+}
+
+function weatherHourlyProbability(data){
+
+  if(
+    !data ||
+    !data.hourly ||
+    !Array.isArray(data.hourly.time) ||
+    !Array.isArray(data.hourly.precipitation_probability) ||
+    !data.current ||
+    !data.current.time
+  ){
+    return null;
+  }
+
+  const times = data.hourly.time;
+  let index = times.indexOf(data.current.time);
+
+  if(index < 0){
+
+    const currentStamp =
+      new Date(data.current.time).getTime();
+
+    let closest = Infinity;
+
+    times.forEach((time,i)=>{
+      const distance =
+        Math.abs(
+          new Date(time).getTime() -
+          currentStamp
+        );
+
+      if(distance < closest){
+        closest = distance;
+        index = i;
+      }
+    });
+
+  }
+
+  return index >= 0
+    ? data.hourly.precipitation_probability[index]
+    : null;
+
+}
+
+function renderHanoiWeather(data){
+
+  if(!hanoiWeatherContent || !data || !data.current){
+    return;
+  }
+
+  const current = data.current;
+  const units = data.current_units || {};
+  const daily = data.daily || {};
+  const probability =
+    weatherHourlyProbability(data);
+
+  const visibilityKm =
+    typeof current.visibility === "number"
+      ? current.visibility >= 1000
+        ? current.visibility / 1000
+        : current.visibility
+      : null;
+
+  const pressureUnit =
+    units.pressure_msl || "hPa";
+
+  const windUnit =
+    units.wind_speed_10m || "km/h";
+
+  const rainUnit =
+    units.precipitation || "mm";
+
+  const temperatureUnit =
+    units.temperature_2m || "°C";
+
+  hanoiWeatherContent.innerHTML = `
+    <div class="weather-current">
+      <div class="weather-location">HANOI</div>
+      <div class="weather-status">${weatherCondition(current.weather_code)}</div>
+      <div class="weather-temperature">${weatherNumber(current.temperature_2m)}${temperatureUnit}</div>
+      <div class="weather-feels">FEELS LIKE ${weatherNumber(current.apparent_temperature)}${temperatureUnit}</div>
+    </div>
+
+    <div class="weather-grid">
+      <div class="weather-item">
+        <div class="weather-label">HUMIDITY</div>
+        <div class="weather-value">${weatherNumber(current.relative_humidity_2m)}${units.relative_humidity_2m || "%"}</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="weather-label">WIND</div>
+        <div class="weather-value">${weatherNumber(current.wind_speed_10m)} ${windUnit} ${weatherDirection(current.wind_direction_10m)}</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="weather-label">RAIN CHANCE</div>
+        <div class="weather-value">${probability == null ? "—" : weatherNumber(probability)}%</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="weather-label">PRECIPITATION</div>
+        <div class="weather-value">${weatherNumber(current.precipitation,1)} ${rainUnit}</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="weather-label">PRESSURE</div>
+        <div class="weather-value">${weatherNumber(current.pressure_msl)} ${pressureUnit}</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="weather-label">VISIBILITY</div>
+        <div class="weather-value">${visibilityKm == null ? "—" : weatherNumber(visibilityKm,1)} km</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="weather-label">UV INDEX</div>
+        <div class="weather-value">${weatherNumber(daily.uv_index_max && daily.uv_index_max[0],1)}</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="weather-label">DATA</div>
+        <div class="weather-value weather-live">● LIVE</div>
+      </div>
+    </div>
+
+    <div class="weather-sun">
+      <div class="weather-sun-item">
+        <div class="weather-label">SUNRISE</div>
+        <div class="weather-value">${weatherTime(daily.sunrise && daily.sunrise[0])}</div>
+      </div>
+
+      <div class="weather-sun-item">
+        <div class="weather-label">SUNSET</div>
+        <div class="weather-value">${weatherTime(daily.sunset && daily.sunset[0])}</div>
+      </div>
+    </div>
+
+    <div class="weather-updated">
+      UPDATED ${weatherTime(current.time)} · OPEN-METEO
+    </div>
+  `;
+
+}
+
+function renderHanoiWeatherError(){
+
+  if(!hanoiWeatherContent){
+    return;
+  }
+
+  hanoiWeatherContent.innerHTML = `
+    <div class="weather-error">
+      WEATHER DATA UNAVAILABLE.<br>
+      PLEASE TRY AGAIN LATER.
+    </div>
+  `;
+
+}
+
+async function loadHanoiWeather(){
+
+  if(!hanoiWeatherContent){
+    return;
+  }
+
+  try{
+
+    const response =
+      await fetch(
+        HANOI_WEATHER_URL,
+        {cache:"no-store"}
+      );
+
+    if(!response.ok){
+      throw new Error("Weather request failed");
+    }
+
+    const data =
+      await response.json();
+
+    renderHanoiWeather(data);
+
+  }catch(error){
+
+    renderHanoiWeatherError();
+
+  }finally{
+
+    syncHanoiWeatherHeight();
+
+  }
+
+}
+
+function syncHanoiWeatherHeight(){
+
+  if(
+    !hanoiWeather ||
+    !musicWindow
+  ){
+    return;
+  }
+
+  if(window.innerWidth <= 850){
+    hanoiWeather.style.height = "";
+    return;
+  }
+
+  const systemWindow =
+    document.querySelector(
+      ".system-window"
+    );
+
+  if(!systemWindow){
+    return;
+  }
+
+  const musicHeight =
+    musicWindow.getBoundingClientRect().height;
+
+  const systemHeight =
+    systemWindow.getBoundingClientRect().height;
+
+  const targetHeight =
+    Math.max(0,musicHeight - systemHeight - 16);
+
+  hanoiWeather.style.height =
+    targetHeight + "px";
+
+}
+
+if(hanoiWeather){
+
+  loadHanoiWeather();
+
+  setInterval(
+    loadHanoiWeather,
+    5 * 60 * 1000
+  );
+
+  window.addEventListener(
+    "resize",
+    syncHanoiWeatherHeight
+  );
+
+  if(typeof ResizeObserver !== "undefined"){
+
+    const weatherResizeObserver =
+      new ResizeObserver(
+        syncHanoiWeatherHeight
+      );
+
+    weatherResizeObserver.observe(
+      musicWindow
+    );
+
+    weatherResizeObserver.observe(
+      document.querySelector(
+        ".system-window"
+      )
+    );
+
+  }
+
+  setTimeout(
+    syncHanoiWeatherHeight,
+    100
+  );
+
+}
+
 
 /* =========================================================
    CLOCK
